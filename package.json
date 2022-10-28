@@ -4,5 +4,9 @@
   "description": "React Native interface for DriveKit",
   "repository": "git@github.com:DriveQuantPublic/drivekit-react-native.git",
   "author": "DriveQuant",
-  "license": "MIT"
+  "license": "MIT",
+  "private": "true",
+  "workspaces": [
+    "packages/*"
+  ]
 }
