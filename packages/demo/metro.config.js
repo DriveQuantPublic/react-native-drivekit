@@ -14,5 +14,5 @@ module.exports = {
       },
     }),
   },
-  watchFolders: ['../../node_modules'],
+  watchFolders: ['../../node_modules', '../core'],
 };
