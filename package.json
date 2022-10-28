@@ -1,0 +1,8 @@
+{
+  "name": "react-native-drivekit",
+  "version": "1.0.0",
+  "description": "React Native interface for DriveKit",
+  "repository": "git@github.com:DriveQuantPublic/drivekit-react-native.git",
+  "author": "DriveQuant",
+  "license": "MIT"
+}
