@@ -1,6 +1,6 @@
-#import "Core.h"
+#import "RNDriveKitCore.h"
 
-@implementation Core
+@implementation RNDriveKitCore
 RCT_EXPORT_MODULE()
 
 // Example method
