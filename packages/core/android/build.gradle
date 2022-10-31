@@ -21,6 +21,8 @@ def isNewArchitectureEnabled() {
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+def MIN_SDK_VERSION = 21
+
 if (isNewArchitectureEnabled()) {
   apply plugin: 'com.facebook.react'
 }
@@ -37,7 +39,7 @@ android {
   compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
 
   defaultConfig {
-    minSdkVersion getExtOrIntegerDefault('minSdkVersion')
+    minSdkVersion 21
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
     buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
   }
