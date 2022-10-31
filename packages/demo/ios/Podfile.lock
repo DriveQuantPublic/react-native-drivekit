@@ -2,6 +2,9 @@ PODS:
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
+  - DriveKitCore (1.28.0):
+    - DriveKitNetworking (= 1.28.0)
+  - DriveKitNetworking (1.28.0)
   - FBLazyVector (0.70.4)
   - FBReactNativeSpec (0.70.4):
     - RCT-Folly (= 2021.07.22.00)
@@ -303,6 +306,7 @@ PODS:
   - React-logger (0.70.4):
     - glog
   - react-native-drivekit-core (1.0.0):
+    - DriveKitCore (= 1.28.0)
     - React-Core
   - React-perflogger (0.70.4)
   - React-RCTActionSheet (0.70.4):
@@ -440,6 +444,8 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - CocoaAsyncSocket
+    - DriveKitCore
+    - DriveKitNetworking
     - Flipper
     - Flipper-Boost-iOSX
     - Flipper-DoubleConversion
@@ -531,6 +537,8 @@ SPEC CHECKSUMS:
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
+  DriveKitCore: 44fdf2c1a55773cd5d3ba1fa83f1933697d62b76
+  DriveKitNetworking: 6ae4e21e32771bee0ed4268a66a4e812400f94f9
   FBLazyVector: 8a28262f61fbe40c04ce8677b8d835d97c18f1b3
   FBReactNativeSpec: 283d5f885f72caba7694390f56cc55f864213a12
   Flipper: 26fc4b7382499f1281eb8cb921e5c3ad6de91fe0
@@ -562,7 +570,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 4a893fc8f683b91befcaf56c44ad8be4506b6828
   React-jsinspector: 1d5a9e84e419a57cabc23249aec3d837d1b03a80
   React-logger: f8071ad48248781d5afdb8a07f778758529d3019
-  react-native-drivekit-core: 770fa24a56d347a2a43ef6a30bfb43cbda24f80a
+  react-native-drivekit-core: c9f98e0d2de1ca3122fde0203db79abca74e6cd4
   React-perflogger: 5e41b01b35d97cc1b0ea177181eb33b5c77623b6
   React-RCTActionSheet: 48949f30b24200c82f3dd27847513be34e06a3ae
   React-RCTAnimation: 96af42c97966fcd53ed9c31bee6f969c770312b6
