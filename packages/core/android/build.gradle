@@ -76,6 +76,9 @@ android {
 repositories {
   mavenCentral()
   google()
+  maven {
+      url "https://maven.drivequant.com/repository/android-sdk/"
+  }
 
   def found = false
   def defaultDir = null
@@ -144,12 +147,13 @@ repositories {
 }
 
 def kotlin_version = getExtOrDefault('kotlinVersion')
+def driveKitCore_version = getExtOrDefault('driveKitCoreVersion')
 
 dependencies {
-    //noinspection GradleDynamicVersion
+  //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-// From node_modules
+  implementation "com.drivequant.drivekit:drivekit-core:$driveKitCore_version"
 }
 
 if (isNewArchitectureEnabled()) {
