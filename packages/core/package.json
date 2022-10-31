@@ -40,13 +40,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/DriveQuantPublic/react-native-drivekit/tree/initialize-demo-app/packages/core",
+  "repository": "https://github.com/DriveQuantPublic/react-native-drivekit/tree/packages/core",
   "author": "DriveQuant <clement-taboulot@hotmail.fr> (https://github.com/taboulot)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/taboulot/react-native-drivekit-core/issues"
+    "url": "https://github.com/DriveQuantPublic/react-native-drivekit/issues"
   },
-  "homepage": "https://github.com/taboulot/react-native-drivekit-core#readme",
+  "homepage": "https://github.com/DriveQuantPublic/react-native-drivekit/tree/packages/core#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
