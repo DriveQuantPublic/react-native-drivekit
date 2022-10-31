@@ -40,7 +40,7 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/taboulot/react-native-drivekit-core",
+  "repository": "https://github.com/DriveQuantPublic/react-native-drivekit/tree/initialize-demo-app/packages/core",
   "author": "DriveQuant <clement-taboulot@hotmail.fr> (https://github.com/taboulot)",
   "license": "MIT",
   "bugs": {
