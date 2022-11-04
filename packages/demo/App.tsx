@@ -1,11 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Alert,
-  Platform,
-  SafeAreaView,
-  Text,
-  useColorScheme,
-} from 'react-native';
+import {Alert, Platform, SafeAreaView, StyleSheet, Text} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {multiply} from '@react-native-drivekit/core';
 import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
@@ -38,7 +32,6 @@ const checkBluetoothPermissions = async () => {
 
 const App = () => {
   const [result, setResult] = useState(0);
-  const isDarkMode = useColorScheme() === 'dark';
 
   useEffect(() => {
     async function calculate() {
@@ -49,17 +42,20 @@ const App = () => {
     checkBluetoothPermissions();
   }, []);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   const text = `Multiply result ${result}`;
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={styles.page}>
       <Text>{text}</Text>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    backgroundColor: Colors.lighter,
+  },
+});
 
 export default App;
