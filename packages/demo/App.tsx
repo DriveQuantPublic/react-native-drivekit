@@ -15,8 +15,8 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {multiply, setApiKey, setUserId} from '@react-native-drivekit/core';
 import {checkBluetoothPermissions} from './src/services/bluetooth';
+import {margins} from './src/margins';
 
-const marginUnit = 8;
 const inputHeight = 40;
 
 const Spacer: FunctionComponent<{factor: 1 | 2 | 3}> = ({factor}) => {
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lighter,
   },
   contentContainer: {
-    padding: marginUnit * 3,
+    padding: margins.x3,
   },
   input: {
     height: inputHeight,
