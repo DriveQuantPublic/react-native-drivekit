@@ -159,5 +159,8 @@
         "jsSrcsDir": "src"
       }
     ]
+  },
+  "dependencies": {
+    "react-native-permissions": "^3.6.1"
   }
 }

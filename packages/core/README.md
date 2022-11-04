@@ -1,29 +1,71 @@
 # @react-native-drivekit/core
+
 React Native interface for DriveKit Core
+
 ## Installation
+
+Install the library:
 
 ```sh
 npm install @react-native-drivekit/core
 ```
 
-## Usage
+Install iOS pods:
 
-```js
-import { multiply } from "@react-native-drivekit/core";
+```sh
+cd ios && pod install
+```
+
+### Android setup
+
+Add DriveQuant Maven repository in your `build.gradle`.
+
+```gradle
+allprojects {
+    repositories {
+        maven {
+            url "https://maven.drivequant.com/repository/android-sdk/"
+        }
+    }
+}
+```
+
+Call `initialize` method inside your `MainApplication.java`.
+
+```java
+// MainApplication.java
+import com.reactnativedrivekitcore.CoreModuleImpl;
 
 // ...
 
-const result = await multiply(3, 7);
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    CoreModuleImpl.INSTANCE.initialize(this);
+    // ...
+  }
 ```
 
-## Contributing
+### iOS setup
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+Call `initialize` method in your `AppDelegate.mm`.
 
-## License
+```objc
+// AppDelegate.mm
+#import <RNDriveKitCore/react-native-drivekit-core-umbrella.h>
 
-MIT
+// ...
 
----
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  [RNDriveKitCoreWrapper.shared initialize];
+}
+```
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+**Note:** If you are using Swift, `initialize` method is also available.
+
+### Bluetooth authorization
+
+Even if your app do not use Bluetooth, you **MUST** include usage description on iOS side. For more details, please take a look inside the [native documentation](https://docs.drivequant.com/get-started-drivekit/ios#project-configuration)
+
+Our recommandation is to use [react-native-permissions](https://github.com/zoontek/react-native-permissions). You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).

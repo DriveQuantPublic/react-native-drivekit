@@ -10,6 +10,11 @@ target 'ExampleApp' do
   # Flags change depending on the env values.
   flags = get_default_flags()
 
+  # RNPermissions
+  permissions_path = '../../../node_modules/react-native-permissions/ios'
+  pod 'RNPermissions', :path => '../../../node_modules/react-native-permissions'
+  pod 'Permission-BluetoothPeripheral', :path => "#{permissions_path}/BluetoothPeripheral"
+
   use_react_native!(
     :path => config[:reactNativePath],
     # Hermes is now enabled by default. Disable by setting this flag to false.

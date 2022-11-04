@@ -1,5 +1,6 @@
 package com.reactnativedrivekitcore;
 
+import com.drivequant.drivekit.core.DriveKit
 import com.facebook.react.bridge.Promise
 
 /**
@@ -8,6 +9,10 @@ import com.facebook.react.bridge.Promise
  */
 object CoreModuleImpl {
     const val NAME = "Core"
+
+    fun initialize(application: android.app.Application){
+      DriveKit.initialize(application)
+    }
 
     fun multiply(a: Double, b: Double, promise: Promise) {
         promise.resolve(a * b)

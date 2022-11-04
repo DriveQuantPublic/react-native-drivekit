@@ -35,6 +35,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>We need to have access to your bluetooth</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>We need to have access to your bluetooth</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
