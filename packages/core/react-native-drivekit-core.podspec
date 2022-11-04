@@ -10,11 +10,12 @@ Pod::Spec.new do |s|
   s.homepage     = package["homepage"]
   s.license      = package["license"]
   s.authors      = package["author"]
+  s.module_name   = "RNDriveKitCore"
 
   s.platforms    = { :ios => "11.0" }
   s.source       = { :git => "https://github.com/DriveQuantPublic/react-native-drivekit.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/**/*.{h,m,mm}"
+  s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
   s.dependency "DriveKitCore", "1.28.0"
