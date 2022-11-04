@@ -16,6 +16,5 @@ object CoreModuleImpl {
 
     fun multiply(a: Double, b: Double, promise: Promise) {
         promise.resolve(a * b)
-        DriveKit
     }
 }
