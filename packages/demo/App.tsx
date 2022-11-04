@@ -5,9 +5,7 @@ import React, {
   useState,
 } from 'react';
 import {
-  Alert,
   Button,
-  Platform,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -16,33 +14,8 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {multiply, setApiKey, setUserId} from '@react-native-drivekit/core';
-import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import {checkBluetoothPermissions} from './src/services/bluetooth';
 
-const checkBluetoothPermissions = async () => {
-  if (Platform.OS !== 'ios') {
-    return;
-  }
-
-  const permission = await check(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL);
-  switch (permission) {
-    case RESULTS.UNAVAILABLE:
-      Alert.alert('Bluetooth not available on this device');
-      break;
-    case RESULTS.DENIED:
-      await request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL);
-      break;
-    case RESULTS.LIMITED:
-      Alert.alert('The permission is limited: some actions are possible');
-      break;
-    case RESULTS.GRANTED:
-      break;
-    case RESULTS.BLOCKED:
-      Alert.alert(
-        'The permission is denied and not requestable anymore. You need to go in the app settings',
-      );
-      break;
-  }
-};
 const marginUnit = 8;
 const inputHeight = 40;
 
