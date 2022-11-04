@@ -5,7 +5,6 @@ const LINKING_ERROR =
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
-
 // @ts-expect-error
 const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
@@ -26,4 +25,12 @@ const Core = CoreModule
 
 export function multiply(a: number, b: number): Promise<number> {
   return Core.multiply(a, b);
+}
+
+export function setApiKey(key: string): void {
+  return Core.setApiKey(key);
+}
+
+export function setUserId(userId: string): void {
+  return Core.setUserId(userId);
 }
