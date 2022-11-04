@@ -15,15 +15,10 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {multiply, setApiKey, setUserId} from '@react-native-drivekit/core';
 import {checkBluetoothPermissions} from './src/services/bluetooth';
+import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
 
 const inputHeight = 40;
-
-const Spacer: FunctionComponent<{factor: 1 | 2 | 3}> = ({factor}) => {
-  const height = marginUnit * factor;
-
-  return <View style={{height}} />;
-};
 
 const App = () => {
   const [result, setResult] = useState(0);
