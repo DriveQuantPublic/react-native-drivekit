@@ -14,8 +14,15 @@ object CoreModuleImpl {
       DriveKit.initialize(application)
     }
 
+    fun setApiKey(key: String){
+      DriveKit.setApiKey(key);
+    }
+
+    fun setUserId(userId: String){
+      DriveKit.setUserId(userId)
+    }
+
     fun multiply(a: Double, b: Double, promise: Promise) {
         promise.resolve(a * b)
-        DriveKit
     }
 }

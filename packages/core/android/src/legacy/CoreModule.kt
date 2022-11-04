@@ -1,5 +1,6 @@
 package com.reactnativedrivekitcore;
 
+import com.drivequant.drivekit.core.DriveKit
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
@@ -12,11 +13,19 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
         return NAME
     }
 
-    // Example method
-    // See https://reactnative.dev/docs/native-modules-android
     @ReactMethod
     fun multiply(a: Double, b: Double, promise: Promise) {
         CoreModuleImpl.multiply(a, b, promise)
+    }
+
+    @ReactMethod
+    fun setApiKey(key: String){
+      CoreModuleImpl.setApiKey(key)
+    }
+
+    @ReactMethod
+    fun setUserId(userId: String){
+      CoreModuleImpl.setUserId(userId)
     }
 
     companion object {
