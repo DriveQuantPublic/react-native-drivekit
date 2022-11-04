@@ -11,7 +11,7 @@ const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
 const CoreModule = isTurboModuleEnabled
   ? require('./NativeCore').default
-  : NativeModules.Core;
+  : NativeModules.RNDriveKitCore;
 
 const Core = CoreModule
   ? CoreModule
