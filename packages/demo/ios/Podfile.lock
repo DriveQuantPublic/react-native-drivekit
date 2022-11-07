@@ -98,8 +98,6 @@ PODS:
     - RNPermissions
   - Permission-LocationWhenInUse (3.6.1):
     - RNPermissions
-  - Permission-Motion (3.6.1):
-    - RNPermissions
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
