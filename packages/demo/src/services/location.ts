@@ -1,4 +1,4 @@
-import {Alert, Platform} from 'react-native';
+import {Alert, Linking, Platform} from 'react-native';
 import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 const IOS_PERMISSIONS = [
@@ -29,16 +29,26 @@ const checkiOS = async () => {
         Alert.alert('Location not available on this device');
         break;
       case RESULTS.DENIED:
-        await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+        await request(permission);
         break;
       case RESULTS.LIMITED:
-        Alert.alert('The permission is limited: some actions are possible');
+        Alert.alert('Please select always for the location.', undefined, [
+          {
+            onPress: () => Linking.openSettings(),
+          },
+        ]);
         break;
       case RESULTS.GRANTED:
         break;
       case RESULTS.BLOCKED:
         Alert.alert(
-          'The permission is denied and not requestable anymore. You need to go in the app settings',
+          'The permission is denied and not requestable anymore. You need to go in the app settings and select always for the location.',
+          undefined,
+          [
+            {
+              onPress: () => Linking.openSettings(),
+            },
+          ],
         );
         break;
     }
