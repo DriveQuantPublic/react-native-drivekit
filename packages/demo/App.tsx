@@ -48,7 +48,7 @@ const App = () => {
     <SafeAreaView style={styles.page}>
       <View style={styles.contentContainer}>
         <Spacer factor={2} />
-        <Text>Api Key :</Text>
+        <Text style={styles.text}>Api Key :</Text>
         <Spacer factor={1} />
         <TextInput
           style={styles.input}
@@ -59,7 +59,7 @@ const App = () => {
         <Button title="Configure Api Key" onPress={configureApiKey} />
 
         <Spacer factor={2} />
-        <Text>User ID:</Text>
+        <Text style={styles.text}>User ID:</Text>
         <Spacer factor={1} />
         <TextInput
           style={styles.input}
@@ -85,9 +85,13 @@ const styles = StyleSheet.create({
     height: inputHeight,
     borderColor: 'black',
     borderWidth: 2,
+    color: 'black',
   },
   button: {
     backgroundColor: 'blue',
+  },
+  text: {
+    color: 'black',
   },
 });
 
