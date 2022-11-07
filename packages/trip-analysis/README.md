@@ -1,31 +1,37 @@
-# react-native-drivekit-trip-analysis
+# @react-native-drivekit/trip-analysis
 
 React Native interface for DriveKit Trip Analysis
 
+## Pre-requis
+
+Before installing `@react-native-drivekit/trip-analysis` **you must have installed** `@react-native-drivekit/core`.
+
 ## Installation
 
+Install the library:
+
 ```sh
-npm install react-native-drivekit-trip-analysis
+npm install @react-native-drivekit/trip-analysis
 ```
 
-## Usage
+Install iOS pods:
 
-```js
-import { multiply } from 'react-native-drivekit-trip-analysis';
-
-// ...
-
-const result = await multiply(3, 7);
+```sh
+cd ios && pod install
 ```
 
-## Contributing
+## Initialization
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+### Android setup
 
-## License
+### iOS setup
 
-MIT
+#### Configure capabilities
 
----
+You need to turn on Background Modes & enable Location updates. For more details please follow the [iOS documentation](https://docs.drivequant.com/trip-analysis/ios/get-started#configure-capabilities)
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+### Bluetooth authorization
+
+### Common
+
+### Validation
