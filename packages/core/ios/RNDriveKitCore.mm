@@ -4,23 +4,33 @@
 @implementation RNDriveKitCore
 RCT_EXPORT_MODULE()
 
-RCT_REMAP_METHOD(setApiKey, withKey:(NSString *)key)
+RCT_REMAP_METHOD(setApiKey, setApiKeyWithKey:(NSString *)key)
 {
     [self setApiKey:key];
 }
 
-RCT_REMAP_METHOD(setUserId, withUserId:(NSString *)userId)
+RCT_REMAP_METHOD(setUserId, setUserIdWithUserId:(NSString *)userId)
 {
     [self setUserId:userId];
 }
 
-- (void)setApiKey:(NSString *)key { 
+RCT_REMAP_METHOD(updateUserId, updateUserIdWithUserId:(NSString *)userId)
+{
+    [self updateUserId:userId];
+}
+
+- (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
 }
 
 - (void)setUserId:(NSString *)userId {
     [RNDriveKitCoreWrapper.shared setUserIdWithUserId:userId];
 }
+
+- (void)updateUserId:(NSString *)userId {
+    [RNDriveKitCoreWrapper.shared updateUserIdWithUserId:userId];
+}
+
 
 
 // Don't compile this code when we build for the old architecture.

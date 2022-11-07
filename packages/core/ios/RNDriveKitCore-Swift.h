@@ -5,4 +5,5 @@
 - (void)initialize;
 - (void)setApiKeyWithKey:(NSString * _Nonnull)key;
 - (void)setUserIdWithUserId:(NSString * _Nonnull)userId;
+- (void)updateUserIdWithUserId:(NSString * _Nonnull)userId;
 @end
