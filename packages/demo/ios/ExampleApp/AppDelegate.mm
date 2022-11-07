@@ -6,6 +6,7 @@
 
 #import <React/RCTAppSetupUtils.h>
 #import <RNDriveKitCore/react-native-drivekit-core-umbrella.h>
+#import <RNDriveKitTripAnalysis/react-native-drivekit-trip-analysis-umbrella.h>
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -34,6 +35,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 {
   RCTAppSetupPrepareApp(application);
   [RNDriveKitCoreWrapper.shared initialize];
+  [RNDriveKitTripAnalysisWrapper.shared initializeWithLaunchOptions:launchOptions];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
 #if RCT_NEW_ARCH_ENABLED

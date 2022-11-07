@@ -22,10 +22,6 @@ cd ios && pod install
 
 ## Initialization
 
-### Android setup
-
-### iOS setup
-
 #### Configure capabilities
 
 You need to turn on Background Modes & enable Location updates. For more details please follow the [iOS documentation](https://docs.drivequant.com/trip-analysis/ios/get-started#configure-capabilities)
@@ -38,6 +34,25 @@ As DriveKit requires a user's location and motion data, it is required to get pe
 
 Our recommandation is to use [react-native-permissions](https://github.com/zoontek/react-native-permissions). You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).
 
-### Common
+### Android setup
+
+### iOS setup
+
+Call `initialize` method in your `AppDelegate.mm`.
+
+```objc
+// AppDelegate.mm
+#import <RNDriveKitTripAnalysis/react-native-drivekit-trip-analysis-umbrella.h>
+
+// ...
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  [[RNDriveKitCoreWrapper.shared initialize];
+  [RNDriveKitTripAnalysisWrapper.shared initializeWithLaunchOptions:launchOptions] // ADD THIS LINE
+}
+```
+
+**Note:** If you are using Swift, `initialize` method is also available.
 
 ### Validation
