@@ -4,14 +4,6 @@
 @implementation RNDriveKitCore
 RCT_EXPORT_MODULE()
 
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(double)a  withB:(double)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-{
-    [self multiply:a b:b resolve:resolve reject:reject];
-}
-
 RCT_REMAP_METHOD(setApiKey, withKey:(NSString *)key)
 {
     [self setApiKey:key];
@@ -20,12 +12,6 @@ RCT_REMAP_METHOD(setApiKey, withKey:(NSString *)key)
 RCT_REMAP_METHOD(setUserId, withUserId:(NSString *)userId)
 {
     [self setUserId:userId];
-}
-
-- (void)multiply:(double)a b:(double)b resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject {
-    NSNumber *result = @(a * b);
-
-    resolve(result);
 }
 
 - (void)setApiKey:(NSString *)key { 

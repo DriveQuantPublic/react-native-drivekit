@@ -11,13 +11,6 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
         return NAME
     }
 
-    // Example method
-    // See https://reactnative.dev/docs/native-modules-android
-    @Override
-    override fun multiply(a: Double, b: Double, promise: Promise) {
-        CoreModuleImpl.multiply(a, b, promise)
-    }
-
     @Override
     fun setApiKey(key: String){
       CoreModuleImpl.setApiKey(key)

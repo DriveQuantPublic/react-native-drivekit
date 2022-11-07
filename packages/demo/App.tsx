@@ -13,7 +13,7 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {multiply, setApiKey, setUserId} from '@react-native-drivekit/core';
+import {setApiKey, setUserId} from '@react-native-drivekit/core';
 import {checkBluetoothPermissions} from './src/services/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
@@ -21,16 +21,10 @@ import {margins} from './src/margins';
 const inputHeight = 40;
 
 const App = () => {
-  const [result, setResult] = useState(0);
   const [apiKey, storeApiKey] = useState('');
   const [userId, storeUserId] = useState('');
 
   useEffect(() => {
-    async function calculate() {
-      setResult(await multiply(2, 3));
-    }
-
-    calculate();
     checkBluetoothPermissions();
   }, []);
 
@@ -50,13 +44,9 @@ const App = () => {
     setUserId(userId);
   };
 
-  const text = `Multiply result ${result}`;
-
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.contentContainer}>
-        <Text>{text}</Text>
-
         <Spacer factor={2} />
         <Text>Api Key :</Text>
         <Spacer factor={1} />

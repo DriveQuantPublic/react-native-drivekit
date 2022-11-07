@@ -14,11 +14,6 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun multiply(a: Double, b: Double, promise: Promise) {
-        CoreModuleImpl.multiply(a, b, promise)
-    }
-
-    @ReactMethod
     fun setApiKey(key: String){
       CoreModuleImpl.setApiKey(key)
     }

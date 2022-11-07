@@ -21,8 +21,4 @@ object CoreModuleImpl {
     fun setUserId(userId: String){
       DriveKit.setUserId(userId)
     }
-
-    fun multiply(a: Double, b: Double, promise: Promise) {
-        promise.resolve(a * b)
-    }
 }

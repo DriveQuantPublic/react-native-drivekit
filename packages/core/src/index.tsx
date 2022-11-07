@@ -23,10 +23,6 @@ const Core = CoreModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Core.multiply(a, b);
-}
-
 export function setApiKey(key: string): void {
   return Core.setApiKey(key);
 }
