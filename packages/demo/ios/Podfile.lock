@@ -587,7 +587,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 1d5a9e84e419a57cabc23249aec3d837d1b03a80
   React-logger: f8071ad48248781d5afdb8a07f778758529d3019
   react-native-drivekit-core: 9ed7aee1e858854587702eb00c9c30637012aafc
-  react-native-drivekit-trip-analysis: 73c7306d977d8d529f17432f48ba0a7dadbc9aff
+  react-native-drivekit-trip-analysis: 39c4c4591de472ff6a35d3db7432b2226916329f
   React-perflogger: 5e41b01b35d97cc1b0ea177181eb33b5c77623b6
   React-RCTActionSheet: 48949f30b24200c82f3dd27847513be34e06a3ae
   React-RCTAnimation: 96af42c97966fcd53ed9c31bee6f969c770312b6
