@@ -11,7 +11,7 @@ const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
 const DrivekitTripAnalysisModule = isTurboModuleEnabled
   ? require('./NativeDrivekitTripAnalysis').default
-  : NativeModules.DrivekitTripAnalysis;
+  : NativeModules.RNDriveKitTripAnalysis;
 
 const DrivekitTripAnalysis = DrivekitTripAnalysisModule
   ? DrivekitTripAnalysisModule

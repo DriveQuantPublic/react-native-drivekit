@@ -18,6 +18,6 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   companion object {
-    const val NAME = "DrivekitTripAnalysis"
+    const val NAME = "RNDriveKitTripAnalysis"
   }
 }

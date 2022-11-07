@@ -1,6 +1,6 @@
-#import "DrivekitTripAnalysis.h"
+#import "RNDrivekitTripAnalysis.h"
 
-@implementation DrivekitTripAnalysis
+@implementation RNDriveKitTripAnalysis
 RCT_EXPORT_MODULE()
 
 // Example method
