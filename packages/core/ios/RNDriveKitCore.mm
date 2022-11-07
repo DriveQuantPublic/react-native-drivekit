@@ -1,23 +1,27 @@
 #import "RNDriveKitCore.h"
+#import "RNDriveKitCore-Swift.h"
 
 @implementation RNDriveKitCore
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(double)a  withB:(double)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(setApiKey, withKey:(NSString *)key)
 {
-    [self multiply:a b:b resolve:resolve reject:reject];
+    [self setApiKey:key];
 }
 
-- (void)multiply:(double)a b:(double)b resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject {
-    NSNumber *result = @(a * b);
-
-    resolve(result);
+RCT_REMAP_METHOD(setUserId, withUserId:(NSString *)userId)
+{
+    [self setUserId:userId];
 }
+
+- (void)setApiKey:(NSString *)key { 
+    [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
+}
+
+- (void)setUserId:(NSString *)userId {
+    [RNDriveKitCoreWrapper.shared setUserIdWithUserId:userId];
+}
+
 
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED

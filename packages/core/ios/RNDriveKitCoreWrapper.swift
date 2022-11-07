@@ -8,5 +8,15 @@ public class RNDriveKitCoreWrapper: NSObject {
     
     @objc public func initialize() -> Void {
         DriveKit.shared.initialize()
+        
     }
+    
+    @objc internal func setApiKey(key: String) -> Void {
+        DriveKit.shared.setApiKey(key: key)
+    }
+    
+    @objc internal func setUserId(userId: String) -> Void {
+        DriveKit.shared.setUserId(userId: userId)
+    }
+
 }

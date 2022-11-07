@@ -1,65 +1,98 @@
-import React, {useEffect, useState} from 'react';
+import React, {
+  ComponentProps,
+  FunctionComponent,
+  useEffect,
+  useState,
+} from 'react';
 import {
-  Alert,
-  Platform,
+  Button,
   SafeAreaView,
+  StyleSheet,
   Text,
-  useColorScheme,
+  TextInput,
+  View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {multiply} from '@react-native-drivekit/core';
-import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import {setApiKey, setUserId} from '@react-native-drivekit/core';
+import {checkBluetoothPermissions} from './src/services/bluetooth';
+import {Spacer} from './src/components/Spacer';
+import {margins} from './src/margins';
 
-const checkBluetoothPermissions = async () => {
-  if (Platform.OS !== 'ios') {
-    return;
-  }
-
-  const permission = await check(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL);
-  switch (permission) {
-    case RESULTS.UNAVAILABLE:
-      Alert.alert('Bluetooth not available on this device');
-      break;
-    case RESULTS.DENIED:
-      await request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL);
-      break;
-    case RESULTS.LIMITED:
-      Alert.alert('The permission is limited: some actions are possible');
-      break;
-    case RESULTS.GRANTED:
-      break;
-    case RESULTS.BLOCKED:
-      Alert.alert(
-        'The permission is denied and not requestable anymore. You need to go in the app settings',
-      );
-      break;
-  }
-};
+const inputHeight = 40;
 
 const App = () => {
-  const [result, setResult] = useState(0);
-  const isDarkMode = useColorScheme() === 'dark';
+  const [apiKey, storeApiKey] = useState('');
+  const [userId, storeUserId] = useState('');
 
   useEffect(() => {
-    async function calculate() {
-      setResult(await multiply(2, 3));
-    }
-
-    calculate();
     checkBluetoothPermissions();
   }, []);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const saveApiKey: ComponentProps<typeof TextInput>['onChangeText'] = text => {
+    storeApiKey(text);
   };
 
-  const text = `Multiply result ${result}`;
+  const saveUserId: ComponentProps<typeof TextInput>['onChangeText'] = text => {
+    storeUserId(text);
+  };
+
+  const configureApiKey = () => {
+    setApiKey(apiKey);
+  };
+
+  const configureUserId = () => {
+    setUserId(userId);
+  };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <Text>{text}</Text>
+    <SafeAreaView style={styles.page}>
+      <View style={styles.contentContainer}>
+        <Spacer factor={2} />
+        <Text style={styles.text}>Api Key :</Text>
+        <Spacer factor={1} />
+        <TextInput
+          style={styles.input}
+          returnKeyType={'done'}
+          onChangeText={saveApiKey}
+        />
+        <Spacer factor={2} />
+        <Button title="Configure Api Key" onPress={configureApiKey} />
+
+        <Spacer factor={2} />
+        <Text style={styles.text}>User ID:</Text>
+        <Spacer factor={1} />
+        <TextInput
+          style={styles.input}
+          returnKeyType={'done'}
+          onChangeText={saveUserId}
+        />
+        <Spacer factor={2} />
+        <Button title="Configure User ID" onPress={configureUserId} />
+      </View>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    backgroundColor: Colors.lighter,
+  },
+  contentContainer: {
+    padding: margins.x3,
+  },
+  input: {
+    height: inputHeight,
+    borderColor: 'black',
+    borderWidth: 2,
+    color: 'black',
+  },
+  button: {
+    backgroundColor: 'blue',
+  },
+  text: {
+    color: 'black',
+  },
+});
 
 export default App;

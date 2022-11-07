@@ -8,13 +8,17 @@ import com.facebook.react.bridge.Promise
  * The exposed methods can be defined in the `turbo` and `legacy` folders
  */
 object CoreModuleImpl {
-    const val NAME = "Core"
+    const val NAME = "RNDriveKitCore"
 
     fun initialize(application: android.app.Application){
       DriveKit.initialize(application)
     }
 
-    fun multiply(a: Double, b: Double, promise: Promise) {
-        promise.resolve(a * b)
+    fun setApiKey(key: String){
+      DriveKit.setApiKey(key);
+    }
+
+    fun setUserId(userId: String){
+      DriveKit.setUserId(userId)
     }
 }
