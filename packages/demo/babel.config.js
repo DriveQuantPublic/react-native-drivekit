@@ -1,6 +1,6 @@
 const path = require('path');
-const pakCore = require('../core/package.json');
-const pakTripAnalysis = require('../trip-analysis/package.json');
+const packCore = require('../core/package.json');
+const packTripAnalysis = require('../trip-analysis/package.json');
 
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
@@ -10,11 +10,11 @@ module.exports = {
       {
         extensions: ['.tsx', '.ts', '.js', '.json'],
         alias: {
-          [pakCore.name]: path.join(__dirname, '../core', pakCore.source),
-          [pakTripAnalysis.name]: path.join(
+          [packCore.name]: path.join(__dirname, '../core', packCore.source),
+          [packTripAnalysis.name]: path.join(
             __dirname,
             '../trip-analysis',
-            pakTripAnalysis.source,
+            packTripAnalysis.source,
           ),
         },
       },
