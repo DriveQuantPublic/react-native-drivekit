@@ -30,7 +30,13 @@ cd ios && pod install
 
 You need to turn on Background Modes & enable Location updates. For more details please follow the [iOS documentation](https://docs.drivequant.com/trip-analysis/ios/get-started#configure-capabilities)
 
-### Bluetooth authorization
+#### Authorization
+
+As DriveKit requires a user's location and motion data, it is required to get permissions from the user. You can find the list of authorizations needed in the [native documentation](https://docs.drivequant.com/trip-analysis/ios/get-started#configure-permissions).
+
+**Important:** Please note that `Motion` permission is only needed if you use [Motion & Fitness](https://docs.drivequant.com/trip-analysis/ios/get-started#motion-and-fitness-permission)
+
+Our recommandation is to use [react-native-permissions](https://github.com/zoontek/react-native-permissions). You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).
 
 ### Common
 

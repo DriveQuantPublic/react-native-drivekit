@@ -16,6 +16,7 @@ import {checkBluetoothPermissions} from './src/services/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
 import CheckBox from '@react-native-community/checkbox';
+import {checkLocationsPermissions} from './src/services/location';
 
 const inputHeight = 40;
 
@@ -35,7 +36,12 @@ const App = () => {
   });
 
   useEffect(() => {
-    checkBluetoothPermissions();
+    const checkPermissions = async () => {
+      await checkBluetoothPermissions();
+      await checkLocationsPermissions();
+    };
+
+    checkPermissions();
   }, []);
 
   const text = `3 * 4 = ${result}`;
