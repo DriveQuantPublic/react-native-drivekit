@@ -3,9 +3,21 @@ PODS:
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
+  - DriveKitBeaconUtils (1.28.0):
+    - DriveKitCore (= 1.28.0)
   - DriveKitCore (1.28.0):
     - DriveKitNetworking (= 1.28.0)
+  - DriveKitDBTripAccess (1.28.0):
+    - DriveKitCore (= 1.28.0)
+  - DriveKitDBVehicleAccess (1.28.0):
+    - DriveKitBeaconUtils (= 1.28.0)
+    - DriveKitCore (= 1.28.0)
   - DriveKitNetworking (1.28.0)
+  - DriveKitTripAnalysis (1.28.0):
+    - DriveKitBeaconUtils (= 1.28.0)
+    - DriveKitCore (= 1.28.0)
+    - DriveKitDBTripAccess (= 1.28.0)
+    - DriveKitDBVehicleAccess (= 1.28.0)
   - FBLazyVector (0.70.4)
   - FBReactNativeSpec (0.70.4):
     - RCT-Folly (= 2021.07.22.00)
@@ -312,6 +324,7 @@ PODS:
     - DriveKitCore (= 1.28.0)
     - React-Core
   - react-native-drivekit-trip-analysis (0.0.1):
+    - DriveKitTripAnalysis (= 1.28.0)
     - React-Core
   - React-perflogger (0.70.4)
   - React-RCTActionSheet (0.70.4):
@@ -459,8 +472,12 @@ SPEC REPOS:
   trunk:
     - BEMCheckBox
     - CocoaAsyncSocket
+    - DriveKitBeaconUtils
     - DriveKitCore
+    - DriveKitDBTripAccess
+    - DriveKitDBVehicleAccess
     - DriveKitNetworking
+    - DriveKitTripAnalysis
     - Flipper
     - Flipper-Boost-iOSX
     - Flipper-DoubleConversion
@@ -561,8 +578,12 @@ SPEC CHECKSUMS:
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
+  DriveKitBeaconUtils: b051b4b02b03c0c9e7434efa4726ebae86ba58be
   DriveKitCore: 44fdf2c1a55773cd5d3ba1fa83f1933697d62b76
+  DriveKitDBTripAccess: dc21aee42a411cf392dbee47436c046374171a0b
+  DriveKitDBVehicleAccess: e9b826da28c500ffd0679f412846d59d8017957d
   DriveKitNetworking: 6ae4e21e32771bee0ed4268a66a4e812400f94f9
+  DriveKitTripAnalysis: 0f35d458656b0724db1ba084e474d0cc9904308b
   FBLazyVector: 8a28262f61fbe40c04ce8677b8d835d97c18f1b3
   FBReactNativeSpec: 283d5f885f72caba7694390f56cc55f864213a12
   Flipper: 26fc4b7382499f1281eb8cb921e5c3ad6de91fe0
@@ -596,7 +617,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 1d5a9e84e419a57cabc23249aec3d837d1b03a80
   React-logger: f8071ad48248781d5afdb8a07f778758529d3019
   react-native-drivekit-core: 9ed7aee1e858854587702eb00c9c30637012aafc
-  react-native-drivekit-trip-analysis: 39c4c4591de472ff6a35d3db7432b2226916329f
+  react-native-drivekit-trip-analysis: 53c0042544b9bb849cdd25e4a5cae0f92740c209
   React-perflogger: 5e41b01b35d97cc1b0ea177181eb33b5c77623b6
   React-RCTActionSheet: 48949f30b24200c82f3dd27847513be34e06a3ae
   React-RCTAnimation: 96af42c97966fcd53ed9c31bee6f969c770312b6
