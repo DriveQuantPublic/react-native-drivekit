@@ -1,7 +1,7 @@
 {
-  "name": "@react-native-drivekit/core",
+  "name": "@react-native-drivekit/trip-analysis",
   "version": "0.0.1",
-  "description": "React Native interface for DriveKit Core",
+  "description": "React Native interface for DriveKit Trip Analysis",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -38,13 +38,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/DriveQuantPublic/react-native-drivekit/tree/packages/core",
+  "repository": "https://github.com/DriveQuantPublic/react-native-drivekit/tree/packages/trip-analysis",
   "author": "DriveQuant <clement-taboulot@hotmail.fr> (https://github.com/taboulot)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DriveQuantPublic/react-native-drivekit/issues"
   },
-  "homepage": "https://github.com/DriveQuantPublic/react-native-drivekit/tree/packages/core#readme",
+  "homepage": "https://github.com/DriveQuantPublic/react-native-drivekit/tree/packages/trip-analysis#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -148,17 +148,5 @@
         }
       ]
     ]
-  },
-  "codegenConfig": {
-    "libraries": [
-      {
-        "name": "RNCoreSpec",
-        "type": "modules",
-        "jsSrcsDir": "src"
-      }
-    ]
-  },
-  "dependencies": {
-    "react-native-permissions": "^3.6.1"
   }
 }

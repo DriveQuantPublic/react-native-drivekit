@@ -1,9 +1,4 @@
-import React, {
-  ComponentProps,
-  FunctionComponent,
-  useEffect,
-  useState,
-} from 'react';
+import React, {ComponentProps, useEffect, useState} from 'react';
 import {
   Button,
   SafeAreaView,
@@ -14,6 +9,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {setApiKey, setUserId} from '@react-native-drivekit/core';
+import {multiply} from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
@@ -23,6 +19,14 @@ const inputHeight = 40;
 const App = () => {
   const [apiKey, storeApiKey] = useState('');
   const [userId, storeUserId] = useState('');
+  const [result, setResult] = useState(0);
+
+  useEffect(() => {
+    const calculate = async () => {
+      setResult(await multiply(3, 4));
+    };
+    calculate();
+  });
 
   useEffect(() => {
     checkBluetoothPermissions();
@@ -44,9 +48,12 @@ const App = () => {
     setUserId(userId);
   };
 
+  const text = `3 * 4 = ${result}`;
+
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.contentContainer}>
+        <Text>{text}</Text>
         <Spacer factor={2} />
         <Text style={styles.text}>Api Key :</Text>
         <Spacer factor={1} />
