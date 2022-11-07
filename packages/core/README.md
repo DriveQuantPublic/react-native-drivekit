@@ -93,7 +93,7 @@ setUserId(userId: string): void
 
 ### Validation
 
-To validation that the initialization has been done successfully, please check your native logs and verify that you can see the following success message.
+To validate that the initialization has been done successfully, please check your native logs and verify that you can see the following success message.
 
 **Android**
 ![](./doc/img/android_validation.png)
