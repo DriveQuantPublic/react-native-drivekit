@@ -24,6 +24,12 @@ RCT_REMAP_METHOD(deleteAccount, deleteAccountWithInstantDeletion:(nonnull NSNumb
     [self deleteAccount:instantDeletion];
 }
 
+RCT_REMAP_METHOD(isTokenValid, resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSNumber *validity = [self isTokenValid];
+    resolve(validity);
+}
+
 - (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
 }
@@ -39,6 +45,11 @@ RCT_REMAP_METHOD(deleteAccount, deleteAccountWithInstantDeletion:(nonnull NSNumb
 - (void)deleteAccount:(NSNumber *)instantDeletion {
     [RNDriveKitCoreWrapper.shared deleteAccountWithInstantDeletion:instantDeletion];
 }
+
+- (NSNumber *)isTokenValid {
+    return [RNDriveKitCoreWrapper.shared isTokenValid];
+}
+
 
 
 
