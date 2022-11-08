@@ -28,6 +28,11 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       CoreModuleImpl.updateUserId(userId)
     }
 
+    @ReactMethod
+    fun deleteAccount(instantDeletion: Boolean){
+      CoreModuleImpl.deleteAccount(instantDeletion)
+    }
+
     companion object {
         const val NAME = CoreModuleImpl.NAME
     }
