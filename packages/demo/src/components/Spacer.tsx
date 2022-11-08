@@ -8,8 +8,7 @@ interface SpacerProps {
 
 const Spacer: FunctionComponent<SpacerProps> = ({factor}) => {
   const height = margins.x1 * factor;
-
-  return <View style={{height}} />;
+  return <View style={{height, width: height}} />;
 };
 
 export {Spacer};

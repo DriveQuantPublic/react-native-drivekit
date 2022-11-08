@@ -103,11 +103,12 @@ To validate that the initialization has been done successfully, please check you
 
 ## API
 
-| Method                          | Return Type     | iOS | Android |
-| ------------------------------- | --------------- | :-: | :-----: |
-| [setApiKey()](#setapikey)       | `Promise<void>` | ✅  |   ✅    |
-| [setUserId()](#setuserid)       | `Promise<void>` | ✅  |   ✅    |
-| [updateUserId()](#updateuserid) | `Promise<void>` | ✅  |   ✅    |
+| Method                            | Return Type     | iOS | Android |
+| --------------------------------- | --------------- | :-: | :-----: |
+| [setApiKey()](#setapikey)         | `Promise<void>` | ✅  |   ✅    |
+| [setUserId()](#setuserid)         | `Promise<void>` | ✅  |   ✅    |
+| [updateUserId()](#updateuserid)   | `Promise<void>` | ✅  |   ✅    |
+| [deleteAccount()](#deleteAccount) | `Promise<void>` | ✅  |   ✅    |
 
 ### setApiKey
 
@@ -158,3 +159,39 @@ It is possible to update the userId by calling the following method:
 ```typescript
 updateUserId('newUserId');
 ```
+
+### deleteAccount
+
+```typescript
+deleteAccount(instantDeletion?: boolean): void
+```
+
+You can delete a driver's account in DriveKit. This action deletes all the data related to the account.
+
+The deletion can be done instantly or with delay.
+
+- In the first case, when the method is called, the account is instantly deleted.
+- In the second case, the driver has 30 days to log back into the application and reactivate his account.
+
+To delete a driver's account, use the following method:
+
+```typescript
+deleteAccount(false);
+```
+
+instantDeletion can have 2 values:
+
+- `false` : **Default value**, allows the user to recover the deleted account by logging-in again with the same credentials. Users have 30 days starting from the day when the account was deleted.
+- `true` : Allow to delete an account instantly. The account and all the related data will be immediately deleted and no rollback is possible.
+
+> ℹ️
+>
+> Your team needs to have the deletion feature activated to use this method. Please contact DriveQuant if you need it.
+
+> ℹ️
+>
+> To be able to check whenever the account deletion is complete, you have to use the DriveKitDelegate interface.
+
+> ⚠️
+>
+> You should restore the DriveKit API key in the onAccountDeleted() callback only when the status value is SUCCESS.

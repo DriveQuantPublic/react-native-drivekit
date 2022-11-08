@@ -25,4 +25,8 @@ object CoreModuleImpl {
     fun updateUserId(userId: String){
       DriveKit.updateUserId(userId)
     }
+
+    fun deleteAccount(instantDeletion: Boolean){
+      DriveKit.deleteAccount(instantDeletion)
+    }
 }
