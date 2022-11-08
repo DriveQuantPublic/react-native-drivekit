@@ -7,6 +7,7 @@ export interface Spec extends TurboModule {
   updateUserId(userId: string): void;
   deleteAccount(instantDeletion: boolean): void;
   isTokenValid(): boolean;
+  enableSandboxMode(enable: boolean): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('Core');

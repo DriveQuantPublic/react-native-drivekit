@@ -30,6 +30,11 @@ RCT_REMAP_METHOD(isTokenValid, resolve:(RCTPromiseResolveBlock)resolve reject:(R
     resolve(validity);
 }
 
+RCT_REMAP_METHOD(enableSandboxMode, enableSandboxModeWithEnable:(nonnull NSNumber *)enable)
+{
+    [self enableSandboxMode:enable];
+}
+
 - (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
 }
@@ -49,6 +54,11 @@ RCT_REMAP_METHOD(isTokenValid, resolve:(RCTPromiseResolveBlock)resolve reject:(R
 - (NSNumber *)isTokenValid {
     return [RNDriveKitCoreWrapper.shared isTokenValid];
 }
+
+- (void)enableSandboxMode:(NSNumber *)enable {
+    [RNDriveKitCoreWrapper.shared enableSandboxModeWithEnable:enable];
+}
+
 
 
 

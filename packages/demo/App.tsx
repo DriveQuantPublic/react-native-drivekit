@@ -24,6 +24,7 @@ const App = () => {
   const [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
+  const [isSandboxMode, setIsSandboxMode] = useState(false);
 
   const [result, setResult] = useState(0);
 
@@ -113,6 +114,18 @@ const App = () => {
           onPress={async () => {
             const isTokenValid = await DriveKit.isTokenValid();
             Alert.alert(isTokenValid ? 'Token is valid' : 'Token is not valid');
+          }}
+        />
+        <Spacer factor={2} />
+        <Text style={styles.title}>Sandbox Mode</Text>
+        <Spacer factor={1} />
+        <Button
+          title={
+            isSandboxMode ? 'Enable production mode' : 'Enable sandbox mode'
+          }
+          onPress={async () => {
+            DriveKit.enableSandboxMode(!isSandboxMode);
+            setIsSandboxMode(prevValue => !prevValue);
           }}
         />
       </ScrollView>

@@ -24,21 +24,25 @@ const Core = CoreModule
     );
 
 export function setApiKey(key: string): void {
-  return Core.setApiKey(key);
+  Core.setApiKey(key);
 }
 
 export function setUserId(userId: string): void {
-  return Core.setUserId(userId);
+  Core.setUserId(userId);
 }
 
 export function updateUserId(userId: string): void {
-  return Core.updateUserId(userId);
+  Core.updateUserId(userId);
 }
 
-export function deleteAccount(instantDeletion?: boolean) {
-  return Core.deleteAccount(instantDeletion ?? false);
+export function deleteAccount(instantDeletion?: boolean): void {
+  Core.deleteAccount(instantDeletion ?? false);
 }
 
 export function isTokenValid(): Promise<boolean> {
   return Core.isTokenValid();
+}
+
+export function enableSandboxMode(enable: boolean): void {
+  Core.enableSandboxMode(enable);
 }
