@@ -34,3 +34,7 @@ export function setUserId(userId: string): void {
 export function updateUserId(userId: string): void {
   return Core.updateUserId(userId);
 }
+
+export function deleteAccount(instantDeletion?: boolean) {
+  return Core.deleteAccount(instantDeletion ?? false);
+}

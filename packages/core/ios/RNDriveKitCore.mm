@@ -19,6 +19,11 @@ RCT_REMAP_METHOD(updateUserId, updateUserIdWithUserId:(NSString *)userId)
     [self updateUserId:userId];
 }
 
+RCT_REMAP_METHOD(deleteAccount, deleteAccountWithInstantDeletion:(nonnull NSNumber *)instantDeletion)
+{
+    [self deleteAccount:instantDeletion];
+}
+
 - (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
 }
@@ -29,6 +34,10 @@ RCT_REMAP_METHOD(updateUserId, updateUserIdWithUserId:(NSString *)userId)
 
 - (void)updateUserId:(NSString *)userId {
     [RNDriveKitCoreWrapper.shared updateUserIdWithUserId:userId];
+}
+
+- (void)deleteAccount:(NSNumber *)instantDeletion {
+    [RNDriveKitCoreWrapper.shared deleteAccountWithInstantDeletion:instantDeletion];
 }
 
 

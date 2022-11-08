@@ -6,4 +6,5 @@
 - (void)setApiKeyWithKey:(NSString * _Nonnull)key;
 - (void)setUserIdWithUserId:(NSString * _Nonnull)userId;
 - (void)updateUserIdWithUserId:(NSString * _Nonnull)userId;
+- (void)deleteAccountWithInstantDeletion:(NSNumber * _Nonnull)instantDeletion;
 @end

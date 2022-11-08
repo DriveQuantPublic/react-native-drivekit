@@ -5,6 +5,7 @@ export interface Spec extends TurboModule {
   setApiKey(key: string): void;
   setUserId(userId: string): void;
   updateUserId(userId: string): void;
+  deleteAccount(instantDeletion: boolean): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('Core');

@@ -1,7 +1,8 @@
-import React, {ComponentProps, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Button,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -13,6 +14,7 @@ import {multiply} from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
+import CheckBox from '@react-native-community/checkbox';
 
 const inputHeight = 40;
 
@@ -20,6 +22,8 @@ const App = () => {
   const [apiKey, setApiKey] = useState('');
   const [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
+  const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
+
   const [result, setResult] = useState(0);
 
   useEffect(() => {
@@ -37,10 +41,10 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.page}>
-      <View style={styles.contentContainer}>
+      <ScrollView style={styles.contentContainer}>
         <Text>{text}</Text>
         <Spacer factor={2} />
-        <Text style={styles.text}>Api Key :</Text>
+        <Text style={styles.title}>Api Key</Text>
         <Spacer factor={1} />
         <TextInput
           value={apiKey}
@@ -55,7 +59,7 @@ const App = () => {
         />
 
         <Spacer factor={2} />
-        <Text style={styles.text}>User ID:</Text>
+        <Text style={styles.title}>User ID</Text>
         <Spacer factor={1} />
         <TextInput
           value={userId}
@@ -69,7 +73,7 @@ const App = () => {
           onPress={() => DriveKit.setUserId(userId)}
         />
         <Spacer factor={2} />
-        <Text style={styles.text}>Update User ID:</Text>
+        <Text style={styles.title}>Update User ID</Text>
         <Spacer factor={1} />
         <TextInput
           value={newUserId}
@@ -82,7 +86,25 @@ const App = () => {
           title="Configure User ID"
           onPress={() => DriveKit.updateUserId(newUserId)}
         />
-      </View>
+        <Spacer factor={2} />
+        <Text style={styles.title}>Delete account</Text>
+        <Spacer factor={1} />
+        <View style={styles.row}>
+          <CheckBox
+            disabled={false}
+            value={instantDeleteAccount}
+            onValueChange={setInstantDeleteAccount}
+          />
+          <Spacer factor={1} />
+          <Text>Instant deletion ?</Text>
+        </View>
+        <Spacer factor={2} />
+        <Button
+          color={'red'}
+          title="Delete account"
+          onPress={() => DriveKit.deleteAccount(instantDeleteAccount)}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -104,8 +126,16 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: 'blue',
   },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
   text: {
     color: 'black',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
