@@ -31,6 +31,11 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       CoreModuleImpl.deleteAccount(instantDeletion)
     }
 
+    @Override
+    fun isTokenValid(): Boolean {
+      return CoreModuleImpl.isTokenValid()
+    }
+
     companion object {
         val NAME: String = CoreModuleImpl.NAME
     }
