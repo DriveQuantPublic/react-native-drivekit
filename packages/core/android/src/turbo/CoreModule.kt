@@ -21,6 +21,11 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       CoreModuleImpl.setUserId(userId)
     }
 
+    @Override
+    fun updateUserId(userId: String){
+      CoreModuleImpl.updateUserId(userId)
+    }
+
     companion object {
         val NAME: String = CoreModuleImpl.NAME
     }

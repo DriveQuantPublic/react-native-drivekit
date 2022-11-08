@@ -100,3 +100,61 @@ To validate that the initialization has been done successfully, please check you
 
 **iOS**
 ![](./doc/img/ios_validation.png)
+
+## API
+
+| Method                          | Return Type     | iOS | Android |
+| ------------------------------- | --------------- | :-: | :-----: |
+| [setApiKey()](#setapikey)       | `Promise<void>` | ✅  |   ✅    |
+| [setUserId()](#setuserid)       | `Promise<void>` | ✅  |   ✅    |
+| [updateUserId()](#updateuserid) | `Promise<void>` | ✅  |   ✅    |
+
+### setApiKey
+
+```typescript
+setApiKey(key: string): void
+```
+
+To use DriveKit modules, you have to obtain an API Key from DriveQuant. If you don't have an API key, please contact [DriveQuant](mailto:contact@drivequant.com).
+
+Once you've stored your API key in a secure way in your application, you can configure DriveKit by calling the following method:
+
+```typescript
+setApiKey('MyAPIKey');
+```
+
+### setUserId
+
+```typescript
+setUserId(userId: string): void
+```
+
+Each driver must be identified with a unique identifier. Once you have this identifier, configure DriveKit by calling the following method:
+
+```typescript
+setUserId('MyUserId');
+```
+
+> ℹ️
+>
+> You can call these 2 configuration methods anywhere in the code. DriveKit will save the value locally. If the app is killed and relaunched, DriveKit will be reconfigured automatically.
+
+> ⚠️
+>
+> We recommend never using an email address or phone number to define the unique user ID. It is recommended that you set up a unique, universal and anonymous user ID. For example, you can generate a globally unique identifier (GUID) for each of your users.
+
+> ⚠️
+>
+> DriveKit SDK will not work until you set the API key and the userId.
+
+### updateUserId
+
+```typescript
+updateUserId(userId: string): void
+```
+
+It is possible to update the userId by calling the following method:
+
+```typescript
+updateUserId('newUserId');
+```

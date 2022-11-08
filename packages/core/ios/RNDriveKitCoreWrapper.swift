@@ -18,5 +18,9 @@ public class RNDriveKitCoreWrapper: NSObject {
     @objc internal func setUserId(userId: String) -> Void {
         DriveKit.shared.setUserId(userId: userId)
     }
+    
+    @objc internal func updateUserId(userId: String) -> Void {
+        DriveKit.shared.updateUserId(userId: userId)
+    }
 
 }

@@ -1,5 +1,5 @@
 #ifdef RCT_NEW_ARCH_ENABLED
-#import "RNCoreSpec.h"
+#import <RNCoreSpec/RNCoreSpec.h>
 
 @interface RNDriveKitCore : NSObject <NativeCoreSpec>
 #else

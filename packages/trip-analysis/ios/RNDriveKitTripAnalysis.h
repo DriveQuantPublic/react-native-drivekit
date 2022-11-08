@@ -1,6 +1,6 @@
 
 #ifdef RCT_NEW_ARCH_ENABLED
-#import "RNDrivekitTripAnalysisSpec.h"
+#import <RNTripAnalysisSpec/RNTripAnalysisSpec.h>
 
 @interface RNDriveKitTripAnalysis : NSObject <NativeDrivekitTripAnalysisSpec>
 #else

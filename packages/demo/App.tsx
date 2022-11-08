@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {setApiKey, setUserId} from '@react-native-drivekit/core';
+import * as DriveKit from '@react-native-drivekit/core';
 import {multiply} from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/bluetooth';
 import {Spacer} from './src/components/Spacer';
@@ -17,8 +17,9 @@ import {margins} from './src/margins';
 const inputHeight = 40;
 
 const App = () => {
-  const [apiKey, storeApiKey] = useState('');
-  const [userId, storeUserId] = useState('');
+  const [apiKey, setApiKey] = useState('');
+  const [userId, setUserId] = useState('');
+  const [newUserId, setNewUserId] = useState('');
   const [result, setResult] = useState(0);
 
   useEffect(() => {
@@ -32,22 +33,6 @@ const App = () => {
     checkBluetoothPermissions();
   }, []);
 
-  const saveApiKey: ComponentProps<typeof TextInput>['onChangeText'] = text => {
-    storeApiKey(text);
-  };
-
-  const saveUserId: ComponentProps<typeof TextInput>['onChangeText'] = text => {
-    storeUserId(text);
-  };
-
-  const configureApiKey = () => {
-    setApiKey(apiKey);
-  };
-
-  const configureUserId = () => {
-    setUserId(userId);
-  };
-
   const text = `3 * 4 = ${result}`;
 
   return (
@@ -58,23 +43,45 @@ const App = () => {
         <Text style={styles.text}>Api Key :</Text>
         <Spacer factor={1} />
         <TextInput
+          value={apiKey}
           style={styles.input}
           returnKeyType={'done'}
-          onChangeText={saveApiKey}
+          onChangeText={setApiKey}
         />
         <Spacer factor={2} />
-        <Button title="Configure Api Key" onPress={configureApiKey} />
+        <Button
+          title="Configure Api Key"
+          onPress={() => DriveKit.setApiKey(apiKey)}
+        />
 
         <Spacer factor={2} />
         <Text style={styles.text}>User ID:</Text>
         <Spacer factor={1} />
         <TextInput
+          value={userId}
           style={styles.input}
           returnKeyType={'done'}
-          onChangeText={saveUserId}
+          onChangeText={setUserId}
         />
         <Spacer factor={2} />
-        <Button title="Configure User ID" onPress={configureUserId} />
+        <Button
+          title="Configure User ID"
+          onPress={() => DriveKit.setUserId(userId)}
+        />
+        <Spacer factor={2} />
+        <Text style={styles.text}>Update User ID:</Text>
+        <Spacer factor={1} />
+        <TextInput
+          value={newUserId}
+          style={styles.input}
+          returnKeyType={'done'}
+          onChangeText={setNewUserId}
+        />
+        <Spacer factor={2} />
+        <Button
+          title="Configure User ID"
+          onPress={() => DriveKit.updateUserId(newUserId)}
+        />
       </View>
     </SafeAreaView>
   );

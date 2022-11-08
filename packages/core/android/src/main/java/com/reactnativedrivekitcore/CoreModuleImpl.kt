@@ -21,4 +21,8 @@ object CoreModuleImpl {
     fun setUserId(userId: String){
       DriveKit.setUserId(userId)
     }
+
+    fun updateUserId(userId: String){
+      DriveKit.updateUserId(userId)
+    }
 }

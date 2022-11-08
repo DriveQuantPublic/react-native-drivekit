@@ -30,3 +30,7 @@ export function setApiKey(key: string): void {
 export function setUserId(userId: string): void {
   return Core.setUserId(userId);
 }
+
+export function updateUserId(userId: string): void {
+  return Core.updateUserId(userId);
+}

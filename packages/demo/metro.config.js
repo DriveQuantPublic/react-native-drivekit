@@ -5,6 +5,11 @@
  * @format
  */
 
+const path = require('path');
+
+const projectRoot = __dirname;
+const workspaceRoot = path.resolve(projectRoot, '../..');
+
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
@@ -14,5 +19,5 @@ module.exports = {
       },
     }),
   },
-  watchFolders: ['../../node_modules', '../core', '../trip-analysis'],
+  watchFolders: [workspaceRoot],
 };
