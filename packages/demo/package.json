@@ -8,13 +8,17 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "typescript": "tsc -p tsconfig.json --noEmit --pretty",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@react-native-community/checkbox": "^0.5.14",
     "babel-plugin-module-resolver": "^4.1.0",
+    "patch-package": "^6.5.0",
+    "postinstall-postinstall": "^2.1.0",
     "react": "18.1.0",
-    "react-native": "0.70.5"
+    "react-native": "0.70.5",
+    "react-native-disable-battery-optimizations-android": "^1.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
