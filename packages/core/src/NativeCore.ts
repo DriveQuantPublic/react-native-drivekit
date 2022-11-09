@@ -8,6 +8,7 @@ export interface Spec extends TurboModule {
   deleteAccount(instantDeletion: boolean): void;
   isTokenValid(): boolean;
   enableSandboxMode(enable: boolean): void;
+  reset(): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('Core');

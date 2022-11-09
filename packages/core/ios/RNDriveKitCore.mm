@@ -35,6 +35,11 @@ RCT_REMAP_METHOD(enableSandboxMode, enableSandboxModeWithEnable:(nonnull NSNumbe
     [self enableSandboxMode:enable];
 }
 
+RCT_REMAP_METHOD(reset, resetCore)
+{
+    [self reset];
+}
+
 - (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
 }
@@ -59,6 +64,9 @@ RCT_REMAP_METHOD(enableSandboxMode, enableSandboxModeWithEnable:(nonnull NSNumbe
     [RNDriveKitCoreWrapper.shared enableSandboxModeWithEnable:enable];
 }
 
+- (void)reset {
+    [RNDriveKitCoreWrapper.shared reset];
+}
 
 
 
