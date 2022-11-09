@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/core",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "description": "React Native interface for DriveKit Core",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
