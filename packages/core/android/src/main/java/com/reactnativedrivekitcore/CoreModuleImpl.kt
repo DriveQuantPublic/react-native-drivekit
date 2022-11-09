@@ -42,5 +42,13 @@ object CoreModuleImpl {
       DriveKit.reset()
     }
 
+    fun enableLogging(logPath: String?, showInConsole: Boolean?) {
+      DriveKit.enableLogging(logPath ?: "/DriveKit" , showInConsole ?: true)
+
+    }
+
+    fun disableLogging(showInConsole: Boolean?) {
+      DriveKit.disableLogging(showInConsole ?: true)
+    }
 
 }
