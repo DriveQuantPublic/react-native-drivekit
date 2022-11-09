@@ -108,8 +108,10 @@ To validate that the initialization has been done successfully, please check you
 | [setApiKey()](#setapikey)         | `Promise<void>` | ✅  |   ✅    |
 | [setUserId()](#setuserid)         | `Promise<void>` | ✅  |   ✅    |
 | [updateUserId()](#updateuserid)   | `Promise<void>` | ✅  |   ✅    |
-| [deleteAccount()](#deleteAccount) | `Promise<void>` | ✅  |   ✅    |
+| [deleteAccount()](#deleteaccount) | `Promise<void>` | ✅  |   ✅    |
 | [reset()](#reset)                 | `Promise<void>` | ✅  |   ✅    |
+| [enableLogging()](#logging)       | `Promise<void>` | ✅  |   ✅    |
+| [disableLogging()](#logging)      | `Promise<void>` | ✅  |   ✅    |
 
 ### setApiKey
 
@@ -218,3 +220,45 @@ All data saved locally by DriveKit will be erased.
 > ⚠️
 >
 > Make sure that you call reset method of all frameworks to fully reset DriveKit configuration.
+
+### Logging
+
+```typescript
+  enableLogging(options?: { logPath?: string; showInConsole?: boolean }): void;
+
+  disableLogging(options?: { showInConsole?: boolean }): void;
+```
+
+| Option                    | Default Value | Description                                                             |
+| ------------------------- | ------------- | ----------------------------------------------------------------------- |
+| `showInConsole?: boolean` | `true`        | set to false if you don't want your logs to be displayed in the console |
+| `logPath?: string`        | `"/DriveKit"` | **android only** - path where the log files will be saved               |
+
+DriveKit comes with a logging feature that is enabled by default. This feature allows you to quickly identify the cause of a problem. We recommend leaving the log enabled as it does not consume memory space and is useful in the support phase. However, if you don't want to use it, it can be disabled.
+
+> ⚠️ **Android**
+>
+> If your device version is on Android 10 or below, you can directly find the log file in Android/data/<your-app-package-name>/files/<path-to-my-log-directory>
+> If your device version is on Android 11 and if you have The Permissions Utils component on your app, you can get a log file of the previous month and the current one with the method getZippedLogUriFiles(), or by clicking on “Contact support” and change the email receiver. The file will be in attachment of the email.
+
+> ℹ️ **iOS**
+>
+> Log will be written in app directory. One log file per month will be written with the name log-\<YEAR\>-\<MONTH\>.txt (example: `log-2019-8.txt`). All DriveKit modules log in this file.
+>
+> You can make files of your application (including DriveKit log files) available in the iOS Files app by adding these 2 keys to your project's Info.plist file: UIFileSharingEnabled and LSSupportsOpeningDocumentsInPlace, setting them both to true.
+
+> ⚠️ **iOS**
+>
+> To write log files on user smartphone, you must add the following entry in your info.plist file `UIFileSharingEnabled` and `LSSupportsOpeningDocumentsInPlace` set to true.
+
+Disable logging by calling:
+
+```typescript
+disableLogging();
+```
+
+To enable logging, call the following method specifying the path of the log directory.
+
+```typescript
+disableLogging({ logPath: '/path/to/my/log/directory' });
+```
