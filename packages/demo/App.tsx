@@ -125,6 +125,19 @@ const App = () => {
             DriveKit.reset();
           }}
         />
+
+        <Button
+          title={'Enable Logs'}
+          onPress={() => {
+            DriveKit.enableLogging({showInConsole: true, logPath: 'log/path'});
+          }}
+        />
+        <Button
+          title={'Disable Logs'}
+          onPress={() => {
+            DriveKit.disableLogging({showInConsole: false});
+          }}
+        />
       </ScrollView>
     </SafeAreaView>
   );
