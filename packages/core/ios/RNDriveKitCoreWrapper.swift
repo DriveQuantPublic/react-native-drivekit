@@ -26,9 +26,13 @@ public class RNDriveKitCoreWrapper: NSObject {
     @objc internal func deleteAccount(instantDeletion: NSNumber) -> Void {
         DriveKit.shared.deleteAccount(instantDeletion: instantDeletion.boolValue)
     }
-    
+
     @objc internal func isTokenValid() -> NSNumber {
         return NSNumber(value: DriveKit.shared.isTokenValid());
+    }
+
+    @objc internal func enableSandboxMode(enable: NSNumber) -> Void {
+        DriveKit.shared.enableSandboxMode(enable: enable.boolValue)
     }
 
 }

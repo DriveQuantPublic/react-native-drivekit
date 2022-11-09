@@ -36,6 +36,11 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       return CoreModuleImpl.isTokenValid()
     }
 
+    @Override
+    fun enableSandboxMode(enable: Boolean) {
+      CoreModuleImpl.enableSandboxMode(enable)
+    }
+
     companion object {
         val NAME: String = CoreModuleImpl.NAME
     }
