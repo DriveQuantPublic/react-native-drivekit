@@ -14,53 +14,65 @@ yarn
 
 > While it's possible to use [`npm`](https://github.com/npm/cli), the tooling is built around [`yarn`](https://classic.yarnpkg.com/), so you'll have an easier time if you use `yarn` for development.
 
-While developing, you can run the [example app](/example/) to test your changes. Any changes you make in your library's JavaScript code will be reflected in the example app without a rebuild. If you change any native code, then you'll need to rebuild the example app.
+While developing, you can run the [demo app](/packages/demo/) to test your changes. Any changes you make in your library's JavaScript code will be reflected in the example app without a rebuild. If you change any native code, then you'll need to rebuild the example app.
 
 To start the packager:
 
 ```sh
-yarn example start
+yarn lerna run --scope demo start
 ```
 
 To run the example app on Android:
 
 ```sh
-yarn example android
+yarn lerna run --scope demo android
 ```
 
 To run the example app on iOS:
 
 ```sh
-yarn example ios
+yarn lerna run --scope demo ios
 ```
 
-By default, the example is configured to build with the new architecture. To build with the old architecture, you can change the following:
+By default, the example is configured to build with the old architecture. To run the example with the new architecture, you can do the following:
 
-1. For Android, change `newArchEnabled=true` to `newArchEnabled=false` in `example/android/gradle.properties`.
-2. For iOS, change `ENV['RCT_NEW_ARCH_ENABLED'] = '1'` to `ENV['RCT_NEW_ARCH_ENABLED'] = '0'` in `example/ios/Podfile`.
+1. For Android, run:
+
+   ```sh
+   ORG_GRADLE_PROJECT_newArchEnabled=true yarn lerna run --scope demo android
+   ```
+
+2. For iOS, run:
+
+   ```sh
+   RCT_NEW_ARCH_ENABLED=1 yarn lerna run --scope demo pods
+   yarn lerna run --scope demo ios
+   ```
+
+To confirm that the app is running with the new architecture, you can check the Metro logs for a message like this:
+
+```sh
+Running "DrivekitTripAnalysisExample" with {"fabric":true,"initialProps":{"concurrentRoot":true},"rootTag":1}
+```
+
+Note the `"fabric":true` and `"concurrentRoot":true` properties.
 
 Make sure your code passes TypeScript and ESLint. Run the following to verify:
 
 ```sh
-yarn typescript
-yarn lint
-```
-
-To fix formatting errors, run the following:
-
-```sh
-yarn lint --fix
+yarn lerna run typescript
+yarn lerna run lint
 ```
 
 Remember to add tests for your change if possible. Run the unit tests by:
 
 ```sh
-yarn test
+yarn lerna run lint
 ```
 
-To edit the Objective-C files, open `example/ios/CoreExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > @react-native-drivekit/core`.
+To edit the Objective-C or Swift files, open `packages/demo/ios/DrivekitTripAnalysisExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-drivekit-*`.
 
-To edit the Kotlin files, open `example/android` in Android studio and find the source files at `reactnativedrivekitcore` under `Android`.
+To edit the Java or Kotlin files, open `packages/demo/example/android` in Android studio and find the source files at `react-native-drivekit-*` under `Android`.
 
 ### Commit message convention
 

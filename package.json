@@ -11,5 +11,8 @@
   ],
   "devDependencies": {
     "lerna": "^6.0.3"
+  },
+  "scripts": {
+    "release": "lerna publish --no-private"
   }
 }
