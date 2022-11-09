@@ -18,6 +18,7 @@ import {margins} from './src/margins';
 import CheckBox from '@react-native-community/checkbox';
 import {checkLocationsPermissions} from './src/services/permissions/location';
 import {checkRecognitionPermission} from './src/services/permissions/recognition';
+import {checkNotificationPermission} from './src/services/permissions/notification';
 
 const inputHeight = 40;
 
@@ -41,6 +42,7 @@ const App = () => {
       await checkBluetoothPermissions();
       await checkLocationsPermissions();
       await checkRecognitionPermission();
+      await checkNotificationPermission();
     };
 
     checkPermissions();
