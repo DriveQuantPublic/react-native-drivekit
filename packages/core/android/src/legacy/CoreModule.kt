@@ -5,6 +5,7 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReadableMap
 
 class CoreModule internal constructor(context: ReactApplicationContext?) :
     ReactContextBaseJavaModule(context) {
@@ -46,6 +47,28 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     @ReactMethod
     fun reset(){
       CoreModuleImpl.reset()
+    }
+
+    @ReactMethod
+    fun enableLogging(options: ReadableMap?) {
+      var logPath: String? = null;
+      if(options?.hasKey("logPath") == true) {
+        logPath = options?.getString("logPath");
+      }
+      var showInConsole: Boolean? = null;
+      if(options?.hasKey("showInConsole") == true) {
+        showInConsole = options?.getBoolean("showInConsole")
+      }
+      CoreModuleImpl.enableLogging(logPath, showInConsole)
+    }
+
+    @ReactMethod
+    fun disableLogging(options: ReadableMap?) {
+      var showInConsole: Boolean? = null;
+      if(options?.hasKey("showInConsole") == true) {
+        showInConsole = options?.getBoolean("showInConsole")
+      }
+      CoreModuleImpl.disableLogging(showInConsole)
     }
 
     companion object {

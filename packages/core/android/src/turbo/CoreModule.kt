@@ -46,6 +46,29 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       CoreModuleImpl.reset()
     }
 
+    @Override
+    fun enableLogging(options: ReadableMap?) {
+      var logPath: String? = null;
+      if(options?.hasKey("logPath") == true) {
+        logPath = options?.getString("logPath");
+      }
+      var showInConsole: Boolean? = null;
+      if(options?.hasKey("showInConsole") == true) {
+        showInConsole = options?.getBoolean("showInConsole")
+      }
+      CoreModuleImpl.enableLogging(logPath, showInConsole)
+    }
+
+    @Override
+    fun disableLogging(options: ReadableMap?) {
+      var showInConsole: Boolean? = null;
+      if(options?.hasKey("showInConsole") == true) {
+        showInConsole = options?.getBoolean("showInConsole")
+      }
+      CoreModuleImpl.disableLogging(showInConsole)
+    }
+
+
     companion object {
         val NAME: String = CoreModuleImpl.NAME
     }

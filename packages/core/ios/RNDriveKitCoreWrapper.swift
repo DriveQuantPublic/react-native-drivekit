@@ -38,5 +38,20 @@ public class RNDriveKitCoreWrapper: NSObject {
     @objc internal func reset() -> Void {
         DriveKit.shared.reset()
     }
-
+    
+    @objc internal func enableLogging(showInConsole: NSNumber?) -> Void {
+        if let unwrappedShowInConsole = showInConsole {
+            DriveKit.shared.enableLogging(showInConsole: unwrappedShowInConsole.boolValue)
+        } else {
+            DriveKit.shared.enableLogging()
+        }
+    }
+    
+    @objc internal func disableLogging(showInConsole: NSNumber?) -> Void {
+        if let unwrappedShowInConsole = showInConsole {
+            DriveKit.shared.disableLogging(showInConsole: unwrappedShowInConsole.boolValue)
+        } else {
+            DriveKit.shared.disableLogging()
+        }
+    }
 }

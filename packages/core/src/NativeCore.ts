@@ -9,6 +9,8 @@ export interface Spec extends TurboModule {
   isTokenValid(): boolean;
   enableSandboxMode(enable: boolean): void;
   reset(): void;
+  enableLogging(options?: { logPath?: string; showInConsole?: boolean }): void;
+  disableLogging(options?: { showInConsole?: boolean }): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('Core');

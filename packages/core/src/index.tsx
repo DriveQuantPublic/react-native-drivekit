@@ -50,3 +50,14 @@ export function enableSandboxMode(enable: boolean): void {
 export function reset(): void {
   Core.reset();
 }
+
+export function enableLogging(options?: {
+  logPath?: string;
+  showInConsole?: boolean;
+}): void {
+  Core.enableLogging(options);
+}
+
+export function disableLogging(options?: { showInConsole?: boolean }): void {
+  Core.disableLogging(options);
+}
