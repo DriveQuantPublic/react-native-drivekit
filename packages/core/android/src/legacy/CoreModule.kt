@@ -33,6 +33,11 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       CoreModuleImpl.deleteAccount(instantDeletion)
     }
 
+    @ReactMethod
+    fun isTokenValid(promise: Promise){
+      promise.resolve(CoreModuleImpl.isTokenValid())
+    }
+
     companion object {
         const val NAME = CoreModuleImpl.NAME
     }

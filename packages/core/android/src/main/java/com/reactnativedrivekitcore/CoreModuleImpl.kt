@@ -29,4 +29,8 @@ object CoreModuleImpl {
     fun deleteAccount(instantDeletion: Boolean){
       DriveKit.deleteAccount(instantDeletion)
     }
+
+    fun isTokenValid(): Boolean {
+      return DriveKit.isTokenValid()
+    }
 }

@@ -38,3 +38,7 @@ export function updateUserId(userId: string): void {
 export function deleteAccount(instantDeletion?: boolean) {
   return Core.deleteAccount(instantDeletion ?? false);
 }
+
+export function isTokenValid(): Promise<boolean> {
+  return Core.isTokenValid();
+}

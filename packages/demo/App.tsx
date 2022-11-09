@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
+  Alert,
   Button,
   SafeAreaView,
   ScrollView,
@@ -103,6 +104,16 @@ const App = () => {
           color={'red'}
           title="Delete account"
           onPress={() => DriveKit.deleteAccount(instantDeleteAccount)}
+        />
+        <Spacer factor={2} />
+        <Text style={styles.title}>Token Validity</Text>
+        <Spacer factor={1} />
+        <Button
+          title="Check token validity"
+          onPress={async () => {
+            const isTokenValid = await DriveKit.isTokenValid();
+            Alert.alert(isTokenValid ? 'Token is valid' : 'Token is not valid');
+          }}
         />
       </ScrollView>
     </SafeAreaView>
