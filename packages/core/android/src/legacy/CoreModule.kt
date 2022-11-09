@@ -38,6 +38,11 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       promise.resolve(CoreModuleImpl.isTokenValid())
     }
 
+    @ReactMethod
+    fun enableSandboxMode(enable: Boolean){
+      CoreModuleImpl.enableSandboxMode(enable)
+    }
+
     companion object {
         const val NAME = CoreModuleImpl.NAME
     }

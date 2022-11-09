@@ -33,4 +33,10 @@ object CoreModuleImpl {
     fun isTokenValid(): Boolean {
       return DriveKit.isTokenValid()
     }
+
+    fun enableSandboxMode(enable: Boolean){
+      DriveKit.enableSandboxMode(enable)
+    }
+
+
 }
