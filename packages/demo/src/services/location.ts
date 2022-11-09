@@ -1,32 +1,41 @@
 import {Alert, Linking, Platform} from 'react-native';
-import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import {
+  check,
+  request,
+  PERMISSIONS,
+  RESULTS,
+  Permission,
+} from 'react-native-permissions';
 
 const IOS_PERMISSIONS = [
-  PERMISSIONS.IOS.LOCATION_WHEN_IN_USE,
+  /**
+   * We do not have to call LOCATION_WHEN_IN_USE
+   * See doc : https://github.com/zoontek/react-native-permissions#about-ios-location_always-permission
+   */
   PERMISSIONS.IOS.LOCATION_ALWAYS,
 ];
 
-const checkLocationsPermissions = async () => {
-  if (Platform.OS !== 'ios') {
-    return;
-  }
+const ANDROID_PERMISSIONS = [
+  PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+  PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+];
 
-  await checkiOS();
+const checkLocationsPermissions = async () => {
+  if (Platform.OS === 'ios') {
+    return await checkPermissions(IOS_PERMISSIONS);
+  } else {
+    return await checkPermissions(ANDROID_PERMISSIONS);
+  }
 };
 
-const checkiOS = async () => {
-  if (Platform.OS !== 'ios') {
-    return;
-  }
-
-  for (let index = 0; index < IOS_PERMISSIONS.length; index++) {
-    const permission = IOS_PERMISSIONS[index];
+const checkPermissions = async (locationPermission: Permission[]) => {
+  for (let index = 0; index < locationPermission.length; index++) {
+    const permission = locationPermission[index];
 
     const permissionStatus = await check(permission);
 
     switch (permissionStatus) {
       case RESULTS.UNAVAILABLE:
-        Alert.alert('Location not available on this device');
         break;
       case RESULTS.DENIED:
         await request(permission);
