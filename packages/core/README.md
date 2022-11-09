@@ -109,6 +109,7 @@ To validate that the initialization has been done successfully, please check you
 | [setUserId()](#setuserid)         | `Promise<void>` | ✅  |   ✅    |
 | [updateUserId()](#updateuserid)   | `Promise<void>` | ✅  |   ✅    |
 | [deleteAccount()](#deleteAccount) | `Promise<void>` | ✅  |   ✅    |
+| [reset()](#reset)                 | `Promise<void>` | ✅  |   ✅    |
 
 ### setApiKey
 
@@ -195,3 +196,25 @@ instantDeletion can have 2 values:
 > ⚠️
 >
 > You should restore the DriveKit API key in the onAccountDeleted() callback only when the status value is SUCCESS.
+
+### reset
+
+```typescript
+reset(): void
+```
+
+If you need to reset DriveKit configuration (user logout for example), you can call the following method:
+
+```typescript
+reset();
+```
+
+All data saved locally by DriveKit will be erased.
+
+> ℹ️
+>
+> All DriverKit frameworks have reset method that erases all data saved locally by the framework.
+
+> ⚠️
+>
+> Make sure that you call reset method of all frameworks to fully reset DriveKit configuration.

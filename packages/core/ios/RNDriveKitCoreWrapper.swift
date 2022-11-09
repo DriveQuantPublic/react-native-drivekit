@@ -34,5 +34,9 @@ public class RNDriveKitCoreWrapper: NSObject {
     @objc internal func enableSandboxMode(enable: NSNumber) -> Void {
         DriveKit.shared.enableSandboxMode(enable: enable.boolValue)
     }
+    
+    @objc internal func reset() -> Void {
+        DriveKit.shared.reset()
+    }
 
 }

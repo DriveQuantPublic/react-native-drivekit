@@ -9,4 +9,5 @@
 - (void)deleteAccountWithInstantDeletion:(NSNumber * _Nonnull)instantDeletion;
 - (NSNumber * _Nonnull)isTokenValid;
 - (void)enableSandboxModeWithEnable:(NSNumber * _Nonnull)enable;
+- (void)reset;
 @end

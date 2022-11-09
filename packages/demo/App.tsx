@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.page}>
-      <ScrollView style={styles.contentContainer}>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text>{text}</Text>
         <Spacer factor={2} />
         <Text style={styles.title}>Api Key</Text>
@@ -113,6 +113,16 @@ const App = () => {
           onPress={async () => {
             const isTokenValid = await DriveKit.isTokenValid();
             Alert.alert(isTokenValid ? 'Token is valid' : 'Token is not valid');
+          }}
+        />
+
+        <Spacer factor={2} />
+        <Text style={styles.title}>Reset</Text>
+        <Spacer factor={1} />
+        <Button
+          title={'Reset'}
+          onPress={() => {
+            DriveKit.reset();
           }}
         />
       </ScrollView>

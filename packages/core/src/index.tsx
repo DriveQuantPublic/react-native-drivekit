@@ -46,3 +46,7 @@ export function isTokenValid(): Promise<boolean> {
 export function enableSandboxMode(enable: boolean): void {
   Core.enableSandboxMode(enable);
 }
+
+export function reset(): void {
+  Core.reset();
+}
