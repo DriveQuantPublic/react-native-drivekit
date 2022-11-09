@@ -12,11 +12,11 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import {multiply} from '@react-native-drivekit/trip-analysis';
-import {checkBluetoothPermissions} from './src/services/bluetooth';
+import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
 import CheckBox from '@react-native-community/checkbox';
-import {checkLocationsPermissions} from './src/services/location';
+import {checkLocationsPermissions} from './src/services/permissions/location';
 
 const inputHeight = 40;
 
