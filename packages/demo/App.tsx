@@ -17,6 +17,7 @@ import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
 import CheckBox from '@react-native-community/checkbox';
 import {checkLocationsPermissions} from './src/services/permissions/location';
+import {checkRecognitionPermission} from './src/services/permissions/recognition';
 
 const inputHeight = 40;
 
@@ -39,6 +40,7 @@ const App = () => {
     const checkPermissions = async () => {
       await checkBluetoothPermissions();
       await checkLocationsPermissions();
+      await checkRecognitionPermission();
     };
 
     checkPermissions();
