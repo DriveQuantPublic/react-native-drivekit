@@ -118,3 +118,13 @@ When you're sending a pull request:
 - Review the documentation to make sure it looks good.
 - Follow the pull request template when opening a pull request.
 - For pull requests that change the API or implementation, discuss with maintainers first by opening an issue.
+
+## Release workflow
+
+We use [lerna](https://github.com/lerna/lerna) to make it easier to publish new versions. It handles common tasks like bumping version all packages versions, creating tags and releases etc.
+
+To publish new versions, run the following:
+
+```sh
+yarn publish
+```
