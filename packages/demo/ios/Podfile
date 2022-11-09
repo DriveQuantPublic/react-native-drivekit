@@ -16,6 +16,7 @@ target 'ExampleApp' do
   pod 'Permission-BluetoothPeripheral', :path => "#{permissions_path}/BluetoothPeripheral"
   pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
   pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
+  pod 'Permission-Motion', :path => "#{permissions_path}/Motion"
 
   use_react_native!(
     :path => config[:reactNativePath],

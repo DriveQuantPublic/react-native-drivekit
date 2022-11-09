@@ -20,6 +20,7 @@ import {checkLocationsPermissions} from './src/services/permissions/location';
 import {checkRecognitionPermission} from './src/services/permissions/recognition';
 import {checkNotificationPermission} from './src/services/permissions/notification';
 import {checkBatteryOptimizationPermission} from './src/services/permissions/batteryOptimization';
+import {checkMotionPermission} from './src/services/permissions/motion';
 
 const inputHeight = 40;
 
@@ -45,6 +46,7 @@ const App = () => {
       await checkRecognitionPermission();
       await checkNotificationPermission();
       await checkBatteryOptimizationPermission();
+      await checkMotionPermission();
     };
 
     checkPermissions();
