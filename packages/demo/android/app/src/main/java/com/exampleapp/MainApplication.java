@@ -3,7 +3,7 @@ package com.exampleapp;
 import android.app.Application;
 import android.content.Context;
 
-import com.drivekittripanalysis.DrivekitTripAnalysisModule;
+import com.reactnativedrivekittripanalysis.DrivekitTripAnalysisModule;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;

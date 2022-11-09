@@ -156,6 +156,6 @@ if (isNewArchitectureEnabled()) {
   react {
     jsRootDir = file("../src/")
     libraryName = "DrivekitTripAnalysis"
-    codegenJavaPackageName = "com.drivekittripanalysis"
+    codegenJavaPackageName = "com.reactnativedrivekittripanalysis"
   }
 }

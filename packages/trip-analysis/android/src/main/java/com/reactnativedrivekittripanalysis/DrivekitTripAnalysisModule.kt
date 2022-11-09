@@ -1,4 +1,4 @@
-package com.drivekittripanalysis
+package com.reactnativedrivekittripanalysis
 import com.drivequant.drivekit.tripanalysis.DriveKitTripAnalysis
 import com.drivequant.drivekit.tripanalysis.entity.TripNotification
 import com.facebook.react.bridge.ReactApplicationContext
