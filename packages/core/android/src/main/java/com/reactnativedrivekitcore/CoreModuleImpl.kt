@@ -38,5 +38,9 @@ object CoreModuleImpl {
       DriveKit.enableSandboxMode(enable)
     }
 
+    fun reset(){
+      DriveKit.reset()
+    }
+
 
 }

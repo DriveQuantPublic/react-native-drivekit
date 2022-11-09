@@ -41,6 +41,11 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       CoreModuleImpl.enableSandboxMode(enable)
     }
 
+    @Override
+    fun reset() {
+      CoreModuleImpl.reset()
+    }
+
     companion object {
         val NAME: String = CoreModuleImpl.NAME
     }
