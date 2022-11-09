@@ -4,11 +4,11 @@ pre-commit:
     lint:
       files: git diff --name-only @{push}
       glob: "*.{js,ts,jsx,tsx}"
-      run: npx eslint {files}
+      run: yarn lerna run lint
     types:
       files: git diff --name-only @{push}
       glob: "*.{js,ts, jsx, tsx}"
-      run: npx tsc --noEmit
+      run: yarn lerna run typescript
 commit-msg:
   parallel: true
   commands:
