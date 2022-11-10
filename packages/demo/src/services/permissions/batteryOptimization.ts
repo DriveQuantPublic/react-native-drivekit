@@ -1,16 +1,18 @@
 import {Platform} from 'react-native';
-import RNDisableBatteryOptimizationsAndroid from 'react-native-disable-battery-optimizations-android';
+import {
+  RequestDisableOptimization,
+  BatteryOptEnabled,
+} from 'react-native-battery-optimization-check';
 
 const checkBatteryOptimizationPermission = async () => {
   if (Platform.OS === 'ios') {
     return;
   }
 
-  const isEnabled =
-    await RNDisableBatteryOptimizationsAndroid.isBatteryOptimizationEnabled();
+  const isEnabled = await BatteryOptEnabled();
 
   if (isEnabled) {
-    RNDisableBatteryOptimizationsAndroid.openBatteryModal();
+    await RequestDisableOptimization();
   }
 
   return;
