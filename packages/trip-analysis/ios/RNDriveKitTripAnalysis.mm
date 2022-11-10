@@ -1,18 +1,18 @@
 #import "RNDrivekitTripAnalysis.h"
+#import "RNDriveKitTripAnalysis-Swift.h"
+
 
 @implementation RNDriveKitTripAnalysis
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(double)a withB:(double)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(activateAutoStart, activateAutoStartWithEnable:(nonnull NSNumber *)enable)
 {
-    NSNumber *result = @(a * b);
+    [self activateAutoStart:enable];
+}
 
-    resolve(result);
+
+- (void)activateAutoStart:(NSNumber *)enable {
+    [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
 
 // Don't compile this code when we build for the old architecture.

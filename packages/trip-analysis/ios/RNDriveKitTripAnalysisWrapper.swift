@@ -10,6 +10,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc public func initialize(launchOptions: [UIApplication.LaunchOptionsKey: Any]) -> Void {
         DriveKitTripAnalysis.shared.initialize(tripListener: self, appLaunchOptions: launchOptions)
     }
+    
+    @objc internal func activateAutoStart(enable: NSNumber) -> Void {
+        DriveKitTripAnalysis.shared.activateAutoStart(enable:enable.boolValue)
+    }
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {

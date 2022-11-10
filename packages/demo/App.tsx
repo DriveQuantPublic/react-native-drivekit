@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
-import {multiply} from '@react-native-drivekit/trip-analysis';
+import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
@@ -30,15 +30,6 @@ const App = () => {
   const [newUserId, setNewUserId] = useState('');
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
 
-  const [result, setResult] = useState(0);
-
-  useEffect(() => {
-    const calculate = async () => {
-      setResult(await multiply(3, 4));
-    };
-    calculate();
-  });
-
   useEffect(() => {
     const checkPermissions = async () => {
       await checkLocationsPermissions();
@@ -47,18 +38,15 @@ const App = () => {
       await checkBluetoothPermissions();
       await checkNotificationPermission();
       await checkMotionPermission();
+      DriveKitTripAnalysis.activateAutoStart(true);
     };
 
     checkPermissions();
   }, []);
 
-  const text = `3 * 4 = ${result}`;
-
   return (
     <SafeAreaView style={styles.page}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        <Text>{text}</Text>
-        <Spacer factor={2} />
         <Text style={styles.title}>Api Key</Text>
         <Spacer factor={1} />
         <TextInput
