@@ -16,6 +16,16 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
     DriveKitTripAnalysis.activateAutoStart(enable)
   }
 
+  @ReactMethod
+  override fun startTrip() {
+    DriveKitTripAnalysis.startTrip()
+  }
+
+  @ReactMethod
+  override fun stopTrip() {
+    DriveKitTripAnalysis.stopTrip()
+  }
+
   companion object {
     const val NAME = "RNDriveKitTripAnalysis"
 

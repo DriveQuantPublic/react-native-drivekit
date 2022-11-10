@@ -7,4 +7,8 @@ abstract class DrivekitTripAnalysisSpec internal constructor(context: ReactAppli
   ReactContextBaseJavaModule(context) {
 
   abstract fun activateAutoStart(enable: Boolean)
+
+  abstract fun startTrip()
+
+  abstract fun stopTrip()
 }
