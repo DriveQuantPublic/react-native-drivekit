@@ -41,11 +41,11 @@ const App = () => {
 
   useEffect(() => {
     const checkPermissions = async () => {
-      await checkBluetoothPermissions();
       await checkLocationsPermissions();
       await checkRecognitionPermission();
-      await checkNotificationPermission();
       await checkBatteryOptimizationPermission();
+      await checkBluetoothPermissions();
+      await checkNotificationPermission();
       await checkMotionPermission();
     };
 
