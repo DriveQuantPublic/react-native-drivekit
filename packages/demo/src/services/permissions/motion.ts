@@ -7,7 +7,6 @@ const checkMotionPermission = async () => {
   }
 
   const permission = await check(PERMISSIONS.IOS.MOTION);
-  console.warn('MOTION, ', permission);
   switch (permission) {
     case RESULTS.UNAVAILABLE:
       break;
