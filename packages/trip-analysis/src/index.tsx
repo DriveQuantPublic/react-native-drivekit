@@ -27,3 +27,11 @@ const DrivekitTripAnalysis = DrivekitTripAnalysisModule
 export function activateAutoStart(enable: boolean): void {
   return DrivekitTripAnalysis.activateAutoStart(enable);
 }
+
+export function startTrip(): void {
+  return DrivekitTripAnalysis.startTrip();
+}
+
+export function stopTrip(): void {
+  return DrivekitTripAnalysis.stopTrip();
+}

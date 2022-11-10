@@ -140,6 +140,22 @@ const App = () => {
             DriveKit.disableLogging({showInConsole: false});
           }}
         />
+
+        <Spacer factor={2} />
+        <Text style={styles.title}>Trip Analysis</Text>
+        <Spacer factor={1} />
+        <Button
+          title={'Start'}
+          onPress={() => {
+            DriveKitTripAnalysis.startTrip();
+          }}
+        />
+        <Button
+          title={'Stop'}
+          onPress={() => {
+            DriveKitTripAnalysis.stopTrip();
+          }}
+        />
       </ScrollView>
     </SafeAreaView>
   );
