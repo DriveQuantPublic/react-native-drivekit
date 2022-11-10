@@ -8,10 +8,7 @@ import {
 } from 'react-native-permissions';
 
 const IOS_PERMISSIONS = [
-  /**
-   * We do not have to call LOCATION_WHEN_IN_USE
-   * See doc : https://github.com/zoontek/react-native-permissions#about-ios-location_always-permission
-   */
+  PERMISSIONS.IOS.LOCATION_WHEN_IN_USE,
   PERMISSIONS.IOS.LOCATION_ALWAYS,
 ];
 
