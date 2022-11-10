@@ -105,8 +105,6 @@ In order to collect data, you need to configure multiple permissions :
 - Location permission : [native documentation](https://docs.drivequant.com/trip-analysis/ios/get-started#ask-for-location-permission)
 - Motion permission : [native documentation](https://docs.drivequant.com/trip-analysis/ios/get-started#motion-and-fitness-permission)
 
-**Important:** Please note that `Motion` permission is only needed if you use [Motion & Fitness](https://docs.drivequant.com/trip-analysis/ios/get-started#motion-and-fitness-permission)
-
 Our recommandation is to use [react-native-permissions](https://github.com/zoontek/react-native-permissions). You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).
 
 ---
