@@ -6,5 +6,5 @@ import com.facebook.react.bridge.Promise
 abstract class DrivekitTripAnalysisSpec internal constructor(context: ReactApplicationContext) :
   ReactContextBaseJavaModule(context) {
 
-  abstract fun multiply(a: Double, b: Double, promise: Promise)
+  abstract fun activateAutoStart(enable: Boolean)
 }
