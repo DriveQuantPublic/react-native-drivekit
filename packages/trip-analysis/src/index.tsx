@@ -24,6 +24,6 @@ const DrivekitTripAnalysis = DrivekitTripAnalysisModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return DrivekitTripAnalysis.multiply(a, b);
+export function activateAutoStart(enable: boolean): void {
+  return DrivekitTripAnalysis.activateAutoStart(enable);
 }

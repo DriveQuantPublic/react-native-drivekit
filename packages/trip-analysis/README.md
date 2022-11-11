@@ -118,3 +118,35 @@ To validate that the initialization has been done successfully, please check you
 
 **iOS**
 ![](./doc/img/ios_validation.png)
+
+## API
+
+| Method                                    | Return Type     | iOS | Android |
+| ----------------------------------------- | --------------- | :-: | :-----: |
+| [activateAutoStart()](#activateautostart) | `Promise<void>` | ✅  |   ✅    |
+
+### activateAutoStart
+
+```typescript
+activateAutoStart(enable: boolean): void
+```
+
+The automatic mode detects vehicle movements and triggers the trip analysis without driver intervention while the application is in background. The analysis is stopped automatically at the end of the trip.
+
+This feature is recommended to avoid driver distraction and phone handling while driving. The automatic mode has been optimized to limit the battery drain.
+
+To enable automatic trip detection mode, call the following method:
+
+```typescript
+activateAutoStart(true);
+```
+
+To disable automatic trip detection call the same method with parameter enable set to false
+
+```typescript
+activateAutoStart(false);
+```
+
+> ⚠️
+>
+> If a trip is running when automatic trip detection is disable, the trip will not be canceled. If you want to cancel the trip, you should also call cancelTrip method.
