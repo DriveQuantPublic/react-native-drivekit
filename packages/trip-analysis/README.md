@@ -124,6 +124,8 @@ To validate that the initialization has been done successfully, please check you
 | Method                                    | Return Type     | iOS | Android |
 | ----------------------------------------- | --------------- | :-: | :-----: |
 | [activateAutoStart()](#activateautostart) | `Promise<void>` | ✅  |   ✅    |
+| [startTrip()](#starttrip)                 | `Promise<void>` | ✅  |   ✅    |
+| [stopTrip()](#stoptrip)                   | `Promise<void>` | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -150,3 +152,39 @@ activateAutoStart(false);
 > ⚠️
 >
 > If a trip is running when automatic trip detection is disable, the trip will not be canceled. If you want to cancel the trip, you should also call cancelTrip method.
+
+## startTrip
+
+```typescript
+startTrip(): void
+```
+
+You can start a trip by calling the following method:
+
+```typescript
+startTrip();
+```
+
+> ℹ️
+>
+> If a trip's already started, calling this method will have no effect.
+
+## stopTrip
+
+```typescript
+stopTrip(): void
+```
+
+You can stop a trip by calling the following method. The trip will be stopped instantly:
+
+```typescript
+stopTrip();
+```
+
+> ℹ️
+>
+> If a vehicle stops longer than the [timeout configured](https://docs.drivequant.com/trip-analysis/ios/advanced-configuration#custom-stop-timeout), the trip will be stopped automatically.
+
+> ℹ️
+>
+> If there is no running trip, calling this method will have no effect.

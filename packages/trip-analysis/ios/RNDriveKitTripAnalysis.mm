@@ -10,9 +10,27 @@ RCT_REMAP_METHOD(activateAutoStart, activateAutoStartWithEnable:(nonnull NSNumbe
     [self activateAutoStart:enable];
 }
 
+RCT_REMAP_METHOD(startTrip, startTripAnalysis)
+{
+    [self startTrip];
+}
+
+RCT_REMAP_METHOD(stopTrip, stopTripAnalysis )
+{
+    [self stopTrip];
+}
+
 
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
+}
+
+- (void)startTrip {
+    [RNDriveKitTripAnalysisWrapper.shared startTrip];
+}
+
+- (void)stopTrip {
+    [RNDriveKitTripAnalysisWrapper.shared stopTrip];
 }
 
 // Don't compile this code when we build for the old architecture.
