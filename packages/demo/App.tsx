@@ -12,10 +12,15 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import {multiply} from '@react-native-drivekit/trip-analysis';
-import {checkBluetoothPermissions} from './src/services/bluetooth';
+import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
 import CheckBox from '@react-native-community/checkbox';
+import {checkLocationsPermissions} from './src/services/permissions/location';
+import {checkRecognitionPermission} from './src/services/permissions/recognition';
+import {checkNotificationPermission} from './src/services/permissions/notification';
+import {checkBatteryOptimizationPermission} from './src/services/permissions/batteryOptimization';
+import {checkMotionPermission} from './src/services/permissions/motion';
 
 const inputHeight = 40;
 
@@ -35,7 +40,16 @@ const App = () => {
   });
 
   useEffect(() => {
-    checkBluetoothPermissions();
+    const checkPermissions = async () => {
+      await checkLocationsPermissions();
+      await checkRecognitionPermission();
+      await checkBatteryOptimizationPermission();
+      await checkBluetoothPermissions();
+      await checkNotificationPermission();
+      await checkMotionPermission();
+    };
+
+    checkPermissions();
   }, []);
 
   const text = `3 * 4 = ${result}`;

@@ -142,11 +142,13 @@ repositories {
 }
 
 def kotlin_version = getExtOrDefault('kotlinVersion')
+def driveKitTripAnalysis_version = getExtOrDefault('driveKitTripAnalysisVersion')
 
 dependencies {
     //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  implementation "com.drivequant.drivekit:drivekit-trip-analysis:$driveKitTripAnalysis_version"
 // From node_modules
 }
 
@@ -154,6 +156,6 @@ if (isNewArchitectureEnabled()) {
   react {
     jsRootDir = file("../src/")
     libraryName = "DrivekitTripAnalysis"
-    codegenJavaPackageName = "com.drivekittripanalysis"
+    codegenJavaPackageName = "com.reactnativedrivekittripanalysis"
   }
 }

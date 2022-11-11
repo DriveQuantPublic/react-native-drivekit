@@ -1,4 +1,4 @@
-package com.drivekittripanalysis
+package com.reactnativedrivekittripanalysis
 import com.facebook.react.TurboReactPackage
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.NativeModule

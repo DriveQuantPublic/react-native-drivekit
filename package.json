@@ -16,11 +16,18 @@
     "commitlint": "^17.0.2"
   },
   "scripts": {
+    "postinstall": "patch-package",
     "release": "lerna publish --no-private"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "dependencies": {
+    "patch-packages": "^1.0.0"
+  },
+  "resolutions": {
+    "@types/react": "18.0.25"
   }
 }
