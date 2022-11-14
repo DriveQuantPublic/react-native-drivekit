@@ -270,5 +270,5 @@ disableLogging();
 To enable logging, call the following method specifying the path of the log directory.
 
 ```typescript
-disableLogging({ logPath: '/path/to/my/log/directory' });
+enableLogging({ logPath: '/path/to/my/log/directory' });
 ```
