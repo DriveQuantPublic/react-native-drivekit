@@ -1,4 +1,9 @@
-import { NativeModules, Platform } from 'react-native';
+import {
+  EmitterSubscription,
+  NativeEventEmitter,
+  NativeModules,
+  Platform,
+} from 'react-native';
 
 const LINKING_ERROR =
   `The package 'react-native-drivekit-trip-analysis' doesn't seem to be linked. Make sure: \n\n` +
@@ -38,4 +43,28 @@ export function stopTrip(): void {
 
 export function enableMonitorPotentialTripStart(enable: boolean): void {
   return DrivekitTripAnalysis.enableMonitorPotentialTripStart(enable);
+}
+
+export enum CancelTripReason {
+  USER = 'USER',
+  HIGH_SPEED = 'HIGH_SPEED',
+  NO_SPEED = 'NO_SPEED',
+  NO_BEACON = 'NO_BEACON',
+  MISSING_CONFIGURATION = 'MISSING_CONFIGURATION',
+  NO_GPS_DATA = 'NO_GPS_DATA',
+  RESET = 'RESET',
+  BEACON_NO_SPEED = 'BEACON_NO_SPEED',
+  NO_BLUETOOTH_DEVICE = 'NO_BLUETOOTH_DEVICE',
+}
+
+type Listeners = {
+  tripCancelled: (reason: CancelTripReason) => void;
+};
+
+export function addEventListener<E extends keyof Listeners>(
+  event: E,
+  callback: Listeners[E]
+): EmitterSubscription {
+  const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);
+  return eventEmitter.addListener(event, callback);
 }
