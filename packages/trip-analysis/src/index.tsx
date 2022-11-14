@@ -68,6 +68,7 @@ export enum StartMode {
 }
 
 type Listeners = {
+  tripStarted: (startMode: StartMode) => void;
   tripCancelled: (reason: CancelTripReason) => void;
   potentialTripStart: (startMode: StartMode) => void;
 };
