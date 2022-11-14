@@ -121,11 +121,12 @@ To validate that the initialization has been done successfully, please check you
 
 ## API
 
-| Method                                    | Return Type     | iOS | Android |
-| ----------------------------------------- | --------------- | :-: | :-----: |
-| [activateAutoStart()](#activateautostart) | `Promise<void>` | ✅  |   ✅    |
-| [startTrip()](#starttrip)                 | `Promise<void>` | ✅  |   ✅    |
-| [stopTrip()](#stoptrip)                   | `Promise<void>` | ✅  |   ✅    |
+| Method                                                                | Return Type     | iOS | Android |
+| --------------------------------------------------------------------- | --------------- | :-: | :-----: |
+| [activateAutoStart()](#activateautostart)                             | `Promise<void>` | ✅  |   ✅    |
+| [startTrip()](#starttrip)                                             | `Promise<void>` | ✅  |   ✅    |
+| [stopTrip()](#stoptrip)                                               | `Promise<void>` | ✅  |   ✅    |
+| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>` | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -188,3 +189,15 @@ stopTrip();
 > ℹ️
 >
 > If there is no running trip, calling this method will have no effect.
+
+### enableMonitorPotentialTripStart
+
+```typescript
+enableMonitorPotentialTripStart(enable: boolean): void
+```
+
+To listen to trigger events that indicate a start of trip, even if the autostart is disabled, you can call the following method:
+
+```typescript
+enableMonitorPotentialTripStart(true);
+```
