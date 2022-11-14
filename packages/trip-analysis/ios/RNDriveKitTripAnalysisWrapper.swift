@@ -30,8 +30,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {
     public func tripStarted(startMode: DriveKitTripAnalysisModule.StartMode) {
-        // Listener not yet implemented
-        return
+        let rnStartMode = mapStartMode(startMode: startMode)
+        if let unwrappedRNStartMode = rnStartMode {
+            RNEventEmitter.shared.dispatch(name: "tripStarted", body: unwrappedRNStartMode)
+        }
     }
     
     public func tripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) {
@@ -96,25 +98,9 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func potentialTripStart(startMode: DriveKitTripAnalysisModule.StartMode) {
-        var eventName: String? = nil
-        switch startMode {
-        case .gps:
-            eventName = "GPS"
-        case .beacon:
-            eventName = "BEACON"
-        case .manual:
-            eventName = "MANUAL"
-        case .geozone:
-            eventName = "GEOZONE"
-        case .bluetooth:
-            eventName = "BLUETOOTH"
-        case .bluetooth_unknown:
-            eventName = "BLUETOOTH_UNKNOWN"
-        @unknown default:
-            print("[potentialTripStart] Unknown start mode \(startMode.rawValue)")
-        }
-        if let unwrappedEventName = eventName {
-            RNEventEmitter.shared.dispatch(name: "potentialTripStart", body: unwrappedEventName)
+        let rnStartMode = mapStartMode(startMode: startMode)
+        if let unwrappedRNStartMode = rnStartMode {
+            RNEventEmitter.shared.dispatch(name: "potentialTripStart", body: unwrappedRNStartMode)
         }
     }
     
