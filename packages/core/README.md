@@ -91,7 +91,7 @@ To finish the module's initialization, you need to :
 setApiKey(key: string): void
 ```
 
-#### Specify your API key
+#### Specify your user ID
 
 ```typescript
 setUserId(userId: string): void
