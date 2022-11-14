@@ -145,19 +145,19 @@ const App = () => {
 
         <Spacer factor={2} />
         <Text style={styles.title}>Trip Analysis</Text>
-        <Button
-          title={
-            monitorPotentialTripStart
-              ? 'Monitor potential trip start'
-              : 'Do not monitor potential trip start '
-          }
-          onPress={() => {
-            setMonitorPotentialTripStart(prev => !prev);
+        <View style={styles.row}>
+          <CheckBox
+            value={monitorPotentialTripStart}
+            onValueChange={value => {
+              setMonitorPotentialTripStart(value);
             DriveKitTripAnalysis.enableMonitorPotentialTripStart(
               monitorPotentialTripStart,
             );
           }}
         />
+          <Spacer factor={1} />
+          <Text>Should monitor potential starts ?</Text>
+        </View>
         <Spacer factor={1} />
         <Button
           title={'Start'}
