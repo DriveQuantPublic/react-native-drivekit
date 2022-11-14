@@ -19,9 +19,9 @@ class RNEventEmitter: NSObject {
     }
 
     @objc func dispatch(name: String, body: Any?) {
-        RNEventEmitter.eventEmitter.sendEvent(withName: name, body: body)
+        RNEventEmitter.eventEmitter?.sendEvent(withName: name, body: body)
     }
 
-    @objc static var allEvents: [String] =  ["tripCancelled"]
+    @objc static var allEvents: [String] =  ["tripCancelled", "potentialTripStart"]
     
 }

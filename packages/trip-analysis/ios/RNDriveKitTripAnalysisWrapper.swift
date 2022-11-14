@@ -96,8 +96,26 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func potentialTripStart(startMode: DriveKitTripAnalysisModule.StartMode) {
-        // Listener not yet implemented
-        return
+        var eventName: String? = nil
+        switch startMode {
+        case .gps:
+            eventName = "GPS"
+        case .beacon:
+            eventName = "BEACON"
+        case .manual:
+            eventName = "MANUAL"
+        case .geozone:
+            eventName = "GEOZONE"
+        case .bluetooth:
+            eventName = "BLUETOOTH"
+        case .bluetooth_unknown:
+            eventName = "BLUETOOTH_UNKNOWN"
+        @unknown default:
+            print("[potentialTripStart] Unknown start mode \(startMode.rawValue)")
+        }
+        if let unwrappedEventName = eventName {
+            RNEventEmitter.shared.dispatch(name: "potentialTripStart", body: unwrappedEventName)
+        }
     }
     
     public func crashDetected(crashInfo: DriveKitTripAnalysisModule.DKCrashInfo) {
