@@ -20,6 +20,10 @@ RCT_REMAP_METHOD(stopTrip, stopTripAnalysis )
     [self stopTrip];
 }
 
+RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStartWithEnable:(nonnull NSNumber *)enable)
+{
+    [self enableMonitorPotentialTripStart:enable];
+}
 
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
@@ -31,6 +35,10 @@ RCT_REMAP_METHOD(stopTrip, stopTripAnalysis )
 
 - (void)stopTrip {
     [RNDriveKitTripAnalysisWrapper.shared stopTrip];
+}
+
+- (void)enableMonitorPotentialTripStart:(NSNumber *)enable {
+    [RNDriveKitTripAnalysisWrapper.shared enableMonitorPotentialTripStartWithEnable:enable];
 }
 
 // Don't compile this code when we build for the old architecture.

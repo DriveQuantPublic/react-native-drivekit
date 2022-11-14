@@ -29,6 +29,8 @@ const App = () => {
   const [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
+  const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
+    useState(false);
 
   useEffect(() => {
     const checkPermissions = async () => {
@@ -143,6 +145,19 @@ const App = () => {
 
         <Spacer factor={2} />
         <Text style={styles.title}>Trip Analysis</Text>
+        <Button
+          title={
+            monitorPotentialTripStart
+              ? 'Monitor potential trip start'
+              : 'Do not monitor potential trip start '
+          }
+          onPress={() => {
+            setMonitorPotentialTripStart(prev => !prev);
+            DriveKitTripAnalysis.enableMonitorPotentialTripStart(
+              monitorPotentialTripStart,
+            );
+          }}
+        />
         <Spacer factor={1} />
         <Button
           title={'Start'}

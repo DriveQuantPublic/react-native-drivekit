@@ -22,6 +22,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc internal func stopTrip() -> Void {
         DriveKitTripAnalysis.shared.stopTrip();
     }
+    
+    @objc internal func enableMonitorPotentialTripStart(enable: NSNumber) -> Void {
+        DriveKitTripAnalysis.shared.monitorPotentialTripStart =  enable.boolValue;
+    }
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {
@@ -79,6 +83,5 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
         // Listener not yet implemented
         return
     }
-    
     
 }
