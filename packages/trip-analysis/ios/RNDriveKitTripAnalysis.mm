@@ -3,6 +3,35 @@
 
 
 @implementation RNDriveKitTripAnalysis
+{
+  bool hasListeners;
+}
+
+- (id)init {
+    self = [super init];
+    if(self){
+        [RNEventEmitter.shared registerEventEmitterWithEventEmitter:self];
+    }
+    return self;
+}
+
++ (BOOL)requiresMainQueueSetup
+{
+    return NO;
+}
+
+- (NSArray<NSString *>*)supportedEvents {
+    return RNEventEmitter.allEvents;
+}
+
+-(void)startObserving {
+    hasListeners = YES;
+}
+
+-(void)stopObserving {
+    hasListeners = NO;
+}
+
 RCT_EXPORT_MODULE()
 
 RCT_REMAP_METHOD(activateAutoStart, activateAutoStartWithEnable:(nonnull NSNumber *)enable)

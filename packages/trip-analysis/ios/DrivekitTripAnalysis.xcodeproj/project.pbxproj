@@ -27,6 +27,7 @@
 		09077C2429195D210025D59F /* RNDriveKitTripAnalysisWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNDriveKitTripAnalysisWrapper.swift; sourceTree = "<group>"; };
 		09E042D22919371E00BD67F5 /* RNDriveKitTripAnalysis.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RNDriveKitTripAnalysis.mm; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libDrivekitTripAnalysis.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDrivekitTripAnalysis.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		94464FFF2922BFFE00872235 /* RNEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNEventEmitter.swift; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNDriveKitTripAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNDriveKitTripAnalysis.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +53,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				94464FFF2922BFFE00872235 /* RNEventEmitter.swift */,
 				09077C2429195D210025D59F /* RNDriveKitTripAnalysisWrapper.swift */,
 				09E042D22919371E00BD67F5 /* RNDriveKitTripAnalysis.mm */,
 				B3E7B5881CC2AC0600A0062D /* RNDriveKitTripAnalysis.h */,
