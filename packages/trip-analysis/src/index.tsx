@@ -57,8 +57,18 @@ export enum CancelTripReason {
   NO_BLUETOOTH_DEVICE = 'NO_BLUETOOTH_DEVICE',
 }
 
+export enum StartMode {
+  GPS = 'GPS',
+  BEACON = 'BEACON',
+  MANUAL = 'MANUAL',
+  GEOZONE = 'GEOZONE',
+  BLUETOOTH = 'BLUETOOTH',
+  BLUETOOTH_UNKNOWN = 'BLUETOOTH_UNKNOWN',
+}
+
 type Listeners = {
   tripCancelled: (reason: CancelTripReason) => void;
+  potentialTripStart: (startMode: StartMode) => void;
 };
 
 export function addEventListener<E extends keyof Listeners>(

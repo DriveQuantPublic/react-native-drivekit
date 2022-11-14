@@ -61,6 +61,16 @@ const App = () => {
     return () => listener.remove();
   });
 
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'potentialTripStart',
+      (startMode: number) => {
+        console.log('potential trip start', startMode);
+      },
+    );
+    return () => listener.remove();
+  });
+
   return (
     <SafeAreaView style={styles.page}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
