@@ -7,5 +7,6 @@
 - (void)startTrip;
 - (void)stopTrip;
 - (void)enableMonitorPotentialTripStartWithEnable:(NSNumber * _Nonnull)enable;
+- (NSNumber * _Nonnull)getMonitorPotentialTripStart;
 
 @end

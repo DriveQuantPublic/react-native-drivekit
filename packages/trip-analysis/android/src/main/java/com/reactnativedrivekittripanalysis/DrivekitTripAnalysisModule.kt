@@ -31,6 +31,11 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
     DriveKitTripAnalysis.monitorPotentialTripStart = enable;
   }
 
+  @ReactMethod
+  override fun getMonitorPotentialTripStart(): Boolean {
+  	return DriveKitTripAnalysis.monitorPotentialTripStart
+  }
+
   companion object {
     const val NAME = "RNDriveKitTripAnalysis"
 

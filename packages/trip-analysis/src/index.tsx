@@ -39,3 +39,7 @@ export function stopTrip(): void {
 export function enableMonitorPotentialTripStart(enable: boolean): void {
   return DrivekitTripAnalysis.enableMonitorPotentialTripStart(enable);
 }
+
+export function getMonitorPotentialTripStart(): Promise<boolean> {
+	return DrivekitTripAnalysis.getMonitorPotentialTripStart();
+}

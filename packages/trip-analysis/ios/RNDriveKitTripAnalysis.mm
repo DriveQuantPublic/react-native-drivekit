@@ -25,6 +25,12 @@ RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStar
     [self enableMonitorPotentialTripStart:enable];
 }
 
+RCT_REMAP_METHOD(getMonitorPotentialTripStart, getMonitorPotentialTripStartWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSNumber *result = [self getMonitorPotentialTripStart];
+    resolve(result);
+}
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
@@ -40,6 +46,11 @@ RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStar
 - (void)enableMonitorPotentialTripStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared enableMonitorPotentialTripStartWithEnable:enable];
 }
+
+- (NSNumber *)getMonitorPotentialTripStart {
+    return [RNDriveKitTripAnalysisWrapper.shared getMonitorPotentialTripStart];
+}
+
 
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED

@@ -26,6 +26,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc internal func enableMonitorPotentialTripStart(enable: NSNumber) -> Void {
         DriveKitTripAnalysis.shared.monitorPotentialTripStart =  enable.boolValue;
     }
+
+    @objc internal func getMonitorPotentialTripStart() -> NSNumber {
+        return NSNumber(value: DriveKitTripAnalysis.shared.monitorPotentialTripStart)
+    }
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {
