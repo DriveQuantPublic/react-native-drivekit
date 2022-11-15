@@ -294,7 +294,7 @@ const isValid = await isTokenValid();
   getUriLogFile(): Promise<{ uri: string } | null>;
 ```
 
-Once you are connected to the SDK with your key and a user ID, you can check the validity of the generated token by calling:
+You can retrieve the Uri log file by calling the following method:
 
 ```typescript
 const { uri } = await getUriLogFile();
