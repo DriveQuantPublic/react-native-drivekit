@@ -114,16 +114,17 @@ To validate that the initialization has been done successfully, please check you
 
 ## API
 
-| Method                            | Return Type        | iOS | Android |
-| --------------------------------- | ------------------ | :-: | :-----: |
-| [setApiKey()](#setapikey)         | `Promise<void>`    | ✅  |   ✅    |
-| [setUserId()](#setuserid)         | `Promise<void>`    | ✅  |   ✅    |
-| [updateUserId()](#updateuserid)   | `Promise<void>`    | ✅  |   ✅    |
-| [deleteAccount()](#deleteaccount) | `Promise<void>`    | ✅  |   ✅    |
-| [reset()](#reset)                 | `Promise<void>`    | ✅  |   ✅    |
-| [enableLogging()](#logging)       | `Promise<void>`    | ✅  |   ✅    |
-| [disableLogging()](#logging)      | `Promise<void>`    | ✅  |   ✅    |
-| [isTokenValid()](#istokenvalid)   | `Promise<boolean>` | ✅  |   ✅    |
+| Method                            | Return Type                        | iOS | Android |
+| --------------------------------- | ---------------------------------- | :-: | :-----: |
+| [setApiKey()](#setapikey)         | `Promise<void>`                    | ✅  |   ✅    |
+| [setUserId()](#setuserid)         | `Promise<void>`                    | ✅  |   ✅    |
+| [updateUserId()](#updateuserid)   | `Promise<void>`                    | ✅  |   ✅    |
+| [deleteAccount()](#deleteaccount) | `Promise<void>`                    | ✅  |   ✅    |
+| [reset()](#reset)                 | `Promise<void>`                    | ✅  |   ✅    |
+| [enableLogging()](#logging)       | `Promise<void>`                    | ✅  |   ✅    |
+| [disableLogging()](#logging)      | `Promise<void>`                    | ✅  |   ✅    |
+| [getUriLogFile()](#getUriLogFile) | `Promise<{ uri: string } \| null>` | ❌  |   ✅    |
+| [isTokenValid()](#istokenvalid)   | `Promise<boolean>`                 | ✅  |   ✅    |
 
 ### setApiKey
 
@@ -285,4 +286,16 @@ Once you are connected to the SDK with your key and a user ID, you can check the
 
 ```typescript
 const isValid = await isTokenValid();
+```
+
+### getUriLogFile
+
+```typescript
+  getUriLogFile(): Promise<{ uri: string } | null>;
+```
+
+Once you are connected to the SDK with your key and a user ID, you can check the validity of the generated token by calling:
+
+```typescript
+const { uri } = await getUriLogFile();
 ```
