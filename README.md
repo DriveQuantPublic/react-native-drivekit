@@ -16,10 +16,10 @@ It is strongly recommended to use this version or later versions.
 First you need to install the Core module. 
 This module is mandatory and includes methods to initialize DriveKit, to configure your API key and to create a user.
 
-To install this module, follow step by step the method described in the [Core documentation](./packages//core/README.md)
+To install this module, follow step by step the method described in the [Core documentation](./packages/core/README.md)
 
 ### Step 2: Install the Trip Analysis module
 
 After installing the Core component, you need to install the Trip Analysis component which manages the trip recording and the automatic mode configuration.
 
-To install this module, follow step by step the method described in the [Trip Analysis documentation](./packages//trip-analysis/README.md)
+To install this module, follow step by step the method described in the [Trip Analysis documentation](./packages/trip-analysis/README.md)
