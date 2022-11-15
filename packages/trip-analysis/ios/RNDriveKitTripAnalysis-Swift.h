@@ -6,5 +6,6 @@
 - (void)activateAutoStartWithEnable:(NSNumber * _Nonnull)enable;
 - (void)startTrip;
 - (void)stopTrip;
+- (void)enableMonitorPotentialTripStartWithEnable:(NSNumber * _Nonnull)enable;
 
 @end
