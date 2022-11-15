@@ -17,4 +17,4 @@ First you need to install the core module. Follow this [documentation](./package
 
 ### Step 2: Install the trip analysis module
 
-First you need to install the core module. Follow this [documentation](./packages//trip_analysis/README.md)
+First you need to install the core module. Follow this [documentation](./packages//trip-analysis/README.md)
