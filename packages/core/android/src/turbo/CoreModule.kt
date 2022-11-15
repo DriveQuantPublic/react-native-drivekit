@@ -68,6 +68,11 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       CoreModuleImpl.disableLogging(showInConsole)
     }
 
+    @Override
+    fun getUriLogFile() {
+      // TODO
+    }
+
 
     companion object {
         val NAME: String = CoreModuleImpl.NAME
