@@ -36,10 +36,14 @@ const App = () => {
     const checkPermissions = async () => {
       await checkLocationsPermissions();
       await checkRecognitionPermission();
-      await checkBatteryOptimizationPermission();
       await checkBluetoothPermissions();
       await checkNotificationPermission();
       await checkMotionPermission();
+      /**
+       * There is no open source lybrary that promisify the modal call
+       * This is why we put it at the end.
+       */
+      await checkBatteryOptimizationPermission();
       DriveKitTripAnalysis.activateAutoStart(true);
     };
 
@@ -150,11 +154,11 @@ const App = () => {
             value={monitorPotentialTripStart}
             onValueChange={value => {
               setMonitorPotentialTripStart(value);
-            DriveKitTripAnalysis.enableMonitorPotentialTripStart(
-              monitorPotentialTripStart,
-            );
-          }}
-        />
+              DriveKitTripAnalysis.enableMonitorPotentialTripStart(
+                monitorPotentialTripStart,
+              );
+            }}
+          />
           <Spacer factor={1} />
           <Text>Should monitor potential starts ?</Text>
         </View>

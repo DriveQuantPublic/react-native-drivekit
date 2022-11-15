@@ -62,14 +62,12 @@ Our recommandation is to use [react-native-permissions](https://github.com/zoont
 
 In order to make Trip Analysis SDK to work properly, you need to disable battery optimization for your app: [native documentation](https://docs.drivequant.com/trip-analysis/android/get-started#battery-optimization)
 
-Our recommandation is to use [react-native-disable-battery-optimizations-android](https://github.com/rasheedk/react-native-disable-battery-optimizations-android).You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).
+Our recommandation is to use [react-native-battery-optimization-check](https://github.com/losthakkun/react-native-battery-optimization-check).You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).
 
 **IMPORTANT**
 
-This library is not actively maintained, but it does the job. To make it works you need to:
-
-1. Patch the `buile.gradle` file using `patch-package`. You can find the path we applied in our demo app [here](../../patches/react-native-disable-battery-optimizations-android%2B1.0.7.patch).
-2. Define the typescript interface, if needed. You can find the type definition in our demo app [here](../demo/src/types/react-native-disable-battery-optimizations-android.d.ts).
+This library is not actively maintained. The problem is that the method that call the native modal is not promisified. It means that we can't wait for the user answer before continuing. At the moment, our recommandation is to check this permission at the end of your flow.
+On our side, we are working on implementing a better solution.
 
 This is the better solution we found. If you find a better solution, please feel free to open an issue/PR in this repository.
 
