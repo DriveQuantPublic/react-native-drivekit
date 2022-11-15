@@ -41,5 +41,8 @@ yarn ios
 ```
 
 ## How to run the sample app?
+To run the sample application you must have a valid API key.
+Please, contact us to get your API key via: [contact@drivequant.com](mailto:contact@drivequant.com)
+
 
 
