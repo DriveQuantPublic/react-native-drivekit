@@ -13,7 +13,10 @@ It is strongly recommended to use this version or later versions.
 
 ### Step 1: Install the core module
 
-First you need to install the core module. Follow this [documentation](./packages//core/README.md)
+First you need to install the core module. 
+This module is mandatory and includes methods to initialize DriveKit, to configure your API key and to create a user.
+
+To install this module, follow step by step the method described in the [core documentation](./packages//core/README.md)
 
 ### Step 2: Install the trip analysis module
 
