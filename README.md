@@ -15,6 +15,6 @@ It is strongly recommended to use this version or later versions.
 
 First you need to install the core module. Follow this [documentation](./packages//core/README.md)
 
-### Step 2: Install the tri analysis module
+### Step 2: Install the trip analysis module
 
 First you need to install the core module. Follow this [documentation](./packages//trip_analysis/README.md)
