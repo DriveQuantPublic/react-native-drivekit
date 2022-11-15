@@ -70,13 +70,15 @@ export enum StartMode {
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripCancelled: (reason: CancelTripReason) => void;
+  tripFinished: (data: { response: any; post: any }) => void;
   potentialTripStart: (startMode: StartMode) => void;
 };
+
+const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);
 
 export function addEventListener<E extends keyof Listeners>(
   event: E,
   callback: Listeners[E]
 ): EmitterSubscription {
-  const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);
   return eventEmitter.addListener(event, callback);
 }
