@@ -4,7 +4,7 @@ This is an sample application to illustrate how to embed the DriveKit SDK into a
 
 The code of this app is designed to help you integrate DriveKit into your application.
 
-## How to run the sample app?
+## How to launch the sample app?
 
 Open the main repository folder on the terminal.
 
@@ -39,3 +39,7 @@ To run on iOS, execute the following command:
 ```
 yarn ios
 ```
+
+## How to run the sample app?
+
+
