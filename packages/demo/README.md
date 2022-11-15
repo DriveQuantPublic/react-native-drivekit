@@ -47,7 +47,7 @@ Please, contact us to get your API key via: [contact@drivequant.com](mailto:cont
 
 Once you have the API Key please paste it into the corresponding field on the homepage of the sample app.
 
-![App](./doc/img/sample_app.png)
+![App](./doc/img/sample_app.png){height=400px width=500px}
 
 ## More info
 The full documentation to install the DriveKit SDK in a React Native application is available [here](.//README.md) 
