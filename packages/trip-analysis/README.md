@@ -41,9 +41,12 @@ import com.reactnativedrivekittripanalysis.DrivekitTripAnalysisModule;
   public void onCreate() {
     super.onCreate();
     CoreModuleImpl.INSTANCE.initialize(this);
-    // You can replace the icon with a custom one by changing the parameter of initialize
-    DrivekitTripAnalysisModule.Companion.initialize(R.drawable.common_google_signin_btn_icon_dark); // ADD THIS LINE
-    // ...
+    
+    // ADD THESE LINES
+    final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
+    DrivekitTripAnalysisModule.Companion.initialize(tripNotification);
+    
+    ...
   }
 ```
 
