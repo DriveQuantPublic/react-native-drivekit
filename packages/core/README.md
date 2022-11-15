@@ -65,6 +65,7 @@ Call `initialize` method in your `AppDelegate.mm`.
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [RNDriveKitCoreWrapper.shared initialize];
+  ...
 }
 ```
 
@@ -196,7 +197,7 @@ deleteAccount(false);
 instantDeletion can have 2 values:
 
 - `false` : **Default value**, allows the user to recover the deleted account by logging-in again with the same credentials. Users have 30 days starting from the day when the account was deleted.
-- `true` : Allow to delete an account instantly. The account and all the related data will be immediately deleted and no rollback is possible.
+- `true` : Allows to delete an account instantly. The account and all the related data will be immediately deleted and no rollback is possible.
 
 > ℹ️
 >
