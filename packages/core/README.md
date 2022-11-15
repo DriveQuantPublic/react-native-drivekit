@@ -280,7 +280,7 @@ enableLogging({ logPath: '/path/to/my/log/directory' });
   isTokenValid(): Promise<boolean>;
 ```
 
-Once you connected to the SDK with your key and a user ID, you can check the validity of the generated token by calling:
+Once you are connected to the SDK with your key and a user ID, you can check the validity of the generated token by calling:
 
 ```typescript
 const isValid = await isTokenValid();
