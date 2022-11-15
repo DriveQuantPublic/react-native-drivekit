@@ -175,6 +175,19 @@ const App = () => {
             DriveKitTripAnalysis.stopTrip();
           }}
         />
+
+        <Spacer factor={2} />
+        <Text style={styles.title}>Logs</Text>
+        <Spacer factor={1} />
+        <Button
+          title={'Get logs URI (Andon only)'}
+          onPress={async () => {
+            const result = await DriveKit.getUriLogFile();
+            if (result) {
+              Alert.alert('Logs URI', result.uri);
+            }
+          }}
+        />
       </ScrollView>
     </SafeAreaView>
   );
