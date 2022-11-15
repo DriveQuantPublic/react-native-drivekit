@@ -29,14 +29,13 @@ cd ios && bundle exec pod install && cd ..
 ```
   
 ### For an Android app
-
-- To run on Android, execute the following command
+To run on Android, execute the following command
 ```
 yarn android
 ```
 
 ### For an iOS app
-- To run on iOS, execute the following command
+To run on iOS, execute the following command
 ```
 yarn ios
 ```
