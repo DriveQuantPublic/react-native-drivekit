@@ -13,6 +13,7 @@ import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.exampleapp.newarchitecture.MainApplicationReactNativeHost;
 import com.reactnativedrivekitcore.CoreModuleImpl;
+import com.reactnativedrivekittripanalysis.RNTripNotification;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -57,7 +58,11 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     CoreModuleImpl.INSTANCE.initialize(this);
-    DrivekitTripAnalysisModule.Companion.initialize(R.drawable.common_google_signin_btn_icon_dark);
+    RNTripNotification tripNotification = new RNTripNotification(
+            "DriveKit SDK",
+            "Start a trip with DriveKit SDK",
+            R.drawable.common_google_signin_btn_icon_dark);
+    DrivekitTripAnalysisModule.Companion.initialize(tripNotification);
     // If you opted-in for the New Architecture, we enable the TurboModule system
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
