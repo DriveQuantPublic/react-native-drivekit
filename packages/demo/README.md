@@ -1,8 +1,8 @@
-# DriveKit React Native demo application
+# DriveKit React Native sample application
 
 This is an sample application to illustrate how to embed the DriveKit SDK into a React Native mobile application
 
-## How to run demo App
+## How to run the sample app?
 
 - Open the main repository folder on terminal
 
@@ -11,7 +11,7 @@ This is an sample application to illustrate how to embed the DriveKit SDK into a
 yarn
 ```
 
-- Go demo app folder  
+- Go to the demo application folder
 ```
 cd packages/demo
 ```
@@ -26,14 +26,14 @@ bundle install
 cd ios && bundle exec pod install && cd ..
 ```
   
-### Android
+### For an Android app
 
 - To run on Android, execute the following command
 ```
 yarn android
 ```
 
-### iOS
+### For an iOS app
 - To run on iOS, execute the following command
 ```
 yarn ios
