@@ -47,3 +47,5 @@ Please, contact us to get your API key via: [contact@drivequant.com](mailto:cont
 
 Once you have the API Key please paste it into the corresponding field on the homepage of the sample app.
 
+![](./doc/img/sample_app.png)
+
