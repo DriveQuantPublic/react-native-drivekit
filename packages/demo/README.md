@@ -6,24 +6,24 @@ The code of this app is designed to help you integrate DriveKit into your applic
 
 ## How to run the sample app?
 
-- Open the main repository folder on terminal
+Open the main repository folder on terminal.
 
-- Run the following command 
+Run the following command 
 ```
 yarn
 ```
 
-- Go to the demo application folder
+Go to the demo application folder
 ```
 cd packages/demo
 ```
 
-- Install Ruby dependencies using the following command 
+Install Ruby dependencies using the following command 
 ```
 bundle install
 ```
 
-- install iOS depenencies using the following command
+install iOS depenencies using the following command
 ```
 cd ios && bundle exec pod install && cd ..
 ```
