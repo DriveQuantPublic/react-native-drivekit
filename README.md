@@ -1,9 +1,13 @@
 # DriveKit React Native SDK
 
-This is the React Native interface for DriveKit iOS & Android.
+This documentation presents the React Native interfaces for the DriveKit SDK on iOS and Android.
 
-## Where do I go from here ?
+## How to install the DriveKit SDK in your React Native application?
 
-### Install the core module
+### Step 1 Install the core module
 
 First you need to install the core module. Follow this [documentation](./packages//core/README.md)
+
+### Step 1 Install the tri analysis module
+
+First you need to install the core module. Follow this [documentation](./packages//trip_analysis/README.md)
