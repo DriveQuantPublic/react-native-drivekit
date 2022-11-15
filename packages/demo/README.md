@@ -6,7 +6,7 @@ The code of this app is designed to help you integrate DriveKit into your applic
 
 ## How to run the sample app?
 
-Open the main repository folder on terminal.
+Open the main repository folder on the terminal.
 
 Run the following command 
 ```
