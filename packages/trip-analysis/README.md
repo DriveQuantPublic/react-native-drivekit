@@ -87,6 +87,7 @@ Call `initialize` method in your `AppDelegate.mm`.
 {
   [[RNDriveKitCoreWrapper.shared initialize];
   [RNDriveKitTripAnalysisWrapper.shared initializeWithLaunchOptions:launchOptions] // ADD THIS LINE
+  ...
 }
 ```
 
