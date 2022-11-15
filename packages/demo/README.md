@@ -50,4 +50,4 @@ Once you have the API Key please paste it into the corresponding field on the ho
 ![](./doc/img/sample_app.png)
 
 ## More info
-The full documentation to install the DriveKit SDK in a React Native application is available [here](.//README.md) 
+The full documentation to install the DriveKit SDK in a React Native application is available [here](/../../README.md) 
