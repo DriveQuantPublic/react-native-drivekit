@@ -1,6 +1,6 @@
-# DriveKit React Native SDK demo App
+# DriveKit React Native demo application
 
-This is the React Native Demo App using DriveKit iOS & Android.
+This is an sample application to illustrate how to embed the DriveKit SDK into a React Native mobile application
 
 ## How to run demo App
 
