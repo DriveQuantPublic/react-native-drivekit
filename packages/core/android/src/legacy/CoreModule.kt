@@ -1,7 +1,5 @@
 package com.reactnativedrivekitcore;
 
-import com.drivequant.drivekit.core.DriveKit
-import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
