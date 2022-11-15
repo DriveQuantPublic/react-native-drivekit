@@ -11,6 +11,7 @@ export interface Spec extends TurboModule {
   reset(): void;
   enableLogging(options?: { logPath?: string; showInConsole?: boolean }): void;
   disableLogging(options?: { showInConsole?: boolean }): void;
+  getUriLogFile(): Promise<{ uri: string } | null>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('Core');
