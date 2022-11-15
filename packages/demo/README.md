@@ -1,6 +1,8 @@
 # DriveKit React Native sample application
 
-This is an sample application to illustrate how to embed the DriveKit SDK into a React Native mobile application
+This is an sample application to illustrate how to embed the DriveKit SDK into a React Native mobile application.
+
+The code of this app is designed to help you integrate DriveKit into your application.
 
 ## How to run the sample app?
 
