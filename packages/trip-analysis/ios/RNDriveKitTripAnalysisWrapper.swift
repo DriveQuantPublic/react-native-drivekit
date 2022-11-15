@@ -30,8 +30,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {
     public func tripStarted(startMode: DriveKitTripAnalysisModule.StartMode) {
-        // Listener not yet implemented
-        return
+        let rnStartMode = mapStartMode(startMode: startMode)
+        if let unwrappedRNStartMode = rnStartMode {
+            RNEventEmitter.shared.dispatch(name: "tripStarted", body: unwrappedRNStartMode)
+        }
     }
     
     public func tripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) {
@@ -45,8 +47,34 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func tripCancelled(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) {
-        // Listener not yet implemented
-        return
+        var eventName: String? = nil
+        switch cancelTrip {
+        case .user:
+            eventName = "USER"
+        case .highspeed:
+            eventName = "HIGH_SPEED"
+        case .noSpeed:
+            eventName = "NO_SPEED"
+        case .noBeacon:
+            eventName = "NO_BEACON"
+        case .missingConfiguration:
+            eventName = "MISSING_CONFIGURATION"
+        case .noGPSData:
+            eventName = "NO_GPS_DATA"
+        case .reset:
+            eventName = "RESET"
+        case .beaconNoSpeed:
+            eventName = "BEACON_NO_SPEED"
+        case .noBluetoothDevice:
+            eventName = "NO_BLUETOOTH_DEVICE"
+            
+        @unknown default:
+            print("[tripCancelled] Unknown cancel trip reason \(cancelTrip.rawValue)")
+            
+        }
+        if let unwrappedEventName = eventName {
+            RNEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedEventName)
+        }
     }
     
     public func tripSavedForRepost() {
@@ -70,8 +98,10 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func potentialTripStart(startMode: DriveKitTripAnalysisModule.StartMode) {
-        // Listener not yet implemented
-        return
+        let rnStartMode = mapStartMode(startMode: startMode)
+        if let unwrappedRNStartMode = rnStartMode {
+            RNEventEmitter.shared.dispatch(name: "potentialTripStart", body: unwrappedRNStartMode)
+        }
     }
     
     public func crashDetected(crashInfo: DriveKitTripAnalysisModule.DKCrashInfo) {

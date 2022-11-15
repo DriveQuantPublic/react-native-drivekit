@@ -12,6 +12,7 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
+import type {CancelTripReason} from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
@@ -49,6 +50,36 @@ const App = () => {
 
     checkPermissions();
   }, []);
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripCancelled',
+      (reason: CancelTripReason) => {
+        console.log('Trip was canceled', reason);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'potentialTripStart',
+      (startMode: number) => {
+        console.log('potential trip start', startMode);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripStarted',
+      (startMode: number) => {
+        console.log('trip start', startMode);
+      },
+    );
+    return () => listener.remove();
+  });
 
   return (
     <SafeAreaView style={styles.page}>
