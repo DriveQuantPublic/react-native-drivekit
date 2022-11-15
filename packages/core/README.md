@@ -114,19 +114,21 @@ To validate that the initialization has been done successfully, please check you
 
 ## API
 
-| Method                            | Return Type                        | iOS | Android |
-| --------------------------------- | ---------------------------------- | :-: | :-----: |
-| [getApiKey()](#getapikey)         | `Promise<string>`                  | ✅  |   ✅    |
-| [setApiKey()](#setapikey)         | `Promise<void>`                    | ✅  |   ✅    |
-| [getUserId()](#getuserid)         | `Promise<string>`                  | ✅  |   ✅    |
-| [setUserId()](#setuserid)         | `Promise<void>`                    | ✅  |   ✅    |
-| [updateUserId()](#updateuserid)   | `Promise<void>`                    | ✅  |   ✅    |
-| [deleteAccount()](#deleteaccount) | `Promise<void>`                    | ✅  |   ✅    |
-| [reset()](#reset)                 | `Promise<void>`                    | ✅  |   ✅    |
-| [enableLogging()](#logging)       | `Promise<void>`                    | ✅  |   ✅    |
-| [disableLogging()](#logging)      | `Promise<void>`                    | ✅  |   ✅    |
-| [getUriLogFile()](#getUriLogFile) | `Promise<{ uri: string } \| null>` | ❌  |   ✅    |
-| [isTokenValid()](#istokenvalid)   | `Promise<boolean>`                 | ✅  |   ✅    |
+| Method                              | Return Type                        | iOS | Android |
+| ----------------------------------- | ---------------------------------- | :-: | :-----: |
+| [getApiKey()](#getapikey)           | `Promise<string>`                  | ✅  |   ✅    |
+| [setApiKey()](#setapikey)           | `Promise<void>`                    | ✅  |   ✅    |
+| [getUserId()](#getuserid)           | `Promise<string>`                  | ✅  |   ✅    |
+| [setUserId()](#setuserid)           | `Promise<void>`                    | ✅  |   ✅    |
+| [updateUserId()](#updateuserid)     | `Promise<void>`                    | ✅  |   ✅    |
+| [deleteAccount()](#deleteaccount)   | `Promise<void>`                    | ✅  |   ✅    |
+| [reset()](#reset)                   | `Promise<void>`                    | ✅  |   ✅    |
+| [enableLogging()](#logging)         | `Promise<void>`                    | ✅  |   ✅    |
+| [disableLogging()](#logging)        | `Promise<void>`                    | ✅  |   ✅    |
+| [getUriLogFile()](#getUriLogFile)   | `Promise<{ uri: string } \| null>` | ❌  |   ✅    |
+| [isTokenValid()](#istokenvalid)     | `Promise<boolean>`                 | ✅  |   ✅    |
+| [getUserInfo()](#getuserinfo)       | `Promise<UserInfo \| null>`        | ✅  |   ✅    |
+| [updateUserInfo()](#updateuserinfo) | `Promise<void>`                    | ✅  |   ✅    |
 
 ### getApiKey
 
@@ -157,7 +159,7 @@ setApiKey('MyAPIKey');
 ### getUserId
 
 ```typescript
-getUserId(): Promise<string> 
+getUserId(): Promise<string>
 ```
 
 This method can be useful to retrieve the current userId.
@@ -310,8 +312,51 @@ enableLogging({ logPath: '/path/to/my/log/directory' });
 
 Once you are connected to the SDK with your key and a user ID, you can check the validity of the generated token by calling:
 
-```typescript
+````typescript
 const isValid = await isTokenValid();
+
+### getUserInfo
+
+```typescript
+getUserInfo(
+  synchronizationType: 'default' | 'cache' = 'default'
+): Promise<UserInfo | null>
+````
+
+| UserInfo    | Type             |
+| ----------- | ---------------- |
+| `firstname` | `string \| null` |
+| `lastname`  | `string \| null` |
+| `pseudo`    | `string \| null` |
+
+To get user’s information (first name, last name and pseudo), call the getUserInfo method. It will retrieve and save these data locally:
+
+```typescript
+const userInfo = await getUserInfo();
+```
+
+### updateUserInfo
+
+```typescript
+updateUserInfo(
+  userInfo: UserInfo
+): Promise<void>
+```
+
+| UserInfo    | Type             |
+| ----------- | ---------------- |
+| `firstname` | `string \| null` |
+| `lastname`  | `string \| null` |
+| `pseudo`    | `string \| null` |
+
+You can add information to a user's account such as first name, last name and pseudo. These details are optional and you can choose to make the user's account anonymous. To update the user's information, you must call the updateUserInfo method:
+
+```typescript
+await updateUserInfo({
+  firstname: 'firstname',
+  lastname: 'lastname',
+  pseudo: 'pseudo',
+});
 ```
 
 ### getUriLogFile
