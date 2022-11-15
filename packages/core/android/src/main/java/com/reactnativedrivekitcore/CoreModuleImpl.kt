@@ -1,6 +1,10 @@
 package com.reactnativedrivekitcore;
 
+import android.content.Context
+import android.net.Uri
 import com.drivequant.drivekit.core.DriveKit
+import com.drivequant.drivekit.core.DriveKitLog
+import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
 
 /**
@@ -9,9 +13,11 @@ import com.facebook.react.bridge.Promise
  */
 object CoreModuleImpl {
     const val NAME = "RNDriveKitCore"
+    var application: android.app.Application? = null
 
-    fun initialize(application: android.app.Application){
+  fun initialize(application: android.app.Application){
       DriveKit.initialize(application)
+      this.application = application
     }
 
     fun setApiKey(key: String){
@@ -51,4 +57,14 @@ object CoreModuleImpl {
       DriveKit.disableLogging(showInConsole ?: true)
     }
 
+    fun getUriLogFile(promise: Promise){
+      try {
+        val uri =  this.application?.let { DriveKitLog.getLogUriFile(it.applicationContext) } ?: run { null }
+        val result = Arguments.createMap()
+        result.putString("uri", uri.toString())
+        promise.resolve(result)
+      } catch (e: Exception) {
+        promise.reject("Get URI log file", "Unable to get the uri log file")
+      }
+    }
 }
