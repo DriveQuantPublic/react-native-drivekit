@@ -39,15 +39,6 @@ yarn android
 yarn ios
 ```
 
-
-
-
 ## Steps to add DriveKit SDK to your existing React Native App
 
-### Android
-
-### iOS
-
-
-
-First you need to install the core module. Follow this [documentation](./packages//core/README.md)
+To add the DriveKit SDK in your own React Native app, please follow the [https://github.com/DriveQuantPublic/react-native-drivekit/blob/main/README.md](main repository README)
