@@ -2,7 +2,7 @@
 
 React Native interface for DriveKit Trip Analysis
 
-## Pre-requis
+## Prerequisite
 
 Before installing `@react-native-drivekit/trip-analysis` **you must have installed** `@react-native-drivekit/core`.
 
