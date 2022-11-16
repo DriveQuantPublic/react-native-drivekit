@@ -24,7 +24,7 @@ const Core = CoreModule
     );
 
 export function getApiKey(): Promise<string> {
-  Core.getApiKey();
+  return Core.getApiKey();
 }
 
 export function setApiKey(key: string): void {
@@ -32,7 +32,7 @@ export function setApiKey(key: string): void {
 }
 
 export function getUserId(): Promise<string> {
-  Core.getUserId();
+  return Core.getUserId();
 }
 
 export function setUserId(userId: string): void {
