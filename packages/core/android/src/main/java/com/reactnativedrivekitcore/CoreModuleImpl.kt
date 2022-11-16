@@ -1,4 +1,4 @@
-package com.reactnativedrivekitcore;
+package com.reactnativedrivekitcore
 
 import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.DriveKitLog
