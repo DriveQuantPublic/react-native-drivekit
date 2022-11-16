@@ -82,6 +82,11 @@ export type TripPoint = {
   duration: number;
 };
 
+export type Location = {
+  latitude: number;
+  longitude: number;
+};
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripPoint: (tripPoint: TripPoint) => void;
@@ -90,6 +95,7 @@ type Listeners = {
   potentialTripStart: (startMode: StartMode) => void;
   tripSavedForRepost: () => void;
   beaconDetected: () => void;
+  significantLocationChangeDetected: (location: Location) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);

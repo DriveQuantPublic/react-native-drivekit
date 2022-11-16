@@ -16,6 +16,7 @@ import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import type {
   CancelTripReason,
   TripPoint,
+  Location,
 } from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
@@ -130,6 +131,16 @@ const App = () => {
       'beaconDetected',
       () => {
         console.log('Beacon detected');
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'significantLocationChangeDetected',
+      (location: Location) => {
+        console.log('Significant location change detected', location);
       },
     );
     return () => listener.remove();

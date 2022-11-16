@@ -66,8 +66,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func significantLocationChangeDetected(location: CLLocation) {
-        // Listener not yet implemented
-        return
+        RNEventEmitter.shared.dispatch(name: "significantLocationChangeDetected", body: ["latitude": location.coordinate.latitude, "longitude": location.coordinate.longitude])
     }
     
     public func sdkStateChanged(state: DriveKitTripAnalysisModule.State) {
