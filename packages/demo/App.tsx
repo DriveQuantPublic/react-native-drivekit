@@ -97,9 +97,6 @@ const App = () => {
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.title}>Api Key</Text>
         <Spacer factor={1} />
-        <Text>
-          
-        </Text>
        <Button
           title="Check API key"
           onPress={async () => {
