@@ -115,6 +115,26 @@ const App = () => {
     return () => listener.remove();
   });
 
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripSavedForRepost',
+      () => {
+        console.log('trip saved for repost');
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'beaconDetected',
+      () => {
+        console.log('Beacon detected');
+      },
+    );
+    return () => listener.remove();
+  });
+
   return (
     <SafeAreaView style={styles.page}>
       <ScrollView contentContainerStyle={styles.contentContainer}>

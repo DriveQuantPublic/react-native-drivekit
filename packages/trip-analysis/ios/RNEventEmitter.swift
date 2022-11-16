@@ -22,6 +22,6 @@ class RNEventEmitter: NSObject {
         RNEventEmitter.eventEmitter?.sendEvent(withName: name, body: body)
     }
 
-    @objc static var allEvents: [String] =  ["tripStarted", "tripPoint", "tripCancelled", "potentialTripStart"]
+    @objc static var allEvents: [String] =  ["tripStarted", "tripPoint", "tripCancelled", "tripSavedForRepost", "beaconDetected", "potentialTripStart"]
     
 }

@@ -88,6 +88,8 @@ type Listeners = {
   tripCancelled: (reason: CancelTripReason) => void;
   tripFinished: (data: { response: any; post: any }) => void;
   potentialTripStart: (startMode: StartMode) => void;
+  tripSavedForRepost: () => void;
+  beaconDetected: () => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);

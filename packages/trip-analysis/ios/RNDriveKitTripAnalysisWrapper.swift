@@ -57,13 +57,12 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func tripSavedForRepost() {
-        // Listener not yet implemented
-        return
+        RNEventEmitter.shared.dispatch(name: "tripSavedForRepost", body: nil)
+
     }
     
     public func beaconDetected() {
-        // Listener not yet implemented
-        return
+        RNEventEmitter.shared.dispatch(name: "beaconDetected", body: nil)
     }
     
     public func significantLocationChangeDetected(location: CLLocation) {
