@@ -13,7 +13,10 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
-import type {CancelTripReason} from '@react-native-drivekit/trip-analysis';
+import type {
+  CancelTripReason,
+  TripPoint,
+} from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
@@ -46,12 +49,12 @@ const App = () => {
 
   useEffect(() => {
     const calculate = async () => {
-      const result = await DriveKitDriverData.multiply(2,3)
-      console.warn('Result =', result)
-    }
+      const result = await DriveKitDriverData.multiply(2, 3);
+      console.warn('Result =', result);
+    };
 
-    calculate()
-  }, [])
+    calculate();
+  }, []);
 
   useEffect(() => {
     const checkPermissions = async () => {
@@ -97,6 +100,16 @@ const App = () => {
       'tripStarted',
       startMode => {
         console.log('trip start', startMode);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripPoint',
+      (tripPoint: TripPoint) => {
+        console.log('trip point', tripPoint);
       },
     );
     return () => listener.remove();

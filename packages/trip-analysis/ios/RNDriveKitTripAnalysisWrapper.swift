@@ -41,8 +41,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func tripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) {
-        // Listener not yet implemented
-        return
+        RNEventEmitter.shared.dispatch(name: "tripPoint", body: mapTripPoint(tripPoint: tripPoint))
     }
     
     public func tripFinished(post: DriveKitTripAnalysisModule.PostGeneric, response: DriveKitTripAnalysisModule.PostGenericResponse) {

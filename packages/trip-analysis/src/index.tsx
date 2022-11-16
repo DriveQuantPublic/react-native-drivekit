@@ -71,8 +71,20 @@ export enum StartMode {
   BICYCLE_ACTIVITY = 'BICYCLE_ACTIVITY',
 }
 
+export type TripPoint = {
+  latitude: number;
+  longitude: number;
+  speed: number;
+  accuracy: number;
+  elevation: number;
+  distance: number;
+  heading: number;
+  duration: number;
+};
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
+  tripPoint: (tripPoint: TripPoint) => void;
   tripCancelled: (reason: CancelTripReason) => void;
   tripFinished: (data: { response: any; post: any }) => void;
   potentialTripStart: (startMode: StartMode) => void;

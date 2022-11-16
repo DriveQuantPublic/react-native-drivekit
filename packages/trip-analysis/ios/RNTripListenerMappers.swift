@@ -10,22 +10,36 @@ import Foundation
 import DriveKitTripAnalysisModule
 
 func mapStartMode(startMode: DriveKitTripAnalysisModule.StartMode) -> String? {
-    var eventName: String? = nil
+    var rnStartMode: String? = nil
     switch startMode {
     case .gps:
-        eventName = "GPS"
+        rnStartMode = "GPS"
     case .beacon:
-        eventName = "BEACON"
+        rnStartMode = "BEACON"
     case .manual:
-        eventName = "MANUAL"
+        rnStartMode = "MANUAL"
     case .geozone:
-        eventName = "GEOZONE"
+        rnStartMode = "GEOZONE"
     case .bluetooth:
-        eventName = "BLUETOOTH"
+        rnStartMode = "BLUETOOTH"
     case .bluetooth_unknown:
-        eventName = "BLUETOOTH_UNKNOWN"
+        rnStartMode = "BLUETOOTH_UNKNOWN"
     @unknown default:
-        print("[potentialTripStart] Unknown start mode \(startMode.rawValue)")
+        print("[mapStartMode] Unknown start mode \(startMode.rawValue)")
     }
-    return eventName
+    return rnStartMode
+}
+
+
+func mapTripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) -> NSDictionary {
+    return [
+        "latitude": tripPoint.latitude,
+        "longitude": tripPoint.longitude,
+        "speed": tripPoint.speed,
+        "accuracy": tripPoint.accuracy,
+        "elevation": tripPoint.elevation,
+        "distance": tripPoint.distance,
+        "heading": tripPoint.heading,
+        "duration": tripPoint.duration
+    ]
 }
