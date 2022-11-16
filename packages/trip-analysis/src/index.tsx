@@ -96,8 +96,8 @@ export enum SDKState {
 }
 
 export enum CrashStatus {
-  'CONFIRMED' = 'CONFIRMED',
-  'UNCONFIRMED' = 'UNCONFIRMED',
+  CONFIRMED = 'CONFIRMED',
+  UNCONFIRMED = 'UNCONFIRMED',
 }
 
 export type CrashInfo = {
@@ -110,6 +110,24 @@ export type CrashInfo = {
   crashStatus: CrashStatus;
 };
 
+export enum CrashFeedbackType {
+  NO_CRASH = 'NO_CRASH',
+  CONFIRMED = 'CONFIRMED',
+  NO_FEEDBACK = 'NO_FEEDBACK',
+}
+
+export enum CrashFeedbackSeverity {
+  CRITICAL = 'CRITICAL',
+  MINOR = 'MINOR',
+  NONE = 'NONE',
+}
+
+export type CrashFeedback = {
+  crashInfo: CrashInfo;
+  feedbackType: CrashFeedbackType;
+  severity: CrashFeedbackSeverity;
+};
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripPoint: (tripPoint: TripPoint) => void;
@@ -120,7 +138,8 @@ type Listeners = {
   beaconDetected: () => void;
   significantLocationChangeDetected: (location: Location) => void;
   sdkStateChanged: (state: SDKState) => void;
-  crashDetected: (info: CrashInfo) => void;
+  crashDetected: (crashInfo: CrashInfo) => void;
+  crashFeedbackSent: (crashFeedback: CrashFeedback) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);

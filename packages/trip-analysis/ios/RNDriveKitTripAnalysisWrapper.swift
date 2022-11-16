@@ -58,7 +58,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     
     public func tripSavedForRepost() {
         RNEventEmitter.shared.dispatch(name: "tripSavedForRepost", body: nil)
-
+        
     }
     
     public func beaconDetected() {
@@ -88,8 +88,8 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func crashFeedbackSent(crashInfo: DriveKitTripAnalysisModule.DKCrashInfo, feedbackType: DriveKitTripAnalysisModule.DKCrashFeedbackType, severity: DriveKitTripAnalysisModule.DKCrashFeedbackSeverity) {
-        // Listener not yet implemented
-        return
+        RNEventEmitter.shared.dispatch(name: "crashFeedbackSent", body:
+                                        [crashInfo: mapDKCrashInfo(info: crashInfo), feedbackType: mapDKCrashFeedbackType(type: feedbackType), severity: mapDKCrashFeedbackSeverity(severity: severity)])
     }
     
 }

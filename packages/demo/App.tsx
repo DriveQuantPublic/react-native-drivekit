@@ -19,6 +19,7 @@ import type {
   Location,
   SDKState,
   CrashInfo,
+  CrashFeedback,
 } from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
@@ -163,6 +164,16 @@ const App = () => {
       'crashDetected',
       (info: CrashInfo) => {
         console.log('Crash detected', info);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'crashFeedbackSent',
+      (crashFeedback: CrashFeedback) => {
+        console.log('Crash feedback sent', crashFeedback);
       },
     );
     return () => listener.remove();

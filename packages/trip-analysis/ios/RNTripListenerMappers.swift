@@ -105,3 +105,30 @@ func mapDKCrashStatus(status: DriveKitTripAnalysisModule.DKCrashStatus) -> Strin
 func mapDKCrashInfo(info: DriveKitTripAnalysisModule.DKCrashInfo) -> NSDictionary {
     return ["crashId": info.crashId, "timestamp": info.date.timeIntervalSince1970, "probability": info.probability, "latitude": info.latitude, "longitude": info.longitude, "velocity": info.velocity, "crashStatus": mapDKCrashStatus(status: info.crashStatus)]
 }
+
+func mapDKCrashFeedbackType(type: DriveKitTripAnalysisModule.DKCrashFeedbackType) -> String {
+    switch(type) {
+    case .noCrash:
+        return "NO_CRASH"
+    case .confirmed:
+        return "CONFIRMED"
+    case .noFeedback:
+        return "NO_FEEDBACK"
+    default:
+        return "NO_FEEDBACK"
+    }
+}
+
+
+func mapDKCrashFeedbackSeverity(severity: DriveKitTripAnalysisModule.DKCrashFeedbackSeverity) -> String {
+    switch(severity) {
+    case .critical:
+        return "CRITICAL"
+    case .minor:
+        return "MINOR"
+    case .none:
+        return "NONE"
+    default:
+        return "NONE"
+    }
+}
