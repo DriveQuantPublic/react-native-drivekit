@@ -23,8 +23,16 @@ const Core = CoreModule
       }
     );
 
+export function getApiKey(): Promise<string> {
+  Core.getApiKey();
+}
+
 export function setApiKey(key: string): void {
   Core.setApiKey(key);
+}
+
+export function getUserId(): Promise<string> {
+  Core.getUserId();
 }
 
 export function setUserId(userId: string): void {
