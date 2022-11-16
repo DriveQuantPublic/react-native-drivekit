@@ -30,6 +30,34 @@ func mapStartMode(startMode: DriveKitTripAnalysisModule.StartMode) -> String? {
     return rnStartMode
 }
 
+func mapCancelTrip(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) -> String? {
+    var rnCancelTrip: String? = nil
+    switch cancelTrip {
+    case .user:
+        rnCancelTrip = "USER"
+    case .highspeed:
+        rnCancelTrip = "HIGH_SPEED"
+    case .noSpeed:
+        rnCancelTrip = "NO_SPEED"
+    case .noBeacon:
+        rnCancelTrip = "NO_BEACON"
+    case .missingConfiguration:
+        rnCancelTrip = "MISSING_CONFIGURATION"
+    case .noGPSData:
+        rnCancelTrip = "NO_GPS_DATA"
+    case .reset:
+        rnCancelTrip = "RESET"
+    case .beaconNoSpeed:
+        rnCancelTrip = "BEACON_NO_SPEED"
+    case .noBluetoothDevice:
+        rnCancelTrip = "NO_BLUETOOTH_DEVICE"
+        
+    @unknown default:
+        print("[tripCancelled] Unknown cancel trip reason \(cancelTrip.rawValue)")
+    }
+    return rnCancelTrip;
+}
+
 
 func mapTripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) -> NSDictionary {
     return [

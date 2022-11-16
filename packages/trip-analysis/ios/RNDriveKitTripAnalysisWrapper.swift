@@ -50,33 +50,9 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func tripCancelled(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) {
-        var eventName: String? = nil
-        switch cancelTrip {
-        case .user:
-            eventName = "USER"
-        case .highspeed:
-            eventName = "HIGH_SPEED"
-        case .noSpeed:
-            eventName = "NO_SPEED"
-        case .noBeacon:
-            eventName = "NO_BEACON"
-        case .missingConfiguration:
-            eventName = "MISSING_CONFIGURATION"
-        case .noGPSData:
-            eventName = "NO_GPS_DATA"
-        case .reset:
-            eventName = "RESET"
-        case .beaconNoSpeed:
-            eventName = "BEACON_NO_SPEED"
-        case .noBluetoothDevice:
-            eventName = "NO_BLUETOOTH_DEVICE"
-            
-        @unknown default:
-            print("[tripCancelled] Unknown cancel trip reason \(cancelTrip.rawValue)")
-            
-        }
-        if let unwrappedEventName = eventName {
-            RNEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedEventName)
+        let rnCancelTrip = mapCancelTrip(cancelTrip: cancelTrip)
+        if let unwrappedRNCancelTrip = rnCancelTrip {
+            RNEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedRNCancelTrip)
         }
     }
     
