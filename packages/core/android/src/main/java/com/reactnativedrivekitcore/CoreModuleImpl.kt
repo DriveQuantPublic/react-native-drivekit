@@ -1,7 +1,5 @@
-package com.reactnativedrivekitcore;
+package com.reactnativedrivekitcore
 
-import android.content.Context
-import android.net.Uri
 import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.DriveKitLog
 import com.facebook.react.bridge.Arguments
@@ -15,18 +13,18 @@ object CoreModuleImpl {
     const val NAME = "RNDriveKitCore"
     var application: android.app.Application? = null
 
-  fun initialize(application: android.app.Application){
+    fun initialize(application: android.app.Application){
       DriveKit.initialize(application)
       this.application = application
     }
 
-    fun setApiKey(key: String){
-      DriveKit.setApiKey(key);
-    }
+    fun getApiKey() = DriveKit.config.apiKey
 
-    fun setUserId(userId: String){
-      DriveKit.setUserId(userId)
-    }
+    fun setApiKey(key: String) = DriveKit.setApiKey(key)
+
+    fun getUserId() = DriveKit.config.userId
+
+    fun setUserId(userId: String) = DriveKit.setUserId(userId)
 
     fun updateUserId(userId: String){
       DriveKit.updateUserId(userId)

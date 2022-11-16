@@ -1,4 +1,4 @@
-package com.reactnativedrivekitcore;
+package com.reactnativedrivekitcore
 
 import com.facebook.react.TurboReactPackage
 import com.facebook.react.bridge.ReactApplicationContext

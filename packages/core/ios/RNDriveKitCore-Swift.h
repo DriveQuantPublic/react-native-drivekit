@@ -3,7 +3,9 @@
 @interface RNDriveKitCoreWrapper : NSObject
 @property (nonatomic, class, readonly, strong) RNDriveKitCoreWrapper * _Nonnull shared;
 - (void)initialize;
+- (NSString *)getApiKey;
 - (void)setApiKeyWithKey:(NSString * _Nonnull)key;
+- (NSString *)getUserId;
 - (void)setUserIdWithUserId:(NSString * _Nonnull)userId;
 - (void)updateUserIdWithUserId:(NSString * _Nonnull)userId;
 - (void)deleteAccountWithInstantDeletion:(NSNumber * _Nonnull)instantDeletion;

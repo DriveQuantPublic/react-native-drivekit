@@ -12,9 +12,15 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @Override
+    fun getApiKey() = CoreModuleImpl.getApiKey()
+
+    @Override
     fun setApiKey(key: String){
       CoreModuleImpl.setApiKey(key)
     }
+
+    @Override
+    fun getUserId() = CoreModuleImpl.getUserId()
 
     @Override
     fun setUserId(userId: String){

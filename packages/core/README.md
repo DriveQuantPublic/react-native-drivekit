@@ -116,7 +116,9 @@ To validate that the initialization has been done successfully, please check you
 
 | Method                            | Return Type                        | iOS | Android |
 | --------------------------------- | ---------------------------------- | :-: | :-----: |
+| [getApiKey()](#getapikey)         | `Promise<string>`                  | ✅  |   ✅    |
 | [setApiKey()](#setapikey)         | `Promise<void>`                    | ✅  |   ✅    |
+| [getUserId()](#getuserid)         | `Promise<string>`                  | ✅  |   ✅    |
 | [setUserId()](#setuserid)         | `Promise<void>`                    | ✅  |   ✅    |
 | [updateUserId()](#updateuserid)   | `Promise<void>`                    | ✅  |   ✅    |
 | [deleteAccount()](#deleteaccount) | `Promise<void>`                    | ✅  |   ✅    |
@@ -125,6 +127,18 @@ To validate that the initialization has been done successfully, please check you
 | [disableLogging()](#logging)      | `Promise<void>`                    | ✅  |   ✅    |
 | [getUriLogFile()](#getUriLogFile) | `Promise<{ uri: string } \| null>` | ❌  |   ✅    |
 | [isTokenValid()](#istokenvalid)   | `Promise<boolean>`                 | ✅  |   ✅    |
+
+### getApiKey
+
+```typescript
+getApiKey(): Promise<string>
+```
+
+This method can be useful to check which DriveKit API Key you have set in the SDK.
+
+```typescript
+const apiKey = await getApiKey();
+```
 
 ### setApiKey
 
@@ -138,6 +152,18 @@ Once you've stored your API key in a secure way in your application, you can con
 
 ```typescript
 setApiKey('MyAPIKey');
+```
+
+### getUserId
+
+```typescript
+getUserId(): Promise<string> 
+```
+
+This method can be useful to retrieve the current userId.
+
+```typescript
+const userId = await getUserId();
 ```
 
 ### setUserId
@@ -279,7 +305,7 @@ enableLogging({ logPath: '/path/to/my/log/directory' });
 ### isTokenValid
 
 ```typescript
-  isTokenValid(): Promise<boolean>;
+  isTokenValid(): Promise<boolean>
 ```
 
 Once you are connected to the SDK with your key and a user ID, you can check the validity of the generated token by calling:

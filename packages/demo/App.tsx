@@ -26,12 +26,22 @@ import {checkMotionPermission} from './src/services/permissions/motion';
 const inputHeight = 40;
 
 const App = () => {
-  const [apiKey, setApiKey] = useState('');
-  const [userId, setUserId] = useState('');
+
+  // ========================================
+  // ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
+  // ========================================
+  // DriveKit.setApiKey("") 
+    
+  var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
   const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
     useState(false);
+
+  const checkUserIdValue = async () => {
+    const userIdVal = await DriveKit.getUserId();
+      setUserId(userIdVal)
+    };
 
   useEffect(() => {
     const checkPermissions = async () => {
@@ -41,7 +51,7 @@ const App = () => {
       await checkNotificationPermission();
       await checkMotionPermission();
       /**
-       * There is no open source lybrary that promisify the modal call
+       * There is no open source library that promisify the modal call
        * This is why we put it at the end.
        */
       await checkBatteryOptimizationPermission();
@@ -49,6 +59,7 @@ const App = () => {
     };
 
     checkPermissions();
+    checkUserIdValue();
   }, []);
 
   useEffect(() => {
@@ -86,18 +97,17 @@ const App = () => {
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.title}>Api Key</Text>
         <Spacer factor={1} />
-        <TextInput
-          value={apiKey}
-          style={styles.input}
-          returnKeyType={'done'}
-          onChangeText={setApiKey}
+       <Button
+          title="Check API key"
+          onPress={async () => {
+            apiKey = await DriveKit.getApiKey();
+            if (apiKey == null) {
+              Alert.alert("API key check", "Please set your DriveKit API Key at the beggining of the App component")
+            } else {
+              Alert.alert("API key check", "Your DriveKit API Key is correctly set: " + apiKey)
+            }
+          }}
         />
-        <Spacer factor={2} />
-        <Button
-          title="Configure Api Key"
-          onPress={() => DriveKit.setApiKey(apiKey)}
-        />
-
         <Spacer factor={2} />
         <Text style={styles.title}>User ID</Text>
         <Spacer factor={1} />
@@ -110,7 +120,14 @@ const App = () => {
         <Spacer factor={2} />
         <Button
           title="Configure User ID"
-          onPress={() => DriveKit.setUserId(userId)}
+          onPress={async () => {
+            const localUserId = await DriveKit.getUserId();
+            if (localUserId == null) {
+              DriveKit.setUserId(userId)
+            } else {
+              Alert.alert("User Id already set", "You already have configured your user identifier: " + localUserId)
+            }
+          }}
         />
         <Spacer factor={2} />
         <Text style={styles.title}>Update User ID</Text>
@@ -123,7 +140,7 @@ const App = () => {
         />
         <Spacer factor={2} />
         <Button
-          title="Configure User ID"
+          title="Update User ID"
           onPress={() => DriveKit.updateUserId(newUserId)}
         />
         <Spacer factor={2} />
