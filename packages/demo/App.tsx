@@ -15,6 +15,7 @@ import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import type {
   CancelTripReason,
+  StartMode,
   TripPoint,
   Location,
   SDKState,
@@ -102,7 +103,7 @@ const App = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripStarted',
-      startMode => {
+      (startMode: StartMode) => {
         console.log('trip start', startMode);
       },
     );
@@ -174,6 +175,17 @@ const App = () => {
       'crashFeedbackSent',
       (crashFeedback: CrashFeedback) => {
         console.log('Crash feedback sent', crashFeedback);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripFinished',
+      ({post, response}) => {
+        const postObj = JSON.parse(post);
+        console.log('trip finished', JSON.stringify(postObj));
       },
     );
     return () => listener.remove();
