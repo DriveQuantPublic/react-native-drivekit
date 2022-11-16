@@ -17,6 +17,7 @@ import type {
   CancelTripReason,
   TripPoint,
   Location,
+  SDKState,
 } from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
@@ -141,6 +142,16 @@ const App = () => {
       'significantLocationChangeDetected',
       (location: Location) => {
         console.log('Significant location change detected', location);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'sdkStateChanged',
+      (state: SDKState) => {
+        console.log('SDK State Changed', state);
       },
     );
     return () => listener.remove();

@@ -70,8 +70,10 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func sdkStateChanged(state: DriveKitTripAnalysisModule.State) {
-        // Listener not yet implemented
-        return
+        let rnSDKStateChanged = mapSDKState(state: state)
+        if let unwrappedSDKStateChanged = rnSDKStateChanged {
+            RNEventEmitter.shared.dispatch(name: "sdkStateChanged", body: unwrappedSDKStateChanged )
+        }
     }
     
     public func potentialTripStart(startMode: DriveKitTripAnalysisModule.StartMode) {

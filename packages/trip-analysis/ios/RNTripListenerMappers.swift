@@ -53,7 +53,7 @@ func mapCancelTrip(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) -> String?
         rnCancelTrip = "NO_BLUETOOTH_DEVICE"
         
     @unknown default:
-        print("[tripCancelled] Unknown cancel trip reason \(cancelTrip.rawValue)")
+        print("[mapCancelTrip] Unknown cancel trip reason \(cancelTrip.rawValue)")
     }
     return rnCancelTrip;
 }
@@ -70,4 +70,23 @@ func mapTripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) -> NSDictiona
         "heading": tripPoint.heading,
         "duration": tripPoint.duration
     ]
+}
+
+func mapSDKState(state: DriveKitTripAnalysisModule.State) -> String? {
+    var rnSDKState: String? = nil
+    switch(state) {
+    case .inactive:
+        rnSDKState="INACTIVE"
+    case .starting:
+        rnSDKState="STARTING"
+    case .running:
+        rnSDKState="RUNNING"
+    case .stopping:
+        rnSDKState="STOPPING"
+    case .sending:
+        rnSDKState="SENDING"
+    @unknown default:
+        print("[mapSDKState] Unknown SDK state \(state.rawValue)")
+    }
+    return rnSDKState
 }

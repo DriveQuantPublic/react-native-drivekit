@@ -87,6 +87,14 @@ export type Location = {
   longitude: number;
 };
 
+export enum SDKState {
+  INACTIVE = 'INACTIVE',
+  STARTING = 'STARTING',
+  RUNNING = 'RUNNING',
+  STOPPING = 'STOPPING',
+  SENDING = 'SENDING',
+}
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripPoint: (tripPoint: TripPoint) => void;
@@ -96,6 +104,7 @@ type Listeners = {
   tripSavedForRepost: () => void;
   beaconDetected: () => void;
   significantLocationChangeDetected: (location: Location) => void;
+  sdkStateChanged: (state: SDKState) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);
