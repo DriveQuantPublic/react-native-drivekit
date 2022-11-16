@@ -105,7 +105,7 @@ const App = () => {
           onPress={async () => {
             apiKey = await DriveKit.getApiKey();
             if (apiKey == null) {
-              Alert.alert("API key check", "Please set your DriveKit API Key in the xx file")
+              Alert.alert("API key check", "Please set your DriveKit API Key at the beggining of the App component")
             } else {
               Alert.alert("API key check", "Your DriveKit API Key is correctly set: " + apiKey)
             }
