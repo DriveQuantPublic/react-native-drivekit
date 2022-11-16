@@ -14,14 +14,16 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun setApiKey(key: String){
-      CoreModuleImpl.setApiKey(key)
-    }
+    fun getApiKey(promise: Promise) = promise.resolve(CoreModuleImpl.getApiKey())
 
     @ReactMethod
-    fun setUserId(userId: String){
-      CoreModuleImpl.setUserId(userId)
-    }
+    fun setApiKey(key: String) = CoreModuleImpl.setApiKey(key)
+
+    @ReactMethod
+    fun getUserId(promise: Promise) = promise.resolve(CoreModuleImpl.getUserId())
+
+    @ReactMethod
+    fun setUserId(userId: String) = CoreModuleImpl.setUserId(userId)
 
     @ReactMethod
     fun updateUserId(userId: String){

@@ -123,7 +123,7 @@ const App = () => {
         />
         <Spacer factor={2} />
         <Button
-          title="Configure User ID"
+          title="Update User ID"
           onPress={() => DriveKit.updateUserId(newUserId)}
         />
         <Spacer factor={2} />

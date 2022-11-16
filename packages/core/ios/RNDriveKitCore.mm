@@ -4,9 +4,21 @@
 @implementation RNDriveKitCore
 RCT_EXPORT_MODULE()
 
+RCT_REMAP_METHOD(getApiKey, resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSString *apiKey = [self apiKey]
+    resolve(apiKey)
+}
+
 RCT_REMAP_METHOD(setApiKey, setApiKeyWithKey:(NSString *)key)
 {
     [self setApiKey:key];
+}
+
+RCT_REMAP_METHOD(getUserId, resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSString *userId = [self userId]
+    resolve(userId)
 }
 
 RCT_REMAP_METHOD(setUserId, setUserIdWithUserId:(NSString *)userId)
