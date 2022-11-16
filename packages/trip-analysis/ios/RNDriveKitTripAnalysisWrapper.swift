@@ -45,8 +45,10 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func tripFinished(post: DriveKitTripAnalysisModule.PostGeneric, response: DriveKitTripAnalysisModule.PostGenericResponse) {
-        // Listener not yet implemented
-        return
+        if let unwrappedJSONPost = post.toJSON().toJSONString(), let unwrappedJSONResponse = response.toJSON().toJSONString() {
+            print(unwrappedJSONPost, unwrappedJSONResponse)
+            RNEventEmitter.shared.dispatch(name: "tripFinished", body: ["post": unwrappedJSONPost, "response": unwrappedJSONResponse])
+        }
     }
     
     public func tripCancelled(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) {

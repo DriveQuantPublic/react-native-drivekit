@@ -69,35 +69,38 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
       val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
       DriveKitTripAnalysis.initialize(tripNotification, object: TripListener {
         override fun tripStarted(startMode : StartMode) {
+          println("trip started")
+          var rnStartMode = mapStartMode(startMode)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripStarted", rnStartMode)
         }
         override fun tripPoint(tripPoint : TripPoint) {
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripPoint", mapTripPoint(tripPoint))
         }
         override fun tripSavedForRepost() {
+          println("trip saved for repost")
         }
         override fun tripFinished(post : PostGeneric, response: PostGenericResponse) {
+          println("trip finished")
         }
         override fun beaconDetected() {
+          println("beacon detected")
         }
         override fun sdkStateChanged(state: State) {
+          println("sdk state changed")
         }
         override fun potentialTripStart(startMode: StartMode) {
-          var eventName = when (startMode) {
-            StartMode.UNKNOWN_BLUETOOTH -> "UNKNOWN_BLUETOOTH"
-            StartMode.BEACON -> "BEACON"
-            StartMode.BICYCLE_ACTIVITY -> "BICYCLE_ACTIVITY"
-            StartMode.BLUETOOTH -> "BLUETOOTH"
-            StartMode.GEOZONE -> "GEOZONE"
-            StartMode.GPS -> "GPS"
-            StartMode.MANUAL -> "MANUAL"
-          }
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("potentialTripStart", eventName)
+          println("potential trip start")
+          var rnStartMode = mapStartMode(startMode)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("potentialTripStart", rnStartMode)
         }
         override fun crashDetected(crashInfo: DKCrashInfo) {
+          println("crash detected")
         }
         override fun crashFeedbackSent(crashInfo: DKCrashInfo, feedbackType: CrashFeedbackType, severity: CrashFeedbackSeverity) {
+          println("crash feedback sent")
         }
-        override fun onDeviceConfigEvent(deviceConfigevent: DeviceConfigEvent) {
+        override fun onDeviceConfigEvent(deviceConfigEvent: DeviceConfigEvent) {
+          println("on device config event")
         }
       })
     }

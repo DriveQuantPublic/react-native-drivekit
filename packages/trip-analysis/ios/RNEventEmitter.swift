@@ -9,19 +9,19 @@ import Foundation
 
 @objc(RNEventEmitter)
 class RNEventEmitter: NSObject {
-    
+
     @objc public static var shared = RNEventEmitter()
-    
+
     private static var eventEmitter: RNDriveKitTripAnalysis!
-    
+
     @objc func registerEventEmitter(eventEmitter: RNDriveKitTripAnalysis) {
         RNEventEmitter.eventEmitter = eventEmitter
     }
-    
+
     @objc func dispatch(name: String, body: Any?) {
         RNEventEmitter.eventEmitter?.sendEvent(withName: name, body: body)
     }
-    
-    @objc static var allEvents: [String] =  ["tripStarted", "tripPoint", "tripCancelled", "tripSavedForRepost", "beaconDetected", "significantLocationChangeDetected", "potentialTripStart", "sdkStateChanged", "crashDetected", "crashFeedbackSent"]
-    
+
+    @objc static var allEvents: [String] =  ["tripStarted", "tripPoint", "tripCancelled", "tripFinished", "tripSavedForRepost", "beaconDetected", "significantLocationChangeDetected", "potentialTripStart", "sdkStateChanged", "crashDetected", "crashFeedbackSent"]
+
 }

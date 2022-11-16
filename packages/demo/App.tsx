@@ -184,8 +184,11 @@ const App = () => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripFinished',
       ({post, response}) => {
-        const postObj = JSON.parse(post);
-        console.log('trip finished', JSON.stringify(postObj));
+        console.log(
+          'trip finished',
+          JSON.stringify(post),
+          JSON.stringify(response),
+        );
       },
     );
     return () => listener.remove();
