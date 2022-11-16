@@ -123,8 +123,8 @@ When you're sending a pull request:
 
 We use [lerna](https://github.com/lerna/lerna) to make it easier to publish new versions. It handles common tasks like bumping version all packages versions, creating tags and releases etc.
 
-To publish new versions, run the following:
+To publish new versions, run the following at the root of the repository:
 
 ```sh
-yarn publish
+yarn release
 ```
