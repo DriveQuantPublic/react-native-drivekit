@@ -90,3 +90,18 @@ func mapSDKState(state: DriveKitTripAnalysisModule.State) -> String? {
     }
     return rnSDKState
 }
+
+func mapDKCrashStatus(status: DriveKitTripAnalysisModule.DKCrashStatus) -> String {
+    switch(status) {
+    case .confirmed:
+        return "CONFIRMED"
+    case .unconfirmed:
+        return "UNCONFIRMED"
+    default:
+        return "UNCONFIRMED"
+    }
+}
+
+func mapDKCrashInfo(info: DriveKitTripAnalysisModule.DKCrashInfo) -> NSDictionary {
+    return ["crashId": info.crashId, "timestamp": info.date.timeIntervalSince1970, "probability": info.probability, "latitude": info.latitude, "longitude": info.longitude, "velocity": info.velocity, "crashStatus": mapDKCrashStatus(status: info.crashStatus)]
+}

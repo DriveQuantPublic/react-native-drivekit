@@ -95,6 +95,21 @@ export enum SDKState {
   SENDING = 'SENDING',
 }
 
+export enum CrashStatus {
+  'CONFIRMED' = 'CONFIRMED',
+  'UNCONFIRMED' = 'UNCONFIRMED',
+}
+
+export type CrashInfo = {
+  crashId: string;
+  timestamp: number;
+  probability: number;
+  latitude: number;
+  longitude: number;
+  velocity: number;
+  crashStatus: CrashStatus;
+};
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripPoint: (tripPoint: TripPoint) => void;
@@ -105,6 +120,7 @@ type Listeners = {
   beaconDetected: () => void;
   significantLocationChangeDetected: (location: Location) => void;
   sdkStateChanged: (state: SDKState) => void;
+  crashDetected: (info: CrashInfo) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);

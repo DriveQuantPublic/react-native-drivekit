@@ -84,8 +84,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     }
     
     public func crashDetected(crashInfo: DriveKitTripAnalysisModule.DKCrashInfo) {
-        // Listener not yet implemented
-        return
+        RNEventEmitter.shared.dispatch(name: "crashDetected", body: mapDKCrashInfo(info: crashInfo))
     }
     
     public func crashFeedbackSent(crashInfo: DriveKitTripAnalysisModule.DKCrashInfo, feedbackType: DriveKitTripAnalysisModule.DKCrashFeedbackType, severity: DriveKitTripAnalysisModule.DKCrashFeedbackSeverity) {
