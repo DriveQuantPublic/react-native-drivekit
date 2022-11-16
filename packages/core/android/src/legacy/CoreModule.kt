@@ -80,8 +80,8 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun getUserInfo(syncronizationType: String?, promise: Promise) {
-      CoreModuleImpl.getUserInfo(syncronizationType, promise)
+    fun getUserInfo(synchronizationType: String?, promise: Promise) {
+      CoreModuleImpl.getUserInfo(synchronizationType, promise)
     }
 
     @ReactMethod
