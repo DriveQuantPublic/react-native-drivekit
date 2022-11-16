@@ -41,11 +41,11 @@ import com.reactnativedrivekittripanalysis.DrivekitTripAnalysisModule;
   public void onCreate() {
     super.onCreate();
     CoreModuleImpl.INSTANCE.initialize(this);
-    
+
     // ADD THESE LINES
     final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
     DrivekitTripAnalysisModule.Companion.initialize(tripNotification);
-    
+
     ...
   }
 ```
@@ -120,6 +120,33 @@ To validate that the initialization has been done successfully, please check you
 
 **iOS**
 ![](./doc/img/ios_validation.png)
+
+## Listeners
+
+You can listen to events thanks to the `addEventListener` api.
+
+```typescript
+useEffect(() => {
+  const listener = DriveKitTripAnalysis.addEventListener(
+    'tripStarted',
+    (startMode: StartMode) => {
+      console.log('trip start', startMode);
+    }
+  );
+  return () => listener.remove();
+});
+```
+
+Here is the list of supported events:
+
+- `tripPoint`, callback `(tripPoint: TripPoint) => void`: This event is triggered when a trip is started and confirmed, for each GPS point recorded by the SDK.
+- `tripStarted`, callback `(startMode: StartMode) => void`: This event is triggered each time a trip is started. StartMode indicates which event starts the trip.
+- `tripCancelled`, callback `(cancelTrip: CancelTrip) => void`: This event is triggered when a trip is cancelled. CancelTrip indicates which event cancels the trip.
+- `tripFinished`, callback `(post: PostGeneric, response: PostGenericResponse)`: This event is triggered when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. PostGeneric object contains raw data sent to DriveQuant's server, PostGenericResponse object contains the trip analysis made on DriveQuant's server.
+- `tripSavedForRepost`, callback `() => void`: This event is triggered if at the end of the trip, the trip can be sent to DriveQuant's server for the analysis. The trip is saved locally on the SDK and will be sent later.
+- `beaconDetected`, callback `() => void`: This event is triggered when a beacon sets in the SDK is detected.
+  `significantLocationChangeDetected`, callback `() => void`: This event is triggered when a user significant location change is detected.
+- `sdkStateChanged`, callback `(state: State) => void`: This event is triggered every time the state of the SDK changed with the new state as parameter.
 
 ## API
 
