@@ -4,21 +4,21 @@
 @implementation RNDriveKitCore
 RCT_EXPORT_MODULE()
 
-RCT_REMAP_METHOD(getApiKey, resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(getApiKey, getApiKeyWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    NSString *apiKey = [self apiKey]
-    resolve(apiKey)
+    NSString *apiKey = [self getApiKey];
+    resolve(apiKey);
 }
 
 RCT_REMAP_METHOD(setApiKey, setApiKeyWithKey:(NSString *)key)
 {
-    [self setApiKey:key];
+    [self setApiKey: key];
 }
 
-RCT_REMAP_METHOD(getUserId, resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(getUserId, getUserIdWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    NSString *userId = [self userId]
-    resolve(userId)
+    NSString *userId = [self getUserId];
+    resolve(userId);
 }
 
 RCT_REMAP_METHOD(setUserId, setUserIdWithUserId:(NSString *)userId)
@@ -36,7 +36,7 @@ RCT_REMAP_METHOD(deleteAccount, deleteAccountWithInstantDeletion:(nonnull NSNumb
     [self deleteAccount:instantDeletion];
 }
 
-RCT_REMAP_METHOD(isTokenValid, resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(isTokenValid, isTokenValidWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     NSNumber *validity = [self isTokenValid];
     resolve(validity);
@@ -79,6 +79,13 @@ RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)optio
 
 - (NSNumber *)isTokenValid {
     return [RNDriveKitCoreWrapper.shared isTokenValid];
+}
+
+- (NSString *)getApiKey {
+    return [RNDriveKitCoreWrapper.shared getApiKey];
+}
+- (NSString *)getUserId {
+    return [RNDriveKitCoreWrapper.shared getUserId];
 }
 
 - (void)enableSandboxMode:(NSNumber *)enable {
