@@ -60,6 +60,10 @@ RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)optio
     [self disableLogging:options];
 }
 
+RCT_REMAP_METHOD(composeDiagnosisMail, composeDiagnosisMailWithOptions:(NSDictionary *)options){
+    [self composeDiagnosisMail:options];
+}
+
 
 - (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
@@ -103,6 +107,10 @@ RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)optio
 
 - (void)enableLogging:(NSDictionary *)options {
     [RNDriveKitCoreWrapper.shared enableLoggingWithShowInConsole:options[@"showInConsole"]];
+}
+
+- (void)composeDiagnosisMail: (NSDictionary *)options {
+    [RNDriveKitCoreWrapper.shared composeDiagnosisMail: options];
 }
 
 // Don't compile this code when we build for the old architecture.

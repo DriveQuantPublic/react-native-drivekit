@@ -14,4 +14,5 @@
 - (void)reset;
 - (void)enableLoggingWithShowInConsole:(NSNumber * _Nullable)showInConsole;
 - (void)disableLoggingWithShowInConsole:(NSNumber * _Nullable)showInConsole;
+- (void)composeDiagnosisMail:(NSDictionary *_Nullable)options;
 @end
