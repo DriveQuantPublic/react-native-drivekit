@@ -60,6 +60,13 @@ RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)optio
     [self disableLogging:options];
 }
 
+RCT_REMAP_METHOD(getUriLogFile, getUriLogFileWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSURL *logFileUrl = [self getUriLogFile];
+    resolve(logFileUrl);
+}
+
+
 
 - (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
@@ -103,6 +110,10 @@ RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)optio
 
 - (void)enableLogging:(NSDictionary *)options {
     [RNDriveKitCoreWrapper.shared enableLoggingWithShowInConsole:options[@"showInConsole"]];
+}
+
+-(NSURL* )getUriLogFile {
+    return [RNDriveKitCoreWrapper.shared getUriLogFile];
 }
 
 // Don't compile this code when we build for the old architecture.

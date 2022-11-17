@@ -71,9 +71,5 @@ export function disableLogging(options?: { showInConsole?: boolean }): void {
 }
 
 export function getUriLogFile(): Promise<{ uri: string } | null> {
-  if (Platform.OS === 'ios') {
-    return Promise.resolve(null);
-  }
-
   return Core.getUriLogFile();
 }

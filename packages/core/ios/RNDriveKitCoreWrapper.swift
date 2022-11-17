@@ -61,4 +61,11 @@ public class RNDriveKitCoreWrapper: NSObject {
             DriveKit.shared.disableLogging()
         }
     }
+
+    @objc internal func getUriLogFile() -> URL? {
+        if DriveKitLog.shared.isLoggingEnabled {
+            return DriveKitLog.shared.getZippedLogFilesUrl()
+        }
+        return nil
+    }
 }
