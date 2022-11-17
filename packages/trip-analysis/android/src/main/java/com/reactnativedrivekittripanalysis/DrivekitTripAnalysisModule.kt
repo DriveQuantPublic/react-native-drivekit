@@ -11,6 +11,7 @@ import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.Cras
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.modules.core.DeviceEventManagerModule
@@ -69,27 +70,30 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
       val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
       DriveKitTripAnalysis.initialize(tripNotification, object: TripListener {
         override fun tripStarted(startMode : StartMode) {
-          println("trip started")
-          var rnStartMode = mapStartMode(startMode)
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripStarted", rnStartMode)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripStarted", mapStartMode(startMode))
         }
         override fun tripPoint(tripPoint : TripPoint) {
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripPoint", mapTripPoint(tripPoint))
         }
         override fun tripSavedForRepost() {
-          println("trip saved for repost")
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripSavedForRepost", null)
+
         }
         override fun tripFinished(post : PostGeneric, response: PostGenericResponse) {
           println("trip finished")
+          var result = Arguments.createMap()
+          result.putString("post", post.toString())
+          result.putString("response", response.toString())
+          println(post.toString())
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripFinished", result)
         }
         override fun beaconDetected() {
-          println("beacon detected")
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("beaconDetected", null)
         }
         override fun sdkStateChanged(state: State) {
-          println("sdk state changed")
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("sdkStateChanged", mapSDKState(state))
         }
         override fun potentialTripStart(startMode: StartMode) {
-          println("potential trip start")
           var rnStartMode = mapStartMode(startMode)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("potentialTripStart", rnStartMode)
         }
