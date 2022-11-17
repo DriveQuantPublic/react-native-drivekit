@@ -5,6 +5,7 @@ import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.DriveKitLog
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReadableArray
 
 /**
  * This is where the module implementation lives
@@ -66,18 +67,32 @@ object CoreModuleImpl {
       }
     }
 
-    fun composeDiagnosisMail(recipients: ArrayList<String>?, bccRecipients: ArrayList<String>?, subject: String?, body: String?) {
+    fun composeDiagnosisMail(recipients: ReadableArray?, bccRecipients: ReadableArray?, subject: String?, body: String?) {
       val uri = this.application?.let { DriveKitLog.getLogUriFile(it.applicationContext) } ?: run { null }
       val intent = Intent(Intent.ACTION_SEND)
       intent.type = "plain/text"
       intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-      intent.putExtra(Intent.EXTRA_EMAIL, recipients)
-      intent.putExtra(Intent.EXTRA_BCC, bccRecipients)
+      recipients?.let {
+        intent.putExtra(Intent.EXTRA_EMAIL, recipients.toTypedArray())
+      }
+      bccRecipients?.let {
+        intent.putExtra(Intent.EXTRA_BCC, bccRecipients.toTypedArray())
+      }
       intent.putExtra(Intent.EXTRA_SUBJECT, subject)
       intent.putExtra(Intent.EXTRA_TEXT, body)
       uri?.let {
         intent.putExtra(Intent.EXTRA_STREAM, it)
       }
       this.application?.startActivity(intent)
+    }
+
+    private fun ReadableArray?.toTypedArray(): Array<String> {
+      val list = mutableListOf<String>()
+      this?.toArrayList()?.forEach {
+        if (it is String) {
+          list.add(it)
+        }
+      }
+      return list.toTypedArray()
     }
 }

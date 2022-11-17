@@ -228,9 +228,14 @@ const App = () => {
         <Text style={styles.title}>Logs</Text>
         <Spacer factor={1} />
         <Button
-          title={'Get logs URI (Android only)'}
+          title={'Compose diagnosis mail'}
           onPress={() => {
-            DriveKit.composeDiagnosisMail({recipients: 'recipient@help.com', subject: 'Diagnosis mail'});
+            DriveKit.composeDiagnosisMail({
+              recipients: ['recipient1@help.com', 'recipient2@help.com'],
+              bccRecipients: ['bcc1@help.com', 'bcc2@help.com'],
+              subject: 'Diagnosis mail',
+              body: 'Body mail'}
+            );
           }}
         />
       </ScrollView>

@@ -1,10 +1,6 @@
 package com.reactnativedrivekitcore;
 
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.*
 
 class CoreModule internal constructor(context: ReactApplicationContext?) :
     ReactContextBaseJavaModule(context) {
@@ -78,10 +74,10 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun composeDiagnosisMail(options: ReadableMap?) {
+    fun composeDiagnosisMail(options: ReadableMap? = null) {
       options?.let {
-        val recipients = it.getArray("recipients")?.toArrayList() as ArrayList<String>
-        val bccRecipients = it.getArray("recipients")?.toArrayList() as ArrayList<String>
+        val recipients = it.getArray("recipients")
+        val bccRecipients = it.getArray("bccRecipients")
         val subject = it.getString("subject")
         val body = it.getString("body")
         CoreModuleImpl.composeDiagnosisMail(recipients, bccRecipients, subject, body)
