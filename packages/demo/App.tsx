@@ -262,7 +262,7 @@ const App = () => {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: Colors.darker,
+    backgroundColor: Colors.lighter,
   },
   contentContainer: {
     padding: margins.x3,
