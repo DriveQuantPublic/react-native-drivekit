@@ -128,7 +128,7 @@ To validate that the initialization has been done successfully, please check you
 | [activateAutoStart()](#activateautostart)                             | `Promise<void>` | ✅  |   ✅    |
 | [startTrip()](#starttrip)                                             | `Promise<void>` | ✅  |   ✅    |
 | [stopTrip()](#stoptrip)                                               | `Promise<void>` | ✅  |   ✅    |
-| [activateCrashDetection()](#activatecrashdet                          | `Promise<void>` | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection                    | `Promise<void>` | ✅  |   ✅    |
 | [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>` | ✅  |   ✅    |
 
 ### activateAutoStart
