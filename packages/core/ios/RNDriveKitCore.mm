@@ -63,7 +63,7 @@ RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)optio
 RCT_REMAP_METHOD(getUriLogFile, getUriLogFileWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     NSURL *logFileUrl = [self getUriLogFile];
-    resolve(logFileUrl);
+    resolve(logFileUrl.path);
 }
 
 

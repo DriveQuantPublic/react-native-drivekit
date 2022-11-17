@@ -326,10 +326,10 @@ PODS:
   - React-jsinspector (0.70.5)
   - React-logger (0.70.5):
     - glog
-  - react-native-drivekit-core (0.0.1):
+  - react-native-drivekit-core (0.0.2):
     - DriveKitCore (= 1.28.1)
     - React-Core
-  - react-native-drivekit-trip-analysis (0.0.1):
+  - react-native-drivekit-trip-analysis (0.0.2):
     - DriveKitTripAnalysis (= 1.28.1)
     - React-Core
   - React-perflogger (0.70.5)
@@ -634,8 +634,8 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 31564fa6912459921568e8b0e49024285a4d584b
   React-jsinspector: badd81696361249893a80477983e697aab3c1a34
   React-logger: fdda34dd285bdb0232e059b19d9606fa0ec3bb9c
-  react-native-drivekit-core: 079d9e7925867bf1c9d035c37f872c617783a405
-  react-native-drivekit-trip-analysis: e87c0baee105eec6629a86aca17ecda6d52dd870
+  react-native-drivekit-core: 2b90a51308937493b7f675f33c7b3bc25aea87e1
+  react-native-drivekit-trip-analysis: 21c8d700e9c1bb2324b29efded18d920183fee9c
   React-perflogger: e68d3795cf5d247a0379735cbac7309adf2fb931
   React-RCTActionSheet: 05452c3b281edb27850253db13ecd4c5a65bc247
   React-RCTAnimation: 578eebac706428e68466118e84aeacf3a282b4da
