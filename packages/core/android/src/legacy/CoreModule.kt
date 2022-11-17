@@ -52,13 +52,13 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
 
     @ReactMethod
     fun enableLogging(options: ReadableMap?) {
-      var logPath: String? = null;
+      var logPath: String? = null
       if(options?.hasKey("logPath") == true) {
-        logPath = options?.getString("logPath");
+        logPath = options.getString("logPath");
       }
-      var showInConsole: Boolean? = null;
+      var showInConsole: Boolean? = null
       if(options?.hasKey("showInConsole") == true) {
-        showInConsole = options?.getBoolean("showInConsole")
+        showInConsole = options.getBoolean("showInConsole")
       }
       CoreModuleImpl.enableLogging(logPath, showInConsole)
     }
@@ -67,7 +67,7 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     fun disableLogging(options: ReadableMap?) {
       var showInConsole: Boolean? = null;
       if(options?.hasKey("showInConsole") == true) {
-        showInConsole = options?.getBoolean("showInConsole")
+        showInConsole = options.getBoolean("showInConsole")
       }
       CoreModuleImpl.disableLogging(showInConsole)
     }
@@ -75,6 +75,17 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     @ReactMethod
     fun getUriLogFile(promise: Promise) {
       val uri = CoreModuleImpl.getUriLogFile(promise)
+    }
+
+    @ReactMethod
+    fun composeDiagnosisMail(options: ReadableMap?) {
+      options?.let {
+        val recipients = it.getArray("recipients")?.toArrayList() as ArrayList<String>
+        val bccRecipients = it.getArray("recipients")?.toArrayList() as ArrayList<String>
+        val subject = it.getString("subject")
+        val body = it.getString("body")
+        CoreModuleImpl.composeDiagnosisMail(recipients, bccRecipients, subject, body)
+      }
     }
 
     companion object {

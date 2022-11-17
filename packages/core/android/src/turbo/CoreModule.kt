@@ -79,6 +79,16 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
       // TODO
     }
 
+    @ReactMethod
+    fun composeDiagnosisMail(options: ReadableMap?) {
+      options?.let {
+        val recipients = it.getArray("recipients")?.toArrayList() as ArrayList<String>
+        val bccRecipients = it.getArray("recipients")?.toArrayList() as ArrayList<String>
+        val subject = it.getString("subject")
+        val body = it.getString("body")
+        CoreModuleImpl.composeDiagnosisMail(recipients, bccRecipients, subject, body)
+      }
+    }
 
     companion object {
         val NAME: String = CoreModuleImpl.NAME

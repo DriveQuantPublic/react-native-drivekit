@@ -14,6 +14,7 @@ export interface Spec extends TurboModule {
   enableLogging(options?: { logPath?: string; showInConsole?: boolean }): void;
   disableLogging(options?: { showInConsole?: boolean }): void;
   getUriLogFile(): Promise<{ uri: string } | null>;
+  composeDiagnosisMail(options?: {recipients?: Array<string>; bccRecipients?: Array<string>; subject?: string; body?: string;}): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('Core');

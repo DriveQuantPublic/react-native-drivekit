@@ -1,5 +1,6 @@
 package com.reactnativedrivekitcore
 
+import android.content.Intent
 import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.DriveKitLog
 import com.facebook.react.bridge.Arguments
@@ -48,7 +49,6 @@ object CoreModuleImpl {
 
     fun enableLogging(logPath: String?, showInConsole: Boolean?) {
       DriveKit.enableLogging(logPath ?: "/DriveKit" , showInConsole ?: true)
-
     }
 
     fun disableLogging(showInConsole: Boolean?) {
@@ -64,5 +64,20 @@ object CoreModuleImpl {
       } catch (e: Exception) {
         promise.reject("Get URI log file", "Unable to get the uri log file")
       }
+    }
+
+    fun composeDiagnosisMail(recipients: ArrayList<String>?, bccRecipients: ArrayList<String>?, subject: String?, body: String?) {
+      val uri = this.application?.let { DriveKitLog.getLogUriFile(it.applicationContext) } ?: run { null }
+      val intent = Intent(Intent.ACTION_SEND)
+      intent.type = "plain/text"
+      intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+      intent.putExtra(Intent.EXTRA_EMAIL, recipients)
+      intent.putExtra(Intent.EXTRA_BCC, bccRecipients)
+      intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+      intent.putExtra(Intent.EXTRA_TEXT, body)
+      uri?.let {
+        intent.putExtra(Intent.EXTRA_STREAM, it)
+      }
+      this.application?.startActivity(intent)
     }
 }

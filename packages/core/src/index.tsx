@@ -77,3 +77,12 @@ export function getUriLogFile(): Promise<{ uri: string } | null> {
 
   return Core.getUriLogFile();
 }
+
+export function composeDiagnosisMail(options?: {
+  recipients?: Array<string>;
+  bccRecipients?: Array<string>;
+  subject?: string;
+  body?: string;
+}) : void {
+  Core.composeDiagnosisMail();
+}

@@ -229,11 +229,8 @@ const App = () => {
         <Spacer factor={1} />
         <Button
           title={'Get logs URI (Android only)'}
-          onPress={async () => {
-            const result = await DriveKit.getUriLogFile();
-            if (result) {
-              Alert.alert('Logs URI', result.uri);
-            }
+          onPress={() => {
+            DriveKit.composeDiagnosisMail({recipients: 'recipient@help.com', subject: 'Diagnosis mail'});
           }}
         />
       </ScrollView>
