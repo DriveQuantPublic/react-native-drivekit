@@ -84,5 +84,5 @@ export function composeDiagnosisMail(options?: {
   subject?: string;
   body?: string;
 }) : void {
-  Core.composeDiagnosisMail();
+  Core.composeDiagnosisMail(options);
 }
