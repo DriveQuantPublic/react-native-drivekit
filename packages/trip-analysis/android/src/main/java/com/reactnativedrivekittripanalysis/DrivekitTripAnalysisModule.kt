@@ -98,10 +98,14 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("potentialTripStart", rnStartMode)
         }
         override fun crashDetected(crashInfo: DKCrashInfo) {
-          println("crash detected")
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("crashDetected", mapDKCrashInfo(crashInfo))
         }
         override fun crashFeedbackSent(crashInfo: DKCrashInfo, feedbackType: CrashFeedbackType, severity: CrashFeedbackSeverity) {
-          println("crash feedback sent")
+          var result = Arguments.createMap()
+          result.putMap("crashInfo", mapDKCrashInfo(crashInfo))
+          result.putString("feedbackType", mapDKCrashFeedbackType(feedbackType))
+          result.putString("severity", mapDKCrashFeedbackSeverity(severity))
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("crashFeedbackSent", result)
         }
         override fun onDeviceConfigEvent(deviceConfigEvent: DeviceConfigEvent) {
           println("on device config event")
