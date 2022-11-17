@@ -39,6 +39,11 @@ RCT_REMAP_METHOD(activateAutoStart, activateAutoStartWithEnable:(nonnull NSNumbe
     [self activateAutoStart:enable];
 }
 
+RCT_REMAP_METHOD(activateCrashDetection, activateCrashDetectionWithEnable:(nonnull NSNumber *)enable)
+{
+    [self activateCrashDetection:enable];
+}
+
 RCT_REMAP_METHOD(startTrip, startTripAnalysis)
 {
     [self startTrip];

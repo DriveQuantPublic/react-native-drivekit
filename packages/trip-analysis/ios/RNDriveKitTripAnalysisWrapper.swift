@@ -14,6 +14,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc internal func activateAutoStart(enable: NSNumber) -> Void {
         DriveKitTripAnalysis.shared.activateAutoStart(enable:enable.boolValue)
     }
+
+    @objc internal func activateCrashDetection(enable: NSNumber) -> Void {
+        DriveKitTripAnalysis.shared.activateCrashDetection(enable:enable.boolValue)
+    }
     
     @objc internal func startTrip() -> Void {
         DriveKitTripAnalysis.shared.startTrip();

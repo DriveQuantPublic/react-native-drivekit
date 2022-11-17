@@ -33,6 +33,10 @@ export function activateAutoStart(enable: boolean): void {
   return DrivekitTripAnalysis.activateAutoStart(enable);
 }
 
+export function activateCrashDetection(enable: boolean): void {
+  return DrivekitTripAnalysis.activateCrashDetection(enable);
+}
+
 export function startTrip(): void {
   return DrivekitTripAnalysis.startTrip();
 }

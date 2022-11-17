@@ -42,6 +42,11 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
+  override fun activateCrashDetection(enable: Boolean) {
+    DriveKitTripAnalysis.activateCrashDetection(enable)
+  }
+
+  @ReactMethod
   override fun startTrip() {
     DriveKitTripAnalysis.startTrip()
   }

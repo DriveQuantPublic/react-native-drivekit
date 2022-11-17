@@ -211,16 +211,34 @@ const App = () => {
           <Text>Should monitor potential starts ?</Text>
         </View>
         <Spacer factor={1} />
+
         <Button
-          title={'Start'}
+          title={'Start Trip'}
           onPress={() => {
             DriveKitTripAnalysis.startTrip();
           }}
         />
+        <Spacer factor={1} />
         <Button
-          title={'Stop'}
+          title={'Stop Trip'}
           onPress={() => {
             DriveKitTripAnalysis.stopTrip();
+          }}
+        />
+
+        <Spacer factor={2} />
+
+        <Button
+          title={'Enable CrashDetection'}
+          onPress={() => {
+            DriveKitTripAnalysis.activateCrashDetection(true);
+          }}
+        />
+        <Spacer factor={1} />
+        <Button
+          title={'Disable CrashDetection'}
+          onPress={() => {
+            DriveKitTripAnalysis.activateCrashDetection(false);
           }}
         />
 
@@ -244,7 +262,7 @@ const App = () => {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: Colors.lighter,
+    backgroundColor: Colors.darker,
   },
   contentContainer: {
     padding: margins.x3,
