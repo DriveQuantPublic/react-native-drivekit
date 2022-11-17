@@ -114,19 +114,20 @@ To validate that the initialization has been done successfully, please check you
 
 ## API
 
-| Method                            | Return Type                        | iOS | Android |
-| --------------------------------- | ---------------------------------- | :-: | :-----: |
-| [getApiKey()](#getapikey)         | `Promise<string>`                  | ✅  |   ✅    |
-| [setApiKey()](#setapikey)         | `Promise<void>`                    | ✅  |   ✅    |
-| [getUserId()](#getuserid)         | `Promise<string>`                  | ✅  |   ✅    |
-| [setUserId()](#setuserid)         | `Promise<void>`                    | ✅  |   ✅    |
-| [updateUserId()](#updateuserid)   | `Promise<void>`                    | ✅  |   ✅    |
-| [deleteAccount()](#deleteaccount) | `Promise<void>`                    | ✅  |   ✅    |
-| [reset()](#reset)                 | `Promise<void>`                    | ✅  |   ✅    |
-| [enableLogging()](#logging)       | `Promise<void>`                    | ✅  |   ✅    |
-| [disableLogging()](#logging)      | `Promise<void>`                    | ✅  |   ✅    |
-| [getUriLogFile()](#getUriLogFile) | `Promise<{ uri: string } \| null>` | ❌  |   ✅    |
-| [isTokenValid()](#istokenvalid)   | `Promise<boolean>`                 | ✅  |   ✅    |
+| Method                                          | Return Type                        | iOS | Android |
+| ------------------------------------------------| ---------------------------------- | :-: | :-----: |
+| [getApiKey()](#getapikey)                       | `Promise<string>`                  | ✅  |   ✅    |
+| [setApiKey()](#setapikey)                       | `Promise<void>`                    | ✅  |   ✅    |
+| [getUserId()](#getuserid)                       | `Promise<string>`                  | ✅  |   ✅    |
+| [setUserId()](#setuserid)                       | `Promise<void>`                    | ✅  |   ✅    |
+| [updateUserId()](#updateuserid)                 | `Promise<void>`                    | ✅  |   ✅    |
+| [deleteAccount()](#deleteaccount)               | `Promise<void>`                    | ✅  |   ✅    |
+| [reset()](#reset)                               | `Promise<void>`                    | ✅  |   ✅    |
+| [enableLogging()](#logging)                     | `Promise<void>`                    | ✅  |   ✅    |
+| [disableLogging()](#logging)                    | `Promise<void>`                    | ✅  |   ✅    |
+| [getUriLogFile()](#getUriLogFile)               | `Promise<{ uri: string } \| null>` | ❌  |   ✅    |
+| [composeDiagnosisMail()](#composediagnosismail) | `Promise<void>`                    | ✅  |   ✅    |
+| [isTokenValid()](#istokenvalid)                 | `Promise<boolean>`                 | ✅  |   ✅    |
 
 ### getApiKey
 
@@ -325,3 +326,22 @@ You can retrieve the Uri log file by calling the following method:
 ```typescript
 const { uri } = await getUriLogFile();
 ```
+  
+  
+### composeDiagnosisMail
+
+```typescript
+  composeDiagnosisMail(): Promise<void>
+```
+
+You can compose a diagnosis mail with attached DriveKit logs (if available). To do this, call this following method:
+
+```typescript
+DriveKit.composeDiagnosisMail({
+  recipients: ['recipient1@help.com', 'recipient2@help.com'],
+  bccRecipients: ['bcc1@help.com', 'bcc2@help.com'],
+  subject: 'Diagnosis mail',
+  body: 'Body mail'}
+);
+```
+
