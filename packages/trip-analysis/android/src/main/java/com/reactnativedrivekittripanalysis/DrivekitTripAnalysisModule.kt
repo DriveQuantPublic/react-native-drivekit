@@ -71,6 +71,7 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
         override fun tripStarted(startMode : StartMode) {
         }
         override fun tripPoint(tripPoint : TripPoint) {
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripPoint", mapTripPoint(tripPoint))
         }
         override fun tripSavedForRepost() {
         }
