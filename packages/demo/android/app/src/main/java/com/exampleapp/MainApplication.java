@@ -3,6 +3,7 @@ package com.exampleapp;
 import android.app.Application;
 import android.content.Context;
 
+import com.reactnativedrivekitcore.DriveKitCoreModule;
 import com.reactnativedrivekittripanalysis.DrivekitTripAnalysisModule;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -12,7 +13,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.exampleapp.newarchitecture.MainApplicationReactNativeHost;
-import com.reactnativedrivekitcore.CoreModuleImpl;
 import com.reactnativedrivekittripanalysis.RNTripNotification;
 
 import java.lang.reflect.InvocationTargetException;
@@ -57,7 +57,7 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
-    CoreModuleImpl.INSTANCE.initialize(this);
+    DriveKitCoreModule.Companion.initialize(this);
     RNTripNotification tripNotification = new RNTripNotification(
             "DriveKit SDK",
             "Start a trip with DriveKit SDK",

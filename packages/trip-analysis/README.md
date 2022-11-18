@@ -32,7 +32,7 @@ Call `initialize` method inside your `MainApplication.java`.
 
 ```java
 // MainApplication.java
-import com.reactnativedrivekitcore.CoreModuleImpl;
+import com.reactnativedrivekitcore.DriveKitCoreModule;
 import com.reactnativedrivekittripanalysis.DrivekitTripAnalysisModule;
 
 // ...
@@ -40,7 +40,7 @@ import com.reactnativedrivekittripanalysis.DrivekitTripAnalysisModule;
   @Override
   public void onCreate() {
     super.onCreate();
-    CoreModuleImpl.INSTANCE.initialize(this);
+    DriveKitCoreModule.Companion.initialize(this);
 
     // ADD THESE LINES
     final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
