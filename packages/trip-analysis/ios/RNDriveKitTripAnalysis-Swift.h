@@ -9,6 +9,7 @@
 - (void)activateCrashDetectionWithEnable:(NSNumber * _Nonnull)enable;
 - (void)startTrip;
 - (void)stopTrip;
+- (void)cancelTrip;
 - (void)enableMonitorPotentialTripStartWithEnable:(NSNumber * _Nonnull)enable;
 @end
 
