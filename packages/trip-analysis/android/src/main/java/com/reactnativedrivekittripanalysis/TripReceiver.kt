@@ -16,10 +16,10 @@ class TripReceiver: TripAnalysedReceiver() {
     var result = Arguments.createMap()
     result.putString("post", gson.toJson(post))
     result.putString("response", gson.toJson(response))
-    DrivekitTripAnalysisModule.reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripFinished", result)
+    DriveKitTripAnalysisModule.reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripFinished", result)
   }
 
   override fun onTripCancelled(context: Context, status: CancelTrip) {
-    DrivekitTripAnalysisModule.reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripCancelled", mapCancelTrip(status) )
+    DriveKitTripAnalysisModule.reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripCancelled", mapCancelTrip(status) )
   }
 }

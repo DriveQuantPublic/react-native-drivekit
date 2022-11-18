@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.reactnativedrivekitcore.DriveKitCoreModule;
-import com.reactnativedrivekittripanalysis.DrivekitTripAnalysisModule;
+import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -62,8 +62,8 @@ public class MainApplication extends Application implements ReactApplication {
             "DriveKit SDK",
             "Start a trip with DriveKit SDK",
             R.drawable.common_google_signin_btn_icon_dark);
-    DrivekitTripAnalysisModule.Companion.initialize(tripNotification);
-    DrivekitTripAnalysisModule.Companion.registerReceiver(this);
+    DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
+    DriveKitTripAnalysisModule.Companion.registerReceiver(this);
     // If you opted-in for the New Architecture, we enable the TurboModule system
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);

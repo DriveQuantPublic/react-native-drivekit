@@ -52,7 +52,7 @@ By default, the example is configured to build with the old architecture. To run
 To confirm that the app is running with the new architecture, you can check the Metro logs for a message like this:
 
 ```sh
-Running "DrivekitTripAnalysisExample" with {"fabric":true,"initialProps":{"concurrentRoot":true},"rootTag":1}
+Running "DriveKitTripAnalysisExample" with {"fabric":true,"initialProps":{"concurrentRoot":true},"rootTag":1}
 ```
 
 Note the `"fabric":true` and `"concurrentRoot":true` properties.
