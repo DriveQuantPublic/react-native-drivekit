@@ -67,8 +67,10 @@ export function enableLogging(options?: {
   return Core.enableLogging(options);
 }
 
-export function disableLogging(options?: { showInConsole?: boolean }): void {
-  Core.disableLogging(options);
+export function disableLogging(options?: {
+  showInConsole?: boolean;
+}): Promise<void> {
+  return Core.disableLogging(options);
 }
 
 export function getUriLogFile(): Promise<{ uri: string } | null> {

@@ -77,12 +77,13 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun disableLogging(options: ReadableMap?) {
+    fun disableLogging(options: ReadableMap?, promise: Promise) {
       var showInConsole: Boolean? = null;
       if(options?.hasKey("showInConsole") == true) {
         showInConsole = options?.getBoolean("showInConsole")
       }
       CoreModuleImpl.disableLogging(showInConsole)
+      promise.resolve(null)
     }
 
     @ReactMethod

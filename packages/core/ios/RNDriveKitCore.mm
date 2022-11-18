@@ -63,8 +63,9 @@ RCT_REMAP_METHOD(enableLogging, enableLoggingWithOptions:(NSDictionary *)options
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)options){
+RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
     [self disableLogging:options];
+    resolve(nil);
 }
 
 RCT_REMAP_METHOD(getUriLogFile, getUriLogFileWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
