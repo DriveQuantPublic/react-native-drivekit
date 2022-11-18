@@ -1,4 +1,7 @@
 package com.reactnativedrivekittripanalysis
+import android.content.Context
+import android.content.IntentFilter
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
 import com.drivequant.drivekit.tripanalysis.DriveKitTripAnalysis
 import com.drivequant.drivekit.tripanalysis.TripListener
@@ -11,9 +14,11 @@ import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.Cras
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.modules.core.DeviceEventManagerModule
+import com.google.gson.Gson
 
 class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
   DrivekitTripAnalysisSpec(context) {
@@ -57,6 +62,11 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
+  override fun cancelTrip() {
+    DriveKitTripAnalysis.cancelTrip()
+  }
+
+  @ReactMethod
   override fun enableMonitorPotentialTripStart(enable: Boolean) {
     DriveKitTripAnalysis.monitorPotentialTripStart = enable;
   }
@@ -64,41 +74,58 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
   companion object {
     const val NAME = "RNDriveKitTripAnalysis"
 
-    private var reactContext: ReactApplicationContext? = null;
+    var reactContext: ReactApplicationContext? = null;
     fun initialize(rnTripNotification: RNTripNotification) {
       val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
       DriveKitTripAnalysis.initialize(tripNotification, object: TripListener {
         override fun tripStarted(startMode : StartMode) {
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripStarted", mapStartMode(startMode))
         }
         override fun tripPoint(tripPoint : TripPoint) {
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripPoint", mapTripPoint(tripPoint))
         }
         override fun tripSavedForRepost() {
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripSavedForRepost", null)
+
         }
         override fun tripFinished(post : PostGeneric, response: PostGenericResponse) {
+          // implemented in TripReceiver
         }
         override fun beaconDetected() {
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("beaconDetected", null)
         }
         override fun sdkStateChanged(state: State) {
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("sdkStateChanged", mapSDKState(state))
         }
         override fun potentialTripStart(startMode: StartMode) {
-          var eventName = when (startMode) {
-            StartMode.UNKNOWN_BLUETOOTH -> "UNKNOWN_BLUETOOTH"
-            StartMode.BEACON -> "BEACON"
-            StartMode.BICYCLE_ACTIVITY -> "BICYCLE_ACTIVITY"
-            StartMode.BLUETOOTH -> "BLUETOOTH"
-            StartMode.GEOZONE -> "GEOZONE"
-            StartMode.GPS -> "GPS"
-            StartMode.MANUAL -> "MANUAL"
-          }
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("potentialTripStart", eventName)
+          var rnStartMode = mapStartMode(startMode)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("potentialTripStart", rnStartMode)
         }
         override fun crashDetected(crashInfo: DKCrashInfo) {
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("crashDetected", mapDKCrashInfo(crashInfo))
         }
         override fun crashFeedbackSent(crashInfo: DKCrashInfo, feedbackType: CrashFeedbackType, severity: CrashFeedbackSeverity) {
+          var result = Arguments.createMap()
+          result.putMap("crashInfo", mapDKCrashInfo(crashInfo))
+          result.putString("feedbackType", mapDKCrashFeedbackType(feedbackType))
+          result.putString("severity", mapDKCrashFeedbackSeverity(severity))
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("crashFeedbackSent", result)
         }
-        override fun onDeviceConfigEvent(deviceConfigevent: DeviceConfigEvent) {
+        override fun onDeviceConfigEvent(deviceConfigEvent: DeviceConfigEvent) {
+          if (deviceConfigEvent is DeviceConfigEvent.BLUETOOTH_SENSOR_STATE_CHANGED) {
+            var result = Arguments.createMap()
+            result.putBoolean("btSensorEnabled", deviceConfigEvent.btEnabled)
+            result.putBoolean("btRequired", deviceConfigEvent.btRequired)
+            reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("bluetoothSensorStateChanged", result)
+          }
         }
       })
+    }
+
+    fun registerReceiver(context: Context){
+      val receiver = TripReceiver()
+      val filter = IntentFilter("com.drivequant.sdk.TRIP_ANALYSED")
+      LocalBroadcastManager.getInstance(context).registerReceiver(receiver, filter)
     }
   }
 }

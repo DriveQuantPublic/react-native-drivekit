@@ -149,6 +149,7 @@ dependencies {
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation "com.drivequant.drivekit:drivekit-trip-analysis:$driveKitTripAnalysis_version"
+  implementation 'com.google.code.gson:gson:2.8.5'
 // From node_modules
 }
 
