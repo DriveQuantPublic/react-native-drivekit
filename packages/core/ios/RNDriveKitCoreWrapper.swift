@@ -62,6 +62,13 @@ public class RNDriveKitCoreWrapper: NSObject {
         }
     }
 
+    @objc internal func getUriLogFile() -> URL? {
+        if DriveKitLog.shared.isLoggingEnabled {
+            return DriveKitLog.shared.getZippedLogFilesUrl()
+        }
+        return nil
+    }
+
     @objc internal func getUserInfo(synchronizationType: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         var mappedSynchronizationType: SynchronizationType = .defaultSync;
         if synchronizationType == "default" {

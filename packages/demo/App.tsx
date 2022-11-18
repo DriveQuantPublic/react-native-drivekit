@@ -250,7 +250,7 @@ const App = () => {
         <Text style={styles.title}>Logs</Text>
         <Spacer factor={1} />
         <Button
-          title={'Get logs URI (Android only)'}
+          title={'Get logs URI'}
           onPress={async () => {
             const result = await DriveKit.getUriLogFile();
             if (result) {

@@ -60,6 +60,13 @@ RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)optio
     [self disableLogging:options];
 }
 
+RCT_REMAP_METHOD(getUriLogFile, getUriLogFileWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSURL *logFileUrl = [self getUriLogFile];
+    resolve([NSDictionary dictionaryWithObject:logFileUrl.path
+                                        forKey:@"uri"]);
+}
+
 RCT_REMAP_METHOD(getUserInfo, getUserInfoWithSynchronizationType:(NSString *)synchronizationType withResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject)
 {
    [self getUserInfo:synchronizationType resolver:resolve rejecter:reject];
@@ -113,6 +120,10 @@ RCT_REMAP_METHOD(updateUserInfo, updateUserInfoWithUserInfo:(NSDictionary *)user
 
 - (void)enableLogging:(NSDictionary *)options {
     [RNDriveKitCoreWrapper.shared enableLoggingWithShowInConsole:options[@"showInConsole"]];
+}
+
+-(NSURL* )getUriLogFile {
+    return [RNDriveKitCoreWrapper.shared getUriLogFile];
 }
 
 - (void)getUserInfo:(NSString *)synchronizationType resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {

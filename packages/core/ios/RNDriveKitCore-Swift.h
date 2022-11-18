@@ -16,6 +16,7 @@
 - (void)reset;
 - (void)enableLoggingWithShowInConsole:(NSNumber * _Nullable)showInConsole;
 - (void)disableLoggingWithShowInConsole:(NSNumber * _Nullable)showInConsole;
+-(NSURL *)getUriLogFile;
 - (void)getUserInfoWithSynchronizationType:(NSString * _Nullable)synchronizationType resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)updateUserInfoWithUserInfo:(NSDictionary * _Nonnull)userInfo resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 @end
