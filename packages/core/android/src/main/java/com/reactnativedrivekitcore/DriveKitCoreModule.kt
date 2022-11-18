@@ -1,6 +1,7 @@
 package com.reactnativedrivekitcore;
 
 import android.app.Application
+import android.content.Intent
 import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.DriveKitLog
 import com.drivequant.drivekit.core.SynchronizationType
@@ -151,7 +152,44 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
         )
       }
 
-      companion object {
+    @ReactMethod
+    override fun composeDiagnosisMail(options: ReadableMap?) {
+      options?.let {
+        val recipients = it.getArray("recipients")
+        val bccRecipients = it.getArray("bccRecipients")
+        val subject = it.getString("subject")
+        val body = it.getString("body")
+
+        val uri = application?.let { DriveKitLog.getLogUriFile(it.applicationContext) } ?: run { null }
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "plain/text"
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        recipients?.let {
+          intent.putExtra(Intent.EXTRA_EMAIL, recipients.toTypedArray())
+        }
+        bccRecipients?.let {
+          intent.putExtra(Intent.EXTRA_BCC, bccRecipients.toTypedArray())
+        }
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+        intent.putExtra(Intent.EXTRA_TEXT, body)
+        uri?.let { uri ->
+          intent.putExtra(Intent.EXTRA_STREAM, uri)
+        }
+        application?.startActivity(intent)
+      }
+    }
+
+  private fun ReadableArray?.toTypedArray(): Array<String> {
+    val list = mutableListOf<String>()
+    this?.toArrayList()?.forEach {
+      if (it is String) {
+        list.add(it)
+      }
+    }
+    return list.toTypedArray()
+  }
+
+  companion object {
         const val NAME = "RNDriveKitCore"
         var application: Application? = null
         fun initialize(application: Application) {
