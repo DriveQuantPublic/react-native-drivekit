@@ -11,7 +11,7 @@ const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
 const DriverDataModule = isTurboModuleEnabled
   ? require('./NativeDriverData').default
-  : NativeModules.DriverData;
+  : NativeModules.RNDriveKitDriverData;
 
 const DriverData = DriverDataModule
   ? DriverDataModule

@@ -1,6 +1,6 @@
-#import "DriverData.h"
+#import "RNDriveKitDriverData.h"
 
-@implementation DriverData
+@implementation RNDriveKitDriverData
 RCT_EXPORT_MODULE()
 
 // Example method

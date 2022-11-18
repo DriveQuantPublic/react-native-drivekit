@@ -19,6 +19,6 @@ class DriverDataModule internal constructor(context: ReactApplicationContext) :
   }
 
   companion object {
-    const val NAME = "DriverData"
+    const val NAME = "RNDriveKitDriverData"
   }
 }
