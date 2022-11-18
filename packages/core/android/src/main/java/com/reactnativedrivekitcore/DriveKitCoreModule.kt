@@ -23,6 +23,16 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
         return NAME
     }
 
+  @ReactMethod
+  fun addListener(eventName: String) {
+    // Set up any upstream listeners or background tasks as necessary
+  }
+
+  @ReactMethod
+  fun removeListeners(count: Int) {
+    // Remove upstream listeners, stop unnecessary background tasks
+  }
+
     @ReactMethod
     override fun getApiKey(promise: Promise){
       promise.resolve(DriveKit.config.apiKey)
