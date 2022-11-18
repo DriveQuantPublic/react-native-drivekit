@@ -13,6 +13,7 @@ export interface Spec extends TurboModule {
   setApiKey(key: string): Promise<void>;
   setUserId(userId: string): Promise<void>;
   updateUserId(userId: string): Promise<void>;
+  deleteAccount(instantDeletion: boolean): Promise<void>;
   getUriLogFile(): Promise<{ uri: string } | null>;
   getUserInfo(
     synchronizationType: WithDefault<'default' | 'cache', 'default'>

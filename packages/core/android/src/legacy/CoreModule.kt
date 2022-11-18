@@ -40,8 +40,9 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun deleteAccount(instantDeletion: Boolean){
+    fun deleteAccount(instantDeletion: Boolean, promise: Promise){
       CoreModuleImpl.deleteAccount(instantDeletion)
+      promise.resolve(null)
     }
 
     @ReactMethod
