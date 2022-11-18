@@ -52,8 +52,8 @@ export function isTokenValid(): Promise<boolean> {
   return Core.isTokenValid();
 }
 
-export function enableSandboxMode(enable: boolean): void {
-  Core.enableSandboxMode(enable);
+export function enableSandboxMode(enable: boolean): Promise<void> {
+  return Core.enableSandboxMode(enable);
 }
 
 export function reset(): void {

@@ -46,9 +46,10 @@ RCT_REMAP_METHOD(isTokenValid, isTokenValidWithResolve:(RCTPromiseResolveBlock)r
     resolve(validity);
 }
 
-RCT_REMAP_METHOD(enableSandboxMode, enableSandboxModeWithEnable:(nonnull NSNumber *)enable)
+RCT_REMAP_METHOD(enableSandboxMode, enableSandboxModeWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self enableSandboxMode:enable];
+    resolve(nil);
 }
 
 RCT_REMAP_METHOD(reset, resetCore)

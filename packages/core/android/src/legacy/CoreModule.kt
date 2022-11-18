@@ -51,8 +51,9 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun enableSandboxMode(enable: Boolean){
+    fun enableSandboxMode(enable: Boolean, promise: Promise){
       CoreModuleImpl.enableSandboxMode(enable)
+      promise.resolve(null)
     }
 
     @ReactMethod
