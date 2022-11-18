@@ -22,6 +22,7 @@ import {checkRecognitionPermission} from './src/services/permissions/recognition
 import {checkNotificationPermission} from './src/services/permissions/notification';
 import {checkBatteryOptimizationPermission} from './src/services/permissions/batteryOptimization';
 import {checkMotionPermission} from './src/services/permissions/motion';
+import {UserInfoForm} from './src/components/UserInfoForm';
 
 const inputHeight = 40;
 
@@ -143,6 +144,8 @@ const App = () => {
           title="Update User ID"
           onPress={() => DriveKit.updateUserId(newUserId)}
         />
+        <Spacer factor={2} />
+        <UserInfoForm />
         <Spacer factor={2} />
         <Text style={styles.title}>Delete account</Text>
         <Spacer factor={1} />

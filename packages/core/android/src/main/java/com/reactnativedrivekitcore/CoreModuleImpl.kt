@@ -2,8 +2,14 @@ package com.reactnativedrivekitcore
 
 import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.DriveKitLog
+import com.drivequant.drivekit.core.SynchronizationType
+import com.drivequant.drivekit.core.driver.GetUserInfoQueryListener
+import com.drivequant.drivekit.core.driver.UpdateUserInfoQueryListener
+import com.drivequant.drivekit.core.driver.UserInfo
+import com.drivequant.drivekit.core.driver.UserInfoGetStatus
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReadableMap
 
 /**
  * This is where the module implementation lives
@@ -65,4 +71,49 @@ object CoreModuleImpl {
         promise.reject("Get URI log file", "Unable to get the uri log file")
       }
     }
-}
+
+    fun getUserInfo(synchronizationType: String?, promise: Promise) {
+      var mappedSynchronizationType: SynchronizationType = SynchronizationType.DEFAULT;
+      if(synchronizationType == "cache") {
+        mappedSynchronizationType = SynchronizationType.CACHE
+      }
+
+      DriveKit.getUserInfo(object : GetUserInfoQueryListener {
+        override fun onResponse(status: UserInfoGetStatus, userInfo: UserInfo?) {
+          when (status) {
+              UserInfoGetStatus.SUCCESS -> promise.resolve(UserInfoMappers.mapUserInfoToReadableMap((userInfo)))
+              UserInfoGetStatus.CACHE_DATA_ONLY -> promise.resolve(UserInfoMappers.mapUserInfoToReadableMap((userInfo)))
+              else -> promise.reject("Get User Info", "Unable to get user info")
+          }
+        }
+      }, mappedSynchronizationType)
+    }
+
+    fun updateUserInfo(userInfo: ReadableMap, promise: Promise) {
+      var firstname: String? = null;
+      if(userInfo.hasKey("firstname")){
+        firstname = userInfo.getString("firstname")
+      }
+      var lastname: String? = null;
+      if(userInfo.hasKey("lastname")){
+        lastname = userInfo.getString("lastname")
+      }
+      var pseudo: String? = null;
+      if(userInfo.hasKey("pseudo")){
+        pseudo = userInfo.getString("pseudo")
+      }
+      DriveKit.updateUserInfo(firstname,
+        lastname,
+        pseudo,
+        object : UpdateUserInfoQueryListener {
+          override fun onResponse(status: Boolean){
+            if (status) {
+              promise.resolve(true)
+            } else {
+              promise.reject("Update User Info", "Unable to update user info")
+            }
+          }
+        }
+      )
+    }
+  }

@@ -1,5 +1,7 @@
 package com.reactnativedrivekitcore;
 
+import com.drivequant.drivekit.core.DriveKit
+import com.drivequant.drivekit.core.SynchronizationType
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
@@ -75,6 +77,16 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     @ReactMethod
     fun getUriLogFile(promise: Promise) {
       val uri = CoreModuleImpl.getUriLogFile(promise)
+    }
+
+    @ReactMethod
+    fun getUserInfo(synchronizationType: String?, promise: Promise) {
+      CoreModuleImpl.getUserInfo(synchronizationType, promise)
+    }
+
+    @ReactMethod
+    fun updateUserInfo(userInfo: ReadableMap, promise: Promise) {
+      CoreModuleImpl.updateUserInfo(userInfo, promise)
     }
 
     companion object {
