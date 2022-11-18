@@ -64,6 +64,27 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'driveKitConnected',
+      () => {
+        console.log('Connected to DriveKit');
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'driveKitDisconnected',
+      () => {
+        console.log('Disconnected from DriveKit');
+      },
+    );
+    return () => listener.remove();
+  });
+
+
+  useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripCancelled',
       (reason: CancelTripReason) => {

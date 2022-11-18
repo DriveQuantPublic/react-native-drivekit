@@ -2,6 +2,35 @@
 #import "RNDriveKitCore-Swift.h"
 
 @implementation RNDriveKitCore
+{
+  bool hasListeners;
+}
+
+- (id)init {
+    self = [super init];
+    if(self){
+        [RNCoreEventEmitter.shared registerEventEmitterWithEventEmitter:self];
+    }
+    return self;
+}
+
++ (BOOL)requiresMainQueueSetup
+{
+    return NO;
+}
+
+- (NSArray<NSString *>*)supportedEvents {
+    return RNCoreEventEmitter.allEvents;
+}
+
+-(void)startObserving {
+    hasListeners = YES;
+}
+
+-(void)stopObserving {
+    hasListeners = NO;
+}
+
 RCT_EXPORT_MODULE()
 
 RCT_REMAP_METHOD(getApiKey, getApiKeyWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)

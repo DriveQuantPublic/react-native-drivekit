@@ -1,6 +1,10 @@
-import { NativeModules, Platform } from 'react-native';
+import {   
+	EmitterSubscription,
+	NativeEventEmitter,
+	NativeModules, 
+	Platform 
+	} from 'react-native';
 import type { UserInfo } from './NativeCore';
-
 const LINKING_ERROR =
   `The package '@react-native-drivekit/core' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
@@ -89,3 +93,16 @@ export async function updateUserInfo(userInfo: UserInfo): Promise<void> {
   await Core.updateUserInfo(userInfo);
   return;
 }
+
+type Listeners = {
+  driveKitConnected: () => void;
+  driveKitDisconnected: () => void;
+};
+
+const eventEmitter = new NativeEventEmitter(Core);
+export function addEventListener<E extends keyof Listeners>(
+  event: E,
+  callback: Listeners[E]
+): EmitterSubscription {
+  return eventEmitter.addListener(event, callback);
+};

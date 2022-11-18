@@ -7,7 +7,7 @@ public class RNDriveKitCoreWrapper: NSObject {
     @objc public static let shared = RNDriveKitCoreWrapper()
 
     @objc public func initialize() -> Void {
-        DriveKit.shared.initialize()
+        DriveKit.shared.initialize(delegate: self)
     }
 
     @objc internal func getApiKey() -> String? {
@@ -87,5 +87,37 @@ public class RNDriveKitCoreWrapper: NSObject {
                 reject("Update User Info", "Unable to update user info", nil)
             }
         }
+    }
+}
+
+extension RNDriveKitCoreWrapper: DriveKitDelegate {
+    public func driveKitDidConnect(_ driveKit: DriveKit) {
+        // Connected to DriveKit.
+        RNCoreEventEmitter.shared.dispatch(name: "driveKitConnected", body: nil)
+        return
+    }
+
+    public func driveKit(_ driveKit: DriveKit, didReceiveAuthenticationError error: RequestError) {
+        // DriveKit authentication error: \(error).
+        // Listener not yet implemented
+        return
+    }
+
+    public func driveKitDidDisconnect(_ driveKit: DriveKit) {
+        // Disconnected from DriveKit.
+        RNCoreEventEmitter.shared.dispatch(name: "driveKitDisconnected", body: nil)
+        return
+    }
+
+    public func userIdUpdateStatusChanged(status: UpdateUserIdStatus, userId: String?) {
+        // DriveKit userId updated: userId = \(userId), status = \(status).
+        // Listener not yet implemented
+        return
+    }
+    
+    public func driveKit(_ driveKit: DriveKit, accountDeletionCompleted status: DeleteAccountStatus) {
+         // account deletion completed with status \(status).
+        // Listener not yet implemented
+        return
     }
 }

@@ -81,4 +81,4 @@ export function addEventListener<E extends keyof Listeners>(
   callback: Listeners[E]
 ): EmitterSubscription {
   return eventEmitter.addListener(event, callback);
-}
+};

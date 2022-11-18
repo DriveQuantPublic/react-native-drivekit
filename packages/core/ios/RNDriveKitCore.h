@@ -1,11 +1,13 @@
+#import <React/RCTEventEmitter.h>
+
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <RNCoreSpec/RNCoreSpec.h>
 
-@interface RNDriveKitCore : NSObject <NativeCoreSpec>
+@interface RNDriveKitCore : RCTEventEmitter <NativeCoreSpec>
 #else
 #import <React/RCTBridgeModule.h>
 
-@interface RNDriveKitCore : NSObject <RCTBridgeModule>
+@interface RNDriveKitCore : RCTEventEmitter <RCTBridgeModule>
 #endif
 
 @end

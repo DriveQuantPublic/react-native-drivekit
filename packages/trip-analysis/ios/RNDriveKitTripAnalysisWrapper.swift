@@ -32,7 +32,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     public func tripStarted(startMode: DriveKitTripAnalysisModule.StartMode) {
         let rnStartMode = mapStartMode(startMode: startMode)
         if let unwrappedRNStartMode = rnStartMode {
-            RNEventEmitter.shared.dispatch(name: "tripStarted", body: unwrappedRNStartMode)
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripStarted", body: unwrappedRNStartMode)
         }
     }
     
@@ -73,7 +73,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
             
         }
         if let unwrappedEventName = eventName {
-            RNEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedEventName)
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedEventName)
         }
     }
     
@@ -100,7 +100,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     public func potentialTripStart(startMode: DriveKitTripAnalysisModule.StartMode) {
         let rnStartMode = mapStartMode(startMode: startMode)
         if let unwrappedRNStartMode = rnStartMode {
-            RNEventEmitter.shared.dispatch(name: "potentialTripStart", body: unwrappedRNStartMode)
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "potentialTripStart", body: unwrappedRNStartMode)
         }
     }
     
