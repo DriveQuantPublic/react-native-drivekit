@@ -421,6 +421,18 @@ const App = () => {
             DriveKitTripAnalysis.setStopTimeout(parseInt(stopTimeout, 10))
           }
         />
+        <Button
+          title={'Get Trip MetaData'}
+          onPress={async () => {
+            const result = await DriveKitTripAnalysis.getTripMetadata();
+            if (result) {
+              Alert.alert(JSON.stringify(result));
+            } else {
+              Alert.alert('No metadata');
+            }
+          }}
+        />
+
         <Spacer factor={2} />
 
         <Button

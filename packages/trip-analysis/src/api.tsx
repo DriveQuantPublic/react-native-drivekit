@@ -16,6 +16,7 @@ import type {
   PostGenericResponse,
   TripPoint,
   Location,
+  TripMetadata,
 } from './types';
 
 const LINKING_ERROR =
@@ -116,4 +117,8 @@ export function addEventListener<E extends keyof Listeners>(
     );
   }
   return eventEmitter.addListener(event, callback);
+}
+
+export function getTripMetadata(): Promise<TripMetadata | null> {
+  return DriveKitTripAnalysis.getTripMetadata();
 }
