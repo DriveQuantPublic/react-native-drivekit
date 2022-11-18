@@ -28,7 +28,7 @@ func mapRequestError(requestError: RequestError) -> NSString {
         return "UNKNOWN_ERROR"
     @unknown default:
         print("[requestError] Unknown value \(requestError.rawValue)")
-        return ""
+        return "UNKNOWN_ERROR"
     }
 }
 
