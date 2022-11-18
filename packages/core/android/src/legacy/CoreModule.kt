@@ -63,7 +63,7 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun enableLogging(options: ReadableMap?) {
+    fun enableLogging(options: ReadableMap?, promise: Promise) {
       var logPath: String? = null;
       if(options?.hasKey("logPath") == true) {
         logPath = options?.getString("logPath");
@@ -73,6 +73,7 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
         showInConsole = options?.getBoolean("showInConsole")
       }
       CoreModuleImpl.enableLogging(logPath, showInConsole)
+      promise.resolve(null)
     }
 
     @ReactMethod

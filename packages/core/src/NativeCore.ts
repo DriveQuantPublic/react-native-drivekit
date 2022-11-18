@@ -16,6 +16,11 @@ export interface Spec extends TurboModule {
   deleteAccount(instantDeletion: boolean): Promise<void>;
   enableSandboxMode(enable: boolean): Promise<void>;
   reset(): Promise<void>;
+  enableLogging(options?: {
+    logPath?: string;
+    showInConsole?: boolean;
+  }): Promise<void>;
+  disableLogging(options?: { showInConsole?: boolean }): Promise<void>;
   getUriLogFile(): Promise<{ uri: string } | null>;
   getUserInfo(
     synchronizationType: WithDefault<'default' | 'cache', 'default'>

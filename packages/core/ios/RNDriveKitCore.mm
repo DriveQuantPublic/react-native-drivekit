@@ -58,8 +58,9 @@ RCT_REMAP_METHOD(reset, resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPro
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(enableLogging, enableLoggingWithOptions:(NSDictionary *)options){
+RCT_REMAP_METHOD(enableLogging, enableLoggingWithOptions:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
     [self enableLogging:options];
+    resolve(nil);
 }
 
 RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)options){

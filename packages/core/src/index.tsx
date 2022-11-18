@@ -63,8 +63,8 @@ export function reset(): Promise<void> {
 export function enableLogging(options?: {
   logPath?: string;
   showInConsole?: boolean;
-}): void {
-  Core.enableLogging(options);
+}): Promise<void> {
+  return Core.enableLogging(options);
 }
 
 export function disableLogging(options?: { showInConsole?: boolean }): void {
