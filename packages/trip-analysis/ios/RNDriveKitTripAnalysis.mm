@@ -46,19 +46,19 @@ RCT_REMAP_METHOD(activateCrashDetection, activateCrashDetectionWithEnable:(nonnu
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(startTrip, startTripAnalysis resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(startTrip, startTripAnalysisWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self startTrip];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(stopTrip, stopTripAnalysis resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(stopTrip, stopTripAnalysisWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self stopTrip];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(cancelTrip, cancelTripAnalysis resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(cancelTrip, cancelTripAnalysisWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self cancelTrip];
     resolve(nil);
