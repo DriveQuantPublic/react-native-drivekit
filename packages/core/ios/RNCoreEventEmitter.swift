@@ -17,5 +17,5 @@ class RNCoreEventEmitter: NSObject {
         RNCoreEventEmitter.eventEmitter?.sendEvent(withName: name, body: body)
     }
 
-    @objc static var allEvents: [String] =  ["driveKitConnected", "driveKitDisconnected"]
+    @objc static var allEvents: [String] =  ["driveKitConnected", "driveKitDisconnected", "driveKitDidReceiveAuthenticationError"]
 }

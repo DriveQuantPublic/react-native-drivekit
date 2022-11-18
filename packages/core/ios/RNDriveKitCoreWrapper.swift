@@ -99,7 +99,7 @@ extension RNDriveKitCoreWrapper: DriveKitDelegate {
 
     public func driveKit(_ driveKit: DriveKit, didReceiveAuthenticationError error: RequestError) {
         // DriveKit authentication error: \(error).
-        // Listener not yet implemented
+        RNCoreEventEmitter.shared.dispatch(name: "driveKitDidReceiveAuthenticationError", body: mapRequestError(requestError: error))
         return
     }
 
