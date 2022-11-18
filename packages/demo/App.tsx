@@ -194,6 +194,16 @@ const App = () => {
     return () => listener.remove();
   });
 
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'bluetoothSensorStateChanged',
+      state => {
+        console.log('bluetooth sensor state changed', state);
+      },
+    );
+    return () => listener.remove();
+  });
+
   return (
     <SafeAreaView style={styles.page}>
       <ScrollView contentContainerStyle={styles.contentContainer}>

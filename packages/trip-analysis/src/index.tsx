@@ -453,6 +453,11 @@ export interface EcoDrivingContext {
   scoreDecel: number;
 }
 
+export interface BluetoothState {
+  btSensorEnabled: boolean;
+  btRequired: boolean;
+}
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripPoint: (tripPoint: TripPoint) => void;
@@ -468,6 +473,7 @@ type Listeners = {
   sdkStateChanged: (state: SDKState) => void;
   crashDetected: (crashInfo: CrashInfo) => void;
   crashFeedbackSent: (crashFeedback: CrashFeedback) => void;
+  bluetoothSensorStateChanged: (state: BluetoothState) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);

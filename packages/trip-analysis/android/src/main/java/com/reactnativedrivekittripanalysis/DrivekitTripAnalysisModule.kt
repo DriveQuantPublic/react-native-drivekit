@@ -112,7 +112,12 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("crashFeedbackSent", result)
         }
         override fun onDeviceConfigEvent(deviceConfigEvent: DeviceConfigEvent) {
-          println("on device config event")
+          if (deviceConfigEvent is DeviceConfigEvent.BLUETOOTH_SENSOR_STATE_CHANGED) {
+            var result = Arguments.createMap()
+            result.putBoolean("btSensorEnabled", deviceConfigEvent.btEnabled)
+            result.putBoolean("btRequired", deviceConfigEvent.btRequired)
+            reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("bluetoothSensorStateChanged", result)
+          }
         }
       })
     }
