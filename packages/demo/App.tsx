@@ -12,7 +12,6 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
-import type {RequestError, UpdateUserIdStatus, DeleteAccountStatus} from '@react-native-drivekit/core';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import type {
   CancelTripReason,
@@ -33,6 +32,7 @@ import {checkNotificationPermission} from './src/services/permissions/notificati
 import {checkBatteryOptimizationPermission} from './src/services/permissions/batteryOptimization';
 import {checkMotionPermission} from './src/services/permissions/motion';
 import {UserInfoForm} from './src/components/UserInfoForm';
+import {DeleteAccountStatus, RequestError} from '@react-native-drivekit/core';
 
 const inputHeight = 40;
 
@@ -40,8 +40,8 @@ const App = () => {
   // ========================================
   // ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
   // ========================================
-  // DriveKit.setApiKey("") 
-    
+  // DriveKit.setApiKey("")
+
   var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
@@ -82,22 +82,16 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const listener = DriveKit.addEventListener(
-      'driveKitConnected',
-      () => {
-        console.log('Connected to DriveKit');
-      },
-    );
+    const listener = DriveKit.addEventListener('driveKitConnected', () => {
+      console.log('Connected to DriveKit');
+    });
     return () => listener.remove();
   });
 
   useEffect(() => {
-    const listener = DriveKit.addEventListener(
-      'driveKitDisconnected',
-      () => {
-        console.log('Disconnected from DriveKit');
-      },
-    );
+    const listener = DriveKit.addEventListener('driveKitDisconnected', () => {
+      console.log('Disconnected from DriveKit');
+    });
     return () => listener.remove();
   });
 
@@ -114,8 +108,13 @@ const App = () => {
   useEffect(() => {
     const listener = DriveKit.addEventListener(
       'userIdUpdateStatusChanged',
-      ({status, userId}) => {
-        console.log('UserId', userId,'update finished with status', status);
+      ({status, userId: updatedUserId}) => {
+        console.log(
+          'UserId',
+          updatedUserId,
+          'update finished with status',
+          status,
+        );
       },
     );
     return () => listener.remove();
