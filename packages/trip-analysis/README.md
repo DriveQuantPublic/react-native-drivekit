@@ -128,6 +128,7 @@ To validate that the initialization has been done successfully, please check you
 | [activateAutoStart()](#activateautostart)                             | `Promise<void>` | ✅  |   ✅    |
 | [startTrip()](#starttrip)                                             | `Promise<void>` | ✅  |   ✅    |
 | [stopTrip()](#stoptrip)                                               | `Promise<void>` | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>` | ✅  |   ✅    |
 | [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>` | ✅  |   ✅    |
 
 ### activateAutoStart
@@ -191,6 +192,28 @@ stopTrip();
 > ℹ️
 >
 > If there is no running trip, calling this method will have no effect.
+
+### activateCrashDetection
+
+```typescript
+activateCrashDetection(enable: boolean): void
+```
+
+Crash detection features, included into the DriveKit Trip Analysis component, is able to collect and analyse smartphone sensors data to automatically detect when a car accident occurs. 
+
+Learn more about the feature [on iOS](https://docs.drivequant.com/trip-analysis/ios/crash-detection) / [on Android](https://docs.drivequant.com/trip-analysis/android/crash-detection)
+
+An input parameter is available in DriveKitTripAnalysis to enable or disable the feature:
+
+```typescript
+activateCrashDetection(true);
+```
+
+To disable crash detection, call the same method with parameter to `false`
+
+```typescript
+activateCrashDetection(false);
+```
 
 ### enableMonitorPotentialTripStart
 

@@ -3,6 +3,7 @@ import { TurboModuleRegistry } from 'react-native';
 
 export interface Spec extends TurboModule {
   activateAutoStart(enable: boolean): void;
+  activateCrashDetection(enable: boolean): void;
   startTrip(): void;
   stopTrip(): void;
   enableMonitorPotentialTripStart(enable: boolean): void;
