@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/trip-analysis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Native interface for DriveKit Trip Analysis",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

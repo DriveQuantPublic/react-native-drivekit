@@ -52,7 +52,7 @@ By default, the example is configured to build with the old architecture. To run
 To confirm that the app is running with the new architecture, you can check the Metro logs for a message like this:
 
 ```sh
-Running "DrivekitTripAnalysisExample" with {"fabric":true,"initialProps":{"concurrentRoot":true},"rootTag":1}
+Running "DriveKitTripAnalysisExample" with {"fabric":true,"initialProps":{"concurrentRoot":true},"rootTag":1}
 ```
 
 Note the `"fabric":true` and `"concurrentRoot":true` properties.
@@ -123,8 +123,8 @@ When you're sending a pull request:
 
 We use [lerna](https://github.com/lerna/lerna) to make it easier to publish new versions. It handles common tasks like bumping version all packages versions, creating tags and releases etc.
 
-To publish new versions, run the following:
+To publish new versions, run the following at the root of the repository:
 
 ```sh
-yarn publish
+yarn release
 ```

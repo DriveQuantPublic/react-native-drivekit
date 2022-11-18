@@ -2,50 +2,116 @@
 #import "RNDriveKitCore-Swift.h"
 
 @implementation RNDriveKitCore
+{
+  bool hasListeners;
+}
+
+- (id)init {
+    self = [super init];
+    if(self){
+        [RNCoreEventEmitter.shared registerEventEmitterWithEventEmitter:self];
+    }
+    return self;
+}
+
++ (BOOL)requiresMainQueueSetup
+{
+    return NO;
+}
+
+- (NSArray<NSString *>*)supportedEvents {
+    return RNCoreEventEmitter.allEvents;
+}
+
+-(void)startObserving {
+    hasListeners = YES;
+}
+
+-(void)stopObserving {
+    hasListeners = NO;
+}
+
 RCT_EXPORT_MODULE()
 
-RCT_REMAP_METHOD(setApiKey, setApiKeyWithKey:(NSString *)key)
+RCT_REMAP_METHOD(getApiKey, getApiKeyWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self setApiKey:key];
+    NSString *apiKey = [self getApiKey];
+    resolve(apiKey);
 }
 
-RCT_REMAP_METHOD(setUserId, setUserIdWithUserId:(NSString *)userId)
+RCT_REMAP_METHOD(setApiKey, setApiKeyWithKey:(NSString *)key resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self setApiKey: key];
+    resolve(nil);
+}
+
+RCT_REMAP_METHOD(getUserId, getUserIdWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSString *userId = [self getUserId];
+    resolve(userId);
+}
+
+RCT_REMAP_METHOD(setUserId, setUserIdWithUserId:(NSString *)userId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self setUserId:userId];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(updateUserId, updateUserIdWithUserId:(NSString *)userId)
+RCT_REMAP_METHOD(updateUserId, updateUserIdWithUserId:(NSString *)userId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self updateUserId:userId];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(deleteAccount, deleteAccountWithInstantDeletion:(nonnull NSNumber *)instantDeletion)
+RCT_REMAP_METHOD(deleteAccount, deleteAccountWithInstantDeletion:(nonnull NSNumber *)instantDeletion resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self deleteAccount:instantDeletion];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(isTokenValid, resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(isTokenValid, isTokenValidWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     NSNumber *validity = [self isTokenValid];
     resolve(validity);
 }
 
-RCT_REMAP_METHOD(enableSandboxMode, enableSandboxModeWithEnable:(nonnull NSNumber *)enable)
+RCT_REMAP_METHOD(enableSandboxMode, enableSandboxModeWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self enableSandboxMode:enable];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(reset, resetCore)
+RCT_REMAP_METHOD(reset, resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self reset];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(enableLogging, enableLoggingWithOptions:(NSDictionary *)options){
+RCT_REMAP_METHOD(enableLogging, enableLoggingWithOptions:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
     [self enableLogging:options];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)options){
+RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
     [self disableLogging:options];
+    resolve(nil);
+}
+
+RCT_REMAP_METHOD(getUriLogFile, getUriLogFileWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSURL *logFileUrl = [self getUriLogFile];
+    resolve([NSDictionary dictionaryWithObject:logFileUrl.path
+                                        forKey:@"uri"]);
+}
+
+RCT_REMAP_METHOD(getUserInfo, getUserInfoWithSynchronizationType:(NSString *)synchronizationType withResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject)
+{
+   [self getUserInfo:synchronizationType resolver:resolve rejecter:reject];
+}
+
+RCT_REMAP_METHOD(updateUserInfo, updateUserInfoWithUserInfo:(NSDictionary *)userInfo withResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject)
+{
+   [self updateUserInfo:userInfo resolver:resolve rejecter:reject];
 }
 
 
@@ -69,6 +135,13 @@ RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)optio
     return [RNDriveKitCoreWrapper.shared isTokenValid];
 }
 
+- (NSString *)getApiKey {
+    return [RNDriveKitCoreWrapper.shared getApiKey];
+}
+- (NSString *)getUserId {
+    return [RNDriveKitCoreWrapper.shared getUserId];
+}
+
 - (void)enableSandboxMode:(NSNumber *)enable {
     [RNDriveKitCoreWrapper.shared enableSandboxModeWithEnable:enable];
 }
@@ -85,6 +158,19 @@ RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)optio
 - (void)enableLogging:(NSDictionary *)options {
     [RNDriveKitCoreWrapper.shared enableLoggingWithShowInConsole:options[@"showInConsole"]];
 }
+
+-(NSURL* )getUriLogFile {
+    return [RNDriveKitCoreWrapper.shared getUriLogFile];
+}
+
+- (void)getUserInfo:(NSString *)synchronizationType resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitCoreWrapper.shared getUserInfoWithSynchronizationType:synchronizationType resolver:resolve rejecter:reject];
+}
+
+- (void)updateUserInfo:(NSDictionary *)userInfo resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitCoreWrapper.shared updateUserInfoWithUserInfo:userInfo resolver:resolve rejecter:reject];
+}
+
 
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED

@@ -2,7 +2,7 @@
 
 React Native interface for DriveKit Trip Analysis
 
-## Pre-requis
+## Prerequisite
 
 Before installing `@react-native-drivekit/trip-analysis` **you must have installed** `@react-native-drivekit/core`.
 
@@ -32,18 +32,22 @@ Call `initialize` method inside your `MainApplication.java`.
 
 ```java
 // MainApplication.java
-import com.reactnativedrivekitcore.CoreModuleImpl;
-import com.reactnativedrivekittripanalysis.DrivekitTripAnalysisModule;
+import com.reactnativedrivekitcore.DriveKitCoreModule;
+import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 
 // ...
 
   @Override
   public void onCreate() {
     super.onCreate();
-    CoreModuleImpl.INSTANCE.initialize(this);
-    // You can replace the icon with a custom one by changing the parameter of initialize
-    DrivekitTripAnalysisModule.Companion.initialize(R.drawable.common_google_signin_btn_icon_dark); // ADD THIS LINE
-    // ...
+    DriveKitCoreModule.Companion.initialize(this);
+
+    // ADD THESE LINES
+    final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
+    DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
+    DriveKitTripAnalysisModule.Companion.registerReceiver(this);
+
+    ...
   }
 ```
 
@@ -62,14 +66,12 @@ Our recommandation is to use [react-native-permissions](https://github.com/zoont
 
 In order to make Trip Analysis SDK to work properly, you need to disable battery optimization for your app: [native documentation](https://docs.drivequant.com/trip-analysis/android/get-started#battery-optimization)
 
-Our recommandation is to use [react-native-disable-battery-optimizations-android](https://github.com/rasheedk/react-native-disable-battery-optimizations-android).You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).
+Our recommandation is to use [react-native-battery-optimization-check](https://github.com/losthakkun/react-native-battery-optimization-check).You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).
 
 **IMPORTANT**
 
-This library is not actively maintained, but it does the job. To make it works you need to:
-
-1. Patch the `buile.gradle` file using `patch-package`. You can find the path we applied in our demo app [here](../../patches/react-native-disable-battery-optimizations-android%2B1.0.7.patch).
-2. Define the typescript interface, if needed. You can find the type definition in our demo app [here](../demo/src/types/react-native-disable-battery-optimizations-android.d.ts).
+This library is not actively maintained. The problem is that the method that call the native modal is not promisified. It means that we can't wait for the user answer before continuing. At the moment, our recommandation is to check this permission at the end of your flow.
+On our side, we are working on implementing a better solution.
 
 This is the better solution we found. If you find a better solution, please feel free to open an issue/PR in this repository.
 
@@ -89,6 +91,7 @@ Call `initialize` method in your `AppDelegate.mm`.
 {
   [[RNDriveKitCoreWrapper.shared initialize];
   [RNDriveKitTripAnalysisWrapper.shared initializeWithLaunchOptions:launchOptions] // ADD THIS LINE
+  ...
 }
 ```
 
@@ -119,6 +122,33 @@ To validate that the initialization has been done successfully, please check you
 **iOS**
 ![](./doc/img/ios_validation.png)
 
+## Listeners
+
+You can listen to events thanks to the `addEventListener` api.
+
+```typescript
+useEffect(() => {
+  const listener = DriveKitTripAnalysis.addEventListener(
+    'tripStarted',
+    (startMode: StartMode) => {
+      console.log('trip start', startMode);
+    }
+  );
+  return () => listener.remove();
+});
+```
+
+Here is the list of supported events:
+
+- `tripPoint`, callback `(tripPoint: TripPoint) => void`: This event is triggered when a trip is started and confirmed, for each GPS point recorded by the SDK.
+- `tripStarted`, callback `(startMode: StartMode) => void`: This event is triggered each time a trip is started. StartMode indicates which event starts the trip.
+- `tripCancelled`, callback `(cancelTrip: CancelTrip) => void`: This event is triggered when a trip is cancelled. CancelTrip indicates which event cancels the trip.
+- `tripFinished`, callback `(post: PostGeneric, response: PostGenericResponse)`: This event is triggered when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. PostGeneric object contains raw data sent to DriveQuant's server, PostGenericResponse object contains the trip analysis made on DriveQuant's server.
+- `tripSavedForRepost`, callback `() => void`: This event is triggered if at the end of the trip, the trip can be sent to DriveQuant's server for the analysis. The trip is saved locally on the SDK and will be sent later.
+- `beaconDetected`, callback `() => void`: This event is triggered when a beacon sets in the SDK is detected.
+  `significantLocationChangeDetected`, callback `() => void`: This event is triggered when a user significant location change is detected.
+- `sdkStateChanged`, callback `(state: State) => void`: This event is triggered every time the state of the SDK changed with the new state as parameter.
+
 ## API
 
 | Method                                                                | Return Type     | iOS | Android |
@@ -126,6 +156,8 @@ To validate that the initialization has been done successfully, please check you
 | [activateAutoStart()](#activateautostart)                             | `Promise<void>` | ✅  |   ✅    |
 | [startTrip()](#starttrip)                                             | `Promise<void>` | ✅  |   ✅    |
 | [stopTrip()](#stoptrip)                                               | `Promise<void>` | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>` | ✅  |   ✅    |
+| [cancelTrip()](#canceltrip)                                           | `Promise<void>` | ✅  |   ✅    |
 | [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>` | ✅  |   ✅    |
 
 ### activateAutoStart
@@ -189,6 +221,44 @@ stopTrip();
 > ℹ️
 >
 > If there is no running trip, calling this method will have no effect.
+
+### activateCrashDetection
+
+```typescript
+activateCrashDetection(enable: boolean): void
+```
+
+Crash detection features, included into the DriveKit Trip Analysis component, is able to collect and analyse smartphone sensors data to automatically detect when a car accident occurs.
+
+Learn more about the feature [on iOS](https://docs.drivequant.com/trip-analysis/ios/crash-detection) / [on Android](https://docs.drivequant.com/trip-analysis/android/crash-detection)
+
+An input parameter is available in DriveKitTripAnalysis to enable or disable the feature:
+
+```typescript
+activateCrashDetection(true);
+```
+
+To disable crash detection, call the same method with parameter to `false`
+
+```typescript
+activateCrashDetection(false);
+```
+
+## cancelTrip
+
+```typescript
+cancelTrip(): void
+```
+
+If you want to cancel a trip, you can call this method:
+
+```typescript
+cancelTrip();
+```
+
+> ℹ️
+>
+> If no trip is running or if the trip has been sent to the server and is currently being analyzed, calling this method will have no effect.
 
 ### enableMonitorPotentialTripStart
 
