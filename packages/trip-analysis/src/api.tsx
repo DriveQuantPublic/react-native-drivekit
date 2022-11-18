@@ -58,6 +58,10 @@ export function cancelTrip(): Promise<void> {
   return DrivekitTripAnalysis.cancelTrip();
 }
 
+export function activateCrashDetection(enable: boolean): Promise<void> {
+  return DrivekitTripAnalysis.activateCrashDetection(enable);
+}
+
 export function enableMonitorPotentialTripStart(enable: boolean): Promise<void> {
   return DrivekitTripAnalysis.enableMonitorPotentialTripStart(enable);
 }
