@@ -28,9 +28,10 @@ RCT_REMAP_METHOD(setUserId, setUserIdWithUserId:(NSString *)userId resolve:(RCTP
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(updateUserId, updateUserIdWithUserId:(NSString *)userId)
+RCT_REMAP_METHOD(updateUserId, updateUserIdWithUserId:(NSString *)userId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self updateUserId:userId];
+    resolve(nil);
 }
 
 RCT_REMAP_METHOD(deleteAccount, deleteAccountWithInstantDeletion:(nonnull NSNumber *)instantDeletion)

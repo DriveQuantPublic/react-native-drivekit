@@ -34,8 +34,9 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun updateUserId(userId: String){
+    fun updateUserId(userId: String, promise: Promise){
       CoreModuleImpl.updateUserId(userId)
+      promise.resolve(null)
     }
 
     @ReactMethod

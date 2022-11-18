@@ -40,8 +40,8 @@ export function setUserId(userId: string): Promise<void> {
   return Core.setUserId(userId);
 }
 
-export function updateUserId(userId: string): void {
-  Core.updateUserId(userId);
+export function updateUserId(userId: string): Promise<void> {
+  return Core.updateUserId(userId);
 }
 
 export function deleteAccount(instantDeletion?: boolean): void {
