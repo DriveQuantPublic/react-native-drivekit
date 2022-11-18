@@ -46,7 +46,7 @@ func mapUpdateUserIdStatus(updateUserIdStatus: UpdateUserIdStatus) -> NSString {
         return "SAVED_FOR_REPOST"
     @unknown default:
         print("[updateUserIdStatus] Unknown value \(updateUserIdStatus.rawValue)")
-        return ""
+        return "FAILED_TO_UPDATE"
     }
 }
 
