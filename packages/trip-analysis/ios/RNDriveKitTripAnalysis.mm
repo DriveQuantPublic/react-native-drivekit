@@ -34,34 +34,40 @@
 
 RCT_EXPORT_MODULE()
 
-RCT_REMAP_METHOD(activateAutoStart, activateAutoStartWithEnable:(nonnull NSNumber *)enable)
+RCT_REMAP_METHOD(activateAutoStart, activateAutoStartWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self activateAutoStart:enable];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(activateCrashDetection, activateCrashDetectionWithEnable:(nonnull NSNumber *)enable)
+RCT_REMAP_METHOD(activateCrashDetection, activateCrashDetectionWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self activateCrashDetection: enable];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(startTrip, startTripAnalysis)
+RCT_REMAP_METHOD(startTrip, startTripAnalysis resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self startTrip];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(stopTrip, stopTripAnalysis )
+RCT_REMAP_METHOD(stopTrip, stopTripAnalysis resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self stopTrip];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(cancelTrip, cancelTripAnalysis )
+RCT_REMAP_METHOD(cancelTrip, cancelTripAnalysis resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self cancelTrip];
+    resolve(nil);
 }
 
-RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStartWithEnable:(nonnull NSNumber *)enable)
+RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStartWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self enableMonitorPotentialTripStart:enable];
+    resolve(nil);
 }
 
 - (void)activateAutoStart:(NSNumber *)enable {
