@@ -1,8 +1,8 @@
-import {   
+import {
 	EmitterSubscription,
 	NativeEventEmitter,
-	NativeModules, 
-	Platform 
+	NativeModules,
+	Platform
 	} from 'react-native';
 import type { UserInfo } from './NativeCore';
 const LINKING_ERROR =
@@ -94,9 +94,41 @@ export async function updateUserInfo(userInfo: UserInfo): Promise<void> {
   return;
 }
 
+export enum RequestError {
+  WRONG_URL = 'WRONG_URL',
+  NO_NETWORK = 'NO_NETWORK',
+  UNAUTHENTICATED = 'UNAUTHENTICATED',
+  FORBIDDEN = 'FORBIDDEN',
+  SERVER_ERROR = 'SERVER_ERROR',
+  CLIENT_ERROR = 'CLIENT_ERROR',
+  LIMIT_REACHED = 'LIMIT_REACHED',
+  UNKNOWN_ERROR = 'UNKNOWN_ERROR',
+}
+
+export enum DeleteAccountStatus {
+  SUCCESS = 'SUCCESS',
+  FAILED_TO_DELETE = 'FAILED_TO_DELETE',
+  FORBIDDEN = 'FORBIDDEN',
+}
+
+export enum UpdateUserIdStatus {
+  UPDATED = 'UPDATED',
+  FAILED_TO_UPDATE = 'FAILED_TO_UPDATE',
+  INVALID_USER_ID = 'INVALID_USER_ID',
+  ALREADY_USED = 'ALREADY_USED',
+  SAVED_FOR_REPOST = 'SAVED_FOR_REPOST',
+}
+
 type Listeners = {
   driveKitConnected: () => void;
   driveKitDisconnected: () => void;
+  driveKitDidReceiveAuthenticationError: (requestError: RequestError) => void;
+  accountDeletionCompleted: (status: DeleteAccountStatus) => void;
+  userIdUpdateStatusChanged: (data: {
+    status: UpdateUserIdStatus;
+    userId: String;
+  }) => void;
+
 };
 
 const eventEmitter = new NativeEventEmitter(Core);

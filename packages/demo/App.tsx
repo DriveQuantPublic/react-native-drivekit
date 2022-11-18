@@ -13,6 +13,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import type {CancelTripReason} from '@react-native-drivekit/trip-analysis';
+import type {RequestError, UpdateUserIdStatus, DeleteAccountStatus} from '@react-native-drivekit/core';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
@@ -83,6 +84,35 @@ const App = () => {
     return () => listener.remove();
   });
 
+  useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'driveKitDidReceiveAuthenticationError',
+      (error: RequestError) => {
+        console.log('Received authentication error from DriveKit', error);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'userIdUpdateStatusChanged',
+      ({status, userId}) => {
+        console.log('UserId', userId,'update finished with status', status);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'accountDeletionCompleted',
+      (status: DeleteAccountStatus) => {
+        console.log('delete account completed with status', status);
+      },
+    );
+    return () => listener.remove();
+  });
 
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(

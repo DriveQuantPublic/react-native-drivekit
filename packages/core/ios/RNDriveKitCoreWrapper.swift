@@ -111,13 +111,15 @@ extension RNDriveKitCoreWrapper: DriveKitDelegate {
 
     public func userIdUpdateStatusChanged(status: UpdateUserIdStatus, userId: String?) {
         // DriveKit userId updated: userId = \(userId), status = \(status).
-        // Listener not yet implemented
+        RNCoreEventEmitter.shared.dispatch(name: "userIdUpdateStatusChanged", body:[
+            "status": mapUpdateUserIdStatus(updateUserIdStatus: status),
+            "userId": userId as Any])
         return
     }
     
     public func driveKit(_ driveKit: DriveKit, accountDeletionCompleted status: DeleteAccountStatus) {
          // account deletion completed with status \(status).
-        // Listener not yet implemented
+        RNCoreEventEmitter.shared.dispatch(name: "accountDeletionCompleted", body: mapDeleteAccountStatus(deleteAccountStatus: status))
         return
     }
 }
