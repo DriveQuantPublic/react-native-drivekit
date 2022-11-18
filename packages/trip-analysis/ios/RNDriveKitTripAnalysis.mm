@@ -88,6 +88,11 @@ RCT_REMAP_METHOD(setStopTimeout, setStopTimeoutWithStopTimeout:(nonnull NSNumber
     resolve(nil);
 }
 
+RCT_REMAP_METHOD(getTripMetadata, getTripMetaDataWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getTripMetadata:resolve rejecter:reject];
+}
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
@@ -122,6 +127,10 @@ RCT_REMAP_METHOD(setStopTimeout, setStopTimeoutWithStopTimeout:(nonnull NSNumber
 
 -(void)setStopTimeout:(NSNumber *)stopTimeout {
     [RNDriveKitTripAnalysisWrapper.shared setStopTimeout:stopTimeout];
+}
+
+-(void)getTripMetadata:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared getTripMetadataWithResolver:resolve rejecter:reject];
 }
 
 // Don't compile this code when we build for the old architecture.

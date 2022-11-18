@@ -46,6 +46,11 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc internal func setStopTimeout(_ stopTimeout: NSNumber) -> Void {
         DriveKitTripAnalysis.shared.setStopTimeOut(timeOut: stopTimeout.intValue)
     }
+    
+    @objc internal func getTripMetadata(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        let metaData = DriveKitTripAnalysis.shared.getTripMetadata()
+        resolve(metaData)
+    }
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {

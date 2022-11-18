@@ -1,3 +1,4 @@
+#import <React/RCTBridgeModule.h>
 @class RNDriveKitTripAnalysisWrapper;
 @class RNTripAnalysisEventEmitter;
 @class RNDriveKitTripAnalysis;
@@ -13,7 +14,8 @@
 - (NSNumber * _Nonnull)isTripRunning;
 - (void)enableMonitorPotentialTripStartWithEnable:(NSNumber * _Nonnull)enable;
 - (void)reset;
--(void)setStopTimeout:(NSNumber *_Nonnull)stopTimeout;
+- (void)setStopTimeout:(NSNumber *_Nonnull)stopTimeout;
+- (NSDictionary<NSString *, NSString *> * _Nullable)getTripMetadataWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;;
 @end
 
 @interface RNTripAnalysisEventEmitter : NSObject
