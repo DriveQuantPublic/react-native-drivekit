@@ -62,6 +62,11 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
+  override fun cancelTrip() {
+    DriveKitTripAnalysis.cancelTrip()
+  }
+
+  @ReactMethod
   override fun enableMonitorPotentialTripStart(enable: Boolean) {
     DriveKitTripAnalysis.monitorPotentialTripStart = enable;
   }

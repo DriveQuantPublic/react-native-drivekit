@@ -339,6 +339,12 @@ const App = () => {
             DriveKitTripAnalysis.stopTrip();
           }}
         />
+        <Button
+          title={'Cancel'}
+          onPress={() => {
+            DriveKitTripAnalysis.cancelTrip();
+          }}
+        />
 
         <Spacer factor={2} />
 

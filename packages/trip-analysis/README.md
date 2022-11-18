@@ -157,6 +157,7 @@ Here is the list of supported events:
 | [startTrip()](#starttrip)                                             | `Promise<void>` | ✅  |   ✅    |
 | [stopTrip()](#stoptrip)                                               | `Promise<void>` | ✅  |   ✅    |
 | [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>` | ✅  |   ✅    |
+| [cancelTrip()](#canceltrip)                                           | `Promise<void>` | ✅  |   ✅    |
 | [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>` | ✅  |   ✅    |
 
 ### activateAutoStart
@@ -227,7 +228,7 @@ stopTrip();
 activateCrashDetection(enable: boolean): void
 ```
 
-Crash detection features, included into the DriveKit Trip Analysis component, is able to collect and analyse smartphone sensors data to automatically detect when a car accident occurs. 
+Crash detection features, included into the DriveKit Trip Analysis component, is able to collect and analyse smartphone sensors data to automatically detect when a car accident occurs.
 
 Learn more about the feature [on iOS](https://docs.drivequant.com/trip-analysis/ios/crash-detection) / [on Android](https://docs.drivequant.com/trip-analysis/android/crash-detection)
 
@@ -242,6 +243,22 @@ To disable crash detection, call the same method with parameter to `false`
 ```typescript
 activateCrashDetection(false);
 ```
+
+## cancelTrip
+
+```typescript
+cancelTrip(): void
+```
+
+If you want to cancel a trip, you can call this method:
+
+```typescript
+cancelTrip();
+```
+
+> ℹ️
+>
+> If no trip is running or if the trip has been sent to the server and is currently being analyzed, calling this method will have no effect.
 
 ### enableMonitorPotentialTripStart
 

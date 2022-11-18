@@ -6,6 +6,7 @@ export interface Spec extends TurboModule {
   activateCrashDetection(enable: boolean): void;
   startTrip(): void;
   stopTrip(): void;
+  cancelTrip(): void;
   enableMonitorPotentialTripStart(enable: boolean): void;
 }
 
