@@ -28,12 +28,11 @@ import {UserInfoForm} from './src/components/UserInfoForm';
 const inputHeight = 40;
 
 const App = () => {
-
   // ========================================
   // ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
   // ========================================
-  // DriveKit.setApiKey("") 
-    
+  // DriveKit.setApiKey("")
+
   var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
@@ -42,8 +41,8 @@ const App = () => {
 
   const checkUserIdValue = async () => {
     const userIdVal = await DriveKit.getUserId();
-      setUserId(userIdVal)
-    };
+    setUserId(userIdVal);
+  };
 
   useEffect(() => {
     const calculate = async () => {
@@ -86,7 +85,7 @@ const App = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'potentialTripStart',
-      (startMode: number) => {
+      startMode => {
         console.log('potential trip start', startMode);
       },
     );
@@ -96,7 +95,7 @@ const App = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripStarted',
-      (startMode: number) => {
+      startMode => {
         console.log('trip start', startMode);
       },
     );
@@ -108,14 +107,20 @@ const App = () => {
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.title}>Api Key</Text>
         <Spacer factor={1} />
-       <Button
+        <Button
           title="Check API key"
           onPress={async () => {
-            apiKey = await DriveKit.getApiKey();
+            const apiKey = await DriveKit.getApiKey();
             if (apiKey == null) {
-              Alert.alert("API key check", "Please set your DriveKit API Key at the beggining of the App component")
+              Alert.alert(
+                'API key check',
+                'Please set your DriveKit API Key at the beggining of the App component',
+              );
             } else {
-              Alert.alert("API key check", "Your DriveKit API Key is correctly set: " + apiKey)
+              Alert.alert(
+                'API key check',
+                'Your DriveKit API Key is correctly set: ' + apiKey,
+              );
             }
           }}
         />
@@ -134,9 +139,13 @@ const App = () => {
           onPress={async () => {
             const localUserId = await DriveKit.getUserId();
             if (localUserId == null) {
-              DriveKit.setUserId(userId)
+              DriveKit.setUserId(userId);
             } else {
-              Alert.alert("User Id already set", "You already have configured your user identifier: " + localUserId)
+              Alert.alert(
+                'User Id already set',
+                'You already have configured your user identifier: ' +
+                  localUserId,
+              );
             }
           }}
         />
