@@ -5,6 +5,7 @@ import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.CrashStatus
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
+import com.drivequant.drivekit.tripanalysis.service.recorder.CancelTrip
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
 import com.facebook.react.bridge.Arguments
@@ -77,5 +78,19 @@ fun mapDKCrashFeedbackSeverity(severity: CrashFeedbackSeverity): String {
     CrashFeedbackSeverity.CRITICAL -> "CRITICAL"
     CrashFeedbackSeverity.MINOR -> "MINOR"
     CrashFeedbackSeverity.NONE -> "NONE"
+  }
+}
+
+fun mapCancelTrip(cancelTrip: CancelTrip): String {
+  return when (cancelTrip) {
+    CancelTrip.BEACON_NO_SPEED -> "BEACON_NO_SPEED"
+    CancelTrip.HIGHSPEED -> "HIGHSPEED"
+    CancelTrip.MISSING_CONFIGURATION -> "MISSING_CONFIGURATION"
+    CancelTrip.NO_BEACON -> "NO_BEACON"
+    CancelTrip.NO_BLUETOOTH_DEVICE -> "NO_BLUETOOTH_DEVICE"
+    CancelTrip.NO_GPS_DATA -> "NO_GPS_DATA"
+    CancelTrip.RESET -> "RESET"
+    CancelTrip.USER -> "USER"
+    CancelTrip.NO_SPEED -> "NO_SPEED"
   }
 }

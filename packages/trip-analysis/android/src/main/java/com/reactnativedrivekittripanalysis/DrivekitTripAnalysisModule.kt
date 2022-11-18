@@ -1,4 +1,7 @@
 package com.reactnativedrivekittripanalysis
+import android.content.Context
+import android.content.IntentFilter
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
 import com.drivequant.drivekit.tripanalysis.DriveKitTripAnalysis
 import com.drivequant.drivekit.tripanalysis.TripListener
@@ -15,6 +18,7 @@ import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.modules.core.DeviceEventManagerModule
+import com.google.gson.Gson
 
 class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
   DrivekitTripAnalysisSpec(context) {
@@ -65,7 +69,7 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
   companion object {
     const val NAME = "RNDriveKitTripAnalysis"
 
-    private var reactContext: ReactApplicationContext? = null;
+    var reactContext: ReactApplicationContext? = null;
     fun initialize(rnTripNotification: RNTripNotification) {
       val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
       DriveKitTripAnalysis.initialize(tripNotification, object: TripListener {
@@ -80,12 +84,7 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
 
         }
         override fun tripFinished(post : PostGeneric, response: PostGenericResponse) {
-          println("trip finished")
-          var result = Arguments.createMap()
-          result.putString("post", post.toString())
-          result.putString("response", response.toString())
-          println(post.toString())
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripFinished", result)
+          // implemented in TripReceiver
         }
         override fun beaconDetected() {
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("beaconDetected", null)
@@ -111,6 +110,12 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
           println("on device config event")
         }
       })
+    }
+
+    fun registerReceiver(context: Context){
+      val receiver = TripReceiver()
+      val filter = IntentFilter("com.drivequant.sdk.TRIP_ANALYSED")
+      LocalBroadcastManager.getInstance(context).registerReceiver(receiver, filter)
     }
   }
 }
