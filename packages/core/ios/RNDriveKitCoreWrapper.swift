@@ -120,7 +120,7 @@ extension RNDriveKitCoreWrapper: DriveKitDelegate {
         // DriveKit userId updated: userId = \(userId), status = \(status).
         RNCoreEventEmitter.shared.dispatch(name: "userIdUpdateStatusChanged", body:[
             "status": mapUpdateUserIdStatus(updateUserIdStatus: status),
-            "userId": userId as Any])
+            "userId": userId as NSString?])
         return
     }
     
