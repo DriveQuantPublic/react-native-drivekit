@@ -151,17 +151,18 @@ Here is the list of supported events:
 
 ## API
 
-| Method                                                                | Return Type         | iOS | Android |
-| --------------------------------------------------------------------- | ------------------- | :-: | :-----: |
-| [activateAutoStart()](#activateautostart)                             | `Promise<void>`     | ✅  |   ✅    |
-| [startTrip()](#starttrip)                                             | `Promise<void>`     | ✅  |   ✅    |
-| [stopTrip()](#stoptrip)                                               | `Promise<void>`     | ✅  |   ✅    |
-| [cancelTrip()](#canceltrip)                                           | `Promise<void>`     | ✅  |   ✅    |
-| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>`  | ✅  |   ✅    |
-| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`     | ✅  |   ✅    |
-| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`     | ✅  |   ✅    |
-| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`     | ✅  |   ✅    |
-| [reset()](#reset)                                                     | `Promise<void>`     | ✅  |   ✅    |
+| Method                                                                | Return Type                     | iOS | Android |
+| --------------------------------------------------------------------- | ------------------------------- | :-: | :-----: |
+| [activateAutoStart()](#activateautostart)                             | `Promise<void>`                 | ✅  |   ✅    |
+| [startTrip()](#starttrip)                                             | `Promise<void>`                 | ✅  |   ✅    |
+| [stopTrip()](#stoptrip)                                               | `Promise<void>`                 | ✅  |   ✅    |
+| [cancelTrip()](#canceltrip)                                           | `Promise<void>`                 | ✅  |   ✅    |
+| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>`              | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`                 | ✅  |   ✅    |
+| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`                 | ✅  |   ✅    |
+| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`                 | ✅  |   ✅    |
+| [reset()](#reset)                                                     | `Promise<void>`                 | ✅  |   ✅    |
+| [getTripMetadata()](#getTripMetadata)                                 | `Promise<TripMetadata \| null>` | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -224,7 +225,6 @@ stopTrip();
 > ℹ️
 >
 > If there is no running trip, calling this method will have no effect.
-
 
 ### cancelTrip
 
@@ -294,7 +294,7 @@ enableMonitorPotentialTripStart(true);
 setStopTimeout(stopTimeout: number): Promise<void>
 ```
 
-A trip being analyzed is automatically stopped after a period of inactivity (which begins when the vehicle has stopped). 
+A trip being analyzed is automatically stopped after a period of inactivity (which begins when the vehicle has stopped).
 
 The DriveQuant SDK allows to set the end-of-trip duration. Default value is 240s.
 
@@ -329,3 +329,15 @@ All data saved locally by DriveKit will be erased.
 > ⚠️
 >
 > Make sure that you call reset method of all frameworks to fully reset DriveKit configuration.
+
+### getTripMetadata
+
+```typescript
+getTripMetadata(): Promise<TripMetadata | null>
+```
+
+If you want to attach some data to your trip, you can call the following method:
+
+```typescript
+enableMonitorPotentialTripStart(true);
+```
