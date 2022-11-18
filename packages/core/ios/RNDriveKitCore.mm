@@ -66,6 +66,15 @@ RCT_REMAP_METHOD(getUriLogFile, getUriLogFileWithResolve:(RCTPromiseResolveBlock
     resolve(logFileUrl.path);
 }
 
+RCT_REMAP_METHOD(getUserInfo, getUserInfoWithSynchronizationType:(NSString *)synchronizationType withResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject)
+{
+   [self getUserInfo:synchronizationType resolver:resolve rejecter:reject];
+}
+
+RCT_REMAP_METHOD(updateUserInfo, updateUserInfoWithUserInfo:(NSDictionary *)userInfo withResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject)
+{
+   [self updateUserInfo:userInfo resolver:resolve rejecter:reject];
+}
 
 
 - (void)setApiKey:(NSString *)key {
@@ -115,6 +124,15 @@ RCT_REMAP_METHOD(getUriLogFile, getUriLogFileWithResolve:(RCTPromiseResolveBlock
 -(NSURL* )getUriLogFile {
     return [RNDriveKitCoreWrapper.shared getUriLogFile];
 }
+
+- (void)getUserInfo:(NSString *)synchronizationType resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitCoreWrapper.shared getUserInfoWithSynchronizationType:synchronizationType resolver:resolve rejecter:reject];
+}
+
+- (void)updateUserInfo:(NSDictionary *)userInfo resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitCoreWrapper.shared updateUserInfoWithUserInfo:userInfo resolver:resolve rejecter:reject];
+}
+
 
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED

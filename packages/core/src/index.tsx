@@ -1,4 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
+import type { UserInfo } from './NativeCore';
 
 const LINKING_ERROR =
   `The package '@react-native-drivekit/core' doesn't seem to be linked. Make sure: \n\n` +
@@ -72,4 +73,15 @@ export function disableLogging(options?: { showInConsole?: boolean }): void {
 
 export function getUriLogFile(): Promise<{ uri: string } | null> {
   return Core.getUriLogFile();
+}
+
+export function getUserInfo(
+  synchronizationType: 'default' | 'cache' = 'default'
+): Promise<UserInfo | null> {
+  return Core.getUserInfo(synchronizationType);
+}
+
+export async function updateUserInfo(userInfo: UserInfo): Promise<void> {
+  await Core.updateUserInfo(userInfo);
+  return;
 }
