@@ -29,23 +29,23 @@ const DrivekitTripAnalysis = DrivekitTripAnalysisModule
       }
     );
 
-export function activateAutoStart(enable: boolean): void {
+export function activateAutoStart(enable: boolean): Promise<void> {
   return DrivekitTripAnalysis.activateAutoStart(enable);
 }
 
-export function activateCrashDetection(enable: boolean): void {
+export function activateCrashDetection(enable: boolean): Promise<void> {
   return DrivekitTripAnalysis.activateCrashDetection(enable);
 }
 
-export function startTrip(): void {
+export function startTrip(): Promise<void> {
   return DrivekitTripAnalysis.startTrip();
 }
 
-export function stopTrip(): void {
+export function stopTrip(): Promise<void> {
   return DrivekitTripAnalysis.stopTrip();
 }
 
-export function enableMonitorPotentialTripStart(enable: boolean): void {
+export function enableMonitorPotentialTripStart(enable: boolean): Promise<void> {
   return DrivekitTripAnalysis.enableMonitorPotentialTripStart(enable);
 }
 

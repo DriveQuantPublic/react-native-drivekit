@@ -11,6 +11,7 @@ import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.Cras
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.modules.core.DeviceEventManagerModule
@@ -37,28 +38,33 @@ class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
-  override fun activateAutoStart(enable: Boolean) {
+  override fun activateAutoStart(enable: Boolean, promise: Promise) {
     DriveKitTripAnalysis.activateAutoStart(enable)
+    promise.resolve(null)
   }
 
   @ReactMethod
-  override fun activateCrashDetection(enable: Boolean) {
+  override fun activateCrashDetection(enable: Boolean, promise: Promise) {
     DriveKitTripAnalysis.activateCrashDetection(enable)
+    promise.resolve(null)
   }
 
   @ReactMethod
-  override fun startTrip() {
+  override fun startTrip(promise: Promise) {
     DriveKitTripAnalysis.startTrip()
+    promise.resolve(null)
   }
 
   @ReactMethod
-  override fun stopTrip() {
+  override fun stopTrip(promise: Promise) {
     DriveKitTripAnalysis.stopTrip()
+    promise.resolve(null)
   }
 
   @ReactMethod
-  override fun enableMonitorPotentialTripStart(enable: Boolean) {
-    DriveKitTripAnalysis.monitorPotentialTripStart = enable;
+  override fun enableMonitorPotentialTripStart(enable: Boolean, promise: Promise) {
+    DriveKitTripAnalysis.monitorPotentialTripStart = enable
+    promise.resolve(null)
   }
 
   companion object {
