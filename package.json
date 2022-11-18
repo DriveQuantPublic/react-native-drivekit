@@ -11,18 +11,11 @@
   ],
   "devDependencies": {
     "lerna": "^6.0.3",
-    "@arkweid/lefthook": "^0.7.7",
-    "@commitlint/config-conventional": "^17.0.2",
-    "commitlint": "^17.0.2"
+    "@arkweid/lefthook": "^0.7.7"
   },
   "scripts": {
     "postinstall": "patch-package",
     "release": "lerna publish --no-private"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "dependencies": {
     "patch-packages": "^1.0.0"
