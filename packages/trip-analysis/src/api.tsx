@@ -5,6 +5,19 @@ import {
   Platform,
 } from 'react-native';
 
+import type {
+  StartMode,
+  CancelTripReason,
+  BluetoothState,
+  SDKState,
+  CrashInfo,
+  CrashFeedback,
+  PostGeneric,
+  PostGenericResponse,
+  TripPoint,
+  Location,
+} from './types';
+
 const LINKING_ERROR =
   `The package 'react-native-drivekit-trip-analysis' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
@@ -41,37 +54,30 @@ export function stopTrip(): void {
   return DrivekitTripAnalysis.stopTrip();
 }
 
+export function cancelTrip(): void {
+  return DrivekitTripAnalysis.cancelTrip();
+}
+
 export function enableMonitorPotentialTripStart(enable: boolean): void {
   return DrivekitTripAnalysis.enableMonitorPotentialTripStart(enable);
 }
 
-export enum CancelTripReason {
-  USER = 'USER',
-  HIGH_SPEED = 'HIGH_SPEED',
-  NO_SPEED = 'NO_SPEED',
-  NO_BEACON = 'NO_BEACON',
-  MISSING_CONFIGURATION = 'MISSING_CONFIGURATION',
-  NO_GPS_DATA = 'NO_GPS_DATA',
-  RESET = 'RESET',
-  BEACON_NO_SPEED = 'BEACON_NO_SPEED',
-  NO_BLUETOOTH_DEVICE = 'NO_BLUETOOTH_DEVICE',
-}
-
-export enum StartMode {
-  GPS = 'GPS',
-  BEACON = 'BEACON',
-  MANUAL = 'MANUAL',
-  GEOZONE = 'GEOZONE',
-  BLUETOOTH = 'BLUETOOTH',
-  BLUETOOTH_UNKNOWN = 'BLUETOOTH_UNKNOWN',
-  BICYCLE_ACTIVITY = 'BICYCLE_ACTIVITY',
-}
-
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
+  tripPoint: (tripPoint: TripPoint) => void;
   tripCancelled: (reason: CancelTripReason) => void;
-  tripFinished: (data: { response: any; post: any }) => void;
+  tripFinished: (data: {
+    post: PostGeneric;
+    response: PostGenericResponse;
+  }) => void;
   potentialTripStart: (startMode: StartMode) => void;
+  tripSavedForRepost: () => void;
+  beaconDetected: () => void;
+  significantLocationChangeDetected: (location: Location) => void;
+  sdkStateChanged: (state: SDKState) => void;
+  crashDetected: (crashInfo: CrashInfo) => void;
+  crashFeedbackSent: (crashFeedback: CrashFeedback) => void;
+  bluetoothSensorStateChanged: (state: BluetoothState) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);
@@ -80,5 +86,16 @@ export function addEventListener<E extends keyof Listeners>(
   event: E,
   callback: Listeners[E]
 ): EmitterSubscription {
+  if (event === 'tripFinished') {
+    return eventEmitter.addListener(
+      event,
+      ({ post, response }: { post: string; response: string }) => {
+        (callback as Listeners['tripFinished'])({
+          post: JSON.parse(post),
+          response: JSON.parse(response),
+        });
+      }
+    );
+  }
   return eventEmitter.addListener(event, callback);
 };

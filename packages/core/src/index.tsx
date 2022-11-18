@@ -32,54 +32,52 @@ export function getApiKey(): Promise<string> {
   return Core.getApiKey();
 }
 
-export function setApiKey(key: string): void {
-  Core.setApiKey(key);
+export function setApiKey(key: string): Promise<void> {
+  return Core.setApiKey(key);
 }
 
 export function getUserId(): Promise<string> {
   return Core.getUserId();
 }
 
-export function setUserId(userId: string): void {
-  Core.setUserId(userId);
+export function setUserId(userId: string): Promise<void> {
+  return Core.setUserId(userId);
 }
 
-export function updateUserId(userId: string): void {
-  Core.updateUserId(userId);
+export function updateUserId(userId: string): Promise<void> {
+  return Core.updateUserId(userId);
 }
 
-export function deleteAccount(instantDeletion?: boolean): void {
-  Core.deleteAccount(instantDeletion ?? false);
+export function deleteAccount(instantDeletion?: boolean): Promise<void> {
+  return Core.deleteAccount(instantDeletion ?? false);
 }
 
 export function isTokenValid(): Promise<boolean> {
   return Core.isTokenValid();
 }
 
-export function enableSandboxMode(enable: boolean): void {
-  Core.enableSandboxMode(enable);
+export function enableSandboxMode(enable: boolean): Promise<void> {
+  return Core.enableSandboxMode(enable);
 }
 
-export function reset(): void {
-  Core.reset();
+export function reset(): Promise<void> {
+  return Core.reset();
 }
 
 export function enableLogging(options?: {
   logPath?: string;
   showInConsole?: boolean;
-}): void {
-  Core.enableLogging(options);
+}): Promise<void> {
+  return Core.enableLogging(options);
 }
 
-export function disableLogging(options?: { showInConsole?: boolean }): void {
-  Core.disableLogging(options);
+export function disableLogging(options?: {
+  showInConsole?: boolean;
+}): Promise<void> {
+  return Core.disableLogging(options);
 }
 
 export function getUriLogFile(): Promise<{ uri: string } | null> {
-  if (Platform.OS === 'ios') {
-    return Promise.resolve(null);
-  }
-
   return Core.getUriLogFile();
 }
 

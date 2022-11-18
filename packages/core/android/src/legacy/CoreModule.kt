@@ -19,22 +19,30 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     fun getApiKey(promise: Promise) = promise.resolve(CoreModuleImpl.getApiKey())
 
     @ReactMethod
-    fun setApiKey(key: String) = CoreModuleImpl.setApiKey(key)
+    fun setApiKey(key: String, promise: Promise){
+      CoreModuleImpl.setApiKey(key);
+      promise.resolve(null)
+    }
 
     @ReactMethod
     fun getUserId(promise: Promise) = promise.resolve(CoreModuleImpl.getUserId())
 
     @ReactMethod
-    fun setUserId(userId: String) = CoreModuleImpl.setUserId(userId)
-
-    @ReactMethod
-    fun updateUserId(userId: String){
-      CoreModuleImpl.updateUserId(userId)
+    fun setUserId(userId: String, promise: Promise){
+      CoreModuleImpl.setUserId(userId)
+      promise.resolve(null)
     }
 
     @ReactMethod
-    fun deleteAccount(instantDeletion: Boolean){
+    fun updateUserId(userId: String, promise: Promise){
+      CoreModuleImpl.updateUserId(userId)
+      promise.resolve(null)
+    }
+
+    @ReactMethod
+    fun deleteAccount(instantDeletion: Boolean, promise: Promise){
       CoreModuleImpl.deleteAccount(instantDeletion)
+      promise.resolve(null)
     }
 
     @ReactMethod
@@ -43,17 +51,19 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun enableSandboxMode(enable: Boolean){
+    fun enableSandboxMode(enable: Boolean, promise: Promise){
       CoreModuleImpl.enableSandboxMode(enable)
+      promise.resolve(null)
     }
 
     @ReactMethod
-    fun reset(){
+    fun reset(promise: Promise){
       CoreModuleImpl.reset()
+      promise.resolve(null)
     }
 
     @ReactMethod
-    fun enableLogging(options: ReadableMap?) {
+    fun enableLogging(options: ReadableMap?, promise: Promise) {
       var logPath: String? = null;
       if(options?.hasKey("logPath") == true) {
         logPath = options?.getString("logPath");
@@ -63,15 +73,17 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
         showInConsole = options?.getBoolean("showInConsole")
       }
       CoreModuleImpl.enableLogging(logPath, showInConsole)
+      promise.resolve(null)
     }
 
     @ReactMethod
-    fun disableLogging(options: ReadableMap?) {
+    fun disableLogging(options: ReadableMap?, promise: Promise) {
       var showInConsole: Boolean? = null;
       if(options?.hasKey("showInConsole") == true) {
         showInConsole = options?.getBoolean("showInConsole")
       }
       CoreModuleImpl.disableLogging(showInConsole)
+      promise.resolve(null)
     }
 
     @ReactMethod

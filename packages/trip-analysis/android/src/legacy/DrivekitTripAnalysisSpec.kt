@@ -8,9 +8,13 @@ abstract class DrivekitTripAnalysisSpec internal constructor(context: ReactAppli
 
   abstract fun activateAutoStart(enable: Boolean)
 
+  abstract fun activateCrashDetection(enable: Boolean)
+
   abstract fun startTrip()
 
   abstract fun stopTrip()
+
+  abstract fun cancelTrip()
 
   abstract fun enableMonitorPotentialTripStart(enable: Boolean)
 }

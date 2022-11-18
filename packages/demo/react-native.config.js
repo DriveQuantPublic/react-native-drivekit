@@ -8,6 +8,9 @@ module.exports = {
     '@react-native-drivekit/trip-analysis': {
       root: path.join(__dirname, '../trip-analysis'),
     },
+    '@react-native-drivekit/driver-data': {
+      root: path.join(__dirname, '../driver-data'),
+    },
     'react-native-permissions': {
       root: path.join(__dirname, '../../node_modules/react-native-permissions'),
     },
