@@ -38,14 +38,14 @@ Call `initialize` method inside your `MainApplication.java`.
 
 ```java
 // MainApplication.java
-import com.reactnativedrivekitcore.CoreModuleImpl;
+import com.reactnativedrivekitcore.DriveKitCoreModule;
 
 // ...
 
   @Override
   public void onCreate() {
     super.onCreate();
-    CoreModuleImpl.INSTANCE.initialize(this);
+    DriveKitCoreModule.Companion.initialize(this);
     // ...
   }
 ```

@@ -27,12 +27,12 @@ const LINKING_ERROR =
 // @ts-expect-error
 const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
-const DrivekitTripAnalysisModule = isTurboModuleEnabled
-  ? require('./NativeDrivekitTripAnalysis').default
+const DriveKitTripAnalysisModule = isTurboModuleEnabled
+  ? require('./NativeDriveKitTripAnalysis').default
   : NativeModules.RNDriveKitTripAnalysis;
 
-const DrivekitTripAnalysis = DrivekitTripAnalysisModule
-  ? DrivekitTripAnalysisModule
+const DriveKitTripAnalysis = DriveKitTripAnalysisModule
+  ? DriveKitTripAnalysisModule
   : new Proxy(
       {},
       {
@@ -43,23 +43,27 @@ const DrivekitTripAnalysis = DrivekitTripAnalysisModule
     );
 
 export function activateAutoStart(enable: boolean): void {
-  return DrivekitTripAnalysis.activateAutoStart(enable);
+  return DriveKitTripAnalysis.activateAutoStart(enable);
 }
 
 export function startTrip(): void {
-  return DrivekitTripAnalysis.startTrip();
+  return DriveKitTripAnalysis.startTrip();
 }
 
 export function stopTrip(): void {
-  return DrivekitTripAnalysis.stopTrip();
+  return DriveKitTripAnalysis.stopTrip();
 }
 
 export function cancelTrip(): void {
-  return DrivekitTripAnalysis.cancelTrip();
+  return DriveKitTripAnalysis.cancelTrip();
 }
 
 export function enableMonitorPotentialTripStart(enable: boolean): void {
-  return DrivekitTripAnalysis.enableMonitorPotentialTripStart(enable);
+  return DriveKitTripAnalysis.enableMonitorPotentialTripStart(enable);
+}
+
+export function activateCrashDetection(enable: boolean): void {
+  return DriveKitTripAnalysis.activateCrashDetection(enable);
 }
 
 type Listeners = {
@@ -80,7 +84,7 @@ type Listeners = {
   bluetoothSensorStateChanged: (state: BluetoothState) => void;
 };
 
-const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);
+const eventEmitter = new NativeEventEmitter(DriveKitTripAnalysis);
 
 export function addEventListener<E extends keyof Listeners>(
   event: E,

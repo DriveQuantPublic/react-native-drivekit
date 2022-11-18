@@ -30,4 +30,4 @@ export interface Spec extends TurboModule {
   updateUserInfo(userInfo: UserInfo): Promise<void>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('Core');
+export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitCore');
