@@ -329,6 +329,9 @@ PODS:
   - react-native-drivekit-core (0.0.2):
     - DriveKitCore (= 1.28.1)
     - React-Core
+  - react-native-drivekit-driver-data (0.0.2):
+    - DriveKitDriverData (= 1.28.1)
+    - React-Core
   - react-native-drivekit-trip-analysis (0.0.2):
     - DriveKitTripAnalysis (= 1.28.1)
     - React-Core
@@ -460,6 +463,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../../../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../../../node_modules/react-native/ReactCommon/logger`)
   - react-native-drivekit-core (from `../../core`)
+  - react-native-drivekit-driver-data (from `../../driver-data`)
   - react-native-drivekit-trip-analysis (from `../../trip-analysis`)
   - React-perflogger (from `../../../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../../../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -555,6 +559,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native/ReactCommon/logger"
   react-native-drivekit-core:
     :path: "../../core"
+  react-native-drivekit-driver-data:
+    :path: "../../driver-data"
   react-native-drivekit-trip-analysis:
     :path: "../../trip-analysis"
   React-perflogger:
@@ -635,6 +641,7 @@ SPEC CHECKSUMS:
   React-jsinspector: badd81696361249893a80477983e697aab3c1a34
   React-logger: fdda34dd285bdb0232e059b19d9606fa0ec3bb9c
   react-native-drivekit-core: 2b90a51308937493b7f675f33c7b3bc25aea87e1
+  react-native-drivekit-driver-data: 581d309dfd08b4e8b51a30f0cabb17d1c2d43cc7
   react-native-drivekit-trip-analysis: 21c8d700e9c1bb2324b29efded18d920183fee9c
   React-perflogger: e68d3795cf5d247a0379735cbac7309adf2fb931
   React-RCTActionSheet: 05452c3b281edb27850253db13ecd4c5a65bc247

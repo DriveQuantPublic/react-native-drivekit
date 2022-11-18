@@ -32,20 +32,21 @@ Call `initialize` method inside your `MainApplication.java`.
 
 ```java
 // MainApplication.java
-import com.reactnativedrivekitcore.CoreModuleImpl;
-import com.reactnativedrivekittripanalysis.DrivekitTripAnalysisModule;
+import com.reactnativedrivekitcore.DriveKitCoreModule;
+import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 
 // ...
 
   @Override
   public void onCreate() {
     super.onCreate();
-    CoreModuleImpl.INSTANCE.initialize(this);
-    
+    DriveKitCoreModule.Companion.initialize(this);
+
     // ADD THESE LINES
     final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
-    DrivekitTripAnalysisModule.Companion.initialize(tripNotification);
-    
+    DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
+    DriveKitTripAnalysisModule.Companion.registerReceiver(this);
+
     ...
   }
 ```
@@ -121,6 +122,33 @@ To validate that the initialization has been done successfully, please check you
 **iOS**
 ![](./doc/img/ios_validation.png)
 
+## Listeners
+
+You can listen to events thanks to the `addEventListener` api.
+
+```typescript
+useEffect(() => {
+  const listener = DriveKitTripAnalysis.addEventListener(
+    'tripStarted',
+    (startMode: StartMode) => {
+      console.log('trip start', startMode);
+    }
+  );
+  return () => listener.remove();
+});
+```
+
+Here is the list of supported events:
+
+- `tripPoint`, callback `(tripPoint: TripPoint) => void`: This event is triggered when a trip is started and confirmed, for each GPS point recorded by the SDK.
+- `tripStarted`, callback `(startMode: StartMode) => void`: This event is triggered each time a trip is started. StartMode indicates which event starts the trip.
+- `tripCancelled`, callback `(cancelTrip: CancelTrip) => void`: This event is triggered when a trip is cancelled. CancelTrip indicates which event cancels the trip.
+- `tripFinished`, callback `(post: PostGeneric, response: PostGenericResponse)`: This event is triggered when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. PostGeneric object contains raw data sent to DriveQuant's server, PostGenericResponse object contains the trip analysis made on DriveQuant's server.
+- `tripSavedForRepost`, callback `() => void`: This event is triggered if at the end of the trip, the trip can be sent to DriveQuant's server for the analysis. The trip is saved locally on the SDK and will be sent later.
+- `beaconDetected`, callback `() => void`: This event is triggered when a beacon sets in the SDK is detected.
+  `significantLocationChangeDetected`, callback `() => void`: This event is triggered when a user significant location change is detected.
+- `sdkStateChanged`, callback `(state: State) => void`: This event is triggered every time the state of the SDK changed with the new state as parameter.
+
 ## API
 
 | Method                                                                | Return Type     | iOS | Android |
@@ -128,6 +156,8 @@ To validate that the initialization has been done successfully, please check you
 | [activateAutoStart()](#activateautostart)                             | `Promise<void>` | ✅  |   ✅    |
 | [startTrip()](#starttrip)                                             | `Promise<void>` | ✅  |   ✅    |
 | [stopTrip()](#stoptrip)                                               | `Promise<void>` | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>` | ✅  |   ✅    |
+| [cancelTrip()](#canceltrip)                                           | `Promise<void>` | ✅  |   ✅    |
 | [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>` | ✅  |   ✅    |
 
 ### activateAutoStart
@@ -191,6 +221,44 @@ stopTrip();
 > ℹ️
 >
 > If there is no running trip, calling this method will have no effect.
+
+### activateCrashDetection
+
+```typescript
+activateCrashDetection(enable: boolean): void
+```
+
+Crash detection features, included into the DriveKit Trip Analysis component, is able to collect and analyse smartphone sensors data to automatically detect when a car accident occurs.
+
+Learn more about the feature [on iOS](https://docs.drivequant.com/trip-analysis/ios/crash-detection) / [on Android](https://docs.drivequant.com/trip-analysis/android/crash-detection)
+
+An input parameter is available in DriveKitTripAnalysis to enable or disable the feature:
+
+```typescript
+activateCrashDetection(true);
+```
+
+To disable crash detection, call the same method with parameter to `false`
+
+```typescript
+activateCrashDetection(false);
+```
+
+## cancelTrip
+
+```typescript
+cancelTrip(): void
+```
+
+If you want to cancel a trip, you can call this method:
+
+```typescript
+cancelTrip();
+```
+
+> ℹ️
+>
+> If no trip is running or if the trip has been sent to the server and is currently being analyzed, calling this method will have no effect.
 
 ### enableMonitorPotentialTripStart
 
