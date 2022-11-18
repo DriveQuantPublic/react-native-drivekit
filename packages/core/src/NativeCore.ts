@@ -9,17 +9,8 @@ export type UserInfo = {
 };
 
 export interface Spec extends TurboModule {
-  getApiKey(): string;
-  setApiKey(key: string): void;
-  getUserId(): string;
-  setUserId(userId: string): void;
-  updateUserId(userId: string): void;
-  deleteAccount(instantDeletion: boolean): void;
-  isTokenValid(): boolean;
-  enableSandboxMode(enable: boolean): void;
-  reset(): void;
-  enableLogging(options?: { logPath?: string; showInConsole?: boolean }): void;
-  disableLogging(options?: { showInConsole?: boolean }): void;
+  getApiKey(): Promise<string>;
+  setApiKey(key: string): Promise<void>;
   getUriLogFile(): Promise<{ uri: string } | null>;
   getUserInfo(
     synchronizationType: WithDefault<'default' | 'cache', 'default'>

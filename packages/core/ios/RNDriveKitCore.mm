@@ -10,9 +10,10 @@ RCT_REMAP_METHOD(getApiKey, getApiKeyWithResolve:(RCTPromiseResolveBlock)resolve
     resolve(apiKey);
 }
 
-RCT_REMAP_METHOD(setApiKey, setApiKeyWithKey:(NSString *)key)
+RCT_REMAP_METHOD(setApiKey, setApiKeyWithKey:(NSString *)key resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self setApiKey: key];
+    resolve(nil);
 }
 
 RCT_REMAP_METHOD(getUserId, getUserIdWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)

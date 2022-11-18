@@ -28,8 +28,8 @@ export function getApiKey(): Promise<string> {
   return Core.getApiKey();
 }
 
-export function setApiKey(key: string): void {
-  Core.setApiKey(key);
+export function setApiKey(key: string): Promise<void> {
+  return Core.setApiKey(key);
 }
 
 export function getUserId(): Promise<string> {

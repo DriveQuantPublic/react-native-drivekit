@@ -19,7 +19,10 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     fun getApiKey(promise: Promise) = promise.resolve(CoreModuleImpl.getApiKey())
 
     @ReactMethod
-    fun setApiKey(key: String) = CoreModuleImpl.setApiKey(key)
+    fun setApiKey(key: String, promise: Promise){
+      CoreModuleImpl.setApiKey(key);
+      promise.resolve(null)
+    }
 
     @ReactMethod
     fun getUserId(promise: Promise) = promise.resolve(CoreModuleImpl.getUserId())
