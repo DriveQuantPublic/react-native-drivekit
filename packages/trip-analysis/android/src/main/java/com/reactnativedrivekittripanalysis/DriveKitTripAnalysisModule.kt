@@ -18,10 +18,9 @@ import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.modules.core.DeviceEventManagerModule
-import com.google.gson.Gson
 
-class DrivekitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
-  DrivekitTripAnalysisSpec(context) {
+class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
+  DriveKitTripAnalysisSpec(context) {
 
   init {
     reactContext = context;
