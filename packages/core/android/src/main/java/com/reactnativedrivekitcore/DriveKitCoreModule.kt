@@ -4,14 +4,19 @@ import android.app.Application
 import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.DriveKitLog
 import com.drivequant.drivekit.core.SynchronizationType
-import com.drivequant.drivekit.core.driver.GetUserInfoQueryListener
-import com.drivequant.drivekit.core.driver.UpdateUserInfoQueryListener
-import com.drivequant.drivekit.core.driver.UserInfo
-import com.drivequant.drivekit.core.driver.UserInfoGetStatus
+import com.drivequant.drivekit.core.driver.*
+import com.drivequant.drivekit.core.driver.deletion.DeleteAccountStatus
+import com.drivequant.drivekit.core.networking.DriveKitListener
+import com.drivequant.drivekit.core.networking.RequestError
 import com.facebook.react.bridge.*
+import com.facebook.react.modules.core.DeviceEventManagerModule
 
 class DriveKitCoreModule internal constructor(context: ReactApplicationContext) :
     DriveKitCoreSpec(context) {
+
+  init {
+    reactContext = context
+  }
 
 
   override fun getName(): String {
@@ -154,8 +159,33 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
       companion object {
         const val NAME = "RNDriveKitCore"
         var application: Application? = null
+        var reactContext: ReactApplicationContext? = null
         fun initialize(application: Application) {
-          DriveKit.initialize(application)
+          DriveKit.initialize(application, object : DriveKitListener {
+            override fun onConnected() {
+              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("driveKitConnected", null)
+            }
+
+            override fun onDisconnected() {
+              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("driveKitDisconnected", null)
+            }
+
+            override fun onAuthenticationError(errorType: RequestError) {
+              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("driveKitDidReceiveAuthenticationError", mapRequestError(errorType))
+
+            }
+
+            override fun userIdUpdateStatus(status: UpdateUserIdStatus, userId: String?) {
+              var result = Arguments.createMap()
+              result.putString("status", mapUpdateUserIdStatus(status))
+              result.putString("userId", userId)
+              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("userIdUpdateStatusChanged", result)
+            }
+
+            override fun onAccountDeleted(status: DeleteAccountStatus) {
+              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("accountDeletionCompleted", mapDeleteAccountStatus(status))
+            }
+          })
           DriveKitCoreModule.application = application
         }
       }
