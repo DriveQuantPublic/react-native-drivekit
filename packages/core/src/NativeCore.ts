@@ -11,9 +11,11 @@ export type UserInfo = {
 export interface Spec extends TurboModule {
   getApiKey(): Promise<string>;
   setApiKey(key: string): Promise<void>;
+  getUserId(): Promise<string>;
   setUserId(userId: string): Promise<void>;
   updateUserId(userId: string): Promise<void>;
   deleteAccount(instantDeletion: boolean): Promise<void>;
+  isTokenValid(): Promise<boolean>;
   enableSandboxMode(enable: boolean): Promise<void>;
   reset(): Promise<void>;
   enableLogging(options?: {
