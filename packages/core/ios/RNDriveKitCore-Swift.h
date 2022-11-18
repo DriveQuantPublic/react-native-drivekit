@@ -18,6 +18,6 @@
 - (void)disableLoggingWithShowInConsole:(NSNumber * _Nullable)showInConsole;
 - (void)composeDiagnosisMail:(NSDictionary *_Nullable)options;
 -(NSURL *)getUriLogFile;
-- (void)getUserInfoWithSynchsronizationType:(NSString * _Nullable)synchronizationType resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
+- (void)getUserInfoWithSynchcronizationType:(NSString * _Nullable)synchronizationType resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)updateUserInfoWithUserInfo:(NSDictionary * _Nonnull)userInfo resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 @end
