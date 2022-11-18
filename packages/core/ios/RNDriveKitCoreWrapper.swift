@@ -99,25 +99,21 @@ public class RNDriveKitCoreWrapper: NSObject {
 
 extension RNDriveKitCoreWrapper: DriveKitDelegate {
     public func driveKitDidConnect(_ driveKit: DriveKit) {
-        // Connected to DriveKit.
         RNCoreEventEmitter.shared.dispatch(name: "driveKitConnected", body: nil)
         return
     }
 
     public func driveKit(_ driveKit: DriveKit, didReceiveAuthenticationError error: RequestError) {
-        // DriveKit authentication error: \(error).
         RNCoreEventEmitter.shared.dispatch(name: "driveKitDidReceiveAuthenticationError", body: mapRequestError(requestError: error))
         return
     }
 
     public func driveKitDidDisconnect(_ driveKit: DriveKit) {
-        // Disconnected from DriveKit.
         RNCoreEventEmitter.shared.dispatch(name: "driveKitDisconnected", body: nil)
         return
     }
 
     public func userIdUpdateStatusChanged(status: UpdateUserIdStatus, userId: String?) {
-        // DriveKit userId updated: userId = \(userId), status = \(status).
         RNCoreEventEmitter.shared.dispatch(name: "userIdUpdateStatusChanged", body:[
             "status": mapUpdateUserIdStatus(updateUserIdStatus: status),
             "userId": userId as NSString?])
@@ -125,7 +121,6 @@ extension RNDriveKitCoreWrapper: DriveKitDelegate {
     }
     
     public func driveKit(_ driveKit: DriveKit, accountDeletionCompleted status: DeleteAccountStatus) {
-         // account deletion completed with status \(status).
         RNCoreEventEmitter.shared.dispatch(name: "accountDeletionCompleted", body: mapDeleteAccountStatus(deleteAccountStatus: status))
         return
     }
