@@ -60,6 +60,6 @@ func mapDeleteAccountStatus(deleteAccountStatus: DeleteAccountStatus) -> NSStrin
         return "FORBIDDEN"
     @unknown default:
         print("[deleteAccountStatus] Unknown value \(deleteAccountStatus.rawValue)")
-        return ""
+        return "FAILED_TO_DELETE"
     }
 }
