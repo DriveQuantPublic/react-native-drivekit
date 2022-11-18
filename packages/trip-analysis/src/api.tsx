@@ -62,6 +62,10 @@ export function enableMonitorPotentialTripStart(enable: boolean): void {
   return DriveKitTripAnalysis.enableMonitorPotentialTripStart(enable);
 }
 
+export function activateCrashDetection(enable: boolean): void {
+  return DriveKitTripAnalysis.activateCrashDetection(enable);
+}
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripPoint: (tripPoint: TripPoint) => void;
