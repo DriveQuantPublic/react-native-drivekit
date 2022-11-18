@@ -124,7 +124,7 @@ type Listeners = {
   accountDeletionCompleted: (status: DeleteAccountStatus) => void;
   userIdUpdateStatusChanged: (data: {
     status: UpdateUserIdStatus;
-    userId: String;
+    userId: String?;
   }) => void;
 
 };
