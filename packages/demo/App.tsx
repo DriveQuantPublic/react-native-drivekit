@@ -12,6 +12,7 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
+import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import type {CancelTripReason} from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
@@ -43,6 +44,15 @@ const App = () => {
     const userIdVal = await DriveKit.getUserId();
       setUserId(userIdVal)
     };
+
+  useEffect(() => {
+    const calculate = async () => {
+      const result = await DriveKitDriverData.multiply(2,3)
+      console.warn('Result =', result)
+    }
+
+    calculate()
+  }, [])
 
   useEffect(() => {
     const checkPermissions = async () => {
