@@ -7,8 +7,9 @@
     /* Completeness */
     "skipLibCheck": true,                               /* Skip type checking all .d.ts files. */
     "paths": {
-      "@react-native-drivekit/core": ["./src/index"],
-      "@react-native-drivekit/trip-analysis": ["./src/index"]
+      "@react-native-drivekit/core": ["../core/src/index"],
+      "@react-native-drivekit/trip-analysis": ["../trip-analysis/src/index"],
+      "@react-native-drivekit/driver-data": ["../driver-data/src/index"]
     },
   }
 }
