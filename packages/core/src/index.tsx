@@ -56,8 +56,8 @@ export function enableSandboxMode(enable: boolean): Promise<void> {
   return Core.enableSandboxMode(enable);
 }
 
-export function reset(): void {
-  Core.reset();
+export function reset(): Promise<void> {
+  return Core.reset();
 }
 
 export function enableLogging(options?: {

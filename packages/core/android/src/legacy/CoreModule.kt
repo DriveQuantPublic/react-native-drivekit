@@ -57,8 +57,9 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     }
 
     @ReactMethod
-    fun reset(){
+    fun reset(promise: Promise){
       CoreModuleImpl.reset()
+      promise.resolve(null)
     }
 
     @ReactMethod

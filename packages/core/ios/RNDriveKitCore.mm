@@ -52,9 +52,10 @@ RCT_REMAP_METHOD(enableSandboxMode, enableSandboxModeWithEnable:(nonnull NSNumbe
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(reset, resetCore)
+RCT_REMAP_METHOD(reset, resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self reset];
+    resolve(nil);
 }
 
 RCT_REMAP_METHOD(enableLogging, enableLoggingWithOptions:(NSDictionary *)options){
