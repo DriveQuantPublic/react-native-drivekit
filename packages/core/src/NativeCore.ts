@@ -11,6 +11,7 @@ export type UserInfo = {
 export interface Spec extends TurboModule {
   getApiKey(): Promise<string>;
   setApiKey(key: string): Promise<void>;
+  setUserId(userId: string): Promise<void>;
   getUriLogFile(): Promise<{ uri: string } | null>;
   getUserInfo(
     synchronizationType: WithDefault<'default' | 'cache', 'default'>

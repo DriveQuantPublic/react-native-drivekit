@@ -36,8 +36,8 @@ export function getUserId(): Promise<string> {
   return Core.getUserId();
 }
 
-export function setUserId(userId: string): void {
-  Core.setUserId(userId);
+export function setUserId(userId: string): Promise<void> {
+  return Core.setUserId(userId);
 }
 
 export function updateUserId(userId: string): void {

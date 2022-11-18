@@ -22,9 +22,10 @@ RCT_REMAP_METHOD(getUserId, getUserIdWithResolve:(RCTPromiseResolveBlock)resolve
     resolve(userId);
 }
 
-RCT_REMAP_METHOD(setUserId, setUserIdWithUserId:(NSString *)userId)
+RCT_REMAP_METHOD(setUserId, setUserIdWithUserId:(NSString *)userId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self setUserId:userId];
+    resolve(nil);
 }
 
 RCT_REMAP_METHOD(updateUserId, updateUserIdWithUserId:(NSString *)userId)

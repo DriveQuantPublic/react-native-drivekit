@@ -28,7 +28,10 @@ class CoreModule internal constructor(context: ReactApplicationContext?) :
     fun getUserId(promise: Promise) = promise.resolve(CoreModuleImpl.getUserId())
 
     @ReactMethod
-    fun setUserId(userId: String) = CoreModuleImpl.setUserId(userId)
+    fun setUserId(userId: String, promise: Promise){
+      CoreModuleImpl.setUserId(userId)
+      promise.resolve(null)
+    }
 
     @ReactMethod
     fun updateUserId(userId: String){
