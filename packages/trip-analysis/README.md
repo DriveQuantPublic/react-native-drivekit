@@ -134,7 +134,7 @@ To validate that the initialization has been done successfully, please check you
 ### activateAutoStart
 
 ```typescript
-activateAutoStart(enable: boolean): void
+activateAutoStart(enable: boolean): Promise<void>
 ```
 
 The automatic mode detects vehicle movements and triggers the trip analysis without driver intervention while the application is in background. The analysis is stopped automatically at the end of the trip.
@@ -160,7 +160,7 @@ activateAutoStart(false);
 ## startTrip
 
 ```typescript
-startTrip(): void
+startTrip(): Promise<void>
 ```
 
 You can start a trip by calling the following method:
@@ -176,7 +176,7 @@ startTrip();
 ## stopTrip
 
 ```typescript
-stopTrip(): void
+stopTrip(): Promise<void>
 ```
 
 You can stop a trip by calling the following method. The trip will be stopped instantly:
@@ -196,7 +196,7 @@ stopTrip();
 ### activateCrashDetection
 
 ```typescript
-activateCrashDetection(enable: boolean): void
+activateCrashDetection(enable: boolean): Promise<void>
 ```
 
 Crash detection features, included into the DriveKit Trip Analysis component, is able to collect and analyse smartphone sensors data to automatically detect when a car accident occurs. 
@@ -218,7 +218,7 @@ activateCrashDetection(false);
 ### enableMonitorPotentialTripStart
 
 ```typescript
-enableMonitorPotentialTripStart(enable: boolean): void
+enableMonitorPotentialTripStart(enable: boolean): Promise<void>
 ```
 
 To listen to trigger events that indicate a start of trip, even if the autostart is disabled, you can call the following method:
