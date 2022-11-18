@@ -201,27 +201,8 @@ activateCrashDetection(enable: boolean): void
 
 Crash detection features, included into the DriveKit Trip Analysis component, is able to collect and analyse smartphone sensors data to automatically detect when a car accident occurs. 
 
-DriveKit Trip Analysis analyzes signals from the GPS sensor and also from the motion sensors (accelerometer, gyrometer and magnetometer). 
+Learn more about the feature [on iOS](https://docs.drivequant.com/trip-analysis/ios/crash-detection) / [on Android](https://docs.drivequant.com/trip-analysis/android/crash-detection)
 
-This feature is enabled if the following conditions are fulfilled:
-
-- Your API key has the access rights to use this service; 
-- You have enabled the feature by following the instructions described in this section; 
-- A trip has been detected and is being analysed. 
-- The smartphone's sensors are functional. 
-- The SDK is able to check the status of the required sensors.
-
-
-The crash detection steps are:
-
-1. A trip is detected automatically or started manually and the trip recording starts. 
-1. The crash feature detects a potential collision based on motion sensors. 
-1. The GPS and motion data are pushed to the backend analysis services in charge of the signal processing and crash confirmation. 
-1. The SDK receives a crash analysis service response with a status. 
-1. If the crash is confirmed, the Trip analysis component can display a survey to ask the driver whether he needs assistance. This is an optional feature.
-
-If the crash detection configuration is enabled for your company, your API key carries out the feature access and the crash detection will be enabled accordingly. 
-However, you can deactivate and reactivate the function if necessary using a dedicated setting. 
 An input parameter is available in DriveKitTripAnalysis to enable or disable the feature:
 
 ```typescript
