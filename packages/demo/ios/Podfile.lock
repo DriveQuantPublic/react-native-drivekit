@@ -330,6 +330,7 @@ PODS:
     - DriveKitCore (= 1.28.1)
     - React-Core
   - react-native-drivekit-driver-data (0.0.2):
+    - DriveKitDriverData (= 1.28.1)
     - React-Core
   - react-native-drivekit-trip-analysis (0.0.2):
     - DriveKitTripAnalysis (= 1.28.1)

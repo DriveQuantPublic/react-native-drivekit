@@ -72,6 +72,10 @@ export function enableMonitorPotentialTripStart(
   return DriveKitTripAnalysis.enableMonitorPotentialTripStart(enable);
 }
 
+export function reset(): Promise<void> {
+  return DriveKitTripAnalysis.reset();
+}
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripPoint: (tripPoint: TripPoint) => void;

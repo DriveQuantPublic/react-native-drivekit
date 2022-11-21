@@ -70,6 +70,12 @@ RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStar
     resolve(nil);
 }
 
+RCT_REMAP_METHOD(reset, resetWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self reset];
+    resolve(nil);
+}
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
@@ -90,13 +96,16 @@ RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStar
     return [RNDriveKitTripAnalysisWrapper.shared isTripRunning];
 }
 
-
 - (void)enableMonitorPotentialTripStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared enableMonitorPotentialTripStartWithEnable:enable];
 }
 
 -(void)activateCrashDetection:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateCrashDetectionWithEnable:enable];
+}
+
+- (void)reset {
+    [RNDriveKitTripAnalysisWrapper.shared reset];
 }
 
 // Don't compile this code when we build for the old architecture.

@@ -344,13 +344,14 @@ const App = () => {
           title={'Reset'}
           onPress={() => {
             DriveKit.reset();
+            DriveKitTripAnalysis.reset();
           }}
         />
 
         <Button
           title={'Enable Logs'}
           onPress={() => {
-            DriveKit.enableLogging({ showInConsole: true, logPath: 'log/path' });
+            DriveKit.enableLogging({ showInConsole: true, logPath: '/log/path' });
           }}
         />
         <Button
@@ -426,12 +427,16 @@ const App = () => {
         <Text style={styles.title}>Logs</Text>
         <Spacer factor={1} />
         <Button
-          title={'Get logs URI'}
-          onPress={async () => {
-            const result = await DriveKit.getUriLogFile();
-            if (result) {
-              Alert.alert('Logs URI', result.uri);
+          title={'Compose diagnosis mail'}
+          onPress={() => {
+            DriveKit.updateUserId
+            DriveKit.composeDiagnosisMail({
+              recipients: [],
+              bccRecipients: [],
+              subject: 'Diagnosis mail',
+              body: 'Body mail'
             }
+            );
           }}
         />
       </ScrollView>
