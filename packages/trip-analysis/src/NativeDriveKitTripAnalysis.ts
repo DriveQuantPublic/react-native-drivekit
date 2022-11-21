@@ -8,6 +8,7 @@ export interface Spec extends TurboModule {
   stopTrip(): Promise<void>;
   cancelTrip(): Promise<void>;
   enableMonitorPotentialTripStart(enable: boolean): Promise<void>;
+  reset(): Promise<void>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitTripAnalysis');

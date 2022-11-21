@@ -11,6 +11,7 @@
 - (void)stopTrip;
 - (void)cancelTrip;
 - (void)enableMonitorPotentialTripStartWithEnable:(NSNumber * _Nonnull)enable;
+- (void)reset;
 @end
 
 @interface RNTripAnalysisEventEmitter : NSObject

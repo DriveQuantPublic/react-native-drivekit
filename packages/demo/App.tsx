@@ -353,6 +353,7 @@ const App = () => {
           title={'Reset'}
           onPress={() => {
             DriveKit.reset();
+            DriveKitTripAnalysis.reset();
           }}
         />
 
