@@ -287,6 +287,26 @@ To listen to trigger events that indicate a start of trip, even if the autostart
 enableMonitorPotentialTripStart(true);
 ```
 
+### setStopTimeout
+
+```typescript
+setStopTimeout(stopTimeout: number): Promise<void>
+```
+
+A trip being analyzed is automatically stopped after a period of inactivity (which begins when the vehicle has stopped). 
+
+The DriveQuant SDK allows to set the end-of-trip duration. Default value is 240s.
+
+```typescript
+setStopTimeout(240);
+```
+
+> ⚠️
+>
+> If a value greater than 480 is set, the value will be forced to 480.
+>
+> If a value lower than 120 is set, the value will be forced to 120.
+
 ### reset
 
 ```typescript

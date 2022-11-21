@@ -129,11 +129,11 @@ useEffect(() => {
 
 Here is the list of supported events:
 
-- `driveKitConnected`, callback `() => void`: This event is triggered when DriveKit user is connected.
-- `driveKitDisconnected`, callback `() => void`: This event is triggered when DriveKit user is disconnected.
-- `driveKitDidReceiveAuthenticationError`, callback `(requestError: RequestError) => void`: This event is triggered when DriveKit user authentication request fails.
-- `accountDeletionCompleted`, callback `(status: DeleteAccountStatus)`: This event is triggered when a delete user request complete.
-- `userIdUpdateStatusChanged`, callback `(status: UpdateUserIdStatus, userId: String?) => void`: This event is triggered after a update userId request is completed.
+- `driveKitConnected`, callback `() => void`: This event is triggered when the user has been successfully logged.
+- `driveKitDisconnected`, callback `() => void`: This event is triggered when the user has been disconnected.
+- `driveKitDidReceiveAuthenticationError`, callback `(requestError: RequestError) => void`: This event is triggered when The login has failed due to a `RequestError`.
+- `accountDeletionCompleted`, callback `(status: DeleteAccountStatus)`: This event is triggered when the delete account request has been processed with a `DeleteAccountStatus` state value.
+- `userIdUpdateStatusChanged`, callback `(status: UpdateUserIdStatus, userId: String?) => void`: This event is triggered when the update userId request has been processed with a `UpdateUserIdStatus state value.
 
 
 ## API
@@ -337,8 +337,9 @@ enableLogging({ logPath: '/path/to/my/log/directory' });
 
 Once you are connected to the SDK with your key and a user ID, you can check the validity of the generated token by calling:
 
-````typescript
+```typescript
 const isValid = await isTokenValid();
+```
 
 ### getUserInfo
 
@@ -346,7 +347,7 @@ const isValid = await isTokenValid();
 getUserInfo(
   synchronizationType: 'default' | 'cache' = 'default'
 ): Promise<UserInfo | null>
-````
+```
 
 | UserInfo    | Type             |
 | ----------- | ---------------- |
