@@ -1,5 +1,5 @@
 //
-//  RNEventEmitter.swift
+//  RNTripAnalysisEventEmitter.swift
 //  react-native-drivekit-trip-analysis
 //
 //  Created by Cyril Bonaccini on 14/11/2022.
@@ -7,19 +7,19 @@
 
 import Foundation
 
-@objc(RNEventEmitter)
-class RNEventEmitter: NSObject {
+@objc(RNTripAnalysisEventEmitter)
+class RNTripAnalysisEventEmitter: NSObject {
 
-    @objc public static var shared = RNEventEmitter()
+    @objc public static var shared = RNTripAnalysisEventEmitter()
 
     private static var eventEmitter: RNDriveKitTripAnalysis!
 
     @objc func registerEventEmitter(eventEmitter: RNDriveKitTripAnalysis) {
-        RNEventEmitter.eventEmitter = eventEmitter
+        RNTripAnalysisEventEmitter.eventEmitter = eventEmitter
     }
 
     @objc func dispatch(name: String, body: Any?) {
-        RNEventEmitter.eventEmitter?.sendEvent(withName: name, body: body)
+        RNTripAnalysisEventEmitter.eventEmitter?.sendEvent(withName: name, body: body)
     }
 
     @objc static var allEvents: [String] =  ["tripStarted", "tripPoint", "tripCancelled", "tripFinished", "tripSavedForRepost", "beaconDetected", "significantLocationChangeDetected", "potentialTripStart", "sdkStateChanged", "crashDetected", "crashFeedbackSent", "bluetoothSensorStateChanged"]

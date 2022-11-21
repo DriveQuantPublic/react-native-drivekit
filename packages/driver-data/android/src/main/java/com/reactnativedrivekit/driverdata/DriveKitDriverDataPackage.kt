@@ -7,10 +7,10 @@ import com.facebook.react.module.model.ReactModuleInfoProvider
 import com.facebook.react.module.model.ReactModuleInfo
 import java.util.HashMap
 
-class DriverDataPackage : TurboReactPackage() {
+class DriveKitDriverDataPackage : TurboReactPackage() {
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name === DriverDataModule.NAME) {
-      DriverDataModule(reactContext)
+    return if (name === DriveKitDriverDataModule.NAME) {
+      DriveKitDriverDataModule(reactContext)
     } else {
       null
     }
@@ -20,9 +20,9 @@ class DriverDataPackage : TurboReactPackage() {
     return ReactModuleInfoProvider {
       val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
       val isTurboModule: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
-      moduleInfos[DriverDataModule.NAME] = ReactModuleInfo(
-        DriverDataModule.NAME,
-        DriverDataModule.NAME,
+      moduleInfos[DriveKitDriverDataModule.NAME] = ReactModuleInfo(
+        DriveKitDriverDataModule.NAME,
+        DriveKitDriverDataModule.NAME,
         false,  // canOverrideExistingModule
         false,  // needsEagerInit
         true,  // hasConstants

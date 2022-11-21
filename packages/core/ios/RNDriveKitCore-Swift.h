@@ -1,6 +1,9 @@
 #import <React/RCTBridgeModule.h>
 
 @class RNDriveKitCoreWrapper;
+@class RNCoreEventEmitter;
+@class RNDriveKitCore;
+
 
 @interface RNDriveKitCoreWrapper : NSObject
 @property (nonatomic, class, readonly, strong) RNDriveKitCoreWrapper * _Nonnull shared;
@@ -21,4 +24,9 @@
 - (void)getUserInfoWithSynchronizationType:(NSString * _Nullable)synchronizationType resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)updateUserInfoWithUserInfo:(NSDictionary * _Nonnull)userInfo resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 @end
-w
+
+@interface RNCoreEventEmitter : NSObject
+@property (nonatomic, class, readonly, strong) RNCoreEventEmitter * _Nonnull shared;
+@property (nonatomic, class, readonly, strong) NSArray<NSString *> * _Nonnull allEvents;
+- (void)registerEventEmitterWithEventEmitter:(RNDriveKitCore * _Nonnull) eventEmitter;
+@end

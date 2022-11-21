@@ -111,6 +111,30 @@ To validate that the initialization has been done successfully, please check you
 ![](./doc/img/ios_validation.png)
 
 ---
+## Listeners
+
+You can listen to events thanks to the `addEventListener` api.
+
+```typescript
+useEffect(() => {
+  const listener = DriveKit.addEventListener(
+    'driveKitDidReceiveAuthenticationError',
+    (error: RequestError) => {
+        console.log('Received authentication error from DriveKit', error);
+    }
+  );
+  return () => listener.remove();
+});
+```
+
+Here is the list of supported events:
+
+- `driveKitConnected`, callback `() => void`: This event is triggered when DriveKit user is connected.
+- `driveKitDisconnected`, callback `() => void`: This event is triggered when DriveKit user is disconnected.
+- `driveKitDidReceiveAuthenticationError`, callback `(requestError: RequestError) => void`: This event is triggered when DriveKit user authentication request fails.
+- `accountDeletionCompleted`, callback `(status: DeleteAccountStatus)`: This event is triggered when a delete user request complete.
+- `userIdUpdateStatusChanged`, callback `(status: UpdateUserIdStatus, userId: String?) => void`: This event is triggered after a update userId request is completed.
+
 
 ## API
 
@@ -125,7 +149,7 @@ To validate that the initialization has been done successfully, please check you
 | [reset()](#reset)                               | `Promise<void>`                    | ✅  |   ✅    |
 | [enableLogging()](#logging)                     | `Promise<void>`                    | ✅  |   ✅    |
 | [disableLogging()](#logging)                    | `Promise<void>`                    | ✅  |   ✅    |
-| [getUriLogFile()](#getUriLogFile)               | `Promise<{ uri: string } \| null>` | ❌  |   ✅    |
+| [getUriLogFile()](#getUriLogFile)               | `Promise<{ uri: string } \| null>` | ✅  |   ✅    |
 | [composeDiagnosisMail()](#composediagnosismail) | `Promise<void>`                    | ✅  |   ✅    |
 | [isTokenValid()](#istokenvalid)                 | `Promise<boolean>`                 | ✅  |   ✅    |
 | [getUserInfo()](#getuserinfo)                   | `Promise<UserInfo \| null>`        | ✅  |   ✅    |

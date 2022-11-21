@@ -10,7 +10,7 @@
 - (id)init {
     self = [super init];
     if(self){
-        [RNEventEmitter.shared registerEventEmitterWithEventEmitter:self];
+        [RNTripAnalysisEventEmitter.shared registerEventEmitterWithEventEmitter:self];
     }
     return self;
 }
@@ -21,7 +21,7 @@
 }
 
 - (NSArray<NSString *>*)supportedEvents {
-    return RNEventEmitter.allEvents;
+    return RNTripAnalysisEventEmitter.allEvents;
 }
 
 -(void)startObserving {
