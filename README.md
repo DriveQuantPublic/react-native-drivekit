@@ -6,7 +6,7 @@ The DriveKit SDK for React Native is available with:
 - Android 21 (5.0) and later versions, 
 - and iOS 11.0 and later versions.
 
-The DriveKit librairies for React Native are supported for React Native 0.70 version. 
+The DriveKit libraries for React Native are supported for React Native 0.70 version. 
 It is strongly recommended to use this version or later versions.
 
 ## How to install the DriveKit SDK in your React Native application?
