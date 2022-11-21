@@ -408,7 +408,7 @@ You can compose a diagnosis mail with attached DriveKit logs (if available). To 
 ```typescript
 DriveKit.composeDiagnosisMail({
   recipients: [],
-  bccRecipients: ['bcc1@help.com', 'bcc2@help.com'],
+  bccRecipients: [],
   subject: 'Diagnosis mail',
   body: 'Body mail'}
 );
