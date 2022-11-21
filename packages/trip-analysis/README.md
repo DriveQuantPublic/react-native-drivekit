@@ -159,6 +159,8 @@ Here is the list of supported events:
 | [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>` | ✅  |   ✅    |
 | [cancelTrip()](#canceltrip)                                           | `Promise<void>` | ✅  |   ✅    |
 | [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>` | ✅  |   ✅    |
+| [reset()](#reset)                                                      | `Promise<void>` | ✅  |   ✅    |
+
 
 ### activateAutoStart
 
@@ -271,3 +273,26 @@ To listen to trigger events that indicate a start of trip, even if the autostart
 ```typescript
 enableMonitorPotentialTripStart(true);
 ```
+
+
+### reset
+
+```typescript
+reset(): Promise<void>
+```
+
+If you need to reset DriveKit Trip Analysis configuration (user logout for example), you can call the following method:
+
+```typescript
+reset();
+```
+
+All data saved locally by DriveKit will be erased.
+
+> ℹ️
+>
+> All DriverKit frameworks have reset method that erases all data saved locally by the framework.
+
+> ⚠️
+>
+> Make sure that you call reset method of all frameworks to fully reset DriveKit configuration.
