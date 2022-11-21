@@ -309,7 +309,7 @@ const App = () => {
         <Button
           title={'Enable Logs'}
           onPress={() => {
-            DriveKit.enableLogging({showInConsole: true, logPath: 'log/path'});
+            DriveKit.enableLogging({showInConsole: true, logPath: '/log/path'});
           }}
         />
         <Button

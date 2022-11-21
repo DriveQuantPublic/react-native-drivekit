@@ -83,7 +83,6 @@ export function composeDiagnosisMail(options?: {
   subject?: string;
   body?: string;
 }) : void {
-  debugger
   Core.composeDiagnosisMail(options);
 }
 
