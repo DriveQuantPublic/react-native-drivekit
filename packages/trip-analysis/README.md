@@ -159,7 +159,7 @@ Here is the list of supported events:
 | [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>` | ✅  |   ✅    |
 | [cancelTrip()](#canceltrip)                                           | `Promise<void>` | ✅  |   ✅    |
 | [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>` | ✅  |   ✅    |
-| [reset()](#reset)                                                      | `Promise<void>` | ✅  |   ✅    |
+| [reset()](#reset)                                                     | `Promise<void>` | ✅  |   ✅    |
 
 
 ### activateAutoStart
