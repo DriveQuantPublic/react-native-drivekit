@@ -40,60 +40,60 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     public func tripStarted(startMode: DriveKitTripAnalysisModule.StartMode) {
         let rnStartMode = mapStartMode(startMode: startMode)
         if let unwrappedRNStartMode = rnStartMode {
-            RNEventEmitter.shared.dispatch(name: "tripStarted", body: unwrappedRNStartMode)
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripStarted", body: unwrappedRNStartMode)
         }
     }
 
     public func tripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) {
-        RNEventEmitter.shared.dispatch(name: "tripPoint", body: mapTripPoint(tripPoint: tripPoint))
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "tripPoint", body: mapTripPoint(tripPoint: tripPoint))
     }
 
     public func tripFinished(post: DriveKitTripAnalysisModule.PostGeneric, response: DriveKitTripAnalysisModule.PostGenericResponse) {
         if let unwrappedJSONPost = post.toJSON().toJSONString(), let unwrappedJSONResponse = response.toJSON().toJSONString() {
-            RNEventEmitter.shared.dispatch(name: "tripFinished", body: ["post": unwrappedJSONPost, "response": unwrappedJSONResponse])
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripFinished", body: ["post": unwrappedJSONPost, "response": unwrappedJSONResponse])
         }
     }
 
     public func tripCancelled(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) {
         let rnCancelTrip = mapCancelTrip(cancelTrip: cancelTrip)
         if let unwrappedRNCancelTrip = rnCancelTrip {
-            RNEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedRNCancelTrip)
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedRNCancelTrip)
         }
     }
 
     public func tripSavedForRepost() {
-        RNEventEmitter.shared.dispatch(name: "tripSavedForRepost", body: nil)
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "tripSavedForRepost", body: nil)
 
     }
 
     public func beaconDetected() {
-        RNEventEmitter.shared.dispatch(name: "beaconDetected", body: nil)
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "beaconDetected", body: nil)
     }
 
     public func significantLocationChangeDetected(location: CLLocation) {
-        RNEventEmitter.shared.dispatch(name: "significantLocationChangeDetected", body: ["latitude": location.coordinate.latitude, "longitude": location.coordinate.longitude])
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "significantLocationChangeDetected", body: ["latitude": location.coordinate.latitude, "longitude": location.coordinate.longitude])
     }
 
     public func sdkStateChanged(state: DriveKitTripAnalysisModule.State) {
         let rnSDKStateChanged = mapSDKState(state: state)
         if let unwrappedSDKStateChanged = rnSDKStateChanged {
-            RNEventEmitter.shared.dispatch(name: "sdkStateChanged", body: unwrappedSDKStateChanged )
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "sdkStateChanged", body: unwrappedSDKStateChanged )
         }
     }
 
     public func potentialTripStart(startMode: DriveKitTripAnalysisModule.StartMode) {
         let rnStartMode = mapStartMode(startMode: startMode)
         if let unwrappedRNStartMode = rnStartMode {
-            RNEventEmitter.shared.dispatch(name: "potentialTripStart", body: unwrappedRNStartMode)
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "potentialTripStart", body: unwrappedRNStartMode)
         }
     }
 
     public func crashDetected(crashInfo: DriveKitTripAnalysisModule.DKCrashInfo) {
-        RNEventEmitter.shared.dispatch(name: "crashDetected", body: mapDKCrashInfo(info: crashInfo))
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "crashDetected", body: mapDKCrashInfo(info: crashInfo))
     }
 
     public func crashFeedbackSent(crashInfo: DriveKitTripAnalysisModule.DKCrashInfo, feedbackType: DriveKitTripAnalysisModule.DKCrashFeedbackType, severity: DriveKitTripAnalysisModule.DKCrashFeedbackSeverity) {
-        RNEventEmitter.shared.dispatch(name: "crashFeedbackSent", body:
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "crashFeedbackSent", body:
                                         [crashInfo: mapDKCrashInfo(info: crashInfo), feedbackType: mapDKCrashFeedbackType(type: feedbackType), severity: mapDKCrashFeedbackSeverity(severity: severity)])
     }
 

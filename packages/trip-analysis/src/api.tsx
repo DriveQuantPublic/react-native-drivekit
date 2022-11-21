@@ -27,20 +27,20 @@ const LINKING_ERROR =
 // @ts-expect-error
 const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
-const DrivekitTripAnalysisModule = isTurboModuleEnabled
-  ? require('./NativeDrivekitTripAnalysis').default
+const DriveKitTripAnalysisModule = isTurboModuleEnabled
+  ? require('./NativeDriveKitTripAnalysis').default
   : NativeModules.RNDriveKitTripAnalysis;
 
-const DrivekitTripAnalysis = DrivekitTripAnalysisModule
-  ? DrivekitTripAnalysisModule
+const DriveKitTripAnalysis = DriveKitTripAnalysisModule
+  ? DriveKitTripAnalysisModule
   : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+    {},
+    {
+      get() {
+        throw new Error(LINKING_ERROR);
+      },
+    }
+  );
 
 export function activateAutoStart(enable: boolean): Promise<void> {
   return DrivekitTripAnalysis.activateAutoStart(enable);
@@ -84,7 +84,7 @@ type Listeners = {
   bluetoothSensorStateChanged: (state: BluetoothState) => void;
 };
 
-const eventEmitter = new NativeEventEmitter(DrivekitTripAnalysis);
+const eventEmitter = new NativeEventEmitter(DriveKitTripAnalysis);
 
 export function addEventListener<E extends keyof Listeners>(
   event: E,
@@ -102,4 +102,4 @@ export function addEventListener<E extends keyof Listeners>(
     );
   }
   return eventEmitter.addListener(event, callback);
-}
+};

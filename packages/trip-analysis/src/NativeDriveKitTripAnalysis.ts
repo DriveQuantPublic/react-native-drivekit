@@ -10,4 +10,4 @@ export interface Spec extends TurboModule {
   enableMonitorPotentialTripStart(enable: boolean): Promise<void>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('DrivekitTripAnalysis');
+export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitTripAnalysis');

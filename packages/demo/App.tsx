@@ -32,6 +32,7 @@ import {checkNotificationPermission} from './src/services/permissions/notificati
 import {checkBatteryOptimizationPermission} from './src/services/permissions/batteryOptimization';
 import {checkMotionPermission} from './src/services/permissions/motion';
 import {UserInfoForm} from './src/components/UserInfoForm';
+import {DeleteAccountStatus, RequestError} from '@react-native-drivekit/core';
 
 const inputHeight = 40;
 
@@ -79,6 +80,55 @@ const App = () => {
     checkPermissions();
     checkUserIdValue();
   }, []);
+
+  useEffect(() => {
+    const listener = DriveKit.addEventListener('driveKitConnected', () => {
+      console.log('Connected to DriveKit');
+    });
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKit.addEventListener('driveKitDisconnected', () => {
+      console.log('Disconnected from DriveKit');
+    });
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'driveKitDidReceiveAuthenticationError',
+      (error: RequestError) => {
+        console.log('Received authentication error from DriveKit', error);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'userIdUpdateStatusChanged',
+      ({status, userId: updatedUserId}) => {
+        console.log(
+          'UserId',
+          updatedUserId,
+          'update finished with status',
+          status,
+        );
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'accountDeletionCompleted',
+      (status: DeleteAccountStatus) => {
+        console.log('delete account completed with status', status);
+      },
+    );
+    return () => listener.remove();
+  });
 
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(

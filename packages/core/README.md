@@ -38,14 +38,14 @@ Call `initialize` method inside your `MainApplication.java`.
 
 ```java
 // MainApplication.java
-import com.reactnativedrivekitcore.CoreModuleImpl;
+import com.reactnativedrivekitcore.DriveKitCoreModule;
 
 // ...
 
   @Override
   public void onCreate() {
     super.onCreate();
-    CoreModuleImpl.INSTANCE.initialize(this);
+    DriveKitCoreModule.Companion.initialize(this);
     // ...
   }
 ```
@@ -89,13 +89,13 @@ To finish the module's initialization, you need to :
 #### Specify your API key
 
 ```typescript
-setApiKey(key: string): void
+setApiKey(key: string): Promise<void>
 ```
 
 #### Specify your user ID
 
 ```typescript
-setUserId(userId: string): void
+setUserId(userId: string): Promise<void>
 ```
 
 ---
@@ -111,6 +111,30 @@ To validate that the initialization has been done successfully, please check you
 ![](./doc/img/ios_validation.png)
 
 ---
+## Listeners
+
+You can listen to events thanks to the `addEventListener` api.
+
+```typescript
+useEffect(() => {
+  const listener = DriveKit.addEventListener(
+    'driveKitDidReceiveAuthenticationError',
+    (error: RequestError) => {
+        console.log('Received authentication error from DriveKit', error);
+    }
+  );
+  return () => listener.remove();
+});
+```
+
+Here is the list of supported events:
+
+- `driveKitConnected`, callback `() => void`: This event is triggered when DriveKit user is connected.
+- `driveKitDisconnected`, callback `() => void`: This event is triggered when DriveKit user is disconnected.
+- `driveKitDidReceiveAuthenticationError`, callback `(requestError: RequestError) => void`: This event is triggered when DriveKit user authentication request fails.
+- `accountDeletionCompleted`, callback `(status: DeleteAccountStatus)`: This event is triggered when a delete user request complete.
+- `userIdUpdateStatusChanged`, callback `(status: UpdateUserIdStatus, userId: String?) => void`: This event is triggered after a update userId request is completed.
+
 
 ## API
 
@@ -125,7 +149,7 @@ To validate that the initialization has been done successfully, please check you
 | [reset()](#reset)                   | `Promise<void>`                    | ✅  |   ✅    |
 | [enableLogging()](#logging)         | `Promise<void>`                    | ✅  |   ✅    |
 | [disableLogging()](#logging)        | `Promise<void>`                    | ✅  |   ✅    |
-| [getUriLogFile()](#getUriLogFile)   | `Promise<{ uri: string } \| null>` | ❌  |   ✅    |
+| [getUriLogFile()](#getUriLogFile)   | `Promise<{ uri: string } \| null>` | ✅  |   ✅    |
 | [isTokenValid()](#istokenvalid)     | `Promise<boolean>`                 | ✅  |   ✅    |
 | [getUserInfo()](#getuserinfo)       | `Promise<UserInfo \| null>`        | ✅  |   ✅    |
 | [updateUserInfo()](#updateuserinfo) | `Promise<void>`                    | ✅  |   ✅    |
@@ -145,7 +169,7 @@ const apiKey = await getApiKey();
 ### setApiKey
 
 ```typescript
-setApiKey(key: string): void
+setApiKey(key: string): Promise<void>
 ```
 
 To use DriveKit modules, you have to obtain an API Key from DriveQuant. If you don't have an API key, please contact [DriveQuant](mailto:contact@drivequant.com).
@@ -171,7 +195,7 @@ const userId = await getUserId();
 ### setUserId
 
 ```typescript
-setUserId(userId: string): void
+setUserId(userId: string): Promise<void>
 ```
 
 Each driver must be identified with a unique identifier. Once you have this identifier, configure DriveKit by calling the following method:
@@ -195,7 +219,7 @@ setUserId('MyUserId');
 ### updateUserId
 
 ```typescript
-updateUserId(userId: string): void
+updateUserId(userId: string): Promise<void>
 ```
 
 It is possible to update the userId by calling the following method:
@@ -207,7 +231,7 @@ updateUserId('newUserId');
 ### deleteAccount
 
 ```typescript
-deleteAccount(instantDeletion?: boolean): void
+deleteAccount(instantDeletion?: boolean): Promise<void>
 ```
 
 You can delete a driver's account in DriveKit. This action deletes all the data related to the account.
@@ -243,7 +267,7 @@ instantDeletion can have 2 values:
 ### reset
 
 ```typescript
-reset(): void
+reset(): Promise<void>
 ```
 
 If you need to reset DriveKit configuration (user logout for example), you can call the following method:
@@ -265,9 +289,9 @@ All data saved locally by DriveKit will be erased.
 ### Logging
 
 ```typescript
-  enableLogging(options?: { logPath?: string; showInConsole?: boolean }): void;
+  enableLogging(options?: { logPath?: string; showInConsole?: boolean }): Promise<void>;
 
-  disableLogging(options?: { showInConsole?: boolean }): void;
+  disableLogging(options?: { showInConsole?: boolean }): Promise<void>;
 ```
 
 | Option                    | Default Value | Description                                                             |
