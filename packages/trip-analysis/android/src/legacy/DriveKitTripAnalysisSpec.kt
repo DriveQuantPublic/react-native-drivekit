@@ -1,4 +1,5 @@
 package com.reactnativedrivekittripanalysis
+import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 
