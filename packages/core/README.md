@@ -138,21 +138,22 @@ Here is the list of supported events:
 
 ## API
 
-| Method                              | Return Type                        | iOS | Android |
-| ----------------------------------- | ---------------------------------- | :-: | :-----: |
-| [getApiKey()](#getapikey)           | `Promise<string>`                  | ✅  |   ✅    |
-| [setApiKey()](#setapikey)           | `Promise<void>`                    | ✅  |   ✅    |
-| [getUserId()](#getuserid)           | `Promise<string>`                  | ✅  |   ✅    |
-| [setUserId()](#setuserid)           | `Promise<void>`                    | ✅  |   ✅    |
-| [updateUserId()](#updateuserid)     | `Promise<void>`                    | ✅  |   ✅    |
-| [deleteAccount()](#deleteaccount)   | `Promise<void>`                    | ✅  |   ✅    |
-| [reset()](#reset)                   | `Promise<void>`                    | ✅  |   ✅    |
-| [enableLogging()](#logging)         | `Promise<void>`                    | ✅  |   ✅    |
-| [disableLogging()](#logging)        | `Promise<void>`                    | ✅  |   ✅    |
-| [getUriLogFile()](#getUriLogFile)   | `Promise<{ uri: string } \| null>` | ✅  |   ✅    |
-| [isTokenValid()](#istokenvalid)     | `Promise<boolean>`                 | ✅  |   ✅    |
-| [getUserInfo()](#getuserinfo)       | `Promise<UserInfo \| null>`        | ✅  |   ✅    |
-| [updateUserInfo()](#updateuserinfo) | `Promise<void>`                    | ✅  |   ✅    |
+| Method                                          | Return Type                        | iOS | Android |
+| ------------------------------------------------| ---------------------------------- | :-: | :-----: |
+| [getApiKey()](#getapikey)                       | `Promise<string>`                  | ✅  |   ✅    |
+| [setApiKey()](#setapikey)                       | `Promise<void>`                    | ✅  |   ✅    |
+| [getUserId()](#getuserid)                       | `Promise<string>`                  | ✅  |   ✅    |
+| [setUserId()](#setuserid)                       | `Promise<void>`                    | ✅  |   ✅    |
+| [updateUserId()](#updateuserid)                 | `Promise<void>`                    | ✅  |   ✅    |
+| [deleteAccount()](#deleteaccount)               | `Promise<void>`                    | ✅  |   ✅    |
+| [reset()](#reset)                               | `Promise<void>`                    | ✅  |   ✅    |
+| [enableLogging()](#logging)                     | `Promise<void>`                    | ✅  |   ✅    |
+| [disableLogging()](#logging)                    | `Promise<void>`                    | ✅  |   ✅    |
+| [getUriLogFile()](#getUriLogFile)               | `Promise<{ uri: string } \| null>` | ✅  |   ✅    |
+| [composeDiagnosisMail()](#composediagnosismail) | `Promise<void>`                    | ✅  |   ✅    |
+| [isTokenValid()](#istokenvalid)                 | `Promise<boolean>`                 | ✅  |   ✅    |
+| [getUserInfo()](#getuserinfo)                   | `Promise<UserInfo \| null>`        | ✅  |   ✅    |
+| [updateUserInfo()](#updateuserinfo)             | `Promise<void>`                    | ✅  |   ✅    |
 
 ### getApiKey
 
@@ -394,3 +395,22 @@ You can retrieve the Uri log file by calling the following method:
 ```typescript
 const { uri } = await getUriLogFile();
 ```
+  
+  
+### composeDiagnosisMail
+
+```typescript
+  composeDiagnosisMail(): Promise<void>
+```
+
+You can compose a diagnosis mail with attached DriveKit logs (if available). To do this, call this following method:
+
+```typescript
+DriveKit.composeDiagnosisMail({
+  recipients: [],
+  bccRecipients: [],
+  subject: 'Diagnosis mail',
+  body: ''}
+);
+```
+

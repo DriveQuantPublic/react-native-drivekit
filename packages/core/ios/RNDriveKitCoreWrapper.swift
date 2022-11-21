@@ -1,6 +1,7 @@
 
 import Foundation
 import DriveKitCoreModule
+import MessageUI
 
 @objc(RNDriveKitCoreWrapper)
 public class RNDriveKitCoreWrapper: NSObject {
@@ -62,6 +63,72 @@ public class RNDriveKitCoreWrapper: NSObject {
         }
     }
 
+    @objc internal func composeDiagnosisMail(_ options: NSDictionary) -> Bool {
+        let recipients: [String] = options["recipients"] as? [String] ?? []
+        let bccRecipients: [String] = options["bccRecipients"] as? [String] ?? []
+        let subject = options["subject"] as? String ?? ""
+        let body = options["body"] as? String ?? ""
+        DispatchQueue.main.async {
+            MailSender.shared.sendMail(recipients: recipients, bccRecipients: bccRecipients, subject: subject, body: body)
+        }
+        return MFMailComposeViewController.canSendMail()
+    }
+}
+
+private class MailSender: NSObject {
+    fileprivate static let shared: MailSender = MailSender()
+    fileprivate func sendMail(recipients: [String], bccRecipients: [String], subject: String, body: String) {
+        if MFMailComposeViewController.canSendMail()  {
+            let mailComposerVC = MFMailComposeViewController()
+            if let logFileUrl = DriveKitLog.shared.getZippedLogFilesUrl() {
+                do {
+                    let attachementData = try Data(contentsOf: logFileUrl)
+                    let fileName = logFileUrl.lastPathComponent
+                    mailComposerVC.addAttachmentData(attachementData, mimeType: "text/plain", fileName: fileName)
+                } catch let error {
+                    print("Error while attaching LogFile to Mail : \(error.localizedDescription)")
+                }
+            }
+            mailComposerVC.mailComposeDelegate = self
+            mailComposerVC.setToRecipients(recipients)
+            mailComposerVC.setBccRecipients(bccRecipients)
+            mailComposerVC.setMessageBody(body, isHTML: false)
+            mailComposerVC.setSubject(subject)
+            self.present(viewController: mailComposerVC)
+        } else {
+            DriveKitLog.shared.errorLog(tag: "RNDriveKitCore", message: "canSendMail is false")
+        }
+    }
+    
+    private func getTopViewController(window: UIWindow? = UIApplication.shared.keyWindow) -> UIViewController? {
+        if let window = window {
+          var top = window.rootViewController
+          while true {
+            if let presented = top?.presentedViewController {
+              top = presented
+            } else if let nav = top as? UINavigationController {
+              top = nav.visibleViewController
+            } else if let tab = top as? UITabBarController {
+              top = tab.selectedViewController
+            } else {
+              break
+            }
+          }
+          return top
+        }
+        return nil
+      }
+      
+    private func present(viewController: UIViewController) {
+        if let topVc = self.getTopViewController() {
+          topVc.present(viewController, animated: true, completion: nil)
+        }
+    }
+}
+extension MailSender: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+      }
     @objc internal func getUriLogFile() -> URL? {
         if DriveKitLog.shared.isLoggingEnabled {
             return DriveKitLog.shared.getZippedLogFilesUrl()

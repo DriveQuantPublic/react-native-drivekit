@@ -74,7 +74,6 @@ const App = () => {
        * This is why we put it at the end.
        */
       await checkBatteryOptimizationPermission();
-      DriveKitTripAnalysis.activateAutoStart(true);
     };
 
     checkPermissions();
@@ -84,6 +83,7 @@ const App = () => {
   useEffect(() => {
     const listener = DriveKit.addEventListener('driveKitConnected', () => {
       console.log('Connected to DriveKit');
+      DriveKitTripAnalysis.activateAutoStart(true);
     });
     return () => listener.remove();
   });
@@ -360,7 +360,7 @@ const App = () => {
         <Button
           title={'Enable Logs'}
           onPress={() => {
-            DriveKit.enableLogging({ showInConsole: true, logPath: 'log/path' });
+            DriveKit.enableLogging({ showInConsole: true, logPath: '/log/path' });
           }}
         />
         <Button
@@ -378,7 +378,7 @@ const App = () => {
             onValueChange={value => {
               setMonitorPotentialTripStart(value);
               DriveKitTripAnalysis.enableMonitorPotentialTripStart(
-                monitorPotentialTripStart,
+                value,
               );
             }}
           />
@@ -427,12 +427,16 @@ const App = () => {
         <Text style={styles.title}>Logs</Text>
         <Spacer factor={1} />
         <Button
-          title={'Get logs URI'}
-          onPress={async () => {
-            const result = await DriveKit.getUriLogFile();
-            if (result) {
-              Alert.alert('Logs URI', result.uri);
+          title={'Compose diagnosis mail'}
+          onPress={() => {
+            DriveKit.updateUserId
+            DriveKit.composeDiagnosisMail({
+              recipients: ['recipient1@help.com', 'recipient2@help.com'],
+              bccRecipients: ['bcc1@help.com', 'bcc2@help.com'],
+              subject: 'Diagnosis mail',
+              body: 'Body mail'
             }
+            );
           }}
         />
       </ScrollView>
