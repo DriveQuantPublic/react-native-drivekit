@@ -34,36 +34,38 @@ const DriveKitTripAnalysisModule = isTurboModuleEnabled
 const DriveKitTripAnalysis = DriveKitTripAnalysisModule
   ? DriveKitTripAnalysisModule
   : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+    {},
+    {
+      get() {
+        throw new Error(LINKING_ERROR);
+      },
+    }
+  );
 
-export function activateAutoStart(enable: boolean): void {
+export function activateAutoStart(enable: boolean): Promise<void> {
   return DriveKitTripAnalysis.activateAutoStart(enable);
 }
 
-export function startTrip(): void {
+export function startTrip(): Promise<void> {
   return DriveKitTripAnalysis.startTrip();
 }
 
-export function stopTrip(): void {
+export function stopTrip(): Promise<void> {
   return DriveKitTripAnalysis.stopTrip();
 }
 
-export function cancelTrip(): void {
+export function cancelTrip(): Promise<void> {
   return DriveKitTripAnalysis.cancelTrip();
 }
 
-export function enableMonitorPotentialTripStart(enable: boolean): void {
-  return DriveKitTripAnalysis.enableMonitorPotentialTripStart(enable);
+export function activateCrashDetection(enable: boolean): Promise<void> {
+  return DriveKitTripAnalysis.activateCrashDetection(enable);
 }
 
-export function activateCrashDetection(enable: boolean): void {
-  return DriveKitTripAnalysis.activateCrashDetection(enable);
+export function enableMonitorPotentialTripStart(
+  enable: boolean
+): Promise<void> {
+  return DriveKitTripAnalysis.enableMonitorPotentialTripStart(enable);
 }
 
 type Listeners = {
@@ -102,4 +104,4 @@ export function addEventListener<E extends keyof Listeners>(
     );
   }
   return eventEmitter.addListener(event, callback);
-};
+}

@@ -1,19 +1,20 @@
 package com.reactnativedrivekittripanalysis
+import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 
 abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactApplicationContext) :
   ReactContextBaseJavaModule(context) {
 
-  abstract fun activateAutoStart(enable: Boolean)
+  abstract fun activateAutoStart(enable: Boolean, promise: Promise)
 
-  abstract fun activateCrashDetection(enable: Boolean)
+  abstract fun activateCrashDetection(enable: Boolean, promise: Promise)
 
-  abstract fun startTrip()
+  abstract fun startTrip(promise: Promise)
 
-  abstract fun stopTrip()
+  abstract fun stopTrip(promise: Promise)
 
-  abstract fun cancelTrip()
+  abstract fun cancelTrip(promise: Promise)
 
-  abstract fun enableMonitorPotentialTripStart(enable: Boolean)
+  abstract fun enableMonitorPotentialTripStart(enable: Boolean, promise: Promise)
 }
