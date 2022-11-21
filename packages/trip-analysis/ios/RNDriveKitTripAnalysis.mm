@@ -82,9 +82,12 @@ RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStar
     [RNDriveKitTripAnalysisWrapper.shared stopTrip];
 }
 
-
 - (void)cancelTrip {
     [RNDriveKitTripAnalysisWrapper.shared cancelTrip];
+}
+
+- (NSNumber *)isTripRunning {
+    return [RNDriveKitTripAnalysisWrapper.shared isTripRunning];
 }
 
 

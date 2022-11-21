@@ -7,6 +7,7 @@ export interface Spec extends TurboModule {
   startTrip(): Promise<void>;
   stopTrip(): Promise<void>;
   cancelTrip(): Promise<void>;
+  isTripRunning(): Promise<boolean>;
   enableMonitorPotentialTripStart(enable: boolean): Promise<void>;
 }
 
