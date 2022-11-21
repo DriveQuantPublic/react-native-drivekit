@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Alert,
   Button,
@@ -9,10 +9,9 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
-import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import type {
   CancelTripReason,
   StartMode,
@@ -22,17 +21,17 @@ import type {
   CrashInfo,
   CrashFeedback,
 } from '@react-native-drivekit/trip-analysis';
-import { checkBluetoothPermissions } from './src/services/permissions/bluetooth';
-import { Spacer } from './src/components/Spacer';
-import { margins } from './src/margins';
+import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
+import {Spacer} from './src/components/Spacer';
+import {margins} from './src/margins';
 import CheckBox from '@react-native-community/checkbox';
-import { checkLocationsPermissions } from './src/services/permissions/location';
-import { checkRecognitionPermission } from './src/services/permissions/recognition';
-import { checkNotificationPermission } from './src/services/permissions/notification';
-import { checkBatteryOptimizationPermission } from './src/services/permissions/batteryOptimization';
-import { checkMotionPermission } from './src/services/permissions/motion';
-import { UserInfoForm } from './src/components/UserInfoForm';
-import { DeleteAccountStatus, RequestError } from '@react-native-drivekit/core';
+import {checkLocationsPermissions} from './src/services/permissions/location';
+import {checkRecognitionPermission} from './src/services/permissions/recognition';
+import {checkNotificationPermission} from './src/services/permissions/notification';
+import {checkBatteryOptimizationPermission} from './src/services/permissions/batteryOptimization';
+import {checkMotionPermission} from './src/services/permissions/motion';
+import {UserInfoForm} from './src/components/UserInfoForm';
+import {DeleteAccountStatus, RequestError} from '@react-native-drivekit/core';
 
 const inputHeight = 40;
 
@@ -100,7 +99,7 @@ const App = () => {
   useEffect(() => {
     const listener = DriveKit.addEventListener(
       'userIdUpdateStatusChanged',
-      ({ status, userId: updatedUserId }) => {
+      ({status, userId: updatedUserId}) => {
         console.log(
           'UserId',
           updatedUserId,
@@ -225,7 +224,7 @@ const App = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripFinished',
-      ({ post, response }) => {
+      ({post, response}) => {
         console.log(
           'trip finished',
           JSON.stringify(post),
@@ -288,7 +287,7 @@ const App = () => {
               Alert.alert(
                 'User Id already set',
                 'You already have configured your user identifier: ' +
-                localUserId,
+                  localUserId,
               );
             }
           }}
@@ -352,13 +351,13 @@ const App = () => {
         <Button
           title={'Enable Logs'}
           onPress={() => {
-            DriveKit.enableLogging({ showInConsole: true, logPath: '/log/path' });
+            DriveKit.enableLogging({showInConsole: true, logPath: '/log/path'});
           }}
         />
         <Button
           title={'Disable Logs'}
           onPress={() => {
-            DriveKit.disableLogging({ showInConsole: false });
+            DriveKit.disableLogging({showInConsole: false});
           }}
         />
 
@@ -369,9 +368,7 @@ const App = () => {
             value={monitorPotentialTripStart}
             onValueChange={value => {
               setMonitorPotentialTripStart(value);
-              DriveKitTripAnalysis.enableMonitorPotentialTripStart(
-                value,
-              );
+              DriveKitTripAnalysis.enableMonitorPotentialTripStart(value);
             }}
           />
           <Spacer factor={1} />
@@ -446,14 +443,13 @@ const App = () => {
         <Button
           title={'Compose diagnosis mail'}
           onPress={() => {
-            DriveKit.updateUserId
+            DriveKit.updateUserId;
             DriveKit.composeDiagnosisMail({
               recipients: [],
               bccRecipients: [],
               subject: 'Diagnosis mail',
-              body: 'Body mail'
-            }
-            );
+              body: 'Body mail',
+            });
           }}
         />
       </ScrollView>
