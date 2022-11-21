@@ -410,7 +410,7 @@ DriveKit.composeDiagnosisMail({
   recipients: [],
   bccRecipients: [],
   subject: 'Diagnosis mail',
-  body: 'Body mail'}
+  body: ''}
 );
 ```
 
