@@ -377,7 +377,7 @@ const App = () => {
             onValueChange={value => {
               setMonitorPotentialTripStart(value);
               DriveKitTripAnalysis.enableMonitorPotentialTripStart(
-                monitorPotentialTripStart,
+                value,
               );
             }}
           />
