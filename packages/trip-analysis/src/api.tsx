@@ -76,6 +76,10 @@ export function reset(): Promise<void> {
   return DriveKitTripAnalysis.reset();
 }
 
+export function setStopTimeout(stopTimeout: number): Promise<void> {
+  return DriveKitTripAnalysis.setStopTimeout(stopTimeout);
+}
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripPoint: (tripPoint: TripPoint) => void;

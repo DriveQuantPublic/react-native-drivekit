@@ -88,6 +88,12 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     promise.resolve(null)
   }
 
+  @ReactMethod
+  override fun setStopTimeout(stopTimeout: Int, promise: Promise) {
+	DriveKitTripAnalysis.setStopTimeOut(stopTimeout)
+    promise.resolve(null)
+  }
+
   companion object {
     const val NAME = "RNDriveKitTripAnalysis"
 

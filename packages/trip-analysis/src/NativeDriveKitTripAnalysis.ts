@@ -10,6 +10,7 @@ export interface Spec extends TurboModule {
   isTripRunning(): Promise<boolean>;
   enableMonitorPotentialTripStart(enable: boolean): Promise<void>;
   reset(): Promise<void>;
+  setStopTimeout(stopTimeout: number): Promise<void>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitTripAnalysis');

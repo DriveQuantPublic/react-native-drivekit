@@ -47,6 +47,7 @@ const App = () => {
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
   const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
     useState(false);
+  const [stopTimeout, setStopTimeout] = useState('240');
 
   const checkUserIdValue = async () => {
     const userIdVal = await DriveKit.getUserId();
@@ -406,7 +407,23 @@ const App = () => {
             Alert.alert(result ? 'Trip is running' : 'Trip is not running');
           }}
         />
-
+        <Spacer factor={2} />
+        <Text style={styles.title}>Update Stop Timeout</Text>
+        <Spacer factor={1} />
+        <TextInput
+          value={stopTimeout}
+          style={styles.input}
+          returnKeyType={'done'}
+          keyboardType="numeric"
+          onChangeText={setStopTimeout}
+        />
+        <Spacer factor={2} />
+        <Button
+          title="Update Stop Timeout (in seconds)"
+          onPress={() =>
+            DriveKitTripAnalysis.setStopTimeout(parseInt(stopTimeout, 10))
+          }
+        />
         <Spacer factor={2} />
 
         <Button
