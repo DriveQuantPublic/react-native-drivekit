@@ -151,17 +151,18 @@ Here is the list of supported events:
 
 ## API
 
-| Method                                                                | Return Type         | iOS | Android |
-| --------------------------------------------------------------------- | ------------------- | :-: | :-----: |
-| [activateAutoStart()](#activateautostart)                             | `Promise<void>`     | ✅  |   ✅    |
-| [startTrip()](#starttrip)                                             | `Promise<void>`     | ✅  |   ✅    |
-| [stopTrip()](#stoptrip)                                               | `Promise<void>`     | ✅  |   ✅    |
-| [cancelTrip()](#canceltrip)                                           | `Promise<void>`     | ✅  |   ✅    |
-| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>`  | ✅  |   ✅    |
-| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`     | ✅  |   ✅    |
-| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`     | ✅  |   ✅    |
-| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`     | ✅  |   ✅    |
-| [reset()](#reset)                                                     | `Promise<void>`     | ✅  |   ✅    |
+| Method                                                                | Return Type        | iOS | Android |
+| --------------------------------------------------------------------- | ------------------ | :-: | :-----: |
+| [activateAutoStart()](#activateautostart)                             | `Promise<void>`    | ✅  |   ✅    |
+| [startTrip()](#starttrip)                                             | `Promise<void>`    | ✅  |   ✅    |
+| [stopTrip()](#stoptrip)                                               | `Promise<void>`    | ✅  |   ✅    |
+| [cancelTrip()](#canceltrip)                                           | `Promise<void>`    | ✅  |   ✅    |
+| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>` | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`    | ✅  |   ✅    |
+| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`    | ✅  |   ✅    |
+| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`    | ✅  |   ✅    |
+| [reset()](#reset)                                                     | `Promise<void>`    | ✅  |   ✅    |
+| [setVehicle()](#setvehicle)                                           | `Promise<void>`    | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -225,7 +226,6 @@ stopTrip();
 >
 > If there is no running trip, calling this method will have no effect.
 
-
 ### cancelTrip
 
 ```typescript
@@ -288,13 +288,11 @@ To listen to trigger events that indicate a start of trip, even if the autostart
 enableMonitorPotentialTripStart(true);
 ```
 
-### setStopTimeout
-
 ```typescript
 setStopTimeout(stopTimeout: number): Promise<void>
 ```
 
-A trip being analyzed is automatically stopped after a period of inactivity (which begins when the vehicle has stopped). 
+A trip being analyzed is automatically stopped after a period of inactivity (which begins when the vehicle has stopped).
 
 The DriveQuant SDK allows to set the end-of-trip duration. Default value is 240s.
 
@@ -329,3 +327,40 @@ All data saved locally by DriveKit will be erased.
 > ⚠️
 >
 > Make sure that you call reset method of all frameworks to fully reset DriveKit configuration.
+
+### setVehicle
+
+```typescript
+setVehicle(vehicle: Partial<VehicleBase> | null): Promise<void>
+```
+
+To obtain a more precise analysis on driving behaviour, it's recommended to configure the vehicle used by the driver. You can do this by calling the following method:
+
+```typescript
+await setVehicle({
+  carEngineIndex: 1,
+  carPower: 180,
+  carMass: 1,
+  carGearboxIndex: 2,
+  carConsumption: 4.5,
+  carAutoGearboxNumber: 2,
+});
+```
+
+A detailed description of vehicle parameter is available [here](https://docs.drivequant.com/trip-analysis/ios/references#tripvehicle).
+
+> ℹ️
+>
+> If no vehicle is configured a default vehicle will be configured with following parameters:
+>
+> carTypeIndex = 1
+>
+> carEngineIndex = 1
+>
+> carPower = 150
+>
+> carMass = 1
+>
+> carGearboxIndex = 2
+>
+> carConsumption = 4.5
