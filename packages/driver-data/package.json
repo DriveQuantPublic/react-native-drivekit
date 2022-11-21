@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/driver-data",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Native interface for DriveKit Driver Data",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -31,7 +31,7 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build"
- },
+  },
   "keywords": [
     "react-native",
     "ios",
