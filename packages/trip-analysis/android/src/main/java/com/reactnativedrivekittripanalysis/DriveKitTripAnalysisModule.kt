@@ -82,6 +82,12 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     promise.resolve(null)
   }
 
+  @ReactMethod
+  override fun reset(promise: Promise) {
+    DriveKitTripAnalysis.reset()
+    promise.resolve(null)
+  }
+
   companion object {
     const val NAME = "RNDriveKitTripAnalysis"
 

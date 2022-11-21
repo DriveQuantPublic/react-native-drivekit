@@ -27,13 +27,13 @@ const CoreModule = isTurboModuleEnabled
 const Core = CoreModule
   ? CoreModule
   : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+    {},
+    {
+      get() {
+        throw new Error(LINKING_ERROR);
+      },
+    }
+  );
 
 export function getApiKey(): Promise<string> {
   return Core.getApiKey();
@@ -97,6 +97,16 @@ export function getUserInfo(
 export async function updateUserInfo(userInfo: UserInfo): Promise<void> {
   await Core.updateUserInfo(userInfo);
   return;
+}
+
+export function composeDiagnosisMail(options?: {
+  recipients?: Array<string>;
+  bccRecipients?: Array<string>;
+  subject?: string;
+  body?: string;
+}): Promise<void> {
+
+  return Core.composeDiagnosisMail(options);
 }
 
 type Listeners = {
