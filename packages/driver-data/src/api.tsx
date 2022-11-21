@@ -9,21 +9,21 @@ const LINKING_ERROR =
 // @ts-expect-error
 const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
-const DriverDataModule = isTurboModuleEnabled
+const DriveKitDriverDataModule = isTurboModuleEnabled
   ? require('./NativeDriverData').default
   : NativeModules.RNDriveKitDriverData;
 
-const DriverData = DriverDataModule
-  ? DriverDataModule
+const DriveKitDriverData = DriveKitDriverDataModule
+  ? DriveKitDriverDataModule
   : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+    {},
+    {
+      get() {
+        throw new Error(LINKING_ERROR);
+      },
+    }
+  );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return DriverData.multiply(a, b);
+export function initialize(): Promise<void> {
+  return DriveKitDriverData.initialize();
 }
