@@ -424,6 +424,20 @@ const App = () => {
         <Spacer factor={2} />
 
         <Button
+          title="Set Vehicle"
+          onPress={async () => {
+            await DriveKitTripAnalysis.setVehicle({
+              carEngineIndex: 1,
+              carPower: 180,
+              carMass: 1,
+              carGearboxIndex: 2,
+              carConsumption: 4.5,
+              carAutoGearboxNumber: 2,
+            });
+          }}
+        />
+
+        <Button
           title={'Enable CrashDetection'}
           onPress={() => {
             DriveKitTripAnalysis.activateCrashDetection(true);

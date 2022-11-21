@@ -16,6 +16,7 @@ import type {
   PostGenericResponse,
   TripPoint,
   Location,
+  VehicleBase,
 } from './types';
 
 const LINKING_ERROR =
@@ -78,6 +79,12 @@ export function reset(): Promise<void> {
 
 export function setStopTimeout(stopTimeout: number): Promise<void> {
   return DriveKitTripAnalysis.setStopTimeout(stopTimeout);
+}
+
+export function setVehicle(
+  vehicle: Partial<VehicleBase> | null
+): Promise<void> {
+  return DriveKitTripAnalysis.setVehicle(vehicle);
 }
 
 type Listeners = {
