@@ -63,7 +63,7 @@ public class RNDriveKitCoreWrapper: NSObject {
         }
     }
 
-    @objc internal func composeDiagnosisMail(_ options: NSDictionary) -> Void {
+    @objc internal func composeDiagnosisMail(_ options: NSDictionary) -> Bool {
         let recipients: [String] = options["recipients"] as? [String] ?? []
         let bccRecipients: [String] = options["bccRecipients"] as? [String] ?? []
         let subject = options["subject"] as? String ?? ""
@@ -71,6 +71,7 @@ public class RNDriveKitCoreWrapper: NSObject {
         DispatchQueue.main.async {
             MailSender.shared.sendMail(recipients: recipients, bccRecipients: bccRecipients, subject: subject, body: body)
         }
+        return MFMailComposeViewController.canSendMail()
     }
 }
 

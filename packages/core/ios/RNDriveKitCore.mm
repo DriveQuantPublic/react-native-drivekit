@@ -114,8 +114,12 @@ RCT_REMAP_METHOD(updateUserInfo, updateUserInfoWithUserInfo:(NSDictionary *)user
    [self updateUserInfo:userInfo resolver:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(composeDiagnosisMail, composeDiagnosisMailWithOptions:(NSDictionary *)options){
-    [self composeDiagnosisMail:options];
+RCT_REMAP_METHOD(composeDiagnosisMail, composeDiagnosisMailWithOptions:(NSDictionary *)options withResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject){
+    if ([self composeDiagnosisMail:options]) {
+        resolve(nil);
+    } else {
+        reject(@"MAIL_COMPOSER_ERROR", @"CAN_SEND_MAIL_IS_FALSE", nil);
+    };
 }
 
 
@@ -163,8 +167,8 @@ RCT_REMAP_METHOD(composeDiagnosisMail, composeDiagnosisMailWithOptions:(NSDictio
     [RNDriveKitCoreWrapper.shared enableLoggingWithShowInConsole:options[@"showInConsole"]];
 }
 
-- (void)composeDiagnosisMail: (NSDictionary *)options {
-    [RNDriveKitCoreWrapper.shared composeDiagnosisMail: options];
+- (bool)composeDiagnosisMail: (NSDictionary *)options {
+    return [RNDriveKitCoreWrapper.shared composeDiagnosisMail: options];
 }
 
 -(NSURL* )getUriLogFile {
