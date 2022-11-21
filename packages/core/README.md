@@ -133,7 +133,7 @@ Here is the list of supported events:
 - `driveKitDisconnected`, callback `() => void`: This event is triggered when the user has been disconnected.
 - `driveKitDidReceiveAuthenticationError`, callback `(requestError: RequestError) => void`: This event is triggered when The login has failed due to a `RequestError`.
 - `accountDeletionCompleted`, callback `(status: DeleteAccountStatus)`: This event is triggered when the delete account request has been processed with a `DeleteAccountStatus` state value.
-- `userIdUpdateStatusChanged`, callback `(status: UpdateUserIdStatus, userId: String?) => void`: This event is triggered when the update userId request has been processed with a `UpdateUserIdStatus state value.
+- `userIdUpdateStatusChanged`, callback `(status: UpdateUserIdStatus, userId: String?) => void`: This event is triggered when the update userId request has been processed with a `UpdateUserIdStatus` state value.
 
 
 ## API

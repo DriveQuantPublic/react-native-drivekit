@@ -160,6 +160,7 @@ Here is the list of supported events:
 | [isTripRunning()](#istriprunning)                                     | `Promise<boolean>`  | ✅  |   ✅    |
 | [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`     | ✅  |   ✅    |
 | [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`     | ✅  |   ✅    |
+| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`     | ✅  |   ✅    |
 | [reset()](#reset)                                                     | `Promise<void>`     | ✅  |   ✅    |
 
 ### activateAutoStart
@@ -188,7 +189,7 @@ activateAutoStart(false);
 >
 > If a trip is running when automatic trip detection is disable, the trip will not be canceled. If you want to cancel the trip, you should also call cancelTrip method.
 
-## startTrip
+### startTrip
 
 ```typescript
 startTrip(): Promise<void>
@@ -204,7 +205,7 @@ startTrip();
 >
 > If a trip's already started, calling this method will have no effect.
 
-## stopTrip
+### stopTrip
 
 ```typescript
 stopTrip(): Promise<void>
@@ -225,7 +226,7 @@ stopTrip();
 > If there is no running trip, calling this method will have no effect.
 
 
-## cancelTrip
+### cancelTrip
 
 ```typescript
 cancelTrip(): Promise<void>
