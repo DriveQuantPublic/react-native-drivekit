@@ -43,27 +43,29 @@ const DriveKitTripAnalysis = DriveKitTripAnalysisModule
   );
 
 export function activateAutoStart(enable: boolean): Promise<void> {
-  return DrivekitTripAnalysis.activateAutoStart(enable);
+  return DriveKitTripAnalysis.activateAutoStart(enable);
 }
 
 export function startTrip(): Promise<void> {
-  return DrivekitTripAnalysis.startTrip();
+  return DriveKitTripAnalysis.startTrip();
 }
 
 export function stopTrip(): Promise<void> {
-  return DrivekitTripAnalysis.stopTrip();
+  return DriveKitTripAnalysis.stopTrip();
 }
 
 export function cancelTrip(): Promise<void> {
-  return DrivekitTripAnalysis.cancelTrip();
+  return DriveKitTripAnalysis.cancelTrip();
 }
 
 export function activateCrashDetection(enable: boolean): Promise<void> {
-  return DrivekitTripAnalysis.activateCrashDetection(enable);
+  return DriveKitTripAnalysis.activateCrashDetection(enable);
 }
 
-export function enableMonitorPotentialTripStart(enable: boolean): Promise<void> {
-  return DrivekitTripAnalysis.enableMonitorPotentialTripStart(enable);
+export function enableMonitorPotentialTripStart(
+  enable: boolean
+): Promise<void> {
+  return DriveKitTripAnalysis.enableMonitorPotentialTripStart(enable);
 }
 
 type Listeners = {
@@ -102,4 +104,4 @@ export function addEventListener<E extends keyof Listeners>(
     );
   }
   return eventEmitter.addListener(event, callback);
-};
+}
