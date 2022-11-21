@@ -168,7 +168,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
       }
 
     @ReactMethod
-    override fun composeDiagnosisMail(options: ReadableMap?) {
+    override fun composeDiagnosisMail(options: ReadableMap?, promise: Promise) {
       options?.let {
         val recipients = it.getArray("recipients")
         val bccRecipients = it.getArray("bccRecipients")
@@ -192,6 +192,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
         }
         application?.startActivity(intent)
       }
+      promise.resolve(null)
     }
 
   private fun ReadableArray?.toTypedArray(): Array<String> {
