@@ -4,8 +4,8 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
 
-class DriverDataModule internal constructor(context: ReactApplicationContext) :
-  DriverDataSpec(context) {
+class DriveKitDriverDataModule internal constructor(context: ReactApplicationContext) :
+  DriveKitDriverDataSpec(context) {
 
   override fun getName(): String {
     return NAME
