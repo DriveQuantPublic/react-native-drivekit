@@ -31,6 +31,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         DriveKitTripAnalysis.shared.cancelTrip()
     }
 
+    @objc internal func isTripRunning() -> NSNumber {
+        return NSNumber(value: DriveKitTripAnalysis.shared.isTripRunning());
+    }
+
     @objc internal func enableMonitorPotentialTripStart(enable: NSNumber) -> Void {
         DriveKitTripAnalysis.shared.monitorPotentialTripStart =  enable.boolValue;
     }

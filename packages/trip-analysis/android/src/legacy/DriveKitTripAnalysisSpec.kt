@@ -16,6 +16,8 @@ abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactAppli
 
   abstract fun cancelTrip(promise: Promise)
 
+  abstract fun isTripRunning(promise: Promise)
+
   abstract fun enableMonitorPotentialTripStart(enable: Boolean, promise: Promise)
 
   abstract fun reset(promise: Promise)

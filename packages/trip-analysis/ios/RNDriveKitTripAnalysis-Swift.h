@@ -10,6 +10,7 @@
 - (void)startTrip;
 - (void)stopTrip;
 - (void)cancelTrip;
+- (NSNumber * _Nonnull)isTripRunning;
 - (void)enableMonitorPotentialTripStartWithEnable:(NSNumber * _Nonnull)enable;
 - (void)reset;
 @end

@@ -151,16 +151,16 @@ Here is the list of supported events:
 
 ## API
 
-| Method                                                                | Return Type     | iOS | Android |
-| --------------------------------------------------------------------- | --------------- | :-: | :-----: |
-| [activateAutoStart()](#activateautostart)                             | `Promise<void>` | ✅  |   ✅    |
-| [startTrip()](#starttrip)                                             | `Promise<void>` | ✅  |   ✅    |
-| [stopTrip()](#stoptrip)                                               | `Promise<void>` | ✅  |   ✅    |
-| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>` | ✅  |   ✅    |
-| [cancelTrip()](#canceltrip)                                           | `Promise<void>` | ✅  |   ✅    |
-| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>` | ✅  |   ✅    |
-| [reset()](#reset)                                                     | `Promise<void>` | ✅  |   ✅    |
-
+| Method                                                                | Return Type         | iOS | Android |
+| --------------------------------------------------------------------- | ------------------- | :-: | :-----: |
+| [activateAutoStart()](#activateautostart)                             | `Promise<void>`     | ✅  |   ✅    |
+| [startTrip()](#starttrip)                                             | `Promise<void>`     | ✅  |   ✅    |
+| [stopTrip()](#stoptrip)                                               | `Promise<void>`     | ✅  |   ✅    |
+| [cancelTrip()](#canceltrip)                                           | `Promise<void>`     | ✅  |   ✅    |
+| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>`  | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`     | ✅  |   ✅    |
+| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`     | ✅  |   ✅    |
+| [reset()](#reset)                                                     | `Promise<void>`     | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -224,6 +224,31 @@ stopTrip();
 >
 > If there is no running trip, calling this method will have no effect.
 
+
+## cancelTrip
+
+```typescript
+cancelTrip(): Promise<void>
+```
+
+If you want to cancel a trip, you can call this method:
+
+```typescript
+cancelTrip();
+```
+
+### isTripRunning
+
+```typescript
+isTripRunning(): Promise<boolean>
+```
+
+This method returns false if the SDK is in `INACTIVE` state, and no trip is currently running.
+
+```typescript
+const isTripRunning = await isTripRunning();
+```
+
 ### activateCrashDetection
 
 ```typescript
@@ -246,18 +271,6 @@ To disable crash detection, call the same method with parameter to `false`
 activateCrashDetection(false);
 ```
 
-## cancelTrip
-
-```typescript
-cancelTrip(): Promise<void>
-```
-
-If you want to cancel a trip, you can call this method:
-
-```typescript
-cancelTrip();
-```
-
 > ℹ️
 >
 > If no trip is running or if the trip has been sent to the server and is currently being analyzed, calling this method will have no effect.
@@ -273,7 +286,6 @@ To listen to trigger events that indicate a start of trip, even if the autostart
 ```typescript
 enableMonitorPotentialTripStart(true);
 ```
-
 
 ### reset
 

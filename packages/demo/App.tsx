@@ -54,15 +54,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    const calculate = async () => {
-      const result = await DriveKitDriverData.multiply(2, 3);
-      console.warn('Result =', result);
-    };
-
-    calculate();
-  }, []);
-
-  useEffect(() => {
     const checkPermissions = async () => {
       await checkLocationsPermissions();
       await checkRecognitionPermission();
@@ -400,10 +391,19 @@ const App = () => {
             DriveKitTripAnalysis.stopTrip();
           }}
         />
+        <Spacer factor={1} />
         <Button
           title={'Cancel'}
           onPress={() => {
             DriveKitTripAnalysis.cancelTrip();
+          }}
+        />
+        <Spacer factor={1} />
+        <Button
+          title={'Check Trip Running ?'}
+          onPress={async () => {
+            const result = await DriveKitTripAnalysis.isTripRunning();
+            Alert.alert(result ? 'Trip is running' : 'Trip is not running');
           }}
         />
 
@@ -431,8 +431,8 @@ const App = () => {
           onPress={() => {
             DriveKit.updateUserId
             DriveKit.composeDiagnosisMail({
-              recipients: ['recipient1@help.com', 'recipient2@help.com'],
-              bccRecipients: ['bcc1@help.com', 'bcc2@help.com'],
+              recipients: [],
+              bccRecipients: [],
               subject: 'Diagnosis mail',
               body: 'Body mail'
             }

@@ -58,6 +58,10 @@ export function cancelTrip(): Promise<void> {
   return DriveKitTripAnalysis.cancelTrip();
 }
 
+export function isTripRunning(): Promise<boolean> {
+  return DriveKitTripAnalysis.isTripRunning();
+}
+
 export function activateCrashDetection(enable: boolean): Promise<void> {
   return DriveKitTripAnalysis.activateCrashDetection(enable);
 }
