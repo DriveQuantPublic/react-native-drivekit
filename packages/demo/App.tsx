@@ -74,7 +74,6 @@ const App = () => {
        * This is why we put it at the end.
        */
       await checkBatteryOptimizationPermission();
-      DriveKitTripAnalysis.activateAutoStart(true);
     };
 
     checkPermissions();
@@ -84,6 +83,7 @@ const App = () => {
   useEffect(() => {
     const listener = DriveKit.addEventListener('driveKitConnected', () => {
       console.log('Connected to DriveKit');
+      DriveKitTripAnalysis.activateAutoStart(true);
     });
     return () => listener.remove();
   });
