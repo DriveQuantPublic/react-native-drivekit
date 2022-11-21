@@ -70,6 +70,12 @@ RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStar
     resolve(nil);
 }
 
+RCT_REMAP_METHOD(isTripRunning, isTripRunningWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSNumber* tripRunning = [self isTripRunning];
+    resolve(tripRunning);
+}
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
