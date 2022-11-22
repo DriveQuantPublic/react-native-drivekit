@@ -24,7 +24,12 @@ export interface Spec extends TurboModule {
   }): Promise<void>;
   disableLogging(options?: { showInConsole?: boolean }): Promise<void>;
   getUriLogFile(): Promise<{ uri: string } | null>;
-  composeDiagnosisMail(options?: {recipients?: Array<string>; bccRecipients?: Array<string>; subject?: string; body?: string;}): void;
+  composeDiagnosisMail(options?: {
+    recipients?: Array<string>;
+    bccRecipients?: Array<string>;
+    subject?: string;
+    body?: string;
+  }): void;
   getUserInfo(
     synchronizationType: WithDefault<'default' | 'cache', 'default'>
   ): Promise<UserInfo | null>;
