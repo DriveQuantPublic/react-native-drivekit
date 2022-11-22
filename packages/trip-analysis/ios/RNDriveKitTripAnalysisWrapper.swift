@@ -57,8 +57,12 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         resolve(nil)
     }
     
-    @objc internal func deleteTripMetadata() -> Void {
-        DriveKitTripAnalysis.shared.deleteTripMetadata()
+    @objc internal func deleteTripMetadata(key: String?) -> Void {
+        if let unwrappedKey = key {
+            DriveKitTripAnalysis.shared.deleteTripMetadata(key: unwrappedKey)
+        } else {
+            DriveKitTripAnalysis.shared.deleteTripMetadata()
+        }
     }
 }
 

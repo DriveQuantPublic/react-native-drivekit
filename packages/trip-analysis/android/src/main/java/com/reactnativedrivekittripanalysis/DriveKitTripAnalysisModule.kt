@@ -112,8 +112,12 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
-  override fun deleteTripMetadata(promise: Promise) {
-    DriveKitTripAnalysis.deleteTripMetaData()
+  override fun deleteTripMetadata(key: String?, promise: Promise) {
+    if(key is String){
+      DriveKitTripAnalysis.deleteTripMetaData(key)
+    } else {
+      DriveKitTripAnalysis.deleteTripMetaData()
+    }
     promise.resolve(null)
   }
 

@@ -46,6 +46,7 @@ const App = () => {
   const [newUserId, setNewUserId] = useState('');
   const [newMetadataKey, setNewMetadataKey] = useState('');
   const [newMetadataValue, setNewMedataValue] = useState('');
+  const [tripMetadataKeyToDelete, setTripMetadataKeyToDelete] = useState('');
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
   const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
     useState(false);
@@ -462,8 +463,25 @@ const App = () => {
             setNewMedataValue('');
           }}
         />
+        <TextInput
+          value={tripMetadataKeyToDelete}
+          style={styles.input}
+          returnKeyType={'done'}
+          onChangeText={setTripMetadataKeyToDelete}
+          placeholder="Metadata key to delete"
+        />
         <Button
-          title={'Delete Trip MetaData'}
+          title={'Delete specified Trip MetaData'}
+          disabled={!tripMetadataKeyToDelete}
+          onPress={async () => {
+            await DriveKitTripAnalysis.deleteTripMetadata(
+              tripMetadataKeyToDelete,
+            );
+            setTripMetadataKeyToDelete('');
+          }}
+        />
+        <Button
+          title={'Delete all Trip MetaData'}
           onPress={async () => {
             await DriveKitTripAnalysis.deleteTripMetadata();
           }}
