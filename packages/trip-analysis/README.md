@@ -163,6 +163,7 @@ Here is the list of supported events:
 | [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`                 | ✅  |   ✅    |
 | [reset()](#reset)                                                     | `Promise<void>`                 | ✅  |   ✅    |
 | [getTripMetadata()](#getTripMetadata)                                 | `Promise<TripMetadata \| null>` | ✅  |   ✅    |
+| [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)           | `Promise<void>`                 | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -336,8 +337,20 @@ All data saved locally by DriveKit will be erased.
 getTripMetadata(): Promise<TripMetadata | null>
 ```
 
-If you want to attach some data to your trip, you can call the following method:
+If you want to get the metadata of your trip, you can call the following method:
 
 ```typescript
-enableMonitorPotentialTripStart(true);
+await getTripMetadata();
+```
+
+### setTripMetadata
+
+```typescript
+setTripMetadata(metadata: TripMetadta): Promise<void>
+```
+
+If you want to set the metadata of your trip, you can call the following method:
+
+```typescript
+await setTripMedata({ key: 'value' });
 ```
