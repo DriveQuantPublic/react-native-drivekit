@@ -24,8 +24,6 @@ abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactAppli
   abstract fun reset(promise: Promise)
 
   abstract fun setStopTimeout(stopTimeout: Int, promise: Promise)
-  
-  abstract fun enableMonitorPotentialTripStart(enable: Boolean)
 
   abstract fun getTripMetadata(promise: Promise)
 
