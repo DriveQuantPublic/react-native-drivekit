@@ -420,13 +420,7 @@ const App = () => {
           keyboardType="numeric"
           onChangeText={setStopTimeout}
         />
-        <Spacer factor={2} />
-        <Button
-          title="Update Stop Timeout (in seconds)"
-          onPress={() =>
-            DriveKitTripAnalysis.setStopTimeout(parseInt(stopTimeout, 10))
-          }
-        />
+        <Spacer factor={1} />
         <Button
           title={'Get Trip MetaData'}
           onPress={async () => {
@@ -438,6 +432,7 @@ const App = () => {
             }
           }}
         />
+        <Spacer factor={1} />
         <View style={styles.metadataInputContainer}>
           <TextInput
             value={newMetadataKey}
@@ -465,6 +460,7 @@ const App = () => {
             setNewMedataValue('');
           }}
         />
+        <Spacer factor={1} />
         <View style={styles.metadataInputContainer}>
           <TextInput
             value={updateMetadataKey}
@@ -493,6 +489,7 @@ const App = () => {
             setUpdateMedataValue('');
           }}
         />
+        <Spacer factor={1} />
         <TextInput
           value={tripMetadataKeyToDelete}
           style={styles.input}
@@ -510,11 +507,20 @@ const App = () => {
             setTripMetadataKeyToDelete('');
           }}
         />
+        <Spacer factor={1} />
         <Button
           title={'Delete all Trip MetaData'}
           onPress={async () => {
             await DriveKitTripAnalysis.deleteTripMetadata();
           }}
+        />
+
+        <Spacer factor={2} />
+        <Button
+          title="Update Stop Timeout (in seconds)"
+          onPress={() =>
+            DriveKitTripAnalysis.setStopTimeout(parseInt(stopTimeout, 10))
+          }
         />
 
         <Spacer factor={2} />
