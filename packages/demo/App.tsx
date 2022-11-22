@@ -449,7 +449,6 @@ const App = () => {
             setTripMetadataForm(previousForm => {
               const newForm = {...previousForm};
               newForm[newMetadataKey] = newMetadataValue;
-              console.warn('newFrom =', newForm);
               return newForm;
             });
             setNewMedataValue('');
