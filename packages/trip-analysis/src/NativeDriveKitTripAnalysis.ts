@@ -14,6 +14,7 @@ export interface Spec extends TurboModule {
   setStopTimeout(stopTimeout: number): Promise<void>;
   getTripMetadata(): Promise<TripMetadata | null>;
   setTripMetadata(metadata: TripMetadata): Promise<void>;
+  deleteTripMetadata(): Promise<void>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitTripAnalysis');

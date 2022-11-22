@@ -28,4 +28,6 @@ abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactAppli
   abstract fun getTripMetadata(promise: Promise)
 
   abstract fun setTripMetadata(metadata: ReadableMap, promise: Promise)
+
+  abstract fun deleteTripMetadata(promise: Promise)
 }

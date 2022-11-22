@@ -126,3 +126,7 @@ export function getTripMetadata(): Promise<TripMetadata | null> {
 export function setTripMetadata(metadata: TripMetadata): Promise<void> {
   return DriveKitTripAnalysis.setTripMetadata(metadata);
 }
+
+export function deleteTripMetadata(): Promise<void> {
+  return DriveKitTripAnalysis.deleteTripMetadata();
+}

@@ -462,6 +462,12 @@ const App = () => {
             setNewMedataValue('');
           }}
         />
+        <Button
+          title={'Delete Trip MetaData'}
+          onPress={async () => {
+            await DriveKitTripAnalysis.deleteTripMetadata();
+          }}
+        />
 
         <Spacer factor={2} />
         <Button
@@ -506,11 +512,15 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: margins.x3,
   },
+  metadataInputContainer: {
+    flexDirection: 'row',
+  },
   input: {
     height: inputHeight,
     borderColor: 'black',
     borderWidth: 2,
     color: 'black',
+    flex: 1,
   },
   button: {
     backgroundColor: 'blue',

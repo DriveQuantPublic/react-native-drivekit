@@ -98,6 +98,11 @@ RCT_REMAP_METHOD(setTripMetadata, setTripMetaDataWithMetadata:(NSDictionary *)me
     [self setTripMetadata:metadata resolver:resolve rejecter:reject];
 }
 
+RCT_REMAP_METHOD(deleteTripMetadata, deleteTripMetaDataWithResolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self deleteTripMetadata:resolve rejecter:reject];
+}
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
@@ -140,6 +145,11 @@ RCT_REMAP_METHOD(setTripMetadata, setTripMetaDataWithMetadata:(NSDictionary *)me
 
 -(void)setTripMetadata:(NSDictionary *)metadata resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
     [RNDriveKitTripAnalysisWrapper.shared setTripMetadataWithMetadata:metadata resolver:resolve rejecter:reject];
+}
+
+-(void)deleteTripMetadata:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared deleteTripMetadata];
+    resolve(nil);
 }
 
 // Don't compile this code when we build for the old architecture.
