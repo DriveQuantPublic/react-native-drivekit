@@ -164,6 +164,7 @@ Here is the list of supported events:
 | [reset()](#reset)                                                     | `Promise<void>`                 | ✅  |   ✅    |
 | [getTripMetadata()](#getTripMetadata)                                 | `Promise<TripMetadata \| null>` | ✅  |   ✅    |
 | [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)           | `Promise<void>`                 | ✅  |   ✅    |
+| [deleteTripMetadata(string?: string)](#deleteTripMetadata)            | `Promise<void>`                 | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -353,4 +354,22 @@ If you want to set the metadata of your trip, you can call the following method:
 
 ```typescript
 await setTripMedata({ key: 'value' });
+```
+
+### deleteTripMetadata
+
+```typescript
+deleteTripMedata(key?: string): Promise<void>
+```
+
+If you want to a specific metadata, you can call the following method:
+
+```typescript
+await deleteTripMedata('key');
+```
+
+If you want to delete all keys call it without parameter:
+
+```typescript
+await deleteTripMedata();
 ```
