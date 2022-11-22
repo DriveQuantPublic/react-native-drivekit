@@ -23,7 +23,3 @@ const DriveKitDriverData = DriveKitDriverDataModule
       },
     }
   );
-
-export function initialize(): Promise<void> {
-  return DriveKitDriverData.initialize();
-}
