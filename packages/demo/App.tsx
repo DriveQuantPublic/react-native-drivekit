@@ -46,6 +46,7 @@ const App = () => {
   const [newUserId, setNewUserId] = useState('');
   const [newMetadataKey, setNewMetadataKey] = useState('');
   const [newMetadataValue, setNewMedataValue] = useState('');
+  const [tripMetadataForm, setTripMetadataForm] = useState<TripMetadata>({});
   const [updateMetadataKey, setUpdateMetadataKey] = useState('');
   const [updateMetadataValue, setUpdateMedataValue] = useState('');
   const [tripMetadataKeyToDelete, setTripMetadataKeyToDelete] = useState('');
@@ -433,31 +434,41 @@ const App = () => {
           }}
         />
         <Spacer factor={1} />
-        <View style={styles.metadataInputContainer}>
-          <TextInput
-            value={newMetadataKey}
-            style={styles.input}
-            returnKeyType={'done'}
-            onChangeText={setNewMetadataKey}
-            placeholder="Key"
-          />
-          <TextInput
-            value={newMetadataValue}
-            style={styles.input}
-            returnKeyType={'done'}
-            onChangeText={setNewMedataValue}
-            placeholder="Value"
-          />
+        <View>
+          <Text style={styles.text}>{'Current form content :'}</Text>
+          <Text>{JSON.stringify(tripMetadataForm)}</Text>
+          <View style={styles.metadataInputContainer}>
+            <TextInput
+              style={styles.input}
+              returnKeyType={'done'}
+              onChangeText={setNewMetadataKey}
+              placeholder="Key"
+            />
+            <TextInput
+              style={styles.input}
+              returnKeyType={'done'}
+              onChangeText={setNewMedataValue}
+              placeholder="Value"
+            />
+          </View>
         </View>
         <Button
           title={'Set Trip MetaData'}
           disabled={!newMetadataKey || !newMetadataValue}
           onPress={async () => {
-            let newMedata: TripMetadata = {};
-            newMedata[newMetadataKey] = newMetadataValue;
-            await DriveKitTripAnalysis.setTripMetadata(newMedata);
-            setNewMetadataKey('');
-            setNewMedataValue('');
+            setTripMetadataForm(previousForm => {
+              const newForm = {...previousForm};
+              newForm[newMetadataKey] = newMetadataValue;
+              console.warn('newFrom =', newForm);
+              return newForm;
+            });
+          }}
+        />
+        <Button
+          title={'Save Trip MetaData'}
+          onPress={async () => {
+            await DriveKitTripAnalysis.setTripMetadata(tripMetadataForm);
+            setTripMetadataForm({});
           }}
         />
         <Spacer factor={1} />
