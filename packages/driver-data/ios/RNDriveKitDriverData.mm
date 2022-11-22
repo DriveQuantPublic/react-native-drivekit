@@ -1,18 +1,17 @@
 #import "RNDriveKitDriverData.h"
+#import "RNDriveKitDriverData-Swift.h"
 
 @implementation RNDriveKitDriverData
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(double)a withB:(double)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(initialize, initializeWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    NSNumber *result = @(a * b);
+    [self initialize];
+    resolve(nil);
+}
 
-    resolve(result);
+-(void)initialize {
+    [RNDriveKitDriverDataWrapper.shared initialize];
 }
 
 // Don't compile this code when we build for the old architecture.
