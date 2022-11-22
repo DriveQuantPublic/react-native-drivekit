@@ -431,12 +431,14 @@ const App = () => {
             <TextInput
               style={styles.input}
               returnKeyType={'done'}
+              value={newMetadataKey}
               onChangeText={setNewMetadataKey}
               placeholder="Key"
             />
             <TextInput
               style={styles.input}
               returnKeyType={'done'}
+              value={newMetadataValue}
               onChangeText={setNewMedataValue}
               placeholder="Value"
             />
