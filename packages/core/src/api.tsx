@@ -27,13 +27,13 @@ const CoreModule = isTurboModuleEnabled
 const Core = CoreModule
   ? CoreModule
   : new Proxy(
-    {},
-    {
-      get() {
-        throw new Error(LINKING_ERROR);
-      },
-    }
-  );
+      {},
+      {
+        get() {
+          throw new Error(LINKING_ERROR);
+        },
+      }
+    );
 
 export function getApiKey(): Promise<string> {
   return Core.getApiKey();
@@ -105,7 +105,6 @@ export function composeDiagnosisMail(options?: {
   subject?: string;
   body?: string;
 }): Promise<void> {
-
   return Core.composeDiagnosisMail(options);
 }
 

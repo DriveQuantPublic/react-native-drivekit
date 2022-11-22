@@ -645,7 +645,7 @@ SPEC CHECKSUMS:
   React-jsinspector: badd81696361249893a80477983e697aab3c1a34
   React-logger: fdda34dd285bdb0232e059b19d9606fa0ec3bb9c
   react-native-drivekit-core: e0d58406f41c9aabe7dab71fa65fd0a6f5483a3b
-  react-native-drivekit-driver-data: e466fcbfc8e0fcdaa02345cb7634f39e9aed8fa4
+  react-native-drivekit-driver-data: d7437ec0ae5ac8ce1c9a799b4ecfd11c9aa56bc4
   react-native-drivekit-trip-analysis: 6f0363129add69030767f47420b1c01f924caeca
   React-perflogger: e68d3795cf5d247a0379735cbac7309adf2fb931
   React-RCTActionSheet: 05452c3b281edb27850253db13ecd4c5a65bc247
@@ -665,6 +665,6 @@ SPEC CHECKSUMS:
   Yoga: eca980a5771bf114c41a754098cd85e6e0d90ed7
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: de2fbe07b324fcb7455c90db44deccdfc8813321
+PODFILE CHECKSUM: de4eafe406ece29f1e78f005a3aa78a2b7de3f19
 
 COCOAPODS: 1.11.3
