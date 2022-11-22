@@ -15,6 +15,7 @@ export interface Spec extends TurboModule {
   getTripMetadata(): Promise<TripMetadata | null>;
   setTripMetadata(metadata: TripMetadata): Promise<void>;
   deleteTripMetadata(key?: string): Promise<void>;
+  updateTripMetadata(key: string, value: string): Promise<void>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitTripAnalysis');

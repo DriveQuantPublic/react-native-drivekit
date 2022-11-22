@@ -103,6 +103,11 @@ RCT_REMAP_METHOD(deleteTripMetadata, deleteTripMetaDataWithkey:(NSString *)key r
     [self deleteTripMetadata:key resolver:resolve rejecter:reject];
 }
 
+RCT_REMAP_METHOD(updateTripMetadata, updateTripMetaDataWithkey:(NSString *)key value:(NSString *)value resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self updateTripMetadata:key value:value resolver:resolve rejecter:reject];
+}
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
@@ -149,6 +154,11 @@ RCT_REMAP_METHOD(deleteTripMetadata, deleteTripMetaDataWithkey:(NSString *)key r
 
 -(void)deleteTripMetadata:(NSString *)key resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
     [RNDriveKitTripAnalysisWrapper.shared deleteTripMetadataWithKey:key];
+    resolve(nil);
+}
+
+-(void)updateTripMetadata:(NSString *)key value:(NSString *)value resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared updateTripMetadataWithKey:key value:value];
     resolve(nil);
 }
 

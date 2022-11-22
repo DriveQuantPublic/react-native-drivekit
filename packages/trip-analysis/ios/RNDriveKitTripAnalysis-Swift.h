@@ -18,6 +18,7 @@
 - (NSDictionary<NSString *, NSString *> * _Nullable)getTripMetadataWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;;
 - (void)setTripMetadataWithMetadata:(NSDictionary * _Nonnull)metadata resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)deleteTripMetadataWithKey:(NSString * _Nullable)key;
+- (void)updateTripMetadataWithKey:(NSString * _Nonnull)key value:(NSString * _Nullable)value;
 @end
 
 @interface RNTripAnalysisEventEmitter : NSObject

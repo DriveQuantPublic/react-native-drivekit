@@ -46,6 +46,8 @@ const App = () => {
   const [newUserId, setNewUserId] = useState('');
   const [newMetadataKey, setNewMetadataKey] = useState('');
   const [newMetadataValue, setNewMedataValue] = useState('');
+  const [updateMetadataKey, setUpdateMetadataKey] = useState('');
+  const [updateMetadataValue, setUpdateMedataValue] = useState('');
   const [tripMetadataKeyToDelete, setTripMetadataKeyToDelete] = useState('');
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
   const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
@@ -461,6 +463,34 @@ const App = () => {
             await DriveKitTripAnalysis.setTripMetadata(newMedata);
             setNewMetadataKey('');
             setNewMedataValue('');
+          }}
+        />
+        <View style={styles.metadataInputContainer}>
+          <TextInput
+            value={updateMetadataKey}
+            style={styles.input}
+            returnKeyType={'done'}
+            onChangeText={setUpdateMetadataKey}
+            placeholder="Key to update"
+          />
+          <TextInput
+            value={updateMetadataValue}
+            style={styles.input}
+            returnKeyType={'done'}
+            onChangeText={setUpdateMedataValue}
+            placeholder="Value to update"
+          />
+        </View>
+        <Button
+          title={'Update specific Trip MetaData'}
+          disabled={!updateMetadataKey || !updateMetadataValue}
+          onPress={async () => {
+            await DriveKitTripAnalysis.updateTripMetadata(
+              updateMetadataKey,
+              updateMetadataValue,
+            );
+            setUpdateMetadataKey('');
+            setUpdateMedataValue('');
           }}
         />
         <TextInput

@@ -64,6 +64,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
             DriveKitTripAnalysis.shared.deleteTripMetadata()
         }
     }
+    
+    @objc internal func updateTripMetadata(key: String, value: String) -> Void {
+        DriveKitTripAnalysis.shared.updateTripMetadata(key: key, value: value)
+    }
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {

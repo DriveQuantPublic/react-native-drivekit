@@ -121,6 +121,12 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     promise.resolve(null)
   }
 
+  @ReactMethod
+  override fun updateTripMetadata(key: String, value: String, promise: Promise) {
+    DriveKitTripAnalysis.updateTripMetaData(key, value)
+    promise.resolve(null)
+  }
+
   companion object {
     const val NAME = "RNDriveKitTripAnalysis"
 
