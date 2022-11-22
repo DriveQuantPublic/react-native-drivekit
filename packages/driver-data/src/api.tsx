@@ -7,7 +7,7 @@ const LINKING_ERROR =
   '- You are not using Expo Go\n';
 
 // @ts-expect-error
-/* const isTurboModuleEnabled = global.__turboModuleProxy != null;
+const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
 const DriveKitDriverDataModule = isTurboModuleEnabled
   ? require('./NativeDriverData').default
@@ -23,4 +23,7 @@ const DriveKitDriverData = DriveKitDriverDataModule
         },
       }
     );
- */
+
+export function doNothing(): void {
+  console.log(DriveKitDriverData);
+}
