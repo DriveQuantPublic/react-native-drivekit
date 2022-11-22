@@ -425,7 +425,7 @@ const App = () => {
         />
         <Spacer factor={1} />
         <View>
-          <Text style={styles.text}>{'Current metadta form content :'}</Text>
+          <Text style={styles.text}>{'Current metadata form content :'}</Text>
           <Text>{JSON.stringify(tripMetadataForm)}</Text>
           <View style={styles.metadataInputContainer}>
             <TextInput
