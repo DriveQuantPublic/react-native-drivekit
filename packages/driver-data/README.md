@@ -75,3 +75,34 @@ Call `initialize` method in your `AppDelegate.mm`.
 ```
 
 **Note:** If you are using Swift, `initialize` method is also available.
+
+
+
+## API
+
+| Method                                                                | Return Type         | iOS | Android |
+| --------------------------------------------------------------------- | ------------------- | :-: | :-----: |
+| [reset()](#reset)                                                     | `Promise<void>`     | ✅  |   ✅    |
+
+### reset
+
+```typescript
+reset(): Promise<void>
+```
+
+If you need to reset DriveKit Driver Data configuration (user logout for example), you can call the following method:
+
+```typescript
+reset();
+```
+
+
+All data saved locally by DriveKit will be erased.
+
+> ℹ️
+>
+> All DriverKit modules have reset method that erases all data saved locally by the module.
+
+> ⚠️
+>
+> Make sure that you call reset method of all modules to fully reset DriveKit configuration.
