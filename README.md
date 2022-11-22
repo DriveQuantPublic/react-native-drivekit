@@ -23,3 +23,9 @@ To install this module, follow step by step the method described in the [Core do
 After installing the Core component, you need to install the Trip Analysis component which manages the trip recording and the automatic mode configuration.
 
 To install this module, follow step by step the method described in the [Trip Analysis documentation](./packages/trip-analysis/README.md)
+
+### Step 3: Install the Driver Data module
+
+The [Driver Data](https://docs.drivequant.com/driver-data/introduction) module manages the driver trips display (list and details) and ensures the synchronisation of driver data. 
+
+To install this module, follow step by step the method described in the [Drier Data documentation](./packages/driver-data/README.md)
