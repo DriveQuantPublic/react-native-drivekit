@@ -28,4 +28,4 @@ To install this module, follow step by step the method described in the [Trip An
 
 The [Driver Data](https://docs.drivequant.com/driver-data/introduction) module manages the driver trips display (list and details) and ensures the synchronisation of driver data. 
 
-To install this module, follow step by step the method described in the [Drier Data documentation](./packages/driver-data/README.md)
+To install this module, follow step by step the method described in the [Driver Data documentation](./packages/driver-data/README.md)
