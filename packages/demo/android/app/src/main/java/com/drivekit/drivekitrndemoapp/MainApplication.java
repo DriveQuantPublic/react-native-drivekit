@@ -3,6 +3,7 @@ package com.drivekit.drivekitrndemoapp;
 import android.app.Application;
 import android.content.Context;
 
+import com.reactnativedrivekit.driverdata.DriveKitDriverDataModule;
 import com.reactnativedrivekitcore.DriveKitCoreModule;
 import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 import com.facebook.react.PackageList;
@@ -64,6 +65,9 @@ public class MainApplication extends Application implements ReactApplication {
             R.drawable.common_google_signin_btn_icon_dark);
     DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
     DriveKitTripAnalysisModule.Companion.registerReceiver(this);
+
+    DriveKitDriverDataModule.Companion.initialize();
+
     // If you opted-in for the New Architecture, we enable the TurboModule system
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
