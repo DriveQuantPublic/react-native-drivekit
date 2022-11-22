@@ -411,16 +411,6 @@ const App = () => {
             Alert.alert(result ? 'Trip is running' : 'Trip is not running');
           }}
         />
-        <Spacer factor={2} />
-        <Text style={styles.title}>Update Stop Timeout</Text>
-        <Spacer factor={1} />
-        <TextInput
-          value={stopTimeout}
-          style={styles.input}
-          returnKeyType={'done'}
-          keyboardType="numeric"
-          onChangeText={setStopTimeout}
-        />
         <Spacer factor={1} />
         <Button
           title={'Get Trip MetaData'}
@@ -435,7 +425,7 @@ const App = () => {
         />
         <Spacer factor={1} />
         <View>
-          <Text style={styles.text}>{'Current form content :'}</Text>
+          <Text style={styles.text}>{'Current metadta form content :'}</Text>
           <Text>{JSON.stringify(tripMetadataForm)}</Text>
           <View style={styles.metadataInputContainer}>
             <TextInput
@@ -462,6 +452,8 @@ const App = () => {
               console.warn('newFrom =', newForm);
               return newForm;
             });
+            setNewMedataValue('');
+            setNewMetadataKey('');
           }}
         />
         <Button
@@ -524,6 +516,17 @@ const App = () => {
           onPress={async () => {
             await DriveKitTripAnalysis.deleteTripMetadata();
           }}
+        />
+
+        <Spacer factor={2} />
+        <Text style={styles.title}>Update Stop Timeout</Text>
+        <Spacer factor={1} />
+        <TextInput
+          value={stopTimeout}
+          style={styles.input}
+          returnKeyType={'done'}
+          keyboardType="numeric"
+          onChangeText={setStopTimeout}
         />
 
         <Spacer factor={2} />
