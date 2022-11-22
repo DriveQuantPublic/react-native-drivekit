@@ -347,7 +347,6 @@ const App = () => {
             DriveKit.reset();
             DriveKitTripAnalysis.reset();
             DriveKitDriverData.reset();
-            console.log(DriveKitDriverData);
           }}
         />
 
