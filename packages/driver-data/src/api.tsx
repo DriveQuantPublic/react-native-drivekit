@@ -16,10 +16,10 @@ const DriveKitDriverDataModule = isTurboModuleEnabled
 const DriveKitDriverData = DriveKitDriverDataModule
   ? DriveKitDriverDataModule
   : new Proxy(
-    {},
-    {
-      get() {
-        throw new Error(LINKING_ERROR);
-      },
-    }
-  );
+      {},
+      {
+        get() {
+          throw new Error(LINKING_ERROR);
+        },
+      }
+    );
