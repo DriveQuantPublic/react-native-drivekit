@@ -20,6 +20,7 @@ import type {
   SDKState,
   CrashInfo,
   CrashFeedback,
+  TripMetadata,
 } from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
@@ -43,6 +44,8 @@ const App = () => {
 
   var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
+  const [newMetadataKey, setNewMetadataKey] = useState('');
+  const [newMetadataValue, setNewMedataValue] = useState('');
   const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
   const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
     useState(false);
@@ -432,9 +435,35 @@ const App = () => {
             }
           }}
         />
+        <View style={styles.metadataInputContainer}>
+          <TextInput
+            value={newMetadataKey}
+            style={styles.input}
+            returnKeyType={'done'}
+            onChangeText={setNewMetadataKey}
+            placeholder="Key"
+          />
+          <TextInput
+            value={newMetadataValue}
+            style={styles.input}
+            returnKeyType={'done'}
+            onChangeText={setNewMedataValue}
+            placeholder="Value"
+          />
+        </View>
+        <Button
+          title={'Set Trip MetaData'}
+          disabled={!newMetadataKey || !newMetadataValue}
+          onPress={async () => {
+            let newMedata: TripMetadata = {};
+            newMedata[newMetadataKey] = newMetadataValue;
+            await DriveKitTripAnalysis.setTripMetadata(newMedata);
+            setNewMetadataKey('');
+            setNewMedataValue('');
+          }}
+        />
 
         <Spacer factor={2} />
-
         <Button
           title={'Enable CrashDetection'}
           onPress={() => {

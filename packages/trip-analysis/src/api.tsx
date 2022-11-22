@@ -122,3 +122,7 @@ export function addEventListener<E extends keyof Listeners>(
 export function getTripMetadata(): Promise<TripMetadata | null> {
   return DriveKitTripAnalysis.getTripMetadata();
 }
+
+export function setTripMetadata(metadata: TripMetadata): Promise<void> {
+  return DriveKitTripAnalysis.setTripMetadata(metadata);
+}

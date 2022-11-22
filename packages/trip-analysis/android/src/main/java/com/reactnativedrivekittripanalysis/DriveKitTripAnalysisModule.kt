@@ -14,10 +14,7 @@ import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.Cras
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
 
 class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
@@ -98,6 +95,20 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   override fun getTripMetadata(promise: Promise) {
     val metadata = DriveKitTripAnalysis.getTripMetaData()
     promise.resolve(TripMappers.mapMetadataToReadableMap(metadata))
+  }
+
+  @ReactMethod
+  override fun setTripMetadata(metadata: ReadableMap, promise: Promise) {
+    val metadataHashmap = HashMap<String, String>();
+    for ((key, value) in metadata.entryIterator){
+      if(value !is String){
+        promise.reject("setTripMetadata", "The value of key $key must be a String");
+        return;
+      }
+      metadataHashmap[key] = value;
+    }
+    DriveKitTripAnalysis.setTripMetaData(metadataHashmap)
+    promise.resolve(null)
   }
 
   companion object {

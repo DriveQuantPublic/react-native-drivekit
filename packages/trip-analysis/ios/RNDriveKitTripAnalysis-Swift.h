@@ -16,6 +16,7 @@
 - (void)reset;
 - (void)setStopTimeout:(NSNumber *_Nonnull)stopTimeout;
 - (NSDictionary<NSString *, NSString *> * _Nullable)getTripMetadataWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;;
+- (void)setTripMetadataWithMetadata:(NSDictionary *)metadata resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 @end
 
 @interface RNTripAnalysisEventEmitter : NSObject
