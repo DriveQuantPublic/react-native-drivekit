@@ -14,6 +14,16 @@ RCT_REMAP_METHOD(initialize, initializeWithResolve:(RCTPromiseResolveBlock)resol
     [RNDriveKitDriverDataWrapper.shared initialize];
 }
 
+RCT_REMAP_METHOD(reset, resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self reset];
+    resolve(nil);
+}
+
+- (void)reset {
+    [RNDriveKitDriverDataWrapper.shared reset];
+}
+
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:

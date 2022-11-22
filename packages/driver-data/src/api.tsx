@@ -24,6 +24,6 @@ const DriveKitDriverData = DriveKitDriverDataModule
       }
     );
 
-export function doNothing(): void {
-  console.log(DriveKitDriverData);
+export function reset(): Promise<void> {
+  return DriveKitDriverData.reset();
 }
