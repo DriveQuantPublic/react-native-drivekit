@@ -101,12 +101,14 @@ RCT_REMAP_METHOD(setTripMetadata, setTripMetaDataWithMetadata:(NSDictionary *)me
 
 RCT_REMAP_METHOD(deleteTripMetadata, deleteTripMetaDataWithkey:(NSString *)key resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self deleteTripMetadata:key resolver:resolve rejecter:reject];
+    [self deleteTripMetadata:key];
+    resolve(nil);
 }
 
 RCT_REMAP_METHOD(updateTripMetadata, updateTripMetaDataWithkey:(NSString *)key value:(NSString *)value resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self updateTripMetadata:key value:value resolver:resolve rejecter:reject];
+    [self updateTripMetadata:key value:value];
+    resolve(nil);
 }
 
 - (void)activateAutoStart:(NSNumber *)enable {
@@ -153,14 +155,12 @@ RCT_REMAP_METHOD(updateTripMetadata, updateTripMetaDataWithkey:(NSString *)key v
     [RNDriveKitTripAnalysisWrapper.shared setTripMetadataWithMetadata:metadata];
 }
 
--(void)deleteTripMetadata:(NSString *)key resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+-(void)deleteTripMetadata:(NSString *)key {
     [RNDriveKitTripAnalysisWrapper.shared deleteTripMetadataWithKey:key];
-    resolve(nil);
 }
 
--(void)updateTripMetadata:(NSString *)key value:(NSString *)value resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+-(void)updateTripMetadata:(NSString *)key value:(NSString *)value {
     [RNDriveKitTripAnalysisWrapper.shared updateTripMetadataWithKey:key value:value];
-    resolve(nil);
 }
 
 // Don't compile this code when we build for the old architecture.
