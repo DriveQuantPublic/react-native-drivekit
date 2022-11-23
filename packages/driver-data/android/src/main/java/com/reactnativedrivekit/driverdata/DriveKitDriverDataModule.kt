@@ -4,6 +4,7 @@ import com.drivequant.drivekit.driverdata.DriveKitDriverData
 import com.drivequant.drivekit.driverdata.trip.TripDeleteQueryListener
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactMethod
 
 class DriveKitDriverDataModule internal constructor(context: ReactApplicationContext) :
   DriveKitDriverDataSpec(context) {
@@ -12,11 +13,13 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
     return NAME
   }
 
+  @ReactMethod
   override fun reset(promise: Promise) {
     DriveKitDriverData.reset()
     promise.resolve(null)
   }
 
+  @ReactMethod
   override fun deleteTrip(tripId: String, promise: Promise) {
     DriveKitDriverData.deleteTrip(tripId, object: TripDeleteQueryListener {
       override fun onResponse(status: Boolean) {
