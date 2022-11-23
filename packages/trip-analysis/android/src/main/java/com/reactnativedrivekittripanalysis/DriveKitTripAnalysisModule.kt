@@ -14,10 +14,7 @@ import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.Cras
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
 
 class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
@@ -91,6 +88,48 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   @ReactMethod
   override fun setStopTimeout(stopTimeout: Int, promise: Promise) {
 	DriveKitTripAnalysis.setStopTimeOut(stopTimeout)
+    promise.resolve(null)
+  }
+
+  @ReactMethod
+  override fun getTripMetadata(promise: Promise) {
+    val metadata = DriveKitTripAnalysis.getTripMetaData()
+    promise.resolve(TripMappers.mapMetadataToReadableMap(metadata))
+  }
+
+  @ReactMethod
+  override fun setTripMetadata(metadata: ReadableMap, promise: Promise) {
+    val metadataHashmap = HashMap<String, String>();
+    for ((key, value) in metadata.entryIterator){
+      if(value !is String){
+        promise.reject("setTripMetadata", "The value of key $key must be a String");
+        return;
+      }
+      metadataHashmap[key] = value;
+    }
+    DriveKitTripAnalysis.setTripMetaData(metadataHashmap)
+    promise.resolve(null)
+  }
+
+  @ReactMethod
+  override fun deleteTripMetadata(key: String?, promise: Promise) {
+    if(key is String){
+      DriveKitTripAnalysis.deleteTripMetaData(key)
+    } else {
+      DriveKitTripAnalysis.deleteTripMetaData()
+    }
+    promise.resolve(null)
+  }
+
+  @ReactMethod
+  override fun updateTripMetadata(key: String, value: String, promise: Promise) {
+    DriveKitTripAnalysis.updateTripMetaData(key, value)
+    promise.resolve(null)
+  }
+
+  @ReactMethod
+  override fun setVehicle(vehicle: ReadableMap, promise: Promise) {
+    DriveKitTripAnalysis.setVehicle(mapReadableMapToVehicle(vehicle))
     promise.resolve(null)
   }
 

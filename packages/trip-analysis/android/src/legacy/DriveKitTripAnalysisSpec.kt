@@ -2,6 +2,7 @@ package com.reactnativedrivekittripanalysis
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReadableMap
 
 abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactApplicationContext) :
   ReactContextBaseJavaModule(context) {
@@ -23,4 +24,14 @@ abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactAppli
   abstract fun reset(promise: Promise)
 
   abstract fun setStopTimeout(stopTimeout: Int, promise: Promise)
+
+  abstract fun setVehicle(vehicle: ReadableMap, promise: Promise)
+
+  abstract fun getTripMetadata(promise: Promise)
+
+  abstract fun setTripMetadata(metadata: ReadableMap, promise: Promise)
+
+  abstract fun deleteTripMetadata(key: String?, promise: Promise)
+
+  abstract fun updateTripMetadata(key: String, value: String, promise: Promise)
 }

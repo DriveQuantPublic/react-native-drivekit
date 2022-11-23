@@ -16,6 +16,8 @@ import type {
   PostGenericResponse,
   TripPoint,
   Location,
+  VehicleBase,
+  TripMetadata,
 } from './types';
 
 const LINKING_ERROR =
@@ -80,6 +82,12 @@ export function setStopTimeout(stopTimeout: number): Promise<void> {
   return DriveKitTripAnalysis.setStopTimeout(stopTimeout);
 }
 
+export function setVehicle(
+  vehicle: Partial<VehicleBase> | null
+): Promise<void> {
+  return DriveKitTripAnalysis.setVehicle(vehicle);
+}
+
 type Listeners = {
   tripStarted: (startMode: StartMode) => void;
   tripPoint: (tripPoint: TripPoint) => void;
@@ -116,4 +124,20 @@ export function addEventListener<E extends keyof Listeners>(
     );
   }
   return eventEmitter.addListener(event, callback);
+}
+
+export function getTripMetadata(): Promise<TripMetadata | null> {
+  return DriveKitTripAnalysis.getTripMetadata();
+}
+
+export function setTripMetadata(metadata: TripMetadata): Promise<void> {
+  return DriveKitTripAnalysis.setTripMetadata(metadata);
+}
+
+export function deleteTripMetadata(key?: string): Promise<void> {
+  return DriveKitTripAnalysis.deleteTripMetadata(key);
+}
+
+export function updateTripMetadata(key: string, value: string): Promise<void> {
+  return DriveKitTripAnalysis.updateTripMetadata(key, value);
 }

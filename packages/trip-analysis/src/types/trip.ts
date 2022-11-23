@@ -30,3 +30,5 @@ export type TripPoint = {
   heading: number;
   duration: number;
 };
+
+export type TripMetadata = { [key: string]: string };
