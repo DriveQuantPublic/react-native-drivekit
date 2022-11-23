@@ -19,6 +19,7 @@
 - (void)setTripMetadataWithMetadata:(NSDictionary * _Nonnull)metadata;
 - (void)deleteTripMetadataWithKey:(NSString * _Nullable)key;
 - (void)updateTripMetadataWithKey:(NSString * _Nonnull)key value:(NSString * _Nullable)value;
+- (void)setVehicleWithVehicle:(NSDictionary * _Nullable)vehicle;
 @end
 
 @interface RNTripAnalysisEventEmitter : NSObject

@@ -166,6 +166,7 @@ Here is the list of supported events:
 | [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)           | `Promise<void>`                 | ✅  |   ✅    |
 | [deleteTripMetadata(string?: string)](#deleteTripMetadata)            | `Promise<void>`                 | ✅  |   ✅    |
 | [updateTripMetadata(key: string, value: string)](#updateTripMetadata) | `Promise<void>`                 | ✅  |   ✅    |
+| [setVehicle()](#setvehicle)                                           | `Promise<void>`                 | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -291,8 +292,6 @@ To listen to trigger events that indicate a start of trip, even if the autostart
 enableMonitorPotentialTripStart(true);
 ```
 
-### setStopTimeout
-
 ```typescript
 setStopTimeout(stopTimeout: number): Promise<void>
 ```
@@ -386,3 +385,40 @@ If you want to update a specific metadata key, you can call the following method
 ```typescript
 await updateTripMetadata('key', 'value');
 ```
+
+### setVehicle
+
+```typescript
+setVehicle(vehicle: Partial<VehicleBase> | null): Promise<void>
+```
+
+To obtain a more precise analysis on driving behaviour, it's recommended to configure the vehicle used by the driver. You can do this by calling the following method:
+
+```typescript
+await setVehicle({
+  carEngineIndex: 1,
+  carPower: 180,
+  carMass: 1,
+  carGearboxIndex: 2,
+  carConsumption: 4.5,
+  carAutoGearboxNumber: 2,
+});
+```
+
+A detailed description of vehicle parameter is available [here](https://docs.drivequant.com/trip-analysis/ios/references#tripvehicle).
+
+> ℹ️
+>
+> If no vehicle is configured a default vehicle will be configured with following parameters:
+>
+> carTypeIndex = 1
+>
+> carEngineIndex = 1
+>
+> carPower = 150
+>
+> carMass = 1
+>
+> carGearboxIndex = 2
+>
+> carConsumption = 4.5

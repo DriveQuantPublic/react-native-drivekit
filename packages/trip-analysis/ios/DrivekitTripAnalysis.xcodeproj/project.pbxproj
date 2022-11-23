@@ -30,6 +30,7 @@
 		94464FFF2922BFFE00872235 /* RNTripAnalysisEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTripAnalysisEventEmitter.swift; sourceTree = "<group>"; };
 		944650032922CD0100872235 /* RNTripListenerMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTripListenerMappers.swift; sourceTree = "<group>"; };
 		9465246D292643BE0054C275 /* Dictionary+toJSONString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+toJSONString.swift"; sourceTree = "<group>"; };
+		9465246E292B8B3D0054C275 /* RNVehicleMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNVehicleMappers.swift; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNDriveKitTripAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNDriveKitTripAnalysis.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,6 +56,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				9465246E292B8B3D0054C275 /* RNVehicleMappers.swift */,
 				9465246D292643BE0054C275 /* Dictionary+toJSONString.swift */,
 				944650032922CD0100872235 /* RNTripListenerMappers.swift */,
 				94464FFF2922BFFE00872235 /* RNTripAnalysisEventEmitter.swift */,

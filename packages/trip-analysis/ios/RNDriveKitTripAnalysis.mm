@@ -111,6 +111,12 @@ RCT_REMAP_METHOD(updateTripMetadata, updateTripMetaDataWithkey:(NSString *)key v
     resolve(nil);
 }
 
+RCT_REMAP_METHOD(setVehicle, setVehicleWithVehicle:(NSDictionary *)vehicle resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self setVehicle:vehicle];
+    resolve(nil);
+}
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
@@ -161,6 +167,10 @@ RCT_REMAP_METHOD(updateTripMetadata, updateTripMetaDataWithkey:(NSString *)key v
 
 -(void)updateTripMetadata:(NSString *)key value:(NSString *)value {
     [RNDriveKitTripAnalysisWrapper.shared updateTripMetadataWithKey:key value:value];
+}
+
+-(void)setVehicle:(NSDictionary *)vehicle {
+    [RNDriveKitTripAnalysisWrapper.shared setVehicleWithVehicle:vehicle];
 }
 
 // Don't compile this code when we build for the old architecture.

@@ -25,6 +25,8 @@ abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactAppli
 
   abstract fun setStopTimeout(stopTimeout: Int, promise: Promise)
 
+  abstract fun setVehicle(vehicle: ReadableMap, promise: Promise)
+
   abstract fun getTripMetadata(promise: Promise)
 
   abstract fun setTripMetadata(metadata: ReadableMap, promise: Promise)

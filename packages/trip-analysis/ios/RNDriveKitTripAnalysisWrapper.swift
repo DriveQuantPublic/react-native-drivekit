@@ -67,6 +67,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc internal func updateTripMetadata(key: String, value: String) -> Void {
         DriveKitTripAnalysis.shared.updateTripMetadata(key: key, value: value)
     }
+
+    @objc internal func setVehicle(vehicle: NSDictionary?) -> Void {
+        DriveKitTripAnalysis.shared.setVehicle(vehicle: mapNSDictionaryToVehicle(dictionary: vehicle));
+	}
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {

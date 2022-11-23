@@ -127,6 +127,12 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     promise.resolve(null)
   }
 
+  @ReactMethod
+  override fun setVehicle(vehicle: ReadableMap, promise: Promise) {
+    DriveKitTripAnalysis.setVehicle(mapReadableMapToVehicle(vehicle))
+    promise.resolve(null)
+  }
+
   companion object {
     const val NAME = "RNDriveKitTripAnalysis"
 

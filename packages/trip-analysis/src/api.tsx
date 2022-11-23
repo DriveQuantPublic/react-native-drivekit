@@ -16,6 +16,7 @@ import type {
   PostGenericResponse,
   TripPoint,
   Location,
+  VehicleBase,
   TripMetadata,
 } from './types';
 
@@ -79,6 +80,12 @@ export function reset(): Promise<void> {
 
 export function setStopTimeout(stopTimeout: number): Promise<void> {
   return DriveKitTripAnalysis.setStopTimeout(stopTimeout);
+}
+
+export function setVehicle(
+  vehicle: Partial<VehicleBase> | null
+): Promise<void> {
+  return DriveKitTripAnalysis.setVehicle(vehicle);
 }
 
 type Listeners = {

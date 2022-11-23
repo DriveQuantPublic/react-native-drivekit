@@ -1,3 +1,4 @@
+import type { Vehicle } from './vehicle';
 export interface PostGeneric {
   route: Route | null;
   itineraryData: ItineraryData | null;
@@ -48,20 +49,6 @@ export interface SmartphoneData {
   sdkVersion: string;
   startMode: number;
   tripCut: boolean;
-}
-
-export interface Vehicle {
-  carAutoGearboxNumber: number;
-  carConsumption: number;
-  carEngineIndex: number;
-  carGearboxIndex: number;
-  carMass: number;
-  carPassengers: number;
-  carPower: number;
-  carTypeIndex: number;
-  dqIndex: string | null;
-  engineDisplacement: number;
-  sra: string | null;
 }
 
 export interface PostGenericResponse {
