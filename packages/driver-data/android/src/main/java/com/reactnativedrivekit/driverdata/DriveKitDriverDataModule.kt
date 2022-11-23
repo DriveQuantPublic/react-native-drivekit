@@ -1,8 +1,8 @@
 package com.reactnativedrivekit.driverdata
 
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactMethod
+import com.drivequant.drivekit.driverdata.DriveKitDriverData
 import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReactApplicationContext
 
 class DriveKitDriverDataModule internal constructor(context: ReactApplicationContext) :
   DriveKitDriverDataSpec(context) {
@@ -11,14 +11,16 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
     return NAME
   }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  @ReactMethod
-  override fun multiply(a: Double, b: Double, promise: Promise) {
-    promise.resolve(a * b)
+  override fun reset(promise: Promise) {
+    DriveKitDriverData.reset()
+    promise.resolve(null)
   }
 
   companion object {
     const val NAME = "RNDriveKitDriverData"
+
+    fun initialize() {
+      DriveKitDriverData.initialize()
+    }
   }
 }
