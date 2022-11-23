@@ -39,5 +39,10 @@ func mapNSDictionaryToVehicle(dictionary: NSDictionary?) -> TripVehicle? {
     if let carAutoGearboxNumber = dictionary?.value(forKey: "carAutoGearboxNumber") as? Int {
         result.carAutoGearboxNumber = carAutoGearboxNumber;
     }
+
+    if let engineDisplacement = dictionary?.value(forKey: "engineDisplacement") as? Double {
+        result.engineDisplacement = engineDisplacement;
+    }
+
     return result;
 }
