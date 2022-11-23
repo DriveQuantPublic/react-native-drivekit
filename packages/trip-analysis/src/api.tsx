@@ -16,6 +16,7 @@ import type {
   PostGenericResponse,
   TripPoint,
   Location,
+  TripMetadata,
 } from './types';
 
 const LINKING_ERROR =
@@ -116,4 +117,20 @@ export function addEventListener<E extends keyof Listeners>(
     );
   }
   return eventEmitter.addListener(event, callback);
+}
+
+export function getTripMetadata(): Promise<TripMetadata | null> {
+  return DriveKitTripAnalysis.getTripMetadata();
+}
+
+export function setTripMetadata(metadata: TripMetadata): Promise<void> {
+  return DriveKitTripAnalysis.setTripMetadata(metadata);
+}
+
+export function deleteTripMetadata(key?: string): Promise<void> {
+  return DriveKitTripAnalysis.deleteTripMetadata(key);
+}
+
+export function updateTripMetadata(key: string, value: string): Promise<void> {
+  return DriveKitTripAnalysis.updateTripMetadata(key, value);
 }

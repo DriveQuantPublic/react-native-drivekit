@@ -88,6 +88,29 @@ RCT_REMAP_METHOD(setStopTimeout, setStopTimeoutWithStopTimeout:(nonnull NSNumber
     resolve(nil);
 }
 
+RCT_REMAP_METHOD(getTripMetadata, getTripMetaDataWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getTripMetadata:resolve rejecter:reject];
+}
+
+RCT_REMAP_METHOD(setTripMetadata, setTripMetaDataWithMetadata:(NSDictionary *)metadata resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self setTripMetadata:metadata];
+    resolve(nil);
+}
+
+RCT_REMAP_METHOD(deleteTripMetadata, deleteTripMetaDataWithkey:(NSString *)key resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self deleteTripMetadata:key];
+    resolve(nil);
+}
+
+RCT_REMAP_METHOD(updateTripMetadata, updateTripMetaDataWithkey:(NSString *)key value:(NSString *)value resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self updateTripMetadata:key value:value];
+    resolve(nil);
+}
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
@@ -122,6 +145,22 @@ RCT_REMAP_METHOD(setStopTimeout, setStopTimeoutWithStopTimeout:(nonnull NSNumber
 
 -(void)setStopTimeout:(NSNumber *)stopTimeout {
     [RNDriveKitTripAnalysisWrapper.shared setStopTimeout:stopTimeout];
+}
+
+-(void)getTripMetadata:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared getTripMetadataWithResolver:resolve rejecter:reject];
+}
+
+-(void)setTripMetadata:(NSDictionary *)metadata {
+    [RNDriveKitTripAnalysisWrapper.shared setTripMetadataWithMetadata:metadata];
+}
+
+-(void)deleteTripMetadata:(NSString *)key {
+    [RNDriveKitTripAnalysisWrapper.shared deleteTripMetadataWithKey:key];
+}
+
+-(void)updateTripMetadata:(NSString *)key value:(NSString *)value {
+    [RNDriveKitTripAnalysisWrapper.shared updateTripMetadataWithKey:key value:value];
 }
 
 // Don't compile this code when we build for the old architecture.
