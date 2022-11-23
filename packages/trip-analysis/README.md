@@ -151,17 +151,21 @@ Here is the list of supported events:
 
 ## API
 
-| Method                                                                | Return Type        | iOS | Android |
-| --------------------------------------------------------------------- | ------------------ | :-: | :-----: |
-| [activateAutoStart()](#activateautostart)                             | `Promise<void>`    | ✅  |   ✅    |
-| [startTrip()](#starttrip)                                             | `Promise<void>`    | ✅  |   ✅    |
-| [stopTrip()](#stoptrip)                                               | `Promise<void>`    | ✅  |   ✅    |
-| [cancelTrip()](#canceltrip)                                           | `Promise<void>`    | ✅  |   ✅    |
-| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>` | ✅  |   ✅    |
-| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`    | ✅  |   ✅    |
-| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`    | ✅  |   ✅    |
-| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`    | ✅  |   ✅    |
-| [reset()](#reset)                                                     | `Promise<void>`    | ✅  |   ✅    |
+| Method                                                                | Return Type                     | iOS | Android |
+| --------------------------------------------------------------------- | ------------------------------- | :-: | :-----: |
+| [activateAutoStart()](#activateautostart)                             | `Promise<void>`                 | ✅  |   ✅    |
+| [startTrip()](#starttrip)                                             | `Promise<void>`                 | ✅  |   ✅    |
+| [stopTrip()](#stoptrip)                                               | `Promise<void>`                 | ✅  |   ✅    |
+| [cancelTrip()](#canceltrip)                                           | `Promise<void>`                 | ✅  |   ✅    |
+| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>`              | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`                 | ✅  |   ✅    |
+| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`                 | ✅  |   ✅    |
+| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`                 | ✅  |   ✅    |
+| [reset()](#reset)                                                     | `Promise<void>`                 | ✅  |   ✅    |
+| [getTripMetadata()](#getTripMetadata)                                 | `Promise<TripMetadata \| null>` | ✅  |   ✅    |
+| [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)           | `Promise<void>`                 | ✅  |   ✅    |
+| [deleteTripMetadata(string?: string)](#deleteTripMetadata)            | `Promise<void>`                 | ✅  |   ✅    |
+| [updateTripMetadata(key: string, value: string)](#updateTripMetadata) | `Promise<void>`                 | ✅  |   ✅    |
 | [setVehicle()](#setvehicle)                                           | `Promise<void>`    | ✅  |   ✅    |
 
 ### activateAutoStart
@@ -327,6 +331,60 @@ All data saved locally by DriveKit will be erased.
 > ⚠️
 >
 > Make sure that you call reset method of all frameworks to fully reset DriveKit configuration.
+
+### getTripMetadata
+
+```typescript
+getTripMetadata(): Promise<TripMetadata | null>
+```
+
+If you want to get the metadata of your trip, you can call the following method:
+
+```typescript
+await getTripMetadata();
+```
+
+### setTripMetadata
+
+```typescript
+setTripMetadata(metadata: TripMetadta): Promise<void>
+```
+
+If you want to set the metadata of your trip, you can call the following method:
+
+```typescript
+await setTripMedata({ key: 'value' });
+```
+
+### deleteTripMetadata
+
+```typescript
+deleteTripMedata(key?: string): Promise<void>
+```
+
+If you want to a specific metadata, you can call the following method:
+
+```typescript
+await deleteTripMedata('key');
+```
+
+If you want to delete all keys call it without parameter:
+
+```typescript
+await deleteTripMedata();
+```
+
+### updateTripMetadata
+
+```typescript
+updateTripMetadata(key: string, value: string): Promise<void>;
+```
+
+If you want to update a specific metadata key, you can call the following method:
+
+```typescript
+await updateTripMetadata('key', 'value');
+```
 
 ### setVehicle
 

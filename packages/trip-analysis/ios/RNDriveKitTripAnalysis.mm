@@ -88,6 +88,29 @@ RCT_REMAP_METHOD(setStopTimeout, setStopTimeoutWithStopTimeout:(nonnull NSNumber
     resolve(nil);
 }
 
+RCT_REMAP_METHOD(getTripMetadata, getTripMetaDataWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getTripMetadata:resolve rejecter:reject];
+}
+
+RCT_REMAP_METHOD(setTripMetadata, setTripMetaDataWithMetadata:(NSDictionary *)metadata resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self setTripMetadata:metadata];
+    resolve(nil);
+}
+
+RCT_REMAP_METHOD(deleteTripMetadata, deleteTripMetaDataWithkey:(NSString *)key resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self deleteTripMetadata:key];
+    resolve(nil);
+}
+
+RCT_REMAP_METHOD(updateTripMetadata, updateTripMetaDataWithkey:(NSString *)key value:(NSString *)value resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self updateTripMetadata:key value:value];
+    resolve(nil);
+}
+
 RCT_REMAP_METHOD(setVehicle, setVehicleWithVehicle:(NSDictionary *)vehicle resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self setVehicle:vehicle];
@@ -128,6 +151,22 @@ RCT_REMAP_METHOD(setVehicle, setVehicleWithVehicle:(NSDictionary *)vehicle resol
 
 -(void)setStopTimeout:(NSNumber *)stopTimeout {
     [RNDriveKitTripAnalysisWrapper.shared setStopTimeout:stopTimeout];
+}
+
+-(void)getTripMetadata:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared getTripMetadataWithResolver:resolve rejecter:reject];
+}
+
+-(void)setTripMetadata:(NSDictionary *)metadata {
+    [RNDriveKitTripAnalysisWrapper.shared setTripMetadataWithMetadata:metadata];
+}
+
+-(void)deleteTripMetadata:(NSString *)key {
+    [RNDriveKitTripAnalysisWrapper.shared deleteTripMetadataWithKey:key];
+}
+
+-(void)updateTripMetadata:(NSString *)key value:(NSString *)value {
+    [RNDriveKitTripAnalysisWrapper.shared updateTripMetadataWithKey:key value:value];
 }
 
 -(void)setVehicle:(NSDictionary *)vehicle {
