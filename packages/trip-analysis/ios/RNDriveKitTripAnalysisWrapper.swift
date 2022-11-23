@@ -52,9 +52,8 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         resolve(metaData)
     }
     
-    @objc internal func setTripMetadata(metadata: [String: String]? ,resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+    @objc internal func setTripMetadata(metadata: [String: String]?) -> Void {
         DriveKitTripAnalysis.shared.setTripMetadata(metadata)
-        resolve(nil)
     }
     
     @objc internal func deleteTripMetadata(key: String?) -> Void {
