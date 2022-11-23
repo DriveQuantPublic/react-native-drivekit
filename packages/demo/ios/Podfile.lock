@@ -12,6 +12,8 @@ PODS:
   - DriveKitDBVehicleAccess (1.28.1):
     - DriveKitBeaconUtils (= 1.28.1)
     - DriveKitCore (= 1.28.1)
+  - DriveKitDriverData (1.28.1):
+    - DriveKitDBTripAccess (= 1.28.1)
   - DriveKitNetworking (1.28.1)
   - DriveKitTripAnalysis (1.28.1):
     - DriveKitBeaconUtils (= 1.28.1)
@@ -330,6 +332,7 @@ PODS:
     - DriveKitCore (= 1.28.1)
     - React-Core
   - react-native-drivekit-driver-data (0.0.3):
+    - DriveKitDriverData (= 1.28.1)
     - React-Core
   - react-native-drivekit-trip-analysis (0.0.3):
     - DriveKitTripAnalysis (= 1.28.1)
@@ -488,6 +491,7 @@ SPEC REPOS:
     - DriveKitCore
     - DriveKitDBTripAccess
     - DriveKitDBVehicleAccess
+    - DriveKitDriverData
     - DriveKitNetworking
     - DriveKitTripAnalysis
     - Flipper
@@ -602,6 +606,7 @@ SPEC CHECKSUMS:
   DriveKitCore: 1a70508c2b4213ad8438656a84bd2b1ca98567c5
   DriveKitDBTripAccess: c5456d9f4cc40f2067231ace3b6b7b4b7d9d7ddd
   DriveKitDBVehicleAccess: 0770c3e17deed33bea4c6dfa4334981547945eea
+  DriveKitDriverData: 02f5836e08d9d1683b3c8510affaa16dbb16faf7
   DriveKitNetworking: 4219cfe5d92a2ba12ba4473775b2f69ee91cbb31
   DriveKitTripAnalysis: 081961585dcc07b735331010584aefcdad4d59c2
   FBLazyVector: affa4ba1bfdaac110a789192f4d452b053a86624
@@ -640,7 +645,7 @@ SPEC CHECKSUMS:
   React-jsinspector: badd81696361249893a80477983e697aab3c1a34
   React-logger: fdda34dd285bdb0232e059b19d9606fa0ec3bb9c
   react-native-drivekit-core: e0d58406f41c9aabe7dab71fa65fd0a6f5483a3b
-  react-native-drivekit-driver-data: d7437ec0ae5ac8ce1c9a799b4ecfd11c9aa56bc4
+  react-native-drivekit-driver-data: e466fcbfc8e0fcdaa02345cb7634f39e9aed8fa4
   react-native-drivekit-trip-analysis: 6f0363129add69030767f47420b1c01f924caeca
   React-perflogger: e68d3795cf5d247a0379735cbac7309adf2fb931
   React-RCTActionSheet: 05452c3b281edb27850253db13ecd4c5a65bc247
