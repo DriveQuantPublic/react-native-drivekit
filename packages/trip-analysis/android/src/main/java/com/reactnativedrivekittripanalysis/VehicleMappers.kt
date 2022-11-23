@@ -32,5 +32,10 @@ fun mapReadableMapToVehicle(vehicle: ReadableMap): Vehicle {
   if (vehicle.hasKey("carAutoGearboxNumber")) {
     result.autoGearboxNumber = vehicle.getInt("carAutoGearboxNumber");
   }
+
+  if (vehicle.hasKey("engineDisplacement")) {
+    result.engineDisplacement = vehicle.getDouble("engineDisplacement");
+  }
+
   return result;
 }

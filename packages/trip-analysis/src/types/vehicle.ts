@@ -9,8 +9,5 @@ export interface VehicleBase {
 }
 
 export interface Vehicle extends VehicleBase {
-  carPassengers: number;
-  dqIndex: string | null;
   engineDisplacement: number;
-  sra: string | null;
 }
