@@ -166,7 +166,7 @@ Here is the list of supported events:
 | [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)           | `Promise<void>`                 | ✅  |   ✅    |
 | [deleteTripMetadata(string?: string)](#deleteTripMetadata)            | `Promise<void>`                 | ✅  |   ✅    |
 | [updateTripMetadata(key: string, value: string)](#updateTripMetadata) | `Promise<void>`                 | ✅  |   ✅    |
-| [setVehicle()](#setvehicle)                                           | `Promise<void>`    | ✅  |   ✅    |
+| [setVehicle()](#setvehicle)                                           | `Promise<void>`                 | ✅  |   ✅    |
 
 ### activateAutoStart
 
