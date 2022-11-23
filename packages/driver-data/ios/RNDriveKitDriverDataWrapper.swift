@@ -15,4 +15,8 @@ class RNDriveKitDriverDataWrapper: NSObject {
     @objc public func initialize() -> Void {
         DriveKitDriverData.shared.initialize()
     }
+
+    @objc internal func reset() -> Void {
+        DriveKitDriverData.shared.reset()
+    }
 }

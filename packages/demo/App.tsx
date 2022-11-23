@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
+import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import type {
   CancelTripReason,
@@ -352,6 +353,7 @@ const App = () => {
           onPress={() => {
             DriveKit.reset();
             DriveKitTripAnalysis.reset();
+            DriveKitDriverData.reset();
           }}
         />
 
