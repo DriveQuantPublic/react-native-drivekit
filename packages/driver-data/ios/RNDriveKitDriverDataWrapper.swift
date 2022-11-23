@@ -9,14 +9,20 @@ import Foundation
 import DriveKitDriverDataModule
 
 @objc(RNDriveKitDriverDataWrapper)
-class RNDriveKitDriverDataWrapper: NSObject {
+class RNDriveKitDriverDataWrapper: NSObject {
     @objc public static let shared = RNDriveKitDriverDataWrapper()
-
+    
     @objc public func initialize() -> Void {
         DriveKitDriverData.shared.initialize()
     }
-
+    
     @objc internal func reset() -> Void {
         DriveKitDriverData.shared.reset()
+    }
+
+    @objc internal func deleteTrip(tripId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        DriveKitDriverData.shared.deleteTrip(itinId: tripId) { success in
+            resolve(success)
+        }
     }
 }

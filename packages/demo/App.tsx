@@ -439,6 +439,15 @@ const App = () => {
           }}
         />
 
+        <Spacer factor={1} />
+        <Button
+          title={'Delete trip'}
+          onPress={async () => {
+            const result = await DriveKitDriverData.deleteTrip('TRIP_ID_HERE');
+            Alert.alert(result ? 'Trip deleted' : 'Trip not deleted');
+          }}
+        />
+
         <Spacer factor={2} />
         <Text style={styles.title}>Logs</Text>
         <Spacer factor={1} />

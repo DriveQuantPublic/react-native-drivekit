@@ -1,3 +1,4 @@
+#import <React/RCTBridgeModule.h>
 @class RNDriveKitDriverDataWrapper;
 
 @interface RNDriveKitDriverDataWrapper : NSObject
@@ -6,4 +7,5 @@
 
 - (void)initialize;
 - (void)reset;
+-(void)deleteTripWithTripId:(NSString *_Nonnull)tripId resolver:(RCTPromiseResolveBlock _Nonnull )resolve rejecter:(RCTPromiseRejectBlock _Nonnull )reject;
 @end
