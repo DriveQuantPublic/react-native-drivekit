@@ -33,6 +33,26 @@ RCT_REMAP_METHOD(deleteTrip, deleteTripWithId:(NSString *)itinId resolve:(RCTPro
     [RNDriveKitDriverDataWrapper.shared deleteTripWithItinId:itinId resolver:resolve rejecter:reject];
 }
 
+RCT_REMAP_METHOD(getTripsOrderByDateAsc, getTripsOrderByDateAscWithSynchronizationType:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getTripsOrderByDateAscWithSynchronizationType:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
+}
+
+-(void)getTripsOrderByDateAscWithSynchronizationType:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitDriverDataWrapper.shared getTripsOrderByDateAscWithSynchronizationType:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
+}
+
+
+RCT_REMAP_METHOD(getRoute, getRouteWithItinId:(NSString *)itinId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getRouteWithItinId:itinId resolver:resolve rejecter:reject];
+}
+
+-(void)getRouteWithItinId:(NSString *)itinId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitDriverDataWrapper.shared getRouteWithItinId:itinId resolver:resolve rejecter:reject];
+}
+
+
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
