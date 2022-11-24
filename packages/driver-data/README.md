@@ -82,7 +82,8 @@ Call `initialize` method in your `AppDelegate.mm`.
 
 | Method                                                                | Return Type         | iOS | Android |
 | --------------------------------------------------------------------- | ------------------- | :-: | :-----: |
-| [reset()](#reset)                                                     | `Promise<void>`     | ✅  |   ✅    |
+| [reset()](#deleteTrip)                                                | `Promise<void>`     | ✅  |   ✅    |
+| [deleteTrip()](#reset)                                                | `Promise<boolean>`  | ✅  |   ✅    |
 
 ### reset
 
@@ -106,3 +107,18 @@ All data saved locally by DriveKit will be erased.
 > ⚠️
 >
 > Make sure that you call reset method of all modules to fully reset DriveKit configuration.
+
+### deleteTrip
+
+To delete a trip, you have to call the following method:
+
+```typescript
+deleteTrip(itinId: string): Promise<boolean>
+```
+
+The itinId parameter is the unique identifier for a trip.
+
+```typescript
+await deleteTrip('TRIP_ID_HERE');
+```
+

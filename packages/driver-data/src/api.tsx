@@ -27,3 +27,7 @@ const DriveKitDriverData = DriveKitDriverDataModule
 export function reset(): Promise<void> {
   return DriveKitDriverData.reset();
 }
+
+export function deleteTrip(itinId: string): Promise<boolean> {
+  return DriveKitDriverData.deleteTrip(itinId);
+}
