@@ -136,7 +136,8 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
               else -> promise.reject("Get User Info", "Unable to get user info")
             }
           }
-        }, mappedSynchronizationType)      }
+        }, mappedSynchronizationType)
+      }
 
       @ReactMethod
       override fun updateUserInfo(userInfo: ReadableMap, promise: Promise) {

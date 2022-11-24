@@ -41,7 +41,7 @@ const App = () => {
   // ========================================
   // ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
   // ========================================
-  // DriveKit.setApiKey("")
+  DriveKit.setApiKey('qDcgo5W2I1p3u5STEhuQ1AJo');
 
   var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
@@ -578,13 +578,21 @@ const App = () => {
           }}
         />
 
+        <Spacer factor={1} />
+        <Button
+          title={'Get trips'}
+          onPress={async () => {
+            const result = await DriveKitDriverData.getTripsOrderByDateAsc();
+            Alert.alert(result ? 'cool' : 'pas cool');
+          }}
+        />
+
         <Spacer factor={2} />
         <Text style={styles.title}>Logs</Text>
         <Spacer factor={1} />
         <Button
           title={'Compose diagnosis mail'}
           onPress={() => {
-            DriveKit.updateUserId;
             DriveKit.composeDiagnosisMail({
               recipients: [],
               bccRecipients: [],

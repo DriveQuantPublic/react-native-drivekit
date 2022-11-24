@@ -10,6 +10,7 @@ import com.drivequant.drivekit.driverdata.trip.TripsSyncStatus
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.ReadableMap
 
 class DriveKitDriverDataModule internal constructor(context: ReactApplicationContext) :
   DriveKitDriverDataSpec(context) {
@@ -26,41 +27,67 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
 
   @ReactMethod
   override fun deleteTrip(itinId: String, promise: Promise) {
-    DriveKitDriverData.deleteTrip(itinId, object: TripDeleteQueryListener {
+    DriveKitDriverData.deleteTrip(itinId, object : TripDeleteQueryListener {
       override fun onResponse(status: Boolean) {
         promise.resolve(status)
-    }})
+      }
+    })
   }
 
   @ReactMethod
   override fun getTripsOrderByDateAsc(
-    synchronizationType: SynchronizationType,
-    transportationModes: List<TransportationMode>?,
+    synchronizationType: String?,
+    transportationModes: ReadableMap?,
     promise: Promise,
   ) = getTrips(DateOrder.ASCENDING, synchronizationType, transportationModes, promise)
 
+  @ReactMethod
   override fun getTripsOrderByDateDesc(
-    synchronizationType: SynchronizationType,
-    transportationModes: List<TransportationMode>?,
-    promise: Promise
+    synchronizationType: String?,
+    transportationModes: ReadableMap?,
+    promise: Promise,
   ) = getTrips(DateOrder.DESCENDING, synchronizationType, transportationModes, promise)
 
-  private fun getTrips(dateOrder: DateOrder, syncType: SynchronizationType, transportationModes: List<TransportationMode>?, promise: Promise) {
-    val computedTransportationModes = transportationModes ?: listOf(TransportationMode.UNKNOWN, TransportationMode.CAR, TransportationMode.MOTO, TransportationMode.TRUCK)
+  private fun getTrips(
+    dateOrder: DateOrder,
+    synchronizationType: String?,
+    transportationModes: ReadableMap?,
+    promise: Promise,
+  ) {
+    var mappedSynchronizationType: SynchronizationType = SynchronizationType.DEFAULT
+    if (synchronizationType == "cache") {
+      mappedSynchronizationType = SynchronizationType.CACHE
+    }
+
+    val mappedTransportationModes: MutableList<TransportationMode> = mutableListOf()
+    transportationModes?.apply {
+      TransportationMode.values().forEach {
+        if (this.getString(it.mapName()) != null) {
+          mappedTransportationModes.add(it)
+        }
+      }
+    }
+    if (mappedTransportationModes.isEmpty()) {
+      mappedTransportationModes.addAll(listOf(TransportationMode.UNKNOWN,
+        TransportationMode.CAR,
+        TransportationMode.MOTO,
+        TransportationMode.TRUCK))
+    }
+
     when (dateOrder) {
       DateOrder.ASCENDING -> {
         DriveKitDriverData.getTripsOrderByDateAsc(object : TripsQueryListener {
           override fun onResponse(status: TripsSyncStatus, trips: List<Trip>) {
             manageGetTrips(status, trips, promise)
           }
-        }, syncType, computedTransportationModes)
+        }, mappedSynchronizationType, mappedTransportationModes)
       }
       DateOrder.DESCENDING -> {
         DriveKitDriverData.getTripsOrderByDateDesc(object : TripsQueryListener {
           override fun onResponse(status: TripsSyncStatus, trips: List<Trip>) {
             manageGetTrips(status, trips, promise)
           }
-        }, syncType, computedTransportationModes)
+        }, mappedSynchronizationType, mappedTransportationModes)
       }
     }
   }
@@ -73,6 +100,7 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
       TripsSyncStatus.FAILED_TO_SYNC_TRIPS_CACHE_ONLY,
       -> {
         //TODO TripMappers.mapTripToReadableMap(…)
+        promise.resolve(null) // TODO
       }
     }
   }
