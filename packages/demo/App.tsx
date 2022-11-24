@@ -584,6 +584,7 @@ const App = () => {
           onPress={async () => {
             const result = await DriveKitDriverData.getTripsOrderByDateAsc();
             //const result = await DriveKitDriverData.getTripsOrderByDateAsc();
+            console.log(result);
           }}
         />
 
