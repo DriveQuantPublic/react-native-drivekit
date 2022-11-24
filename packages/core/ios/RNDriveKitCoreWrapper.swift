@@ -73,6 +73,33 @@ public class RNDriveKitCoreWrapper: NSObject {
         }
         return MFMailComposeViewController.canSendMail()
     }
+
+    @objc internal func getUserInfo(synchronizationType: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        var mappedSynchronizationType: SynchronizationType = .defaultSync;
+        if synchronizationType == "cache" {
+            mappedSynchronizationType = .cache
+        }
+        DriveKit.shared.getUserInfo(synchronizationType: mappedSynchronizationType) { status, userInfo in
+            if status == .success {
+                resolve(mapUserInfoToNSDictionary(userInfo: userInfo));
+            } else if status == .cacheDataOnly {
+                resolve(mapUserInfoToNSDictionary(userInfo: userInfo))
+            } else {
+                reject("Get User Info", "Unable to get user info", nil)
+            }
+        }
+    }
+
+    @objc internal func updateUserInfo(userInfo: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+
+        DriveKit.shared.updateUserInfo(firstname: userInfo["firstname"] as! String?, lastname: userInfo["lastname"] as! String?, pseudo:userInfo["pseudo"] as! String?) { success in
+            if success {
+                resolve(nil)
+            } else {
+                reject("Update User Info", "Unable to update user info", nil)
+            }
+        }
+    }
 }
 
 private class MailSender: NSObject {
@@ -134,33 +161,6 @@ extension MailSender: MFMailComposeViewControllerDelegate {
             return DriveKitLog.shared.getZippedLogFilesUrl()
         }
         return nil
-    }
-
-    @objc internal func getUserInfo(synchronizationType: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
-        var mappedSynchronizationType: SynchronizationType = .defaultSync;
-        if synchronizationType == "default" {
-            mappedSynchronizationType = .defaultSync
-        }
-        DriveKit.shared.getUserInfo(synchronizationType: mappedSynchronizationType) { status, userInfo in
-            if status == .success {
-                resolve(mapUserInfoToNSDictionary(userInfo: userInfo));
-            } else if status == .cacheDataOnly {
-                resolve(mapUserInfoToNSDictionary(userInfo: userInfo))
-            } else {
-                reject("Get User Info", "Unable to get user info", nil)
-            }
-        }
-    }
-
-    @objc internal func updateUserInfo(userInfo: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
-
-        DriveKit.shared.updateUserInfo(firstname: userInfo["firstname"] as! String?, lastname: userInfo["lastname"] as! String?, pseudo:userInfo["pseudo"] as! String?) { success in
-            if success {
-                resolve(nil)
-            } else {
-                reject("Update User Info", "Unable to update user info", nil)
-            }
-        }
     }
 }
 
