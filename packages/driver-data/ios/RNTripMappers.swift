@@ -62,9 +62,6 @@ func mapTransportModeFromString(_ inputString: String) -> TransportationMode {
 extension Trip {
     fileprivate func toDict() -> [String: Any] {
         // TODO: complete this implementation by supporting child types
-        // var fuelEstimation: DriveKitDBTripAccessModule.FuelEstimation?
-        // var fuelEstimationContexts: NSSet?
-        // var logbook: DriveKitDBTripAccessModule.Logbook?
         // var maneuver: DriveKitDBTripAccessModule.Maneuver?
         // var pollutants: DriveKitDBTripAccessModule.Pollutants?
         // var safety: DriveKitDBTripAccessModule.Safety?
@@ -96,7 +93,10 @@ extension Trip {
             "ecoDriving": ecoDriving?.toDict() as Any,
             "ecoDrivingContexts": ecoDrivingContexts?.allObjects.map{($0 as? EcoDrivingContext)?.toDict()} as Any,
             "energyEstimation": energyEstimation?.toDict() as Any,
-            "evaluation": evaluation?.toDict() as Any
+            "evaluation": evaluation?.toDict() as Any,
+            "fuelEstimation": fuelEstimation?.toDict() as Any,
+            "fuelEstimationContexts": fuelEstimationContexts?.allObjects.map{($0 as? FuelEstimationContext)?.toDict()} as Any,
+            "logbook": logbook?.toDict() as Any
         ]
     }
 }
@@ -213,6 +213,46 @@ extension Evaluation {
         return [
             "comment": comment as Any,
             "evaluation": evaluation as Any
+        ]
+    }
+}
+extension FuelEstimation {
+    fileprivate func toDict() -> [String: Any] {
+        return [
+            "co2Mass": co2Mass as Any,
+            "co2Emission": co2Emission as Any,
+            "coldFuelVolume": coldFuelVolume as Any,
+            "engineTempStatus": engineTempStatus as Any,
+            "fuelConsumption": fuelConsumption as Any,
+            "fuelVolume": fuelVolume as Any,
+            "faultingState": faultingState as Any,
+            "idleCo2Emission": idleCo2Emission as Any,
+            "idleCo2Mass": idleCo2Mass as Any,
+            "idleFuelConsumption": idleFuelConsumption as Any,
+            "idleFuelPercentage": idleFuelPercentage as Any,
+            "idleFuelVolume": idleFuelVolume as Any
+        ]
+    }
+}
+extension FuelEstimationContext {
+    fileprivate func toDict() -> [String: Any] {
+        return [
+            "co2Mass": co2Mass as Any,
+            "co2Emission": co2Emission as Any,
+            "contextId": contextId as Any,
+            "distance": distance as Any,
+            "fuelConsumption": fuelConsumption as Any,
+            "fuelVolume": fuelVolume as Any,
+            "faultingState": faultingState as Any,
+            "duration": duration as Any
+        ]
+    }
+}
+extension Logbook {
+    fileprivate func toDict() -> [String: Any] {
+        return [
+            "status": status as Any,
+            "updateDate": ((updateDate != nil) ? DateUtils.convertDateToString(date: updateDate!) : nil) as Any
         ]
     }
 }
