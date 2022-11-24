@@ -7,5 +7,5 @@
 
 - (void)initialize;
 - (void)reset;
--(void)deleteTripWithTripId:(NSString *_Nonnull)tripId resolver:(RCTPromiseResolveBlock _Nonnull )resolve rejecter:(RCTPromiseRejectBlock _Nonnull )reject;
+- (void)deleteTripWithItinId:(NSString *_Nonnull)itinId resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 @end

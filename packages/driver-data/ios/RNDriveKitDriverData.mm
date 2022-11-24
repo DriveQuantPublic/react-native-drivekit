@@ -24,13 +24,13 @@ RCT_REMAP_METHOD(reset, resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPro
     [RNDriveKitDriverDataWrapper.shared reset];
 }
 
-RCT_REMAP_METHOD(deleteTrip, deleteTripWithId:(NSString *)tripId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_REMAP_METHOD(deleteTrip, deleteTripWithId:(NSString *)itinId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self deleteTripWithTripId:tripId resolver:resolve rejecter:reject];
+    [self deleteTripWithItinId:itinId resolver:resolve rejecter:reject];
 }
 
--(void)deleteTripWithTripId:(NSString *)tripId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
-    [RNDriveKitDriverDataWrapper.shared deleteTripWithTripId:tripId resolver:resolve rejecter:reject];
+-(void)deleteTripWithItinId:(NSString *)itinId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitDriverDataWrapper.shared deleteTripWithItinId:itinId resolver:resolve rejecter:reject];
 }
 
 // Don't compile this code when we build for the old architecture.

@@ -20,8 +20,8 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
   }
 
   @ReactMethod
-  override fun deleteTrip(tripId: String, promise: Promise) {
-    DriveKitDriverData.deleteTrip(tripId, object: TripDeleteQueryListener {
+  override fun deleteTrip(itinId: String, promise: Promise) {
+    DriveKitDriverData.deleteTrip(itinId, object: TripDeleteQueryListener {
       override fun onResponse(status: Boolean) {
         promise.resolve(status)
     }})

@@ -8,5 +8,5 @@ abstract class DriveKitDriverDataSpec internal constructor(context: ReactApplica
   ReactContextBaseJavaModule(context) {
   abstract fun reset(promise: Promise)
 
-  abstract fun deleteTrip(tripId: String, promise: Promise)
+  abstract fun deleteTrip(itinId: String, promise: Promise)
 }

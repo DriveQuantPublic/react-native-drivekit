@@ -28,6 +28,6 @@ export function reset(): Promise<void> {
   return DriveKitDriverData.reset();
 }
 
-export function deleteTrip(tripId: string): Promise<boolean> {
-  return DriveKitDriverData.deleteTrip(tripId);
+export function deleteTrip(itinId: string): Promise<boolean> {
+  return DriveKitDriverData.deleteTrip(itinId);
 }
