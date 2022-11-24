@@ -42,6 +42,14 @@ RCT_REMAP_METHOD(getTripsOrderByDateAsc, getTripsOrderByDateAscWithSynchronizati
     [RNDriveKitDriverDataWrapper.shared getTripsOrderByDateAscWithSynchronizationType:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
 }
 
+RCT_REMAP_METHOD(getTripsOrderByDateDesc, getTripsOrderByDateDescWithSynchronizationType:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getTripsOrderByDateDescWithSynchronizationType:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
+}
+
+-(void)getTripsOrderByDateDescWithSynchronizationType:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitDriverDataWrapper.shared getTripsOrderByDateDescWithSynchronizationType:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
+}
 
 RCT_REMAP_METHOD(getRoute, getRouteWithItinId:(NSString *)itinId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {

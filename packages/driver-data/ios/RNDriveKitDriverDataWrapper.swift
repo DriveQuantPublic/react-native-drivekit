@@ -33,8 +33,27 @@ class RNDriveKitDriverDataWrapper: NSObject {
         if synchronizationType == "cache" {
             mappedSynchronizationType = .cache
         }
-        // TODO: map transportation modes
-        DriveKitDriverData.shared.getTripsOrderByDateAsc(withTransportationModes: [.car], type: mappedSynchronizationType, completionHandler: { status, trips in
+        let transportModes = transportationModes.map { mode in
+            return mapTransportModeFromString(mode)
+        }
+        DriveKitDriverData.shared.getTripsOrderByDateAsc(withTransportationModes: transportModes, type: mappedSynchronizationType, completionHandler: { status, trips in
+            let tripsJson = trips.map { trip in
+                return mapTrip(trip: trip)
+            }.toJSONString()
+            resolve(["status": mapTripSyncStatus(status: status),
+                     "trips": tripsJson])
+        })
+    }
+
+    @objc internal func getTripsOrderByDateDesc(synchronizationType: String, transportationModes:[String], resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock)  {
+        var mappedSynchronizationType: SynchronizationType = .defaultSync;
+        if synchronizationType == "cache" {
+            mappedSynchronizationType = .cache
+        }
+        let transportModes = transportationModes.map { mode in
+            return mapTransportModeFromString(mode)
+        }
+        DriveKitDriverData.shared.getTripsOrderByDateDesc(withTransportationModes: transportModes, type: mappedSynchronizationType, completionHandler: { status, trips in
             let tripsJson = trips.map { trip in
                 return mapTrip(trip: trip)
             }.toJSONString()

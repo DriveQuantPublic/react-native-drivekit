@@ -29,6 +29,34 @@ func mapTripSyncStatus(status: TripSyncStatus) -> String {
         return "FAILED_TO_SYNC_TRIPS"
     }
 }
+func mapTransportModeFromString(_ inputString: String) -> TransportationMode {
+    if inputString == "CAR" {
+        return .car
+    } else if inputString == "MOTO" {
+        return .moto
+    } else if inputString == "TRUCK" {
+        return .truck
+    } else if inputString == "BUS" {
+        return .bus
+    } else if inputString == "TRAIN" {
+        return .train
+    } else if inputString == "BOAT" {
+        return .boat
+    } else if inputString == "BIKE" {
+        return .bike
+    } else if inputString == "FLIGHT" {
+        return .flight
+    } else if inputString == "SKIING" {
+        return .skiing
+    } else if inputString == "ON_FOOT" {
+        return .onFoot
+    } else if inputString == "IDLE" {
+        return .idle
+    } else if inputString == "OTHER" {
+        return .other
+    }
+    return .unknown
+}
 
 extension Trip {
     fileprivate func toDict() -> [String: Any] {
