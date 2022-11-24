@@ -99,8 +99,8 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
       TripsSyncStatus.CACHE_DATA_ONLY,
       TripsSyncStatus.FAILED_TO_SYNC_TRIPS_CACHE_ONLY,
       -> {
-        //TODO TripMappers.mapTripToReadableMap(…)
-        promise.resolve(null) // TODO
+        val readableMap = TripsSyncMappers.mapTripsSyncToReadableMap(status, trips)
+        promise.resolve(readableMap)
       }
     }
   }
