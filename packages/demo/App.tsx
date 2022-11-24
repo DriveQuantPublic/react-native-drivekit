@@ -41,7 +41,7 @@ const App = () => {
   // ========================================
   // ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
   // ========================================
-  DriveKit.setApiKey('qDcgo5W2I1p3u5STEhuQ1AJo');
+  //DriveKit.setApiKey('');
 
   var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
@@ -583,6 +583,7 @@ const App = () => {
           title={'Get trips'}
           onPress={async () => {
             const result = await DriveKitDriverData.getTripsOrderByDateAsc();
+            //const result = await DriveKitDriverData.getTripsOrderByDateAsc();
             Alert.alert(result ? 'cool' : 'pas cool');
           }}
         />
