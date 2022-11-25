@@ -69,7 +69,6 @@ extension Trip {
             "endDate": ((endDate != nil) ? DateUtils.convertDateToString(date: endDate!) : nil) as Any,
             "itinId": itinId as Any,
             "metadata": metadata as Any,
-            "safetyEventsSynced": safetyEventsSynced as Any,
             "startDate": ((startDate != nil) ? DateUtils.convertDateToString(date: startDate!) : nil) as Any,
             "transportationMode": transportationMode as Any,
             "unscored": unscored as Any,
@@ -165,8 +164,8 @@ extension DriverDistraction {
             "durationUnlock": durationUnlock as Any,
             "nbUnlock": nbUnlock as Any,
             "score": score as Any,
-            "scoreCallNumber": scoreCallNumber as Any,
-            "scoreUnlockNumber": scoreUnlockNumber as Any
+            "scoreCall": scoreCallNumber as Any,
+            "scoreUnlock": scoreUnlockNumber as Any
         ]
     }
 }
@@ -224,7 +223,6 @@ extension FuelEstimation {
             "engineTempStatus": engineTempStatus as Any,
             "fuelConsumption": fuelConsumption as Any,
             "fuelVolume": fuelVolume as Any,
-            "faultingState": faultingState as Any,
             "idleCo2Emission": idleCo2Emission as Any,
             "idleCo2Mass": idleCo2Mass as Any,
             "idleFuelConsumption": idleFuelConsumption as Any,
@@ -242,7 +240,6 @@ extension FuelEstimationContext {
             "distance": distance as Any,
             "fuelConsumption": fuelConsumption as Any,
             "fuelVolume": fuelVolume as Any,
-            "faultingState": faultingState as Any,
             "duration": duration as Any
         ]
     }

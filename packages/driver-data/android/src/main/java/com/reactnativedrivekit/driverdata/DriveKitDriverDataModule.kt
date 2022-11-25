@@ -9,7 +9,7 @@ import com.drivequant.drivekit.driverdata.trip.*
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.ReadableArray
 
 class DriveKitDriverDataModule internal constructor(context: ReactApplicationContext) :
   DriveKitDriverDataSpec(context) {
@@ -35,7 +35,7 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
 
   @ReactMethod
   override fun getRoute(itinId: String, promise: Promise) {
-    DriveKitDriverData.getRoute(itinId, object: RouteQueryListener {
+    DriveKitDriverData.getRoute(itinId, object : RouteQueryListener {
       override fun onResponse(status: RouteStatus, route: Route?) {
         if (status == RouteStatus.NO_ERROR) {
           promise.resolve(route?.let { RouteMappers.mapRouteToReadableMap(it) })
@@ -46,24 +46,34 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
     })
   }
 
+  override fun getTrip(itinId: String, promise: Promise) {
+    DriveKitDriverData.getTrip(itinId, object: TripQueryListener {
+      override fun onResponse(status: TripsSyncStatus, trip: Trip?) {
+        val readableMap = trip?.let { TripSyncMappers.mapTripsSyncToReadableMap(status, it) }
+        promise.resolve(readableMap)
+      }
+    })
+  }
+
+
   @ReactMethod
   override fun getTripsOrderByDateAsc(
     synchronizationType: String?,
-    transportationModes: ReadableMap?,
+    transportationModes: ReadableArray?,
     promise: Promise,
   ) = getTrips(DateOrder.ASCENDING, synchronizationType, transportationModes, promise)
 
   @ReactMethod
   override fun getTripsOrderByDateDesc(
     synchronizationType: String?,
-    transportationModes: ReadableMap?,
+    transportationModes: ReadableArray?,
     promise: Promise,
   ) = getTrips(DateOrder.DESCENDING, synchronizationType, transportationModes, promise)
 
   private fun getTrips(
     dateOrder: DateOrder,
     synchronizationType: String?,
-    transportationModes: ReadableMap?,
+    transportationModes: ReadableArray?,
     promise: Promise,
   ) {
     var mappedSynchronizationType: SynchronizationType = SynchronizationType.DEFAULT
@@ -72,11 +82,9 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
     }
 
     val mappedTransportationModes: MutableList<TransportationMode> = mutableListOf()
-    transportationModes?.apply {
-      TransportationMode.values().forEach {
-        if (this.getString(it.mapName()) != null) {
+    transportationModes?.toArrayList()?.forEach { it ->
+      mapTransportationMode(it.toString())?.let {
           mappedTransportationModes.add(it)
-        }
       }
     }
     if (mappedTransportationModes.isEmpty()) {

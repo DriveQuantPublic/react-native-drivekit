@@ -22,3 +22,20 @@ export enum UpdateUserIdStatus {
   ALREADY_USED = 'ALREADY_USED',
   SAVED_FOR_REPOST = 'SAVED_FOR_REPOST',
 }
+
+export type SynchronizationType = 'DEFAULT' | 'CACHE';
+
+export type TransportationMode =
+  | 'UNKNOWN'
+  | 'CAR'
+  | 'MOTO'
+  | 'TRUCK'
+  | 'BUS'
+  | 'TRAIN'
+  | 'BOAT'
+  | 'BIKE'
+  | 'FLIGHT'
+  | 'SKIING'
+  | 'ON_FOOT'
+  | 'IDLE'
+  | 'OTHER';

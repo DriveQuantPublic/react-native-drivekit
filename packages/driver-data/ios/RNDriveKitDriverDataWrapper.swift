@@ -33,13 +33,11 @@ class RNDriveKitDriverDataWrapper: NSObject {
         if synchronizationType == "cache" {
             mappedSynchronizationType = .cache
         }
-        let transportModes = transportationModes.map { mode in
-            return mapTransportModeFromString(mode)
-        }
+        let transportModes = getTransportModes(transportationModes)
         DriveKitDriverData.shared.getTripsOrderByDateAsc(withTransportationModes: transportModes, type: mappedSynchronizationType, completionHandler: { status, trips in
             let tripsJson = trips.map { trip in
                 return mapTrip(trip: trip)
-            }.toJSONString()
+            }
             resolve(["status": mapTripSyncStatus(status: status),
                      "trips": tripsJson])
         })
@@ -50,15 +48,20 @@ class RNDriveKitDriverDataWrapper: NSObject {
         if synchronizationType == "cache" {
             mappedSynchronizationType = .cache
         }
-        let transportModes = transportationModes.map { mode in
-            return mapTransportModeFromString(mode)
-        }
+        let transportModes = getTransportModes(transportationModes)
         DriveKitDriverData.shared.getTripsOrderByDateDesc(withTransportationModes: transportModes, type: mappedSynchronizationType, completionHandler: { status, trips in
             let tripsJson = trips.map { trip in
                 return mapTrip(trip: trip)
-            }.toJSONString()
+            }
             resolve(["status": mapTripSyncStatus(status: status),
                      "trips": tripsJson])
+        })
+    }
+
+    @objc internal func getTrip(itinId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        DriveKitDriverData.shared.getTrip(itinId: itinId, completionHandler: { status, trip in
+            resolve(["status": mapTripSyncStatus(status: status),
+                     "trip": (trip != nil) ? mapTrip(trip: trip!) : [:]])
         })
     }
 
@@ -66,5 +69,16 @@ class RNDriveKitDriverDataWrapper: NSObject {
         DriveKitDriverData.shared.getRoute(itinId: itinId, completionHandler: { route in
             resolve(route?.toDict())
         })
+    }
+
+    private func getTransportModes(_ transportationModes: [String]) -> [TransportationMode] {
+        let transportModes = transportationModes.map { mode in
+            return mapTransportModeFromString(mode)
+        }
+        if transportationModes.isEmpty {
+            return [.car, .moto, .truck, .unknown]
+        } else {
+            return transportModes
+        }
     }
 }
