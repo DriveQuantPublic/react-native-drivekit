@@ -1,5 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
-import type { GetTripsResponse } from './NativeDriverData';
+import type { GetTripsResponse, GetTripResponse } from './NativeDriverData';
 
 import { SynchronizationType, TransportationMode } from '@react-native-drivekit/core';
 
@@ -53,4 +53,8 @@ export function getTripsOrderByDateDesc(
     synchronizationType,
     transportationModes
   );
+}
+
+export function getTrip(itinId: string): Promise<GetTripResponse | null> {
+  return DriveKitDriverData.getTrip(itinId);
 }

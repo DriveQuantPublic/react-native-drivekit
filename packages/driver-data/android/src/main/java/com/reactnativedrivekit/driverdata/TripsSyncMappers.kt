@@ -20,7 +20,6 @@ object TripsSyncMappers {
   private fun List<Trip>.toReadableArray(): ReadableArray {
     val root = Arguments.createArray()
     root.pushMap(this[0].toReadableMap()) // TODO LOOP IS NEEDED !
-    root.pushMap(this[1].toReadableMap())
     return root
   }
 
@@ -89,4 +88,17 @@ object TripsSyncMappers {
     var advancedEnergyEstimations: List<AdvancedEnergyEstimation>?, // OK transformer en readblearray
     var energyEstimation: EnergyEstimation? // OK
   )*/
+}
+
+object TripSyncMappers {
+  fun mapTripsSyncToReadableMap(status: TripsSyncStatus, trip: Trip): ReadableMap? {
+    val map = Arguments.createMap()
+    map.putString("status", status.name)
+    // TODO: replace the code below once the function to convert Trip into map is working
+    // map.putMap("trip", trip.toTripObject())
+    val tripMap = Arguments.createMap()
+    tripMap.putString("itinId", trip.itinId)
+    map.putMap("trip", tripMap)
+    return map
+  }
 }

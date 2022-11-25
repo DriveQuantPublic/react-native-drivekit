@@ -593,6 +593,19 @@ const App = () => {
           }}
         />
 
+        <Spacer factor={1} />
+        <Button
+          title={'Get trip'}
+          onPress={async () => {
+            const result = await DriveKitDriverData.getTrip('TRIP_ID_HERE');
+            Alert.alert(
+              result
+                ? 'Trip received ' + result.trip.itinId
+                : 'Trip not received',
+            );
+          }}
+        />
+
         <Spacer factor={2} />
         <Text style={styles.title}>Logs</Text>
         <Spacer factor={1} />
