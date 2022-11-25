@@ -100,8 +100,11 @@ object TripSyncMappers {
   fun mapTripsSyncToReadableMap(status: TripsSyncStatus, trip: Trip): ReadableMap? {
     val map = Arguments.createMap()
     map.putString("status", status.name)
-    //map.putMap("trip", trip.toReadableMap())
-    map.putString("trip", trip.itinId)
+    // TODO: replace the code below once the function to convert Trip into map is working
+    // map.putMap("trip", trip.toTripObject())
+    val tripMap = Arguments.createMap()
+    tripMap.putString("itinId", trip.itinId)
+    map.putMap("trip", tripMap)
     return map
   }
 }
