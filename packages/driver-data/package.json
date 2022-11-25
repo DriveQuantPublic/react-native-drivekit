@@ -70,7 +70,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "@react-native-drivekit/core": "0.0.3"
   },
   "jest": {
     "preset": "react-native",

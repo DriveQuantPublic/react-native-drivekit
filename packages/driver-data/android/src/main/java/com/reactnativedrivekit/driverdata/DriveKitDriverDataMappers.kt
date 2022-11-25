@@ -2,9 +2,6 @@ package com.reactnativedrivekit.driverdata
 
 import com.drivequant.drivekit.databaseutils.entity.TransportationMode
 
-// TODO remove class ?
-fun TransportationMode.mapName() = this.name
-
 fun mapTransportationMode(transportationMode: String) = when (transportationMode) {
   "UNKNOWN" -> TransportationMode.UNKNOWN
   "CAR" -> TransportationMode.CAR

@@ -23,7 +23,7 @@ export interface Spec extends TurboModule {
   deleteTrip(itinId: string): Promise<boolean>;
   getTripsOrderByDateAsc(
     synchronizationType: WithDefault<'default' | 'cache', 'default'>
-  ): Promise<Trip | null>;
+  ): Promise<GetTripsResponse | null>;
   // TODO same for desc
 }
 
