@@ -38,6 +38,14 @@ object TripsSyncMappers {
     map.putString("arrivalAddress", arrivalAddress)
     map.putBoolean("unscored", unscored)
     map.putArray("metaData", metaData.toReadableArray())
+    map.putMap("tripStatistics", tripStatistics?.toReadableMap())
+    map.putMap("brakeWear", brakeWear?.toReadableMap())
+    map.putMap("ecoDriving", ecoDriving?.toReadableMap())
+    map.putMap("fuelEstimation", fuelEstimation?.toReadableMap())
+    map.putMap("safety", safety?.toReadableMap())
+    map.putMap("tireWear", tireWear?.toReadableMap())
+    map.putMap("driverDistraction", driverDistraction?.toReadableMap())
+    map.putMap("logbook", logbook?.toReadableMap(backendDateFormat))
 
     return map
   }
@@ -52,6 +60,155 @@ object TripsSyncMappers {
     return array
   }
 
+  private fun TripStatistics?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putBoolean("day", day)
+      map.putDouble("distance", distance)
+      map.putDouble("drivingDuration", drivingDuration)
+      map.putDouble("drivingPercentage", drivingPercentage)
+      map.putDouble("duration", duration)
+      map.putDouble("idlingDuration", idlingDuration)
+      map.putDouble("idlingPercentage", idlingPercentage)
+      map.putInt("meteo", meteo)
+      map.putDouble("speedMean", speedMean)
+      map.putInt("subdispNb", subdispNb)
+      map.putBoolean("weekday", weekday)
+      map
+    }
+  }
+
+  private fun BrakeWear?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putInt("frontBrakeAutonomy", frontBrakeAutonomy)
+      map.putInt("frontBrakeDistance", frontBrakeDistance)
+      map.putInt("frontBrakePadWear", frontBrakePadWear)
+      map.putDouble("frontBrakeTotalWear", frontBrakeTotalWear)
+      map.putDouble("frontBrakeWearRate", frontBrakeWearRate)
+
+      map.putInt("rearBrakeAutonomy", rearBrakeAutonomy)
+      map.putInt("rearBrakeDistance", rearBrakeDistance)
+      map.putInt("rearBrakePadWear", rearBrakePadWear)
+      map.putDouble("rearBrakeTotalWear", rearBrakeTotalWear)
+      map.putDouble("rearBrakeWearRate", rearBrakeWearRate)
+
+      map
+    }
+  }
+
+  private fun EcoDriving?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putInt("energyClass", energyClass)
+      map.putDouble("score", score)
+      map.putDouble("scoreAccel", scoreAccel)
+      map.putDouble("scoreDecel", scoreDecel)
+      map.putDouble("scoreMain", scoreMain)
+      map.putDouble("stdDevAccel", stdDevAccel)
+      map.putDouble("stdDevDecel", stdDevDecel)
+      map.putDouble("stdDevMain", stdDevMain)
+      map
+    }
+  }
+
+  private fun FuelEstimation?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putDouble("co2Emission", co2Emission)
+      map.putDouble("co2Mass", co2Mass)
+      map.putDouble("coldFuelVolume", coldFuelVolume)
+      map.putBoolean("engineTempStatus", engineTempStatus)
+      map.putDouble("fuelConsumption", fuelConsumption)
+      map.putDouble("fuelVolume", fuelVolume)
+      map.putDouble("idleCo2Emission", idleCo2Emission)
+      map.putDouble("idleCo2Mass", idleCo2Mass)
+      map.putDouble("idleFuelConsumption", idleFuelConsumption)
+      map.putDouble("idleFuelPercentage", idleFuelPercentage)
+      map.putDouble("idleFuelVolume", idleFuelVolume)
+      map
+    }
+  }
+
+  private fun Safety?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putInt("nbAccel", nbAccel)
+      map.putInt("nbAccelCrit", nbAccelCrit)
+      map.putInt("nbAdh", nbAdh)
+      map.putInt("nbAdhCrit", nbAdhCrit)
+      map.putInt("nbDecel", nbDecel)
+      map.putInt("nbDecelCrit", nbDecelCrit)
+      map.putDouble("safetyScore", safetyScore)
+      map
+    }
+  }
+
+  private fun TireWear?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putInt("frontTireAutonomy", frontTireAutonomy)
+      map.putInt("frontTireDistance", frontTireDistance)
+      map.putDouble("frontTireTotalWear", frontTireTotalWear)
+      map.putInt("frontTireWear", frontTireWear)
+      map.putDouble("frontTireWearRate", frontTireWearRate)
+
+      map.putInt("rearTireAutonomy", rearTireAutonomy)
+      map.putInt("rearTireDistance", rearTireDistance)
+      map.putDouble("rearTireTotalWear", rearTireTotalWear)
+      map.putInt("rearTireWear", rearTireWear)
+      map.putDouble("rearTireWearRate", rearTireWearRate)
+
+      map
+    }
+  }
+
+  private fun DriverDistraction?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putDouble("distancePercentUnlock", distancePercentUnlock)
+      map.putDouble("distanceUnlock", distanceUnlock)
+      map.putDouble("durationPercentUnlock", durationPercentUnlock)
+      map.putDouble("durationUnlock", durationUnlock)
+
+      map.putInt("nbUnlock", nbUnlock)
+      map.putDouble("score", score)
+      scoreCall?.let {
+        map.putDouble("scoreCall", it)
+      }
+      scoreUnlock?.let {
+        map.putDouble("scoreUnlock", it)
+      }
+      map
+    }
+  }
+
+  private fun Logbook?.toReadableMap(dateFormat: DateFormat): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putInt("status", status)
+      updateDate?.let {
+        map.putString("updateDate", dateFormat.format(it))
+      }
+      map
+    }
+  }
   /*
   private data class TripObject(
     val itinId: String, // OK
@@ -73,6 +230,7 @@ object TripsSyncMappers {
     var tireWear: TireWear?, // OK
     var driverDistraction: DriverDistraction?, // OK
     var logbook: Logbook?, // OK updateDate à passer en string
+
     var pollutants: Pollutants?, // OK
     var declaredTransportationMode: DeclaredTransportationMode?, // OK
     var maneuverData: ManeuverData?, // OK renommer en maneuver
