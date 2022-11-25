@@ -1,6 +1,8 @@
 import { NativeModules, Platform } from 'react-native';
 import type { GetTripsResponse, GetTripResponse } from './NativeDriverData';
 
+import { SynchronizationType, TransportationMode } from '@react-native-drivekit/core';
+
 const LINKING_ERROR =
   `The package '@react-native-drivekit/driver-data' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
@@ -34,15 +36,23 @@ export function deleteTrip(itinId: string): Promise<boolean> {
 }
 
 export function getTripsOrderByDateAsc(
-  synchronizationType: 'default' | 'cache' = 'default'
+  synchronizationType: SynchronizationType = 'DEFAULT',
+  transportationModes: TransportationMode[] = []
 ): Promise<GetTripsResponse | null> {
-  return DriveKitDriverData.getTripsOrderByDateAsc(synchronizationType, null);
+  return DriveKitDriverData.getTripsOrderByDateAsc(
+    synchronizationType,
+    transportationModes
+  );
 }
 
 export function getTripsOrderByDateDesc(
-  synchronizationType: 'default' | 'cache' = 'default'
+  synchronizationType: SynchronizationType = 'DEFAULT',
+  transportationModes: TransportationMode[] = []
 ): Promise<GetTripsResponse | null> {
-  return DriveKitDriverData.getTripsOrderByDateDesc(synchronizationType, null);
+  return DriveKitDriverData.getTripsOrderByDateDesc(
+    synchronizationType,
+    transportationModes
+  );
 }
 
 export function getTrip(itinId: string): Promise<GetTripResponse | null> {

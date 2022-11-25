@@ -1,3 +1,6 @@
+import type { TransportationMode } from './../../core/src/types/trip';
+import type { SynchronizationType } from '@react-native-drivekit/core';
+
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
 import type { WithDefault } from 'react-native/Libraries/Types/CodegenTypes';
@@ -28,9 +31,12 @@ export interface Spec extends TurboModule {
   deleteTrip(itinId: string): Promise<boolean>;
   getTrip(itinId: string): Promise<GetTripResponse | null>;
   getTripsOrderByDateAsc(
+    synchronizationType: WithDefault<SynchronizationType, 'DEFAULT'>,
+    transportationModes: WithDefault<[TransportationMode], ['TODO']> // COMPLETE THIS ONCE NEW ARCHI IS MANAGED
+  ): Promise<GetTripsResponse | null>;
+  getTripsOrderByDateDesc(
     synchronizationType: WithDefault<'default' | 'cache', 'default'>
   ): Promise<GetTripsResponse | null>;
-  // TODO same for desc
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('DriverData');

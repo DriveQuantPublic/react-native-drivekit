@@ -23,6 +23,10 @@ import type {
   CrashFeedback,
   TripMetadata,
 } from '@react-native-drivekit/trip-analysis';
+import type {
+  SynchronizationType,
+  TransportationMode,
+} from '@react-native-drivekit/core';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
@@ -583,7 +587,8 @@ const App = () => {
           title={'Get trips'}
           onPress={async () => {
             const result = await DriveKitDriverData.getTripsOrderByDateAsc();
-            //const result = await DriveKitDriverData.getTripsOrderByDateAsc();
+            //const result = await DriveKitDriverData.getTripsOrderByDateDesc();
+            console.log('-------------------');
             console.log(result);
           }}
         />
