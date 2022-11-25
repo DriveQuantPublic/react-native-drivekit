@@ -397,7 +397,7 @@ extension TripStatistics {
 }
 
 extension DriveKitDBTripAccessModule.Route {
-    private func toDict() -> [String: Any] {
+    func toDict() -> [String: Any] {
         return [
             "callIndex": callIndex as Any,
             "callTime": callTime as Any,
@@ -410,9 +410,5 @@ extension DriveKitDBTripAccessModule.Route {
             "speedingIndex": speedingIndex as Any,
             "speedingTime":speedingTime as Any
         ]
-    }
-
-    func toJson() -> String? {
-        return toDict().toJSONString()
     }
 }

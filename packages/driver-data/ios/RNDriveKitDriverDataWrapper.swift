@@ -64,7 +64,7 @@ class RNDriveKitDriverDataWrapper: NSObject {
 
     @objc internal func getRoute(itinId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         DriveKitDriverData.shared.getRoute(itinId: itinId, completionHandler: { route in
-            resolve(route?.toJson())
+            resolve(route?.toDict())
         })
     }
 }

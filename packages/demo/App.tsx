@@ -594,7 +594,7 @@ const App = () => {
           onPress={async () => {
             const result = await DriveKitDriverData.getRoute('TRIP_ID_HERE');
             Alert.alert(
-              result ? 'Route received' + result : 'Route not received',
+              result ? 'Route received' + result.itinId : 'Route not received',
             );
             console.log(result);
           }}
