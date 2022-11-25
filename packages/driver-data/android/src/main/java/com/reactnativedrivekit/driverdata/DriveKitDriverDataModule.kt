@@ -1,12 +1,11 @@
 package com.reactnativedrivekit.driverdata
 
 import com.drivequant.drivekit.core.SynchronizationType
+import com.drivequant.drivekit.databaseutils.entity.Route
 import com.drivequant.drivekit.databaseutils.entity.TransportationMode
 import com.drivequant.drivekit.databaseutils.entity.Trip
 import com.drivequant.drivekit.driverdata.DriveKitDriverData
-import com.drivequant.drivekit.driverdata.trip.TripDeleteQueryListener
-import com.drivequant.drivekit.driverdata.trip.TripsQueryListener
-import com.drivequant.drivekit.driverdata.trip.TripsSyncStatus
+import com.drivequant.drivekit.driverdata.trip.*
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
@@ -30,6 +29,19 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
     DriveKitDriverData.deleteTrip(itinId, object : TripDeleteQueryListener {
       override fun onResponse(status: Boolean) {
         promise.resolve(status)
+      }
+    })
+  }
+
+  @ReactMethod
+  override fun getRoute(itinId: String, promise: Promise) {
+    DriveKitDriverData.getRoute(itinId, object: RouteQueryListener {
+      override fun onResponse(status: RouteStatus, route: Route?) {
+        if (status == RouteStatus.NO_ERROR) {
+          promise.resolve(route?.let { RouteMappers.mapRouteToReadableMap(it) })
+        } else {
+          promise.resolve(null)
+        }
       }
     })
   }
