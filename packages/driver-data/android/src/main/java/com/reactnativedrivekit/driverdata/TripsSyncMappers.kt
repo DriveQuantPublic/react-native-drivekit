@@ -46,7 +46,20 @@ object TripsSyncMappers {
     map.putMap("tireWear", tireWear?.toReadableMap())
     map.putMap("driverDistraction", driverDistraction?.toReadableMap())
     map.putMap("logbook", logbook?.toReadableMap(backendDateFormat))
-
+    map.putMap("pollutants", pollutants?.toReadableMap())
+    map.putMap("declaredTransportationMode", declaredTransportationMode?.toReadableMap())
+    map.putMap("maneuver", maneuverData?.toReadableMap())
+    map.putMap("evaluation", evaluationData?.toReadableMap())
+    map.putMap("speedingStatistics", speedingStatistics?.toReadableMap())
+    map.putArray("tripAdvices", tripAdvices.convertTripAdvicestoReadableArray())
+    map.putArray("fuelEstimationContexts", fuelEstimationDrivingContexts.convertFestDrivingContextstoReadableArray())
+    map.putArray("ecoDrivingContexts", ecoDrivingContexts.convertToReadableArray())
+    map.putArray("safetyContexts", safetyContexts.convertSafetyContextsToReadableArray())
+    map.putArray("safetyEvents", safetyEvents?.convertSafetyEventsToReadableArray())
+    map.putArray("calls", calls?.convertCallsToReadableArray())
+    map.putArray("speedLimitContexts", speedLimitContexts?.convertSpeedLimitContextsToReadableArray())
+    map.putArray("advancedEnergyEstimations", advancedEnergyEstimations?.convertAdvancedEnergyEstimationToReadableArray())
+    map.putMap("advancedEnergyEstimations", energyEstimation?.toReadableMap())
     return map
   }
 
@@ -209,6 +222,271 @@ object TripsSyncMappers {
       map
     }
   }
+
+  private fun Pollutants?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putDouble("co", co)
+      map.putDouble("hc", hc)
+      map.putDouble("nox", nox)
+      map.putDouble("soot", soot)
+      map
+    }
+  }
+
+  private fun DeclaredTransportationMode?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putString("comment", comment)
+      passenger?.let {
+        map.putBoolean("passenger", it)
+      }
+      transportationMode?.let {
+        map.putInt("transportationMode", it.value)
+      }
+      map
+    }
+  }
+
+  private fun ManeuverData?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      nbAngledParkings?.let {
+        map.putInt("nbAngledParkings", it)
+      }
+      nbBayParkings?.let {
+        map.putInt("nbBayParkings", it)
+      }
+      nbCurveReverseDrivings?.let {
+        map.putInt("nbCurveReverseDrivings", it)
+      }
+      nbEmergencyStops?.let {
+        map.putInt("nbEmergencyStops", it)
+      }
+      nbHillStarts?.let {
+        map.putInt("nbHillStarts", it)
+      }
+      nbParallelParkings?.let {
+        map.putInt("nbParallelParkings", it)
+      }
+      nbRoundAbouts?.let {
+        map.putInt("nbRoundAbouts", it)
+      }
+      nbStraightReverseDrivings?.let {
+        map.putInt("nbStraightReverseDrivings", it)
+      }
+      nbTurns?.let {
+        map.putInt("nbTurns", it)
+      }
+      map
+    }
+  }
+
+  private fun EvaluationData?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      comment?.let {
+        map.putString("comment", it)
+      }
+      evaluation?.let {
+        map.putInt("evaluation", it)
+      }
+      map
+    }
+  }
+
+  private fun SpeedingStatistics?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putInt("distance", distance)
+      map.putInt("duration", duration)
+      map.putDouble("score", score)
+      map.putInt("speedingDistance", speedingDistance)
+      map.putInt("speedingDuration", speedingDuration)
+      map
+    }
+  }
+
+  private fun List<TripAdvice>.convertTripAdvicestoReadableArray(): ReadableArray {
+    val array = Arguments.createArray()
+    this.forEach {
+      val map = Arguments.createMap()
+      it.comment?.let {
+        map.putString("comment", it)
+      }
+      map.putInt("evaluation", it.evaluation)
+      map.putInt("feedback", it.feedback)
+      it.id?.let { id ->
+        map.putString("id", id)
+      }
+      it.message?.let { message ->
+        map.putString("message", message)
+      }
+      it.messageId?.let { messageId ->
+        map.putString("messageId", messageId)
+      }
+      it.theme?.let { theme ->
+        map.putString("theme", theme)
+      }
+      it.title?.let { title ->
+        map.putString("title", title)
+      }
+      array.pushMap(map)
+    }
+    return array
+  }
+
+  private fun List<FuelEstimationDrivingContext>.convertFestDrivingContextstoReadableArray(): ReadableArray {
+    val array = Arguments.createArray()
+    this.forEach {
+      val map = Arguments.createMap()
+      map.putDouble("co2Emission", it.co2Emission)
+      map.putDouble("co2Mass", it.co2Mass)
+      map.putInt("contextId", it.contextId)
+      map.putDouble("distance", it.distance)
+      map.putDouble("duration", it.duration)
+      map.putDouble("fuelConsumption", it.fuelConsumption)
+      map.putDouble("fuelVolume", it.fuelVolume)
+      array.pushMap(map)
+    }
+    return array
+  }
+
+  private fun List<EcoDrivingContext>.convertToReadableArray(): ReadableArray {
+    val array = Arguments.createArray()
+    this.forEach {
+      val map = Arguments.createMap()
+      map.putInt("contextId", it.contextId)
+      map.putDouble("distance", it.distance)
+      map.putDouble("duration", it.duration)
+      map.putDouble("efficiencyScore", it.efficiencyScore)
+      map.putDouble("scoreAccel", it.scoreAccel)
+      map.putDouble("scoreDecel", it.scoreDecel)
+      map.putDouble("scoreMain", it.scoreMain)
+      array.pushMap(map)
+    }
+    return array
+  }
+
+  private fun List<SafetyContext>.convertSafetyContextsToReadableArray(): ReadableArray {
+    val array = Arguments.createArray()
+    this.forEach {
+      val map = Arguments.createMap()
+      map.putInt("contextId", it.contextId)
+      map.putDouble("distance", it.distance)
+      map.putDouble("duration", it.duration)
+      map.putInt("nbAccel", it.nbAccel)
+      map.putInt("nbAccelCrit", it.nbAccelCrit)
+      map.putInt("nbAdh", it.nbAdh)
+      map.putInt("nbAdhCrit", it.nbAdhCrit)
+      map.putInt("nbDecel", it.nbDecel)
+      map.putInt("nbDecelCrit", it.nbDecelCrit)
+      map.putDouble("safetyScore", it.safetyScore)
+      array.pushMap(map)
+    }
+    return array
+  }
+
+  private fun List<SafetyEvent>.convertSafetyEventsToReadableArray(): ReadableArray {
+    val array = Arguments.createArray()
+    this.forEach {
+      val map = Arguments.createMap()
+      map.putDouble("distance", it.distance)
+      map.putDouble("elevation", it.elevation)
+      map.putDouble("heading", it.heading)
+      map.putDouble("latitude", it.latitude)
+      map.putDouble("longitude", it.longitude)
+      map.putInt("level", it.level)
+      map.putDouble("time", it.time)
+      map.putInt("type", it.type)
+      map.putDouble("value", it.value)
+      map.putDouble("velocity", it.velocity)
+      array.pushMap(map)
+    }
+    return array
+  }
+
+  private fun List<Call>.convertCallsToReadableArray(): ReadableArray {
+    val array = Arguments.createArray()
+    this.forEach {
+      val map = Arguments.createMap()
+      it.audioInput?.let { audioInput ->
+        map.putString("audioInput", audioInput)
+      }
+      it.audioName?.let { audioName ->
+        map.putString("audioName", audioName)
+      }
+      map.putString("audioSystem", it.audioSystem.name) // TODO verify with iOS
+      map.putInt("bluetoothClass", it.bluetoothClass)
+      map.putInt("distance", it.distance)
+      map.putInt("distancePercent", it.distancePercent)
+      map.putInt("duration", it.duration)
+      map.putInt("durationPercent", it.durationPercent)
+      map.putDouble("end", it.end)
+      map.putBoolean("isForbidden", it.isForbidden)
+      map.putDouble("start", it.start)
+      map.putString("type", it.type.name) // TODO verify with iOS
+
+      array.pushMap(map)
+    }
+    return array
+  }
+
+  private fun List<SpeedLimitContext>.convertSpeedLimitContextsToReadableArray(): ReadableArray {
+    val array = Arguments.createArray()
+    this.forEach {
+      val map = Arguments.createMap()
+      map.putInt("distance", it.distance)
+      map.putInt("duration", it.duration)
+      map.putDouble("score", it.score)
+      map.putInt("speedLimit", it.speedLimit)
+      map.putInt("speedingDistance", it.speedingDistance)
+      map.putInt("speedingDuration", it.speedingDuration)
+      array.pushMap(map)
+    }
+    return array
+  }
+
+  private fun List<AdvancedEnergyEstimation>.convertAdvancedEnergyEstimationToReadableArray(): ReadableArray {
+    val array = Arguments.createArray()
+    this.forEach {
+      val map = Arguments.createMap()
+      map.putInt("contextId", it.contextId)
+      map.putDouble("distance", it.distance)
+      map.putDouble("duration", it.duration)
+      map.putDouble("energy", it.energy)
+      map.putDouble("energyConsumption", it.energyConsumption)
+      map.putDouble("energyOpti", it.energyOpti)
+      map.putDouble("energyOptiConsumption", it.energyOptiConsumption)
+      array.pushMap(map)
+    }
+    return array
+  }
+
+  private fun EnergyEstimation?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putDouble("energy", energy)
+      map.putDouble("energyConsumption", energyConsumption)
+      map.putDouble("energyOpti", energyOpti)
+      map.putDouble("energyOptiConsumption", energyOptiConsumption)
+      map
+    }
+  }
+
+
   /*
   private data class TripObject(
     val itinId: String, // OK
@@ -230,7 +508,6 @@ object TripsSyncMappers {
     var tireWear: TireWear?, // OK
     var driverDistraction: DriverDistraction?, // OK
     var logbook: Logbook?, // OK updateDate à passer en string
-
     var pollutants: Pollutants?, // OK
     var declaredTransportationMode: DeclaredTransportationMode?, // OK
     var maneuverData: ManeuverData?, // OK renommer en maneuver
