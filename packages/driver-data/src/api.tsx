@@ -1,5 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
-import type { GetTripsResponse } from './NativeDriverData';
+import type { GetTripsResponse, Route } from './NativeDriverData';
 
 const LINKING_ERROR =
   `The package '@react-native-drivekit/driver-data' doesn't seem to be linked. Make sure: \n\n` +
@@ -31,6 +31,10 @@ export function reset(): Promise<void> {
 
 export function deleteTrip(itinId: string): Promise<boolean> {
   return DriveKitDriverData.deleteTrip(itinId);
+}
+
+export function getRoute(itinId: string): Promise<Route | null> {
+  return DriveKitDriverData.getRoute(itinId);
 }
 
 export function getTripsOrderByDateAsc(
