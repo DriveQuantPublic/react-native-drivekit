@@ -117,7 +117,7 @@ To get road data of the trip (latitude, longitude), you have to call the followi
 getRoute(itinId: string): Promise<Route>
 ```
 
-If `route` value in completionHandler is `null` , the synchronization has failed.
+If `route` value in the callback is `null`, the synchronization has failed.
 
 Example:
 
