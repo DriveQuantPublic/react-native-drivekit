@@ -10,8 +10,10 @@
     "packages/*"
   ],
   "devDependencies": {
-    "lerna": "^6.0.3",
-    "@arkweid/lefthook": "^0.7.7"
+    "@arkweid/lefthook": "^0.7.7",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "lerna": "^6.0.3"
   },
   "scripts": {
     "postinstall": "patch-package",
