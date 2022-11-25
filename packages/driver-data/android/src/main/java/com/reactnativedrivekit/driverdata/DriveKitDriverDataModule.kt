@@ -5,6 +5,7 @@ import com.drivequant.drivekit.databaseutils.entity.TransportationMode
 import com.drivequant.drivekit.databaseutils.entity.Trip
 import com.drivequant.drivekit.driverdata.DriveKitDriverData
 import com.drivequant.drivekit.driverdata.trip.TripDeleteQueryListener
+import com.drivequant.drivekit.driverdata.trip.TripQueryListener
 import com.drivequant.drivekit.driverdata.trip.TripsQueryListener
 import com.drivequant.drivekit.driverdata.trip.TripsSyncStatus
 import com.facebook.react.bridge.Promise
@@ -33,6 +34,18 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
       }
     })
   }
+
+  @ReactMethod
+  override fun getTrip(itinId: String, promise: Promise) {
+    DriveKitDriverData.getTrip(itinId, object: TripQueryListener {
+      override fun onResponse(status: TripsSyncStatus, trip: Trip?) {
+        promise.resolve(status)
+        val readableMap = trip?.let { TripSyncMappers.mapTripsSyncToReadableMap(status, it) }
+        promise.resolve(readableMap)
+      }
+    })
+  }
+
 
   @ReactMethod
   override fun getTripsOrderByDateAsc(

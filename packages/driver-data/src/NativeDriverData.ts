@@ -7,6 +7,11 @@ export type GetTripsResponse = {
   trips: [Trip];
 };
 
+export type GetTripResponse = {
+  status: TripSyncStatus;
+  trip: Trip;
+};
+
 export enum TripSyncStatus {
   NO_ERROR = 'NO_ERROR',
   CACHE_DATA_ONLY = 'CACHE_DATA_ONLY',
@@ -21,9 +26,10 @@ export type Trip = {
 export interface Spec extends TurboModule {
   reset(): Promise<void>;
   deleteTrip(itinId: string): Promise<boolean>;
+  getTrip(itinId: string): Promise<GetTripResponse | null>;
   getTripsOrderByDateAsc(
     synchronizationType: WithDefault<'default' | 'cache', 'default'>
-  ): Promise<Trip | null>;
+  ): Promise<GetTripsResponse | null>;
   // TODO same for desc
 }
 
