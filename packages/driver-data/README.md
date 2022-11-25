@@ -82,8 +82,9 @@ Call `initialize` method in your `AppDelegate.mm`.
 
 | Method                                                                | Return Type         | iOS | Android |
 | --------------------------------------------------------------------- | ------------------- | :-: | :-----: |
-| [reset()](#deleteTrip)                                                | `Promise<void>`     | ✅  |   ✅    |
-| [deleteTrip()](#reset)                                                | `Promise<boolean>`  | ✅  |   ✅    |
+| [reset()](#reset)                                                     | `Promise<void>`     | ✅  |   ✅    |
+| [getRoute()](#getRoute)                                               | `Promise<Route>`    | ✅  |   ✅    |
+| [deleteTrip()](#deleteTrip)                                           | `Promise<boolean>`  | ✅  |   ✅    |
 
 ### reset
 
@@ -107,6 +108,22 @@ All data saved locally by DriveKit will be erased.
 > ⚠️
 >
 > Make sure that you call reset method of all modules to fully reset DriveKit configuration.
+
+### getRoute
+
+To get road data of the trip (latitude, longitude), you have to call the following method::
+
+```typescript
+getRoute(itinId: string): Promise<Route>
+```
+
+If `route` value in completionHandler is `null` , the synchronization has failed.
+
+Example:
+
+```typescript
+const route = await getRoute('TRIP_ID_HERE');
+```
 
 ### deleteTrip
 
