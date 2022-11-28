@@ -584,6 +584,12 @@ const App = () => {
           onPress={async () => {
             const result = await DriveKitDriverData.getTripsOrderByDateAsc();
             //const result = await DriveKitDriverData.getTripsOrderByDateDesc();
+            Alert.alert(
+              result?.status === 'NO_ERROR' ||
+                result?.status === 'CACHE_DATA_ONLY'
+                ? 'Trips sync OK, count = ' + result.trips.length
+                : 'Trips sync not OK :' + result?.status,
+            );
           }}
         />
 
