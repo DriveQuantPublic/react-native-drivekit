@@ -599,9 +599,13 @@ const App = () => {
           onPress={async () => {
             const result = await DriveKitDriverData.getTrip('TRIP_ID_HERE');
             Alert.alert(
-              result
-                ? 'Trip received ' + result.trip.itinId
-                : 'Trip not received',
+              result?.status === 'NO_ERROR' ||
+                result?.status === 'CACHE_DATA_ONLY'
+                ? 'Trip received from ' +
+                    result.trip.departureCity +
+                    ' to ' +
+                    result.trip.arrivalCity
+                : 'Trip not received ' + result?.status,
             );
           }}
         />
