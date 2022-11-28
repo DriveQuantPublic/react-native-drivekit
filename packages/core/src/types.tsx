@@ -53,26 +53,27 @@ export type Trip = {
   metadata: Record<string, string> | null;
   unscored: boolean;
   advancedEnergyEstimation: AdvancedEnergyEstimation[];
-  brakeWear: BrakeWear;
+  brakeWear: BrakeWear | null;
   calls: Call[];
-  declaredTransportationMode: DeclaredTransportationMode;
-  driverDistraction: DriverDistraction;
-  ecoDriving: EcoDriving;
+  declaredTransportationMode: DeclaredTransportationMode | null;
+  driverDistraction: DriverDistraction | null;
+  ecoDriving: EcoDriving | null;
   ecoDrivingContexts: EcoDrivingContext[];
-  energyEstimation: EnergyEstimation;
-  evaluation: Evaluation;
-  fuelEstimation: FuelEstimation;
+  energyEstimation: EnergyEstimation | null;
+  evaluation: Evaluation | null;
+  fuelEstimation: FuelEstimation | null;
   fuelEstimationContexts: FuelEstimationContext[];
-  logbook: Logbook;
-  pollutants: Pollutants;
-  safety: Safety;
+  logbook: Logbook | null;
+  maneuver: Maneuver | null;
+  pollutants: Pollutants | null;
+  safety: Safety | null;
   safetyContexts: SafetyContext[];
   safetyEvents: SafetyEvents;
-  speedingStatistics: SpeedingStatistics;
+  speedingStatistics: SpeedingStatistics | null;
   speedLimitContexts: SpeedLimitContext[];
-  tireWear: TireWear;
+  tireWear: TireWear | null;
   tripAdvices: TripAdvice[];
-  tripStatistics: TripStatistics;
+  tripStatistics: TripStatistics | null;
 };
 
 export type AdvancedEnergyEstimation = {
@@ -161,7 +162,7 @@ export type EnergyEstimation = {
 
 export type Evaluation = {
   comment: string;
-  evaluation: string;
+  evaluation: number;
 };
 
 export type FuelEstimation = {
