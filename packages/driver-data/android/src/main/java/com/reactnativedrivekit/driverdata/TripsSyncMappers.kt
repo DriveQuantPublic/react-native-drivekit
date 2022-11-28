@@ -59,7 +59,7 @@ object TripsSyncMappers {
     map.putArray("calls", calls?.convertCallsToReadableArray())
     map.putArray("speedLimitContexts", speedLimitContexts?.convertSpeedLimitContextsToReadableArray())
     map.putArray("advancedEnergyEstimations", advancedEnergyEstimations?.convertAdvancedEnergyEstimationToReadableArray())
-    map.putMap("advancedEnergyEstimations", energyEstimation?.toReadableMap())
+    map.putMap("energyEstimation", energyEstimation?.toReadableMap())
     return map
   }
 
@@ -426,7 +426,10 @@ object TripsSyncMappers {
       it.audioName?.let { audioName ->
         map.putString("audioName", audioName)
       }
-      map.putString("audioSystem", it.audioSystem.name) // TODO verify with iOS
+      it.audioOutput?.let { audioOutput ->
+        map.putString("audioOutput", audioOutput)
+      }
+      map.putString("audioSystem", it.audioSystem.name)
       map.putInt("bluetoothClass", it.bluetoothClass)
       map.putInt("distance", it.distance)
       map.putInt("distancePercent", it.distancePercent)
@@ -435,7 +438,7 @@ object TripsSyncMappers {
       map.putDouble("end", it.end)
       map.putBoolean("isForbidden", it.isForbidden)
       map.putDouble("start", it.start)
-      map.putString("type", it.type.name) // TODO verify with iOS
+      map.putString("type", it.type.name)
 
       array.pushMap(map)
     }
@@ -457,20 +460,24 @@ object TripsSyncMappers {
     return array
   }
 
-  private fun List<AdvancedEnergyEstimation>.convertAdvancedEnergyEstimationToReadableArray(): ReadableArray {
-    val array = Arguments.createArray()
-    this.forEach {
-      val map = Arguments.createMap()
-      map.putInt("contextId", it.contextId)
-      map.putDouble("distance", it.distance)
-      map.putDouble("duration", it.duration)
-      map.putDouble("energy", it.energy)
-      map.putDouble("energyConsumption", it.energyConsumption)
-      map.putDouble("energyOpti", it.energyOpti)
-      map.putDouble("energyOptiConsumption", it.energyOptiConsumption)
-      array.pushMap(map)
+  private fun List<AdvancedEnergyEstimation>?.convertAdvancedEnergyEstimationToReadableArray(): ReadableArray? {
+    return if (this == null) {
+      null
+    } else {
+      val array = Arguments.createArray()
+      this.forEach {
+        val map = Arguments.createMap()
+        map.putInt("contextId", it.contextId)
+        map.putDouble("distance", it.distance)
+        map.putDouble("duration", it.duration)
+        map.putDouble("energy", it.energy)
+        map.putDouble("energyConsumption", it.energyConsumption)
+        map.putDouble("energyOpti", it.energyOpti)
+        map.putDouble("energyOptiConsumption", it.energyOptiConsumption)
+        array.pushMap(map)
+      }
+      array
     }
-    return array
   }
 
   private fun EnergyEstimation?.toReadableMap(): ReadableMap? {
@@ -485,44 +492,6 @@ object TripsSyncMappers {
       map
     }
   }
-
-
-  /*
-  private data class TripObject(
-    val itinId: String, // OK
-    var endDate: Date, // OK --> à convertir en String
-    var startDate: Date?, // OK --> à convertir en String
-    var vehicleId : String?, // OK
-    var transportationMode: TransportationMode, // à convertir en int
-    var departureCity: String, // OK
-    var arrivalCity: String, // OK
-    var departureAddress: String, // OK
-    var arrivalAddress: String, // OK
-    var unscored: Boolean, // OK
-    var metaData: Map<String,String>, // OK --> Write
-    var tripStatistics: TripStatistics?, //
-    var brakeWear: BrakeWear?, // OK
-    var ecoDriving: EcoDriving?, // OK
-    var fuelEstimation: FuelEstimation?, // OK
-    var safety: Safety?, // OK
-    var tireWear: TireWear?, // OK
-    var driverDistraction: DriverDistraction?, // OK
-    var logbook: Logbook?, // OK updateDate à passer en string
-    var pollutants: Pollutants?, // OK
-    var declaredTransportationMode: DeclaredTransportationMode?, // OK
-    var maneuverData: ManeuverData?, // OK renommer en maneuver
-    var evaluationData: EvaluationData?, // OK renommer en evaluation
-    var speedingStatistics: SpeedingStatistics?, // OK
-    var tripAdvices: List<TripAdvice>, // OK
-    var fuelEstimationDrivingContexts: List<FuelEstimationDrivingContext>, // OK renommer en fuelEstimationContexts (retirer itinId)
-    var ecoDrivingContexts: List<EcoDrivingContext>, // OK retirer itinId
-    var safetyContexts: List<SafetyContext>, // OK
-    var safetyEvents: List<SafetyEvent>?, // OK
-    var calls: List<Call>?, // OK
-    var speedLimitContexts: List<SpeedLimitContext>?, // OK
-    var advancedEnergyEstimations: List<AdvancedEnergyEstimation>?, // OK transformer en readblearray
-    var energyEstimation: EnergyEstimation? // OK
-  )*/
 }
 
 object TripSyncMappers {

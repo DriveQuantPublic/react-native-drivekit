@@ -44,17 +44,17 @@ export type Trip = {
   itinId: string;
   endDate: string;
   startDate: string;
-  vehicleId: string;
+  vehicleId: string | null;
   transportationMode: number;
-  departureCity: string;
-  arrivalCity: string;
-  departureAddress: string;
-  arrivalAddress: string;
+  departureCity: string | null;
+  arrivalCity: string | null;
+  departureAddress: string | null;
+  arrivalAddress: string | null;
   metadata: Record<string, string> | null;
   unscored: boolean;
-  advancedEnergyEstimation: AdvancedEnergyEstimation[];
+  advancedEnergyEstimations: AdvancedEnergyEstimation[] | null;
   brakeWear: BrakeWear | null;
-  calls: Call[];
+  calls: Call[] | null;
   declaredTransportationMode: DeclaredTransportationMode | null;
   driverDistraction: DriverDistraction | null;
   ecoDriving: EcoDriving | null;
@@ -68,9 +68,9 @@ export type Trip = {
   pollutants: Pollutants | null;
   safety: Safety | null;
   safetyContexts: SafetyContext[];
-  safetyEvents: SafetyEvents;
+  safetyEvents: SafetyEvents | null;
   speedingStatistics: SpeedingStatistics | null;
-  speedLimitContexts: SpeedLimitContext[];
+  speedLimitContexts: SpeedLimitContext[] | null;
   tireWear: TireWear | null;
   tripAdvices: TripAdvice[];
   tripStatistics: TripStatistics | null;
@@ -100,10 +100,10 @@ export type BrakeWear = {
 };
 
 export type Call = {
-  audioName: string;
-  audioInput: string;
-  audioOutput: string;
-  audioSystemValue: string;
+  audioName: string | null;
+  audioInput: string | null;
+  audioOutput: string | null;
+  audioSystem: string;
   bluetoothClass: number;
   distance: number;
   distancePercent: number;
@@ -112,12 +112,12 @@ export type Call = {
   id: number;
   isForbidden: boolean;
   start: number;
-  typeValue: string;
+  type: string;
 };
 
 export type DeclaredTransportationMode = {
-  comment: string;
-  passenger: boolean;
+  comment: string | null;
+  passenger: boolean | null;
   transportationMode: number;
 };
 
@@ -161,7 +161,7 @@ export type EnergyEstimation = {
 };
 
 export type Evaluation = {
-  comment: string;
+  comment: string | null;
   evaluation: number;
 };
 
@@ -182,7 +182,7 @@ export type FuelEstimation = {
 export type FuelEstimationContext = {
   co2Mass: number;
   co2Emission: number;
-  contextId: string;
+  contextId: number;
   fuelConsumption: number;
   fuelVolume: number;
   distance: number;
@@ -191,7 +191,7 @@ export type FuelEstimationContext = {
 
 export type Logbook = {
   status: number;
-  updateDate: string;
+  updateDate: string | null;
 };
 
 export type Maneuver = {
@@ -224,7 +224,7 @@ export type Safety = {
 };
 
 export type SafetyContext = {
-  contextId: string;
+  contextId: number;
   distance: number;
   duration: number;
   nbAdh: number;
@@ -280,14 +280,14 @@ export type TireWear = {
 };
 
 export type TripAdvice = {
-  comment: string;
+  comment: string | null;
   evaluation: number;
   feedback: number;
-  id: string;
-  message: string;
-  messageId: string;
-  theme: string;
-  title: string;
+  id: string | null;
+  message: string | null;
+  messageId: string | null;
+  theme: string | null;
+  title: string | null;
 };
 
 export type TripStatistics = {
