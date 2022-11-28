@@ -5,6 +5,7 @@ import com.drivequant.drivekit.driverdata.trip.TripsSyncStatus
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
+import com.reactnativedrivekit.driverdata.TripsSyncMappers.toReadableMap
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,7 +24,7 @@ object TripsSyncMappers {
     return root
   }
 
-  private fun Trip.toReadableMap(): ReadableMap {
+  internal fun Trip.toReadableMap(): ReadableMap {
     val map = Arguments.createMap()
     val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
 
@@ -529,11 +530,7 @@ object TripSyncMappers {
   fun mapTripsSyncToReadableMap(status: TripsSyncStatus, trip: Trip): ReadableMap? {
     val map = Arguments.createMap()
     map.putString("status", status.name)
-    // TODO: replace the code below once the function to convert Trip into map is working
-    // map.putMap("trip", trip.toTripObject())
-    val tripMap = Arguments.createMap()
-    tripMap.putString("itinId", trip.itinId)
-    map.putMap("trip", tripMap)
+    map.putMap("trip", trip.toReadableMap())
     return map
   }
 }
