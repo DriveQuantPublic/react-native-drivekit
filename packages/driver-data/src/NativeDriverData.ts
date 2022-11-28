@@ -1,5 +1,5 @@
 import type { TransportationMode } from './../../core/src/types/trip';
-import type { SynchronizationType } from '@react-native-drivekit/core';
+import type { Trip, SynchronizationType } from '@react-native-drivekit/core';
 
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
@@ -21,10 +21,6 @@ export enum TripSyncStatus {
   FAILED_TO_SYNC_TRIPS_CACHE_ONLY = 'FAILED_TO_SYNC_TRIPS_CACHE_ONLY',
   FAILED_TO_SYNC_SAFETY_EVENTS = 'FAILED_TO_SYNC_SAFETY_EVENTS',
 }
-
-export type Trip = {
-  itinId: string;
-};
 
 export interface Spec extends TurboModule {
   reset(): Promise<void>;
