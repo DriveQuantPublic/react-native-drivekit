@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface AwesomeLibraryExampleTests : XCTestCase
+@interface DriveKitRNDemoAppTests : XCTestCase
 
 @end
 
-@implementation AwesomeLibraryExampleTests
+@implementation DriveKitRNDemoAppTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

@@ -1,4 +1,4 @@
-package com.awesomelibraryexample.newarchitecture.modules;
+package com.drivekit.drivekitrndemoapp.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

@@ -1,4 +1,4 @@
-package com.awesomelibraryexample.newarchitecture.components;
+package com.drivekit.drivekitrndemoapp.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

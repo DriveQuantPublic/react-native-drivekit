@@ -1,4 +1,4 @@
-package com.awesomelibraryexample.newarchitecture;
+package com.drivekit.drivekitrndemoapp.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.awesomelibraryexample.BuildConfig;
-import com.awesomelibraryexample.newarchitecture.components.MainComponentsRegistry;
-import com.awesomelibraryexample.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.drivekit.drivekitrndemoapp.BuildConfig;
+import com.drivekit.drivekitrndemoapp.newarchitecture.components.MainComponentsRegistry;
+import com.drivekit.drivekitrndemoapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
