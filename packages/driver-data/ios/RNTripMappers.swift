@@ -73,7 +73,7 @@ extension Trip {
             "transportationMode": transportationMode as Any,
             "unscored": unscored as Any,
             "vehicleId": vehicleId as Any,
-            "advancedEnergyEstimation": advancedEnergyEstimation?.allObjects.map{($0 as? DBAdvancedEnergyEstimation)?.toDict()} as Any,
+            "advancedEnergyEstimations": advancedEnergyEstimation?.allObjects.map{($0 as? DBAdvancedEnergyEstimation)?.toDict()} as Any,
             "brakeWear": brakeWear?.toDict() as Any,
             "calls": calls?.allObjects.map{($0 as? Call)?.toDict()} as Any,
             "declaredTransportationMode": declaredTransportationMode?.toDict() as Any,
@@ -133,7 +133,7 @@ extension Call {
             "audioName": audioName as Any,
             "audioInput": audioInput as Any,
             "audioOutput": audioOutput as Any,
-            "audioSystemValue": audioSystemValue as Any,
+            "audioSystem": audioSystemValue as Any,
             "bluetoothClass": bluetoothClass as Any,
             "distance": distance as Any,
             "distancePercent": distancePercent as Any,
@@ -142,7 +142,7 @@ extension Call {
             "id": id as Any,
             "isForbidden": isForbidden as Any,
             "start": start as Any,
-            "typeValue": typeValue as Any
+            "type": typeValue as Any
         ]
     }
 }
