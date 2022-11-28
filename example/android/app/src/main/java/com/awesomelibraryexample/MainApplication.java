@@ -2,6 +2,10 @@ package com.awesomelibraryexample;
 
 import android.app.Application;
 import android.content.Context;
+import com.reactnativedrivekit.driverdata.DriveKitDriverDataModule;
+import com.reactnativedrivekitcore.DriveKitCoreModule;
+import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
+import com.reactnativedrivekittripanalysis.RNTripNotification;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -52,6 +56,16 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    DriveKitCoreModule.Companion.initialize(this);
+    RNTripNotification tripNotification = new RNTripNotification(
+            "DriveKit SDK",
+            "Start a trip with DriveKit SDK",
+            R.drawable.common_google_signin_btn_icon_dark);
+    DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
+    DriveKitTripAnalysisModule.Companion.registerReceiver(this);
+
+    DriveKitDriverDataModule.Companion.initialize();
+
     // If you opted-in for the New Architecture, we enable the TurboModule system
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);

@@ -3,19 +3,26 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "pods": "cd ios && bundle exec pod install && cd ..",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "pods": "pod-install --quiet"
+    "typescript": "tsc -p tsconfig.json --noEmit --pretty",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "postinstall": "patch-package"
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.14",
     "react": "18.1.0",
-    "react-native": "0.70.6"
+    "react-native": "0.70.6",
+    "react-native-battery-optimization-check": "^1.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
+    "babel-plugin-module-resolver": "^4.1.0",
     "metro-react-native-babel-preset": "0.72.3",
-    "babel-plugin-module-resolver": "^4.1.0"
+    "patch-package": "^6.5.0",
+    "postinstall-postinstall": "^2.1.0"
   }
 }
