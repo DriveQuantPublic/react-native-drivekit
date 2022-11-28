@@ -31,7 +31,7 @@ export interface Spec extends TurboModule {
   getTrip(itinId: string): Promise<GetTripResponse | null>;
   getTripsOrderByDateAsc(
     synchronizationType: WithDefault<SynchronizationType, 'DEFAULT'>,
-    transportationModes: WithDefault<[TransportationMode], ['TODO']> // COMPLETE THIS ONCE NEW ARCHI IS MANAGED
+    transportationModes: WithDefault<[TransportationMode], ['CAR']> // TODO CHANGE THIS ONCE NEW ARCHI IS MANAGED
   ): Promise<GetTripsResponse | null>;
   getTripsOrderByDateDesc(
     synchronizationType: WithDefault<'default' | 'cache', 'default'>
