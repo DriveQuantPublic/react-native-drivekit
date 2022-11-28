@@ -23,10 +23,6 @@ import type {
   CrashFeedback,
   TripMetadata,
 } from '@react-native-drivekit/trip-analysis';
-import type {
-  SynchronizationType,
-  TransportationMode,
-} from '@react-native-drivekit/core';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
