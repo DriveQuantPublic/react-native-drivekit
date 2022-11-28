@@ -20,7 +20,9 @@ object TripsSyncMappers {
 
   private fun List<Trip>.toReadableArray(): ReadableArray {
     val root = Arguments.createArray()
-    root.pushMap(this[0].toReadableMap()) // TODO LOOP IS NEEDED !
+    this.forEach {
+      root.pushMap(it.toReadableMap())
+    }
     return root
   }
 
