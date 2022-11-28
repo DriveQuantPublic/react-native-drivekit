@@ -321,8 +321,8 @@ object TripsSyncMappers {
     val array = Arguments.createArray()
     this.forEach {
       val map = Arguments.createMap()
-      it.comment?.let {
-        map.putString("comment", it)
+      it.comment?.let { comment ->
+        map.putString("comment", comment)
       }
       map.putInt("evaluation", it.evaluation)
       map.putInt("feedback", it.feedback)
