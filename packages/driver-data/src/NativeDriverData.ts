@@ -1,5 +1,8 @@
-import type { TransportationMode } from './../../core/src/types/trip';
-import type { Trip, SynchronizationType } from '@react-native-drivekit/core';
+import type {
+  TransportationMode,
+  Trip,
+  SynchronizationType,
+} from '@react-native-drivekit/core';
 
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
