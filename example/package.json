@@ -15,7 +15,8 @@
     "@react-native-community/checkbox": "^0.5.14",
     "react": "18.1.0",
     "react-native": "0.70.6",
-    "react-native-battery-optimization-check": "^1.0.8"
+    "react-native-battery-optimization-check": "^1.0.8",
+    "react-native-permissions": "^3.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

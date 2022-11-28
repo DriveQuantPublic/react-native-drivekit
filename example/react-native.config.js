@@ -11,8 +11,5 @@ module.exports = {
     '@react-native-drivekit/driver-data': {
       root: path.join(__dirname, '../packages/driver-data'),
     },
-    'react-native-permissions': {
-      root: path.join(__dirname, '../node_modules/react-native-permissions'),
-    },
   },
 };
