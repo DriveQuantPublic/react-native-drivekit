@@ -9,3 +9,7 @@ pre-commit:
       files: git diff --name-only @{push}
       glob: "*.{js,ts, jsx, tsx}"
       run: yarn lerna run typescript
+commit-msg:
+  scripts:
+    "commitlint.sh":
+      runner: bash
