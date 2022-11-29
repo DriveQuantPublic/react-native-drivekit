@@ -80,10 +80,63 @@ Call `initialize` method in your `AppDelegate.mm`.
 
 ## API
 
-| Method                                                                | Return Type         | iOS | Android |
-| --------------------------------------------------------------------- | ------------------- | :-: | :-----: |
-| [reset()](#deleteTrip)                                                | `Promise<void>`     | ✅  |   ✅    |
-| [deleteTrip()](#reset)                                                | `Promise<boolean>`  | ✅  |   ✅    |
+| Method                                                     | Return Type                             | iOS | Android |
+| ---------------------------------------------------------- | --------------------------------------- | :-: | :-----: |
+| [getTripsOrderByDateAsc()](#gettripsorderbydateasc)        | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
+| [getTripsOrderByDateDesc()](#gettripsorderbydatedesc)      | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
+| [getTrip()](#gettrip)                                      | `Promise<GetTripResponse \| null>`      | ✅  |   ✅    |
+| [deleteTrip()](#deletetrip)                                | `Promise<void>`                         | ✅  |   ✅    |
+| [reset()](#reset)                                          | `Promise<boolean>`                      | ✅  |   ✅    |
+
+### getTripsOrderByDateAsc
+### getTripsOrderByDateDesc
+
+```typescript
+getTripsOrderByDateAsc(
+  synchronizationType: SynchronizationType = 'DEFAULT',
+  transportationModes: TransportationMode[] = []
+): Promise<GetTripsResponse | null>
+```
+or
+```typescript
+getTripsOrderByDateDesc(
+  synchronizationType: SynchronizationType = 'DEFAULT',
+  transportationModes: TransportationMode[] = []
+): Promise<GetTripsResponse | null>
+```
+
+| GetTripsResponse    | Type             |
+| ------------------- | ---------------- |
+| `status`            | `TripSyncStatus` |
+| `trips`             | `[Trip]`         |
+
+To get driver's trips, you have to call the following method:
+
+```typescript
+const result = await getTripsOrderByDateAsc();
+```
+or
+```typescript
+const result = await getTripsOrderByDateDesc();
+```
+
+### getTrip
+
+```typescript
+getTrip(itinId: string): Promise<GetTripResponse | null>
+```
+
+| GetTripResponse     | Type             |
+| ------------------- | ---------------- |
+| `status`            | `TripSyncStatus` |
+| `trip`              | `Trip`           |
+
+To get a specific trip, you have to call the following method:
+
+```typescript
+const result = await getTrip('TRIP_ID_HERE);
+```
+
 
 ### reset
 

@@ -41,7 +41,7 @@ const App = () => {
   // ========================================
   // ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
   // ========================================
-  // DriveKit.setApiKey("")
+  //DriveKit.setApiKey('');
 
   var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
@@ -578,13 +578,44 @@ const App = () => {
           }}
         />
 
+        <Spacer factor={1} />
+        <Button
+          title={'Get trips'}
+          onPress={async () => {
+            const result = await DriveKitDriverData.getTripsOrderByDateAsc();
+            //const result = await DriveKitDriverData.getTripsOrderByDateDesc();
+            Alert.alert(
+              result?.status === 'NO_ERROR' ||
+                result?.status === 'CACHE_DATA_ONLY'
+                ? 'Trips sync OK, count = ' + result.trips.length
+                : 'Trips sync not OK :' + result?.status,
+            );
+          }}
+        />
+
+        <Spacer factor={1} />
+        <Button
+          title={'Get trip'}
+          onPress={async () => {
+            const result = await DriveKitDriverData.getTrip('TRIP_ID_HERE');
+            Alert.alert(
+              result?.status === 'NO_ERROR' ||
+                (result?.status === 'CACHE_DATA_ONLY' && result?.trip !== null)
+                ? 'Trip received from ' +
+                    result.trip?.departureCity +
+                    ' to ' +
+                    result.trip?.arrivalCity
+                : 'Trip not received ' + result?.status,
+            );
+          }}
+        />
+
         <Spacer factor={2} />
         <Text style={styles.title}>Logs</Text>
         <Spacer factor={1} />
         <Button
           title={'Compose diagnosis mail'}
           onPress={() => {
-            DriveKit.updateUserId;
             DriveKit.composeDiagnosisMail({
               recipients: [],
               bccRecipients: [],

@@ -1,4 +1,10 @@
 import { NativeModules, Platform } from 'react-native';
+import type { GetTripsResponse, GetTripResponse } from './NativeDriverData';
+
+import type {
+  SynchronizationType,
+  TransportationMode,
+} from '@react-native-drivekit/core';
 
 const LINKING_ERROR =
   `The package '@react-native-drivekit/driver-data' doesn't seem to be linked. Make sure: \n\n` +
@@ -30,4 +36,28 @@ export function reset(): Promise<void> {
 
 export function deleteTrip(itinId: string): Promise<boolean> {
   return DriveKitDriverData.deleteTrip(itinId);
+}
+
+export function getTripsOrderByDateAsc(
+  synchronizationType: SynchronizationType = 'DEFAULT',
+  transportationModes: TransportationMode[] = []
+): Promise<GetTripsResponse | null> {
+  return DriveKitDriverData.getTripsOrderByDateAsc(
+    synchronizationType,
+    transportationModes
+  );
+}
+
+export function getTripsOrderByDateDesc(
+  synchronizationType: SynchronizationType = 'DEFAULT',
+  transportationModes: TransportationMode[] = []
+): Promise<GetTripsResponse | null> {
+  return DriveKitDriverData.getTripsOrderByDateDesc(
+    synchronizationType,
+    transportationModes
+  );
+}
+
+export function getTrip(itinId: string): Promise<GetTripResponse | null> {
+  return DriveKitDriverData.getTrip(itinId);
 }
