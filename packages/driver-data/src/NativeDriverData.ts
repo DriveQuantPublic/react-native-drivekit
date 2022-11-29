@@ -28,7 +28,7 @@ export enum TripSyncStatus {
 export type Route = {
   callIndex: number[] | null;
   callTime: number[] | null;
-  itinId: string | null;
+  itinId: string;
   latitude: number[] | null;
   longitude: number[] | null;
   screenLockedIndex: number[] | null;
