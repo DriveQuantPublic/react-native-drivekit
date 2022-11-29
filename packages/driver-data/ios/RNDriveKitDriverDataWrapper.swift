@@ -61,7 +61,7 @@ class RNDriveKitDriverDataWrapper: NSObject {
     @objc internal func getTrip(itinId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         DriveKitDriverData.shared.getTrip(itinId: itinId, completionHandler: { status, trip in
             resolve(["status": mapTripSyncStatus(status: status),
-                     "trip": (trip != nil) ? mapTrip(trip: trip!) : nil as Any])
+                     "trip": (trip != nil) ? mapTrip(trip: trip!) : nil as Any?])
         })
     }
 
