@@ -84,6 +84,7 @@ Call `initialize` method in your `AppDelegate.mm`.
 | ---------------------------------------------------------- | --------------------------------------- | :-: | :-----: |
 | [getTripsOrderByDateAsc()](#gettripsorderbydateasc)        | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
 | [getTripsOrderByDateDesc()](#gettripsorderbydatedesc)      | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
+| [getTrip()](#gettrip)                                     | `Promise<GetTripResponse \| null>`      | ✅  |   ✅    |
 | [deleteTrip()](#deletetrip)                                | `Promise<void>`                         | ✅  |   ✅    |
 | [reset()](#reset)                                          | `Promise<boolean>`                      | ✅  |   ✅    |
 
@@ -118,6 +119,26 @@ or
 ```typescript
 const result = await DriveKitDriverData.getTripsOrderByDateDesc();
 ```
+
+### getTrip
+
+```typescript
+getTrip(
+  itinId: string):
+): Promise<GetTripResponse | null>
+```
+
+| GetTripResponse     | Type             |
+| ------------------- | ---------------- |
+| `status`            | `TripSyncStatus` |
+| `trip`              | `Trip`           |
+
+To get a specific trip, you have to call the following method:
+
+```typescript
+const result = await DriveKitDriverData.getTrip('TRIP_ID_HERE);
+```
+
 
 ### reset
 
