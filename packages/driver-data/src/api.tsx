@@ -1,5 +1,9 @@
 import { NativeModules, Platform } from 'react-native';
-import type { GetTripsResponse, GetTripResponse } from './NativeDriverData';
+import type {
+  GetTripsResponse,
+  GetTripResponse,
+  Route,
+} from './NativeDriverData';
 
 import type {
   SynchronizationType,
@@ -36,6 +40,10 @@ export function reset(): Promise<void> {
 
 export function deleteTrip(itinId: string): Promise<boolean> {
   return DriveKitDriverData.deleteTrip(itinId);
+}
+
+export function getRoute(itinId: string): Promise<Route | null> {
+  return DriveKitDriverData.getRoute(itinId);
 }
 
 export function getTripsOrderByDateAsc(

@@ -85,6 +85,7 @@ Call `initialize` method in your `AppDelegate.mm`.
 | [getTripsOrderByDateAsc()](#gettripsorderbydateasc)        | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
 | [getTripsOrderByDateDesc()](#gettripsorderbydatedesc)      | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
 | [getTrip()](#gettrip)                                      | `Promise<GetTripResponse \| null>`      | ✅  |   ✅    |
+| [getRoute()](#getRoute)                                    | `Promise<Route \| null>`                | ✅  |   ✅    |
 | [deleteTrip()](#deletetrip)                                | `Promise<void>`                         | ✅  |   ✅    |
 | [reset()](#reset)                                          | `Promise<boolean>`                      | ✅  |   ✅    |
 
@@ -137,6 +138,35 @@ To get a specific trip, you have to call the following method:
 const result = await getTrip('TRIP_ID_HERE);
 ```
 
+### getRoute
+
+To get road data of the trip (latitude, longitude), you have to call the following method::
+
+```typescript
+getRoute(itinId: string): Promise<Route>
+```
+
+If `route` value in the callback is `null`, the synchronization has failed.
+
+Example:
+
+```typescript
+const route = await getRoute('TRIP_ID_HERE');
+```
+
+### deleteTrip
+
+To delete a trip, you have to call the following method:
+
+```typescript
+deleteTrip(itinId: string): Promise<boolean>
+```
+
+The itinId parameter is the unique identifier for a trip.
+
+```typescript
+await deleteTrip('TRIP_ID_HERE');
+```
 
 ### reset
 
@@ -160,18 +190,4 @@ All data saved locally by DriveKit will be erased.
 > ⚠️
 >
 > Make sure that you call reset method of all modules to fully reset DriveKit configuration.
-
-### deleteTrip
-
-To delete a trip, you have to call the following method:
-
-```typescript
-deleteTrip(itinId: string): Promise<boolean>
-```
-
-The itinId parameter is the unique identifier for a trip.
-
-```typescript
-await deleteTrip('TRIP_ID_HERE');
-```
 

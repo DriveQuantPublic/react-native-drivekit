@@ -25,9 +25,22 @@ export enum TripSyncStatus {
   FAILED_TO_SYNC_SAFETY_EVENTS = 'FAILED_TO_SYNC_SAFETY_EVENTS',
 }
 
+export type Route = {
+  callIndex: number[] | null;
+  callTime: number[] | null;
+  itinId: string;
+  latitude: number[] | null;
+  longitude: number[] | null;
+  screenLockedIndex: number[] | null;
+  screenLockedTime: number[] | null;
+  screenStatus: number[] | null;
+  speedingIndex: number[] | null;
+  speedingTime: number[] | null;
+};
 export interface Spec extends TurboModule {
   reset(): Promise<void>;
   deleteTrip(itinId: string): Promise<boolean>;
+  getRoute(itinId: string): Promise<Route | null>;
   getTrip(itinId: string): Promise<GetTripResponse | null>;
   getTripsOrderByDateAsc(
     synchronizationType: WithDefault<SynchronizationType, 'DEFAULT'>,

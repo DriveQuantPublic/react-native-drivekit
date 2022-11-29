@@ -505,3 +505,34 @@ object TripSyncMappers {
     return map
   }
 }
+
+object RouteMappers {
+  fun mapRouteToReadableMap(route: Route): ReadableMap? {
+    val map = Arguments.createMap()
+    map.putString("itinId", route.itinId)
+    map.putArray("callTime", route.callTime?.toReadableIntArray())
+    map.putArray("callIndex", route.callIndex?.toReadableIntArray())
+    map.putArray("latitude", route.latitude?.toReadableDoubleArray())
+    map.putArray("longitude", route.longitude?.toReadableDoubleArray())
+    map.putArray("screenLockedTime", route.screenLockedTime?.toReadableIntArray())
+    map.putArray("screenLockedIndex", route.screenLockedIndex?.toReadableIntArray())
+    map.putArray("screenStatus", route.screenStatus?.toReadableIntArray())
+    return map
+  }
+
+  private fun List<Int>.toReadableIntArray(): ReadableArray {
+    val map = Arguments.createArray()
+    this.forEach {
+      map.pushInt(it.toInt())
+    }
+    return map
+  }
+
+  private fun List<Double>.toReadableDoubleArray(): ReadableArray {
+    val map = Arguments.createArray()
+    this.forEach {
+      map.pushDouble(it.toDouble())
+    }
+    return map
+  }
+}

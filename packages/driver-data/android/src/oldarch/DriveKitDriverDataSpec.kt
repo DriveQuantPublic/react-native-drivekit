@@ -9,4 +9,5 @@ abstract class DriveKitDriverDataSpec internal constructor(context: ReactApplica
   abstract fun getTripsOrderByDateAsc(synchronizationType: String?, transportationModes: ReadableArray?, promise: Promise)
   abstract fun getTripsOrderByDateDesc(synchronizationType: String?, transportationModes: ReadableArray?, promise: Promise)
   abstract fun deleteTrip(itinId: String, promise: Promise)
+  abstract fun getRoute(itinId: String, promise: Promise)
 }
