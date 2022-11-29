@@ -18,11 +18,7 @@
   },
   "scripts": {
     "commit": "cz",
-    "postinstall": "patch-package",
     "release": "lerna publish --no-private"
-  },
-  "dependencies": {
-    "patch-packages": "^1.0.0"
   },
   "resolutions": {
     "@types/react": "18.0.25"

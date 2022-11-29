@@ -19,3 +19,13 @@ jobs:
       - run: yarn lerna run lint
       - run: yarn lerna run typescript
       - run: yarn lerna run test
+      - run: cd example && yarn 
+      - name: Install example app JS dependencies
+        working-directory: ./example
+        run: yarn
+      - name: Run lint in example folder
+        working-directory: ./example
+        run: yarn lint
+      - name: Run types check in example folder
+        working-directory: ./example
+        run: yarn typescript
