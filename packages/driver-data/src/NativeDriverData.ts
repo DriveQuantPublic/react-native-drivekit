@@ -15,7 +15,7 @@ export type GetTripsResponse = {
 
 export type GetTripResponse = {
   status: TripSyncStatus;
-  trip: Trip;
+  trip: Trip | null;
 };
 
 export enum TripSyncStatus {
