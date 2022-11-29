@@ -617,7 +617,6 @@ const App = () => {
             Alert.alert(
               result ? 'Route received' + result.itinId : 'Route not received',
             );
-            console.log(result);
           }}
         />
 
