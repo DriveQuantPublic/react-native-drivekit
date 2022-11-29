@@ -600,8 +600,7 @@ const App = () => {
             const result = await DriveKitDriverData.getTrip('TRIP_ID_HERE');
             Alert.alert(
               result?.status === 'NO_ERROR' ||
-                (result?.status === 'CACHE_DATA_ONLY' &&
-                  result?.trip !== undefined)
+                (result?.status === 'CACHE_DATA_ONLY' && result?.trip !== null)
                 ? 'Trip received from ' +
                     result.trip?.departureCity +
                     ' to ' +

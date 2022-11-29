@@ -501,7 +501,7 @@ object TripSyncMappers {
   fun mapTripsSyncToReadableMap(status: TripsSyncStatus, trip: Trip?): ReadableMap? {
     val map = Arguments.createMap()
     map.putString("status", status.name)
-    trip?.let { map.putMap("trip", it.toReadableMap()) }
+    map.putMap("trip", trip?.toReadableMap())
     return map
   }
 }
