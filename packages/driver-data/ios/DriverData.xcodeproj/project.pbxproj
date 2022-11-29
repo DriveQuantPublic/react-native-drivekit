@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		67B57B59292BE8E20017589A /* RNDriveKitDriverData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 67B57B57292BE8E20017589A /* RNDriveKitDriverData.mm */; };
 		67B57B5D292BE9580017589A /* RNDriveKitDriverDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B57B5C292BE9580017589A /* RNDriveKitDriverDataWrapper.swift */; };
-		67C8B9BA292FA405001AA62D /* Dictionary+toJSONString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8B9B9292FA405001AA62D /* Dictionary+toJSONString.swift */; };
 		67C8B9BC292FA487001AA62D /* RNTripMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8B9BB292FA487001AA62D /* RNTripMappers.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +30,6 @@
 		67B57B58292BE8E20017589A /* RNDriveKitDriverData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNDriveKitDriverData.h; sourceTree = "<group>"; };
 		67B57B5A292BE92D0017589A /* RNDriveKitDriverData-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNDriveKitDriverData-Swift.h"; sourceTree = "<group>"; };
 		67B57B5C292BE9580017589A /* RNDriveKitDriverDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNDriveKitDriverDataWrapper.swift; sourceTree = "<group>"; };
-		67C8B9B9292FA405001AA62D /* Dictionary+toJSONString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+toJSONString.swift"; sourceTree = "<group>"; };
 		67C8B9BB292FA487001AA62D /* RNTripMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTripMappers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,7 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				67C8B9BB292FA487001AA62D /* RNTripMappers.swift */,
-				67C8B9B9292FA405001AA62D /* Dictionary+toJSONString.swift */,
 				67B57B5C292BE9580017589A /* RNDriveKitDriverDataWrapper.swift */,
 				67B57B58292BE8E20017589A /* RNDriveKitDriverData.h */,
 				67B57B57292BE8E20017589A /* RNDriveKitDriverData.mm */,
@@ -128,7 +125,6 @@
 				67B57B59292BE8E20017589A /* RNDriveKitDriverData.mm in Sources */,
 				67C8B9BC292FA487001AA62D /* RNTripMappers.swift in Sources */,
 				67B57B5D292BE9580017589A /* RNDriveKitDriverDataWrapper.swift in Sources */,
-				67C8B9BA292FA405001AA62D /* Dictionary+toJSONString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,7 +5,7 @@ import type {
   Route,
 } from './NativeDriverData';
 
-import {
+import type {
   SynchronizationType,
   TransportationMode,
 } from '@react-native-drivekit/core';
