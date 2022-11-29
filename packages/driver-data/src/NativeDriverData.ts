@@ -26,16 +26,16 @@ export enum TripSyncStatus {
 }
 
 export type Route = {
-  callIndex: number[];
-  callTime: number[];
-  itinId: string;
-  latitude: number[];
-  longitude: number[];
-  screenLockedIndex: number[];
-  screenLockedTime: number[];
-  screenStatus: number[];
-  speedingIndex: number[];
-  speedingTime: number[];
+  callIndex: number[] | null;
+  callTime: number[] | null;
+  itinId: string | null;
+  latitude: number[] | null;
+  longitude: number[] | null;
+  screenLockedIndex: number[] | null;
+  screenLockedTime: number[] | null;
+  screenStatus: number[] | null;
+  speedingIndex: number[] | null;
+  speedingTime: number[] | null;
 };
 export interface Spec extends TurboModule {
   reset(): Promise<void>;
