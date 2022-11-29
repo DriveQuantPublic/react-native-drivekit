@@ -75,7 +75,7 @@ Call `initialize` method in your `AppDelegate.mm`.
 
 Even if your app do not use Bluetooth, you **MUST** include usage description on iOS side. For more details, please take a look inside the [native documentation](https://docs.drivequant.com/get-started-drivekit/ios#project-configuration)
 
-Our recommandation is to use [react-native-permissions](https://github.com/zoontek/react-native-permissions). You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).
+Our recommandation is to use [react-native-permissions](https://github.com/zoontek/react-native-permissions). You can find an implementation example in the [example application inside this repository](../../example/App.tsx).
 
 ---
 
@@ -111,6 +111,7 @@ To validate that the initialization has been done successfully, please check you
 ![](./doc/img/ios_validation.png)
 
 ---
+
 ## Listeners
 
 You can listen to events thanks to the `addEventListener` api.
@@ -120,7 +121,7 @@ useEffect(() => {
   const listener = DriveKit.addEventListener(
     'driveKitDidReceiveAuthenticationError',
     (error: RequestError) => {
-        console.log('Received authentication error from DriveKit', error);
+      console.log('Received authentication error from DriveKit', error);
     }
   );
   return () => listener.remove();
@@ -135,11 +136,10 @@ Here is the list of supported events:
 - `accountDeletionCompleted`, callback `(status: DeleteAccountStatus)`: This event is triggered when the delete account request has been processed with a `DeleteAccountStatus` state value.
 - `userIdUpdateStatusChanged`, callback `(status: UpdateUserIdStatus, userId: String?) => void`: This event is triggered when the update userId request has been processed with a `UpdateUserIdStatus` state value.
 
-
 ## API
 
 | Method                                          | Return Type                        | iOS | Android |
-| ------------------------------------------------| ---------------------------------- | :-: | :-----: |
+| ----------------------------------------------- | ---------------------------------- | :-: | :-----: |
 | [getApiKey()](#getapikey)                       | `Promise<string>`                  | ✅  |   ✅    |
 | [setApiKey()](#setapikey)                       | `Promise<void>`                    | ✅  |   ✅    |
 | [getUserId()](#getuserid)                       | `Promise<string>`                  | ✅  |   ✅    |
@@ -396,8 +396,7 @@ You can retrieve the Uri log file by calling the following method:
 ```typescript
 const { uri } = await getUriLogFile();
 ```
-  
-  
+
 ### composeDiagnosisMail
 
 ```typescript
@@ -411,7 +410,6 @@ DriveKit.composeDiagnosisMail({
   recipients: [],
   bccRecipients: [],
   subject: 'Diagnosis mail',
-  body: ''}
-);
+  body: '',
+});
 ```
-

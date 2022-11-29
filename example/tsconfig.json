@@ -1,0 +1,15 @@
+// prettier-ignore
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Completeness */
+    "skipLibCheck": true,                               /* Skip type checking all .d.ts files. */
+    "paths": {
+      "@react-native-drivekit/core": ["../packages/core/src/index"],
+      "@react-native-drivekit/trip-analysis": ["../packages/trip-analysis/src/index"],
+      "@react-native-drivekit/driver-data": ["../packages/driver-data/src/index"]
+    },
+  }
+}

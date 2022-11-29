@@ -14,24 +14,30 @@ yarn
 
 > While it's possible to use [`npm`](https://github.com/npm/cli), the tooling is built around [`yarn`](https://classic.yarnpkg.com/), so you'll have an easier time if you use `yarn` for development.
 
-While developing, you can run the [demo app](/packages/demo/) to test your changes. Any changes you make in your library's JavaScript code will be reflected in the example app without a rebuild. If you change any native code, then you'll need to rebuild the example app.
+While developing, you can run the [example app](/example/) to test your changes. Any changes you make in your library's JavaScript code will be reflected in the example app without a rebuild. If you change any native code, then you'll need to rebuild the example app.
+
+Navigate to the example folder:
+
+```sh
+cd example
+```
 
 To start the packager:
 
 ```sh
-yarn lerna run --scope demo start
+yarn start
 ```
 
 To run the example app on Android:
 
 ```sh
-yarn lerna run --scope demo android
+yarn android
 ```
 
 To run the example app on iOS:
 
 ```sh
-yarn lerna run --scope demo ios
+yarn ios
 ```
 
 By default, the example is configured to build with the old architecture. To run the example with the new architecture, you can do the following:
@@ -39,14 +45,14 @@ By default, the example is configured to build with the old architecture. To run
 1. For Android, run:
 
    ```sh
-   ORG_GRADLE_PROJECT_newArchEnabled=true yarn lerna run --scope demo android
+   ORG_GRADLE_PROJECT_newArchEnabled=true yarn android
    ```
 
 2. For iOS, run:
 
    ```sh
-   RCT_NEW_ARCH_ENABLED=1 yarn lerna run --scope demo pods
-   yarn lerna run --scope demo ios
+   RCT_NEW_ARCH_ENABLED=1 yarn pods
+   yarn ios
    ```
 
 To confirm that the app is running with the new architecture, you can check the Metro logs for a message like this:
@@ -70,9 +76,9 @@ Remember to add tests for your change if possible. Run the unit tests by:
 yarn lerna run lint
 ```
 
-To edit the Objective-C or Swift files, open `packages/demo/ios/DrivekitTripAnalysisExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-drivekit-*`.
+To edit the Objective-C or Swift files, open `example/ios/DrivekitTripAnalysisExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-drivekit-*`.
 
-To edit the Java or Kotlin files, open `packages/demo/example/android` in Android studio and find the source files at `react-native-drivekit-*` under `Android`.
+To edit the Java or Kotlin files, open `example/example/android` in Android studio and find the source files at `react-native-drivekit-*` under `Android`.
 
 ### Commit message convention
 
