@@ -113,11 +113,11 @@ getTripsOrderByDateDesc(
 To get driver's trips, you have to call the following method:
 
 ```typescript
-await DriveKitDriverData.getTripsOrderByDateAsc();
+const result = await getTripsOrderByDateAsc();
 ```
 or
 ```typescript
-await DriveKitDriverData.getTripsOrderByDateDesc();
+const result = await getTripsOrderByDateDesc();
 ```
 
 ### getTrip
@@ -134,7 +134,7 @@ getTrip(itinId: string): Promise<GetTripResponse | null>
 To get a specific trip, you have to call the following method:
 
 ```typescript
-await DriveKitDriverData.getTrip('TRIP_ID_HERE);
+const result = await getTrip('TRIP_ID_HERE);
 ```
 
 
