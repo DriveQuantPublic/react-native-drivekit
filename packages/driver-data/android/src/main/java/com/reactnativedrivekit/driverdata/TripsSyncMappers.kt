@@ -498,10 +498,10 @@ object TripsSyncMappers {
 }
 
 object TripSyncMappers {
-  fun mapTripsSyncToReadableMap(status: TripsSyncStatus, trip: Trip): ReadableMap? {
+  fun mapTripsSyncToReadableMap(status: TripsSyncStatus, trip: Trip?): ReadableMap? {
     val map = Arguments.createMap()
     map.putString("status", status.name)
-    map.putMap("trip", trip.toReadableMap())
+    map.putMap("trip", trip?.toReadableMap())
     return map
   }
 }

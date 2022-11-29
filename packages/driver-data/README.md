@@ -80,34 +80,63 @@ Call `initialize` method in your `AppDelegate.mm`.
 
 ## API
 
-| Method                                                                | Return Type         | iOS | Android |
-| --------------------------------------------------------------------- | ------------------- | :-: | :-----: |
-| [reset()](#reset)                                                     | `Promise<void>`     | ✅  |   ✅    |
-| [getRoute()](#getRoute)                                               | `Promise<Route>`    | ✅  |   ✅    |
-| [deleteTrip()](#deleteTrip)                                           | `Promise<boolean>`  | ✅  |   ✅    |
+| Method                                                     | Return Type                             | iOS | Android |
+| ---------------------------------------------------------- | --------------------------------------- | :-: | :-----: |
+| [getTripsOrderByDateAsc()](#gettripsorderbydateasc)        | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
+| [getTripsOrderByDateDesc()](#gettripsorderbydatedesc)      | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
+| [getTrip()](#gettrip)                                      | `Promise<GetTripResponse \| null>`      | ✅  |   ✅    |
+| [getRoute()](#getRoute)                                    | `Promise<Route \| null>`                | ✅  |   ✅    |
+| [deleteTrip()](#deletetrip)                                | `Promise<void>`                         | ✅  |   ✅    |
+| [reset()](#reset)                                          | `Promise<boolean>`                      | ✅  |   ✅    |
 
-### reset
-
-```typescript
-reset(): Promise<void>
-```
-
-If you need to reset DriveKit Driver Data configuration (user logout for example), you can call the following method:
+### getTripsOrderByDateAsc
+### getTripsOrderByDateDesc
 
 ```typescript
-reset();
+getTripsOrderByDateAsc(
+  synchronizationType: SynchronizationType = 'DEFAULT',
+  transportationModes: TransportationMode[] = []
+): Promise<GetTripsResponse | null>
+```
+or
+```typescript
+getTripsOrderByDateDesc(
+  synchronizationType: SynchronizationType = 'DEFAULT',
+  transportationModes: TransportationMode[] = []
+): Promise<GetTripsResponse | null>
 ```
 
+| GetTripsResponse    | Type             |
+| ------------------- | ---------------- |
+| `status`            | `TripSyncStatus` |
+| `trips`             | `[Trip]`         |
 
-All data saved locally by DriveKit will be erased.
+To get driver's trips, you have to call the following method:
 
-> ℹ️
->
-> All DriverKit modules have reset method that erases all data saved locally by the module.
+```typescript
+const result = await getTripsOrderByDateAsc();
+```
+or
+```typescript
+const result = await getTripsOrderByDateDesc();
+```
 
-> ⚠️
->
-> Make sure that you call reset method of all modules to fully reset DriveKit configuration.
+### getTrip
+
+```typescript
+getTrip(itinId: string): Promise<GetTripResponse | null>
+```
+
+| GetTripResponse     | Type             |
+| ------------------- | ---------------- |
+| `status`            | `TripSyncStatus` |
+| `trip`              | `Trip`           |
+
+To get a specific trip, you have to call the following method:
+
+```typescript
+const result = await getTrip('TRIP_ID_HERE);
+```
 
 ### getRoute
 
@@ -138,4 +167,27 @@ The itinId parameter is the unique identifier for a trip.
 ```typescript
 await deleteTrip('TRIP_ID_HERE');
 ```
+
+### reset
+
+```typescript
+reset(): Promise<void>
+```
+
+If you need to reset DriveKit Driver Data configuration (user logout for example), you can call the following method:
+
+```typescript
+reset();
+```
+
+
+All data saved locally by DriveKit will be erased.
+
+> ℹ️
+>
+> All DriverKit modules have reset method that erases all data saved locally by the module.
+
+> ⚠️
+>
+> Make sure that you call reset method of all modules to fully reset DriveKit configuration.
 

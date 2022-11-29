@@ -46,10 +46,11 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
     })
   }
 
+  @ReactMethod
   override fun getTrip(itinId: String, promise: Promise) {
     DriveKitDriverData.getTrip(itinId, object: TripQueryListener {
       override fun onResponse(status: TripsSyncStatus, trip: Trip?) {
-        val readableMap = trip?.let { TripSyncMappers.mapTripsSyncToReadableMap(status, it) }
+        val readableMap = TripSyncMappers.mapTripsSyncToReadableMap(status, trip)
         promise.resolve(readableMap)
       }
     })
