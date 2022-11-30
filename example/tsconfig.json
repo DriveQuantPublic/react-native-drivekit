@@ -9,7 +9,8 @@
     "paths": {
       "@react-native-drivekit/core": ["../packages/core/src/index"],
       "@react-native-drivekit/trip-analysis": ["../packages/trip-analysis/src/index"],
-      "@react-native-drivekit/driver-data": ["../packages/driver-data/src/index"]
+      "@react-native-drivekit/driver-data": ["../packages/driver-data/src/index"],
+      "@react-native-drivekit/trip-simulator": ["../packages/trip-simulator/src/index"]
     },
   }
 }

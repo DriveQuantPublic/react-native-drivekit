@@ -2,6 +2,7 @@ const path = require('path');
 const packCore = require('../packages/core/package.json');
 const packTripAnalysis = require('../packages/trip-analysis/package.json');
 const packDriverData = require('../packages/driver-data/package.json');
+const packTripSimulator = require('../packages/trip-simulator/package.json');
 
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
@@ -25,6 +26,11 @@ module.exports = {
             __dirname,
             '../packages/driver-data',
             packDriverData.source,
+          ),
+          [packTripSimulator.name]: path.join(
+            __dirname,
+            '../packages/trip-simulator',
+            packTripSimulator.source,
           ),
         },
       },
