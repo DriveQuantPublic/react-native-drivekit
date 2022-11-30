@@ -1,19 +1,26 @@
 #import "RNDriveKitTripSimulator.h"
+#import "RNDriveKitTripSimulator-Swift.h"
 
 @implementation RNDriveKitTripSimulator
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(double)a withB:(double)b
+RCT_REMAP_METHOD(start,
+                 startWithPresetTrip:(NSString *)presetTrip
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 {
-    NSNumber *result = @(a * b);
-
-    resolve(result);
+    [RNDriveKitTripSimulatorWrapper.shared startWithPresetTrip:@""];
+    resolve(nil);
 }
+
+RCT_REMAP_METHOD(stop,
+                 stopWithResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    [RNDriveKitTripSimulatorWrapper.shared stop];
+    resolve(nil);
+}
+
 
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED

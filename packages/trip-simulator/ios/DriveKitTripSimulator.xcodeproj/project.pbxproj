@@ -20,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libDriveKitTripSimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriveKitTripSimulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		676DD4A7293791D0007D1D21 /* RNDriveKitTripSimulatorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNDriveKitTripSimulatorWrapper.swift; sourceTree = "<group>"; };
+		676DD4A829379252007D1D21 /* RNDriveKitTripSimulator-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNDriveKitTripSimulator-Swift.h"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNDriveKitTripSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNDriveKitTripSimulator.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNDriveKitTripSimulator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RNDriveKitTripSimulator.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +48,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				676DD4A829379252007D1D21 /* RNDriveKitTripSimulator-Swift.h */,
+				676DD4A7293791D0007D1D21 /* RNDriveKitTripSimulatorWrapper.swift */,
 				B3E7B5881CC2AC0600A0062D /* RNDriveKitTripSimulator.h */,
 				B3E7B5891CC2AC0600A0062D /* RNDriveKitTripSimulator.mm */,
 				134814211AA4EA7D00B7C361 /* Products */,
