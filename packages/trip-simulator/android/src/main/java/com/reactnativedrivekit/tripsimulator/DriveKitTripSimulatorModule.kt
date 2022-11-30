@@ -2,7 +2,8 @@ package com.reactnativedrivekit.tripsimulator
 
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.Promise
+import com.drivequant.drivekit.tripsimulator.DriveKitTripSimulator
+import com.drivequant.drivekit.tripsimulator.PresetTrip
 
 class DriveKitTripSimulatorModule internal constructor(context: ReactApplicationContext) :
   TripSimulatorSpec(context) {
@@ -11,11 +12,15 @@ class DriveKitTripSimulatorModule internal constructor(context: ReactApplication
     return NAME
   }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
   @ReactMethod
-  override fun multiply(a: Double, b: Double, promise: Promise) {
-    promise.resolve(a * b)
+  override fun start(presetTrip: String) {
+    // TODO
+    DriveKitTripSimulator.start(PresetTrip.SHORT_TRIP)
+  }
+
+  @ReactMethod
+  override fun stop() {
+    DriveKitTripSimulator.stop()
   }
 
   companion object {

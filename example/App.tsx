@@ -644,10 +644,16 @@ const App = () => {
         <Text style={styles.title}>Trip Simulator</Text>
         <Spacer factor={1} />
         <Button
-          title={'Multiply'}
+          title={'Start simulation (SHORT_TRIP)'}
           onPress={async () => {
-            const result = await DriveKitTripSimulator.multiply(2, 10);
-            Alert.alert('Result is:' + result);
+            DriveKitTripSimulator.start('SHORT_TRIP');
+          }}
+        />
+        <Spacer factor={1} />
+        <Button
+          title={'Stop simulation'}
+          onPress={async () => {
+            DriveKitTripSimulator.stop();
           }}
         />
       </ScrollView>
