@@ -4,7 +4,7 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
 
-class TripSimulatorModule internal constructor(context: ReactApplicationContext) :
+class DriveKitTripSimulatorModule internal constructor(context: ReactApplicationContext) :
   TripSimulatorSpec(context) {
 
   override fun getName(): String {
@@ -19,6 +19,6 @@ class TripSimulatorModule internal constructor(context: ReactApplicationContext)
   }
 
   companion object {
-    const val NAME = "RNDriveKitDriverDataTripSimulator"
+    const val NAME = "RNDriveKitTripSimulator"
   }
 }

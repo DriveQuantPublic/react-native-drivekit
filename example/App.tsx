@@ -13,6 +13,8 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
+import * as DriveKitTripSimulator from '@react-native-drivekit/trip-simulator';
+
 import type {
   CancelTripReason,
   StartMode,
@@ -635,6 +637,17 @@ const App = () => {
               subject: 'Diagnosis mail',
               body: 'Body mail',
             });
+          }}
+        />
+
+        <Spacer factor={2} />
+        <Text style={styles.title}>Trip Simulator</Text>
+        <Spacer factor={1} />
+        <Button
+          title={'Multiply'}
+          onPress={async () => {
+            const result = await DriveKitTripSimulator.multiply(2, 10);
+            Alert.alert('Result is:' + result);
           }}
         />
       </ScrollView>
