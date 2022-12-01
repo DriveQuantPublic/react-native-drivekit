@@ -20,6 +20,8 @@ PODS:
     - DriveKitCore (= 1.28.1)
     - DriveKitDBTripAccess (= 1.28.1)
     - DriveKitDBVehicleAccess (= 1.28.1)
+  - DriveKitTripSimulator (1.28.1):
+    - DriveKitTripAnalysis (= 1.28.1)
   - FBLazyVector (0.70.5)
   - FBReactNativeSpec (0.70.5):
     - RCT-Folly (= 2021.07.22.00)
@@ -337,6 +339,9 @@ PODS:
   - react-native-drivekit-trip-analysis (1.0.1):
     - DriveKitTripAnalysis (= 1.28.1)
     - React-Core
+  - react-native-drivekit-trip-simulator (1.0.1):
+    - DriveKitTripSimulator (= 1.28.1)
+    - React-Core
   - React-perflogger (0.70.5)
   - React-RCTActionSheet (0.70.5):
     - React-Core/RCTActionSheetHeaders (= 0.70.5)
@@ -467,6 +472,7 @@ DEPENDENCIES:
   - react-native-drivekit-core (from `../../core`)
   - react-native-drivekit-driver-data (from `../../driver-data`)
   - react-native-drivekit-trip-analysis (from `../../trip-analysis`)
+  - react-native-drivekit-trip-simulator (from `../../trip-simulator`)
   - React-perflogger (from `../../../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../../../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../../../node_modules/react-native/Libraries/NativeAnimation`)
@@ -494,6 +500,7 @@ SPEC REPOS:
     - DriveKitDriverData
     - DriveKitNetworking
     - DriveKitTripAnalysis
+    - DriveKitTripSimulator
     - Flipper
     - Flipper-Boost-iOSX
     - Flipper-DoubleConversion
@@ -566,6 +573,8 @@ EXTERNAL SOURCES:
     :path: "../../driver-data"
   react-native-drivekit-trip-analysis:
     :path: "../../trip-analysis"
+  react-native-drivekit-trip-simulator:
+    :path: "../../trip-simulator"
   React-perflogger:
     :path: "../../../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -609,6 +618,7 @@ SPEC CHECKSUMS:
   DriveKitDriverData: 02f5836e08d9d1683b3c8510affaa16dbb16faf7
   DriveKitNetworking: 4219cfe5d92a2ba12ba4473775b2f69ee91cbb31
   DriveKitTripAnalysis: 081961585dcc07b735331010584aefcdad4d59c2
+  DriveKitTripSimulator: 6c6ac7dbcfdde9247347fa1a787f22b1e806b0f3
   FBLazyVector: affa4ba1bfdaac110a789192f4d452b053a86624
   FBReactNativeSpec: 8a42e23a514f492a659d57455532180099d1d3d7
   Flipper: 26fc4b7382499f1281eb8cb921e5c3ad6de91fe0
@@ -647,6 +657,7 @@ SPEC CHECKSUMS:
   react-native-drivekit-core: 35f4d45baadcf072d6e4b82eef59eca17bfb96b4
   react-native-drivekit-driver-data: 63d7bb3f8bbbc8c8a14261bafd15354acc2a34fa
   react-native-drivekit-trip-analysis: 54c1afbaa5f1deb945e258aaa663c76ad486662e
+  react-native-drivekit-trip-simulator: a134fca3d4d5434f297d6bcb6dc26bc635dfdd39
   React-perflogger: e68d3795cf5d247a0379735cbac7309adf2fb931
   React-RCTActionSheet: 05452c3b281edb27850253db13ecd4c5a65bc247
   React-RCTAnimation: 578eebac706428e68466118e84aeacf3a282b4da
