@@ -142,11 +142,14 @@ repositories {
 }
 
 def kotlin_version = getExtOrDefault('kotlinVersion')
+def driveKitTripSimulator_version = getExtOrDefault('driveKitTripSimulatorVersion')
 
 dependencies {
     //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+  implementation "com.drivequant.drivekit:drivekit-trip-simulator:$driveKitTripSimulator_version"
 // From node_modules
 }
 
