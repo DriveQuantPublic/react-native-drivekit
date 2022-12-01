@@ -9,7 +9,7 @@ RCT_REMAP_METHOD(start,
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 {
-    [RNDriveKitTripSimulatorWrapper.shared startWithPresetTrip:@""];
+    [RNDriveKitTripSimulatorWrapper.shared startWithPresetTrip:presetTrip];
     resolve(nil);
 }
 
