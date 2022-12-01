@@ -43,7 +43,7 @@ const App = () => {
   // ========================================
   // ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
   // ========================================
-  //DriveKit.setApiKey('');
+  // DriveKit.setApiKey('');
 
   var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
@@ -362,7 +362,10 @@ const App = () => {
         <Button
           title={'Enable Logs'}
           onPress={() => {
-            DriveKit.enableLogging({showInConsole: true, logPath: '/log/path'});
+            DriveKit.enableLogging({
+              showInConsole: true,
+              logPath: '/log/path',
+            });
           }}
         />
         <Button
@@ -641,10 +644,16 @@ const App = () => {
         <Text style={styles.title}>Trip Simulator</Text>
         <Spacer factor={1} />
         <Button
-          title={'Multiply'}
+          title={'Start simulation (HIGHWAY_TRIP)'}
           onPress={async () => {
-            const result = await DriveKitTripSimulator.multiply(2, 10);
-            Alert.alert('Result is:' + result);
+            DriveKitTripSimulator.start('HIGHWAY_TRIP');
+          }}
+        />
+        <Spacer factor={1} />
+        <Button
+          title={'Stop simulation'}
+          onPress={async () => {
+            DriveKitTripSimulator.stop();
           }}
         />
       </ScrollView>

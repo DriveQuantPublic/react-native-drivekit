@@ -53,6 +53,7 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
     (…)
   }
 ```
+
 ---
 
 ### iOS setup
@@ -61,7 +62,7 @@ Call `initialize` method in your `AppDelegate.mm`.
 
 ```objc
 // AppDelegate.mm
-#import <RNDriveKitTripAnalysis/react-native-drivekit-driver-data-umbrella.h>
+#import <RNDriveKitDriverData/react-native-drivekit-driver-data-umbrella.h>
 
 // ...
 
@@ -76,20 +77,19 @@ Call `initialize` method in your `AppDelegate.mm`.
 
 **Note:** If you are using Swift, `initialize` method is also available.
 
-
-
 ## API
 
-| Method                                                     | Return Type                             | iOS | Android |
-| ---------------------------------------------------------- | --------------------------------------- | :-: | :-----: |
-| [getTripsOrderByDateAsc()](#gettripsorderbydateasc)        | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
-| [getTripsOrderByDateDesc()](#gettripsorderbydatedesc)      | `Promise<GetTripsResponse \| null>`     | ✅  |   ✅    |
-| [getTrip()](#gettrip)                                      | `Promise<GetTripResponse \| null>`      | ✅  |   ✅    |
-| [getRoute()](#getRoute)                                    | `Promise<Route \| null>`                | ✅  |   ✅    |
-| [deleteTrip()](#deletetrip)                                | `Promise<void>`                         | ✅  |   ✅    |
-| [reset()](#reset)                                          | `Promise<boolean>`                      | ✅  |   ✅    |
+| Method                                                | Return Type                         | iOS | Android |
+| ----------------------------------------------------- | ----------------------------------- | :-: | :-----: |
+| [getTripsOrderByDateAsc()](#gettripsorderbydateasc)   | `Promise<GetTripsResponse \| null>` | ✅  |   ✅    |
+| [getTripsOrderByDateDesc()](#gettripsorderbydatedesc) | `Promise<GetTripsResponse \| null>` | ✅  |   ✅    |
+| [getTrip()](#gettrip)                                 | `Promise<GetTripResponse \| null>`  | ✅  |   ✅    |
+| [getRoute()](#getRoute)                               | `Promise<Route \| null>`            | ✅  |   ✅    |
+| [deleteTrip()](#deletetrip)                           | `Promise<void>`                     | ✅  |   ✅    |
+| [reset()](#reset)                                     | `Promise<boolean>`                  | ✅  |   ✅    |
 
 ### getTripsOrderByDateAsc
+
 ### getTripsOrderByDateDesc
 
 ```typescript
@@ -98,7 +98,9 @@ getTripsOrderByDateAsc(
   transportationModes: TransportationMode[] = []
 ): Promise<GetTripsResponse | null>
 ```
+
 or
+
 ```typescript
 getTripsOrderByDateDesc(
   synchronizationType: SynchronizationType = 'DEFAULT',
@@ -106,17 +108,19 @@ getTripsOrderByDateDesc(
 ): Promise<GetTripsResponse | null>
 ```
 
-| GetTripsResponse    | Type             |
-| ------------------- | ---------------- |
-| `status`            | `TripSyncStatus` |
-| `trips`             | `[Trip]`         |
+| GetTripsResponse | Type             |
+| ---------------- | ---------------- |
+| `status`         | `TripSyncStatus` |
+| `trips`          | `[Trip]`         |
 
 To get driver's trips, you have to call the following method:
 
 ```typescript
 const result = await getTripsOrderByDateAsc();
 ```
+
 or
+
 ```typescript
 const result = await getTripsOrderByDateDesc();
 ```
@@ -127,10 +131,10 @@ const result = await getTripsOrderByDateDesc();
 getTrip(itinId: string): Promise<GetTripResponse | null>
 ```
 
-| GetTripResponse     | Type             |
-| ------------------- | ---------------- |
-| `status`            | `TripSyncStatus` |
-| `trip`              | `Trip`           |
+| GetTripResponse | Type             |
+| --------------- | ---------------- |
+| `status`        | `TripSyncStatus` |
+| `trip`          | `Trip`           |
 
 To get a specific trip, you have to call the following method:
 
@@ -180,7 +184,6 @@ If you need to reset DriveKit Driver Data configuration (user logout for example
 reset();
 ```
 
-
 All data saved locally by DriveKit will be erased.
 
 > ℹ️
@@ -190,4 +193,3 @@ All data saved locally by DriveKit will be erased.
 > ⚠️
 >
 > Make sure that you call reset method of all modules to fully reset DriveKit configuration.
-

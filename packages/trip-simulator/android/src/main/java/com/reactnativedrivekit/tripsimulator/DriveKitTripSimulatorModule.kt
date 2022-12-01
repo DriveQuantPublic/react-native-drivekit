@@ -2,7 +2,9 @@ package com.reactnativedrivekit.tripsimulator
 
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.Promise
+import com.drivequant.drivekit.tripsimulator.DriveKitTripSimulator
+import com.drivequant.drivekit.tripsimulator.PresetTrip
+import com.drivequant.drivekit.tripsimulator.model.PresetTripCrash1
 
 class DriveKitTripSimulatorModule internal constructor(context: ReactApplicationContext) :
   TripSimulatorSpec(context) {
@@ -11,11 +13,30 @@ class DriveKitTripSimulatorModule internal constructor(context: ReactApplication
     return NAME
   }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
   @ReactMethod
-  override fun multiply(a: Double, b: Double, promise: Promise) {
-    promise.resolve(a * b)
+  override fun start(presetTrip: String) {
+    DriveKitTripSimulator.start(presetTrip.toPresetTrip())
+  }
+
+  @ReactMethod
+  override fun stop() {
+    DriveKitTripSimulator.stop()
+  }
+
+  private fun String.toPresetTrip() = when (this) {
+    "SHORT_TRIP" -> PresetTrip.SHORT_TRIP
+    "MIXED_TRIP" -> PresetTrip.MIXED_TRIP
+    "CITY_TRIP" -> PresetTrip.CITY_TRIP
+    "SUBURBAN_TRIP" -> PresetTrip.SUBURBAN_TRIP
+    "HIGHWAY_TRIP" -> PresetTrip.HIGHWAY_TRIP
+    "TRAIN_TRIP" -> PresetTrip.TRAIN_TRIP
+    "BUS_TRIP" -> PresetTrip.BUS_TRIP
+    "BOAT_TRIP" -> PresetTrip.BOAT_TRIP
+    "TRIP_WITH_CRASH_CONFIRMED_30KMH" -> PresetTrip.TRIP_WITH_CRASH_1(PresetTripCrash1.CONFIRMED_30KMH)
+    "TRIP_WITH_CRASH_CONFIRMED_20KMH" -> PresetTrip.TRIP_WITH_CRASH_1(PresetTripCrash1.CONFIRMED_20KMH)
+    "TRIP_WITH_CRASH_CONFIRMED_10KMH" -> PresetTrip.TRIP_WITH_CRASH_1(PresetTripCrash1.CONFIRMED_10KMH)
+    "TRIP_WITH_CRASH_UNCONFIRMED_0KMH" -> PresetTrip.TRIP_WITH_CRASH_1(PresetTripCrash1.UNCONFIRMED_0KMH)
+    else -> PresetTrip.SHORT_TRIP
   }
 
   companion object {
