@@ -90,7 +90,7 @@ Call `initialize` method in your `AppDelegate.mm`.
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [[RNDriveKitCoreWrapper.shared initialize];
-  [RNDriveKitTripAnalysisWrapper.shared initializeWithLaunchOptions:launchOptions] // ADD THIS LINE
+  [RNDriveKitTripAnalysisWrapper.shared initializeWithLaunchOptions:launchOptions]; // ADD THIS LINE
   ...
 }
 ```

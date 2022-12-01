@@ -37,36 +37,18 @@ cd ios && pod install
 There is no initialize method to call for the Trip Simulator module, however you have to configure your device to mock location data.
 
 - The user must enable the developer mode in Android. The [official documentation](https://developer.android.com/studio/debug/dev-options#enable) explains well how to proceed.
-- In the Debugging category settings, tap on *Select mock location app* and select yours. It sometimes appears that you might uninstall and reinstall your app on the device in order to register it as a mock location app.
-
+- In the Debugging category settings, tap on _Select mock location app_ and select yours. It sometimes appears that you might uninstall and reinstall your app on the device in order to register it as a mock location app.
 
 ### iOS setup
 
-Call `initialize` method in your `AppDelegate.mm`.
-
-```objc
-// AppDelegate.mm
-#import <RNDriveKitTripAnalysis/react-native-drivekit-trip-simulator-umbrella.h>
-
-// ...
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-  [[RNDriveKitCoreWrapper.shared initialize];
-  [RNDriveKitTripAnalysisWrapper.shared initializeWithLaunchOptions:launchOptions]
-  [RNDriveKitTripSimulatorWrapper.shared initializeWithLaunchOptions:launchOptions] // ADD THIS LINE
-  ...
-}
-```
-
-**Note:** If you are using Swift, `initialize` method is also available.
+There is no initialize method to call for the Trip Simulator module
 
 ## API
 
-| Method                                          | Return Type                     | iOS | Android |
-| ------------------------------------------------| ------------------------------- | :-: | :-----: |
-| [startTrip()](#starttrip)                       | `Promise<void>`                 | ✅  |   ✅    |
-| [stopTrip()](#stoptrip)                         | `Promise<void>`                 | ✅  |   ✅    |
+| Method                    | Return Type     | iOS | Android |
+| ------------------------- | --------------- | :-: | :-----: |
+| [startTrip()](#starttrip) | `Promise<void>` | ✅  |   ✅    |
+| [stopTrip()](#stoptrip)   | `Promise<void>` | ✅  |   ✅    |
 
 ### startTrip
 
@@ -77,11 +59,10 @@ startTrip(presetTrip: PresetTrip): Promise<void>
 To simulate a trip, call the start method in TripSimulator with a appropriate configuration with the `PresetTrip` parameter.
 
 ```typescript
-startTrip('SHORT_TRIP');
+startTrip('HIGHWAY_TRIP');
 ```
 
 A detailed description of `PresetTrip` parameter is available [here]([https://docs.drivequant.com/trip-analysis/ios/references#tripvehicle](https://docs.drivequant.com/trip-analysis/trip-simulator/android#usage).
-
 
 ### stopTrip
 
