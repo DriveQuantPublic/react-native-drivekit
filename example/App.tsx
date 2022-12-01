@@ -644,9 +644,10 @@ const App = () => {
         <Text style={styles.title}>Trip Simulator</Text>
         <Spacer factor={1} />
         <Button
-          title={'Start simulation (SHORT_TRIP)'}
+          title={'Start simulation (HIGHWAY_TRIP)'}
           onPress={async () => {
-            DriveKitTripSimulator.start('SHORT_TRIP');
+            console.log('start trip simulation');
+            DriveKitTripSimulator.start('HIGHWAY_TRIP');
           }}
         />
         <Spacer factor={1} />
