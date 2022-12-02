@@ -303,3 +303,9 @@ export type TripStatistics = {
   subdispNb: number;
   weekDay: boolean;
 };
+
+export type UserInfo = {
+  firstname: string | null;
+  lastname: string | null;
+  pseudo: string | null;
+};
