@@ -1,10 +1,8 @@
 import React, {useEffect} from 'react';
-import {Button, SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
-import * as DriveKitTripSimulator from '@react-native-drivekit/trip-simulator';
-
 import type {
   CancelTripReason,
   StartMode,
@@ -15,7 +13,6 @@ import type {
   CrashFeedback,
 } from '@react-native-drivekit/trip-analysis';
 import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
-import {Spacer} from './src/components/Spacer';
 import {margins} from './src/margins';
 import {checkLocationsPermissions} from './src/services/permissions/location';
 import {checkRecognitionPermission} from './src/services/permissions/recognition';
@@ -31,8 +28,7 @@ import {TokenSection} from './src/components/TokenSection';
 import {ResetSection} from './src/components/ResetSection';
 import {TripAnalysisSection} from './src/components/TripAnalysisSection';
 import {LogsSection} from './src/components/LogsSection';
-
-const inputHeight = 40;
+import {TripSimulatorSection} from './src/components/TripSimulatorSection';
 
 const App = () => {
   useEffect(() => {
@@ -237,21 +233,7 @@ const App = () => {
         <ResetSection />
         <TripAnalysisSection />
         <LogsSection />
-        <Text style={styles.title}>Trip Simulator</Text>
-        <Spacer factor={1} />
-        <Button
-          title={'Start simulation (HIGHWAY_TRIP)'}
-          onPress={async () => {
-            DriveKitTripSimulator.start('HIGHWAY_TRIP');
-          }}
-        />
-        <Spacer factor={1} />
-        <Button
-          title={'Stop simulation'}
-          onPress={async () => {
-            DriveKitTripSimulator.stop();
-          }}
-        />
+        <TripSimulatorSection />
       </ScrollView>
     </SafeAreaView>
   );
@@ -264,30 +246,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     padding: margins.x3,
-  },
-  metadataInputContainer: {
-    flexDirection: 'row',
-  },
-  input: {
-    height: inputHeight,
-    borderColor: 'black',
-    borderWidth: 2,
-    color: 'black',
-    flex: 1,
-  },
-  button: {
-    backgroundColor: 'blue',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  text: {
-    color: 'black',
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 });
 
