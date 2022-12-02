@@ -630,13 +630,20 @@ const App = () => {
         <Spacer factor={1} />
         <Button
           title={'Compose diagnosis mail'}
-          onPress={() => {
-            DriveKit.composeDiagnosisMail({
-              recipients: [],
-              bccRecipients: [],
-              subject: 'Diagnosis mail',
-              body: 'Body mail',
-            });
+          onPress={async () => {
+            try {
+              await DriveKit.composeDiagnosisMail({
+                recipients: [],
+                bccRecipients: [],
+                subject: 'Diagnosis mail',
+                body: 'Body mail',
+              });
+            } catch (error) {
+              if (error instanceof Error) {
+                Alert.alert('An error occured. Reason: ', error.message);
+              }
+              Alert.alert('An error occured. Reason: ', JSON.stringify(error));
+            }
           }}
         />
 
