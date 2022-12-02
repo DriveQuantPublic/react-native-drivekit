@@ -37,11 +37,11 @@ import {checkMotionPermission} from './src/services/permissions/motion';
 import {UserInfoForm} from './src/components/UserInfoForm';
 import {DeleteAccountStatus, RequestError} from '@react-native-drivekit/core';
 import {ApiKeySection} from './src/components/ApiKeySection';
+import {UserSection} from './src/components/UserSection';
 
 const inputHeight = 40;
 
 const App = () => {
-  var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
   const [newMetadataKey, setNewMetadataKey] = useState('');
   const [newMetadataValue, setNewMedataValue] = useState('');
@@ -53,11 +53,6 @@ const App = () => {
   const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
     useState(false);
   const [stopTimeout, setStopTimeout] = useState('240');
-
-  const checkUserIdValue = async () => {
-    const userIdVal = await DriveKit.getUserId();
-    setUserId(userIdVal);
-  };
 
   useEffect(() => {
     const checkPermissions = async () => {
@@ -74,7 +69,6 @@ const App = () => {
     };
 
     checkPermissions();
-    checkUserIdValue();
   }, []);
 
   useEffect(() => {
@@ -255,30 +249,7 @@ const App = () => {
     <SafeAreaView style={styles.page}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <ApiKeySection />
-        <Text style={styles.title}>User ID</Text>
-        <Spacer factor={1} />
-        <TextInput
-          value={userId}
-          style={styles.input}
-          returnKeyType={'done'}
-          onChangeText={setUserId}
-        />
-        <Spacer factor={2} />
-        <Button
-          title="Configure User ID"
-          onPress={async () => {
-            const localUserId = await DriveKit.getUserId();
-            if (localUserId == null) {
-              DriveKit.setUserId(userId);
-            } else {
-              Alert.alert(
-                'User Id already set',
-                'You already have configured your user identifier: ' +
-                  localUserId,
-              );
-            }
-          }}
-        />
+        <UserSection />
         <Spacer factor={2} />
         <Text style={styles.title}>Update User ID</Text>
         <Spacer factor={1} />
