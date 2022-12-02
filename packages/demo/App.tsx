@@ -36,15 +36,11 @@ import {checkBatteryOptimizationPermission} from './src/services/permissions/bat
 import {checkMotionPermission} from './src/services/permissions/motion';
 import {UserInfoForm} from './src/components/UserInfoForm';
 import {DeleteAccountStatus, RequestError} from '@react-native-drivekit/core';
+import {ApiKeySection} from './src/components/ApiKeySection';
 
 const inputHeight = 40;
 
 const App = () => {
-  // ========================================
-  // ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
-  // ========================================
-  // DriveKit.setApiKey('');
-
   var [userId, setUserId] = useState('');
   const [newUserId, setNewUserId] = useState('');
   const [newMetadataKey, setNewMetadataKey] = useState('');
@@ -258,26 +254,7 @@ const App = () => {
   return (
     <SafeAreaView style={styles.page}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        <Text style={styles.title}>Api Key</Text>
-        <Spacer factor={1} />
-        <Button
-          title="Check API key"
-          onPress={async () => {
-            const apiKey = await DriveKit.getApiKey();
-            if (apiKey == null) {
-              Alert.alert(
-                'API key check',
-                'Please set your DriveKit API Key at the beggining of the App component',
-              );
-            } else {
-              Alert.alert(
-                'API key check',
-                'Your DriveKit API Key is correctly set: ' + apiKey,
-              );
-            }
-          }}
-        />
-        <Spacer factor={2} />
+        <ApiKeySection />
         <Text style={styles.title}>User ID</Text>
         <Spacer factor={1} />
         <TextInput
