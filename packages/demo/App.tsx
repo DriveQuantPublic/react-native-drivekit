@@ -641,8 +641,12 @@ const App = () => {
             } catch (error) {
               if (error instanceof Error) {
                 Alert.alert('An error occured. Reason: ', error.message);
+              } else {
+                Alert.alert(
+                  'An error occured. Reason: ',
+                  JSON.stringify(error),
+                );
               }
-              Alert.alert('An error occured. Reason: ', JSON.stringify(error));
             }
           }}
         />
