@@ -40,6 +40,7 @@ import {UserSection} from './src/components/UserSection';
 import {UpdateUserSection} from './src/components/UpdateUserSection';
 import {DeleteAccountSection} from './src/components/DeleteAccountSection';
 import {TokenSection} from './src/components/TokenSection';
+import {ResetSection} from './src/components/ResetSection';
 
 const inputHeight = 40;
 
@@ -253,33 +254,7 @@ const App = () => {
         <UpdateUserSection />
         <DeleteAccountSection />
         <TokenSection />
-        <Text style={styles.title}>Reset</Text>
-        <Spacer factor={1} />
-        <Button
-          title={'Reset'}
-          onPress={() => {
-            DriveKit.reset();
-            DriveKitTripAnalysis.reset();
-            DriveKitDriverData.reset();
-          }}
-        />
-
-        <Button
-          title={'Enable Logs'}
-          onPress={() => {
-            DriveKit.enableLogging({
-              showInConsole: true,
-              logPath: '/log/path',
-            });
-          }}
-        />
-        <Button
-          title={'Disable Logs'}
-          onPress={() => {
-            DriveKit.disableLogging({showInConsole: false});
-          }}
-        />
-
+        <ResetSection />
         <Spacer factor={2} />
         <Text style={styles.title}>Trip Analysis</Text>
         <View style={styles.row}>
