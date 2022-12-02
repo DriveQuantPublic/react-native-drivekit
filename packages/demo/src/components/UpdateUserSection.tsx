@@ -1,17 +1,31 @@
-import React, {useState} from 'react';
-import {Alert, Button, StyleSheet, TextInput} from 'react-native';
-import * as DriveKit from '@react-native-drivekit/core';
+import React, {FunctionComponent, useState} from 'react';
+import {Alert, Button, TextInput, StyleSheet} from 'react-native';
+import {Section} from './Section';
 import {Spacer} from './Spacer';
+import * as DriveKit from '@react-native-drivekit/core';
 
 const inputHeight = 40;
 
-export const UserInfoForm = () => {
+const UpdateUserSection: FunctionComponent<{}> = () => {
+  const [newUserId, setNewUserId] = useState('');
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [pseudo, setPseudo] = useState('');
 
   return (
-    <>
+    <Section title="Update User ID">
+      <TextInput
+        value={newUserId}
+        style={styles.input}
+        returnKeyType={'done'}
+        onChangeText={setNewUserId}
+      />
+      <Spacer factor={2} />
+      <Button
+        title="Update User ID"
+        onPress={() => DriveKit.updateUserId(newUserId)}
+      />
+      <Spacer factor={2} />
       <Button
         title={'Get User Info'}
         onPress={async () => {
@@ -49,7 +63,7 @@ export const UserInfoForm = () => {
         title="Update user"
         onPress={() => DriveKit.updateUserInfo({firstname, lastname, pseudo})}
       />
-    </>
+    </Section>
   );
 };
 
@@ -59,5 +73,8 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 2,
     color: 'black',
+    flex: 1,
   },
 });
+
+export {UpdateUserSection};

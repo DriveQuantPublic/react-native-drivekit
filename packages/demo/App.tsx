@@ -34,15 +34,14 @@ import {checkRecognitionPermission} from './src/services/permissions/recognition
 import {checkNotificationPermission} from './src/services/permissions/notification';
 import {checkBatteryOptimizationPermission} from './src/services/permissions/batteryOptimization';
 import {checkMotionPermission} from './src/services/permissions/motion';
-import {UserInfoForm} from './src/components/UserInfoForm';
 import {DeleteAccountStatus, RequestError} from '@react-native-drivekit/core';
 import {ApiKeySection} from './src/components/ApiKeySection';
 import {UserSection} from './src/components/UserSection';
+import {UpdateUserSection} from './src/components/UpdateUserSection';
 
 const inputHeight = 40;
 
 const App = () => {
-  const [newUserId, setNewUserId] = useState('');
   const [newMetadataKey, setNewMetadataKey] = useState('');
   const [newMetadataValue, setNewMedataValue] = useState('');
   const [tripMetadataForm, setTripMetadataForm] = useState<TripMetadata>({});
@@ -250,23 +249,7 @@ const App = () => {
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <ApiKeySection />
         <UserSection />
-        <Spacer factor={2} />
-        <Text style={styles.title}>Update User ID</Text>
-        <Spacer factor={1} />
-        <TextInput
-          value={newUserId}
-          style={styles.input}
-          returnKeyType={'done'}
-          onChangeText={setNewUserId}
-        />
-        <Spacer factor={2} />
-        <Button
-          title="Update User ID"
-          onPress={() => DriveKit.updateUserId(newUserId)}
-        />
-        <Spacer factor={2} />
-        <UserInfoForm />
-        <Spacer factor={2} />
+        <UpdateUserSection />
         <Text style={styles.title}>Delete account</Text>
         <Spacer factor={1} />
         <View style={styles.row}>
