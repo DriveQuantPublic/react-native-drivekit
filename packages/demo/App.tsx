@@ -30,6 +30,7 @@ import {DeleteAccountSection} from './src/components/DeleteAccountSection';
 import {TokenSection} from './src/components/TokenSection';
 import {ResetSection} from './src/components/ResetSection';
 import {TripAnalysisSection} from './src/components/TripAnalysisSection';
+import {LogsSection} from './src/components/LogsSection';
 
 const inputHeight = 40;
 
@@ -235,32 +236,7 @@ const App = () => {
         <TokenSection />
         <ResetSection />
         <TripAnalysisSection />
-        <Text style={styles.title}>Logs</Text>
-        <Spacer factor={1} />
-        <Button
-          title={'Compose diagnosis mail'}
-          onPress={async () => {
-            try {
-              await DriveKit.composeDiagnosisMail({
-                recipients: [],
-                bccRecipients: [],
-                subject: 'Diagnosis mail',
-                body: 'Body mail',
-              });
-            } catch (error) {
-              if (error instanceof Error) {
-                Alert.alert('An error occured. Reason: ', error.message);
-              } else {
-                Alert.alert(
-                  'An error occured. Reason: ',
-                  JSON.stringify(error),
-                );
-              }
-            }
-          }}
-        />
-
-        <Spacer factor={2} />
+        <LogsSection />
         <Text style={styles.title}>Trip Simulator</Text>
         <Spacer factor={1} />
         <Button

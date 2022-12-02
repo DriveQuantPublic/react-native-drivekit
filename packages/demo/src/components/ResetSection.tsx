@@ -18,22 +18,6 @@ const ResetSection: FunctionComponent<{}> = () => {
           DriveKitDriverData.reset();
         }}
       />
-
-      <Button
-        title={'Enable Logs'}
-        onPress={() => {
-          DriveKit.enableLogging({
-            showInConsole: true,
-            logPath: '/log/path',
-          });
-        }}
-      />
-      <Button
-        title={'Disable Logs'}
-        onPress={() => {
-          DriveKit.disableLogging({showInConsole: false});
-        }}
-      />
     </Section>
   );
 };
