@@ -39,6 +39,7 @@ import {ApiKeySection} from './src/components/ApiKeySection';
 import {UserSection} from './src/components/UserSection';
 import {UpdateUserSection} from './src/components/UpdateUserSection';
 import {DeleteAccountSection} from './src/components/DeleteAccountSection';
+import {TokenSection} from './src/components/TokenSection';
 
 const inputHeight = 40;
 
@@ -251,17 +252,7 @@ const App = () => {
         <UserSection />
         <UpdateUserSection />
         <DeleteAccountSection />
-        <Text style={styles.title}>Token Validity</Text>
-        <Spacer factor={1} />
-        <Button
-          title="Check token validity"
-          onPress={async () => {
-            const isTokenValid = await DriveKit.isTokenValid();
-            Alert.alert(isTokenValid ? 'Token is valid' : 'Token is not valid');
-          }}
-        />
-
-        <Spacer factor={2} />
+        <TokenSection />
         <Text style={styles.title}>Reset</Text>
         <Spacer factor={1} />
         <Button
