@@ -1,6 +1,6 @@
 import React, {FunctionComponent, ReactNode} from 'react';
 import {StyleSheet, Text} from 'react-native';
-import {Spacer} from './Spacer';
+import {Spacer} from './../Spacer';
 
 const Section: FunctionComponent<{title: string; children?: ReactNode}> = ({
   title,

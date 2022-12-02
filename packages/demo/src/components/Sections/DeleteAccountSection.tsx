@@ -2,7 +2,7 @@ import React, {FunctionComponent, useState} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import {Section} from './Section';
-import {Spacer} from './Spacer';
+import {Spacer} from './../Spacer';
 import * as DriveKit from '@react-native-drivekit/core';
 
 const DeleteAccountSection: FunctionComponent<{}> = () => {

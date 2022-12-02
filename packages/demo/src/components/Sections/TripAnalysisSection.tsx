@@ -1,11 +1,11 @@
 import React, {FunctionComponent, useState} from 'react';
 import {Alert, Button, TextInput, StyleSheet, Text, View} from 'react-native';
-import {Section} from './Section';
-import {Spacer} from './Spacer';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import type {TripMetadata} from '@react-native-drivekit/trip-analysis';
 import CheckBox from '@react-native-community/checkbox';
+import {Section} from './Section';
+import {Spacer} from './../Spacer';
 
 const inputHeight = 40;
 

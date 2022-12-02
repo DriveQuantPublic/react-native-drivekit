@@ -20,15 +20,15 @@ import {checkNotificationPermission} from './src/services/permissions/notificati
 import {checkBatteryOptimizationPermission} from './src/services/permissions/batteryOptimization';
 import {checkMotionPermission} from './src/services/permissions/motion';
 import {DeleteAccountStatus, RequestError} from '@react-native-drivekit/core';
-import {ApiKeySection} from './src/components/ApiKeySection';
-import {UserSection} from './src/components/UserSection';
-import {UpdateUserSection} from './src/components/UpdateUserSection';
-import {DeleteAccountSection} from './src/components/DeleteAccountSection';
-import {TokenSection} from './src/components/TokenSection';
-import {ResetSection} from './src/components/ResetSection';
-import {TripAnalysisSection} from './src/components/TripAnalysisSection';
-import {LogsSection} from './src/components/LogsSection';
-import {TripSimulatorSection} from './src/components/TripSimulatorSection';
+import {ApiKeySection} from './src/components/Sections/ApiKeySection';
+import {UserSection} from './src/components/Sections/UserSection';
+import {UpdateUserSection} from './src/components/Sections/UpdateUserSection';
+import {DeleteAccountSection} from './src/components/Sections/DeleteAccountSection';
+import {TokenSection} from './src/components/Sections/TokenSection';
+import {ResetSection} from './src/components/Sections/ResetSection';
+import {TripAnalysisSection} from './src/components/Sections/TripAnalysisSection';
+import {LogsSection} from './src/components/Sections/LogsSection';
+import {TripSimulatorSection} from './src/components/Sections/TripSimulatorSection';
 
 const App = () => {
   useEffect(() => {

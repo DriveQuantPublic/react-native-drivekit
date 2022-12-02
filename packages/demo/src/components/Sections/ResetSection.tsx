@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {Button} from 'react-native';
 import {Section} from './Section';
-import {Spacer} from './Spacer';
+import {Spacer} from './../Spacer';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
