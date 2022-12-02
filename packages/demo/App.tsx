@@ -38,6 +38,7 @@ import {DeleteAccountStatus, RequestError} from '@react-native-drivekit/core';
 import {ApiKeySection} from './src/components/ApiKeySection';
 import {UserSection} from './src/components/UserSection';
 import {UpdateUserSection} from './src/components/UpdateUserSection';
+import {DeleteAccountSection} from './src/components/DeleteAccountSection';
 
 const inputHeight = 40;
 
@@ -48,7 +49,6 @@ const App = () => {
   const [updateMetadataKey, setUpdateMetadataKey] = useState('');
   const [updateMetadataValue, setUpdateMedataValue] = useState('');
   const [tripMetadataKeyToDelete, setTripMetadataKeyToDelete] = useState('');
-  const [instantDeleteAccount, setInstantDeleteAccount] = useState(false);
   const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
     useState(false);
   const [stopTimeout, setStopTimeout] = useState('240');
@@ -250,24 +250,7 @@ const App = () => {
         <ApiKeySection />
         <UserSection />
         <UpdateUserSection />
-        <Text style={styles.title}>Delete account</Text>
-        <Spacer factor={1} />
-        <View style={styles.row}>
-          <CheckBox
-            disabled={false}
-            value={instantDeleteAccount}
-            onValueChange={setInstantDeleteAccount}
-          />
-          <Spacer factor={1} />
-          <Text>Instant deletion ?</Text>
-        </View>
-        <Spacer factor={2} />
-        <Button
-          color={'red'}
-          title="Delete account"
-          onPress={() => DriveKit.deleteAccount(instantDeleteAccount)}
-        />
-        <Spacer factor={2} />
+        <DeleteAccountSection />
         <Text style={styles.title}>Token Validity</Text>
         <Spacer factor={1} />
         <Button
