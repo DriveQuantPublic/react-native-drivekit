@@ -14,6 +14,7 @@ import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import * as DriveKitTripSimulator from '@react-native-drivekit/trip-simulator';
+import notifee from '@notifee/react-native';
 
 import type {
   CancelTripReason,
