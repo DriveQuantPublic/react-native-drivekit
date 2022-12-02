@@ -12,13 +12,7 @@ import type {
   CrashInfo,
   CrashFeedback,
 } from '@react-native-drivekit/trip-analysis';
-import {checkBluetoothPermissions} from './src/services/permissions/bluetooth';
 import {margins} from './src/margins';
-import {checkLocationsPermissions} from './src/services/permissions/location';
-import {checkRecognitionPermission} from './src/services/permissions/recognition';
-import {checkNotificationPermission} from './src/services/permissions/notification';
-import {checkBatteryOptimizationPermission} from './src/services/permissions/batteryOptimization';
-import {checkMotionPermission} from './src/services/permissions/motion';
 import {DeleteAccountStatus, RequestError} from '@react-native-drivekit/core';
 import {ApiKeySection} from './src/components/Sections/ApiKeySection';
 import {UserSection} from './src/components/Sections/UserSection';
@@ -29,24 +23,10 @@ import {ResetSection} from './src/components/Sections/ResetSection';
 import {TripAnalysisSection} from './src/components/Sections/TripAnalysisSection';
 import {LogsSection} from './src/components/Sections/LogsSection';
 import {TripSimulatorSection} from './src/components/Sections/TripSimulatorSection';
+import {useCheckPermissions} from './src/hooks/useCheckPermissions';
 
 const App = () => {
-  useEffect(() => {
-    const checkPermissions = async () => {
-      await checkLocationsPermissions();
-      await checkRecognitionPermission();
-      await checkBluetoothPermissions();
-      await checkNotificationPermission();
-      await checkMotionPermission();
-      /**
-       * There is no open source library that promisify the modal call
-       * This is why we put it at the end.
-       */
-      await checkBatteryOptimizationPermission();
-    };
-
-    checkPermissions();
-  }, []);
+  useCheckPermissions();
 
   useEffect(() => {
     const listener = DriveKit.addEventListener('driveKitConnected', () => {
