@@ -1,5 +1,7 @@
 package com.reactnativedrivekittripanalysis
+
 import android.content.Context
+import android.content.Intent
 import android.content.IntentFilter
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
@@ -14,8 +16,10 @@ import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.Cras
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.facebook.react.HeadlessJsTaskService
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
+import com.reactnativedrivekittripanalysis.service.MyTaskService
 
 class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
   DriveKitTripAnalysisSpec(context) {
@@ -87,7 +91,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
 
   @ReactMethod
   override fun setStopTimeout(stopTimeout: Int, promise: Promise) {
-	DriveKitTripAnalysis.setStopTimeOut(stopTimeout)
+    DriveKitTripAnalysis.setStopTimeOut(stopTimeout)
     promise.resolve(null)
   }
 
@@ -99,13 +103,13 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
 
   @ReactMethod
   override fun setTripMetadata(metadata: ReadableMap, promise: Promise) {
-    val metadataHashmap = HashMap<String, String>();
-    for ((key, value) in metadata.entryIterator){
-      if(value !is String){
-        promise.reject("setTripMetadata", "The value of key $key must be a String");
-        return;
+    val metadataHashmap = HashMap<String, String>()
+    for ((key, value) in metadata.entryIterator) {
+      if (value !is String) {
+        promise.reject("setTripMetadata", "The value of key $key must be a String")
+        return
       }
-      metadataHashmap[key] = value;
+      metadataHashmap[key] = value
     }
     DriveKitTripAnalysis.setTripMetaData(metadataHashmap)
     promise.resolve(null)
@@ -113,7 +117,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
 
   @ReactMethod
   override fun deleteTripMetadata(key: String?, promise: Promise) {
-    if(key is String){
+    if (key is String) {
       DriveKitTripAnalysis.deleteTripMetaData(key)
     } else {
       DriveKitTripAnalysis.deleteTripMetaData()
@@ -138,53 +142,93 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
 
     var reactContext: ReactApplicationContext? = null
     fun initialize(rnTripNotification: RNTripNotification) {
-      val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
-      DriveKitTripAnalysis.initialize(tripNotification, object: TripListener {
-        override fun tripStarted(startMode : StartMode) {
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripStarted", mapStartMode(startMode))
+      val tripNotification = TripNotification(rnTripNotification.title,
+        rnTripNotification.content,
+        rnTripNotification.iconId)
+      tripNotification.notificationId = 111 // MOCK
+      DriveKitTripAnalysis.initialize(tripNotification, object : TripListener {
+        override fun tripStarted(startMode: StartMode) {
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripStarted", mapStartMode(startMode))
         }
-        override fun tripPoint(tripPoint : TripPoint) {
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripPoint", mapTripPoint(tripPoint))
-        }
-        override fun tripSavedForRepost() {
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripSavedForRepost", null)
 
+        override fun tripPoint(tripPoint: TripPoint) {
+          //sendHeadlessEvent(EventType.TRIP_POINT)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripPoint", mapTripPoint(tripPoint))
         }
-        override fun tripFinished(post : PostGeneric, response: PostGenericResponse) {
-          // implemented in TripReceiver
+
+        override fun tripSavedForRepost() {
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripSavedForRepost", null)
         }
+
+        override fun tripFinished(post: PostGeneric, response: PostGenericResponse) {
+          // DeviceEventEmitter implemented in TripReceiver
+          sendHeadlessEvent(EventType.TRIP_FINISHED) // TODO move in Trip Receiver
+        }
+
         override fun beaconDetected() {
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("beaconDetected", null)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("beaconDetected", null)
         }
+
         override fun sdkStateChanged(state: State) {
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("sdkStateChanged", mapSDKState(state))
+          sendHeadlessEvent(EventType.SDK_STATE_CHANGED)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("sdkStateChanged", mapSDKState(state))
         }
+
         override fun potentialTripStart(startMode: StartMode) {
-          var rnStartMode = mapStartMode(startMode)
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("potentialTripStart", rnStartMode)
+          val rnStartMode = mapStartMode(startMode)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("potentialTripStart", rnStartMode)
         }
+
         override fun crashDetected(crashInfo: DKCrashInfo) {
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("crashDetected", mapDKCrashInfo(crashInfo))
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("crashDetected", mapDKCrashInfo(crashInfo))
         }
-        override fun crashFeedbackSent(crashInfo: DKCrashInfo, feedbackType: CrashFeedbackType, severity: CrashFeedbackSeverity) {
-          var result = Arguments.createMap()
+
+        override fun crashFeedbackSent(
+          crashInfo: DKCrashInfo,
+          feedbackType: CrashFeedbackType,
+          severity: CrashFeedbackSeverity,
+        ) {
+          val result = Arguments.createMap()
           result.putMap("crashInfo", mapDKCrashInfo(crashInfo))
           result.putString("feedbackType", mapDKCrashFeedbackType(feedbackType))
           result.putString("severity", mapDKCrashFeedbackSeverity(severity))
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("crashFeedbackSent", result)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("crashFeedbackSent", result)
         }
+
         override fun onDeviceConfigEvent(deviceConfigEvent: DeviceConfigEvent) {
           if (deviceConfigEvent is DeviceConfigEvent.BLUETOOTH_SENSOR_STATE_CHANGED) {
-            var result = Arguments.createMap()
+            val result = Arguments.createMap()
             result.putBoolean("btSensorEnabled", deviceConfigEvent.btEnabled)
             result.putBoolean("btRequired", deviceConfigEvent.btRequired)
-            reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("bluetoothSensorStateChanged", result)
+            reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+              ?.emit("bluetoothSensorStateChanged", result)
           }
         }
       })
     }
 
-    fun registerReceiver(context: Context){
+    private fun sendHeadlessEvent(eventType: EventType) {
+      reactContext?.let {
+        val serviceIntent = Intent(it, MyTaskService::class.java)
+        serviceIntent.putExtra("eventType", eventType.name)
+        it.startService(serviceIntent)
+        HeadlessJsTaskService.acquireWakeLockNow(it)
+      }
+    }
+
+    private enum class EventType {
+      TRIP_POINT, TRIP_FINISHED, SDK_STATE_CHANGED
+    }
+
+    fun registerReceiver(context: Context) {
       val receiver = TripReceiver()
       val filter = IntentFilter("com.drivequant.sdk.TRIP_ANALYSED")
       LocalBroadcastManager.getInstance(context).registerReceiver(receiver, filter)

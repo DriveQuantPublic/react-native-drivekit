@@ -1,4 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.reactnativedrivekittripanalysis">
 
+  <application
+    android:label="@string/app_name"
+    android:supportsRtl="true">
+    <service android:name=".service.MyTaskService" />
+  </application>
 </manifest>
