@@ -4,11 +4,11 @@ import {
   NativeModules,
   Platform,
 } from 'react-native';
-import type { UserInfo } from './NativeCore';
 import type {
   DeleteAccountStatus,
   RequestError,
   UpdateUserIdStatus,
+  UserInfo,
 } from './types';
 
 const LINKING_ERROR =

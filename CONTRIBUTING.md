@@ -126,8 +126,9 @@ We use [lerna](https://github.com/lerna/lerna) to make it easier to publish new 
 To publish new versions, run the following at the root of the repository:
 
 ```sh
-yarn lerna version --conventional-commits
+yarn bumpversion
 ```
+
 
 This will automatically increment the version based on the type of commits added since the last version.
 
