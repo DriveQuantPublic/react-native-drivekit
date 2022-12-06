@@ -19,7 +19,7 @@ import com.drivequant.drivekit.tripanalysis.service.recorder.State
 import com.facebook.react.HeadlessJsTaskService
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
-import com.reactnativedrivekittripanalysis.service.MyTaskService
+import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
 
 class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
   DriveKitTripAnalysisSpec(context) {
@@ -217,7 +217,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
 
     private fun sendHeadlessEvent(eventType: EventType) {
       reactContext?.let {
-        val serviceIntent = Intent(it, MyTaskService::class.java)
+        val serviceIntent = Intent(it, DKHeadlessJSService::class.java)
         serviceIntent.putExtra("eventType", eventType.name)
         it.startService(serviceIntent)
         HeadlessJsTaskService.acquireWakeLockNow(it)

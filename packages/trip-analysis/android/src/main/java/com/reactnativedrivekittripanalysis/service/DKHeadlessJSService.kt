@@ -5,10 +5,13 @@ import com.facebook.react.HeadlessJsTaskService
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.jstasks.HeadlessJsTaskConfig
 
-class MyTaskService : HeadlessJsTaskService() {
+private const val TASKKEY = "DKHeadlessJS"
+
+class DKHeadlessJSService : HeadlessJsTaskService() {
+
   override fun getTaskConfig(intent: Intent) =
     HeadlessJsTaskConfig(
-      "SomeTaskName", // TODO move on a static string
+      TASKKEY,
       if (intent.extras != null) {
         Arguments.fromBundle(intent.extras)
       } else {
