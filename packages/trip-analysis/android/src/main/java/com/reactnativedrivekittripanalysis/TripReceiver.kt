@@ -17,9 +17,11 @@ class TripReceiver: TripAnalysedReceiver() {
     result.putString("post", gson.toJson(post))
     result.putString("response", gson.toJson(response))
     DriveKitTripAnalysisModule.reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripFinished", result)
+    HeadlessJsManager.sendTripFinishedEvent(post, response)
   }
 
   override fun onTripCancelled(context: Context, status: CancelTrip) {
     DriveKitTripAnalysisModule.reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripCancelled", mapCancelTrip(status) )
+    HeadlessJsManager.sendTripCancelledEvent(status)
   }
 }

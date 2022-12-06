@@ -1,7 +1,6 @@
 package com.reactnativedrivekittripanalysis
 
 import android.content.Context
-import android.content.Intent
 import android.content.IntentFilter
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
@@ -16,10 +15,8 @@ import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.Cras
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
-import com.facebook.react.HeadlessJsTaskService
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
-import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
 
 class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
   DriveKitTripAnalysisSpec(context) {
@@ -153,7 +150,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         }
 
         override fun tripPoint(tripPoint: TripPoint) {
-          //sendHeadlessEvent(EventType.TRIP_POINT)
+          // TODO
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("tripPoint", mapTripPoint(tripPoint))
         }
@@ -164,8 +161,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         }
 
         override fun tripFinished(post: PostGeneric, response: PostGenericResponse) {
-          // DeviceEventEmitter implemented in TripReceiver
-          sendHeadlessEvent(EventType.TRIP_FINISHED) // TODO move in Trip Receiver
+          // managed in TripReceiver
         }
 
         override fun beaconDetected() {
@@ -174,15 +170,15 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         }
 
         override fun sdkStateChanged(state: State) {
-          sendHeadlessEvent(EventType.SDK_STATE_CHANGED)
+          HeadlessJsManager.sendSdkStateChangedEvent(state)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("sdkStateChanged", mapSDKState(state))
         }
 
         override fun potentialTripStart(startMode: StartMode) {
-          val rnStartMode = mapStartMode(startMode)
+          HeadlessJsManager.sendPotentialTripStartEvent(startMode)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-            ?.emit("potentialTripStart", rnStartMode)
+            ?.emit("potentialTripStart", mapStartMode(startMode))
         }
 
         override fun crashDetected(crashInfo: DKCrashInfo) {
@@ -213,19 +209,6 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
           }
         }
       })
-    }
-
-    private fun sendHeadlessEvent(eventType: EventType) {
-      reactContext?.let {
-        val serviceIntent = Intent(it, DKHeadlessJSService::class.java)
-        serviceIntent.putExtra("eventType", eventType.name)
-        it.startService(serviceIntent)
-        HeadlessJsTaskService.acquireWakeLockNow(it)
-      }
-    }
-
-    private enum class EventType {
-      TRIP_POINT, TRIP_FINISHED, SDK_STATE_CHANGED
     }
 
     fun registerReceiver(context: Context) {
