@@ -23,9 +23,9 @@ const App = () => {
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <ApiKeySection />
         <UserSection />
+        <TokenSection />
         <UpdateUserSection />
         <DeleteAccountSection />
-        <TokenSection />
         <ResetSection />
         <TripAnalysisSection />
         <LogsSection />

@@ -203,13 +203,17 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         }}
       />
 
+      <Spacer factor={1} />
+
       <Button
         title={'Enable CrashDetection'}
         onPress={() => {
           DriveKitTripAnalysis.activateCrashDetection(true);
         }}
       />
+
       <Spacer factor={1} />
+
       <Button
         title={'Disable CrashDetection'}
         onPress={() => {
@@ -218,6 +222,7 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
       />
 
       <Spacer factor={1} />
+
       <Button
         title={'Delete trip'}
         onPress={async () => {

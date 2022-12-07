@@ -1,6 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import * as DriveKit from '@react-native-drivekit/core';
 import {Alert, Button} from 'react-native';
+import {Spacer} from './../Spacer';
 import {Section} from './Section';
 
 const LogsSection: FunctionComponent<{}> = () => {
@@ -25,6 +26,7 @@ const LogsSection: FunctionComponent<{}> = () => {
           }
         }}
       />
+      <Spacer factor={1} />
       <Button
         title={'Enable Logs'}
         onPress={() => {
@@ -34,6 +36,7 @@ const LogsSection: FunctionComponent<{}> = () => {
           });
         }}
       />
+      <Spacer factor={1} />
       <Button
         title={'Disable Logs'}
         onPress={() => {
