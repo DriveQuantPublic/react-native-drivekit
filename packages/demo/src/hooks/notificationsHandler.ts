@@ -100,7 +100,6 @@ function isTripUnscored(response: any) {
 function isAlternativeTransportationMode(postGenericResponse: any) {
   const transportationMode =
     postGenericResponse.itineraryStatistics.transportationMode;
-  console.log('TransportationMode =' + transportationMode);
   if (
     transportationMode === 0 ||
     transportationMode === 1 ||

@@ -5,8 +5,6 @@ import {
 } from './src/hooks/notificationsHandler';
 
 module.exports = async taskData => {
-  console.log('DKHeadlessJS is called ! eventType = ' + taskData.eventType);
-
   if (
     taskData.eventType === 'TRIP_FINISHED' ||
     taskData.eventType === 'TRIP_CANCELLED'

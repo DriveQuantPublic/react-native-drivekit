@@ -142,7 +142,6 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
       val tripNotification = TripNotification(rnTripNotification.title,
         rnTripNotification.content,
         rnTripNotification.iconId)
-      tripNotification.notificationId = 111 // MOCK
       DriveKitTripAnalysis.initialize(tripNotification, object : TripListener {
         override fun tripStarted(startMode: StartMode) {
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
