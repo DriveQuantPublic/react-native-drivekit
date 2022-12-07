@@ -9,7 +9,6 @@ import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 const ResetSection: FunctionComponent<{}> = () => {
   return (
     <Section title="Reset">
-      <Spacer factor={1} />
       <Button
         title={'Reset'}
         onPress={() => {

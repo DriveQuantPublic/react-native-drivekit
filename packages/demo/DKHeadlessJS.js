@@ -26,17 +26,18 @@ module.exports = async taskData => {
       body = getBodyForCanceledTripReason(taskData.cancelTrip);
     }
     if (body != null) {
-      await displayNotification(body, 111, channelId);
+      await displayNotification(body, channelId);
     }
   }
 
-  async function displayNotification(bodyContent, id, channelId) {
+  async function displayNotification(bodyContent, channelId) {
+    console.log(Date.now());
     // Display a notification
     await notifee.displayNotification({
       title: 'DriveKit RN Demo App',
       body: bodyContent,
       android: {
-        id: id,
+        id: Date.now(),
         channelId,
         //smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
         // pressAction is needed if you want the notification to open the app when pressed

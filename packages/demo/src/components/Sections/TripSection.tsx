@@ -7,8 +7,6 @@ import {Spacer} from './../Spacer';
 const TripSection: FunctionComponent<{}> = () => {
   return (
     <Section title="Driver Data">
-      <Spacer factor={1} />
-
       <Button
         title={'Get trips'}
         onPress={async () => {
@@ -24,6 +22,7 @@ const TripSection: FunctionComponent<{}> = () => {
       />
 
       <Spacer factor={1} />
+
       <Button
         title={'Get trip'}
         onPress={async () => {
@@ -39,7 +38,9 @@ const TripSection: FunctionComponent<{}> = () => {
           );
         }}
       />
+
       <Spacer factor={1} />
+
       <Button
         title={'Get Route'}
         onPress={async () => {
@@ -50,6 +51,8 @@ const TripSection: FunctionComponent<{}> = () => {
         }}
       />
 
+      <Spacer factor={1} />
+
       <Button
         title={'Delete trip'}
         onPress={async () => {
@@ -57,8 +60,6 @@ const TripSection: FunctionComponent<{}> = () => {
           Alert.alert(result ? 'Trip deleted' : 'Trip not deleted');
         }}
       />
-
-      <Spacer factor={1} />
     </Section>
   );
 };
