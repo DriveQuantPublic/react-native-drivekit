@@ -330,16 +330,16 @@ PODS:
   - React-jsinspector (0.70.5)
   - React-logger (0.70.5):
     - glog
-  - react-native-drivekit-core (1.1.0):
+  - react-native-drivekit-core (1.1.1):
     - DriveKitCore (= 1.28.1)
     - React-Core
-  - react-native-drivekit-driver-data (1.1.0):
+  - react-native-drivekit-driver-data (1.1.1):
     - DriveKitDriverData (= 1.28.1)
     - React-Core
-  - react-native-drivekit-trip-analysis (1.1.0):
+  - react-native-drivekit-trip-analysis (1.1.1):
     - DriveKitTripAnalysis (= 1.28.1)
     - React-Core
-  - react-native-drivekit-trip-simulator (1.1.0):
+  - react-native-drivekit-trip-simulator (1.1.1):
     - DriveKitTripSimulator (= 1.28.1)
     - React-Core
   - React-perflogger (0.70.5)
@@ -410,6 +410,11 @@ PODS:
     - React-perflogger (= 0.70.5)
   - RNCCheckbox (0.5.14):
     - BEMCheckBox (~> 1.4)
+    - React-Core
+  - RNNotifee (7.1.0):
+    - React-Core
+    - RNNotifee/NotifeeCore (= 7.1.0)
+  - RNNotifee/NotifeeCore (7.1.0):
     - React-Core
   - RNPermissions (3.6.1):
     - React-Core
@@ -486,6 +491,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../../../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../../../node_modules/react-native/ReactCommon`)
   - "RNCCheckbox (from `../../../node_modules/@react-native-community/checkbox`)"
+  - "RNNotifee (from `../../../node_modules/@notifee/react-native`)"
   - RNPermissions (from `../../../node_modules/react-native-permissions`)
   - Yoga (from `../../../node_modules/react-native/ReactCommon/yoga`)
 
@@ -601,6 +607,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native/ReactCommon"
   RNCCheckbox:
     :path: "../../../node_modules/@react-native-community/checkbox"
+  RNNotifee:
+    :path: "../../../node_modules/@notifee/react-native"
   RNPermissions:
     :path: "../../../node_modules/react-native-permissions"
   Yoga:
@@ -654,10 +662,10 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 31564fa6912459921568e8b0e49024285a4d584b
   React-jsinspector: badd81696361249893a80477983e697aab3c1a34
   React-logger: fdda34dd285bdb0232e059b19d9606fa0ec3bb9c
-  react-native-drivekit-core: 33504cd92d08e3d6c1582fa9d5d4fcf1b7e738be
-  react-native-drivekit-driver-data: def9551fe013dfdee7e975baf761e6e32e871188
-  react-native-drivekit-trip-analysis: 23b76e6b931f4a78e6e2d3115b1cbe00a210023e
-  react-native-drivekit-trip-simulator: 403cefd5158d7fde69af82a043ed717f4ab74856
+  react-native-drivekit-core: 936eeb3bcb51caf558e02c698473bb5b1d1919c5
+  react-native-drivekit-driver-data: ad38d7841a40f7ba8ae8ec4d1d3efb995211f359
+  react-native-drivekit-trip-analysis: f6477a3459cb712c454365a141493ac86194d20b
+  react-native-drivekit-trip-simulator: 6d1e250ec6e060f3527e521113895eccd0c689b8
   React-perflogger: e68d3795cf5d247a0379735cbac7309adf2fb931
   React-RCTActionSheet: 05452c3b281edb27850253db13ecd4c5a65bc247
   React-RCTAnimation: 578eebac706428e68466118e84aeacf3a282b4da
@@ -671,6 +679,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 7401c4a40f8728fd89df4a56104541b760876117
   ReactCommon: c9246996e73bf75a2c6c3ff15f1e16707cdc2da9
   RNCCheckbox: 38989bbd3d7d536adf24ba26c6b3e6cefe0bea6f
+  RNNotifee: 8527a2b9ffc6d0abfd907027e22962a809e39eee
   RNPermissions: dcdb7b99796bbeda6975a6e79ad519c41b251b1c
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: eca980a5771bf114c41a754098cd85e6e0d90ed7

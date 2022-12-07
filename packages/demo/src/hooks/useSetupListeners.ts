@@ -1,3 +1,4 @@
+import notifee from '@notifee/react-native';
 import {useEffect} from 'react';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
@@ -14,6 +15,11 @@ import type {
   StartMode,
   TripPoint,
 } from '@react-native-drivekit/trip-analysis';
+import {
+  getBodyForFinishedTripResponse,
+  getBodyForCanceledTripReason,
+} from './notificationsHandler';
+import {Platform} from 'react-native';
 
 const useSetupListeners = () => {
   useEffect(() => {
@@ -71,6 +77,15 @@ const useSetupListeners = () => {
       'tripCancelled',
       (reason: CancelTripReason) => {
         console.log('Trip was canceled', reason);
+        if (Platform.OS === 'ios') {
+          var body = getBodyForCanceledTripReason(reason);
+          if (body !== null) {
+            notifee.displayNotification({
+              title: 'DriveKit RN Demo App',
+              body: body,
+            });
+          }
+        }
       },
     );
     return () => listener.remove();
@@ -175,6 +190,13 @@ const useSetupListeners = () => {
           JSON.stringify(post),
           JSON.stringify(response),
         );
+        if (Platform.OS === 'ios') {
+          var body = getBodyForFinishedTripResponse(response);
+          notifee.displayNotification({
+            title: 'DriveKit RN Demo App',
+            body: body,
+          });
+        }
       },
     );
     return () => listener.remove();
