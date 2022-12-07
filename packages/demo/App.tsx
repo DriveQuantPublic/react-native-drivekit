@@ -6,6 +6,7 @@ import {ApiKeySection} from './src/components/Sections/ApiKeySection';
 import {UserSection} from './src/components/Sections/UserSection';
 import {UpdateUserSection} from './src/components/Sections/UpdateUserSection';
 import {DeleteAccountSection} from './src/components/Sections/DeleteAccountSection';
+import {TripSection} from './src/components/Sections/TripSection';
 import {TokenSection} from './src/components/Sections/TokenSection';
 import {ResetSection} from './src/components/Sections/ResetSection';
 import {TripAnalysisSection} from './src/components/Sections/TripAnalysisSection';
@@ -25,11 +26,12 @@ const App = () => {
         <UserSection />
         <TokenSection />
         <UpdateUserSection />
+        <TripAnalysisSection />
+        <TripSimulatorSection />
+        <TripSection />
+        <LogsSection />
         <DeleteAccountSection />
         <ResetSection />
-        <TripAnalysisSection />
-        <LogsSection />
-        <TripSimulatorSection />
       </ScrollView>
     </SafeAreaView>
   );
