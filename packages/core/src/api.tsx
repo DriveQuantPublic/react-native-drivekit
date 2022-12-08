@@ -108,8 +108,12 @@ export function composeDiagnosisMail(options?: {
   return Core.composeDiagnosisMail(options);
 }
 
-export function requestLocationPermission(): Promise<void> {
-  return Core.requestLocationPermission();
+export function requestIOSLocationPermission(): Promise<void> {
+  if (Platform.OS === 'ios') {
+    return Core.requestLocationPermission();
+  } else {
+    return Promise.resolve();
+  }
 }
 
 type Listeners = {

@@ -37,7 +37,7 @@ const checkPermissions = async (locationPermission: Permission[]) => {
         break;
       case RESULTS.DENIED:
         if (Platform.OS === 'ios') {
-          await DriveKitCore.requestLocationPermission();
+          await DriveKitCore.requestIOSLocationPermission();
         } else {
           await request(permission);
         }
