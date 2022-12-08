@@ -23,6 +23,7 @@ import {Platform} from 'react-native';
 
 const useSetupListeners = () => {
   const startTripNotifId = 'DriveKitStartTripNotifId';
+  const savedTripNotifId = 'DriveKitSavedTripNotifId';
 
   useEffect(() => {
     const listener = DriveKit.addEventListener('driveKitConnected', () => {
@@ -137,6 +138,15 @@ const useSetupListeners = () => {
       'tripSavedForRepost',
       () => {
         console.log('trip saved for repost');
+        if (Platform.OS === 'ios') {
+          var body =
+            'The trip could not be analyzed because your phone is not connected to the mobile network. It will be analyzed later';
+          notifee.displayNotification({
+            id: savedTripNotifId,
+            title: 'DriveKit RN Demo App',
+            body: body,
+          });
+        }
       },
     );
     return () => listener.remove();
@@ -204,6 +214,7 @@ const useSetupListeners = () => {
         if (Platform.OS === 'ios') {
           var body = getBodyForFinishedTripResponse(response);
           notifee.cancelNotification(startTripNotifId);
+          notifee.cancelNotification(savedTripNotifId);
           notifee.displayNotification({
             title: 'DriveKit RN Demo App',
             body: body,
