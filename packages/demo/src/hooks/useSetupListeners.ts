@@ -22,6 +22,8 @@ import {
 import {Platform} from 'react-native';
 
 const useSetupListeners = () => {
+  const startTripNotifId = 'DriveKitStartTripNotifId';
+
   useEffect(() => {
     const listener = DriveKit.addEventListener('driveKitConnected', () => {
       console.log('Connected to DriveKit');
@@ -78,6 +80,7 @@ const useSetupListeners = () => {
       (reason: CancelTripReason) => {
         console.log('Trip was canceled', reason);
         if (Platform.OS === 'ios') {
+          notifee.cancelNotification(startTripNotifId);
           var body = getBodyForCanceledTripReason(reason);
           if (body !== null) {
             notifee.displayNotification({
@@ -106,6 +109,14 @@ const useSetupListeners = () => {
       'tripStarted',
       (startMode: StartMode) => {
         console.log('trip start', startMode);
+        if (Platform.OS === 'ios') {
+          var body = 'A trip is recording';
+          notifee.displayNotification({
+            id: startTripNotifId,
+            title: 'DriveKit RN Demo App',
+            body: body,
+          });
+        }
       },
     );
     return () => listener.remove();
@@ -192,6 +203,7 @@ const useSetupListeners = () => {
         );
         if (Platform.OS === 'ios') {
           var body = getBodyForFinishedTripResponse(response);
+          notifee.cancelNotification(startTripNotifId);
           notifee.displayNotification({
             title: 'DriveKit RN Demo App',
             body: body,
