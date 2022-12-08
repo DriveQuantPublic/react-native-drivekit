@@ -54,7 +54,7 @@ To inform the user that the trip has been analyzed, finished or cancelled, the D
 
 We recommend [Notifee](https://notifee.app/) library to manage your notifications.
 
-<h2>iOS</h2>
+#### iOS
 
 On iOS, you just have to manage notifications using the `DriveKit.addEventListener(…)` method. Please refer to the `useSetupListeners.ts` on the demo package for example.
 
