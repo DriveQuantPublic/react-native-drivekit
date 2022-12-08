@@ -45,3 +45,25 @@ For this purpose, DriveQuant provides the [Trip Simulator](https://docs.drivequa
 >❗️It is strongly recommended not to integrate this component into an application built for production. This component has been designed to facilitate preliminary testing and should never remain in your production app.
 
 To install this module, follow step by step the method described in the [Trip Simulator documentation](./packages/trip-simulator/README.md)
+
+---
+
+### ➡️ Step 5 : Notify the user when a trip is finished or cancelled
+
+To inform the user that the trip has been finished or cancelled, the DriveKit libraries for React Native offers listeners so it becomes easy to build notifications on both mobile platforms.
+
+We recommend [Notifee](https://notifee.app/) library to manage your notifications.
+
+<h2>iOS</h2>
+
+On iOS, you just have to manage notifications using the `DriveKit.addEventListener(…)` method. Please refer to the `useSetupListeners.ts` on the demo package for example
+
+<h2>Android</h2>
+
+It is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage this case, a Headless JS service has been introduced on Trip Analysis component.
+
+Follow these steps :
+
+- Register the Headless task named `DKHeadlessJS` on your `index.js` file.
+- Replicate the `DKHeadlessJS.js` file on your project. 
+
