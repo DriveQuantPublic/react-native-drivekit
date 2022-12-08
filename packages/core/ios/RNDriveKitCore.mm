@@ -122,6 +122,11 @@ RCT_REMAP_METHOD(composeDiagnosisMail, composeDiagnosisMailWithOptions:(NSDictio
     };
 }
 
+RCT_REMAP_METHOD(requestLocationPermission, requestLocationPermissionWithResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject) {
+    [RNDriveKitCoreWrapper.shared requestLocationPermission];
+    resolve(nil);
+}
+
 
 - (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];

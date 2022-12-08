@@ -108,6 +108,10 @@ export function composeDiagnosisMail(options?: {
   return Core.composeDiagnosisMail(options);
 }
 
+export function requestLocationPermission(): Promise<void> {
+  return Core.requestLocationPermission();
+}
+
 type Listeners = {
   driveKitConnected: () => void;
   driveKitDisconnected: () => void;

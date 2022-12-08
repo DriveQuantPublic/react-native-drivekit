@@ -29,6 +29,7 @@ export interface Spec extends TurboModule {
     synchronizationType: WithDefault<'default' | 'cache', 'default'>
   ): Promise<UserInfo | null>;
   updateUserInfo(userInfo: UserInfo): Promise<void>;
+  requestLocationPermission(): Promise<void>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitCore');

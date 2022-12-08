@@ -100,6 +100,12 @@ public class RNDriveKitCoreWrapper: NSObject {
             }
         }
     }
+
+    @objc internal func requestLocationPermission() -> Void {
+        DispatchQueue.main.async {
+            DKDiagnosisHelper.shared.requestPermission(.location)
+        }
+    }
 }
 
 private class MailSender: NSObject {

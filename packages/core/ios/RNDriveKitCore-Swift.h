@@ -23,6 +23,7 @@
 -(NSURL * _Nullable)getUriLogFile;
 - (void)getUserInfoWithSynchronizationType:(NSString * _Nullable)synchronizationType resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)updateUserInfoWithUserInfo:(NSDictionary * _Nonnull)userInfo resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
+- (void)requestLocationPermission;
 @end
 
 @interface RNCoreEventEmitter : NSObject
