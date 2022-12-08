@@ -60,7 +60,7 @@ On iOS, you just have to manage notifications using the `DriveKit.addEventListen
 
 <h2>Android</h2>
 
-Notification that indicates a trip is currently running is driven by the Trip Analysis initialize(…) method.
+Notification that indicates a trip is currently analyzed is driven by the Trip Analysis `initialize(…)` method.
 
 To display a notification when the trip is finished or cancelled, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
 
