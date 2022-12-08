@@ -7,7 +7,8 @@ import {
 module.exports = async taskData => {
   if (
     taskData.eventType === 'TRIP_FINISHED' ||
-    taskData.eventType === 'TRIP_CANCELLED'
+    taskData.eventType === 'TRIP_CANCELLED' ||
+    taskData.eventType === 'TRIP_SAVED_FOR_REPOST'
   ) {
     // Create a channel (required for Android)
     const channelId = await notifee.createChannel({
@@ -16,7 +17,10 @@ module.exports = async taskData => {
     });
 
     var body = 'A new trip has been analyzed';
-    if (taskData.eventType === 'TRIP_FINISHED') {
+    if (taskData.eventType === 'TRIP_SAVED_FOR_REPOST') {
+      body =
+        'The trip could not be analyzed because your phone is not connected to the mobile network. It will be analyzed later';
+    } else if (taskData.eventType === 'TRIP_FINISHED') {
       const postGenericResponse = JSON.parse(taskData.response);
       body = getBodyForFinishedTripResponse(postGenericResponse);
     } else if (taskData.eventType === 'TRIP_CANCELLED') {

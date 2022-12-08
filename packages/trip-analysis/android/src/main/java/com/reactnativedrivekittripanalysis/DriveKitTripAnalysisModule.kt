@@ -144,17 +144,19 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         rnTripNotification.iconId)
       DriveKitTripAnalysis.initialize(tripNotification, object : TripListener {
         override fun tripStarted(startMode: StartMode) {
+          HeadlessJsManager.sendTripStartedEvent(startMode)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("tripStarted", mapStartMode(startMode))
         }
 
         override fun tripPoint(tripPoint: TripPoint) {
-          // TODO
+          HeadlessJsManager.sendTripPointEvent(tripPoint)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("tripPoint", mapTripPoint(tripPoint))
         }
 
         override fun tripSavedForRepost() {
+          HeadlessJsManager.sendTripForRepostEvent()
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("tripSavedForRepost", null)
         }
@@ -164,6 +166,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         }
 
         override fun beaconDetected() {
+          HeadlessJsManager.sendBeaconDetectedEvent()
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("beaconDetected", null)
         }
@@ -181,6 +184,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         }
 
         override fun crashDetected(crashInfo: DKCrashInfo) {
+          HeadlessJsManager.sendCrashDetectedEvent(crashInfo)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("crashDetected", mapDKCrashInfo(crashInfo))
         }
@@ -194,6 +198,8 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
           result.putMap("crashInfo", mapDKCrashInfo(crashInfo))
           result.putString("feedbackType", mapDKCrashFeedbackType(feedbackType))
           result.putString("severity", mapDKCrashFeedbackSeverity(severity))
+
+          HeadlessJsManager.sendCrashFeedbackSentEvent(crashInfo, feedbackType, severity)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("crashFeedbackSent", result)
         }
@@ -203,6 +209,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
             val result = Arguments.createMap()
             result.putBoolean("btSensorEnabled", deviceConfigEvent.btEnabled)
             result.putBoolean("btRequired", deviceConfigEvent.btRequired)
+            HeadlessJsManager.sendBluetoothStateChangedEvent(deviceConfigEvent)
             reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
               ?.emit("bluetoothSensorStateChanged", result)
           }
