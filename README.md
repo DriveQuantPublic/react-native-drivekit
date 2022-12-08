@@ -58,7 +58,7 @@ We recommend [Notifee](https://notifee.app/) library to manage your notification
 
 On iOS, you just have to manage notifications using the `DriveKit.addEventListener(…)` method. Please refer to the `useSetupListeners.ts` on the demo package for example.
 
-<h2>Android</h2>
+#### Android
 
 Notification that indicates a trip is currently analyzed is driven by the Trip Analysis `initialize(…)` method.
 
