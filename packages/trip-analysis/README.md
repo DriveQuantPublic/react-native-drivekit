@@ -124,7 +124,7 @@ To validate that the initialization has been done successfully, please check you
 
 ## Listeners
 
-**Note:** These listeners will not be triggered on Android when the app is in background, due to system limitation. Please read the Headless JS part.
+**Note:** These listeners will not be triggered on Android when the app is in background, due to system limitation. Please read the [Headless JS](#headless-js-android-only) part.
 
 You can listen to events thanks to the `addEventListener` api.
 
