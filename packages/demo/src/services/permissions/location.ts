@@ -6,6 +6,7 @@ import {
   RESULTS,
   Permission,
 } from 'react-native-permissions';
+import * as DriveKitCore from '@react-native-drivekit/core';
 
 const IOS_PERMISSIONS = [
   PERMISSIONS.IOS.LOCATION_WHEN_IN_USE,
@@ -35,7 +36,11 @@ const checkPermissions = async (locationPermission: Permission[]) => {
       case RESULTS.UNAVAILABLE:
         break;
       case RESULTS.DENIED:
-        await request(permission);
+        if (Platform.OS === 'ios') {
+          await DriveKitCore.requestIOSLocationPermission();
+        } else {
+          await request(permission);
+        }
         break;
       case RESULTS.LIMITED:
         Alert.alert('Please select always for the location.', undefined, [

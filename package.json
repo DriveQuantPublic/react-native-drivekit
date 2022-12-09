@@ -18,12 +18,8 @@
   },
   "scripts": {
     "commit": "cz",
-    "postinstall": "patch-package",
     "bumpversion": "lerna version --conventional-commits",
     "release": "lerna publish from-package --no-private"
-  },
-  "dependencies": {
-    "patch-packages": "^1.0.0"
   },
   "resolutions": {
     "@types/react": "18.0.25"
