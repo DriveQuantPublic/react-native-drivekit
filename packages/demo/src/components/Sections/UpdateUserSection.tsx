@@ -20,12 +20,12 @@ const UpdateUserSection: FunctionComponent<{}> = () => {
         returnKeyType={'done'}
         onChangeText={setNewUserId}
       />
-      <Spacer factor={2} />
+      <Spacer factor={1} />
       <Button
         title="Update User ID"
         onPress={() => DriveKit.updateUserId(newUserId)}
       />
-      <Spacer factor={2} />
+      <Spacer factor={1} />
       <Button
         title={'Get User Info'}
         onPress={async () => {
@@ -37,7 +37,7 @@ const UpdateUserSection: FunctionComponent<{}> = () => {
           }
         }}
       />
-      <Spacer factor={2} />
+      <Spacer factor={1} />
       <TextInput
         style={styles.input}
         value={firstname}
