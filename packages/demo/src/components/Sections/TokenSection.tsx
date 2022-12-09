@@ -10,7 +10,11 @@ const TokenSection: FunctionComponent<{}> = () => {
         title="Check token validity"
         onPress={async () => {
           const isTokenValid = await DriveKit.isTokenValid();
-          Alert.alert(isTokenValid ? 'Token is valid' : 'Token is not valid');
+          Alert.alert(
+            isTokenValid
+              ? 'Token is valid : user is connected'
+              : 'Token is not valid : user is not connected',
+          );
         }}
       />
     </Section>

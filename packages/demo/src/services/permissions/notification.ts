@@ -1,8 +1,10 @@
 import {Alert, Linking, Platform} from 'react-native';
 import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import notifee from '@notifee/react-native';
 
 const checkNotificationPermission = async () => {
   if (Platform.OS === 'ios') {
+    await notifee.requestPermission();
     return;
   }
 

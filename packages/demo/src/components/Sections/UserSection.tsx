@@ -26,7 +26,7 @@ const UserSection: FunctionComponent<{}> = () => {
         returnKeyType={'done'}
         onChangeText={setUserId}
       />
-      <Spacer factor={2} />
+      <Spacer factor={1} />
       <Button
         title="Configure User ID"
         onPress={async () => {

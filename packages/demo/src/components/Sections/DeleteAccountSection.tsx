@@ -19,7 +19,9 @@ const DeleteAccountSection: FunctionComponent<{}> = () => {
         <Spacer factor={1} />
         <Text>Instant deletion ?</Text>
       </View>
-      <Spacer factor={2} />
+
+      <Spacer factor={1} />
+
       <Button
         color={'red'}
         title="Delete account"

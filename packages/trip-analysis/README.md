@@ -124,6 +124,8 @@ To validate that the initialization has been done successfully, please check you
 
 ## Listeners
 
+**Note:** These listeners will not be triggered on Android when the app is in background, due to system limitation. Please read the [Headless JS](#headless-js-android-only) part.
+
 You can listen to events thanks to the `addEventListener` api.
 
 ```typescript
@@ -148,6 +150,16 @@ Here is the list of supported events:
 - `beaconDetected`, callback `() => void`: This event is triggered when a beacon sets in the SDK is detected.
   `significantLocationChangeDetected`, callback `() => void`: This event is triggered when a user significant location change is detected.
 - `sdkStateChanged`, callback `(state: State) => void`: This event is triggered every time the state of the SDK changed with the new state as parameter.
+
+
+## Headless JS (Android only)
+
+To display a notification when the trip is finished or cancelled, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
+
+Follow these steps :
+
+- Register the Headless task named `DKHeadlessJS` on your `index.js` file.
+- Replicate the `DKHeadlessJS.js` file that exists on the demo package.
 
 ## API
 

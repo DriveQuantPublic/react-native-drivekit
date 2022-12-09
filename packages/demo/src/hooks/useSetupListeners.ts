@@ -1,3 +1,4 @@
+import notifee from '@notifee/react-native';
 import {useEffect} from 'react';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
@@ -14,8 +15,16 @@ import type {
   StartMode,
   TripPoint,
 } from '@react-native-drivekit/trip-analysis';
+import {
+  getBodyForFinishedTripResponse,
+  getBodyForCanceledTripReason,
+} from './notificationsHandler';
+import {Platform} from 'react-native';
 
 const useSetupListeners = () => {
+  const startTripNotifId = 'DriveKitStartTripNotifId';
+  const savedTripNotifId = 'DriveKitSavedTripNotifId';
+
   useEffect(() => {
     const listener = DriveKit.addEventListener('driveKitConnected', () => {
       console.log('Connected to DriveKit');
@@ -71,6 +80,16 @@ const useSetupListeners = () => {
       'tripCancelled',
       (reason: CancelTripReason) => {
         console.log('Trip was canceled', reason);
+        if (Platform.OS === 'ios') {
+          notifee.cancelNotification(startTripNotifId);
+          var body = getBodyForCanceledTripReason(reason);
+          if (body !== null) {
+            notifee.displayNotification({
+              title: 'DriveKit RN Demo App',
+              body: body,
+            });
+          }
+        }
       },
     );
     return () => listener.remove();
@@ -91,6 +110,14 @@ const useSetupListeners = () => {
       'tripStarted',
       (startMode: StartMode) => {
         console.log('trip start', startMode);
+        if (Platform.OS === 'ios') {
+          var body = 'A trip is recording';
+          notifee.displayNotification({
+            id: startTripNotifId,
+            title: 'DriveKit RN Demo App',
+            body: body,
+          });
+        }
       },
     );
     return () => listener.remove();
@@ -111,6 +138,15 @@ const useSetupListeners = () => {
       'tripSavedForRepost',
       () => {
         console.log('trip saved for repost');
+        if (Platform.OS === 'ios') {
+          var body =
+            'The trip could not be analyzed because your phone is not connected to the mobile network. It will be analyzed later';
+          notifee.displayNotification({
+            id: savedTripNotifId,
+            title: 'DriveKit RN Demo App',
+            body: body,
+          });
+        }
       },
     );
     return () => listener.remove();
@@ -175,6 +211,15 @@ const useSetupListeners = () => {
           JSON.stringify(post),
           JSON.stringify(response),
         );
+        if (Platform.OS === 'ios') {
+          var body = getBodyForFinishedTripResponse(response);
+          notifee.cancelNotification(startTripNotifId);
+          notifee.cancelNotification(savedTripNotifId);
+          notifee.displayNotification({
+            title: 'DriveKit RN Demo App',
+            body: body,
+          });
+        }
       },
     );
     return () => listener.remove();
