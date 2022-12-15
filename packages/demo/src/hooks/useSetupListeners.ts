@@ -17,7 +17,7 @@ import type {
 } from '@react-native-drivekit/trip-analysis';
 import {
   getBodyForFinishedTripResponse,
-  getBodyForCanceledTripReason,
+  getBodyForCancelledTripReason,
 } from './notificationsHandler';
 import {Platform} from 'react-native';
 
@@ -79,10 +79,10 @@ const useSetupListeners = () => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripCancelled',
       (reason: CancelTripReason) => {
-        console.log('Trip was canceled', reason);
+        console.log('Trip was cancelled', reason);
         if (Platform.OS === 'ios') {
           notifee.cancelNotification(startTripNotifId);
-          var body = getBodyForCanceledTripReason(reason);
+          var body = getBodyForCancelledTripReason(reason);
           if (body !== null) {
             notifee.displayNotification({
               title: 'DriveKit RN Demo App',
@@ -139,6 +139,7 @@ const useSetupListeners = () => {
       () => {
         console.log('trip saved for repost');
         if (Platform.OS === 'ios') {
+          notifee.cancelNotification(startTripNotifId);
           var body =
             'The trip could not be analyzed because your phone is not connected to the mobile network. It will be analyzed later';
           notifee.displayNotification({

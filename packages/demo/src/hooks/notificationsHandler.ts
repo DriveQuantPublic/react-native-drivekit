@@ -1,19 +1,19 @@
 import {CancelTripReason} from '../../../trip-analysis/src/types';
 
-export function getBodyForCanceledTripReason(reason: String): string | null {
-  var body: string | null = 'Your trip has been canceled';
+export function getBodyForCancelledTripReason(reason: String): string | null {
+  var body: string | null = 'Your trip has been cancelled';
   if (reason === CancelTripReason.NO_GPS_DATA) {
     body =
       'The trip could not be analyzed because the GPS data could not be retrieved.';
   } else if (reason === CancelTripReason.NO_BEACON) {
     body =
-      'Your trip has been canceled because your Bluetooth badge has not been recognized';
+      'Your trip has been cancelled because your Bluetooth badge has not been recognized';
   } else if (reason === CancelTripReason.NO_BLUETOOTH_DEVICE) {
     body =
-      'Your trip has been canceled because your Bluetooth device has not been recognized';
+      'Your trip has been cancelled because your Bluetooth device has not been recognized';
   } else if (reason === CancelTripReason.HIGH_SPEED) {
     body =
-      'Your trip has been canceled because you are traveling by train or plane';
+      'Your trip has been cancelled because you are traveling by train or plane';
   } else {
     body = null;
   }
