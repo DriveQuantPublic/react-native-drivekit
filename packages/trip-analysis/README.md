@@ -204,7 +204,7 @@ activateAutoStart(false);
 
 > ⚠️
 >
-> If a trip is running when automatic trip detection is disable, the trip will not be canceled. If you want to cancel the trip, you should also call cancelTrip method.
+> If a trip is running when automatic trip detection is disable, the trip will not be cancelled. If you want to cancel the trip, you should also call cancelTrip method.
 
 ### startTrip
 
