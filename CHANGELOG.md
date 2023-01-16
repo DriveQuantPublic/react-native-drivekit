@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* iOS - Cancel start trip notification once trip finished and saved for repost ([#84](https://github.com/DriveQuantPublic/react-native-drivekit/issues/84)) ([3829b73](https://github.com/DriveQuantPublic/react-native-drivekit/commit/3829b735d5227a99eb57fc526a5c75cbce521033))
+* Demo App: iOS - Cancel start trip notification once trip finished and saved for repost ([#84](https://github.com/DriveQuantPublic/react-native-drivekit/issues/84)) ([3829b73](https://github.com/DriveQuantPublic/react-native-drivekit/commit/3829b735d5227a99eb57fc526a5c75cbce521033))
 
 
 ### Features
