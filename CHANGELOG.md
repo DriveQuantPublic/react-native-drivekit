@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.2.0...v1.3.0) (2023-01-16)
+
+
+### Bug Fixes
+
+* iOS - Cancel start trip notification once trip finished and saved for repost ([#84](https://github.com/DriveQuantPublic/react-native-drivekit/issues/84)) ([3829b73](https://github.com/DriveQuantPublic/react-native-drivekit/commit/3829b735d5227a99eb57fc526a5c75cbce521033))
+
+
+### Features
+
+* empty commit ([f223bef](https://github.com/DriveQuantPublic/react-native-drivekit/commit/f223befbcf9a07858f9751c728e17c71a7b68064))
+* update DriveKit modules and minSdkVersion to 23 ([2810367](https://github.com/DriveQuantPublic/react-native-drivekit/commit/28103674fc8fca1fc9f6ccbbb7bbdc9f501e30f2))
+* update peerDependencies version ([9ab1af2](https://github.com/DriveQuantPublic/react-native-drivekit/commit/9ab1af2442d8b68b30549d44fb5e70b060794228))
+
+
+
+
+
 # [1.2.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.1.1...v1.2.0) (2022-12-12)
 
 
