@@ -92,5 +92,6 @@ fun mapCancelTrip(cancelTrip: CancelTrip): String {
     CancelTrip.RESET -> "RESET"
     CancelTrip.USER -> "USER"
     CancelTrip.NO_SPEED -> "NO_SPEED"
+    CancelTrip.BLUETOOTH_DEVICE_NO_SPEED -> "BLUETOOTH_DEVICE_NO_SPEED"
   }
 }
