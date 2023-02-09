@@ -51,6 +51,8 @@ func mapCancelTrip(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) -> String?
         rnCancelTrip = "BEACON_NO_SPEED"
     case .noBluetoothDevice:
         rnCancelTrip = "NO_BLUETOOTH_DEVICE"
+    case .bluetoothDeviceNoSpeed:
+        rnCancelTrip = "BLUETOOTH_DEVICE_NO_SPEED"
         
     @unknown default:
         print("[mapCancelTrip] Unknown cancel trip reason \(cancelTrip.rawValue)")
