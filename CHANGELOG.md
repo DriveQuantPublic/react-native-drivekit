@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.2.0...v1.4.0) (2023-02-14)
+
+
+### Features
+
+* update cancel trip enum ([#88](https://github.com/DriveQuantPublic/react-native-drivekit/issues/88)) ([2204c9f](https://github.com/DriveQuantPublic/react-native-drivekit/commit/2204c9fcea544010c6f7adca633547ef6c5c0e26))
+* update DriveKit version number for Android to 1.29.2 ([a73fd2e](https://github.com/DriveQuantPublic/react-native-drivekit/commit/a73fd2ee13200d0ee803dc17206ac44439653cdd))
+- update DriveKit version number for iOS to 1.30.0 ([2204c9f](https://github.com/DriveQuantPublic/react-native-drivekit/commit/2204c9fcea544010c6f7adca633547ef6c5c0e26))
+
+
+
+
+
 # [1.3.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.2.0...v1.3.0) (2023-01-16)
 
 
