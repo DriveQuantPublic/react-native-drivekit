@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.4.0-temp...v1.4.1) (2023-02-16)
+
+
+### Features
+
+* update DriveKit version number for Android to 1.29.3 ([e0cb12b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/e0cb12b2906eab24845ae7f5318593cc32f866e8))
+
+
+
+
+
 # [1.4.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.2.0...v1.4.0) (2023-02-14)
 
 
