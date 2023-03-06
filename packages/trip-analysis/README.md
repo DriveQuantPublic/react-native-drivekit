@@ -186,6 +186,11 @@ Follow these steps :
 activateAutoStart(enable: boolean): Promise<void>
 ```
 
+> 🚨
+> 
+> On Android if you want to enable the automatic trip detection mode, `activateAutoStart(true)` must be called **after** the Activity Recognition runtime permission is granted by the user
+> 
+
 The automatic mode detects vehicle movements and triggers the trip analysis without driver intervention while the application is in background. The analysis is stopped automatically at the end of the trip.
 
 This feature is recommended to avoid driver distraction and phone handling while driving. The automatic mode has been optimized to limit the battery drain.
@@ -204,7 +209,7 @@ activateAutoStart(false);
 
 > ⚠️
 >
-> If a trip is running when automatic trip detection is disable, the trip will not be cancelled. If you want to cancel the trip, you should also call cancelTrip method.
+> If a trip is running when automatic trip detection is disabled, the trip will not be cancelled. If you want to cancel the trip, you should also call cancelTrip method.
 
 ### startTrip
 
