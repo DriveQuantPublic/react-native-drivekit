@@ -36,9 +36,9 @@
 		</dict>
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>The application needs to use bluetooth in order to retreive beacon batterry level</string>
+	<string>The application needs to use bluetooth in order to retrieve beacon battery level</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>The application needs to use bluetooth in order to retreive beacon batterry level</string>
+	<string>The application needs to use bluetooth in order to retrieve beacon battery level</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To automatically detect and analyze your trips, the application needs access to your position at all times.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
