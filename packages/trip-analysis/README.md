@@ -109,8 +109,16 @@ In order to collect data, you need to configure multiple permissions :
 - Motion permission : [native documentation](https://docs.drivequant.com/trip-analysis/ios/get-started#motion-and-fitness-permission)
 
 Our recommandation is to use [react-native-permissions](https://github.com/zoontek/react-native-permissions). You can find an implementation example in the [demo application inside this repository](../demo/App.tsx).
+For location permission, please use [requestIOSLocationPermission()](https://github.com/DriveQuantPublic/react-native-drivekit/blob/main/packages/core/README.md#requestIOSLocationPermission) method for iOS.
 
----
+When the application requests permission for background locations or motion activities, a message will be shown to the user. You must configure this message by changing the value for the following keys in `Info.plist`
+
+- `NSLocationAlwaysUsageDescription`
+- `NSLocationWhenInUseUsageDescription`
+- `NSLocationAlwaysAndWhenInUseUsageDescription`
+- `NSMotionUsageDescription`
+
+[Our Demo App plist file contains an example of messages you can use for these permissions](https://github.com/DriveQuantPublic/react-native-drivekit/blob/main/packages/demo/ios/DriveKitRNDemoApp/Info.plist#L42)
 
 ### Validation
 
