@@ -118,7 +118,7 @@ When the application requests permission for background locations or motion acti
 - `NSLocationAlwaysAndWhenInUseUsageDescription`
 - `NSMotionUsageDescription`
 
-[Our Demo App plist file contain an example of messages you can use for these permissions](https://github.com/DriveQuantPublic/react-native-drivekit/blob/main/packages/demo/ios/DriveKitRNDemoApp/Info.plist#L42)
+[Our Demo App plist file contains an example of messages you can use for these permissions](https://github.com/DriveQuantPublic/react-native-drivekit/blob/main/packages/demo/ios/DriveKitRNDemoApp/Info.plist#L42)
 
 ### Validation
 
