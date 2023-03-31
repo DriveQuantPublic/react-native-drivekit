@@ -64,8 +64,6 @@ public class MainApplication extends Application implements ReactApplication {
             "Start a trip with DriveKit SDK",
             R.drawable.common_google_signin_btn_icon_dark);
     DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
-    DriveKitTripAnalysisModule.Companion.registerReceiver(this);
-
     DriveKitDriverDataModule.Companion.initialize();
 
     // If you opted-in for the New Architecture, we enable the TurboModule system

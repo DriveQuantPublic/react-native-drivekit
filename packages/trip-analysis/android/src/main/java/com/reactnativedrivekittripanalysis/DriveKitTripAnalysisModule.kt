@@ -1,8 +1,5 @@
 package com.reactnativedrivekittripanalysis
 
-import android.content.Context
-import android.content.IntentFilter
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
 import com.drivequant.drivekit.tripanalysis.DriveKitTripAnalysis
 import com.drivequant.drivekit.tripanalysis.TripListener
@@ -13,10 +10,12 @@ import com.drivequant.drivekit.tripanalysis.entity.TripPoint
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
+import com.drivequant.drivekit.tripanalysis.service.recorder.CancelTrip
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
+import com.google.gson.Gson
 
 class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationContext) :
   DriveKitTripAnalysisSpec(context) {
@@ -162,7 +161,18 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         }
 
         override fun tripFinished(post: PostGeneric, response: PostGenericResponse) {
-          // managed in TripReceiver
+          val gson = Gson()
+          val result = Arguments.createMap()
+          result.putString("post", gson.toJson(post))
+          result.putString("response", gson.toJson(response))
+          HeadlessJsManager.sendTripFinishedEvent(post, response)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripFinished", result)
+        }
+
+        override fun tripCancelled(cancelTrip: CancelTrip) {
+          HeadlessJsManager.sendTripCancelledEvent(cancelTrip)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripCancelled", mapCancelTrip(cancelTrip))
         }
 
         override fun beaconDetected() {
@@ -215,12 +225,6 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
           }
         }
       })
-    }
-
-    fun registerReceiver(context: Context) {
-      val receiver = TripReceiver()
-      val filter = IntentFilter("com.drivequant.sdk.TRIP_ANALYSED")
-      LocalBroadcastManager.getInstance(context).registerReceiver(receiver, filter)
     }
   }
 }

@@ -82,13 +82,13 @@ const useSetupListeners = () => {
         console.log('Trip was cancelled', reason);
         if (Platform.OS === 'ios') {
           notifee.cancelNotification(startTripNotifId);
-          var body = getBodyForCancelledTripReason(reason);
-          if (body !== null) {
-            notifee.displayNotification({
-              title: 'DriveKit RN Demo App',
-              body: body,
-            });
-          }
+        }
+        var body = getBodyForCancelledTripReason(reason);
+        if (body !== null) {
+          notifee.displayNotification({
+            title: 'DriveKit RN Demo App',
+            body: body,
+          });
         }
       },
     );
@@ -213,14 +213,14 @@ const useSetupListeners = () => {
           JSON.stringify(response),
         );
         if (Platform.OS === 'ios') {
-          var body = getBodyForFinishedTripResponse(response);
           notifee.cancelNotification(startTripNotifId);
           notifee.cancelNotification(savedTripNotifId);
-          notifee.displayNotification({
-            title: 'DriveKit RN Demo App',
-            body: body,
-          });
         }
+        var body = getBodyForFinishedTripResponse(response);
+        notifee.displayNotification({
+          title: 'DriveKit RN Demo App',
+          body: body,
+        });
       },
     );
     return () => listener.remove();
