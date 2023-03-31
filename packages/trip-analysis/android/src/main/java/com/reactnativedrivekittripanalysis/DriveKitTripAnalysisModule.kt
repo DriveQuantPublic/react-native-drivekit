@@ -1,5 +1,6 @@
 package com.reactnativedrivekittripanalysis
 
+import android.content.Context
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
 import com.drivequant.drivekit.tripanalysis.DriveKitTripAnalysis
 import com.drivequant.drivekit.tripanalysis.TripListener
@@ -225,6 +226,11 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
           }
         }
       })
+    }
+
+    @Deprecated("This method is now useless, it is safe to remove that call")
+    fun registerReceiver(context: Context) {
+      // Deprecated
     }
   }
 }
