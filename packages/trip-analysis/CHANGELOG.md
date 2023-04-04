@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.4.0-temp...v1.5.0) (2023-04-04)
+
+
+### Features
+
+* remove deprecated TripAnalysedReceiver ([40df0c6](https://github.com/DriveQuantPublic/react-native-drivekit/commit/40df0c62456b6f209c98993c1fda34862610e807))
+* set registerReceiver method as deprecated ([f747958](https://github.com/DriveQuantPublic/react-native-drivekit/commit/f7479584f7325526108b14617937a4c3a57e9dbf))
+* update DriveKit Android modules to 1.30.0 ([c0ff47e](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c0ff47e63a86004fc0ef82331c0f4786c8e342cd))
+* update DriveKit iOS modules to 1.31.1 ([0b9cceb](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0b9ccebaae220de159a4591ca253aa02d771094a))
+* update react-native version to 0.70.8 ([b77a2c4](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b77a2c4bbf3c29eb16208f387ab49fa70b2d0bd9))
+
+
+
+
+
 ## [1.4.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.4.0-temp...v1.4.1) (2023-02-16)
 
 
