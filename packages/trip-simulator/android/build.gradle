@@ -150,6 +150,7 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
   implementation "com.drivequant.drivekit:drivekit-trip-simulator:$driveKitTripSimulator_version"
+  implementation "com.drivequant.drivekit:drivekit-core:$driveKitTripSimulator_version" // Core and TripSimulator modules versions are the same
 // From node_modules
 }
 
