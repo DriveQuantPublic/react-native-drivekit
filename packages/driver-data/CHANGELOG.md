@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+**Note:** Version bump only for package @react-native-drivekit/driver-data
+
+
+
+
+
 # [1.5.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.4.0-temp...v1.5.0) (2023-04-04)
 
 
