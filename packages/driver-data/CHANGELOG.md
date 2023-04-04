@@ -3,20 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.5.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.4.0-temp...v1.5.0) (2023-04-04)
-
-
-### Features
-
-* prepare peerDependecies upgrade version ([c2b1e06](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c2b1e0620edcbe49c8fcd770004711149fabd71d))
-* update DriveKit Android modules to 1.30.0 ([c0ff47e](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c0ff47e63a86004fc0ef82331c0f4786c8e342cd))
-* update DriveKit iOS modules to 1.31.1 ([0b9cceb](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0b9ccebaae220de159a4591ca253aa02d771094a))
-* update DriveKit version number for Android to 1.29.3 ([#90](https://github.com/DriveQuantPublic/react-native-drivekit/issues/90)) ([f2d543f](https://github.com/DriveQuantPublic/react-native-drivekit/commit/f2d543f761b4bcf5ddac4aa1a6b8fbac313c12e6))
-
-
-
-
-
 
 
 **Note:** Version bump only for package @react-native-drivekit/driver-data
