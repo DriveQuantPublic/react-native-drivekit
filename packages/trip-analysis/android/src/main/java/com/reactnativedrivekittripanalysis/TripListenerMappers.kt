@@ -24,7 +24,7 @@ fun mapStartMode(startMode: StartMode): String {
 }
 
 fun mapTripPoint(tripPoint: TripPoint): ReadableMap {
-  var rnTripPoint = Arguments.createMap()
+  val rnTripPoint = Arguments.createMap()
   rnTripPoint.putDouble("distance", tripPoint.distance)
   rnTripPoint.putDouble("accuracy", tripPoint.accuracy)
   rnTripPoint.putDouble("duration", tripPoint.duration)
@@ -54,7 +54,7 @@ fun mapCrashStatus(status: CrashStatus): String {
 }
 
 fun mapDKCrashInfo(info: DKCrashInfo): ReadableMap {
-  var rnCrashInfo = Arguments.createMap()
+  val rnCrashInfo = Arguments.createMap()
   rnCrashInfo.putString("crashId", info.crashId)
   rnCrashInfo.putInt("timestamp", info.date.time.toInt())
   rnCrashInfo.putInt("probability", info.probability.toInt())
