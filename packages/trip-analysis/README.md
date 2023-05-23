@@ -44,7 +44,8 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 
     // ADD THESE LINES
     final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
-    DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
+    final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("DriveKit SDK", "Loading in progress…");
+    DriveKitTripAnalysisModule.Companion.initialize(tripNotification, headlessJSNotification);
     ...
   }
 ```
@@ -160,7 +161,7 @@ Here is the list of supported events:
 
 ## Headless JS (Android only)
 
-To display a notification when the trip is finished or cancelled, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
+To display a notification when the trip is finished or cancelled for example, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
 
 Follow these steps :
 
