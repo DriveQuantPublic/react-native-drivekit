@@ -138,10 +138,14 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     const val NAME = "RNDriveKitTripAnalysis"
 
     var reactContext: ReactApplicationContext? = null
-    fun initialize(rnTripNotification: RNTripNotification) {
-      val tripNotification = TripNotification(rnTripNotification.title,
-        rnTripNotification.content,
-        rnTripNotification.iconId)
+    fun initialize(rnTripNotification: RNTripNotification, rnHeadlessJSNotification: RNHeadlessJSNotification) {
+      val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
+
+      HeadlessJsManager.apply {
+        notificationTitle = rnHeadlessJSNotification.title
+        notificationContent = rnHeadlessJSNotification.content
+      }
+
       DriveKitTripAnalysis.initialize(tripNotification, object : TripListener {
         override fun tripStarted(startMode: StartMode) {
           HeadlessJsManager.sendTripStartedEvent(startMode)

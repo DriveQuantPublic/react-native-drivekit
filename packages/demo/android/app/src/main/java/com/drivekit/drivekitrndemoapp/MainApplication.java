@@ -14,6 +14,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.drivekit.drivekitrndemoapp.newarchitecture.MainApplicationReactNativeHost;
+import com.reactnativedrivekittripanalysis.RNHeadlessJSNotification;
 import com.reactnativedrivekittripanalysis.RNTripNotification;
 
 import java.lang.reflect.InvocationTargetException;
@@ -59,11 +60,12 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     DriveKitCoreModule.Companion.initialize(this);
-    RNTripNotification tripNotification = new RNTripNotification(
+    final RNTripNotification tripNotification = new RNTripNotification(
             "DriveKit SDK",
             "Start a trip with DriveKit SDK",
             R.drawable.common_google_signin_btn_icon_dark);
-    DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
+    final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("DriveKit SDK", "Loading in progress…");
+    DriveKitTripAnalysisModule.Companion.initialize(tripNotification, headlessJSNotification);
     DriveKitDriverDataModule.Companion.initialize();
 
     // If you opted-in for the New Architecture, we enable the TurboModule system

@@ -1,6 +1,7 @@
 package com.reactnativedrivekittripanalysis
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
 import com.drivequant.drivekit.tripanalysis.entity.PostGeneric
@@ -17,6 +18,9 @@ import com.google.gson.Gson
 import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
 
 object HeadlessJsManager {
+
+  lateinit var notificationTitle: String
+  lateinit var notificationContent: String
 
   fun sendTripStartedEvent(startMode: StartMode) {
     val bundle = Bundle()
@@ -101,7 +105,11 @@ object HeadlessJsManager {
     DriveKitTripAnalysisModule.reactContext?.let {
       val serviceIntent = Intent(it, DKHeadlessJSService::class.java)
       serviceIntent.putExtras(bundle)
-      it.startService(serviceIntent)
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        it.startForegroundService(serviceIntent)
+      } else {
+        it.startService(serviceIntent)
+      }
       HeadlessJsTaskService.acquireWakeLockNow(it)
     }
   }
