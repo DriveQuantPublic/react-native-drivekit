@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.1...v1.5.2) (2023-05-24)
+
+
+### Features
+
+* move notificationId into a companion object ([dea49a7](https://github.com/DriveQuantPublic/react-native-drivekit/commit/dea49a7b98be5d889ed10a138bdee419d8e8d449))
+* start HeadlessJS as a foreground service with a notification when necessary ([b569e03](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b569e0372496da8592e3a2fcd2ed5ff0fcf5b139))
+
+
+
+
+
 ## [1.5.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.0...v1.5.1) (2023-05-17)
 
 
