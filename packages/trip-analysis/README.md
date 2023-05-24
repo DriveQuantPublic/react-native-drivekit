@@ -44,11 +44,17 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 
     // ADD THESE LINES
     final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
-    final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("DriveKit SDK", "Loading in progress…");
+    final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("Notification title", "Notification description");
     DriveKitTripAnalysisModule.Companion.initialize(tripNotification, headlessJSNotification);
     ...
   }
 ```
+
+> ℹ️
+> 
+> The properties in `RNTripNotification` are used to configure the notification displayed when a trip is recording.
+>
+> The properties in `RNHeadlessJSNotification` are used to configure the notification when the `HeadlessJS` service is running
 
 #### Authorization
 
