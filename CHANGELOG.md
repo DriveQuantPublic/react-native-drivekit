@@ -8,7 +8,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* move notificationId into a companion object ([dea49a7](https://github.com/DriveQuantPublic/react-native-drivekit/commit/dea49a7b98be5d889ed10a138bdee419d8e8d449))
 * start HeadlessJS as a foreground service with a notification when necessary ([b569e03](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b569e0372496da8592e3a2fcd2ed5ff0fcf5b139))
 
 
