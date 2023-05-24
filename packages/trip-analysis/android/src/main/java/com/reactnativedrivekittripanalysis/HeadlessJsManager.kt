@@ -3,7 +3,6 @@ package com.reactnativedrivekittripanalysis
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
 import com.drivequant.drivekit.tripanalysis.entity.PostGeneric
 import com.drivequant.drivekit.tripanalysis.entity.PostGenericResponse
