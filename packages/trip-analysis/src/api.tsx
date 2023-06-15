@@ -16,7 +16,7 @@ import type {
   PostGenericResponse,
   TripPoint,
   Location,
-  VehicleBase,
+  TripVehicle,
   TripMetadata,
 } from './types';
 
