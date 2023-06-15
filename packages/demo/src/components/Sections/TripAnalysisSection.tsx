@@ -198,6 +198,14 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
             carGearboxIndex: 2,
             carConsumption: 4.5,
             carAutoGearboxNumber: 2,
+            engineDisplacement: 1200,
+            frontTireSize: '205/55/16',
+            rearTireSize: '205/55/16',
+            length: 4.5,
+            width: 1.8,
+            height: 1.45,
+            driveWheels: 0,
+            engineCylinderNb: 4,
           });
         }}
       />

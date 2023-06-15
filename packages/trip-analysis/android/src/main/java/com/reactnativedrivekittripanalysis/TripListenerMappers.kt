@@ -20,6 +20,7 @@ fun mapStartMode(startMode: StartMode): String {
     StartMode.GEOZONE -> "GEOZONE"
     StartMode.GPS -> "GPS"
     StartMode.MANUAL -> "MANUAL"
+    StartMode.CONNECTED_CAR -> "CONNECTED_CAR"
   }
 }
 

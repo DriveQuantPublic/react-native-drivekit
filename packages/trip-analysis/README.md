@@ -51,7 +51,7 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 ```
 
 > ℹ️
-> 
+>
 > The properties in `RNTripNotification` are used to configure the notification displayed when a trip is recording.
 >
 > The properties in `RNHeadlessJSNotification` are used to configure the notification when the `HeadlessJS` service is running
@@ -166,9 +166,6 @@ Here is the list of supported events:
 - `crashDetected`, callback `(info: CrashInfo) => void`: This event is triggered when crash detection feature is enabled and available for your team and when a crash has been detected.
 - `crashFeedbackSent`, callback `(crashFeedback: CrashFeedback) => void`: Event triggered when crash feedback is enabled and a confirmed crash is detected. This callback will contain crash information and the feedback from the user.
 
-
-
-
 ## Headless JS (Android only)
 
 To display a notification when the trip is finished or cancelled for example, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
@@ -204,9 +201,8 @@ activateAutoStart(enable: boolean): Promise<void>
 ```
 
 > 🚨
-> 
+>
 > On Android if you want to enable the automatic trip detection mode, `activateAutoStart(true)` must be called **after** the Activity Recognition runtime permission is granted by the user
-> 
 
 The automatic mode detects vehicle movements and triggers the trip analysis without driver intervention while the application is in background. The analysis is stopped automatically at the end of the trip.
 
@@ -423,7 +419,7 @@ await updateTripMetadata('key', 'value');
 ### setVehicle
 
 ```typescript
-setVehicle(vehicle: Partial<VehicleBase> | null): Promise<void>
+setVehicle(vehicle: Partial<TripVehicle> | null): Promise<void>
 ```
 
 To obtain a more precise analysis on driving behaviour, it's recommended to configure the vehicle used by the driver. You can do this by calling the following method:
@@ -436,6 +432,14 @@ await setVehicle({
   carGearboxIndex: 2,
   carConsumption: 4.5,
   carAutoGearboxNumber: 2,
+  engineDisplacement: 1200,
+  frontTireSize: '205/55/16',
+  rearTireSize: '205/55/16',
+  length: 4.5,
+  width: 1.8,
+  height: 1.45,
+  driveWheels: 0,
+  engineCylinderNb: 4,
 });
 ```
 

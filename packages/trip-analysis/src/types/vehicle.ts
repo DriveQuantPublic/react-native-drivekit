@@ -1,4 +1,4 @@
-export interface VehicleBase {
+export interface Vehicle {
   carTypeIndex: number;
   carEngineIndex: number;
   carPower: number;
@@ -6,8 +6,15 @@ export interface VehicleBase {
   carGearboxIndex: number;
   carConsumption: number;
   carAutoGearboxNumber: number;
+  engineDisplacement: number;
 }
 
-export interface Vehicle extends VehicleBase {
-  engineDisplacement: number;
+export interface TripVehicle extends Vehicle {
+  frontTireSize: string | null;
+  rearTireSize: string | null;
+  length: number | null;
+  width: number | null;
+  height: number | null;
+  engineCylinderNb: number | null;
+  driveWheels: number | null;
 }
