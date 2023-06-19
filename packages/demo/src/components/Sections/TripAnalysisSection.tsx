@@ -192,20 +192,21 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         title="Set Vehicle"
         onPress={async () => {
           await DriveKitTripAnalysis.setVehicle({
+            carTypeIndex: 1,
             carEngineIndex: 1,
-            carPower: 180,
-            carMass: 1,
+            carPower: 150,
+            carMass: 1400,
             carGearboxIndex: 2,
             carConsumption: 4.5,
-            carAutoGearboxNumber: 2,
+            carAutoGearboxNumber: 6,
             engineDisplacement: 1200,
             frontTireSize: '205/55/16',
             rearTireSize: '205/55/16',
             length: 4.5,
             width: 1.8,
             height: 1.45,
-            driveWheels: 0,
             engineCylinderNb: 4,
+            driveWheels: 0,
           });
         }}
       />
