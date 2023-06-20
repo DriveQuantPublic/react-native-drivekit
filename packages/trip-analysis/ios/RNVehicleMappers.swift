@@ -43,6 +43,34 @@ func mapNSDictionaryToVehicle(dictionary: NSDictionary?) -> TripVehicle? {
     if let engineDisplacement = dictionary?.value(forKey: "engineDisplacement") as? Double {
         result.engineDisplacement = engineDisplacement;
     }
+    
+    if let frontTireSize = dictionary?.value(forKey: "frontTireSize") as? String {
+        result.frontTireSize = frontTireSize;
+    }
+
+    if let rearTireSize = dictionary?.value(forKey: "rearTireSize") as? String {
+        result.rearTireSize = rearTireSize;
+    }
+
+    if let length = dictionary?.value(forKey: "length") as? Double {
+        result.length = length;
+    }
+
+    if let width = dictionary?.value(forKey: "width") as? Double {
+        result.width = width;
+    }
+
+    if let height = dictionary?.value(forKey: "height") as? Double {
+        result.height = height;
+    }
+
+    if let engineCylinderNb = dictionary?.value(forKey: "engineCylinderNb") as? Int {
+        result.engineCylinderNb = engineCylinderNb;
+    }
+
+    if let driveWheels = dictionary?.value(forKey: "driveWheels") as? Int {
+        result.driveWheels = driveWheels;
+    }
 
     return result;
 }

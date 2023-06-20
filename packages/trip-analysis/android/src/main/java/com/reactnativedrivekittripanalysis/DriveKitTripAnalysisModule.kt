@@ -8,6 +8,7 @@ import com.drivequant.drivekit.tripanalysis.entity.PostGeneric
 import com.drivequant.drivekit.tripanalysis.entity.PostGenericResponse
 import com.drivequant.drivekit.tripanalysis.entity.TripNotification
 import com.drivequant.drivekit.tripanalysis.entity.TripPoint
+import com.drivequant.drivekit.tripanalysis.entity.TripVehicle
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
@@ -130,7 +131,8 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
 
   @ReactMethod
   override fun setVehicle(vehicle: ReadableMap, promise: Promise) {
-    DriveKitTripAnalysis.setVehicle(mapReadableMapToVehicle(vehicle))
+    val tripVehicle: TripVehicle = mapReadableMapToVehicle(vehicle)
+    DriveKitTripAnalysis.setVehicle(tripVehicle)
     promise.resolve(null)
   }
 
