@@ -10,7 +10,7 @@ fun mapReadableMapToVehicle(vehicle: ReadableMap): TripVehicle {
   var carMass = 1400.0
   var carGearboxIndex = 2
   var carConsumption = 4.5
-  var carAutoGearboxNumber = 0
+  var carAutoGearboxNumber = 6
   var engineDisplacement = 1200.0
   var frontTireSize: String? = null
   var rearTireSize: String? = null
