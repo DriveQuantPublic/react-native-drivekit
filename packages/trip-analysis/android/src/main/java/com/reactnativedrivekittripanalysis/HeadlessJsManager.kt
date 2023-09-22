@@ -86,11 +86,18 @@ object HeadlessJsManager {
     sendEvent(bundle)
   }
 
-  fun sendBluetoothStateChangedEvent(deviceConfigEvent: DeviceConfigEvent.BLUETOOTH_SENSOR_STATE_CHANGED) {
+  fun sendBluetoothStateChangedEvent(deviceConfigEvent: DeviceConfigEvent.BluetoothSensorStateChanged) {
     val bundle = Bundle()
     bundle.putString("eventType", EventType.BLUETOOTH_STATE_CHANGED.name)
     bundle.putBoolean("btSensorEnabled", deviceConfigEvent.btEnabled)
     bundle.putBoolean("btRequired", deviceConfigEvent.btRequired)
+    sendEvent(bundle)
+  }
+
+  fun sendGpsStateChangedEvent(deviceConfigEvent: DeviceConfigEvent.GpsSensorStateChanged) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.GPS_STATE_CHANGED.name)
+    bundle.putBoolean("sensorEnabled", deviceConfigEvent.isEnabled)
     sendEvent(bundle)
   }
 
@@ -122,6 +129,7 @@ object HeadlessJsManager {
     CRASH_DETECTED,
     CRASH_FEEDBACK_SENT,
     BLUETOOTH_STATE_CHANGED,
+    GPS_STATE_CHANGED,
     TRIP_CANCELLED,
     TRIP_FINISHED,
     SDK_STATE_CHANGED,

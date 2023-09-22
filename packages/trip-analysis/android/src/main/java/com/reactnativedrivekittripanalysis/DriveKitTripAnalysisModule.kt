@@ -222,13 +222,19 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         }
 
         override fun onDeviceConfigEvent(deviceConfigEvent: DeviceConfigEvent) {
-          if (deviceConfigEvent is DeviceConfigEvent.BLUETOOTH_SENSOR_STATE_CHANGED) {
-            val result = Arguments.createMap()
-            result.putBoolean("btSensorEnabled", deviceConfigEvent.btEnabled)
-            result.putBoolean("btRequired", deviceConfigEvent.btRequired)
-            HeadlessJsManager.sendBluetoothStateChangedEvent(deviceConfigEvent)
-            reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-              ?.emit("bluetoothSensorStateChanged", result)
+          val result = Arguments.createMap()
+          when (deviceConfigEvent) {
+            is DeviceConfigEvent.BluetoothSensorStateChanged -> {
+              result.putBoolean("btSensorEnabled", deviceConfigEvent.btEnabled)
+              result.putBoolean("btRequired", deviceConfigEvent.btRequired)
+              HeadlessJsManager.sendBluetoothStateChangedEvent(deviceConfigEvent)
+              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("bluetoothSensorStateChanged", result)
+            }
+            is DeviceConfigEvent.GpsSensorStateChanged -> {
+              result.putBoolean("sensorEnabled", deviceConfigEvent.isEnabled)
+              HeadlessJsManager.sendGpsStateChangedEvent(deviceConfigEvent)
+              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("gpsSensorStateChanged", result)
+            }
           }
         }
       })
