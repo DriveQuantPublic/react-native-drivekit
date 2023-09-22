@@ -3,6 +3,10 @@ package com.reactnativedrivekittripanalysis
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import com.drivequant.drivekit.core.DriveKit
+import com.drivequant.drivekit.core.utils.AppStateListener
+import com.drivequant.drivekit.core.utils.AppStateManager
+import com.drivequant.drivekit.core.utils.DiagnosisHelper
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
 import com.drivequant.drivekit.tripanalysis.entity.PostGeneric
 import com.drivequant.drivekit.tripanalysis.entity.PostGenericResponse
@@ -17,10 +21,16 @@ import com.facebook.react.HeadlessJsTaskService
 import com.google.gson.Gson
 import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
 
-object HeadlessJsManager {
+object HeadlessJsManager : AppStateListener {
 
   lateinit var notificationTitle: String
   lateinit var notificationContent: String
+
+  private var isAppInForeground = false
+
+  init {
+    AppStateManager.addAppStateListener(this)
+  }
 
   fun sendTripStartedEvent(startMode: StartMode) {
     val bundle = Bundle()
@@ -109,16 +119,23 @@ object HeadlessJsManager {
   }
 
   private fun sendEvent(bundle: Bundle) {
-    DriveKitTripAnalysisModule.reactContext?.let {
-      val serviceIntent = Intent(it, DKHeadlessJSService::class.java)
-      serviceIntent.putExtras(bundle)
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        it.startForegroundService(serviceIntent)
-      } else {
-        it.startService(serviceIntent)
+    if (isLocationForegroundServiceAllowed()) {
+      DriveKitTripAnalysisModule.reactContext?.let {
+        val serviceIntent = Intent(it, DKHeadlessJSService::class.java)
+        serviceIntent.putExtras(bundle)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+          it.startForegroundService(serviceIntent)
+        } else {
+          it.startService(serviceIntent)
+        }
+        HeadlessJsTaskService.acquireWakeLockNow(it)
       }
-      HeadlessJsTaskService.acquireWakeLockNow(it)
     }
+  }
+
+  private fun isLocationForegroundServiceAllowed(): Boolean {
+    return Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE || DiagnosisHelper.hasBackgroundLocationApproved(
+      DriveKit.applicationContext) || this.isAppInForeground
   }
 
   enum class EventType {
@@ -134,5 +151,17 @@ object HeadlessJsManager {
     TRIP_FINISHED,
     SDK_STATE_CHANGED,
     POTENTIAL_TRIP_START
+  }
+
+  override fun onAppMovedToBackground() {
+    this.isAppInForeground = false
+  }
+
+  override fun onAppMovedToForeground() {
+    this.isAppInForeground = true
+  }
+
+  override fun onNoActivity() {
+    // do nothing
   }
 }
