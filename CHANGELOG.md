@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.2...v1.6.0) (2023-10-12)
+
+
+### Features
+
+* check conditions before launching HeadlessJS service for Android 14+ ([674595c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/674595c59ff2fc2e0a5c41f85be051ab25cc0c5f))
+* clean code ([0419c5b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0419c5b84dda8b5bdec57a9f2aec686fba5dc267))
+* update Android TripSimulator module version ([b935cce](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b935cce577a08cbc786f8de4e8780f35851be7bd))
+* update DriveKit modules ([f8eb11c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/f8eb11ce0a26400253eb7e5615720b8e9ea6ee23))
+* update setVehicle implementation ([#101](https://github.com/DriveQuantPublic/react-native-drivekit/issues/101)) ([3bc6a84](https://github.com/DriveQuantPublic/react-native-drivekit/commit/3bc6a848a8089d97753fdbd1530590e7c6cba3e4))
+
+
+
+
+
 
 
 **Note:** Version bump only for package react-native-drivekit

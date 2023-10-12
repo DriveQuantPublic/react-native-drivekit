@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.2...v1.6.0) (2023-10-12)
+
+
+### Features
+
+* clean code ([0419c5b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0419c5b84dda8b5bdec57a9f2aec686fba5dc267))
+* update Android TripSimulator module version ([b935cce](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b935cce577a08cbc786f8de4e8780f35851be7bd))
+* update DriveKit modules ([f8eb11c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/f8eb11ce0a26400253eb7e5615720b8e9ea6ee23))
+
+
+
+
+
 
 
 **Note:** Version bump only for package @react-native-drivekit/trip-simulator
