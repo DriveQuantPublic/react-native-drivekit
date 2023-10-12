@@ -9,6 +9,7 @@ import type {
   StartMode,
   CancelTripReason,
   BluetoothState,
+  GpsState,
   SDKState,
   CrashInfo,
   CrashFeedback,
@@ -104,6 +105,7 @@ type Listeners = {
   crashDetected: (crashInfo: CrashInfo) => void;
   crashFeedbackSent: (crashFeedback: CrashFeedback) => void;
   bluetoothSensorStateChanged: (state: BluetoothState) => void;
+  gpsSensorStateChanged: (state: GpsState) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DriveKitTripAnalysis);

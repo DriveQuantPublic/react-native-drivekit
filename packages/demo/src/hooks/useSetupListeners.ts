@@ -235,6 +235,16 @@ const useSetupListeners = () => {
     );
     return () => listener.remove();
   });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'gpsSensorStateChanged',
+      state => {
+        console.log('gps sensor state changed', state);
+      },
+    );
+    return () => listener.remove();
+  });
 };
 
 export {useSetupListeners};

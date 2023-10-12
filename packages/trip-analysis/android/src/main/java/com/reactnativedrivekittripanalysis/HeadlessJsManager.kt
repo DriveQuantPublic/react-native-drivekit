@@ -3,6 +3,10 @@ package com.reactnativedrivekittripanalysis
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import com.drivequant.drivekit.core.DriveKit
+import com.drivequant.drivekit.core.utils.AppStateListener
+import com.drivequant.drivekit.core.utils.AppStateManager
+import com.drivequant.drivekit.core.utils.DiagnosisHelper
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
 import com.drivequant.drivekit.tripanalysis.entity.PostGeneric
 import com.drivequant.drivekit.tripanalysis.entity.PostGenericResponse
@@ -17,10 +21,16 @@ import com.facebook.react.HeadlessJsTaskService
 import com.google.gson.Gson
 import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
 
-object HeadlessJsManager {
+object HeadlessJsManager : AppStateListener {
 
   lateinit var notificationTitle: String
   lateinit var notificationContent: String
+
+  private var isAppInForeground = false
+
+  init {
+    AppStateManager.addAppStateListener(this)
+  }
 
   fun sendTripStartedEvent(startMode: StartMode) {
     val bundle = Bundle()
@@ -86,11 +96,18 @@ object HeadlessJsManager {
     sendEvent(bundle)
   }
 
-  fun sendBluetoothStateChangedEvent(deviceConfigEvent: DeviceConfigEvent.BLUETOOTH_SENSOR_STATE_CHANGED) {
+  fun sendBluetoothStateChangedEvent(deviceConfigEvent: DeviceConfigEvent.BluetoothSensorStateChanged) {
     val bundle = Bundle()
     bundle.putString("eventType", EventType.BLUETOOTH_STATE_CHANGED.name)
     bundle.putBoolean("btSensorEnabled", deviceConfigEvent.btEnabled)
     bundle.putBoolean("btRequired", deviceConfigEvent.btRequired)
+    sendEvent(bundle)
+  }
+
+  fun sendGpsStateChangedEvent(deviceConfigEvent: DeviceConfigEvent.GpsSensorStateChanged) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.GPS_STATE_CHANGED.name)
+    bundle.putBoolean("sensorEnabled", deviceConfigEvent.isEnabled)
     sendEvent(bundle)
   }
 
@@ -102,16 +119,23 @@ object HeadlessJsManager {
   }
 
   private fun sendEvent(bundle: Bundle) {
-    DriveKitTripAnalysisModule.reactContext?.let {
-      val serviceIntent = Intent(it, DKHeadlessJSService::class.java)
-      serviceIntent.putExtras(bundle)
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        it.startForegroundService(serviceIntent)
-      } else {
-        it.startService(serviceIntent)
+    if (isLocationForegroundServiceAllowed()) {
+      DriveKitTripAnalysisModule.reactContext?.let {
+        val serviceIntent = Intent(it, DKHeadlessJSService::class.java)
+        serviceIntent.putExtras(bundle)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+          it.startForegroundService(serviceIntent)
+        } else {
+          it.startService(serviceIntent)
+        }
+        HeadlessJsTaskService.acquireWakeLockNow(it)
       }
-      HeadlessJsTaskService.acquireWakeLockNow(it)
     }
+  }
+
+  private fun isLocationForegroundServiceAllowed(): Boolean {
+    return Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE || DiagnosisHelper.hasBackgroundLocationApproved(
+      DriveKit.applicationContext) || this.isAppInForeground
   }
 
   enum class EventType {
@@ -122,9 +146,22 @@ object HeadlessJsManager {
     CRASH_DETECTED,
     CRASH_FEEDBACK_SENT,
     BLUETOOTH_STATE_CHANGED,
+    GPS_STATE_CHANGED,
     TRIP_CANCELLED,
     TRIP_FINISHED,
     SDK_STATE_CHANGED,
     POTENTIAL_TRIP_START
+  }
+
+  override fun onAppMovedToBackground() {
+    this.isAppInForeground = false
+  }
+
+  override fun onAppMovedToForeground() {
+    this.isAppInForeground = true
+  }
+
+  override fun onNoActivity() {
+    // do nothing
   }
 }

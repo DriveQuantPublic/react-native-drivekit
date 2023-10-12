@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.2...v1.6.0) (2023-10-12)
+
+
+### Features
+
+* update DriveKit modules ([f8eb11c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/f8eb11ce0a26400253eb7e5615720b8e9ea6ee23))
+
+
+
+
+
+
+
+**Note:** Version bump only for package @react-native-drivekit/driver-data
+
+
+
+
+
 ## [1.5.2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.1...v1.5.2) (2023-05-24)
 
 **Note:** Version bump only for package @react-native-drivekit/driver-data
