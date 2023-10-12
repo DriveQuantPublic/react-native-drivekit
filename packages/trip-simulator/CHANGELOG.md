@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+**Note:** Version bump only for package @react-native-drivekit/trip-simulator
+
+
+
+
+
 ## [1.5.2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.1...v1.5.2) (2023-05-24)
 
 **Note:** Version bump only for package @react-native-drivekit/trip-simulator
