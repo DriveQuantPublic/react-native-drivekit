@@ -125,6 +125,7 @@ type Listeners = {
     status: UpdateUserIdStatus;
     userId?: String;
   }) => void;
+  deviceConfigurationChanged: (event: DeviceConfigurationEvent) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(Core);

@@ -309,3 +309,8 @@ export type UserInfo = {
   lastname: string | null;
   pseudo: string | null;
 };
+
+export type DeviceConfigurationEvent = {
+  type: string;
+  isValid: boolean;
+};

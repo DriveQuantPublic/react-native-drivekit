@@ -76,6 +76,20 @@ const useSetupListeners = () => {
   });
 
   useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'deviceConfigurationChanged',
+      (event: DeviceConfigurationEvent) => {
+        console.log(
+          'device configuration ',
+          event.type,
+          ' changed to ',
+          event.isValid ? 'valid' : 'invalid',
+        );
+      },
+    );
+    return () => listener.remove();
+  });
+  useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripCancelled',
       (reason: CancelTripReason) => {
