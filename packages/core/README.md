@@ -132,6 +132,8 @@ useEffect(() => {
 });
 ```
 
+### DriveKit related events
+
 Here is the list of supported events:
 
 - `driveKitConnected`, callback `() => void`: This event is triggered when the user has been successfully logged.
@@ -139,6 +141,11 @@ Here is the list of supported events:
 - `driveKitDidReceiveAuthenticationError`, callback `(requestError: RequestError) => void`: This event is triggered when The login has failed due to a `RequestError`.
 - `accountDeletionCompleted`, callback `(status: DeleteAccountStatus)`: This event is triggered when the delete account request has been processed with a `DeleteAccountStatus` state value.
 - `userIdUpdateStatusChanged`, callback `(status: UpdateUserIdStatus, userId: String?) => void`: This event is triggered when the update userId request has been processed with a `UpdateUserIdStatus` state value.
+
+### Device configuration related event
+
+- `deviceConfigurationChanged`, callback `(event: DeviceConfigurationEvent) => void`: This event is triggered when the user disables the sensors or revokes permissions.
+  The list of possible device configuration events is avaiable [on native documentation for Android](https://docs.drivequant.com/get-started-drivekit/android#docs-internal-guid-959f39f9-7fff-5ef1-6859-d0cd591eb82e) and [for iOS](https://docs.drivequant.com/get-started-drivekit/ios#dkdeviceconfigurationevent).
 
 ## API
 

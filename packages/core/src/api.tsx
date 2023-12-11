@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import type {
   DeleteAccountStatus,
+  DeviceConfigurationEvent,
   RequestError,
   UpdateUserIdStatus,
   UserInfo,

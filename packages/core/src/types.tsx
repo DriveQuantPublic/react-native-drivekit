@@ -23,6 +23,19 @@ export enum UpdateUserIdStatus {
   SAVED_FOR_REPOST = 'SAVED_FOR_REPOST',
 }
 
+export enum DeviceConfigurationEventType {
+  LOCATION_SENSOR = 'LOCATION_SENSOR',
+  BLUETOOTH_SENSOR = 'BLUETOOTH_SENSOR',
+  LOCATION_PERMISSION = 'LOCATION_PERMISSION',
+  ACTIVITY_PERMISSION = 'ACTIVITY_PERMISSION',
+  APP_BATTERY_OPTIMIZATION = 'APP_BATTERY_OPTIMIZATION',
+  NEARBY_DEVICES_PERMISSION = 'NEARBY_DEVICES_PERMISSION',
+  AUTO_RESET_PERMISSION = 'AUTO_RESET_PERMISSION',
+  NOTIFICATION_PERMISSION = 'NOTIFICATION_PERMISSION',
+  BLUETOOTH_PERMISSION = 'BLUETOOTH_PERMISSION',
+  LOW_POWER_MODE = 'LOW_POWER_MODE',
+}
+
 export type SynchronizationType = 'DEFAULT' | 'CACHE';
 
 export type TransportationMode =
@@ -311,6 +324,6 @@ export type UserInfo = {
 };
 
 export type DeviceConfigurationEvent = {
-  type: string;
+  type: DeviceConfigurationEventType;
   isValid: boolean;
 };
