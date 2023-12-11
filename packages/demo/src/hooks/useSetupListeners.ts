@@ -5,6 +5,7 @@ import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import type {
   DeleteAccountStatus,
   RequestError,
+  DeviceConfigurationEvent,
 } from '@react-native-drivekit/core';
 import type {
   CancelTripReason,
