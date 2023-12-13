@@ -245,7 +245,7 @@ const useSetupListeners = () => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'bluetoothSensorStateChanged',
       state => {
-        console.log('bluetooth sensor state changed', state);
+        console.log('[DEPRECATED] bluetooth sensor state changed', state);
       },
     );
     return () => listener.remove();
@@ -255,7 +255,7 @@ const useSetupListeners = () => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'gpsSensorStateChanged',
       state => {
-        console.log('gps sensor state changed', state);
+        console.log('[DEPRECATED] gps sensor state changed', state);
       },
     );
     return () => listener.remove();

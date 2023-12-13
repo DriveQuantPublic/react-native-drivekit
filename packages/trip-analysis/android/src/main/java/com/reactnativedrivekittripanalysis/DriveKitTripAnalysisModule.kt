@@ -221,6 +221,11 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
             ?.emit("crashFeedbackSent", result)
         }
 
+        @Deprecated(
+            "This listener is deprecated and will be removed in a future version. Please use DKDeviceConfigurationListener in DriveKit instead.",
+            replaceWith = ReplaceWith("DriveKit.addDeviceConfigurationEventListener(this"),
+            level = DeprecationLevel.WARNING
+        )
         override fun onDeviceConfigEvent(deviceConfigEvent: DeviceConfigEvent) {
           val result = Arguments.createMap()
           when (deviceConfigEvent) {

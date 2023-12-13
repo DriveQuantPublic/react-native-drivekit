@@ -145,7 +145,7 @@ Here is the list of supported events:
 ### Device configuration related event
 
 - `deviceConfigurationChanged`, callback `(event: DeviceConfigurationEvent) => void`: This event is triggered when the user disables the sensors or revokes permissions.
-  The list of possible device configuration events is avaiable [on native documentation for Android](https://docs.drivequant.com/get-started-drivekit/android#docs-internal-guid-959f39f9-7fff-5ef1-6859-d0cd591eb82e) and [for iOS](https://docs.drivequant.com/get-started-drivekit/ios#dkdeviceconfigurationevent).
+  The list of possible device configuration events is available [on native documentation for Android](https://docs.drivequant.com/get-started-drivekit/android#docs-internal-guid-959f39f9-7fff-5ef1-6859-d0cd591eb82e) and [for iOS](https://docs.drivequant.com/get-started-drivekit/ios#dkdeviceconfigurationevent).
 
 ## API
 
