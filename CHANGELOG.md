@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.6.0...v1.7.0) (2023-12-13)
+
+
+### Features
+
+* add device configuration event listener ([#104](https://github.com/DriveQuantPublic/react-native-drivekit/issues/104)) ([0dbaf23](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0dbaf23926144fae9b65443a57df523316e01add))
+
+
+
+
+
 # [1.6.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.2...v1.6.0) (2023-10-12)
 
 
