@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import type {
   DeleteAccountStatus,
+  DeviceConfigurationEvent,
   RequestError,
   UpdateUserIdStatus,
   UserInfo,
@@ -125,6 +126,7 @@ type Listeners = {
     status: UpdateUserIdStatus;
     userId?: String;
   }) => void;
+  deviceConfigurationChanged: (event: DeviceConfigurationEvent) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(Core);

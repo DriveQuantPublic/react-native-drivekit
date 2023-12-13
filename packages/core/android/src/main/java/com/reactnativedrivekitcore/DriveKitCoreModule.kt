@@ -5,6 +5,8 @@ import android.content.Intent
 import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.DriveKitLog
 import com.drivequant.drivekit.core.SynchronizationType
+import com.drivequant.drivekit.core.deviceconfiguration.DKDeviceConfigurationEvent
+import com.drivequant.drivekit.core.deviceconfiguration.DKDeviceConfigurationListener
 import com.drivequant.drivekit.core.driver.*
 import com.drivequant.drivekit.core.driver.deletion.DeleteAccountStatus
 import com.drivequant.drivekit.core.networking.DriveKitListener
@@ -234,6 +236,26 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
 
             override fun onAccountDeleted(status: DeleteAccountStatus) {
               reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("accountDeletionCompleted", mapDeleteAccountStatus(status))
+            }
+          })
+          DriveKit.addDeviceConfigurationListener(object: DKDeviceConfigurationListener {
+            override fun onDeviceConfigurationChanged(event: DKDeviceConfigurationEvent) {
+              var result = Arguments.createMap()
+
+              val (eventType, isValid) = when (event) {
+                is DKDeviceConfigurationEvent.LocationSensor -> Pair("LOCATION_SENSOR", event.isValid)
+                is DKDeviceConfigurationEvent.BluetoothSensor -> Pair("BLUETOOTH_SENSOR", event.isValid)
+                is DKDeviceConfigurationEvent.LocationPermission -> Pair("LOCATION_PERMISSION", event.isValid)
+                is DKDeviceConfigurationEvent.ActivityPermission -> Pair("ACTIVITY_PERMISSION", event.isValid)
+                is DKDeviceConfigurationEvent.AppBatteryOptimisation -> Pair("APP_BATTERY_OPTIMIZATION", event.isValid)
+                is DKDeviceConfigurationEvent.NearbyDevicesPermission -> Pair("NEARBY_DEVICES_PERMISSION", event.isValid)
+                is DKDeviceConfigurationEvent.AutoResetPermission -> Pair("AUTO_RESET_PERMISSION", event.isValid)
+                is DKDeviceConfigurationEvent.NotificationPermission -> Pair("NOTIFICATION_PERMISSION", event.isValid)
+              }
+
+              result.putString("type", eventType)
+              result.putBoolean("isValid", isValid)
+              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("deviceConfigurationChanged", result)
             }
           })
           DriveKitCoreModule.application = application

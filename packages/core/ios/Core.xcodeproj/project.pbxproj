@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		093584F5291035D3001154E4 /* RNDriveKitCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 093584F3291035D3001154E4 /* RNDriveKitCore.mm */; };
 		093584F8291035EC001154E4 /* RNDriveKitCoreWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093584F7291035EC001154E4 /* RNDriveKitCoreWrapper.swift */; };
+		67A5F6F12B2384B2002FCF7F /* DeviceConfigurationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A5F6F02B2384B2002FCF7F /* DeviceConfigurationMapper.swift */; };
 		67BDD53D292797EC0010114E /* RNCoreEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BDD53C292797EC0010114E /* RNCoreEventEmitter.swift */; };
 		67BDD53F2927C00F0010114E /* CoreEnumsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BDD53E2927C00F0010114E /* CoreEnumsMapper.swift */; };
 		944650022922C1A300872235 /* UserInfoMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944650012922C1A300872235 /* UserInfoMappers.swift */; };
@@ -32,6 +33,7 @@
 		093584F6291035EC001154E4 /* Core-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Core-Bridging-Header.h"; sourceTree = "<group>"; };
 		093584F7291035EC001154E4 /* RNDriveKitCoreWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNDriveKitCoreWrapper.swift; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		67A5F6F02B2384B2002FCF7F /* DeviceConfigurationMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceConfigurationMapper.swift; sourceTree = "<group>"; };
 		67BDD53C292797EC0010114E /* RNCoreEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNCoreEventEmitter.swift; sourceTree = "<group>"; };
 		67BDD53E2927C00F0010114E /* CoreEnumsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreEnumsMapper.swift; sourceTree = "<group>"; };
 		944650002922C14300872235 /* RNDriveKitCore-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNDriveKitCore-Swift.h"; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				67A5F6F02B2384B2002FCF7F /* DeviceConfigurationMapper.swift */,
 				67BDD53E2927C00F0010114E /* CoreEnumsMapper.swift */,
 				67BDD53C292797EC0010114E /* RNCoreEventEmitter.swift */,
 				944650012922C1A300872235 /* UserInfoMappers.swift */,
@@ -131,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				944650022922C1A300872235 /* UserInfoMappers.swift in Sources */,
+				67A5F6F12B2384B2002FCF7F /* DeviceConfigurationMapper.swift in Sources */,
 				093584F8291035EC001154E4 /* RNDriveKitCoreWrapper.swift in Sources */,
 				093584F5291035D3001154E4 /* RNDriveKitCore.mm in Sources */,
 				67BDD53D292797EC0010114E /* RNCoreEventEmitter.swift in Sources */,

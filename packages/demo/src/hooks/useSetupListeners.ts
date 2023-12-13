@@ -5,6 +5,7 @@ import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import type {
   DeleteAccountStatus,
   RequestError,
+  DeviceConfigurationEvent,
 } from '@react-native-drivekit/core';
 import type {
   CancelTripReason,
@@ -75,6 +76,20 @@ const useSetupListeners = () => {
     return () => listener.remove();
   });
 
+  useEffect(() => {
+    const listener = DriveKit.addEventListener(
+      'deviceConfigurationChanged',
+      (event: DeviceConfigurationEvent) => {
+        console.log(
+          'device configuration ',
+          event.type,
+          ' changed to ',
+          event.isValid ? 'valid' : 'invalid',
+        );
+      },
+    );
+    return () => listener.remove();
+  });
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripCancelled',
@@ -230,7 +245,7 @@ const useSetupListeners = () => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'bluetoothSensorStateChanged',
       state => {
-        console.log('bluetooth sensor state changed', state);
+        console.log('[DEPRECATED] bluetooth sensor state changed', state);
       },
     );
     return () => listener.remove();
@@ -240,7 +255,7 @@ const useSetupListeners = () => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'gpsSensorStateChanged',
       state => {
-        console.log('gps sensor state changed', state);
+        console.log('[DEPRECATED] gps sensor state changed', state);
       },
     );
     return () => listener.remove();

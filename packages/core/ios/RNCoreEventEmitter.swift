@@ -22,5 +22,7 @@ class RNCoreEventEmitter: NSObject {
         "driveKitDisconnected",
         "driveKitDidReceiveAuthenticationError",
         "userIdUpdateStatusChanged",
-        "accountDeletionCompleted"]
+        "accountDeletionCompleted",
+        "deviceConfigurationChanged"
+    ]
 }

@@ -9,6 +9,7 @@ public class RNDriveKitCoreWrapper: NSObject {
 
     @objc public func initialize() -> Void {
         DriveKit.shared.initialize(delegate: self)
+        DriveKit.shared.addDeviceConfigurationDelegate(self)
     }
 
     @objc internal func getApiKey() -> String? {
@@ -196,5 +197,11 @@ extension RNDriveKitCoreWrapper: DriveKitDelegate {
     public func driveKit(_ driveKit: DriveKit, accountDeletionCompleted status: DeleteAccountStatus) {
         RNCoreEventEmitter.shared.dispatch(name: "accountDeletionCompleted", body: mapDeleteAccountStatus(deleteAccountStatus: status))
         return
+    }
+}
+
+extension RNDriveKitCoreWrapper: DKDeviceConfigurationDelegate {
+    public func deviceConfigurationDidChange(event: DKDeviceConfigurationEvent) {
+        RNCoreEventEmitter.shared.dispatch(name: "deviceConfigurationChanged", body: mapDeviceConfigurationEvent(event))
     }
 }
