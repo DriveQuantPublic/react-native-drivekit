@@ -5,79 +5,43 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.6.0...v1.7.0) (2023-12-13)
 
-
 ### Features
 
-* add device configuration event listener ([#104](https://github.com/DriveQuantPublic/react-native-drivekit/issues/104)) ([0dbaf23](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0dbaf23926144fae9b65443a57df523316e01add))
-
-
-
-
+- update DriveKit modules ([#104](https://github.com/DriveQuantPublic/react-native-drivekit/issues/104)) ([0dbaf23](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0dbaf23926144fae9b65443a57df523316e01add))
 
 # [1.6.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.2...v1.6.0) (2023-10-12)
 
-
 ### Features
 
-* clean code ([0419c5b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0419c5b84dda8b5bdec57a9f2aec686fba5dc267))
-* update Android TripSimulator module version ([b935cce](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b935cce577a08cbc786f8de4e8780f35851be7bd))
-* update DriveKit modules ([f8eb11c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/f8eb11ce0a26400253eb7e5615720b8e9ea6ee23))
-
-
-
-
-
-
+- clean code ([0419c5b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0419c5b84dda8b5bdec57a9f2aec686fba5dc267))
+- update Android TripSimulator module version ([b935cce](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b935cce577a08cbc786f8de4e8780f35851be7bd))
+- update DriveKit modules ([f8eb11c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/f8eb11ce0a26400253eb7e5615720b8e9ea6ee23))
 
 **Note:** Version bump only for package @react-native-drivekit/trip-simulator
-
-
-
-
 
 ## [1.5.2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.1...v1.5.2) (2023-05-24)
 
 **Note:** Version bump only for package @react-native-drivekit/trip-simulator
 
-
-
-
-
 ## [1.5.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.5.0...v1.5.1) (2023-05-17)
-
 
 ### Features
 
-* update DriveKit Android modules to 1.31.2 ([2bebffc](https://github.com/DriveQuantPublic/react-native-drivekit/commit/2bebffcc4d9dc344846dc211105153dea315ef1a))
-* update DriveKit iOS modules to 1.32.1 ([a734405](https://github.com/DriveQuantPublic/react-native-drivekit/commit/a73440515a149eb347bbbcb76d89d90c8cfb3caa))
-
-
-
-
+- update DriveKit Android modules to 1.31.2 ([2bebffc](https://github.com/DriveQuantPublic/react-native-drivekit/commit/2bebffcc4d9dc344846dc211105153dea315ef1a))
+- update DriveKit iOS modules to 1.32.1 ([a734405](https://github.com/DriveQuantPublic/react-native-drivekit/commit/a73440515a149eb347bbbcb76d89d90c8cfb3caa))
 
 # [1.5.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.4.0-temp...v1.5.0) (2023-04-04)
 
-
 ### Features
 
-* update DriveKit Android modules to 1.30.0 ([c0ff47e](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c0ff47e63a86004fc0ef82331c0f4786c8e342cd))
-* update DriveKit iOS modules to 1.31.1 ([0b9cceb](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0b9ccebaae220de159a4591ca253aa02d771094a))
-
-
-
-
-
+- update DriveKit Android modules to 1.30.0 ([c0ff47e](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c0ff47e63a86004fc0ef82331c0f4786c8e342cd))
+- update DriveKit iOS modules to 1.31.1 ([0b9cceb](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0b9ccebaae220de159a4591ca253aa02d771094a))
 
 ## [1.4.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.4.0-temp...v1.4.1) (2023-02-16)
 
-
 ### Features
 
-* update DriveKit version number for Android to 1.29.3 ([e0cb12b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/e0cb12b2906eab24845ae7f5318593cc32f866e8))
-
-
-
-
+- update DriveKit version number for Android to 1.29.3 ([e0cb12b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/e0cb12b2906eab24845ae7f5318593cc32f866e8))
 
 # [1.4.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.2.0...v1.4.0) (2023-02-14)
 

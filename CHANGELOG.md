@@ -9,7 +9,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * add device configuration event listener ([#104](https://github.com/DriveQuantPublic/react-native-drivekit/issues/104)) ([0dbaf23](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0dbaf23926144fae9b65443a57df523316e01add))
-
+* update DriveKit modules ([#104](https://github.com/DriveQuantPublic/react-native-drivekit/issues/104)) ([0dbaf23](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0dbaf23926144fae9b65443a57df523316e01add))
 
 
 
