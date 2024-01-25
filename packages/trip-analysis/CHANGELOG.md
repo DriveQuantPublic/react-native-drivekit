@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.7.0...v1.8.0) (2024-01-25)
+
+**Note:** Version bump only for package @react-native-drivekit/trip-analysis
+
+
+
+
+
 # [1.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.6.0...v1.7.0) (2023-12-13)
 
 ### Features
