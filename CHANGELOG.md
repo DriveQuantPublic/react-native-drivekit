@@ -6,10 +6,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 # [1.8.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.7.0...v1.8.0) (2024-01-25)
 
 
-### Bug Fixes
-
-* repair Android release build ([c55f7f7](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c55f7f74c4305a42b6e3360e70128f1f21e4be49))
-
 
 
 
