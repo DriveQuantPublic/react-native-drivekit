@@ -118,7 +118,6 @@ For location permission, please use [requestIOSLocationPermission()](https://git
 
 When the application requests permission for background locations or motion activities, a message will be shown to the user. You must configure this message by changing the value for the following keys in `Info.plist`
 
-- `NSLocationAlwaysUsageDescription`
 - `NSLocationWhenInUseUsageDescription`
 - `NSLocationAlwaysAndWhenInUseUsageDescription`
 - `NSMotionUsageDescription`
