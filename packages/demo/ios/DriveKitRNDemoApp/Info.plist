@@ -47,8 +47,6 @@
 	<string>The application needs to use bluetooth in order to retrieve beacon battery level</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>To enable automatic trip detection and driving analysis without having to manipulate your phone, select the option "Always allow". Good road...</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>The application needs to know your location to analyze your trips, to provide driving scores and to enable use the automatic start mode.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To automatically detect and analyze your trips, the application needs access to your position at all times.</string>
 	<key>NSMotionUsageDescription</key>
