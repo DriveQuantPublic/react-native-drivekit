@@ -28,7 +28,7 @@ cd ios && pod install
 
 ### Android setup
 
-Call `initialize` method inside your `MainApplication.java`.
+If you have disabled the DriveKit auto-initialization, call initialize method inside the `onCreateMethod()` of your Appplication class.
 
 ```java
 // MainApplication.java
@@ -46,7 +46,6 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
             "Start a trip with DriveKit SDK",
             R.drawable.common_google_signin_btn_icon_dark);
     DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
-    DriveKitTripAnalysisModule.Companion.registerReceiver(this);
 
     DriveKitDriverDataModule.Companion.initialize(); // ADD THIS LINE
 
@@ -86,7 +85,6 @@ Call `initialize` method in your `AppDelegate.mm`.
 | [getTrip()](#gettrip)                                 | `Promise<GetTripResponse \| null>`  | ✅  |   ✅    |
 | [getRoute()](#getRoute)                               | `Promise<Route \| null>`            | ✅  |   ✅    |
 | [deleteTrip()](#deletetrip)                           | `Promise<void>`                     | ✅  |   ✅    |
-| [reset()](#reset)                                     | `Promise<boolean>`                  | ✅  |   ✅    |
 
 ### getTripsOrderByDateAsc
 
@@ -171,25 +169,3 @@ The itinId parameter is the unique identifier for a trip.
 ```typescript
 await deleteTrip('TRIP_ID_HERE');
 ```
-
-### reset
-
-```typescript
-reset(): Promise<void>
-```
-
-If you need to reset DriveKit Driver Data configuration (user logout for example), you can call the following method:
-
-```typescript
-reset();
-```
-
-All data saved locally by DriveKit will be erased.
-
-> ℹ️
->
-> All DriverKit modules have reset method that erases all data saved locally by the module.
-
-> ⚠️
->
-> Make sure that you call reset method of all modules to fully reset DriveKit configuration.
