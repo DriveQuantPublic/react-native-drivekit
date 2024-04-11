@@ -4,7 +4,7 @@ React Native interface for DriveKit Trip Analysis
 
 ## Prerequisite
 
-Before installing `@react-native-drivekit/trip-analysis` **you must have installed** `@react-native-drivekit/core`.
+Before installing `@react-native-drivekit/trip-analysis` **you must have installed** `@react-native-drivekit/core`, especially if you have disabled the DriveKit auto-initialization.
 
 ---
 
@@ -28,7 +28,7 @@ cd ios && pod install
 
 ### Android setup
 
-Call `initialize` method inside your `MainApplication.java`.
+If you have disabled the DriveKit auto-initialization, call `initialize` method in the `onCreate()` method of your Application class.
 
 ```java
 // MainApplication.java
@@ -36,7 +36,6 @@ import com.reactnativedrivekitcore.DriveKitCoreModule;
 import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 
 // ...
-
   @Override
   public void onCreate() {
     super.onCreate();
@@ -56,11 +55,37 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 >
 > The properties in `RNHeadlessJSNotification` are used to configure the notification when the `HeadlessJS` service is running
 
+On Android, if the SDK has auto-initialization featured enabled, you can configure the trip notification content displayed during a trip analysis by calling the following method:
+```java
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    (…)
+
+    // ADD THESE LINES
+    final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
+    DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
+  }
+```
+
+On Android, if the SDK has auto-initialization featured enabled, you can configure the HeadlessJS notification content by calling the following method:
+```java
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    (…)
+
+    // ADD THESE LINES
+    final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("Notification title", "Notification description");
+    DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification);
+  }
+```
+
 #### Authorization
 
 In order to collect data, you need to configure multiple permissions :
 
-- Location permission: [native documentation](https://docs.drivequant.com/trip-analysis/android/get-started#location-permission);
+- Location permission: [native documentation](https://docs.drivequant.com/trip-analysis/android/get-started#location-permission)
 - Activity recogniton permission: [native documentation](https://docs.drivequant.com/trip-analysis/android/get-started#activity-recognition-permission)
 - Nearby device permission: [native documentation](https://docs.drivequant.com/trip-analysis/android/get-started#nearby-devices-permission)
 - Notification runtime permission: [native documentation](https://docs.drivequant.com/trip-analysis/android/get-started#notification-runtime-permission)
@@ -186,7 +211,6 @@ Follow these steps :
 | [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`                 | ✅  |   ✅    |
 | [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`                 | ✅  |   ✅    |
 | [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`                 | ✅  |   ✅    |
-| [reset()](#reset)                                                     | `Promise<void>`                 | ✅  |   ✅    |
 | [getTripMetadata()](#getTripMetadata)                                 | `Promise<TripMetadata \| null>` | ✅  |   ✅    |
 | [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)           | `Promise<void>`                 | ✅  |   ✅    |
 | [deleteTripMetadata(string?: string)](#deleteTripMetadata)            | `Promise<void>`                 | ✅  |   ✅    |
@@ -198,10 +222,6 @@ Follow these steps :
 ```typescript
 activateAutoStart(enable: boolean): Promise<void>
 ```
-
-> 🚨
->
-> On Android if you want to enable the automatic trip detection mode, `activateAutoStart(true)` must be called **after** the Activity Recognition runtime permission is granted by the user
 
 The automatic mode detects vehicle movements and triggers the trip analysis without driver intervention while the application is in background. The analysis is stopped automatically at the end of the trip.
 
@@ -339,27 +359,6 @@ setStopTimeout(240);
 >
 > If a value lower than 120 is set, the value will be forced to 120.
 
-### reset
-
-```typescript
-reset(): Promise<void>
-```
-
-If you need to reset DriveKit Trip Analysis configuration (user logout for example), you can call the following method:
-
-```typescript
-reset();
-```
-
-All data saved locally by DriveKit will be erased.
-
-> ℹ️
->
-> All DriverKit frameworks have reset method that erases all data saved locally by the framework.
-
-> ⚠️
->
-> Make sure that you call reset method of all frameworks to fully reset DriveKit configuration.
 
 ### getTripMetadata
 
