@@ -19,8 +19,8 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
   }
 
   @ReactMethod
+  @Deprecated("You no longer need to call the reset method of any module except the one in DriveKit")
   override fun reset(promise: Promise) {
-    DriveKitDriverData.reset()
     promise.resolve(null)
   }
 
@@ -119,7 +119,7 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
       TripsSyncStatus.NO_ERROR,
       TripsSyncStatus.CACHE_DATA_ONLY,
       TripsSyncStatus.FAILED_TO_SYNC_TRIPS_CACHE_ONLY,
-      -> {
+      TripsSyncStatus.SYNC_ALREADY_IN_PROGRESS -> {
         val readableMap = TripsSyncMappers.mapTripsSyncToReadableMap(status, trips)
         promise.resolve(readableMap)
       }

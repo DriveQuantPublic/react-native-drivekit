@@ -61,15 +61,15 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        DriveKitCoreModule.Companion.initialize(this);
+    
         final RNTripNotification tripNotification = new RNTripNotification(
                 "DriveKit SDK",
                 "Start a trip with DriveKit SDK",
                 R.drawable.common_google_signin_btn_icon_dark);
         final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("DriveKit SDK",
                 "Loading in progress…");
-        DriveKitTripAnalysisModule.Companion.initialize(tripNotification, headlessJSNotification);
-        DriveKitDriverDataModule.Companion.initialize();
+        DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
+        DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification);
 
         // If you opted-in for the New Architecture, we enable the TurboModule system
         ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;

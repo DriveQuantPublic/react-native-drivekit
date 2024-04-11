@@ -82,8 +82,8 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
+  @Deprecated("You no longer need to call the reset method of any module except the one in DriveKit")
   override fun reset(promise: Promise) {
-    DriveKitTripAnalysis.reset()
     promise.resolve(null)
   }
 
@@ -143,11 +143,8 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     fun initialize(rnTripNotification: RNTripNotification, rnHeadlessJSNotification: RNHeadlessJSNotification) {
       val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
 
-      HeadlessJsManager.apply {
-        notificationTitle = rnHeadlessJSNotification.title
-        notificationContent = rnHeadlessJSNotification.content
-      }
-
+      configureHeadlessJSNotification(rnHeadlessJSNotification)
+  
       DriveKitTripAnalysis.initialize(tripNotification, object : TripListener {
         override fun tripStarted(startMode: StartMode) {
           HeadlessJsManager.sendTripStartedEvent(startMode)
@@ -243,6 +240,18 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
           }
         }
       })
+    }
+
+    fun configureTripNotification(rnTripNotification: RNTripNotification) {
+      val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
+      DriveKitTripAnalysis.tripNotification = tripNotification
+    }
+
+    fun configureHeadlessJSNotification(rnHeadlessJSNotification: RNHeadlessJSNotification) {
+      HeadlessJsManager.apply {
+        notificationTitle = rnHeadlessJSNotification.title
+        notificationContent = rnHeadlessJSNotification.content
+      }
     }
 
     @Deprecated("This method is now useless, it is safe to remove that call")
