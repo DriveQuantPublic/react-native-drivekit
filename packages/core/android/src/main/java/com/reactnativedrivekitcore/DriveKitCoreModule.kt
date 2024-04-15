@@ -212,8 +212,21 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
         const val NAME = "RNDriveKitCore"
         var application: Application? = null
         var reactContext: ReactApplicationContext? = null
-        fun initialize(application: Application) {
-          DriveKit.initialize(application, object : DriveKitListener {
+       
+        @JvmOverloads
+        fun initialize(application: Application, registerDriveKitListener: Boolean = true, registerDeviceConfigurationListener: Boolean = true) {
+          DriveKit.initialize(application)
+          if (registerDriveKitListener) {
+            addDriveKitListener()
+          }
+          if (registerDeviceConfigurationListener) {
+            addDeviceConfigurationListener()
+          }
+          DriveKitCoreModule.application = application
+        }
+
+        fun addDriveKitListener() {
+          DriveKit.addDriveKitListener(object : DriveKitListener {
             override fun onConnected() {
               reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("driveKitConnected", null)
             }
@@ -238,7 +251,10 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
               reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("accountDeletionCompleted", mapDeleteAccountStatus(status))
             }
           })
-          DriveKit.addDeviceConfigurationListener(object: DKDeviceConfigurationListener {
+        }
+
+        fun addDeviceConfigurationListener() {
+           DriveKit.addDeviceConfigurationListener(object: DKDeviceConfigurationListener {
             override fun onDeviceConfigurationChanged(event: DKDeviceConfigurationEvent) {
               var result = Arguments.createMap()
 
@@ -258,7 +274,6 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
               reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("deviceConfigurationChanged", result)
             }
           })
-          DriveKitCoreModule.application = application
         }
       }
 }
