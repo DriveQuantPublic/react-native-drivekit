@@ -109,7 +109,7 @@ This is the better solution we found. If you find a better solution, please feel
 
 ### iOS setup
 
-Call `initialize` method in your `AppDelegate.mm`.
+If you have disabled the DriveKit auto-initialization,, call `initialize` method in your `AppDelegate.mm`.
 
 ```objc
 // AppDelegate.mm

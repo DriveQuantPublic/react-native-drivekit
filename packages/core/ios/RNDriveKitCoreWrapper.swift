@@ -7,9 +7,14 @@ import MessageUI
 public class RNDriveKitCoreWrapper: NSObject {
     @objc public static let shared = RNDriveKitCoreWrapper()
 
-    @objc public func initialize() -> Void {
-        DriveKit.shared.initialize(delegate: self)
+    override init() {
+        super.init()
+        DriveKit.shared.addDriveKitDelegate(self)
         DriveKit.shared.addDeviceConfigurationDelegate(self)
+    }
+
+    @objc public func initialize() -> Void {
+        DriveKit.shared.initialize()
     }
 
     @objc internal func getApiKey() -> String? {

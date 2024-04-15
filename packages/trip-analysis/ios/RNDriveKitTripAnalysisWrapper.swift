@@ -7,8 +7,13 @@ import CoreLocation
 public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc public static let shared = RNDriveKitTripAnalysisWrapper()
 
+    override init() {
+        super.init()
+        DriveKitTripAnalysis.shared.addTripListener(self)
+    }
+
     @objc public func initialize(launchOptions: [UIApplication.LaunchOptionsKey: Any]) -> Void {
-        DriveKitTripAnalysis.shared.initialize(tripListener: self, appLaunchOptions: launchOptions)
+        DriveKitTripAnalysis.shared.initialize(appLaunchOptions: launchOptions)
     }
 
     @objc internal func activateAutoStart(enable: NSNumber) -> Void {

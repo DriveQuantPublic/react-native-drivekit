@@ -10,9 +10,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [RNDriveKitCoreWrapper.shared initialize];
-  [RNDriveKitTripAnalysisWrapper.shared initializeWithLaunchOptions:launchOptions];
-  [RNDriveKitDriverDataWrapper.shared initialize];
 
   self.moduleName = @"DriveKitRNDemoApp";
   // You can add your custom initial props in the dictionary below.

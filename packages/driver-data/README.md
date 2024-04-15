@@ -57,7 +57,7 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 
 ### iOS setup
 
-Call `initialize` method in your `AppDelegate.mm`.
+If you have disabled the DriveKit auto-initialization, call `initialize` method in your `AppDelegate.mm`.
 
 ```objc
 // AppDelegate.mm
