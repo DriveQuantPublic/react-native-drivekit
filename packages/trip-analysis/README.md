@@ -55,31 +55,24 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 >
 > The properties in `RNHeadlessJSNotification` are used to configure the notification when the `HeadlessJS` service is running
 
-On Android, if the SDK has auto-initialization featured enabled, you can configure the trip notification content displayed during a trip analysis by calling the following method:
-```java
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    (…)
+If the DriveKit auto-initialization is enabled, you can
 
-    // ADD THESE LINES
-    final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
-    DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
-  }
+- configure the trip notification content displayed during a trip analysis by calling the following method:
+```java
+final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
+DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
 ```
 
-On Android, if the SDK has auto-initialization featured enabled, you can configure the HeadlessJS notification content by calling the following method:
+- configure the HeadlessJS notification content by calling the following method:
 ```java
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    (…)
-
-    // ADD THESE LINES
-    final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("Notification title", "Notification description");
-    DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification);
-  }
+final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("Notification title", "Notification description");
+DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification);
 ```
+- register to the `TripListener` by calling the following method:
+```java
+DriveKitTripAnalysisModule.Companion.addTripListener();
+```
+
 
 #### Authorization
 
