@@ -10,6 +10,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [RNDriveKitCoreWrapper.shared addDriveKitListener];
+  [RNDriveKitCoreWrapper.shared addDeviceConfigurationListener];
+  [RNDriveKitTripAnalysisWrapper.shared addTripListener];
 
   self.moduleName = @"DriveKitRNDemoApp";
   // You can add your custom initial props in the dictionary below.

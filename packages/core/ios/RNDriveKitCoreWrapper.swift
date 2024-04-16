@@ -9,12 +9,29 @@ public class RNDriveKitCoreWrapper: NSObject {
 
     override init() {
         super.init()
-        DriveKit.shared.addDriveKitDelegate(self)
-        DriveKit.shared.addDeviceConfigurationDelegate(self)
     }
 
     @objc public func initialize() -> Void {
+        initialize(registerDriveKitListener: true, registerDeviceConfigurationListener: true)
+    }
+    
+    @objc(initializeWithRegisterDriveKitListener:andRegisterDeviceConfigurationListener:) 
+    public func initialize(registerDriveKitListener: Bool, registerDeviceConfigurationListener: Bool) -> Void {
         DriveKit.shared.initialize()
+        if registerDriveKitListener {
+            addDriveKitListener()
+        }
+        if registerDeviceConfigurationListener {
+            addDeviceConfigurationListener()
+        }
+    }
+
+    @objc public func addDriveKitListener() {
+        DriveKit.shared.addDriveKitDelegate(self)
+    }
+
+    @objc public func addDeviceConfigurationListener() {
+        DriveKit.shared.addDeviceConfigurationDelegate(self)
     }
 
     @objc internal func getApiKey() -> String? {
