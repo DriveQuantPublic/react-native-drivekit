@@ -50,7 +50,7 @@ import com.reactnativedrivekitcore.DriveKitCoreModule;
   }
 ```
 
-If the DriveKit auto-initialization is enabled, you can register to 
+If the DriveKit auto-initialization is enabled, you can register to
 
 - the `DriveKitListener` by calling the following method:
 
@@ -84,6 +84,22 @@ If you have disabled the DriveKit auto-initialization, call `initialize` method 
 ```
 
 **Note:** If you are using Swift, `initialize` method is also available.
+
+If the DriveKit auto-initialization is enabled, you can register to
+
+- the `DriveKitListener` by calling the following method:
+
+```objc
+  [RNDriveKitCoreWrapper.shared addDriveKitListener];
+```
+
+- the `DeviceConfigurationListener` by calling the following method:
+
+```objc
+  [RNDriveKitCoreWrapper.shared addDeviceConfigurationListener];
+```
+
+---
 
 ### Permissions
 
@@ -156,10 +172,14 @@ Here is the list of supported events:
 - `accountDeletionCompleted`, callback `(status: DeleteAccountStatus)`: This event is triggered when the delete account request has been processed with a `DeleteAccountStatus` state value.
 - `userIdUpdateStatusChanged`, callback `(status: UpdateUserIdStatus, userId: String?) => void`: This event is triggered when the update userId request has been processed with a `UpdateUserIdStatus` state value.
 
+**Note:** If the DriveKit auto-initialization is enabled, you need to call `addDriveKitListener` in order to get these listeners triggered. Otherwise, you have to call the Core `initiliaze` method with the parameter `registerDriveKitListener` as `true`
+
 ### Device configuration related event
 
 - `deviceConfigurationChanged`, callback `(event: DeviceConfigurationEvent) => void`: This event is triggered when the user disables the sensors or revokes permissions.
   The list of possible device configuration events is available [on native documentation for Android](https://docs.drivequant.com/get-started-drivekit/android#docs-internal-guid-959f39f9-7fff-5ef1-6859-d0cd591eb82e) and [for iOS](https://docs.drivequant.com/get-started-drivekit/ios#dkdeviceconfigurationevent).
+
+**Note:** If the DriveKit auto-initialization is enabled, you need to call `addDeviceConfigurationListener` in order to get these listeners triggered. Otherwise, you have to call the Core `initiliaze` method with the parameter `registerDeviceConfigurationListener` as `true`
 
 ## API
 

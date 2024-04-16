@@ -58,21 +58,24 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 If the DriveKit auto-initialization is enabled, you can
 
 - configure the trip notification content displayed during a trip analysis by calling the following method:
+
 ```java
 final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
 DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
 ```
 
 - configure the HeadlessJS notification content by calling the following method:
+
 ```java
 final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("Notification title", "Notification description");
 DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification);
 ```
+
 - register to the `TripListener` by calling the following method:
+
 ```java
 DriveKitTripAnalysisModule.Companion.addTripListener();
 ```
-
 
 #### Authorization
 
@@ -120,6 +123,12 @@ If you have disabled the DriveKit auto-initialization,, call `initialize` method
 
 **Note:** If you are using Swift, `initialize` method is also available.
 
+If the DriveKit auto-initialization is enabled, you can register to the `TripListener` by calling the following method:
+
+```objc
+  [RNDriveKitTripAnalysisWrapper.shared addTripListener];
+```
+
 #### Configure capabilities
 
 You need to turn on Background Modes & enable Location updates. For more details please follow the [iOS documentation](https://docs.drivequant.com/trip-analysis/ios/get-started#configure-capabilities)
@@ -155,6 +164,8 @@ To validate that the initialization has been done successfully, please check you
 ## Listeners
 
 **Note:** These listeners will not be triggered on Android when the app is in background, due to system limitation. Please read the [Headless JS](#headless-js-android-only) part.
+
+**Note:** If the DriveKit auto-initialization is enabled, you need to call `addTripListener` in order to get these listeners triggered. Otherwise, you have to call the TripAnalysis `initiliaze` method with the parameter `registerTripListener` as `true`
 
 You can listen to events thanks to the `addEventListener` api.
 
@@ -351,7 +362,6 @@ setStopTimeout(240);
 > If a value greater than 480 is set, the value will be forced to 480.
 >
 > If a value lower than 120 is set, the value will be forced to 120.
-
 
 ### getTripMetadata
 
