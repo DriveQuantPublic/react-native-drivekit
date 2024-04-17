@@ -9,8 +9,7 @@ import com.reactnativedrivekitcore.DriveKitCoreModule;
 internal class DKCoreModuleInitializer : Initializer<Unit> {
     override fun create(context: Context) {
         if (DriveKit.isAutoInitEnabled(context)) {
-            DriveKitCoreModule.addDriveKitListener()
-            DriveKitCoreModule.addDeviceConfigurationListener()
+            DriveKitCoreModule.configureListeners()
         }
     }
 
