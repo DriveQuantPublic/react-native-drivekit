@@ -213,19 +213,14 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
         var application: Application? = null
         var reactContext: ReactApplicationContext? = null
        
-        @JvmOverloads
-        fun initialize(application: Application, registerDriveKitListener: Boolean = true, registerDeviceConfigurationListener: Boolean = true) {
+        fun initialize(application: Application) {
           DriveKit.initialize(application)
-          if (registerDriveKitListener) {
-            addDriveKitListener()
-          }
-          if (registerDeviceConfigurationListener) {
-            addDeviceConfigurationListener()
-          }
+          addDriveKitListener()        
+          addDeviceConfigurationListener()
           DriveKitCoreModule.application = application
         }
 
-        fun addDriveKitListener() {
+        internal fun addDriveKitListener() {
           DriveKit.addDriveKitListener(object : DriveKitListener {
             override fun onConnected() {
               reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("driveKitConnected", null)
@@ -253,7 +248,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
           })
         }
 
-        fun addDeviceConfigurationListener() {
+        internal fun addDeviceConfigurationListener() {
            DriveKit.addDeviceConfigurationListener(object: DKDeviceConfigurationListener {
             override fun onDeviceConfigurationChanged(event: DKDeviceConfigurationEvent) {
               var result = Arguments.createMap()
