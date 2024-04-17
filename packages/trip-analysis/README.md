@@ -55,7 +55,7 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
 >
 > The properties in `RNHeadlessJSNotification` are used to configure the notification when the `HeadlessJS` service is running
 
-If the DriveKit auto-initialization is enabled, you can
+If the DriveKit auto-initialization is enabled, you have to
 
 - configure the trip notification content displayed during a trip analysis by calling the following method:
 
@@ -69,12 +69,6 @@ DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification)
 ```java
 final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("Notification title", "Notification description");
 DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification);
-```
-
-- register to the `TripListener` by calling the following method:
-
-```java
-DriveKitTripAnalysisModule.Companion.addTripListener();
 ```
 
 #### Authorization
