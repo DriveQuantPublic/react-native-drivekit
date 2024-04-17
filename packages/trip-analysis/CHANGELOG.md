@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.9.0...v2.0.0) (2024-04-17)
+
+
+### Features
+
+* update DriveKit modules to 2.0.0 ([#111](https://github.com/DriveQuantPublic/react-native-drivekit/issues/111)) ([1ff7cea](https://github.com/DriveQuantPublic/react-native-drivekit/commit/1ff7cea96de12fd29512b6e64774afeb29dc7e59))
+
+
+
+
+
 # [1.9.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v1.8.1...v1.9.0) (2024-02-07)
 
 **Note:** Version bump only for package @react-native-drivekit/trip-analysis
