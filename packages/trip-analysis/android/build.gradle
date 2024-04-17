@@ -143,6 +143,8 @@ repositories {
 
 def kotlin_version = getExtOrDefault('kotlinVersion')
 def driveKitTripAnalysis_version = getExtOrDefault('driveKitTripAnalysisVersion')
+def startup_runtime_version = getExtOrDefault('startupRuntimeVersion')
+
 
 dependencies {
     //noinspection GradleDynamicVersion
@@ -150,6 +152,7 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation "com.drivequant.drivekit:drivekit-trip-analysis:$driveKitTripAnalysis_version"
   implementation 'com.google.code.gson:gson:2.8.5'
+  implementation "androidx.startup:startup-runtime:$startup_runtime_version"
 // From node_modules
 }
 
