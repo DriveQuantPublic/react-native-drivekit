@@ -50,20 +50,6 @@ import com.reactnativedrivekitcore.DriveKitCoreModule;
   }
 ```
 
-If the DriveKit auto-initialization is enabled, you can register to
-
-- the `DriveKitListener` by calling the following method:
-
-```java
-DriveKitCoreModule.Companion.addDriveKitListener();
-```
-
-- the `DeviceConfigurationListener` by calling the following method:
-
-```java
-DriveKitCoreModule.Companion.addDeviceConfigurationListener();
-```
-
 ---
 
 ### iOS setup
