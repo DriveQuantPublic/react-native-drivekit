@@ -12,29 +12,20 @@ public class RNDriveKitCoreWrapper: NSObject {
     }
 
     @objc public func initialize() -> Void {
-        initialize(registerDriveKitListener: true, registerDeviceConfigurationListener: true)
+        DriveKit.shared.initialize()
+        addDriveKitListener()
+        addDeviceConfigurationListener()
     }
     
-    @objc(initializeWithRegisterDriveKitListener:andRegisterDeviceConfigurationListener:) 
-    public func initialize(registerDriveKitListener: Bool, registerDeviceConfigurationListener: Bool) -> Void {
-        DriveKit.shared.initialize()
-        if registerDriveKitListener {
-            addDriveKitListener()
-        }
-        if registerDeviceConfigurationListener {
-            addDeviceConfigurationListener()
-        }
-    }
-
-    @objc static public func isAutoInitEnabled() -> Bool {
+    @objc static func isAutoInitEnabled() -> Bool {
         return DriveKit.shared.isAutoInitEnabled()
     }
 
-    @objc public func addDriveKitListener() {
+    @objc func addDriveKitListener() {
         DriveKit.shared.addDriveKitDelegate(self)
     }
 
-    @objc public func addDeviceConfigurationListener() {
+    @objc func addDeviceConfigurationListener() {
         DriveKit.shared.addDeviceConfigurationDelegate(self)
     }
 

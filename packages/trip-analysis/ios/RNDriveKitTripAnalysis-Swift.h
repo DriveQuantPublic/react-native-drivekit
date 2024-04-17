@@ -6,7 +6,6 @@
 @interface RNDriveKitTripAnalysisWrapper : NSObject
 @property (nonatomic, class, readonly, strong) RNDriveKitTripAnalysisWrapper * _Nonnull shared;
 - (void)initializeWithLaunchOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
-- (void)initializeWithLaunchOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions andRegisterTripListener:(BOOL)registerTripListener;
 - (void)addTripListener;
 + (BOOL)isAutoInitEnabled;
 - (void)activateAutoStartWithEnable:(NSNumber * _Nonnull)enable;

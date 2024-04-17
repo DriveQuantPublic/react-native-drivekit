@@ -13,22 +13,15 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     }
 
     @objc public func initialize(launchOptions: [UIApplication.LaunchOptionsKey: Any]) -> Void {
-        self.initialize(launchOptions: launchOptions, registerTripListener: true)
-    }
-
-    @objc(initializeWithLaunchOptions:andRegisterTripListener:)
-    public func initialize(launchOptions: [UIApplication.LaunchOptionsKey: Any], registerTripListener: Bool) -> Void {
         DriveKitTripAnalysis.shared.initialize(appLaunchOptions: launchOptions)
-        if registerTripListener {
-            addTripListener()
-        }
+        addTripListener()
     }
 
-    @objc static public func isAutoInitEnabled() -> Bool {
+    @objc static func isAutoInitEnabled() -> Bool {
         return DriveKit.shared.isAutoInitEnabled()
     }
 
-    @objc public func addTripListener() {
+    @objc func addTripListener() {
         DriveKitTripAnalysis.shared.addTripListener(self)
     }
 
