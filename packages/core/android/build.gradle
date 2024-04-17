@@ -147,12 +147,15 @@ repositories {
 
 def kotlin_version = getExtOrDefault('kotlinVersion')
 def driveKitCore_version = getExtOrDefault('driveKitCoreVersion')
+def startup_runtime_version = getExtOrDefault('startupRuntimeVersion')
+
 
 dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation "com.drivequant.drivekit:drivekit-core:$driveKitCore_version"
+  implementation "androidx.startup:startup-runtime:$startup_runtime_version"
 }
 
 if (isNewArchitectureEnabled()) {

@@ -1,6 +1,7 @@
 
 import Foundation
 import DriveKitTripAnalysisModule
+import DriveKitCoreModule
 import CoreLocation
 
 @objc(RNDriveKitTripAnalysisWrapper)
@@ -8,7 +9,16 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc public static let shared = RNDriveKitTripAnalysisWrapper()
 
     @objc public func initialize(launchOptions: [UIApplication.LaunchOptionsKey: Any]) -> Void {
-        DriveKitTripAnalysis.shared.initialize(tripListener: self, appLaunchOptions: launchOptions)
+        DriveKitTripAnalysis.shared.initialize(appLaunchOptions: launchOptions)
+        addTripListener()
+    }
+
+    @objc static func isAutoInitEnabled() -> Bool {
+        return DriveKit.shared.isAutoInitEnabled()
+    }
+
+    @objc func addTripListener() {
+        DriveKitTripAnalysis.shared.addTripListener(self)
     }
 
     @objc internal func activateAutoStart(enable: NSNumber) -> Void {

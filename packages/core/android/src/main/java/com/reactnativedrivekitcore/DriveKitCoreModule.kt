@@ -114,7 +114,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
       @ReactMethod
       override fun getUriLogFile(promise: Promise) {
         try {
-          val uri =  application?.let { DriveKitLog.getLogUriFile(it.applicationContext) } ?: run { null }
+          val uri =  DriveKit.applicationContext?.let { DriveKitLog.getLogUriFile(it) } ?: run { null }
           val result = Arguments.createMap()
           result.putString("uri", uri.toString())
           promise.resolve(result)
@@ -178,7 +178,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
         val subject = it.getString("subject")
         val body = it.getString("body")
 
-        val uri = application?.let { DriveKitLog.getLogUriFile(it.applicationContext) } ?: run { null }
+        val uri = DriveKit.applicationContext?.let { DriveKitLog.getLogUriFile(it) } ?: run { null }
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "plain/text"
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -193,7 +193,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
         uri?.let { uri ->
           intent.putExtra(Intent.EXTRA_STREAM, uri)
         }
-        application?.startActivity(intent)
+        DriveKit.applicationContext?.startActivity(intent)
       }
       promise.resolve(null)
     }
@@ -210,10 +210,20 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
 
   companion object {
         const val NAME = "RNDriveKitCore"
-        var application: Application? = null
         var reactContext: ReactApplicationContext? = null
+       
         fun initialize(application: Application) {
-          DriveKit.initialize(application, object : DriveKitListener {
+          DriveKit.initialize(application)
+          configureListeners()
+        }
+
+        internal fun configureListeners() {
+          DriveKitCoreModule.addDriveKitListener()
+          DriveKitCoreModule.addDeviceConfigurationListener()
+        }
+
+        private fun addDriveKitListener() {
+          DriveKit.addDriveKitListener(object : DriveKitListener {
             override fun onConnected() {
               reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("driveKitConnected", null)
             }
@@ -238,7 +248,10 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
               reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("accountDeletionCompleted", mapDeleteAccountStatus(status))
             }
           })
-          DriveKit.addDeviceConfigurationListener(object: DKDeviceConfigurationListener {
+        }
+
+        private fun addDeviceConfigurationListener() {
+           DriveKit.addDeviceConfigurationListener(object: DKDeviceConfigurationListener {
             override fun onDeviceConfigurationChanged(event: DKDeviceConfigurationEvent) {
               var result = Arguments.createMap()
 
@@ -258,7 +271,6 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
               reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("deviceConfigurationChanged", result)
             }
           })
-          DriveKitCoreModule.application = application
         }
       }
 }

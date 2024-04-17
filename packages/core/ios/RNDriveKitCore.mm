@@ -6,6 +6,19 @@
   bool hasListeners;
 }
 
+RCT_EXTERN void RCTRegisterModule(Class);
+
++ (void)load {
+    [super load];
+    
+    RCTRegisterModule(self);
+    
+    if ([RNDriveKitCoreWrapper isAutoInitEnabled]) {
+        [RNDriveKitCoreWrapper.shared addDriveKitListener];
+        [RNDriveKitCoreWrapper.shared addDeviceConfigurationListener];
+    }
+}
+
 - (id)init {
     self = [super init];
     if(self){
@@ -31,7 +44,7 @@
     hasListeners = NO;
 }
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_PRE_REGISTERED_MODULE()
 
 RCT_REMAP_METHOD(getApiKey, getApiKeyWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {

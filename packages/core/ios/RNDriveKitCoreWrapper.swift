@@ -8,7 +8,20 @@ public class RNDriveKitCoreWrapper: NSObject {
     @objc public static let shared = RNDriveKitCoreWrapper()
 
     @objc public func initialize() -> Void {
-        DriveKit.shared.initialize(delegate: self)
+        DriveKit.shared.initialize()
+        addDriveKitListener()
+        addDeviceConfigurationListener()
+    }
+    
+    @objc static func isAutoInitEnabled() -> Bool {
+        return DriveKit.shared.isAutoInitEnabled()
+    }
+
+    @objc func addDriveKitListener() {
+        DriveKit.shared.addDriveKitDelegate(self)
+    }
+
+    @objc func addDeviceConfigurationListener() {
         DriveKit.shared.addDeviceConfigurationDelegate(self)
     }
 

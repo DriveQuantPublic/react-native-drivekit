@@ -34,7 +34,7 @@ allprojects {
 }
 ```
 
-Call `initialize` method inside your `MainApplication.java`.
+If you have disabled the DriveKit auto-initialization, call `initialize` method inside your `MainApplication.java`.
 
 ```java
 // MainApplication.java
@@ -54,7 +54,7 @@ import com.reactnativedrivekitcore.DriveKitCoreModule;
 
 ### iOS setup
 
-Call `initialize` method in your `AppDelegate.mm`.
+If you have disabled the DriveKit auto-initialization, call `initialize` method in your `AppDelegate.mm`.
 
 ```objc
 // AppDelegate.mm
@@ -70,6 +70,8 @@ Call `initialize` method in your `AppDelegate.mm`.
 ```
 
 **Note:** If you are using Swift, `initialize` method is also available.
+
+---
 
 ### Permissions
 
@@ -289,7 +291,7 @@ If you need to reset DriveKit configuration (user logout for example), you can c
 reset();
 ```
 
-All data saved locally by DriveKit will be erased.
+All data saved locally will be erased and default configuration for every module will be restored.
 
 > ℹ️
 >

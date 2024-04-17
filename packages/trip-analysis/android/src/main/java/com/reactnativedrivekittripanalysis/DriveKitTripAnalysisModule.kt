@@ -82,8 +82,8 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
+  @Deprecated("You no longer need to call the reset method of any module except the one in DriveKit")
   override fun reset(promise: Promise) {
-    DriveKitTripAnalysis.reset()
     promise.resolve(null)
   }
 
@@ -140,15 +140,31 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     const val NAME = "RNDriveKitTripAnalysis"
 
     var reactContext: ReactApplicationContext? = null
+    
     fun initialize(rnTripNotification: RNTripNotification, rnHeadlessJSNotification: RNHeadlessJSNotification) {
       val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
 
+      configureHeadlessJSNotification(rnHeadlessJSNotification)
+  
+      DriveKitTripAnalysis.initialize(tripNotification)
+
+      addTripListener()
+    }
+
+    fun configureTripNotification(rnTripNotification: RNTripNotification) {
+      val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
+      DriveKitTripAnalysis.tripNotification = tripNotification
+    }
+
+    fun configureHeadlessJSNotification(rnHeadlessJSNotification: RNHeadlessJSNotification) {
       HeadlessJsManager.apply {
         notificationTitle = rnHeadlessJSNotification.title
         notificationContent = rnHeadlessJSNotification.content
       }
+    }
 
-      DriveKitTripAnalysis.initialize(tripNotification, object : TripListener {
+    fun addTripListener() {
+      DriveKitTripAnalysis.addTripListener(object : TripListener {
         override fun tripStarted(startMode: StartMode) {
           HeadlessJsManager.sendTripStartedEvent(startMode)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)

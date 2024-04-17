@@ -1,7 +1,6 @@
 #import "RNDrivekitTripAnalysis.h"
 #import "RNDriveKitTripAnalysis-Swift.h"
 
-
 @implementation RNDriveKitTripAnalysis
 {
   bool hasListeners;
@@ -13,6 +12,18 @@
         [RNTripAnalysisEventEmitter.shared registerEventEmitterWithEventEmitter:self];
     }
     return self;
+}
+
+RCT_EXTERN void RCTRegisterModule(Class);
+
++ (void)load {
+    [super load];
+
+    RCTRegisterModule(self);
+
+    if ([RNDriveKitTripAnalysisWrapper isAutoInitEnabled]) {
+        [RNDriveKitTripAnalysisWrapper.shared addTripListener];
+    }
 }
 
 + (BOOL)requiresMainQueueSetup
@@ -32,7 +43,7 @@
     hasListeners = NO;
 }
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_PRE_REGISTERED_MODULE()
 
 RCT_REMAP_METHOD(activateAutoStart, activateAutoStartWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
