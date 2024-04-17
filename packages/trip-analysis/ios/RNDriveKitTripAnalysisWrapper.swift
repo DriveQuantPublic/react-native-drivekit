@@ -1,6 +1,7 @@
 
 import Foundation
 import DriveKitTripAnalysisModule
+import DriveKitCoreModule
 import CoreLocation
 
 @objc(RNDriveKitTripAnalysisWrapper)
@@ -21,6 +22,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         if registerTripListener {
             addTripListener()
         }
+    }
+
+    @objc static public func isAutoInitEnabled() -> Bool {
+        return DriveKit.shared.isAutoInitEnabled()
     }
 
     @objc public func addTripListener() {

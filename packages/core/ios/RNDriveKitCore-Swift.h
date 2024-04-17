@@ -9,6 +9,7 @@
 @property (nonatomic, class, readonly, strong) RNDriveKitCoreWrapper * _Nonnull shared;
 - (void)initialize;
 - (void)initializeWithRegisterDriveKitListener:(BOOL)registerDriveKitListener andRegisterDeviceConfigurationListener:(BOOL) registerDeviceConfigurationListener;
++ (BOOL)isAutoInitEnabled;
 - (void)addDriveKitListener;
 - (void)addDeviceConfigurationListener;
 - (NSString * _Nullable)getApiKey;

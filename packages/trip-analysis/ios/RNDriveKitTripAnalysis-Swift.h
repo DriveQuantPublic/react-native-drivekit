@@ -8,6 +8,7 @@
 - (void)initializeWithLaunchOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
 - (void)initializeWithLaunchOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions andRegisterTripListener:(BOOL)registerTripListener;
 - (void)addTripListener;
++ (BOOL)isAutoInitEnabled;
 - (void)activateAutoStartWithEnable:(NSNumber * _Nonnull)enable;
 - (void)activateCrashDetectionWithEnable:(NSNumber * _Nonnull)enable;
 - (void)startTrip;

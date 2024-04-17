@@ -123,12 +123,6 @@ If you have disabled the DriveKit auto-initialization,, call `initialize` method
 
 **Note:** If you are using Swift, `initialize` method is also available.
 
-If the DriveKit auto-initialization is enabled, you can register to the `TripListener` by calling the following method:
-
-```objc
-  [RNDriveKitTripAnalysisWrapper.shared addTripListener];
-```
-
 #### Configure capabilities
 
 You need to turn on Background Modes & enable Location updates. For more details please follow the [iOS documentation](https://docs.drivequant.com/trip-analysis/ios/get-started#configure-capabilities)
@@ -164,8 +158,6 @@ To validate that the initialization has been done successfully, please check you
 ## Listeners
 
 **Note:** These listeners will not be triggered on Android when the app is in background, due to system limitation. Please read the [Headless JS](#headless-js-android-only) part.
-
-**Note:** If the DriveKit auto-initialization is enabled, you need to call `addTripListener` in order to get these listeners triggered. Otherwise, you have to call the TripAnalysis `initiliaze` method with the parameter `registerTripListener` as `true`
 
 You can listen to events thanks to the `addEventListener` api.
 

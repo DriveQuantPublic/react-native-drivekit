@@ -26,6 +26,10 @@ public class RNDriveKitCoreWrapper: NSObject {
         }
     }
 
+    @objc static public func isAutoInitEnabled() -> Bool {
+        return DriveKit.shared.isAutoInitEnabled()
+    }
+
     @objc public func addDriveKitListener() {
         DriveKit.shared.addDriveKitDelegate(self)
     }
