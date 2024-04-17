@@ -41,14 +41,11 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
   public void onCreate() {
     super.onCreate();
     DriveKitCoreModule.Companion.initialize(this);
-    RNTripNotification tripNotification = new RNTripNotification(
-            "DriveKit SDK",
-            "Start a trip with DriveKit SDK",
-            R.drawable.common_google_signin_btn_icon_dark);
-    DriveKitTripAnalysisModule.Companion.initialize(tripNotification);
-
+    final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
+    final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("Notification title", "Notification description");
+    DriveKitTripAnalysisModule.Companion.initialize(tripNotification, headlessJSNotification);
+    
     DriveKitDriverDataModule.Companion.initialize(); // ADD THIS LINE
-
     (…)
   }
 ```
