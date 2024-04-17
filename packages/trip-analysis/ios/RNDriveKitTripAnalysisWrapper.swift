@@ -8,10 +8,6 @@ import CoreLocation
 public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc public static let shared = RNDriveKitTripAnalysisWrapper()
 
-    override init() {
-        super.init()
-    }
-
     @objc public func initialize(launchOptions: [UIApplication.LaunchOptionsKey: Any]) -> Void {
         DriveKitTripAnalysis.shared.initialize(appLaunchOptions: launchOptions)
         addTripListener()

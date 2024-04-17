@@ -7,10 +7,6 @@ import MessageUI
 public class RNDriveKitCoreWrapper: NSObject {
     @objc public static let shared = RNDriveKitCoreWrapper()
 
-    override init() {
-        super.init()
-    }
-
     @objc public func initialize() -> Void {
         DriveKit.shared.initialize()
         addDriveKitListener()
