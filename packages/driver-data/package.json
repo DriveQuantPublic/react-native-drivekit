@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/driver-data",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "React Native interface for DriveKit Driver Data",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.0.1...v2.0.2) (2024-05-06)
+
+
+### Bug Fixes
+
+* Core: fix User Defaults declaration in the Privacy manifest ([208078f](https://github.com/DriveQuantPublic/react-native-drivekit/commit/208078f2a795df2c02c00dd241daba841779bae1))
+
+
+
+
+
 ## [2.0.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.0.0...v2.0.1) (2024-04-18)
 
 
