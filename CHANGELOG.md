@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.3.1...v2.4.0) (2024-09-17)
+
+
+### Bug Fixes
+
+* do not update package.json version field now ([b5e0b97](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b5e0b97311784c67df1b9eb0ccd8390c15a892ab))
+
+
+### Features
+
+* update Android modules to 2.4.3 and iOS module to 2.5.0 ([d946dfd](https://github.com/DriveQuantPublic/react-native-drivekit/commit/d946dfd024444b6aff3e794a0d5da4223f411f54))
+
+
+
+
+
 ## [2.3.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.3.0...v2.3.1) (2024-09-12)
 
 
