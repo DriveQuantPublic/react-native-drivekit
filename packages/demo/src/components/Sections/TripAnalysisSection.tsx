@@ -1,10 +1,10 @@
-import React, {FunctionComponent, useState} from 'react';
-import {Alert, Button, TextInput, StyleSheet, Text, View} from 'react-native';
+import React, { FunctionComponent, useState } from 'react';
+import { Alert, Button, TextInput, StyleSheet, Text, View } from 'react-native';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
-import type {TripMetadata} from '@react-native-drivekit/trip-analysis';
+import type { TripMetadata } from '@react-native-drivekit/trip-analysis';
 import CheckBox from '@react-native-community/checkbox';
-import {Section} from './Section';
-import {Spacer} from './../Spacer';
+import { Section } from './Section';
+import { Spacer } from './../Spacer';
 
 const inputHeight = 40;
 
@@ -100,7 +100,7 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         disabled={!newMetadataKey || !newMetadataValue}
         onPress={async () => {
           setTripMetadataForm(previousForm => {
-            const newForm = {...previousForm};
+            const newForm = { ...previousForm };
             newForm[newMetadataKey] = newMetadataValue;
             return newForm;
           });
@@ -228,6 +228,34 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           DriveKitTripAnalysis.activateCrashDetection(false);
         }}
       />
+
+      <Spacer factor={1} />
+
+      <Button
+        title={'Get CurrentTripInfo'}
+        onPress={async () => {
+          const currentTripInfo = await DriveKitTripAnalysis.getCurrentTripInfo();
+          if (currentTripInfo == null) {
+            Alert.alert('CurrentTripInfo', 'CurrentTripInfo is null',);
+          } else {
+            Alert.alert('CurrentTripInfo', 'localTripId:' + currentTripInfo.localTripId + '\ndate: ' + currentTripInfo.date + '\nStartMode: ' + currentTripInfo.startMode);
+          }
+        }}
+      />
+
+      <Spacer factor={1} />
+
+      <Button
+        title={'Get LastTripLocation'}
+        onPress={async () => {
+          const lastTripLocation = await DriveKitTripAnalysis.getLastTripLocation();
+          if (lastTripLocation == null) {
+            Alert.alert('LastTripLocation', 'LastTripLocation is null',);
+          } else {
+            Alert.alert('LastTripLocation', 'date:' + lastTripLocation.date + '\nlatitude: ' + lastTripLocation.latitude + '\nlongitude: ' + lastTripLocation.longitude + "\naccuracyMeter: " + lastTripLocation.accuracyMeter + '\naccuracyLevel: ' + lastTripLocation.accuracyLevel);
+          }
+        }}
+      />
     </Section>
   );
 };
@@ -252,4 +280,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {TripAnalysisSection};
+export { TripAnalysisSection };
