@@ -81,6 +81,14 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc internal func setVehicle(vehicle: NSDictionary?) -> Void {
         DriveKitTripAnalysis.shared.setVehicle(vehicle: mapNSDictionaryToVehicle(dictionary: vehicle));
 	}
+    
+    @objc internal func getCurrentTripInfo() -> DKTripInfo? {
+        return DriveKitTripAnalysis.shared.getCurrentTripInfo();
+	}
+
+    @objc internal func getLastTripLocation() -> DKTripLocation? {
+        return DriveKitTripAnalysis.shared.getLastTripLocation();
+	}
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {
