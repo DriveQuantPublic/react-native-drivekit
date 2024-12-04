@@ -1,5 +1,3 @@
-import { Double } from 'react-native/Libraries/Types/CodegenTypes';
-
 export enum CancelTripReason {
   USER = 'USER',
   HIGH_SPEED = 'HIGH_SPEED',
@@ -45,9 +43,9 @@ export type CurrentTripInfo = {
 
 export type LastTripLocation = {
   date: Date;
-  latitude: Double;
-  longitude: Double;
-  accuracyMeter: Double;
+  latitude: number;
+  longitude: number;
+  accuracyMeter: number;
   accuracyLevel: AccuracyLevel;
 };
 
