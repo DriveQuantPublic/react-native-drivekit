@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useState } from 'react';
-import { Alert, Button, TextInput, StyleSheet, Text, View } from 'react-native';
+import React, {FunctionComponent, useState} from 'react';
+import {Alert, Button, TextInput, StyleSheet, Text, View} from 'react-native';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
-import type { TripMetadata } from '@react-native-drivekit/trip-analysis';
+import type {TripMetadata} from '@react-native-drivekit/trip-analysis';
 import CheckBox from '@react-native-community/checkbox';
-import { Section } from './Section';
-import { Spacer } from './../Spacer';
+import {Section} from './Section';
+import {Spacer} from './../Spacer';
 
 const inputHeight = 40;
 
@@ -100,7 +100,7 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         disabled={!newMetadataKey || !newMetadataValue}
         onPress={async () => {
           setTripMetadataForm(previousForm => {
-            const newForm = { ...previousForm };
+            const newForm = {...previousForm};
             newForm[newMetadataKey] = newMetadataValue;
             return newForm;
           });
@@ -302,4 +302,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { TripAnalysisSection };
+export {TripAnalysisSection};
