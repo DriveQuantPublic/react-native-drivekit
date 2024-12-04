@@ -516,9 +516,9 @@ await getLastTripLocation();
 | Field         | Type          | Description                                                  |
 |---------------|---------------|--------------------------------------------------------------|
 | date          | Date          | Date of the end of trip.                                     |
-| latitude      | Double        | Latitude of the end of the trip.                             |
-| longitude     | Double        | Longitude of the end of the trip.                            |
-| accuracyMeter | Double        | GPS data accuracy value in meters.                           |
+| latitude      | number        | Latitude of the end of the trip.                             |
+| longitude     | number        | Longitude of the end of the trip.                            |
+| accuracyMeter | number        | GPS data accuracy value in meters.                           |
 | accuracyLevel | AccuracyLevel | GPS data accuracy level. Possible values are described below |
 
 #### AccuracyLevel
