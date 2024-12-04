@@ -234,11 +234,20 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
       <Button
         title={'Get CurrentTripInfo'}
         onPress={async () => {
-          const currentTripInfo = await DriveKitTripAnalysis.getCurrentTripInfo();
+          const currentTripInfo =
+            await DriveKitTripAnalysis.getCurrentTripInfo();
           if (currentTripInfo == null) {
-            Alert.alert('CurrentTripInfo', 'CurrentTripInfo is null',);
+            Alert.alert('CurrentTripInfo', 'CurrentTripInfo is null');
           } else {
-            Alert.alert('CurrentTripInfo', 'localTripId:' + currentTripInfo.localTripId + '\ndate: ' + currentTripInfo.date + '\nStartMode: ' + currentTripInfo.startMode);
+            Alert.alert(
+              'CurrentTripInfo',
+              'localTripId:' +
+                currentTripInfo.localTripId +
+                '\ndate: ' +
+                currentTripInfo.date +
+                '\nStartMode: ' +
+                currentTripInfo.startMode,
+            );
           }
         }}
       />
@@ -248,11 +257,24 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
       <Button
         title={'Get LastTripLocation'}
         onPress={async () => {
-          const lastTripLocation = await DriveKitTripAnalysis.getLastTripLocation();
+          const lastTripLocation =
+            await DriveKitTripAnalysis.getLastTripLocation();
           if (lastTripLocation == null) {
-            Alert.alert('LastTripLocation', 'LastTripLocation is null',);
+            Alert.alert('LastTripLocation', 'LastTripLocation is null');
           } else {
-            Alert.alert('LastTripLocation', 'date:' + lastTripLocation.date + '\nlatitude: ' + lastTripLocation.latitude + '\nlongitude: ' + lastTripLocation.longitude + "\naccuracyMeter: " + lastTripLocation.accuracyMeter + '\naccuracyLevel: ' + lastTripLocation.accuracyLevel);
+            Alert.alert(
+              'LastTripLocation',
+              'date:' +
+                lastTripLocation.date +
+                '\nlatitude: ' +
+                lastTripLocation.latitude +
+                '\nlongitude: ' +
+                lastTripLocation.longitude +
+                '\naccuracyMeter: ' +
+                lastTripLocation.accuracyMeter +
+                '\naccuracyLevel: ' +
+                lastTripLocation.accuracyLevel,
+            );
           }
         }}
       />
