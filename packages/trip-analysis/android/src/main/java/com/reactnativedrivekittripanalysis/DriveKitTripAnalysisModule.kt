@@ -9,6 +9,8 @@ import com.drivequant.drivekit.tripanalysis.entity.PostGenericResponse
 import com.drivequant.drivekit.tripanalysis.entity.TripNotification
 import com.drivequant.drivekit.tripanalysis.entity.TripPoint
 import com.drivequant.drivekit.tripanalysis.entity.TripVehicle
+import com.drivequant.drivekit.core.common.model.DKTripLocation
+import com.drivequant.drivekit.tripanalysis.model.currenttripinfo.DKTripInfo
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
@@ -134,6 +136,16 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     val tripVehicle: TripVehicle = mapReadableMapToVehicle(vehicle)
     DriveKitTripAnalysis.setVehicle(tripVehicle)
     promise.resolve(null)
+  }
+  
+  @ReactMethod
+  override fun getCurrentTripInfo(promise: Promise) {
+    promise.resolve(DKTripInfoMapper.mapDKTripInfoToReadableMap(DriveKitTripAnalysis.getCurrentTripInfo()))
+  }
+
+  @ReactMethod
+  override fun getLastTripLocation(promise: Promise) {
+    promise.resolve(DKTripLocationMapper.mapDKTripLocationToReadableMap(DriveKitTripAnalysis.getLastTripLocation()))
   }
 
   companion object {

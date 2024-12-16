@@ -34,4 +34,8 @@ abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactAppli
   abstract fun deleteTripMetadata(key: String?, promise: Promise)
 
   abstract fun updateTripMetadata(key: String, value: String, promise: Promise)
+
+  abstract fun getCurrentTripInfo(promise: Promise)
+  
+  abstract fun getLastTripLocation(promise: Promise)
 }

@@ -191,21 +191,23 @@ Follow these steps :
 
 ## API
 
-| Method                                                                | Return Type                     | iOS | Android |
-| --------------------------------------------------------------------- | ------------------------------- | :-: | :-----: |
-| [activateAutoStart()](#activateautostart)                             | `Promise<void>`                 | ✅  |   ✅    |
-| [startTrip()](#starttrip)                                             | `Promise<void>`                 | ✅  |   ✅    |
-| [stopTrip()](#stoptrip)                                               | `Promise<void>`                 | ✅  |   ✅    |
-| [cancelTrip()](#canceltrip)                                           | `Promise<void>`                 | ✅  |   ✅    |
-| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>`              | ✅  |   ✅    |
-| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`                 | ✅  |   ✅    |
-| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`                 | ✅  |   ✅    |
-| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`                 | ✅  |   ✅    |
-| [getTripMetadata()](#getTripMetadata)                                 | `Promise<TripMetadata \| null>` | ✅  |   ✅    |
-| [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)           | `Promise<void>`                 | ✅  |   ✅    |
-| [deleteTripMetadata(string?: string)](#deleteTripMetadata)            | `Promise<void>`                 | ✅  |   ✅    |
-| [updateTripMetadata(key: string, value: string)](#updateTripMetadata) | `Promise<void>`                 | ✅  |   ✅    |
-| [setVehicle()](#setvehicle)                                           | `Promise<void>`                 | ✅  |   ✅    |
+| Method                                                                | Return Type                         | iOS | Android |
+| --------------------------------------------------------------------- | ----------------------------------- | :-: | :-----: |
+| [activateAutoStart()](#activateautostart)                             | `Promise<void>`                     | ✅  |   ✅    |
+| [startTrip()](#starttrip)                                             | `Promise<void>`                     | ✅  |   ✅    |
+| [stopTrip()](#stoptrip)                                               | `Promise<void>`                     | ✅  |   ✅    |
+| [cancelTrip()](#canceltrip)                                           | `Promise<void>`                     | ✅  |   ✅    |
+| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>`                  | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`                     | ✅  |   ✅    |
+| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`                     | ✅  |   ✅    |
+| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`                     | ✅  |   ✅    |
+| [getTripMetadata()](#getTripMetadata)                                 | `Promise<TripMetadata \| null>`     | ✅  |   ✅    |
+| [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)           | `Promise<void>`                     | ✅  |   ✅    |
+| [deleteTripMetadata(string?: string)](#deleteTripMetadata)            | `Promise<void>`                     | ✅  |   ✅    |
+| [updateTripMetadata(key: string, value: string)](#updateTripMetadata) | `Promise<void>`                     | ✅  |   ✅    |
+| [setVehicle()](#setvehicle)                                           | `Promise<void>`                     | ✅  |   ✅    |
+| [getCurrentTripInfo()](#getCurrentTripInfo)                           | `Promise<CurrentTripInfo \| null>`  | ✅  |   ✅    |
+| [getLastTripLocation()](#getLastTripLocation)                         | `Promise<LastTripLocation \| null>` | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -464,3 +466,65 @@ A detailed description of vehicle parameter is available [here](https://docs.dri
 > engineCylinderNb = 4
 >
 > driveWheels = 0
+
+### getCurrentTripInfo
+
+```typescript
+getCurrentTripInfo(): Promise<CurrentTripInfo | null>
+```
+
+To retrieve information about the current trip, use the following method:
+
+```typescript
+await getCurrentTripInfo();
+```
+
+> ℹ️
+>
+> The method can return `null` if there is no trip currently recording.
+
+#### CurrentTripInfo
+
+| Field       | Type      | Description                                                                                                                                                                                                                   |
+|-------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| localTripId | String    | Local and unique trip identifier generated by DriveKit SDK. ⚠️ It is different from the `itinId` property returned in the Trip object.  `itinId` corresponds to the unique trip identifier generated after the data analysis. |
+| date        | Date      | Start date of the trip analysis. ⚠️ It is different from the `startDate` property returned in the Trip object.                                                                                                               |
+| startMode   | StartMode | The `StartMode` which triggered the trip analysis.                                                                                                                                                                            |
+
+### getLastTripLocation
+
+```typescript
+getLastTripLocation(): Promise<LastTripLocation | null>
+```
+
+To retrieve the location at which the last recorded trip ended, use the following method:
+
+```typescript
+await getLastTripLocation();
+```
+
+> ℹ️
+>
+> The method can return null if the user:
+> 
+> * is not authenticated,
+> * or didn’t make a trip since the authentication,
+> * or hasn’t made any valid trips.
+
+#### LastTripLocation
+
+| Field         | Type          | Description                                                  |
+|---------------|---------------|--------------------------------------------------------------|
+| date          | Date          | Date of the end of trip.                                     |
+| latitude      | number        | Latitude of the end of the trip.                             |
+| longitude     | number        | Longitude of the end of the trip.                            |
+| accuracyMeter | number        | GPS data accuracy value in meters.                           |
+| accuracyLevel | AccuracyLevel | GPS data accuracy level. Possible values are described below |
+
+#### AccuracyLevel
+
+| Field | Description                                   |
+|-------|-----------------------------------------------|
+| GOOD  | The GPS accuracy is strictly below 10 meters. |
+| FAIR  | The GPS accuracy is between 10 and 30 meters. |
+| POOR  | The GPS accuracy is strictly above 30 meters. |
