@@ -228,6 +228,56 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           DriveKitTripAnalysis.activateCrashDetection(false);
         }}
       />
+
+      <Spacer factor={1} />
+
+      <Button
+        title={'Get CurrentTripInfo'}
+        onPress={async () => {
+          const currentTripInfo =
+            await DriveKitTripAnalysis.getCurrentTripInfo();
+          if (currentTripInfo == null) {
+            Alert.alert('CurrentTripInfo', 'CurrentTripInfo is null');
+          } else {
+            Alert.alert(
+              'CurrentTripInfo',
+              'localTripId:' +
+                currentTripInfo.localTripId +
+                '\ndate: ' +
+                currentTripInfo.date +
+                '\nStartMode: ' +
+                currentTripInfo.startMode,
+            );
+          }
+        }}
+      />
+
+      <Spacer factor={1} />
+
+      <Button
+        title={'Get LastTripLocation'}
+        onPress={async () => {
+          const lastTripLocation =
+            await DriveKitTripAnalysis.getLastTripLocation();
+          if (lastTripLocation == null) {
+            Alert.alert('LastTripLocation', 'LastTripLocation is null');
+          } else {
+            Alert.alert(
+              'LastTripLocation',
+              'date:' +
+                lastTripLocation.date +
+                '\nlatitude: ' +
+                lastTripLocation.latitude +
+                '\nlongitude: ' +
+                lastTripLocation.longitude +
+                '\naccuracyMeter: ' +
+                lastTripLocation.accuracyMeter +
+                '\naccuracyLevel: ' +
+                lastTripLocation.accuracyLevel,
+            );
+          }
+        }}
+      />
     </Section>
   );
 };

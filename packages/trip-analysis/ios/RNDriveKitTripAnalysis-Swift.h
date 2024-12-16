@@ -22,6 +22,9 @@
 - (void)deleteTripMetadataWithKey:(NSString * _Nullable)key;
 - (void)updateTripMetadataWithKey:(NSString * _Nonnull)key value:(NSString * _Nullable)value;
 - (void)setVehicleWithVehicle:(NSDictionary * _Nullable)vehicle;
+- (NSDictionary * _Nullable)getCurrentTripInfoWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
+- (NSDictionary * _Nullable)getLastTripLocationWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
+
 @end
 
 @interface RNTripAnalysisEventEmitter : NSObject

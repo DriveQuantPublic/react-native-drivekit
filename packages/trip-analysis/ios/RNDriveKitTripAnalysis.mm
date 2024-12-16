@@ -128,6 +128,17 @@ RCT_REMAP_METHOD(setVehicle, setVehicleWithVehicle:(NSDictionary *)vehicle resol
     resolve(nil);
 }
 
+RCT_REMAP_METHOD(getCurrentTripInfo, getCurrentTripInfoWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getCurrentTripInfo:resolve rejecter:reject];
+}
+
+RCT_REMAP_METHOD(getLastTripLocation, getLastTripLocationWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getLastTripLocation:resolve rejecter:reject];
+}
+
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
@@ -183,6 +194,15 @@ RCT_REMAP_METHOD(setVehicle, setVehicleWithVehicle:(NSDictionary *)vehicle resol
 -(void)setVehicle:(NSDictionary *)vehicle {
     [RNDriveKitTripAnalysisWrapper.shared setVehicleWithVehicle:vehicle];
 }
+
+-(void)getCurrentTripInfo:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared getCurrentTripInfoWithResolver:resolve rejecter:reject];
+}
+
+-(void)getLastTripLocation:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared getLastTripLocationWithResolver:resolve rejecter:reject];
+}
+
 
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED

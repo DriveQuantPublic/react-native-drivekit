@@ -19,6 +19,8 @@ import type {
   Location,
   TripVehicle,
   TripMetadata,
+  CurrentTripInfo,
+  LastTripLocation,
 } from './types';
 
 const LINKING_ERROR =
@@ -142,4 +144,12 @@ export function deleteTripMetadata(key?: string): Promise<void> {
 
 export function updateTripMetadata(key: string, value: string): Promise<void> {
   return DriveKitTripAnalysis.updateTripMetadata(key, value);
+}
+
+export function getCurrentTripInfo(): Promise<CurrentTripInfo | null> {
+  return DriveKitTripAnalysis.getCurrentTripInfo();
+}
+
+export function getLastTripLocation(): Promise<LastTripLocation | null> {
+  return DriveKitTripAnalysis.getLastTripLocation();
 }

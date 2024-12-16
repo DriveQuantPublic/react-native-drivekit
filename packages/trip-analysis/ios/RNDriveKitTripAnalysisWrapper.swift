@@ -80,7 +80,23 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
 
     @objc internal func setVehicle(vehicle: NSDictionary?) -> Void {
         DriveKitTripAnalysis.shared.setVehicle(vehicle: mapNSDictionaryToVehicle(dictionary: vehicle));
-	}
+    }
+    
+    @objc internal func getCurrentTripInfo(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      if let tripInfo = DriveKitTripAnalysis.shared.getCurrentTripInfo() {
+        resolve(mapTripInfo(tripInfo))
+      } else {
+        resolve(nil)
+      }
+    }
+
+    @objc internal func getLastTripLocation(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      if let tripLocation = DriveKitTripAnalysis.shared.getLastTripLocation() {
+        resolve(mapTripLocation(tripLocation))
+      } else {
+        resolve(nil)
+      }
+    }
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {
