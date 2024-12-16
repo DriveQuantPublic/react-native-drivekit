@@ -17,8 +17,8 @@ extension DKTripLocation {
   fileprivate func toDict() -> [String: Any] {
     return [
       "date": DateUtils.convertDateToString(date: date) as Any,
-      "latitude": latitude as Any,
-      "longitude": longitude as Any,
+      "latitude": latitude.reduceAccuracy(decimalNumber: 6) as Any,
+      "longitude": longitude.reduceAccuracy(decimalNumber: 6) as Any,
       "accuracyMeter": accuracyMeter as Any,
       "accuracyLevel": mapAccuracyLevel(accuracyLevel: self.getAccuracyLevel()) as Any
     ]
