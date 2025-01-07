@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.4.1...v2.4.3) (2025-01-07)
+
+
+### Features
+
+* implement GetCurrenttripInfo() and getLastTripLocation() ([#123](https://github.com/DriveQuantPublic/react-native-drivekit/issues/123)) ([72a4937](https://github.com/DriveQuantPublic/react-native-drivekit/commit/72a4937ee49874f3e8abf30dd93d5d9c8a4c7948))
+* release 2.4.2 ([#122](https://github.com/DriveQuantPublic/react-native-drivekit/issues/122)) ([ee404f7](https://github.com/DriveQuantPublic/react-native-drivekit/commit/ee404f7befe29f2f7b704bfcebe07b4486f435de))
+* update DriveKit iOS modules to 2.9.0 and Android to 2.9.1 ([58496d7](https://github.com/DriveQuantPublic/react-native-drivekit/commit/58496d78d421d2dace89802832635d7ad7fb2e3e))
+
+
+
+
+
 ## [2.4.2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.4.1...v2.4.2) (2024-11-22)
 
 **Note:** Version bump only for package @react-native-drivekit/core
