@@ -96,3 +96,79 @@ fun mapCancelTrip(cancelTrip: CancelTrip): String {
     CancelTrip.BLUETOOTH_DEVICE_NO_SPEED -> "BLUETOOTH_DEVICE_NO_SPEED"
   }
 }
+
+fun mapTripCancelationReason(cancelationReason: DKTripCancelationReason): String =
+  when (cancelationReason) {
+    USER -> "USER"
+    HIGH_SPEED -> "HIGH_SPEED"
+    NO_SPEED -> "NO_SPEED"
+    NO_BEACON -> "NO_BEACON"
+    NO_BLUETOOTH_DEVICE -> "NO_BLUETOOTH_DEVICE"
+    MISSING_CONFIGURATION -> "MISSING_CONFIGURATION"
+    NO_LOCATION_DATA -> "NO_LOCATION_DATA"
+    RESET -> "RESET"
+    BEACON_NO_SPEED -> "BEACON_NO_SPEED"
+    BLUETOOTH_DEVICE_NO_SPEED -> "BLUETOOTH_DEVICE_NO_SPEED"
+    APP_KILLED -> "APP_KILLED"
+  }
+
+fun mapTripRecordingStartedState(state: DKTripRecordingStartedState): ReadableMap {
+  val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+  val map = Arguments.createMap()
+  map.apply {
+    putString("localTripId", state.localTripId)
+    putString("startMode", mapStartMode(state.startMode))
+    putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+  }
+  return map
+}
+
+fun mapTripRecordingConfirmedState(state: DKTripRecordingConfirmedState): ReadableMap {
+  val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+  val map = Arguments.createMap()
+  map.apply {
+    putString("localTripId", state.localTripId)
+    putString("startMode", mapStartMode(state.startMode))
+    putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    putString("recordingConfirmationDate", backendDateFormat.format(state.recordingConfirmationDate))
+  }
+  return map
+}
+
+fun mapTripRecordingCanceledState(state: DKTripRecordingCanceledState): ReadableMap {
+  val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+  val map = Arguments.createMap()
+  map.apply {
+    putString("localTripId", state.localTripId)
+    putString("startMode", mapStartMode(state.startMode))
+    putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    state.recordingConfirmationDate?.let {
+      putString("recordingConfirmationDate", backendDateFormat.format(it))
+    }
+    putString("cancelationReason", mapTripCancelationReason(state.cancelationReason))
+  }
+  return map
+}
+
+fun mapTripRecordingFinishedState(state: DKTripRecordingFinishedState): ReadableMap {
+  val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+  val map = Arguments.createMap()
+  map.apply {
+    putString("localTripId", state.localTripId)
+    putString("startMode", mapStartMode(state.startMode))
+    putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    putString("recordingConfirmationDate", backendDateFormat.format(state.recordingConfirmationDate))
+    putString("recordingEndDate", backendDateFormat.format(state.recordingEndDate))
+  }
+  return map
+}
+
+fun mapTripFinishedWithResult(result: TripResult): ReadableMap {
+  val map = Arguments.createMap()
+  map.apply {
+    putString("status", mapTripResultStatusType(result))
+    putString("itinId", result.itinId)
+    putString("localTripId", result.localTripId)
+  }
+  return map
+}
