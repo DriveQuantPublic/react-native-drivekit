@@ -207,12 +207,6 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
             ?.emit("tripFinishedWithResult", mapTripFinishedWithResult(result))
         }
 
-        override fun tripStarted(startMode: StartMode) {
-          HeadlessJsManager.sendTripStartedEvent(startMode)
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-            ?.emit("tripStarted", mapStartMode(startMode))
-        }
-
         override fun tripPoint(tripPoint: TripPoint) {
           HeadlessJsManager.sendTripPointEvent(tripPoint)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
@@ -286,6 +280,18 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
           }
         }
 
+        override fun tripStarted(startMode: StartMode) {
+          HeadlessJsManager.sendTripStartedEvent(startMode)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripStarted", mapStartMode(startMode))
+        }
+
+        override fun tripCancelled(cancelTrip: CancelTrip) {
+          HeadlessJsManager.sendTripCancelledEvent(cancelTrip)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripCancelled", mapCancelTrip(cancelTrip))
+        }
+
         override fun tripFinished(post: PostGeneric, response: PostGenericResponse) {
           val gson = Gson()
           val result = Arguments.createMap()
@@ -293,12 +299,6 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
           result.putString("response", gson.toJson(response))
           HeadlessJsManager.sendTripFinishedEvent(post, response)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripFinished", result)
-        }
-
-        override fun tripCancelled(cancelTrip: CancelTrip) {
-          HeadlessJsManager.sendTripCancelledEvent(cancelTrip)
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-            ?.emit("tripCancelled", mapCancelTrip(cancelTrip))
         }
       })
     }

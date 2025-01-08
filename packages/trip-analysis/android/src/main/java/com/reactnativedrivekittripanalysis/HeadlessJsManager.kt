@@ -32,10 +32,13 @@ object HeadlessJsManager : AppStateListener {
     AppStateManager.addAppStateListener(this)
   }
 
-  fun sendTripStartedEvent(startMode: StartMode) {
+  fun sendTripRecordingStartedEvent(state: DKTripRecordingStartedState) {
+    val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
     val bundle = Bundle()
-    bundle.putString("eventType", EventType.TRIP_STARTED.name)
+    bundle.putString("eventType", EventType.TRIP_RECORDING_STARTED.name)
+    bundle.putString("localTripid", state.localTripid)
     bundle.putString("startMode", startMode.name)
+    bundle.putString(("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
     sendEvent(bundle)
   }
 
@@ -72,14 +75,6 @@ object HeadlessJsManager : AppStateListener {
     sendEvent(bundle)
   }
 
-  fun sendTripFinishedEvent(post: PostGeneric, response: PostGenericResponse) {
-    val bundle = Bundle()
-    bundle.putString("eventType", EventType.TRIP_FINISHED.name)
-    bundle.putString("post", Gson().toJson(post))
-    bundle.putString("response", Gson().toJson(response))
-    sendEvent(bundle)
-  }
-
   fun sendCrashDetectedEvent(crashInfo: DKCrashInfo) {
     val bundle = Bundle()
     bundle.putString("eventType", EventType.CRASH_DETECTED.name)
@@ -111,13 +106,6 @@ object HeadlessJsManager : AppStateListener {
     sendEvent(bundle)
   }
 
-  fun sendTripCancelledEvent(cancelTrip: CancelTrip) {
-    val bundle = Bundle()
-    bundle.putString("eventType", EventType.TRIP_CANCELLED.name)
-    bundle.putString("cancelTrip", cancelTrip.name)
-    sendEvent(bundle)
-  }
-
   private fun sendEvent(bundle: Bundle) {
     if (isLocationForegroundServiceAllowed()) {
       DriveKitTripAnalysisModule.reactContext?.let {
@@ -139,7 +127,11 @@ object HeadlessJsManager : AppStateListener {
   }
 
   enum class EventType {
-    TRIP_STARTED,
+    TRIP_RECORDING_STARTED,
+    TRIP_RECORDING_CONFIRMED,
+    TRIP_RECORDING_CANCELED,
+    TRIP_RECORDING_FINISHED,
+    TRIP_FINISHED_WITH_RESULT,
     TRIP_POINT,
     TRIP_SAVED_FOR_REPOST,
     BEACON_DETECTED,
@@ -147,10 +139,11 @@ object HeadlessJsManager : AppStateListener {
     CRASH_FEEDBACK_SENT,
     BLUETOOTH_STATE_CHANGED,
     GPS_STATE_CHANGED,
+    SDK_STATE_CHANGED,
+    POTENTIAL_TRIP_START,
+    TRIP_STARTED, //TODO note as deprecated?
     TRIP_CANCELLED,
     TRIP_FINISHED,
-    SDK_STATE_CHANGED,
-    POTENTIAL_TRIP_START
   }
 
   override fun onAppMovedToBackground() {
@@ -163,5 +156,27 @@ object HeadlessJsManager : AppStateListener {
 
   override fun onNoActivity() {
     // do nothing
+  }
+
+  fun sendTripStartedEvent(startMode: StartMode) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_STARTED.name)
+    bundle.putString("startMode", startMode.name)
+    sendEvent(bundle)
+  }
+
+  fun sendTripCancelledEvent(cancelTrip: CancelTrip) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_CANCELLED.name)
+    bundle.putString("cancelTrip", cancelTrip.name)
+    sendEvent(bundle)
+  }
+
+  fun sendTripFinishedEvent(post: PostGeneric, response: PostGenericResponse) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_FINISHED.name)
+    bundle.putString("post", Gson().toJson(post))
+    bundle.putString("response", Gson().toJson(response))
+    sendEvent(bundle)
   }
 }
