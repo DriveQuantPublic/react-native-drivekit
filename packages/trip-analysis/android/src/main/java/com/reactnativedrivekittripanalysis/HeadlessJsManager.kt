@@ -12,14 +12,22 @@ import com.drivequant.drivekit.tripanalysis.entity.PostGeneric
 import com.drivequant.drivekit.tripanalysis.entity.PostGenericResponse
 import com.drivequant.drivekit.tripanalysis.entity.TripPoint
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingCanceledState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingConfirmedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingFinishedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingStartedState
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.CancelTrip
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.HeadlessJsTaskService
 import com.google.gson.Gson
 import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 object HeadlessJsManager : AppStateListener {
 
@@ -36,9 +44,62 @@ object HeadlessJsManager : AppStateListener {
     val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
     val bundle = Bundle()
     bundle.putString("eventType", EventType.TRIP_RECORDING_STARTED.name)
-    bundle.putString("localTripid", state.localTripid)
-    bundle.putString("startMode", startMode.name)
-    bundle.putString(("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    bundle.putString("localTripId", state.localTripId)
+    bundle.putString("startMode", state.startMode.name)
+    bundle.putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    sendEvent(bundle)
+  }
+
+  fun sendTripRecordingConfirmedEvent(state: DKTripRecordingConfirmedState) {
+    val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_RECORDING_CONFIRMED.name)
+    bundle.putString("localTripId", state.localTripId)
+    bundle.putString("startMode", state.startMode.name)
+    bundle.putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    bundle.putString("recordingConfirmationDate", backendDateFormat.format(state.recordingConfirmationDate))
+    sendEvent(bundle)
+  }
+
+  fun sendTripRecordingCanceledEvent(state: DKTripRecordingCanceledState) {
+    val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_RECORDING_CANCELED.name)
+    bundle.putString("localTripId", state.localTripId)
+    bundle.putString("startMode", state.startMode.name)
+    bundle.putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    state.recordingConfirmationDate?.let {
+      bundle.putString("recordingConfirmationDate", backendDateFormat.format(it))
+    }
+    bundle.putString("cancelationReason", state.cancelationReason.name)
+    sendEvent(bundle)
+  }
+
+  fun sendTripRecordingFinishedEvent(state: DKTripRecordingFinishedState) {
+    val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_RECORDING_FINISHED.name)
+    bundle.putString("localTripId", state.localTripId)
+    bundle.putString("startMode", state.startMode.name)
+    bundle.putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    bundle.putString("recordingConfirmationDate", backendDateFormat.format(state.recordingConfirmationDate))
+    bundle.putString("recordingEndDate", backendDateFormat.format(state.recordingEndDate))
+    sendEvent(bundle)
+  }
+
+  fun sendTripFinishedWithResultEvent(result: TripResult) {
+    val bundle = Bundle()
+    if (result is TripResult.TripValid) {
+      bundle.putString("eventType", EventType.TRIP_FINISHED_WITH_RESULT_VALID.name)
+      bundle.putString("localTripId", result.localTripId)
+      bundle.putString("itinId", result.itinId)
+      bundle.putBoolean("hasSafetyAndEcoDrivingScore", result.hasSafetyAndEcoDrivingScore)
+      bundle.putStringArrayList("info", ArrayList(result.info.map { it.name }))
+    } else if (result is TripResult.TripError){
+      bundle.putString("eventType", EventType.TRIP_FINISHED_WITH_RESULT_ERROR.name)
+      bundle.putString("localTripId", result.localTripId)
+      bundle.putString("tripResponseError", result.tripResponseError.name)
+    }
     sendEvent(bundle)
   }
 
@@ -131,7 +192,8 @@ object HeadlessJsManager : AppStateListener {
     TRIP_RECORDING_CONFIRMED,
     TRIP_RECORDING_CANCELED,
     TRIP_RECORDING_FINISHED,
-    TRIP_FINISHED_WITH_RESULT,
+    TRIP_FINISHED_WITH_RESULT_VALID,
+    TRIP_FINISHED_WITH_RESULT_ERROR,
     TRIP_POINT,
     TRIP_SAVED_FOR_REPOST,
     BEACON_DETECTED,

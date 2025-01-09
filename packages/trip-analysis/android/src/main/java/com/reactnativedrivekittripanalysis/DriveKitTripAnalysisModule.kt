@@ -12,11 +12,16 @@ import com.drivequant.drivekit.tripanalysis.entity.TripVehicle
 import com.drivequant.drivekit.core.common.model.DKTripLocation
 import com.drivequant.drivekit.tripanalysis.model.currenttripinfo.DKTripInfo
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingCanceledState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingConfirmedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingFinishedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingStartedState
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.CancelTrip
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.google.gson.Gson
@@ -196,13 +201,13 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         }
 
         override fun tripRecordingFinished(state: DKTripRecordingFinishedState) {
-          HeadlessJsManager.sendTripTripRecordingFinishedEvent(state)
+          HeadlessJsManager.sendTripRecordingFinishedEvent(state)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("tripRecordingFinished", mapTripRecordingFinishedState(state))
         }
 
         override fun tripFinished(result: TripResult) {
-          HeadlessJsManager.sendTripTripFinishedWithResultEvent(state)
+          HeadlessJsManager.sendTripFinishedWithResultEvent(result)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("tripFinishedWithResult", mapTripFinishedWithResult(result))
         }

@@ -2,14 +2,23 @@ package com.reactnativedrivekittripanalysis
 
 import com.drivequant.drivekit.tripanalysis.entity.TripPoint
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripCancelationReason
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingCanceledState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingConfirmedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingFinishedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingStartedState
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.CrashStatus
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.CancelTrip
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReadableMap
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 fun mapStartMode(startMode: StartMode): String {
   return when (startMode) {
@@ -99,18 +108,24 @@ fun mapCancelTrip(cancelTrip: CancelTrip): String {
 
 fun mapTripCancelationReason(cancelationReason: DKTripCancelationReason): String =
   when (cancelationReason) {
-    USER -> "USER"
-    HIGH_SPEED -> "HIGH_SPEED"
-    NO_SPEED -> "NO_SPEED"
-    NO_BEACON -> "NO_BEACON"
-    NO_BLUETOOTH_DEVICE -> "NO_BLUETOOTH_DEVICE"
-    MISSING_CONFIGURATION -> "MISSING_CONFIGURATION"
-    NO_LOCATION_DATA -> "NO_LOCATION_DATA"
-    RESET -> "RESET"
-    BEACON_NO_SPEED -> "BEACON_NO_SPEED"
-    BLUETOOTH_DEVICE_NO_SPEED -> "BLUETOOTH_DEVICE_NO_SPEED"
-    APP_KILLED -> "APP_KILLED"
+    DKTripCancelationReason.USER -> "USER"
+    DKTripCancelationReason.HIGH_SPEED -> "HIGH_SPEED"
+    DKTripCancelationReason.NO_SPEED -> "NO_SPEED"
+    DKTripCancelationReason.NO_BEACON -> "NO_BEACON"
+    DKTripCancelationReason.NO_BLUETOOTH_DEVICE -> "NO_BLUETOOTH_DEVICE"
+    DKTripCancelationReason.MISSING_CONFIGURATION -> "MISSING_CONFIGURATION"
+    DKTripCancelationReason.NO_LOCATION_DATA -> "NO_LOCATION_DATA"
+    DKTripCancelationReason.RESET -> "RESET"
+    DKTripCancelationReason.BEACON_NO_SPEED -> "BEACON_NO_SPEED"
+    DKTripCancelationReason.BLUETOOTH_DEVICE_NO_SPEED -> "BLUETOOTH_DEVICE_NO_SPEED"
+    DKTripCancelationReason.APP_KILLED -> "APP_KILLED"
   }
+
+fun mapTripResultStatusType(status: TripResult): String = when (status) {
+  is TripResult.TripError -> "TripError"
+  is TripResult.TripValid -> "TripValid"
+}
+
 
 fun mapTripRecordingStartedState(state: DKTripRecordingStartedState): ReadableMap {
   val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
