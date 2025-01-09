@@ -1,7 +1,7 @@
 import notifee from '@notifee/react-native';
 import {
   getBodyForFinishedTripResponse,
-  getBodyForCancelledTripReason,
+  getBodyForCanceledTripReason,
 } from './src/hooks/notificationsHandler';
 
 module.exports = async taskData => {
@@ -25,7 +25,7 @@ module.exports = async taskData => {
       body = getBodyForFinishedTripResponse(postGenericResponse);
     } else if (taskData.eventType === 'TRIP_CANCELLED') {
       console.log('cancelTrip = ' + taskData.cancelTrip);
-      body = getBodyForCancelledTripReason(taskData.cancelTrip);
+      body = getBodyForCanceledTripReason(taskData.cancelTrip);
     }
     if (body != null) {
       await displayNotification(body, channelId);

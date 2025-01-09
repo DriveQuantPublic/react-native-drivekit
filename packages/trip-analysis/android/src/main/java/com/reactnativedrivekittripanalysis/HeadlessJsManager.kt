@@ -94,7 +94,7 @@ object HeadlessJsManager : AppStateListener {
       bundle.putString("localTripId", result.localTripId)
       bundle.putString("itinId", result.itinId)
       bundle.putBoolean("hasSafetyAndEcoDrivingScore", result.hasSafetyAndEcoDrivingScore)
-      bundle.putStringArrayList("info", ArrayList(result.info.map { it.name }))
+      bundle.putStringArrayList("tripResponseInfo", ArrayList(result.info.map { it.name }))
     } else if (result is TripResult.TripError){
       bundle.putString("eventType", EventType.TRIP_FINISHED_WITH_RESULT_ERROR.name)
       bundle.putString("localTripId", result.localTripId)

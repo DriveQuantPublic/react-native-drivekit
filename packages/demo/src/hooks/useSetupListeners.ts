@@ -18,7 +18,7 @@ import type {
 } from '@react-native-drivekit/trip-analysis';
 import {
   getBodyForFinishedTripResponse,
-  getBodyForCancelledTripReason,
+  getBodyForCanceledTripReason,
 } from './notificationsHandler';
 import {Platform} from 'react-native';
 
@@ -90,15 +90,48 @@ const useSetupListeners = () => {
     );
     return () => listener.remove();
   });
+
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
-      'tripCancelled',
-      (reason: CancelTripReason) => {
-        console.log('Trip was cancelled', reason);
+      'tripRecordingStarted',
+      (state: DriveKitTripAnalysis.DKTripRecordingStartedState) => {
+        console.log(
+          'Trip recording has started with StartMode: ' + state.startMode,
+        );
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripRecordingConfirmed',
+      (state: DriveKitTripAnalysis.DKTripRecordingConfirmedState) => {
+        console.log('Trip recording has been confirmed');
+        if (Platform.OS === 'ios') {
+          var body = 'A trip is recording';
+          notifee.displayNotification({
+            id: startTripNotifId,
+            title: 'DriveKit RN Demo App',
+            body: body,
+          });
+        }
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripRecordingCanceled',
+      (state: DriveKitTripAnalysis.DKTripRecordingCanceledState) => {
+        console.log(
+          'Trip recording was canceled with reason: ' + state.cancelationReason,
+        );
         if (Platform.OS === 'ios') {
           notifee.cancelNotification(startTripNotifId);
         }
-        var body = getBodyForCancelledTripReason(reason);
+        var body = getBodyForCanceledTripReason(state.cancelationReason);
         if (body !== null) {
           notifee.displayNotification({
             title: 'DriveKit RN Demo App',
@@ -112,9 +145,9 @@ const useSetupListeners = () => {
 
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
-      'potentialTripStart',
-      startMode => {
-        console.log('potential trip start', startMode);
+      'tripRecordingFinished',
+      (_state: DriveKitTripAnalysis.DKTripRecordingFinishedState) => {
+        console.log('Trip recording is finished');
       },
     );
     return () => listener.remove();
@@ -122,17 +155,42 @@ const useSetupListeners = () => {
 
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
-      'tripStarted',
-      (startMode: StartMode) => {
-        console.log('trip start', startMode);
-        if (Platform.OS === 'ios') {
-          var body = 'A trip is recording';
-          notifee.displayNotification({
-            id: startTripNotifId,
-            title: 'DriveKit RN Demo App',
-            body: body,
-          });
+      'tripFinishedWithResult',
+      (result: DriveKitTripAnalysis.TripResult) => {
+        console.log('trip finished and status: ' + result.status);
+        console.log('error -->  ' + result.tripResponseError);
+        if (
+          result.status == DriveKitTripAnalysis.TripResultStatusType.TRIP_VALID
+        ) {
+          console.log(
+            'Trip analysis is finished and valid. itinId: ' + result.itinId,
+          );
+        } else {
+          console.log(
+            'Trip analysis is finished and invalid for reason ' +
+              result.tripResponseError,
+          );
         }
+
+        if (Platform.OS === 'ios') {
+          notifee.cancelNotification(startTripNotifId);
+          notifee.cancelNotification(savedTripNotifId);
+        }
+        var body = getBodyForFinishedTripResponse(result);
+        notifee.displayNotification({
+          title: 'DriveKit RN Demo App',
+          body: body,
+        });
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'potentialTripStart',
+      startMode => {
+        console.log('potential trip start', startMode);
       },
     );
     return () => listener.remove();
@@ -223,19 +281,30 @@ const useSetupListeners = () => {
       'tripFinished',
       ({post, response}) => {
         console.log(
-          'trip finished',
+          '[DEPRECATED] trip finished',
           JSON.stringify(post),
           JSON.stringify(response),
         );
-        if (Platform.OS === 'ios') {
-          notifee.cancelNotification(startTripNotifId);
-          notifee.cancelNotification(savedTripNotifId);
-        }
-        var body = getBodyForFinishedTripResponse(response);
-        notifee.displayNotification({
-          title: 'DriveKit RN Demo App',
-          body: body,
-        });
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripStarted',
+      (startMode: StartMode) => {
+        console.log('[DEPRECATED] trip started', startMode);
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripCancelled',
+      (reason: CancelTripReason) => {
+        console.log('[DEPRECATED] Trip was canceled', reason);
       },
     );
     return () => listener.remove();
