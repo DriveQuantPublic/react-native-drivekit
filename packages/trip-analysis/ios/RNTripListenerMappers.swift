@@ -9,6 +9,80 @@
 import Foundation
 import DriveKitTripAnalysisModule
 
+func mapTripRecordingStartedState(state: DriveKitTripAnalysisModule.DKTripRecordingStartedState) -> NSDictionary {
+    return [
+        "localTripId": state.localTripId,
+        "recordingStartDate": state.recordingStartDate.timeIntervalSince1970,
+        "startMode": mapStartMode(startMode: state.startMode)
+    ]
+}
+
+func mapTripRecordingConfirmedState(state: DriveKitTripAnalysisModule.DKTripRecordingConfirmedState) -> NSDictionary {
+    return [
+        "localTripId": state.localTripId,
+        "recordingStartDate": state.recordingStartDate.timeIntervalSince1970,
+        "recordingConfirmationDate": state.recordingConfirmationDate.timeIntervalSince1970,
+        "startMode": mapStartMode(startMode: state.startMode)
+    ]
+}
+
+func mapTripRecordingCanceledState(state: DriveKitTripAnalysisModule.DKTripRecordingCanceledState) -> NSDictionary {
+    return [
+        "localTripId": state.localTripId,
+        "recordingStartDate": state.recordingStartDate.timeIntervalSince1970,
+        "recordingConfirmationDate": state.recordingConfirmationDate?.timeIntervalSince1970,
+        "startMode": mapStartMode(startMode: state.startMode),
+        "cancelationReason": mapTripCancelationReason(reason: state.cancelationReason)
+    ]
+}
+
+func mapTripRecordingFinishedState(state: DriveKitTripAnalysisModule.DKTripRecordingFinishedState) -> NSDictionary {
+    return [
+        "localTripId": state.localTripId,
+        "recordingStartDate": state.recordingStartDate.timeIntervalSince1970,
+        "recordingConfirmationDate": state.recordingConfirmationDate.timeIntervalSince1970,
+        "recordingEndDate": state.recordingEndDate.timeIntervalSince1970,
+        "startMode": mapStartMode(startMode: state.startMode)
+    ]
+}
+
+func mapTripResult(result: DriveKitTripAnalysisModule.TripResult) -> NSDictionary {
+    return [
+        "localTripId": "result.localTripId" //TODO
+    ]
+}
+
+func mapTripCancelationReason(reason: DKTripCancelationReason) -> String? {
+    var rnTripCancelationReason: String? = nil
+    switch reason {
+    case .user:
+        rnTripCancelationReason = "USER"
+    case .highSpeed:
+        rnTripCancelationReason = "HIGH_SPEED"
+    case .noSpeed:
+        rnTripCancelationReason = "NO_SPEED"
+    case .noBeacon:
+        rnTripCancelationReason = "NO_BEACON"
+    case .noBluetoothDevice:
+        rnTripCancelationReason = "NO_BLUETOOTH_DEVICE"
+    case .missingConfiguration:
+        rnTripCancelationReason = "MISSING_CONFIGURATION"
+    case .noLocationData:
+        rnTripCancelationReason = "NO_LOCATION_DATA"
+    case .reset:
+        rnTripCancelationReason = "RESET"
+    case .beaconNoSpeed:
+        rnTripCancelationReason = "BEACON_NO_SPEED"
+    case .bluetoothDeviceNoSpeed:
+        rnTripCancelationReason = "BLUETOOTH_DEVICE_NO_SPEED"
+    case .appKilled:
+        rnTripCancelationReason = "APP_KILLED"
+    @unknown default:
+        print("[mapTripCancelationReason] Unknown cancelation reason \(reason.rawValue)")
+    }
+    return rnTripCancelationReason
+}
+
 func mapStartMode(startMode: DriveKitTripAnalysisModule.StartMode) -> String? {
     var rnStartMode: String? = nil
     switch startMode {

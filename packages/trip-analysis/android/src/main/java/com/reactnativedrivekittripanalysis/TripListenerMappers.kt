@@ -16,6 +16,7 @@ import com.drivequant.drivekit.tripanalysis.service.recorder.State
 import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReadableMap
+import com.google.gson.Gson
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -121,12 +122,6 @@ fun mapTripCancelationReason(cancelationReason: DKTripCancelationReason): String
     DKTripCancelationReason.APP_KILLED -> "APP_KILLED"
   }
 
-fun mapTripResultStatusType(status: TripResult): String = when (status) {
-  is TripResult.TripError -> "TripError"
-  is TripResult.TripValid -> "TripValid"
-}
-
-
 fun mapTripRecordingStartedState(state: DKTripRecordingStartedState): ReadableMap {
   val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
   val map = Arguments.createMap()
@@ -181,9 +176,24 @@ fun mapTripRecordingFinishedState(state: DKTripRecordingFinishedState): Readable
 fun mapTripFinishedWithResult(result: TripResult): ReadableMap {
   val map = Arguments.createMap()
   map.apply {
-    putString("status", mapTripResultStatusType(result))
-    putString("itinId", result.itinId)
-    putString("localTripId", result.localTripId)
+    when (result) {
+      is TripResult.TripValid -> {
+        putString("status", "TRIP_VALID")
+        putString("itinId", result.itinId)
+        putString("localTripId", result.localTripId)
+        val array = Arguments.createArray()
+        result.info.forEach {
+          array.pushString(it.name)
+        }
+        putArray("tripResponseInfo", array)
+        putString("trip", Gson().toJson(result.getTrip()))
+      }
+      is TripResult.TripError -> {
+        putString("status", "TRIP_ERROR")
+        putString("localTripId", result.localTripId)
+        putString("tripResponseError", result.tripResponseError.name)
+      }
+    }
   }
   return map
 }
