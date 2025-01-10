@@ -46,9 +46,15 @@ func mapTripRecordingFinishedState(state: DriveKitTripAnalysisModule.DKTripRecor
     ]
 }
 
-func mapTripResult(result: DriveKitTripAnalysisModule.TripResult) -> NSDictionary {
+func mapTripResult(result: DriveKitTripAnalysisModule.TripResponseStatus) -> NSDictionary {
     return [
-        "localTripId": "result.localTripId" //TODO
+        "status": mapTripResponseStatusType(result.status),
+        "localTripId": result.localTripId,
+        "itinId": result.itinId,
+        "hasSafetyAndEcoDrivingScore": result.hasSafetyAndEcoDrivingScore,
+        "info": "" //TODO
+        "error": mapTripResponseError(error: result.error)
+        "trip": "" //TODO
     ]
 }
 
@@ -102,6 +108,68 @@ func mapStartMode(startMode: DriveKitTripAnalysisModule.StartMode) -> String? {
         print("[mapStartMode] Unknown start mode \(startMode.rawValue)")
     }
     return rnStartMode
+}
+
+func mapTripResponseStatusType(status: TripResponseStatusType) -> String? {
+    var rnStatus: String? = nil
+    switch status {
+        case .tripValid:
+            rnStatus = "TRIP_VALID"
+        case .tripError:
+            rnStatus = "TRIP_ERROR"
+            @unknown default:
+        print("[mapTripResponseStatusType] Unknown status \(status.rawValue)")
+    }
+    return rnStatus
+}
+
+func mapTripResponseError(error: TripResponseError?) -> String? {
+    var rnError: String? = nil
+    if let error {
+        switch error {
+            case .noAccountSet: 
+                rnError = "NO_ACCOUNT_SET"
+            case .noRouteObjectFound: 
+                rnError = "NO_ROUTE_OBJECT_FOUND"
+            case .invalidRouteDefinition: 
+                rnError = "INVALID_ROUTE_DEFINITION"
+            case .noVelocityData: 
+                rnError = "NO_VELOCITY_DATA"
+            case .invalidSamplingPeriod: 
+                rnError = "INVALID_SAMPLING_PERIOD"
+            case .invalidCustomerId: 
+                rnError = "INVALID_CUSTOMER_ID"
+            case .noDateFound: 
+                rnError = "NO_DATE_FOUND"
+            case .maxDailyRequestNumberReached: 
+                rnError = "MAX_DAILY_REQUEST_NUMBER_REACHED"
+            case .dataError: 
+                rnError = "DATA_ERROR"
+            case .invalidRouteVectors: 
+                rnError = "INVALID_ROUTE_VECTORS"
+            case .missingBeacon: 
+                rnError = "MISSING_BEACON"
+            case .invalidBeacon: 
+                rnError = "INVALID_BEACON"
+            case .duplicateTrip: 
+                rnError = "DUPLICATE_TRIP"
+            case .insufficientGpsData: 
+                rnError = "INSUFFICIENT_GPS_DATA"
+            case .userDisabled: 
+                rnError = "USER_DISABLED"
+            case .invalidUser: 
+                rnError = "INVALID_USER"
+            case .invalidGpsData: 
+                rnError = "INVALID_GPS_DATA"
+            case .invalidTrip: 
+                rnError = "INVALID_TRIP"
+            case .accountLimitReached: 
+                rnError = "ACCOUNT_LIMIT_REACHED"
+            @unknown default:
+            print("[mapTripResponseError] Unknown error \(error.rawValue)")
+        }
+    }
+    return rnError
 }
 
 func mapCancelTrip(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) -> String? {

@@ -121,7 +121,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
         RNTripAnalysisEventEmitter.shared.dispatch(name: "tripRecordingFinished", body: rnTripRecordingFinishedState)
     }
 
-    public func tripFinishedWithResult(result: DriveKitTripAnalysisModule.TripResult) {
+    public func tripFinishedWithResult(result: DriveKitTripAnalysisModule.TripResponseStatus) {
         let rnTripResult = mapTripResult(result: result)
         RNTripAnalysisEventEmitter.shared.dispatch(name: "tripFinishedWithResult", body: rnTripResult)
     }
