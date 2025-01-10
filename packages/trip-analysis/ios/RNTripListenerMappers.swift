@@ -52,10 +52,32 @@ func mapTripResult(result: DriveKitTripAnalysisModule.TripResponseStatus) -> NSD
         "localTripId": result.localTripId,
         "itinId": result.itinId,
         "hasSafetyAndEcoDrivingScore": result.hasSafetyAndEcoDrivingScore,
-        "info": "", //TODO
-        "error": mapTripResponseError(error: result.error),
-        "trip": "", //TODO result.getTrip()?.toJSON().toJSONString()
+        "info": result.info.map { mapTripInfoResponse(info: $0) },
+        "error": mapTripResponseError(error: result.error)
     ]
+}
+
+func mapTripInfoResponse(info: TripResponseInfo) -> String? {
+    var name: String? = nil
+    switch (info) {
+    case .engineSpeedNotAvailable:
+        name = "ENGINE_SPEED_NOT_AVAILABLE"
+    case .engineSpeedIsNull:
+        name = "ENGINE_SPEED_IS_NULL"
+    case .noVehicleCharacteristics:
+        name = "NO_VEHICLE_CHARACTERISTICS"
+    case .dataLoss:
+        name = "DATA_LOSS"
+    case .distanceTooShort:
+        name = "DISTANCE_TOO_SHORT"
+    case .invalidVehicleCharacteristics:
+        name = "INVALID_VEHICLE_CHARACTERISTICS"
+    case .invalidVehicleId:
+        name = "INVALID_VEHICLE_ID"
+    @unknown default:
+        print("[mapTripInfoResponse] Unknown TripResponseInfo value \(info.rawValue)")
+    }
+    return name
 }
 
 func mapTripCancelationReason(reason: DKTripCancelationReason) -> String? {
