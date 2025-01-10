@@ -157,8 +157,6 @@ const useSetupListeners = () => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripFinishedWithResult',
       (result: DriveKitTripAnalysis.TripResult) => {
-        console.log('trip finished and status: ' + result.status);
-        console.log('error -->  ' + result.tripResponseError);
         if (
           result.status == DriveKitTripAnalysis.TripResultStatusType.TRIP_VALID
         ) {
