@@ -48,13 +48,13 @@ func mapTripRecordingFinishedState(state: DriveKitTripAnalysisModule.DKTripRecor
 
 func mapTripResult(result: DriveKitTripAnalysisModule.TripResponseStatus) -> NSDictionary {
     return [
-        "status": mapTripResponseStatusType(result.status),
+        "status": mapTripResponseStatusType(status: result.status),
         "localTripId": result.localTripId,
         "itinId": result.itinId,
         "hasSafetyAndEcoDrivingScore": result.hasSafetyAndEcoDrivingScore,
-        "info": "" //TODO
-        "error": mapTripResponseError(error: result.error)
-        "trip": "" //TODO
+        "info": "", //TODO
+        "error": mapTripResponseError(error: result.error),
+        "trip": "", //TODO result.getTrip()?.toJSON().toJSONString()
     ]
 }
 
