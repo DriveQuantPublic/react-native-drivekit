@@ -52,8 +52,8 @@ func mapTripResult(result: DriveKitTripAnalysisModule.TripResponseStatus) -> NSD
         "localTripId": result.localTripId,
         "itinId": result.itinId,
         "hasSafetyAndEcoDrivingScore": result.hasSafetyAndEcoDrivingScore,
-        "info": result.info.map { mapTripInfoResponse(info: $0) },
-        "error": mapTripResponseError(error: result.error)
+        "tripResponseInfo": result.info.map { mapTripInfoResponse(info: $0) },
+        "tripResponseError": mapTripResponseError(error: result.error)
     ]
 }
 

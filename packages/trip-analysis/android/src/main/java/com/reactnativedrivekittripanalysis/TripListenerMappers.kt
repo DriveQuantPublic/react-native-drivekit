@@ -181,17 +181,18 @@ fun mapTripFinishedWithResult(result: TripResult): ReadableMap {
         putString("status", "TRIP_VALID")
         putString("itinId", result.itinId)
         putString("localTripId", result.localTripId)
+        putBoolean("hasSafetyAndEcoDrivingScore", result.hasSafetyAndEcoDrivingScore)
         val array = Arguments.createArray()
         result.info.forEach {
           array.pushString(it.name)
         }
         putArray("tripResponseInfo", array)
-        putString("trip", Gson().toJson(result.getTrip()))
       }
       is TripResult.TripError -> {
         putString("status", "TRIP_ERROR")
         putString("localTripId", result.localTripId)
         putString("tripResponseError", result.tripResponseError.name)
+        putBoolean("hasSafetyAndEcoDrivingScore", false)
       }
     }
   }

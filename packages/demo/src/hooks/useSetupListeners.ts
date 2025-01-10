@@ -107,7 +107,7 @@ const useSetupListeners = () => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripRecordingConfirmed',
       (state: DriveKitTripAnalysis.DKTripRecordingConfirmedState) => {
-        console.log('Trip recording has been confirmed');
+        console.log('Trip recording is confirmed');
         if (Platform.OS === 'ios') {
           var body = 'A trip is recording';
           notifee.displayNotification({
@@ -279,12 +279,8 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripFinished',
-      ({post, response}) => {
-        console.log(
-          '[DEPRECATED] trip finished',
-          JSON.stringify(post),
-          JSON.stringify(response),
-        );
+      ({}) => {
+        console.log('[DEPRECATED] trip finished');
       },
     );
     return () => listener.remove();
