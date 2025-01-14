@@ -203,7 +203,7 @@ object HeadlessJsManager : AppStateListener {
     GPS_STATE_CHANGED,
     SDK_STATE_CHANGED,
     POTENTIAL_TRIP_START,
-    TRIP_STARTED, //TODO note as deprecated?
+    TRIP_STARTED,
     TRIP_CANCELLED,
     TRIP_FINISHED,
   }

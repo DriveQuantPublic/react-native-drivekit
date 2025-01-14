@@ -1,5 +1,4 @@
 import {
-  CancelTripReason,
   DKTripCancelationReason,
   TripResult,
   TripResultStatusType,
@@ -29,11 +28,9 @@ export function getBodyForCanceledTripReason(
 
 export function getBodyForFinishedTripResponse(result: TripResult): string {
   var body = 'A new trip has been analyzed';
-  var isTripValid = result.status == TripResultStatusType.TRIP_VALID;
-  if (isTripValid) {
-    // if it's an alternative transportationMode
-    // else if isTripUnscored
-    // else display default message above
+  if (result.status == TripResultStatusType.TRIP_VALID) {
+    // TODO create a method in DriverData to locally retrieve a trip
+    //const trip = DriveKit;
     var trip = result.trip;
     if (trip != null) {
       const transportationMode = trip.transportationMode;
@@ -67,42 +64,6 @@ export function getBodyForFinishedTripResponse(result: TripResult): string {
     body = 'Trip is not valid (errorCode might be 21, 29, 30 or 31)';
   }
   return body;
-}
-
-function isTripValid(response: any) {
-  const comments = response.comments;
-  const itineraryStatistics = response.itineraryStatistics;
-
-  var isValid = false;
-  if (comments != null) {
-    for (let i = 0; i < comments.length; i++) {
-      if (comments[i].errorCode === 0) {
-        isValid = true;
-      }
-    }
-  }
-  if (
-    isValid === true &&
-    itineraryStatistics != null &&
-    itineraryStatistics.distance > 0
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function isTripUnscored(response: any) {
-  if (
-    (response.safety != null && response.safety.safetyScore > 10) ||
-    (response.ecoDriving != null && response.ecoDriving.score > 10) ||
-    (response.driverDistraction != null &&
-      response.driverDistraction.score > 10)
-  ) {
-    return true;
-  } else {
-    return false;
-  }
 }
 
 function isAlternativeTransportationMode(transportationMode: number) {
