@@ -169,16 +169,21 @@ useEffect(() => {
 
 Here is the list of supported events:
 
+- `tripRecordingStarted`, callback `(state: DKTripRecordingStartedState) => void`: Immediately called when a trip recording starts. This callback is triggered after calling the DriveKit SDK's `startTrip()` method or after automatic trip detection. `DKTripRecordingStartedState` object is described [here](https://docs.drivequant.com/trip-analysis/ios/references#dktriprecordingstartedstate).
+- `tripRecordingConfirmed`, callback `(state: DKTripRecordingConfirmedState) => void`: Called when a trip is confirmed. `DKTripRecordingConfirmedState` object is described [here](https://docs.drivequant.com/trip-analysis/ios/references#dktriprecordingconfirmedstate).
+- `tripRecordingCanceled`, callback `(state: DKTripRecordingCanceledState) => void`: Called when a trip recording is canceled. `DKTripRecordingCanceledState` indicates which event has canceled the trip. `DKTripRecordingCanceledState` object is described [here](https://docs.drivequant.com/trip-analysis/ios/references#dktriprecordingcanceledstate).
+- `tripRecordingFinished`, callback `(state: DKTripRecordingFinishedState) => void`: Called when trip recording has ended, before sending trip data to DriveQuant's servers. `DKTripRecordingFinishedState` object is described [here](https://docs.drivequant.com/trip-analysis/ios/references#dktriprecordingfinishedstate).
+- `tripFinishedWithResult`, callback `(result: TripResult) => void`: Called when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. `TripResult` object contains trip response status details. Read more [here](https://docs.drivequant.com/trip-analysis/ios/references#tripresponsestatus).
 - `tripPoint`, callback `(tripPoint: TripPoint) => void`: This event is triggered when a trip is started and confirmed, for each GPS point recorded by the SDK.
-- `tripStarted`, callback `(startMode: StartMode) => void`: This event is triggered each time a trip is started. StartMode indicates which event starts the trip.
-- `tripCancelled`, callback `(cancelTrip: CancelTrip) => void`: This event is triggered when a trip is canceled. CancelTrip indicates which event cancels the trip.
-- `tripFinished`, callback `(post: PostGeneric, response: PostGenericResponse)`: This event is triggered when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. PostGeneric object contains raw data sent to DriveQuant's server, PostGenericResponse object contains the trip analysis made on DriveQuant's server.
 - `tripSavedForRepost`, callback `() => void`: This event is triggered if at the end of the trip, the trip can be sent to DriveQuant's server for the analysis. The trip is saved locally on the SDK and will be sent later.
 - `beaconDetected`, callback `() => void`: This event is triggered when a beacon sets in the SDK is detected.
 - `significantLocationChangeDetected`, callback `() => void`: This event is triggered when a user significant location change is detected. (only for iOS)
 - `sdkStateChanged`, callback `(state: State) => void`: This event is triggered every time the state of the SDK changed with the new state as parameter.
 - `crashDetected`, callback `(info: CrashInfo) => void`: This event is triggered when crash detection feature is enabled and available for your team and when a crash has been detected.
 - `crashFeedbackSent`, callback `(crashFeedback: CrashFeedback) => void`: Event triggered when crash feedback is enabled and a confirmed crash is detected. This callback will contain crash information and the feedback from the user.
+- `tripStarted (deprecated)`, callback `(startMode: StartMode) => void`: Use the callback `tripRecordingConfirmed()` instead. This event is triggered each time a trip is started. StartMode indicates which event starts the trip.
+- `tripCancelled (deprecated)`, callback `(cancelTrip: CancelTrip) => void`: Use the callback `tripRecordingCanceled()` instead. This event is triggered when a trip is canceleed. CancelTrip indicates which event cancels the trip.
+- `tripFinished (deprecated)`, callback `(post: PostGeneric, response: PostGenericResponse)`: Use the callback `tripFinishedWithResult()` instead. This event is triggered when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. PostGeneric object contains raw data sent to DriveQuant's server, PostGenericResponse object contains the trip analysis made on DriveQuant's server.
 
 ## Headless JS (Android only)
 

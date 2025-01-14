@@ -102,12 +102,11 @@ export enum DKTripCancelationReason {
 
 export type TripResult = {
   status: TripResultStatusType;
-  itinId: string | null; // only when trip is valid
+  itinId: string | null; // null if status is TRIP_ERROR
   localTripId: string;
-  tripResponseInfo: [TripResponseInfo] | null; // only when trip is valid
-  tripResponseError: TripResponseError | null; // only when trip is invalid
-  hasSafetyAndEcoDrivingScore: boolean | null; // only when trip is valid
-  trip: Trip | null; // only when trip is valid
+  tripResponseInfo: [TripResponseInfo] | null; // null if status is TRIP_ERROR
+  tripResponseError: TripResponseError | null; // null if status is TRIP_VALID
+  hasSafetyAndEcoDrivingScore: boolean | null; // null if status is TRIP_ERROR
 };
 
 export enum TripResultStatusType {
