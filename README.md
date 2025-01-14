@@ -50,7 +50,7 @@ To install this module, follow step by step the method described in the [Trip Si
 
 ### ➡️ Step 5 : Notify the user about the trip analysis
 
-To inform the user that the trip has been analyzed, finished or cancelled, the DriveKit libraries for React Native offers listeners so it becomes easy to build notifications on both mobile platforms.
+To inform the user that the trip has been analyzed, finished or canceled, the DriveKit libraries for React Native offers listeners so it becomes easy to build notifications on both mobile platforms.
 
 We recommend [Notifee](https://notifee.app/) library to manage your notifications.
 
@@ -62,7 +62,7 @@ On iOS, you just have to manage notifications using the `DriveKit.addEventListen
 
 Notification that indicates a trip is currently analyzed is driven by the Trip Analysis `initialize(…)` method.
 
-To display a notification when the trip is finished or cancelled, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
+To display a notification when the trip is finished or canceled, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
 
 Follow these steps :
 
