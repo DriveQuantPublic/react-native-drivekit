@@ -20,9 +20,9 @@ module.exports = async taskData => {
     if (taskData.eventType === 'TRIP_SAVED_FOR_REPOST') {
       body =
         'The trip could not be analyzed because your phone is not connected to the mobile network. It will be analyzed later';
-    } else if (taskData.eventType === 'TRIP_FINISHED') {
+    } else if (taskData.eventType === 'TRIP_FINISHED_WITH_RESULT') {
       const postGenericResponse = JSON.parse(taskData.response);
-      body = getBodyForFinishedTripResponse(postGenericResponse);
+      body = getBodyForFinishedTripResponse(postGenericResponse); //TODO convert to TripResult
     } else if (taskData.eventType === 'TRIP_CANCELLED') {
       console.log('cancelTrip = ' + taskData.cancelTrip);
       body = getBodyForCanceledTripReason(taskData.cancelTrip);

@@ -177,7 +177,7 @@ const useSetupListeners = () => {
         var body = getBodyForFinishedTripResponse(result);
         notifee.displayNotification({
           title: 'DriveKit RN Demo App',
-          body: body,
+          body: 'body', // TODO
         });
       },
     );
