@@ -1,5 +1,3 @@
-import type { Trip } from '@react-native-drivekit/core';
-
 export enum CancelTripReason {
   USER = 'USER',
   HIGH_SPEED = 'HIGH_SPEED',
