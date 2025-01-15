@@ -1,4 +1,3 @@
-import {TripSyncStatus} from '../../../driver-data/src/types';
 import {
   DKTripCancelationReason,
   TripResult,
@@ -33,7 +32,7 @@ export async function getBodyForFinishedTripResponse(
 ): Promise<string> {
   var body = 'A new trip has been analyzed';
   if (
-    result.status == TripResultStatusType.TRIP_VALID &&
+    result.status === TripResultStatusType.TRIP_VALID &&
     result.itinId != null
   ) {
     const trip = await DriveKitDriverData.getTrip(result.itinId);
