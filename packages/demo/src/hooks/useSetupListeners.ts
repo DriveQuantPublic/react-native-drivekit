@@ -156,10 +156,11 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripFinishedWithResult',
-      (result: DriveKitTripAnalysis.TripResult) => {
-        if (
-          result.status === DriveKitTripAnalysis.TripResultStatusType.TRIP_VALID
-        ) {
+      async (result: DriveKitTripAnalysis.TripResult) => {
+        const isTripvalid =
+          result.status ===
+          DriveKitTripAnalysis.TripResultStatusType.TRIP_VALID;
+        if (isTripvalid) {
           console.log(
             'Trip analysis is finished and valid. itinId: ' + result.itinId,
           );
@@ -174,10 +175,17 @@ const useSetupListeners = () => {
           notifee.cancelNotification(startTripNotifId);
           notifee.cancelNotification(savedTripNotifId);
         }
-        var body = getBodyForFinishedTripResponse(result);
+
+        const body = await getBodyForFinishedTripResponse(
+          isTripvalid,
+          result.hasSafetyAndEcoDrivingScore,
+          result.itinId,
+        );
+
         notifee.displayNotification({
+          id: '123',
           title: 'DriveKit RN Demo App',
-          body: 'body', // TODO
+          body: body,
         });
       },
     );

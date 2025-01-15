@@ -1,8 +1,4 @@
-import {
-  DKTripCancelationReason,
-  TripResult,
-  TripResultStatusType,
-} from '../../../trip-analysis/src/types';
+import {DKTripCancelationReason} from '../../../trip-analysis/src/types';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 
 export function getBodyForCanceledTripReason(
@@ -28,14 +24,13 @@ export function getBodyForCanceledTripReason(
 }
 
 export async function getBodyForFinishedTripResponse(
-  result: TripResult,
+  isTripValid: boolean,
+  hasSafetyAndEcoDrivingScore: boolean | null,
+  itinId: string | null,
 ): Promise<string> {
   var body = 'A new trip has been analyzed';
-  if (
-    result.status === TripResultStatusType.TRIP_VALID &&
-    result.itinId != null
-  ) {
-    const trip = await DriveKitDriverData.getTrip(result.itinId);
+  if (isTripValid && itinId != null) {
+    const trip = await DriveKitDriverData.getTrip(itinId);
     if (trip != null && trip.trip != null) {
       const transportationMode = trip.trip.transportationMode;
       if (isAlternativeTransportationMode(transportationMode)) {
@@ -61,7 +56,7 @@ export async function getBodyForFinishedTripResponse(
         }
         body = 'The trip has been made with an alternative transport: ' + name;
       }
-    } else if (!result.hasSafetyAndEcoDrivingScore) {
+    } else if (!hasSafetyAndEcoDrivingScore) {
       body = 'The trip distance is too short to be analyzed.';
     }
   } else {
