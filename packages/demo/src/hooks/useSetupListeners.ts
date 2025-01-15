@@ -106,7 +106,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripRecordingConfirmed',
-      (state: DriveKitTripAnalysis.DKTripRecordingConfirmedState) => {
+      () => {
         console.log('Trip recording is confirmed');
         if (Platform.OS === 'ios') {
           var body = 'A trip is recording';
@@ -158,7 +158,7 @@ const useSetupListeners = () => {
       'tripFinishedWithResult',
       (result: DriveKitTripAnalysis.TripResult) => {
         if (
-          result.status == DriveKitTripAnalysis.TripResultStatusType.TRIP_VALID
+          result.status === DriveKitTripAnalysis.TripResultStatusType.TRIP_VALID
         ) {
           console.log(
             'Trip analysis is finished and valid. itinId: ' + result.itinId,

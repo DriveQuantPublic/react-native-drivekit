@@ -1,8 +1,10 @@
+import {TripSyncStatus} from '../../../driver-data/src/types';
 import {
   DKTripCancelationReason,
   TripResult,
   TripResultStatusType,
 } from '../../../trip-analysis/src/types';
+import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 
 export function getBodyForCanceledTripReason(
   reason: DKTripCancelationReason,
@@ -26,14 +28,17 @@ export function getBodyForCanceledTripReason(
   return body;
 }
 
-export function getBodyForFinishedTripResponse(result: TripResult): string {
+export async function getBodyForFinishedTripResponse(
+  result: TripResult,
+): Promise<string> {
   var body = 'A new trip has been analyzed';
-  if (result.status == TripResultStatusType.TRIP_VALID) {
-    // TODO create a method in DriverData to locally retrieve a trip
-    //const trip = DriveKit;
-    var trip = result.trip;
-    if (trip != null) {
-      const transportationMode = trip.transportationMode;
+  if (
+    result.status == TripResultStatusType.TRIP_VALID &&
+    result.itinId != null
+  ) {
+    const trip = await DriveKitDriverData.getTrip(result.itinId);
+    if (trip != null && trip.trip != null) {
+      const transportationMode = trip.trip.transportationMode;
       if (isAlternativeTransportationMode(transportationMode)) {
         var name = 'unknown';
         if (transportationMode === 4) {
