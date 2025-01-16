@@ -21,16 +21,22 @@ module.exports = async taskData => {
     if (taskData.eventType === 'TRIP_SAVED_FOR_REPOST') {
       body =
         'The trip could not be analyzed because your phone is not connected to the mobile network. It will be analyzed later';
-    } else if (taskData.eventType === 'TRIP_FINISHED_WITH_RESULT') {
-      const isTripValid =
-        taskData.eventType === 'TRIP_FINISHED_WITH_RESULT_VALID';
+    } else if (taskData.eventType === 'TRIP_FINISHED_WITH_RESULT_VALID') {
       const hasSafetyAndEcoDrivingScore = taskData.hasSafetyAndEcoDrivingScore;
       const itinId = taskData.itinId;
       notificationId = '123'; // The same notificationId used in `useSetupListeners.ts`
       body = getBodyForFinishedTripResponse(
-        isTripValid,
+        true,
         hasSafetyAndEcoDrivingScore,
         itinId,
+      );
+    } else if (taskData.eventType === 'TRIP_FINISHED_WITH_RESULT_ERROR') {
+      const hasSafetyAndEcoDrivingScore = taskData.hasSafetyAndEcoDrivingScore;
+      notificationId = '123'; // The same notificationId used in `useSetupListeners.ts`
+      body = getBodyForFinishedTripResponse(
+        false,
+        false,
+        null,
       );
     } else if (taskData.eventType === 'TRIP_CANCELLED') {
       console.log('cancelTrip = ' + taskData.cancelTrip);
