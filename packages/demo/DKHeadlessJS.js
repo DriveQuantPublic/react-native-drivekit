@@ -31,13 +31,8 @@ module.exports = async taskData => {
         itinId,
       );
     } else if (taskData.eventType === 'TRIP_FINISHED_WITH_RESULT_ERROR') {
-      const hasSafetyAndEcoDrivingScore = taskData.hasSafetyAndEcoDrivingScore;
       notificationId = '123'; // The same notificationId used in `useSetupListeners.ts`
-      body = getBodyForFinishedTripResponse(
-        false,
-        false,
-        null,
-      );
+      body = getBodyForFinishedTripResponse(false, false, null);
     } else if (taskData.eventType === 'TRIP_CANCELLED') {
       console.log('cancelTrip = ' + taskData.cancelTrip);
       body = getBodyForCanceledTripReason(taskData.cancelTrip);
