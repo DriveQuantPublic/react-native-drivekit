@@ -7,53 +7,58 @@
 //
 
 import Foundation
+import DriveKitCoreModule
 import DriveKitTripAnalysisModule
 
 func mapTripRecordingStartedState(state: DriveKitTripAnalysisModule.DKTripRecordingStartedState) -> NSDictionary {
     return [
         "localTripId": state.localTripId,
-        "recordingStartDate": state.recordingStartDate.timeIntervalSince1970,
-        "startMode": mapStartMode(startMode: state.startMode)
+        "recordingStartDate": DateUtils.convertDateToString(date: state.recordingStartDate) as Any,
+        "startMode": mapStartMode(startMode: state.startMode) as Any
     ]
 }
 
 func mapTripRecordingConfirmedState(state: DriveKitTripAnalysisModule.DKTripRecordingConfirmedState) -> NSDictionary {
     return [
         "localTripId": state.localTripId,
-        "recordingStartDate": state.recordingStartDate.timeIntervalSince1970,
-        "recordingConfirmationDate": state.recordingConfirmationDate.timeIntervalSince1970,
-        "startMode": mapStartMode(startMode: state.startMode)
+        "recordingStartDate": DateUtils.convertDateToString(date: state.recordingStartDate),
+        "recordingConfirmationDate": DateUtils.convertDateToString(date: state.recordingConfirmationDate),
+        "startMode": mapStartMode(startMode: state.startMode) as Any
     ]
 }
 
 func mapTripRecordingCanceledState(state: DriveKitTripAnalysisModule.DKTripRecordingCanceledState) -> NSDictionary {
-    return [
+    var dict = [
         "localTripId": state.localTripId,
-        "recordingStartDate": state.recordingStartDate.timeIntervalSince1970,
-        "recordingConfirmationDate": state.recordingConfirmationDate?.timeIntervalSince1970,
-        "startMode": mapStartMode(startMode: state.startMode),
-        "cancelationReason": mapTripCancelationReason(reason: state.cancelationReason)
+        "recordingStartDate": DateUtils.convertDateToString(date: state.recordingStartDate),
+        "startMode": mapStartMode(startMode: state.startMode) as Any,
+        "cancelationReason": mapTripCancelationReason(reason: state.cancelationReason) as Any
     ]
+    if let recordingConfirmationDate = state.recordingConfirmationDate {
+      dict["recordingConfirmationDate"] = DateUtils.convertDateToString(date: recordingConfirmationDate)
+    }
+
+  return dict as NSDictionary
 }
 
 func mapTripRecordingFinishedState(state: DriveKitTripAnalysisModule.DKTripRecordingFinishedState) -> NSDictionary {
     return [
         "localTripId": state.localTripId,
-        "recordingStartDate": state.recordingStartDate.timeIntervalSince1970,
-        "recordingConfirmationDate": state.recordingConfirmationDate.timeIntervalSince1970,
-        "recordingEndDate": state.recordingEndDate.timeIntervalSince1970,
-        "startMode": mapStartMode(startMode: state.startMode)
+        "recordingStartDate": DateUtils.convertDateToString(date: state.recordingStartDate),
+        "recordingConfirmationDate": DateUtils.convertDateToString(date: state.recordingConfirmationDate),
+        "recordingEndDate": DateUtils.convertDateToString(date: state.recordingEndDate),
+        "startMode": mapStartMode(startMode: state.startMode) as Any
     ]
 }
 
 func mapTripResult(result: DriveKitTripAnalysisModule.TripResponseStatus) -> NSDictionary {
     return [
-        "status": mapTripResponseStatusType(status: result.status),
-        "localTripId": result.localTripId,
-        "itinId": result.itinId,
+        "status": mapTripResponseStatusType(status: result.status) as Any,
+        "localTripId": result.localTripId as Any,
+        "itinId": result.itinId as Any,
         "hasSafetyAndEcoDrivingScore": result.hasSafetyAndEcoDrivingScore,
         "tripResponseInfo": result.info.map { mapTripInfoResponse(info: $0) },
-        "tripResponseError": mapTripResponseError(error: result.error)
+        "tripResponseError": mapTripResponseError(error: result.error) as Any
     ]
 }
 
