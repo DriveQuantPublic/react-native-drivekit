@@ -188,7 +188,7 @@ func mapTripResponseError(error: TripResponseError?) -> String? {
             case .accountLimitReached: 
                 rnError = "ACCOUNT_LIMIT_REACHED"
             @unknown default:
-            print("[mapTripResponseError] Unknown error \(error.rawValue)")
+                print("[mapTripResponseError] Unknown error \(error.rawValue)")
         }
     }
     return rnError
