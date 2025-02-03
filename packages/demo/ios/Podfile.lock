@@ -3,25 +3,25 @@ PODS:
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
-  - DriveKitBeaconUtils (2.9.0):
-    - DriveKitCore (= 2.9.0)
-  - DriveKitCore (2.9.0):
-    - DriveKitNetworking (= 2.9.0)
-  - DriveKitDBTripAccess (2.9.0):
-    - DriveKitCore (= 2.9.0)
-  - DriveKitDBVehicleAccess (2.9.0):
-    - DriveKitBeaconUtils (= 2.9.0)
-    - DriveKitCore (= 2.9.0)
-  - DriveKitDriverData (2.9.0):
-    - DriveKitDBTripAccess (= 2.9.0)
-  - DriveKitNetworking (2.9.0)
-  - DriveKitTripAnalysis (2.9.0):
-    - DriveKitBeaconUtils (= 2.9.0)
-    - DriveKitCore (= 2.9.0)
-    - DriveKitDBTripAccess (= 2.9.0)
-    - DriveKitDBVehicleAccess (= 2.9.0)
-  - DriveKitTripSimulator (2.9.0):
-    - DriveKitTripAnalysis (= 2.9.0)
+  - DriveKitBeaconUtils (2.9.1):
+    - DriveKitCore (= 2.9.1)
+  - DriveKitCore (2.9.1):
+    - DriveKitNetworking (= 2.9.1)
+  - DriveKitDBTripAccess (2.9.1):
+    - DriveKitCore (= 2.9.1)
+  - DriveKitDBVehicleAccess (2.9.1):
+    - DriveKitBeaconUtils (= 2.9.1)
+    - DriveKitCore (= 2.9.1)
+  - DriveKitDriverData (2.9.1):
+    - DriveKitDBTripAccess (= 2.9.1)
+  - DriveKitNetworking (2.9.1)
+  - DriveKitTripAnalysis (2.9.1):
+    - DriveKitBeaconUtils (= 2.9.1)
+    - DriveKitCore (= 2.9.1)
+    - DriveKitDBTripAccess (= 2.9.1)
+    - DriveKitDBVehicleAccess (= 2.9.1)
+  - DriveKitTripSimulator (2.9.1):
+    - DriveKitTripAnalysis (= 2.9.1)
   - FBLazyVector (0.71.18)
   - FBReactNativeSpec (0.71.18):
     - RCT-Folly (= 2021.07.22.00)
@@ -358,16 +358,16 @@ PODS:
   - React-logger (0.71.18):
     - glog
   - react-native-drivekit-core (2.4.3):
-    - DriveKitCore (= 2.9.0)
+    - DriveKitCore (= 2.9.1)
     - React-Core
   - react-native-drivekit-driver-data (2.4.3):
-    - DriveKitDriverData (= 2.9.0)
+    - DriveKitDriverData (= 2.9.1)
     - React-Core
   - react-native-drivekit-trip-analysis (2.4.3):
-    - DriveKitTripAnalysis (= 2.9.0)
+    - DriveKitTripAnalysis (= 2.9.1)
     - React-Core
   - react-native-drivekit-trip-simulator (2.4.3):
-    - DriveKitTripSimulator (= 2.9.0)
+    - DriveKitTripSimulator (= 2.9.1)
     - React-Core
   - React-perflogger (0.71.18)
   - React-RCTActionSheet (0.71.18):
@@ -664,14 +664,14 @@ SPEC CHECKSUMS:
   boost: 7dcd2de282d72e344012f7d6564d024930a6a440
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
-  DriveKitBeaconUtils: 735f77bad125c863c8a89dea1112e8c7021b3dea
-  DriveKitCore: c262a0613ef8a8b41f7ad537ad7c96a94b2afee3
-  DriveKitDBTripAccess: 824ce8317068422969edacf2b173d97752ab5b66
-  DriveKitDBVehicleAccess: 62dec48264e3695e71f72ef22cf85efb534a04be
-  DriveKitDriverData: 2eefc26e772d541b5d9b458e3aebdd0281625b90
-  DriveKitNetworking: a71fea4b149b1f7c005e846e3761c1f37132b1c8
-  DriveKitTripAnalysis: 6aa5c8551f70fc17b0c92ab551428b62a4ff39d4
-  DriveKitTripSimulator: 6af97e28cf61df939490c7367aa04d86f25c0888
+  DriveKitBeaconUtils: 12a6d9c74249a619e821fa1d0c7472b7cc8a42ec
+  DriveKitCore: 459aacb43344b2558f870414a2e35c8f06896711
+  DriveKitDBTripAccess: 2563777fc40298a6d6099dc9b9213c90fa9c2ed1
+  DriveKitDBVehicleAccess: 02f0233cd6a553057e0283f8cd5cbbbcc2a8b085
+  DriveKitDriverData: 485484faee0bc28883089952d03e832db9aea2e4
+  DriveKitNetworking: 810de93091ec448bcbe5e35b354651a3c77b20e4
+  DriveKitTripAnalysis: 386b3c0a1f65512cc17dabc53390752b53e48027
+  DriveKitTripSimulator: 1b0db712157596922ad16f7cdae529b9bef3255d
   FBLazyVector: 5f81939bc6d6bcd3e71bba3744753c2a88991395
   FBReactNativeSpec: 7dadaedadbfc109d0b3773aabf45032cc7c5322d
   Flipper: 26fc4b7382499f1281eb8cb921e5c3ad6de91fe0
@@ -706,10 +706,10 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 782255d790723bf2bf8d22798f7f3eced6f5d85f
   React-jsinspector: 7218c92923292e20326a1eed3104fe90393ca449
   React-logger: d4343967f7bff885c453bcfb57074bf8ffaa4b34
-  react-native-drivekit-core: 9f7508fce19111923e0f38bbb9fab1ee0c333d8a
-  react-native-drivekit-driver-data: 0b762dcd51ffa08e7fef5cafb68ad51ced802370
-  react-native-drivekit-trip-analysis: 90c896ae74eb0373de85289f8c8fbe6a7c6bac61
-  react-native-drivekit-trip-simulator: fea92153c7aad148d1c2c7273040d78b603dd124
+  react-native-drivekit-core: 45f7907b3e7fe345ad8aab8cf9b23083b1a70177
+  react-native-drivekit-driver-data: 09ce920f961d20c9c5f02c7e6ecd897eb74c7880
+  react-native-drivekit-trip-analysis: 78357bc719064fa9949202feae5b76c2303eb6cb
+  react-native-drivekit-trip-simulator: 60ca93ba600e6b3dcfd6d197a8b9b57667078d26
   React-perflogger: c8849042b03392681ebd5d99a0775dbadfad2c74
   React-RCTActionSheet: 6bd3b502da266d69942e9ce4bc13666f90544620
   React-RCTAnimation: 63fbec04ae279b387ac786898bd5a918b8875f48
