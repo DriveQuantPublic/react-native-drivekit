@@ -21,6 +21,11 @@ import type {
   TripMetadata,
   CurrentTripInfo,
   LastTripLocation,
+  DKTripRecordingStartedState,
+  DKTripRecordingConfirmedState,
+  DKTripRecordingCanceledState,
+  DKTripRecordingFinishedState,
+  TripResult,
 } from './types';
 
 const LINKING_ERROR =
@@ -92,13 +97,12 @@ export function setVehicle(
 }
 
 type Listeners = {
-  tripStarted: (startMode: StartMode) => void;
+  tripRecordingStarted: (state: DKTripRecordingStartedState) => void;
+  tripRecordingConfirmed: (state: DKTripRecordingConfirmedState) => void;
+  tripRecordingCanceled: (state: DKTripRecordingCanceledState) => void;
+  tripRecordingFinished: (state: DKTripRecordingFinishedState) => void;
+  tripFinishedWithResult: (result: TripResult) => void;
   tripPoint: (tripPoint: TripPoint) => void;
-  tripCancelled: (reason: CancelTripReason) => void;
-  tripFinished: (data: {
-    post: PostGeneric;
-    response: PostGenericResponse;
-  }) => void;
   potentialTripStart: (startMode: StartMode) => void;
   tripSavedForRepost: () => void;
   beaconDetected: () => void;
@@ -108,6 +112,24 @@ type Listeners = {
   crashFeedbackSent: (crashFeedback: CrashFeedback) => void;
   bluetoothSensorStateChanged: (state: BluetoothState) => void;
   gpsSensorStateChanged: (state: GpsState) => void;
+
+  /**
+   * @deprecated The method is replaced by tripRecordingConfirmed
+   */
+  tripStarted: (startMode: StartMode) => void;
+
+  /**
+   * @deprecated The method is replaced by tripRecordingCanceled
+   */
+  tripCancelled: (reason: CancelTripReason) => void;
+
+  /**
+   * @deprecated The method is replaced by tripFinishedWithResult
+   */
+  tripFinished: (data: {
+    post: PostGeneric;
+    response: PostGenericResponse;
+  }) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DriveKitTripAnalysis);

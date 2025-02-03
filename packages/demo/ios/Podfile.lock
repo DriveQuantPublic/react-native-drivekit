@@ -357,16 +357,16 @@ PODS:
   - React-jsinspector (0.71.18)
   - React-logger (0.71.18):
     - glog
-  - react-native-drivekit-core (2.4.2):
+  - react-native-drivekit-core (2.4.3):
     - DriveKitCore (= 2.9.0)
     - React-Core
-  - react-native-drivekit-driver-data (2.4.2):
+  - react-native-drivekit-driver-data (2.4.3):
     - DriveKitDriverData (= 2.9.0)
     - React-Core
-  - react-native-drivekit-trip-analysis (2.4.2):
+  - react-native-drivekit-trip-analysis (2.4.3):
     - DriveKitTripAnalysis (= 2.9.0)
     - React-Core
-  - react-native-drivekit-trip-simulator (2.4.2):
+  - react-native-drivekit-trip-simulator (2.4.3):
     - DriveKitTripSimulator (= 2.9.0)
     - React-Core
   - React-perflogger (0.71.18)
@@ -688,33 +688,33 @@ SPEC CHECKSUMS:
   hermes-engine: 251dcc3511fc68678e2ee96dd7d175d9489b781e
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  Permission-BluetoothPeripheral: 67708853584bb9208c76d36d0e0ea4eafb97ea5b
-  Permission-LocationAlways: 8d99b025c9f73c696e0cdb367e42525f2e9a26f2
-  Permission-LocationWhenInUse: 3ba99e45c852763f730eabecec2870c2382b7bd4
-  Permission-Motion: d3e5ac6c989b2594a3c5c5ab19ffe9453fa3eb5c
+  Permission-BluetoothPeripheral: 632067effc566e9100d19efa57e282dda4e87afb
+  Permission-LocationAlways: 49fa186f3b46c173eb6981f40038569d047f83cd
+  Permission-LocationWhenInUse: 269715b4efa337c782d9c44e506aa3ae4be77dd7
+  Permission-Motion: 78ea2a70cb324850dded706095c0f44afe7def32
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: 467cd79889cbcfd008d0ff7c697f73765d4578c3
   RCTTypeSafety: 71c8b219dc633684896452fee38a1e442d167dd6
   React: b807b09e4402c12dcbc44176e50533dca10d01f0
   React-callinvoker: f34a25e5656a6689ceaa419e833e7907b8fefef3
-  React-Codegen: c252b1d468b0d2586f7573672a3d637884d0b5be
-  React-Core: 4161fa6a64a5ec632e31dd89e7e833f2d5205bb1
-  React-CoreModules: a2e0234e69404f0703cb8fe288e7093388943c62
-  React-cxxreact: 63102ee4eb505c1b13cc54cf975cd94ba223bc91
-  React-hermes: de910b47c7f970987821998b09fda450f0a8aa4e
-  React-jsi: c1a489e635aef9afcc2aedfc08abaf53df6b2993
-  React-jsiexecutor: a60e1117c011cbb6a95418f4bf67d6dfbbf81772
+  React-Codegen: 53d4766d759b243d1707fcb2edfa7635a6eeb557
+  React-Core: 057cb1dffd3f97c434af57ed4ec124e7f55575bd
+  React-CoreModules: c9f82186403faf8707d5466f20e7378272e2b2ef
+  React-cxxreact: d251fb9ed7bec53ac2c9a582980ed553269a2382
+  React-hermes: f7e3ef32ccf7150f29e0d834bd75d24bf9a104b5
+  React-jsi: 88cc4f3a4f2ebc2f7dc8394b53777a2322ffa2e1
+  React-jsiexecutor: 782255d790723bf2bf8d22798f7f3eced6f5d85f
   React-jsinspector: 7218c92923292e20326a1eed3104fe90393ca449
-  React-logger: 166cf6649b5ea9e26ab816073dd0e68020561d65
-  react-native-drivekit-core: b3baf2578c05bf8d1497a032bf384a8c3f77bb65
-  react-native-drivekit-driver-data: 8feaafd296cb10c453033dba3950af9e0ac6b494
-  react-native-drivekit-trip-analysis: 24751a6528dbc73e4ce46a8b62e8bff56bfd61a5
-  react-native-drivekit-trip-simulator: 17cadb751d7d7b3cda0174137858269668db3241
+  React-logger: d4343967f7bff885c453bcfb57074bf8ffaa4b34
+  react-native-drivekit-core: 9f7508fce19111923e0f38bbb9fab1ee0c333d8a
+  react-native-drivekit-driver-data: 0b762dcd51ffa08e7fef5cafb68ad51ced802370
+  react-native-drivekit-trip-analysis: 90c896ae74eb0373de85289f8c8fbe6a7c6bac61
+  react-native-drivekit-trip-simulator: fea92153c7aad148d1c2c7273040d78b603dd124
   React-perflogger: c8849042b03392681ebd5d99a0775dbadfad2c74
   React-RCTActionSheet: 6bd3b502da266d69942e9ce4bc13666f90544620
   React-RCTAnimation: 63fbec04ae279b387ac786898bd5a918b8875f48
-  React-RCTAppDelegate: 4cdf489597db359817035fb9d0df423ac0b28e07
-  React-RCTBlob: 53d7ffeac3273365347ea7ee437e0413f9528870
+  React-RCTAppDelegate: 63af69b0897897326db7f98135c2ded518bdcb64
+  React-RCTBlob: 5beccfd56449228142c0c770ea172cd7b342246e
   React-RCTImage: 63abc85bc7892202ac06e2f66e4a2aa1c872fadc
   React-RCTLinking: ddaeb10a11319fa73b31d0e9faebb1efd15923d6
   React-RCTNetwork: 4d37a8ece3e592bc38ffe57b434b38af907a2a07
@@ -722,14 +722,14 @@ SPEC CHECKSUMS:
   React-RCTText: 502699e3064c8970ea52ad081d8ab8583d019dcb
   React-RCTVibration: e14a0c49feb892af58079cdce3c0e00845a9752b
   React-runtimeexecutor: 42879042777099d3a2a7985b240f1da24300a773
-  ReactCommon: 6b451ad57a7859920ee0ec84163d3c42d933abd6
-  RNCCheckbox: 75255b03e604bbcc26411eb31c4cbe3e3865f538
-  RNNotifee: 8527a2b9ffc6d0abfd907027e22962a809e39eee
-  RNPermissions: dcdb7b99796bbeda6975a6e79ad519c41b251b1c
+  ReactCommon: 9984ca5a05941ab49b1e46af867742a4d7837dfd
+  RNCCheckbox: 3d6503c301824dbb13a88a4eecaa8000afe2fb72
+  RNNotifee: b07875d79cbeb33973a0393516af1fcd28ecef6e
+  RNPermissions: 8709597abda86902b17f5b547e76be4bde8a306f
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: e407d2e8cc6cf5170a1dddf459f9fc612f85fcac
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
 PODFILE CHECKSUM: 48f201f94cb0604f36b7032acb6650a6db301432
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

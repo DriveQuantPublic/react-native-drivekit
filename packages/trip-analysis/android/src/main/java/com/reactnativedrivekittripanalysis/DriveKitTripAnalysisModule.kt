@@ -12,11 +12,16 @@ import com.drivequant.drivekit.tripanalysis.entity.TripVehicle
 import com.drivequant.drivekit.core.common.model.DKTripLocation
 import com.drivequant.drivekit.tripanalysis.model.currenttripinfo.DKTripInfo
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingCanceledState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingConfirmedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingFinishedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingStartedState
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.CancelTrip
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.google.gson.Gson
@@ -137,7 +142,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     DriveKitTripAnalysis.setVehicle(tripVehicle)
     promise.resolve(null)
   }
-  
+
   @ReactMethod
   override fun getCurrentTripInfo(promise: Promise) {
     promise.resolve(DKTripInfoMapper.mapDKTripInfoToReadableMap(DriveKitTripAnalysis.getCurrentTripInfo()))
@@ -152,12 +157,12 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     const val NAME = "RNDriveKitTripAnalysis"
 
     var reactContext: ReactApplicationContext? = null
-    
+
     fun initialize(rnTripNotification: RNTripNotification, rnHeadlessJSNotification: RNHeadlessJSNotification) {
       val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
 
       configureHeadlessJSNotification(rnHeadlessJSNotification)
-  
+
       DriveKitTripAnalysis.initialize(tripNotification)
 
       addTripListener()
@@ -177,10 +182,34 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
 
     fun addTripListener() {
       DriveKitTripAnalysis.addTripListener(object : TripListener {
-        override fun tripStarted(startMode: StartMode) {
-          HeadlessJsManager.sendTripStartedEvent(startMode)
+        override fun tripRecordingStarted(state: DKTripRecordingStartedState) {
+          HeadlessJsManager.sendTripRecordingStartedEvent(state)
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-            ?.emit("tripStarted", mapStartMode(startMode))
+            ?.emit("tripRecordingStarted", mapTripRecordingStartedState(state))
+        }
+
+        override fun tripRecordingConfirmed(state: DKTripRecordingConfirmedState) {
+          HeadlessJsManager.sendTripRecordingConfirmedEvent(state)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripRecordingConfirmed", mapTripRecordingConfirmedState(state))
+        }
+
+        override fun tripRecordingCanceled(state: DKTripRecordingCanceledState) {
+          HeadlessJsManager.sendTripRecordingCanceledEvent(state)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripRecordingCanceled", mapTripRecordingCanceledState(state))
+        }
+
+        override fun tripRecordingFinished(state: DKTripRecordingFinishedState) {
+          HeadlessJsManager.sendTripRecordingFinishedEvent(state)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripRecordingFinished", mapTripRecordingFinishedState(state))
+        }
+
+        override fun tripFinished(result: TripResult) {
+          HeadlessJsManager.sendTripFinishedWithResultEvent(result)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripFinishedWithResult", mapTripFinishedWithResult(result))
         }
 
         override fun tripPoint(tripPoint: TripPoint) {
@@ -193,21 +222,6 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
           HeadlessJsManager.sendTripForRepostEvent()
           reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             ?.emit("tripSavedForRepost", null)
-        }
-
-        override fun tripFinished(post: PostGeneric, response: PostGenericResponse) {
-          val gson = Gson()
-          val result = Arguments.createMap()
-          result.putString("post", gson.toJson(post))
-          result.putString("response", gson.toJson(response))
-          HeadlessJsManager.sendTripFinishedEvent(post, response)
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripFinished", result)
-        }
-
-        override fun tripCancelled(cancelTrip: CancelTrip) {
-          HeadlessJsManager.sendTripCancelledEvent(cancelTrip)
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-            ?.emit("tripCancelled", mapCancelTrip(cancelTrip))
         }
 
         override fun beaconDetected() {
@@ -269,6 +283,27 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
               reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("gpsSensorStateChanged", result)
             }
           }
+        }
+
+        override fun tripStarted(startMode: StartMode) {
+          HeadlessJsManager.sendTripStartedEvent(startMode)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripStarted", mapStartMode(startMode))
+        }
+
+        override fun tripCancelled(cancelTrip: CancelTrip) {
+          HeadlessJsManager.sendTripCancelledEvent(cancelTrip)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+            ?.emit("tripCancelled", mapCancelTrip(cancelTrip))
+        }
+
+        override fun tripFinished(post: PostGeneric, response: PostGenericResponse) {
+          val gson = Gson()
+          val result = Arguments.createMap()
+          result.putString("post", gson.toJson(post))
+          result.putString("response", gson.toJson(response))
+          HeadlessJsManager.sendTripFinishedEvent(post, response)
+          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("tripFinished", result)
         }
       })
     }

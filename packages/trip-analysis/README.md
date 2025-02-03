@@ -169,20 +169,25 @@ useEffect(() => {
 
 Here is the list of supported events:
 
+- `tripRecordingStarted`, callback `(state: DKTripRecordingStartedState) => void`: Immediately called when a trip recording starts. This callback is triggered after calling the DriveKit SDK's `startTrip()` method or after automatic trip detection. `DKTripRecordingStartedState` object is described [here](https://docs.drivequant.com/trip-analysis/ios/references#dktriprecordingstartedstate).
+- `tripRecordingConfirmed`, callback `(state: DKTripRecordingConfirmedState) => void`: Called when a trip is confirmed. `DKTripRecordingConfirmedState` object is described [here](https://docs.drivequant.com/trip-analysis/ios/references#dktriprecordingconfirmedstate).
+- `tripRecordingCanceled`, callback `(state: DKTripRecordingCanceledState) => void`: Called when a trip recording is canceled. `DKTripRecordingCanceledState` indicates which event has canceled the trip. `DKTripRecordingCanceledState` object is described [here](https://docs.drivequant.com/trip-analysis/ios/references#dktriprecordingcanceledstate).
+- `tripRecordingFinished`, callback `(state: DKTripRecordingFinishedState) => void`: Called when trip recording has ended, before sending trip data to DriveQuant's servers. `DKTripRecordingFinishedState` object is described [here](https://docs.drivequant.com/trip-analysis/ios/references#dktriprecordingfinishedstate).
+- `tripFinishedWithResult`, callback `(result: TripResult) => void`: Called when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. `TripResult` object contains trip response status details. Read more [here](https://docs.drivequant.com/trip-analysis/ios/references#tripresponsestatus).
 - `tripPoint`, callback `(tripPoint: TripPoint) => void`: This event is triggered when a trip is started and confirmed, for each GPS point recorded by the SDK.
-- `tripStarted`, callback `(startMode: StartMode) => void`: This event is triggered each time a trip is started. StartMode indicates which event starts the trip.
-- `tripCancelled`, callback `(cancelTrip: CancelTrip) => void`: This event is triggered when a trip is cancelled. CancelTrip indicates which event cancels the trip.
-- `tripFinished`, callback `(post: PostGeneric, response: PostGenericResponse)`: This event is triggered when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. PostGeneric object contains raw data sent to DriveQuant's server, PostGenericResponse object contains the trip analysis made on DriveQuant's server.
 - `tripSavedForRepost`, callback `() => void`: This event is triggered if at the end of the trip, the trip can be sent to DriveQuant's server for the analysis. The trip is saved locally on the SDK and will be sent later.
 - `beaconDetected`, callback `() => void`: This event is triggered when a beacon sets in the SDK is detected.
 - `significantLocationChangeDetected`, callback `() => void`: This event is triggered when a user significant location change is detected. (only for iOS)
 - `sdkStateChanged`, callback `(state: State) => void`: This event is triggered every time the state of the SDK changed with the new state as parameter.
 - `crashDetected`, callback `(info: CrashInfo) => void`: This event is triggered when crash detection feature is enabled and available for your team and when a crash has been detected.
 - `crashFeedbackSent`, callback `(crashFeedback: CrashFeedback) => void`: Event triggered when crash feedback is enabled and a confirmed crash is detected. This callback will contain crash information and the feedback from the user.
+- `tripStarted (deprecated)`, callback `(startMode: StartMode) => void`: Use the callback `tripRecordingConfirmed()` instead. This event is triggered each time a trip is started. StartMode indicates which event starts the trip.
+- `tripCancelled (deprecated)`, callback `(cancelTrip: CancelTrip) => void`: Use the callback `tripRecordingCanceled()` instead. This event is triggered when a trip is canceleed. CancelTrip indicates which event cancels the trip.
+- `tripFinished (deprecated)`, callback `(post: PostGeneric, response: PostGenericResponse)`: Use the callback `tripFinishedWithResult()` instead. This event is triggered when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. PostGeneric object contains raw data sent to DriveQuant's server, PostGenericResponse object contains the trip analysis made on DriveQuant's server.
 
 ## Headless JS (Android only)
 
-To display a notification when the trip is finished or cancelled for example, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
+To display a notification when the trip is finished or canceled for example, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
 
 Follow these steps :
 
@@ -233,7 +238,7 @@ activateAutoStart(false);
 
 > ⚠️
 >
-> If a trip is running when automatic trip detection is disabled, the trip will not be cancelled. If you want to cancel the trip, you should also call cancelTrip method.
+> If a trip is running when automatic trip detection is disabled, the trip will not be canceled. If you want to cancel the trip, you should also call cancelTrip method.
 
 ### startTrip
 
@@ -485,11 +490,11 @@ await getCurrentTripInfo();
 
 #### CurrentTripInfo
 
-| Field       | Type      | Description                                                                                                                                                                                                                   |
-|-------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| localTripId | String    | Local and unique trip identifier generated by DriveKit SDK. ⚠️ It is different from the `itinId` property returned in the Trip object.  `itinId` corresponds to the unique trip identifier generated after the data analysis. |
+| Field       | Type      | Description                                                                                                                                                                                                                  |
+| ----------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| localTripId | String    | Local and unique trip identifier generated by DriveKit SDK. ⚠️ It is different from the `itinId` property returned in the Trip object. `itinId` corresponds to the unique trip identifier generated after the data analysis. |
 | date        | Date      | Start date of the trip analysis. ⚠️ It is different from the `startDate` property returned in the Trip object.                                                                                                               |
-| startMode   | StartMode | The `StartMode` which triggered the trip analysis.                                                                                                                                                                            |
+| startMode   | StartMode | The `StartMode` which triggered the trip analysis.                                                                                                                                                                           |
 
 ### getLastTripLocation
 
@@ -506,15 +511,15 @@ await getLastTripLocation();
 > ℹ️
 >
 > The method can return null if the user:
-> 
-> * is not authenticated,
-> * or didn’t make a trip since the authentication,
-> * or hasn’t made any valid trips.
+>
+> - is not authenticated,
+> - or didn’t make a trip since the authentication,
+> - or hasn’t made any valid trips.
 
 #### LastTripLocation
 
 | Field         | Type          | Description                                                  |
-|---------------|---------------|--------------------------------------------------------------|
+| ------------- | ------------- | ------------------------------------------------------------ |
 | date          | Date          | Date of the end of trip.                                     |
 | latitude      | number        | Latitude of the end of the trip.                             |
 | longitude     | number        | Longitude of the end of the trip.                            |
@@ -524,7 +529,7 @@ await getLastTripLocation();
 #### AccuracyLevel
 
 | Field | Description                                   |
-|-------|-----------------------------------------------|
+| ----- | --------------------------------------------- |
 | GOOD  | The GPS accuracy is strictly below 10 meters. |
 | FAIR  | The GPS accuracy is between 10 and 30 meters. |
 | POOR  | The GPS accuracy is strictly above 30 meters. |

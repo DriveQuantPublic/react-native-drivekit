@@ -100,33 +100,38 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {
-    public func tripStarted(startMode: DriveKitTripAnalysisModule.StartMode) {
-        let rnStartMode = mapStartMode(startMode: startMode)
-        if let unwrappedRNStartMode = rnStartMode {
-            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripStarted", body: unwrappedRNStartMode)
-        }
+
+    public func tripRecordingStarted(state: DriveKitTripAnalysisModule.DKTripRecordingStartedState) {
+        let rnTripRecordingStartedState = mapTripRecordingStartedState(state: state)
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "tripRecordingStarted", body: rnTripRecordingStartedState)
+    }
+
+    public func tripRecordingConfirmed(state: DriveKitTripAnalysisModule.DKTripRecordingConfirmedState) {
+        let rnTripRecordingConfirmedState = mapTripRecordingConfirmedState(state: state)
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "tripRecordingConfirmed", body: rnTripRecordingConfirmedState)
+    }
+
+    public func tripRecordingCanceled(state: DriveKitTripAnalysisModule.DKTripRecordingCanceledState) {
+        let rnTripRecordingCanceledState = mapTripRecordingCanceledState(state: state)
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "tripRecordingCanceled", body: rnTripRecordingCanceledState)
+    }
+
+    public func tripRecordingFinished(state: DriveKitTripAnalysisModule.DKTripRecordingFinishedState) {
+        let rnTripRecordingFinishedState = mapTripRecordingFinishedState(state: state)
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "tripRecordingFinished", body: rnTripRecordingFinishedState)
+    }
+
+    public func tripFinished(responseStatus: DriveKitTripAnalysisModule.TripResponseStatus) {
+        let rnTripResult = mapTripResult(result: responseStatus)
+        RNTripAnalysisEventEmitter.shared.dispatch(name: "tripFinishedWithResult", body: rnTripResult)
     }
 
     public func tripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) {
         RNTripAnalysisEventEmitter.shared.dispatch(name: "tripPoint", body: mapTripPoint(tripPoint: tripPoint))
     }
 
-    public func tripFinished(post: DriveKitTripAnalysisModule.PostGeneric, response: DriveKitTripAnalysisModule.PostGenericResponse) {
-        if let unwrappedJSONPost = post.toJSON().toJSONString(), let unwrappedJSONResponse = response.toJSON().toJSONString() {
-            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripFinished", body: ["post": unwrappedJSONPost, "response": unwrappedJSONResponse])
-        }
-    }
-
-    public func tripCancelled(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) {
-        let rnCancelTrip = mapCancelTrip(cancelTrip: cancelTrip)
-        if let unwrappedRNCancelTrip = rnCancelTrip {
-            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedRNCancelTrip)
-        }
-    }
-
     public func tripSavedForRepost() {
         RNTripAnalysisEventEmitter.shared.dispatch(name: "tripSavedForRepost", body: nil)
-
     }
 
     public func beaconDetected() {
@@ -140,7 +145,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     public func sdkStateChanged(state: DriveKitTripAnalysisModule.State) {
         let rnSDKStateChanged = mapSDKState(state: state)
         if let unwrappedSDKStateChanged = rnSDKStateChanged {
-            RNTripAnalysisEventEmitter.shared.dispatch(name: "sdkStateChanged", body: unwrappedSDKStateChanged )
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "sdkStateChanged", body: unwrappedSDKStateChanged)
         }
     }
 
@@ -160,4 +165,23 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
                                         [crashInfo: mapDKCrashInfo(info: crashInfo), feedbackType: mapDKCrashFeedbackType(type: feedbackType), severity: mapDKCrashFeedbackSeverity(severity: severity)])
     }
 
+    public func tripStarted(startMode: DriveKitTripAnalysisModule.StartMode) {
+        let rnStartMode = mapStartMode(startMode: startMode)
+        if let unwrappedRNStartMode = rnStartMode {
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripStarted", body: unwrappedRNStartMode)
+        }
+    }
+
+    public func tripFinished(post: DriveKitTripAnalysisModule.PostGeneric, response: DriveKitTripAnalysisModule.PostGenericResponse) {
+        if let unwrappedJSONPost = post.toJSON().toJSONString(), let unwrappedJSONResponse = response.toJSON().toJSONString() {
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripFinished", body: ["post": unwrappedJSONPost, "response": unwrappedJSONResponse])
+        }
+    }
+
+    public func tripCancelled(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) {
+        let rnCancelTrip = mapCancelTrip(cancelTrip: cancelTrip)
+        if let unwrappedRNCancelTrip = rnCancelTrip {
+            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedRNCancelTrip)
+        }
+    }
 }
