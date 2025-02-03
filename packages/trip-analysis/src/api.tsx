@@ -175,3 +175,7 @@ export function getCurrentTripInfo(): Promise<CurrentTripInfo | null> {
 export function getLastTripLocation(): Promise<LastTripLocation | null> {
   return DriveKitTripAnalysis.getLastTripLocation();
 }
+
+export function isTripSharingAvailable(): Promise<boolean> {
+  return DriveKitTripAnalysis.isTripSharingAvailable();
+}
