@@ -6,8 +6,6 @@ import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
 import com.reactnativedrivekit.driverdata.TripsSyncMappers.toReadableMap
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
 object TripsSyncMappers {
@@ -28,11 +26,10 @@ object TripsSyncMappers {
 
   internal fun Trip.toReadableMap(): ReadableMap {
     val map = Arguments.createMap()
-    val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
 
     map.putString("itinId", itinId)
-    map.putString("endDate", backendDateFormat.format(endDate))
-    map.putString("startDate", backendDateFormat.format(endDate))
+    map.putString("endDate", endDate.toDriveKitBackendFormat())
+    map.putString("startDate", startDate?.toDriveKitBackendFormat())
     map.putString("vehicleId", vehicleId)
     map.putInt("transportationMode", transportationMode.value)
     map.putString("departureCity", departureCity)
@@ -48,7 +45,7 @@ object TripsSyncMappers {
     map.putMap("safety", safety?.toReadableMap())
     map.putMap("tireWear", tireWear?.toReadableMap())
     map.putMap("driverDistraction", driverDistraction?.toReadableMap())
-    map.putMap("logbook", logbook?.toReadableMap(backendDateFormat))
+    map.putMap("logbook", logbook?.toReadableMap())
     map.putMap("pollutants", pollutants?.toReadableMap())
     map.putMap("declaredTransportationMode", declaredTransportationMode?.toReadableMap())
     map.putMap("maneuver", maneuverData?.toReadableMap())
@@ -213,14 +210,14 @@ object TripsSyncMappers {
     }
   }
 
-  private fun Logbook?.toReadableMap(dateFormat: DateFormat): ReadableMap? {
+  private fun Logbook?.toReadableMap(): ReadableMap? {
     return if (this == null) {
       null
     } else {
       val map = Arguments.createMap()
       map.putInt("status", status)
       updateDate?.let {
-        map.putString("updateDate", dateFormat.format(it))
+        map.putString("updateDate", it.toDriveKitBackendFormat())
       }
       map
     }

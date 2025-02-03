@@ -25,9 +25,6 @@ import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.HeadlessJsTaskService
 import com.google.gson.Gson
 import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 object HeadlessJsManager : AppStateListener {
 
@@ -41,49 +38,45 @@ object HeadlessJsManager : AppStateListener {
   }
 
   fun sendTripRecordingStartedEvent(state: DKTripRecordingStartedState) {
-    val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
     val bundle = Bundle()
     bundle.putString("eventType", EventType.TRIP_RECORDING_STARTED.name)
     bundle.putString("localTripId", state.localTripId)
     bundle.putString("startMode", state.startMode.name)
-    bundle.putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    bundle.putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
     sendEvent(bundle)
   }
 
   fun sendTripRecordingConfirmedEvent(state: DKTripRecordingConfirmedState) {
-    val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
     val bundle = Bundle()
     bundle.putString("eventType", EventType.TRIP_RECORDING_CONFIRMED.name)
     bundle.putString("localTripId", state.localTripId)
     bundle.putString("startMode", state.startMode.name)
-    bundle.putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
-    bundle.putString("recordingConfirmationDate", backendDateFormat.format(state.recordingConfirmationDate))
+    bundle.putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    bundle.putString("recordingConfirmationDate", state.recordingConfirmationDate.toDriveKitBackendFormat())
     sendEvent(bundle)
   }
 
   fun sendTripRecordingCanceledEvent(state: DKTripRecordingCanceledState) {
-    val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
     val bundle = Bundle()
     bundle.putString("eventType", EventType.TRIP_RECORDING_CANCELED.name)
     bundle.putString("localTripId", state.localTripId)
     bundle.putString("startMode", state.startMode.name)
-    bundle.putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    bundle.putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
     state.recordingConfirmationDate?.let {
-      bundle.putString("recordingConfirmationDate", backendDateFormat.format(it))
+      bundle.putString("recordingConfirmationDate", it.toDriveKitBackendFormat())
     }
     bundle.putString("cancelationReason", state.cancelationReason.name)
     sendEvent(bundle)
   }
 
   fun sendTripRecordingFinishedEvent(state: DKTripRecordingFinishedState) {
-    val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
     val bundle = Bundle()
     bundle.putString("eventType", EventType.TRIP_RECORDING_FINISHED.name)
     bundle.putString("localTripId", state.localTripId)
     bundle.putString("startMode", state.startMode.name)
-    bundle.putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
-    bundle.putString("recordingConfirmationDate", backendDateFormat.format(state.recordingConfirmationDate))
-    bundle.putString("recordingEndDate", backendDateFormat.format(state.recordingEndDate))
+    bundle.putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    bundle.putString("recordingConfirmationDate", state.recordingConfirmationDate.toDriveKitBackendFormat())
+    bundle.putString("recordingEndDate", state.recordingEndDate.toDriveKitBackendFormat())
     sendEvent(bundle)
   }
 

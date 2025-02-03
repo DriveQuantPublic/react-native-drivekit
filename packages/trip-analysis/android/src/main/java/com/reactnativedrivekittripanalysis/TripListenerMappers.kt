@@ -18,10 +18,6 @@ import com.drivequant.drivekit.tripanalysis.service.recorder.State
 import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReadableMap
-import com.google.gson.Gson
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 fun mapStartMode(startMode: StartMode): String {
   return when (startMode) {
@@ -125,37 +121,34 @@ fun mapTripCancelationReason(cancelationReason: DKTripCancelationReason): String
   }
 
 fun mapTripRecordingStartedState(state: DKTripRecordingStartedState): ReadableMap {
-  val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
   val map = Arguments.createMap()
   map.apply {
     putString("localTripId", state.localTripId)
     putString("startMode", mapStartMode(state.startMode))
-    putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
   }
   return map
 }
 
 fun mapTripRecordingConfirmedState(state: DKTripRecordingConfirmedState): ReadableMap {
-  val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
   val map = Arguments.createMap()
   map.apply {
     putString("localTripId", state.localTripId)
     putString("startMode", mapStartMode(state.startMode))
-    putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
-    putString("recordingConfirmationDate", backendDateFormat.format(state.recordingConfirmationDate))
+    putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    putString("recordingConfirmationDate", state.recordingConfirmationDate.toDriveKitBackendFormat())
   }
   return map
 }
 
 fun mapTripRecordingCanceledState(state: DKTripRecordingCanceledState): ReadableMap {
-  val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
   val map = Arguments.createMap()
   map.apply {
     putString("localTripId", state.localTripId)
     putString("startMode", mapStartMode(state.startMode))
-    putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
+    putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
     state.recordingConfirmationDate?.let {
-      putString("recordingConfirmationDate", backendDateFormat.format(it))
+      putString("recordingConfirmationDate", it.toDriveKitBackendFormat())
     }
     putString("cancelationReason", mapTripCancelationReason(state.cancelationReason))
   }
@@ -163,14 +156,13 @@ fun mapTripRecordingCanceledState(state: DKTripRecordingCanceledState): Readable
 }
 
 fun mapTripRecordingFinishedState(state: DKTripRecordingFinishedState): ReadableMap {
-  val backendDateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
   val map = Arguments.createMap()
   map.apply {
     putString("localTripId", state.localTripId)
     putString("startMode", mapStartMode(state.startMode))
-    putString("recordingStartDate", backendDateFormat.format(state.recordingStartDate))
-    putString("recordingConfirmationDate", backendDateFormat.format(state.recordingConfirmationDate))
-    putString("recordingEndDate", backendDateFormat.format(state.recordingEndDate))
+    putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    putString("recordingConfirmationDate", state.recordingConfirmationDate.toDriveKitBackendFormat())
+    putString("recordingEndDate", state.recordingEndDate.toDriveKitBackendFormat())
   }
   return map
 }
