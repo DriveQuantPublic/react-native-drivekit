@@ -139,8 +139,8 @@ func mapTripResponseStatusType(status: TripResponseStatusType) -> String? {
             rnStatus = "TRIP_VALID"
         case .tripError:
             rnStatus = "TRIP_ERROR"
-            @unknown default:
-        print("[mapTripResponseStatusType] Unknown status \(status.rawValue)")
+        @unknown default:
+            print("[mapTripResponseStatusType] Unknown status \(status.rawValue)")
     }
     return rnStatus
 }
