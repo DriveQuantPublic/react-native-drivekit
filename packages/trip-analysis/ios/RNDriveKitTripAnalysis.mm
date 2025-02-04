@@ -138,6 +138,11 @@ RCT_REMAP_METHOD(getLastTripLocation, getLastTripLocationWithResolve:(RCTPromise
     [self getLastTripLocation:resolve rejecter:reject];
 }
 
+RCT_REMAP_METHOD(isTripSharingAvailable, isTripSharingAvailableWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    NSNumber* isTripSharingAvailable = [self isTripSharingAvailable];
+    resolve(isTripSharingAvailable);
+}
 
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
@@ -201,6 +206,10 @@ RCT_REMAP_METHOD(getLastTripLocation, getLastTripLocationWithResolve:(RCTPromise
 
 -(void)getLastTripLocation:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
     [RNDriveKitTripAnalysisWrapper.shared getLastTripLocationWithResolver:resolve rejecter:reject];
+}
+
+-(NSNumber *)isTripSharingAvailable {
+  return [RNDriveKitTripAnalysisWrapper.shared isTripSharingAvailable];
 }
 
 

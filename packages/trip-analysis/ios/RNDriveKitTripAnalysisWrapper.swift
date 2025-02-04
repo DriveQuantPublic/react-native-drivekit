@@ -46,7 +46,7 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     }
 
     @objc internal func enableMonitorPotentialTripStart(enable: NSNumber) -> Void {
-        DriveKitTripAnalysis.shared.monitorPotentialTripStart =  enable.boolValue;
+        DriveKitTripAnalysis.shared.monitorPotentialTripStart = enable.boolValue;
     }
 
     @objc internal func reset() -> Void {
@@ -96,6 +96,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
       } else {
         resolve(nil)
       }
+    }
+  
+    @objc internal func isTripSharingAvailable() -> NSNumber {
+      return NSNumber(value: DriveKitTripAnalysis.shared.tripSharing.isAvailable());
     }
 }
 
