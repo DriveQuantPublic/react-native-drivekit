@@ -144,3 +144,48 @@ export enum TripResponseError {
   ACCOUNT_LIMIT_REACHED,
   UNKNOWN_ERROR,
 }
+
+export type TripSharingLink = {
+  code: string;
+  startDate: string;
+  endDate: string;
+  url: string;
+};
+
+export enum CreateTripSharingLinkStatus {
+  SUCCESS,
+  ERROR,
+  USER_NOT_CONNECTED,
+  INVALID_DURATION,
+  UNAUTHENTICATED,
+  FORBIDDEN,
+  ACTIVE_LINK_ALREADY_EXISTS,
+}
+
+export enum GetTripSharingLinkStatus {
+  SUCCESS,
+  FAILED_TO_GET_CACHE_ONLY,
+  USER_NOT_CONNECTED,
+  UNAUTHENTICATED,
+  FORBIDDEN,
+  NO_ACTIVE_LINK,
+}
+
+export enum RevokeTripSharingLinkStatus {
+  SUCCESS,
+  ERROR,
+  USER_NOT_CONNECTED,
+  UNAUTHENTICATED,
+  FORBIDDEN,
+  NO_ACTIVE_LINK,
+}
+
+export type CreateTripSharingLinkResponse = {
+  status: CreateTripSharingLinkStatus;
+  link: TripSharingLink | null;
+};
+
+export type GetTripSharingLinkResponse = {
+  status: GetTripSharingLinkStatus;
+  link: TripSharingLink | null;
+};

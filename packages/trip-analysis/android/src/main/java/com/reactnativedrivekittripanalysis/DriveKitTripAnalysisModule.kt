@@ -1,6 +1,7 @@
 package com.reactnativedrivekittripanalysis
 
 import android.content.Context
+import com.drivequant.drivekit.core.SynchronizationType
 import com.drivequant.drivekit.tripanalysis.DeviceConfigEvent
 import com.drivequant.drivekit.tripanalysis.DriveKitTripAnalysis
 import com.drivequant.drivekit.tripanalysis.TripListener
@@ -9,8 +10,6 @@ import com.drivequant.drivekit.tripanalysis.entity.PostGenericResponse
 import com.drivequant.drivekit.tripanalysis.entity.TripNotification
 import com.drivequant.drivekit.tripanalysis.entity.TripPoint
 import com.drivequant.drivekit.tripanalysis.entity.TripVehicle
-import com.drivequant.drivekit.core.common.model.DKTripLocation
-import com.drivequant.drivekit.tripanalysis.model.currenttripinfo.DKTripInfo
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
 import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingCanceledState
 import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingConfirmedState
@@ -21,6 +20,10 @@ import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.Cras
 import com.drivequant.drivekit.tripanalysis.service.recorder.CancelTrip
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.drivequant.drivekit.tripanalysis.service.tripsharing.model.CreateTripSharingLinkStatus
+import com.drivequant.drivekit.tripanalysis.service.tripsharing.model.DKTripSharingLink
+import com.drivequant.drivekit.tripanalysis.service.tripsharing.model.GetTripSharingLinkStatus
+import com.drivequant.drivekit.tripanalysis.service.tripsharing.model.RevokeTripSharingLinkStatus
 import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
@@ -156,6 +159,31 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   @ReactMethod
   override fun isTripSharingAvailable(promise: Promise) {
     promise.resolve(DriveKitTripAnalysis.tripSharing.isAvailable())
+  }
+
+  @ReactMethod
+  override fun createTripSharingLink(durationInSec: Int, promise: Promise) {
+    DriveKitTripAnalysis.tripSharing.createLink(durationInSec) { status: CreateTripSharingLinkStatus, link: DKTripSharingLink? ->
+      promise.resolve(TripSharingMapper.mapCreateTripSharingResponseToReadableMap(status, link))
+    }
+  }
+
+  @ReactMethod
+  override fun getTripSharingLink(synchronizationType: String, promise: Promise) {
+    var mappedSynchronizationType: SynchronizationType = SynchronizationType.DEFAULT
+    if (synchronizationType == "cache") {
+      mappedSynchronizationType = SynchronizationType.CACHE
+    }
+    DriveKitTripAnalysis.tripSharing.getLink(mappedSynchronizationType) { status: GetTripSharingLinkStatus, link: DKTripSharingLink? ->
+      promise.resolve(TripSharingMapper.mapGetTripSharingResponseToReadableMap(status, link))
+    }
+  }
+
+  @ReactMethod
+  override fun revokeTripSharingLink(promise: Promise) {
+    DriveKitTripAnalysis.tripSharing.revokeLink { status: RevokeTripSharingLinkStatus ->
+      promise.resolve(status.name)
+    }
   }
 
   companion object {
