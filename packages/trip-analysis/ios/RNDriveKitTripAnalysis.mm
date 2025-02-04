@@ -144,6 +144,21 @@ RCT_REMAP_METHOD(isTripSharingAvailable, isTripSharingAvailableWithResolve:(RCTP
     resolve(isTripSharingAvailable);
 }
 
+RCT_REMAP_METHOD(createTripSharingLink, createTripSharingLinkWithDurationInSeconds:(nonnull NSNumber *)durationInSec withResolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self createTripSharingLink:durationInSec resolver:resolve rejecter:reject];
+}
+
+RCT_REMAP_METHOD(getTripSharingLink, getTripSharingLinkWithSynchronizationType:(NSString *)synchronizationType withResolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getTripSharingLink:synchronizationType resolver:resolve rejecter:reject];
+}
+
+RCT_REMAP_METHOD(revokeTripSharingLink, revokeTripSharingLinkWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self revokeTripSharingLink:resolve rejecter:reject];
+}
+
 - (void)activateAutoStart:(NSNumber *)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
@@ -212,6 +227,17 @@ RCT_REMAP_METHOD(isTripSharingAvailable, isTripSharingAvailableWithResolve:(RCTP
   return [RNDriveKitTripAnalysisWrapper.shared isTripSharingAvailable];
 }
 
+-(void)createTripSharingLink:(NSNumber *)durationInSec resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+  [RNDriveKitTripAnalysisWrapper.shared createTripSharingLinkWithDurationInSeconds:durationInSec resolver:resolve rejecter:reject];
+}
+
+-(void)getTripSharingLink:(NSString *)synchronizationType resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared getTripSharingLinkWithSynchronizationType:synchronizationType resolver:resolve rejecter:reject];
+}
+
+-(void)revokeTripSharingLink:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared revokeTripSharingLinkWithResolver:resolve rejecter:reject];
+}
 
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED

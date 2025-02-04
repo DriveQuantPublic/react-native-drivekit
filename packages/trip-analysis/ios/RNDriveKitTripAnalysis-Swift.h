@@ -25,6 +25,10 @@
 - (NSDictionary * _Nullable)getCurrentTripInfoWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (NSDictionary * _Nullable)getLastTripLocationWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (NSNumber * _Nonnull)isTripSharingAvailable;
+- (void)createTripSharingLinkWithDurationInSeconds:(NSNumber * _Nonnull)durationInSec resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
+- (void)getTripSharingLinkWithSynchronizationType:(NSString * _Nullable)synchronizationType resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
+- (void)revokeTripSharingLinkWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
+
 
 @end
 
