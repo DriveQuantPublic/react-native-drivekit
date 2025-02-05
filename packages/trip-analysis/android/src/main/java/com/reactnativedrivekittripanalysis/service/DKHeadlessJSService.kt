@@ -18,7 +18,7 @@ class DKHeadlessJSService : HeadlessJsTaskService() {
   }
 
   override fun getTaskConfig(intent: Intent): HeadlessJsTaskConfig {
-    TripAnalysisConfig.tripNotification?.let {
+    TripAnalysisConfig.tripNotification.let {
       val mBuilder = NotificationCompat.Builder(this, it.channelId)
         .setSmallIcon(it.iconId)
         .setContentTitle(HeadlessJsManager.notificationTitle)
