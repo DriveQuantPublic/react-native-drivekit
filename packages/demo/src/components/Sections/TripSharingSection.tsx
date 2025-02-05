@@ -1,4 +1,4 @@
-import React, {FunctionComponent, memo} from 'react';
+import React, {FunctionComponent} from 'react';
 import {Alert, Button} from 'react-native';
 import {Section} from './Section';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
