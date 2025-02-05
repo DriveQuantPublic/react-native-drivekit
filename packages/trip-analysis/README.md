@@ -632,3 +632,26 @@ The method takes a `synchronizationType` parameter. It will retrieve locally sto
 | USER_NOT_CONNECTED       | The user is not yet connected to DriveKit. Information returned in `data` is null.                             |
 | UNAUTHENTICATED          | The user has been disconnected. Information returned in data is `null`.                                        |
 | FORBIDDEN                | Your API key is not allowed to use the feature. Information returned in `data` is null.                        |
+
+### revokeTripSharingLink
+
+```typescript
+revokeTripSharingLink(): Promise<RevokeTripSharingLinkStatus>
+```
+
+To revoke a trip sharing link, use the following code:
+
+```typescript
+const result = await DriveKitTripAnalysis.revokeTripSharingLink();
+```
+
+#### RevokeTripSharingLinkStatus
+
+| Field              | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| SUCCESS            | The link has been successfully revoked           |
+| NO_ACTIVE_LINK     | There is no active link for the user             |
+| ERROR              | An error occurred when trying to revoke the link |
+| USER_NOT_CONNECTED | The user is not yet connected to DriveKit        |
+| UNAUTHENTICATED    | The user has been disconnected                   |
+| FORBIDDEN          | Your API key is not allowed to use the feature   |
