@@ -15,10 +15,13 @@ func mapCreateTripSharingResponse(status: DKCreateTripSharingLinkStatus, data: D
     "status": mapCreateTripSharingStatus(status: status) as Any,
   ]
   if let data = data {
-    dict["code"] = data.code
-    dict["startDate"] = DateUtils.convertDateToString(date: data.startDate) as Any
-    dict["endDate"] = DateUtils.convertDateToString(date: data.endDate) as Any
-    dict["url"] = data.url
+    let data = [
+      "code": data.code,
+      "startDate": DateUtils.convertDateToString(date: data.startDate) as Any,
+      "endDate": DateUtils.convertDateToString(date: data.endDate) as Any,
+      "url": data.url
+    ]
+    dict["data"] = data
   }
   return dict as NSDictionary
 }
