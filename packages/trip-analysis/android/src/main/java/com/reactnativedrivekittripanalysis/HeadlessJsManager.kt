@@ -165,11 +165,7 @@ object HeadlessJsManager : AppStateListener {
       DriveKitTripAnalysisModule.reactContext?.let {
         val serviceIntent = Intent(it, DKHeadlessJSService::class.java)
         serviceIntent.putExtras(bundle)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-          it.startForegroundService(serviceIntent)
-        } else {
-          it.startService(serviceIntent)
-        }
+        it.startForegroundService(serviceIntent)
         HeadlessJsTaskService.acquireWakeLockNow(it)
       }
     }
