@@ -538,10 +538,6 @@ await getLastTripLocation();
 | FAIR  | The GPS accuracy is between 10 and 30 meters. |
 | POOR  | The GPS accuracy is strictly above 30 meters. |
 
-<!--
-| [revokeTripSharingLink()](#getTripSharingLink)
--->
-
 ### isTripSharingAvailable
 
 ```typescript
