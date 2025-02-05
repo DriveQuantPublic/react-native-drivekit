@@ -26,6 +26,22 @@ func mapCreateTripSharingResponse(status: DKCreateTripSharingLinkStatus, data: D
   return dict as NSDictionary
 }
 
+func mapGetTripSharingResponse(status: DKGetTripSharingLinkStatus, data: DKTripSharingLink?) -> NSDictionary {
+  var dict = [
+    "status": mapGetTripSharingStatus(status: status) as Any,
+  ]
+  if let data = data {
+    let data = [
+      "code": data.code,
+      "startDate": DateUtils.convertDateToString(date: data.startDate) as Any,
+      "endDate": DateUtils.convertDateToString(date: data.endDate) as Any,
+      "url": data.url
+    ]
+    dict["data"] = data
+  }
+  return dict as NSDictionary
+}
+
 func mapCreateTripSharingStatus(status: DKCreateTripSharingLinkStatus) -> String? {
     var rnCreateTripSharingStatus: String? = nil
     switch status {
@@ -48,6 +64,28 @@ func mapCreateTripSharingStatus(status: DKCreateTripSharingLinkStatus) -> String
     }
     return rnCreateTripSharingStatus
 }
+
+func mapGetTripSharingStatus(status: DKGetTripSharingLinkStatus) -> String? {
+    var rnGetTripSharingStatus: String? = nil
+    switch status {
+    case .success:
+      rnGetTripSharingStatus = "SUCCESS"
+    case .failedToGetCacheOnly:
+      rnGetTripSharingStatus = "FAILED_TO_GET_CACHE_ONLY"
+    case .userNotConnected:
+      rnGetTripSharingStatus = "USER_NOT_CONNECTED"
+    case .unauthenticated:
+      rnGetTripSharingStatus = "UNAUTHENTICATED"
+    case .forbidden:
+      rnGetTripSharingStatus = "FORBIDDEN"
+    case .noActiveLink:
+      rnGetTripSharingStatus = "NO_ACTIVE_LINK"
+    @unknown default:
+        print("[mapGetTripSharingStatus] Unknown status \(status)")
+    }
+    return rnGetTripSharingStatus
+}
+
 
 func mapRevokeTripSharingStatus(status: DKRevokeTripSharingLinkStatus) -> String? {
     var rnRevokeTripSharingStatus: String? = nil

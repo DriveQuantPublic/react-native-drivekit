@@ -692,7 +692,7 @@ SPEC CHECKSUMS:
   Permission-LocationAlways: 49fa186f3b46c173eb6981f40038569d047f83cd
   Permission-LocationWhenInUse: 269715b4efa337c782d9c44e506aa3ae4be77dd7
   Permission-Motion: 78ea2a70cb324850dded706095c0f44afe7def32
-  RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
+  RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
   RCTRequired: 467cd79889cbcfd008d0ff7c697f73765d4578c3
   RCTTypeSafety: 71c8b219dc633684896452fee38a1e442d167dd6
   React: b807b09e4402c12dcbc44176e50533dca10d01f0
