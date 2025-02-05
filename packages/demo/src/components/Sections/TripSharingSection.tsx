@@ -28,16 +28,16 @@ const TripSharingSection: FunctionComponent<{}> = () => {
           const result = await DriveKitTripAnalysis.createTripSharingLink(
             oneHourInSeconds,
           );
-          const message = result.link
+          const message = result.data
             ? 'Link: ' +
               '\ncode: ' +
-              result.link.code +
+              result.data.code +
               '\nstartDate: ' +
-              result.link.startDate +
+              result.data.startDate +
               '\nendDate: ' +
-              result.link.endDate +
+              result.data.endDate +
               '\nurl: ' +
-              result.link.url
+              result.data.url
             : 'no link';
           Alert.alert('Create link status: ' + result.status, message);
         }}
@@ -51,16 +51,16 @@ const TripSharingSection: FunctionComponent<{}> = () => {
           const result = await DriveKitTripAnalysis.getTripSharingLink(
             'DEFAULT',
           );
-          const message = result.link
+          const message = result.data
             ? 'Link: ' +
               '\ncode: ' +
-              result.link.code +
+              result.data.code +
               '\nstartDate: ' +
-              result.link.startDate +
+              result.data.startDate +
               '\nendDate: ' +
-              result.link.endDate +
+              result.data.endDate +
               '\nurl: ' +
-              result.link.url
+              result.data.url
             : 'no link';
           Alert.alert(
             'Get link (SyncType DEFAULT) status: ' + result.status,
@@ -75,16 +75,16 @@ const TripSharingSection: FunctionComponent<{}> = () => {
         title={'Get link (SyncType CACHE)'}
         onPress={async () => {
           const result = await DriveKitTripAnalysis.getTripSharingLink('CACHE');
-          const message = result.link
+          const message = result.data
             ? 'Link: ' +
               '\ncode: ' +
-              result.link.code +
+              result.data.code +
               '\nstartDate: ' +
-              result.link.startDate +
+              result.data.startDate +
               '\nendDate: ' +
-              result.link.endDate +
+              result.data.endDate +
               '\nurl: ' +
-              result.link.url
+              result.data.url
             : 'no link';
           Alert.alert(
             'Get link (SyncType CACHE) status: ' + result.status,

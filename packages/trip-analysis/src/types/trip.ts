@@ -182,10 +182,10 @@ export enum RevokeTripSharingLinkStatus {
 
 export type CreateTripSharingLinkResponse = {
   status: CreateTripSharingLinkStatus;
-  link: TripSharingLink | null;
+  data: TripSharingLink | null;
 };
 
 export type GetTripSharingLinkResponse = {
   status: GetTripSharingLinkStatus;
-  link: TripSharingLink | null;
+  data: TripSharingLink | null;
 };

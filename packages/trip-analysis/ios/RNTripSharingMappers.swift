@@ -24,24 +24,46 @@ func mapCreateTripSharingResponse(status: DKCreateTripSharingLinkStatus, data: D
 }
 
 func mapCreateTripSharingStatus(status: DKCreateTripSharingLinkStatus) -> String? {
-    var rnACreateTripSharingStatus: String? = nil
+    var rnCreateTripSharingStatus: String? = nil
     switch status {
     case .success:
-      rnACreateTripSharingStatus = "SUCCESS"
+      rnCreateTripSharingStatus = "SUCCESS"
     case .userNotConnected:
-      rnACreateTripSharingStatus = "USER_NOT_CONNECTED"
+      rnCreateTripSharingStatus = "USER_NOT_CONNECTED"
     case .invalidDuration:
-      rnACreateTripSharingStatus = "INVALID_DURATION"
+      rnCreateTripSharingStatus = "INVALID_DURATION"
     case .unauthenticated:
-      rnACreateTripSharingStatus = "UNAUTHENTICATED"
+      rnCreateTripSharingStatus = "UNAUTHENTICATED"
     case .forbidden:
-      rnACreateTripSharingStatus = "FORBIDDEN"
+      rnCreateTripSharingStatus = "FORBIDDEN"
     case .activeLinkAlreadyExists:
-      rnACreateTripSharingStatus = "ACTIVE_LINK_ALREADY_EXISTS"
+      rnCreateTripSharingStatus = "ACTIVE_LINK_ALREADY_EXISTS"
     case .error:
-      rnACreateTripSharingStatus = "ERROR"
+      rnCreateTripSharingStatus = "ERROR"
     @unknown default:
         print("[mapCreateTripSharingStatus] Unknown status \(status)")
     }
-    return rnACreateTripSharingStatus
+    return rnCreateTripSharingStatus
+}
+
+func mapRevokeTripSharingStatus(status: DKRevokeTripSharingLinkStatus) -> String? {
+    var rnRevokeTripSharingStatus: String? = nil
+    switch status {
+    case .success:
+      rnRevokeTripSharingStatus = "SUCCESS"
+    case .error:
+      rnRevokeTripSharingStatus = "ERROR"
+    case .userNotConnected:
+      rnRevokeTripSharingStatus = "USER_NOT_CONNECTED"
+    case .unauthenticated:
+      rnRevokeTripSharingStatus = "UNAUTHENTICATED"
+    case .forbidden:
+      rnRevokeTripSharingStatus = "FORBIDDEN"
+    case .noActiveLink:
+      rnRevokeTripSharingStatus = "NO_ACTIVE_LINK"
+
+    @unknown default:
+        print("[mapRevokeTripSharingStatus] Unknown status \(status)")
+    }
+    return rnRevokeTripSharingStatus
 }

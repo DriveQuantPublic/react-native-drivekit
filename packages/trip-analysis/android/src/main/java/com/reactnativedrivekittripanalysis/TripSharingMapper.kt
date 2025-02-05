@@ -14,7 +14,7 @@ internal object TripSharingMapper {
     val map = Arguments.createMap()
     map.putString("status", status.name)
     link?.let {
-      map.putMap("link", it.toReadableMap())
+      map.putMap("data", it.toReadableMap())
     }
     return map
   }
@@ -26,7 +26,7 @@ internal object TripSharingMapper {
     val map = Arguments.createMap()
     map.putString("status", status.name)
     link?.let {
-      map.putMap("link", it.toReadableMap())
+      map.putMap("data", it.toReadableMap())
     }
     return map
   }

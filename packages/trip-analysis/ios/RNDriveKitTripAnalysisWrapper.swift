@@ -107,6 +107,12 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         resolve(mapCreateTripSharingResponse(status: status, data: data))
       }
     }
+  
+    @objc internal func revokeTripSharingLink(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      DriveKitTripAnalysis.shared.tripSharing.revokeLink(completion: { status in
+        resolve(mapRevokeTripSharingStatus(status: status))
+      })
+    }
 }
 
 extension RNDriveKitTripAnalysisWrapper: TripListener {

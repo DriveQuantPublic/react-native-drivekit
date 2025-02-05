@@ -216,7 +216,7 @@ Follow these steps :
 | [isTripSharingAvailable()](#isTripSharingAvailable)                                 | `Promise<boolean>`                       | ✅  |   ✅    |
 | [createTripSharingLink(durationInSec: number)](#createTripSharingLink)              | `Promise<CreateTripSharingLinkResponse>` | ✅  |   ✅    |
 | [getTripSharingLink(synchronizationType: SynchronizationType)](#getTripSharingLink) | `Promise<GetTripSharingLinkResponse>`    | ✅  |   ✅    |
-| [revokeTripSharingLink()](#getTripSharingLink)                                      | `Promise<RevokeTripSharingLinkStatus>`   | ✅  |   ✅    |
+| [revokeTripSharingLink()](#revokeTripSharingLink)                                   | `Promise<RevokeTripSharingLinkStatus>`   | ✅  |   ✅    |
 
 ### activateAutoStart
 
