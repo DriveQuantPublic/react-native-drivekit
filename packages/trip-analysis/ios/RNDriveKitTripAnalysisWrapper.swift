@@ -102,8 +102,8 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
       return NSNumber(value: DriveKitTripAnalysis.shared.tripSharing.isAvailable());
     }
   
-    @objc internal func createTripSharingLinkWithDurationInSeconds(durationInSec: NSNumber, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
-      DriveKitTripAnalysis.shared.tripSharing.createLink(durationInSeconds: durationInSec.intValue) { status, data in
+    @objc internal func createTripSharingLink(durationInSeconds: NSNumber, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      DriveKitTripAnalysis.shared.tripSharing.createLink(durationInSeconds: durationInSeconds.intValue) { status, data in
         resolve(mapCreateTripSharingResponse(status: status, data: data))
       }
     }
