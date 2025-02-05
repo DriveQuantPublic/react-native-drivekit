@@ -171,7 +171,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   @ReactMethod
   override fun getTripSharingLink(synchronizationType: String, promise: Promise) {
     var mappedSynchronizationType: SynchronizationType = SynchronizationType.DEFAULT
-    if (synchronizationType == "cache") {
+    if (synchronizationType == "CACHE") {
       mappedSynchronizationType = SynchronizationType.CACHE
     }
     DriveKitTripAnalysis.tripSharing.getLink(mappedSynchronizationType) { status: GetTripSharingLinkStatus, link: DKTripSharingLink? ->
