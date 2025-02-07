@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-drivekit-trip-analysis": ["./src/index"],
-      "react-native-drivekit-core": ["../core/src/index"],
+      "@react-native-drivekit/trip-analysis": ["./src/index"],
+      "@react-native-drivekit/core": ["../core/src/index"],
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
