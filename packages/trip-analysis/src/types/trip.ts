@@ -36,13 +36,13 @@ export type TripPoint = {
 export type TripMetadata = { [key: string]: string };
 
 export type CurrentTripInfo = {
-  localTripId: String;
-  date: Date;
+  localTripId: string;
+  date: string;
   startMode: StartMode;
 };
 
 export type LastTripLocation = {
-  date: Date;
+  date: string;
   latitude: number;
   longitude: number;
   accuracyMeter: number;
@@ -58,30 +58,30 @@ export enum AccuracyLevel {
 export type DKTripRecordingStartedState = {
   localTripId: string;
   startMode: StartMode;
-  recordingStartDate: Date;
+  recordingStartDate: string;
 };
 
 export type DKTripRecordingConfirmedState = {
   localTripId: string;
   startMode: StartMode;
-  recordingStartDate: Date;
-  recordingConfirmationDate: Date;
+  recordingStartDate: string;
+  recordingConfirmationDate: string;
 };
 
 export type DKTripRecordingCanceledState = {
   localTripId: string;
   startMode: StartMode;
-  recordingStartDate: Date;
-  recordingConfirmationDate: Date | null;
+  recordingStartDate: string;
+  recordingConfirmationDate: string | null;
   cancelationReason: DKTripCancelationReason;
 };
 
 export type DKTripRecordingFinishedState = {
   localTripId: string;
   startMode: StartMode;
-  recordingStartDate: Date;
-  recordingConfirmationDate: Date;
-  recordingEndDate: Date;
+  recordingStartDate: string;
+  recordingConfirmationDate: string;
+  recordingEndDate: string;
 };
 
 export enum DKTripCancelationReason {

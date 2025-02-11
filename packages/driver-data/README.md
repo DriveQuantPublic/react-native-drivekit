@@ -44,7 +44,7 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
     final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
     final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("Notification title", "Notification description");
     DriveKitTripAnalysisModule.Companion.initialize(tripNotification, headlessJSNotification);
-    
+
     DriveKitDriverDataModule.Companion.initialize(); // ADD THIS LINE
     (…)
   }
