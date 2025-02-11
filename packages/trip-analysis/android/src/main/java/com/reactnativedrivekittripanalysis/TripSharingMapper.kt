@@ -35,7 +35,7 @@ internal object TripSharingMapper {
     Arguments.createMap().apply {
       putString("code", this@toReadableMap.code)
       putString("startDate", this@toReadableMap.startDate.toDriveKitBackendFormat())
-      putString("endDate", this@toReadableMap.startDate.toDriveKitBackendFormat())
+      putString("endDate", this@toReadableMap.endDate.toDriveKitBackendFormat())
       putString("url", this@toReadableMap.url)
   }
 }
