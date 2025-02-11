@@ -8,7 +8,7 @@ const TripSharingSection: FunctionComponent<{}> = () => {
   return (
     <Section title="Trip Sharing">
       <Button
-        title={'Feature available?'}
+        title={'Is feature available?'}
         onPress={async () => {
           const result = await DriveKitTripAnalysis.isTripSharingAvailable();
           Alert.alert(
