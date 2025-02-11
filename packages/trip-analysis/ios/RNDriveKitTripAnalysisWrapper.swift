@@ -109,10 +109,7 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     }
   
     @objc internal func getTripSharingLink(synchronizationType: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
-      var mappedSynchronizationType: SynchronizationType = .defaultSync;
-      if synchronizationType == "CACHE" {
-          mappedSynchronizationType = .cache
-      }
+      let mappedSynchronizationType: SynchronizationType = synchronizationType == "CACHE" ? .cache : .defaultSync
       DriveKitTripAnalysis.shared.tripSharing.getLink(synchronizationType: mappedSynchronizationType) { status, data in
         resolve(mapGetTripSharingResponse(status: status, data: data))
       }
