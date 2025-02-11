@@ -14,14 +14,14 @@ func mapCreateTripSharingResponse(status: DKCreateTripSharingLinkStatus, data: D
   var dict = [
     "status": mapCreateTripSharingStatus(status: status) as Any,
   ]
-  if let data = data {
-    let data = [
+  if let data {
+    let dataDict = [
       "code": data.code,
       "startDate": DateUtils.convertDateToString(date: data.startDate) as Any,
       "endDate": DateUtils.convertDateToString(date: data.endDate) as Any,
       "url": data.url
     ]
-    dict["data"] = data
+    dict["data"] = dataDict
   }
   return dict as NSDictionary
 }
