@@ -706,10 +706,10 @@ SPEC CHECKSUMS:
   React-jsiexecutor: a60e1117c011cbb6a95418f4bf67d6dfbbf81772
   React-jsinspector: 7218c92923292e20326a1eed3104fe90393ca449
   React-logger: 166cf6649b5ea9e26ab816073dd0e68020561d65
-  react-native-drivekit-core: 766805ba0743456892886d4c1afe42041e90b12f
-  react-native-drivekit-driver-data: bdebe33b15dbdb019603b9adf459b74faa4f4861
-  react-native-drivekit-trip-analysis: f7cb564642111a3e92f2f5661c9f9349e2e34f27
-  react-native-drivekit-trip-simulator: 36c4c1d914b666471dab920d0c11914c7429a24d
+  react-native-drivekit-core: b6a5bc92af5a93a51505a5be6497674a6185fe7c
+  react-native-drivekit-driver-data: 243ffd8af3c7359d34cafa27f4a8aa96160747bf
+  react-native-drivekit-trip-analysis: ec42a50329d727bb2622ffec4a7fe54d0efdfdbe
+  react-native-drivekit-trip-simulator: 067fa7fe886567506435d4f9ab8353cf127f7690
   React-perflogger: c8849042b03392681ebd5d99a0775dbadfad2c74
   React-RCTActionSheet: 6bd3b502da266d69942e9ce4bc13666f90544620
   React-RCTAnimation: 63fbec04ae279b387ac786898bd5a918b8875f48
@@ -730,6 +730,6 @@ SPEC CHECKSUMS:
   Yoga: e407d2e8cc6cf5170a1dddf459f9fc612f85fcac
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 48f201f94cb0604f36b7032acb6650a6db301432
+PODFILE CHECKSUM: a82e7313974125eda3b1d06dc89c6ec6fce11d0e
 
 COCOAPODS: 1.14.3
