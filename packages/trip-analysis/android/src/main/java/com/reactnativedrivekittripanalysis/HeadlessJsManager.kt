@@ -12,11 +12,16 @@ import com.drivequant.drivekit.tripanalysis.entity.PostGeneric
 import com.drivequant.drivekit.tripanalysis.entity.PostGenericResponse
 import com.drivequant.drivekit.tripanalysis.entity.TripPoint
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingCanceledState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingConfirmedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingFinishedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingStartedState
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.CancelTrip
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.HeadlessJsTaskService
 import com.google.gson.Gson
 import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
@@ -32,10 +37,62 @@ object HeadlessJsManager : AppStateListener {
     AppStateManager.addAppStateListener(this)
   }
 
-  fun sendTripStartedEvent(startMode: StartMode) {
+  fun sendTripRecordingStartedEvent(state: DKTripRecordingStartedState) {
     val bundle = Bundle()
-    bundle.putString("eventType", EventType.TRIP_STARTED.name)
-    bundle.putString("startMode", startMode.name)
+    bundle.putString("eventType", EventType.TRIP_RECORDING_STARTED.name)
+    bundle.putString("localTripId", state.localTripId)
+    bundle.putString("startMode", state.startMode.name)
+    bundle.putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    sendEvent(bundle)
+  }
+
+  fun sendTripRecordingConfirmedEvent(state: DKTripRecordingConfirmedState) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_RECORDING_CONFIRMED.name)
+    bundle.putString("localTripId", state.localTripId)
+    bundle.putString("startMode", state.startMode.name)
+    bundle.putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    bundle.putString("recordingConfirmationDate", state.recordingConfirmationDate.toDriveKitBackendFormat())
+    sendEvent(bundle)
+  }
+
+  fun sendTripRecordingCanceledEvent(state: DKTripRecordingCanceledState) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_RECORDING_CANCELED.name)
+    bundle.putString("localTripId", state.localTripId)
+    bundle.putString("startMode", state.startMode.name)
+    bundle.putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    state.recordingConfirmationDate?.let {
+      bundle.putString("recordingConfirmationDate", it.toDriveKitBackendFormat())
+    }
+    bundle.putString("cancelationReason", state.cancelationReason.name)
+    sendEvent(bundle)
+  }
+
+  fun sendTripRecordingFinishedEvent(state: DKTripRecordingFinishedState) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_RECORDING_FINISHED.name)
+    bundle.putString("localTripId", state.localTripId)
+    bundle.putString("startMode", state.startMode.name)
+    bundle.putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    bundle.putString("recordingConfirmationDate", state.recordingConfirmationDate.toDriveKitBackendFormat())
+    bundle.putString("recordingEndDate", state.recordingEndDate.toDriveKitBackendFormat())
+    sendEvent(bundle)
+  }
+
+  fun sendTripFinishedWithResultEvent(result: TripResult) {
+    val bundle = Bundle()
+    if (result is TripResult.TripValid) {
+      bundle.putString("eventType", EventType.TRIP_FINISHED_WITH_RESULT_VALID.name)
+      bundle.putString("localTripId", result.localTripId)
+      bundle.putString("itinId", result.itinId)
+      bundle.putBoolean("hasSafetyAndEcoDrivingScore", result.hasSafetyAndEcoDrivingScore)
+      bundle.putStringArrayList("tripResponseInfo", ArrayList(result.info.map { it.name }))
+    } else if (result is TripResult.TripError){
+      bundle.putString("eventType", EventType.TRIP_FINISHED_WITH_RESULT_ERROR.name)
+      bundle.putString("localTripId", result.localTripId)
+      bundle.putString("tripResponseError", result.tripResponseError.name)
+    }
     sendEvent(bundle)
   }
 
@@ -72,14 +129,6 @@ object HeadlessJsManager : AppStateListener {
     sendEvent(bundle)
   }
 
-  fun sendTripFinishedEvent(post: PostGeneric, response: PostGenericResponse) {
-    val bundle = Bundle()
-    bundle.putString("eventType", EventType.TRIP_FINISHED.name)
-    bundle.putString("post", Gson().toJson(post))
-    bundle.putString("response", Gson().toJson(response))
-    sendEvent(bundle)
-  }
-
   fun sendCrashDetectedEvent(crashInfo: DKCrashInfo) {
     val bundle = Bundle()
     bundle.putString("eventType", EventType.CRASH_DETECTED.name)
@@ -111,23 +160,12 @@ object HeadlessJsManager : AppStateListener {
     sendEvent(bundle)
   }
 
-  fun sendTripCancelledEvent(cancelTrip: CancelTrip) {
-    val bundle = Bundle()
-    bundle.putString("eventType", EventType.TRIP_CANCELLED.name)
-    bundle.putString("cancelTrip", cancelTrip.name)
-    sendEvent(bundle)
-  }
-
   private fun sendEvent(bundle: Bundle) {
     if (isLocationForegroundServiceAllowed()) {
       DriveKitTripAnalysisModule.reactContext?.let {
         val serviceIntent = Intent(it, DKHeadlessJSService::class.java)
         serviceIntent.putExtras(bundle)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-          it.startForegroundService(serviceIntent)
-        } else {
-          it.startService(serviceIntent)
-        }
+        it.startForegroundService(serviceIntent)
         HeadlessJsTaskService.acquireWakeLockNow(it)
       }
     }
@@ -139,7 +177,12 @@ object HeadlessJsManager : AppStateListener {
   }
 
   enum class EventType {
-    TRIP_STARTED,
+    TRIP_RECORDING_STARTED,
+    TRIP_RECORDING_CONFIRMED,
+    TRIP_RECORDING_CANCELED,
+    TRIP_RECORDING_FINISHED,
+    TRIP_FINISHED_WITH_RESULT_VALID,
+    TRIP_FINISHED_WITH_RESULT_ERROR,
     TRIP_POINT,
     TRIP_SAVED_FOR_REPOST,
     BEACON_DETECTED,
@@ -147,10 +190,11 @@ object HeadlessJsManager : AppStateListener {
     CRASH_FEEDBACK_SENT,
     BLUETOOTH_STATE_CHANGED,
     GPS_STATE_CHANGED,
+    SDK_STATE_CHANGED,
+    POTENTIAL_TRIP_START,
+    TRIP_STARTED,
     TRIP_CANCELLED,
     TRIP_FINISHED,
-    SDK_STATE_CHANGED,
-    POTENTIAL_TRIP_START
   }
 
   override fun onAppMovedToBackground() {
@@ -163,5 +207,27 @@ object HeadlessJsManager : AppStateListener {
 
   override fun onNoActivity() {
     // do nothing
+  }
+
+  fun sendTripStartedEvent(startMode: StartMode) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_STARTED.name)
+    bundle.putString("startMode", startMode.name)
+    sendEvent(bundle)
+  }
+
+  fun sendTripCancelledEvent(cancelTrip: CancelTrip) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_CANCELLED.name)
+    bundle.putString("cancelTrip", cancelTrip.name)
+    sendEvent(bundle)
+  }
+
+  fun sendTripFinishedEvent(post: PostGeneric, response: PostGenericResponse) {
+    val bundle = Bundle()
+    bundle.putString("eventType", EventType.TRIP_FINISHED.name)
+    bundle.putString("post", Gson().toJson(post))
+    bundle.putString("response", Gson().toJson(response))
+    sendEvent(bundle)
   }
 }

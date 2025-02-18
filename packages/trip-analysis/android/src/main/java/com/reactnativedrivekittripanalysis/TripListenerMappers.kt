@@ -1,13 +1,21 @@
 package com.reactnativedrivekittripanalysis
 
 import com.drivequant.drivekit.tripanalysis.entity.TripPoint
+import com.drivequant.drivekit.tripanalysis.entity.TripResponseError
+import com.drivequant.drivekit.tripanalysis.entity.TripResponseInfo
 import com.drivequant.drivekit.tripanalysis.model.crashdetection.DKCrashInfo
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripCancelationReason
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingCanceledState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingConfirmedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingFinishedState
+import com.drivequant.drivekit.tripanalysis.model.triplistener.DKTripRecordingStartedState
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.CrashStatus
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackSeverity
 import com.drivequant.drivekit.tripanalysis.service.crashdetection.feedback.CrashFeedbackType
 import com.drivequant.drivekit.tripanalysis.service.recorder.CancelTrip
 import com.drivequant.drivekit.tripanalysis.service.recorder.StartMode
 import com.drivequant.drivekit.tripanalysis.service.recorder.State
+import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReadableMap
 
@@ -95,4 +103,125 @@ fun mapCancelTrip(cancelTrip: CancelTrip): String {
     CancelTrip.NO_SPEED -> "NO_SPEED"
     CancelTrip.BLUETOOTH_DEVICE_NO_SPEED -> "BLUETOOTH_DEVICE_NO_SPEED"
   }
+}
+
+fun mapTripCancelationReason(cancelationReason: DKTripCancelationReason): String =
+  when (cancelationReason) {
+    DKTripCancelationReason.USER -> "USER"
+    DKTripCancelationReason.HIGH_SPEED -> "HIGH_SPEED"
+    DKTripCancelationReason.NO_SPEED -> "NO_SPEED"
+    DKTripCancelationReason.NO_BEACON -> "NO_BEACON"
+    DKTripCancelationReason.NO_BLUETOOTH_DEVICE -> "NO_BLUETOOTH_DEVICE"
+    DKTripCancelationReason.MISSING_CONFIGURATION -> "MISSING_CONFIGURATION"
+    DKTripCancelationReason.NO_LOCATION_DATA -> "NO_LOCATION_DATA"
+    DKTripCancelationReason.RESET -> "RESET"
+    DKTripCancelationReason.BEACON_NO_SPEED -> "BEACON_NO_SPEED"
+    DKTripCancelationReason.BLUETOOTH_DEVICE_NO_SPEED -> "BLUETOOTH_DEVICE_NO_SPEED"
+    DKTripCancelationReason.APP_KILLED -> "APP_KILLED"
+  }
+
+fun mapTripRecordingStartedState(state: DKTripRecordingStartedState): ReadableMap {
+  val map = Arguments.createMap()
+  map.apply {
+    putString("localTripId", state.localTripId)
+    putString("startMode", mapStartMode(state.startMode))
+    putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+  }
+  return map
+}
+
+fun mapTripRecordingConfirmedState(state: DKTripRecordingConfirmedState): ReadableMap {
+  val map = Arguments.createMap()
+  map.apply {
+    putString("localTripId", state.localTripId)
+    putString("startMode", mapStartMode(state.startMode))
+    putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    putString("recordingConfirmationDate", state.recordingConfirmationDate.toDriveKitBackendFormat())
+  }
+  return map
+}
+
+fun mapTripRecordingCanceledState(state: DKTripRecordingCanceledState): ReadableMap {
+  val map = Arguments.createMap()
+  map.apply {
+    putString("localTripId", state.localTripId)
+    putString("startMode", mapStartMode(state.startMode))
+    putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    state.recordingConfirmationDate?.let {
+      putString("recordingConfirmationDate", it.toDriveKitBackendFormat())
+    }
+    putString("cancelationReason", mapTripCancelationReason(state.cancelationReason))
+  }
+  return map
+}
+
+fun mapTripRecordingFinishedState(state: DKTripRecordingFinishedState): ReadableMap {
+  val map = Arguments.createMap()
+  map.apply {
+    putString("localTripId", state.localTripId)
+    putString("startMode", mapStartMode(state.startMode))
+    putString("recordingStartDate", state.recordingStartDate.toDriveKitBackendFormat())
+    putString("recordingConfirmationDate", state.recordingConfirmationDate.toDriveKitBackendFormat())
+    putString("recordingEndDate", state.recordingEndDate.toDriveKitBackendFormat())
+  }
+  return map
+}
+
+fun mapTripFinishedWithResult(result: TripResult): ReadableMap {
+  val map = Arguments.createMap()
+  map.apply {
+    when (result) {
+      is TripResult.TripValid -> {
+        putString("status", "TRIP_VALID")
+        putString("itinId", result.itinId)
+        putString("localTripId", result.localTripId)
+        putBoolean("hasSafetyAndEcoDrivingScore", result.hasSafetyAndEcoDrivingScore)
+        val array = Arguments.createArray()
+        result.info.forEach {
+          array.pushString(it.getName())
+        }
+        putArray("tripResponseInfo", array)
+      }
+      is TripResult.TripError -> {
+        putString("status", "TRIP_ERROR")
+        putString("localTripId", result.localTripId)
+        putString("tripResponseError", result.tripResponseError.getName())
+        putBoolean("hasSafetyAndEcoDrivingScore", false)
+      }
+    }
+  }
+  return map
+}
+
+private fun TripResponseInfo.getName() = when (this) {
+  TripResponseInfo.ENGINE_SPEED_NOT_AVAILABLE -> "ENGINE_SPEED_NOT_AVAILABLE"
+  TripResponseInfo.ENGINE_SPEED_IS_NULL -> "ENGINE_SPEED_IS_NULL"
+  TripResponseInfo.NO_VEHICLE_CHARACTERISTICS -> "NO_VEHICLE_CHARACTERISTICS"
+  TripResponseInfo.DATA_LOSS -> "DATA_LOSS"
+  TripResponseInfo.DISTANCE_TOO_SHORT -> "DISTANCE_TOO_SHORT"
+  TripResponseInfo.INVALID_VEHICLE_CHARACTERISTICS -> "INVALID_VEHICLE_CHARACTERISTICS"
+  TripResponseInfo.INVALID_VEHICLE_ID -> "INVALID_VEHICLE_ID"
+}
+
+private fun TripResponseError.getName() = when (this) {
+  TripResponseError.NO_ACCOUNT_SET -> "NO_ACCOUNT_SET"
+  TripResponseError.NO_ROUTE_OBJECT_FOUND -> "NO_ROUTE_OBJECT_FOUND"
+  TripResponseError.INVALID_ROUTE_DEFINITION -> "INVALID_ROUTE_DEFINITION"
+  TripResponseError.NO_VELOCITY_DATA -> "NO_VELOCITY_DATA"
+  TripResponseError.INVALID_SAMPLING_PERIOD -> "INVALID_SAMPLING_PERIOD"
+  TripResponseError.INVALID_CUSTOMER_ID -> "INVALID_CUSTOMER_ID"
+  TripResponseError.NO_DATE_FOUND -> "NO_DATE_FOUND"
+  TripResponseError.MAX_DAILY_REQUEST_NUMBER_REACHED -> "MAX_DAILY_REQUEST_NUMBER_REACHED"
+  TripResponseError.DATA_ERROR -> "DATA_ERROR"
+  TripResponseError.INVALID_ROUTE_VECTORS -> "INVALID_ROUTE_VECTORS"
+  TripResponseError.MISSING_BEACON -> "MISSING_BEACON"
+  TripResponseError.INVALID_BEACON -> "INVALID_BEACON"
+  TripResponseError.DUPLICATE_TRIP -> "DUPLICATE_TRIP"
+  TripResponseError.INSUFFICIENT_GPS_DATA -> "INSUFFICIENT_GPS_DATA"
+  TripResponseError.USER_DISABLED -> "USER_DISABLED"
+  TripResponseError.INVALID_USER -> "INVALID_USER"
+  TripResponseError.INVALID_GPS_DATA -> "INVALID_GPS_DATA"
+  TripResponseError.INVALID_TRIP -> "INVALID_TRIP"
+  TripResponseError.ACCOUNT_LIMIT_REACHED -> "ACCOUNT_LIMIT_REACHED"
+  TripResponseError.UNKNOWN_ERROR -> "UNKNOWN_ERROR"
 }

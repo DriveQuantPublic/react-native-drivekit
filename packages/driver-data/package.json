@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/driver-data",
-  "version": "2.4.3",
+  "version": "2.5.0",
   "description": "React Native interface for DriveKit Driver Data",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -69,7 +69,7 @@
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
-    "@react-native-drivekit/core": "2.4.3",
+    "@react-native-drivekit/core": "2.5.0",
     "react": "*",
     "react-native": "*"
   },

@@ -10,6 +10,7 @@ import {TripSection} from './src/components/Sections/TripSection';
 import {TokenSection} from './src/components/Sections/TokenSection';
 import {ResetSection} from './src/components/Sections/ResetSection';
 import {TripAnalysisSection} from './src/components/Sections/TripAnalysisSection';
+import {TripSharingSection} from './src/components/Sections/TripSharingSection';
 import {LogsSection} from './src/components/Sections/LogsSection';
 import {TripSimulatorSection} from './src/components/Sections/TripSimulatorSection';
 import {useCheckPermissions} from './src/hooks/useCheckPermissions';
@@ -28,6 +29,7 @@ const App = () => {
         <UpdateUserSection />
         <TripAnalysisSection />
         <TripSimulatorSection />
+        <TripSharingSection />
         <TripSection />
         <LogsSection />
         <DeleteAccountSection />

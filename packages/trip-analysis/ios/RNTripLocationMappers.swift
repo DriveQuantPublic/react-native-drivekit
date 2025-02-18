@@ -27,7 +27,7 @@ extension DKTripLocation {
 
 func mapAccuracyLevel(accuracyLevel: DriveKitCoreModule.DKCoordinateAccuracy) -> String? {
     var rnAccuracyLevel: String? = nil
-  switch accuracyLevel {
+    switch accuracyLevel {
     case .fair:
       rnAccuracyLevel = "FAIR"
     case .good:

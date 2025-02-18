@@ -21,7 +21,17 @@ import type {
   TripMetadata,
   CurrentTripInfo,
   LastTripLocation,
+  DKTripRecordingStartedState,
+  DKTripRecordingConfirmedState,
+  DKTripRecordingCanceledState,
+  DKTripRecordingFinishedState,
+  TripResult,
+  CreateTripSharingLinkResponse,
+  RevokeTripSharingLinkStatus,
+  GetTripSharingLinkResponse,
 } from './types';
+
+import type { SynchronizationType } from '@react-native-drivekit/core';
 
 const LINKING_ERROR =
   `The package 'react-native-drivekit-trip-analysis' doesn't seem to be linked. Make sure: \n\n` +
@@ -92,13 +102,12 @@ export function setVehicle(
 }
 
 type Listeners = {
-  tripStarted: (startMode: StartMode) => void;
+  tripRecordingStarted: (state: DKTripRecordingStartedState) => void;
+  tripRecordingConfirmed: (state: DKTripRecordingConfirmedState) => void;
+  tripRecordingCanceled: (state: DKTripRecordingCanceledState) => void;
+  tripRecordingFinished: (state: DKTripRecordingFinishedState) => void;
+  tripFinishedWithResult: (result: TripResult) => void;
   tripPoint: (tripPoint: TripPoint) => void;
-  tripCancelled: (reason: CancelTripReason) => void;
-  tripFinished: (data: {
-    post: PostGeneric;
-    response: PostGenericResponse;
-  }) => void;
   potentialTripStart: (startMode: StartMode) => void;
   tripSavedForRepost: () => void;
   beaconDetected: () => void;
@@ -108,6 +117,24 @@ type Listeners = {
   crashFeedbackSent: (crashFeedback: CrashFeedback) => void;
   bluetoothSensorStateChanged: (state: BluetoothState) => void;
   gpsSensorStateChanged: (state: GpsState) => void;
+
+  /**
+   * @deprecated The method is replaced by tripRecordingConfirmed
+   */
+  tripStarted: (startMode: StartMode) => void;
+
+  /**
+   * @deprecated The method is replaced by tripRecordingCanceled
+   */
+  tripCancelled: (reason: CancelTripReason) => void;
+
+  /**
+   * @deprecated The method is replaced by tripFinishedWithResult
+   */
+  tripFinished: (data: {
+    post: PostGeneric;
+    response: PostGenericResponse;
+  }) => void;
 };
 
 const eventEmitter = new NativeEventEmitter(DriveKitTripAnalysis);
@@ -152,4 +179,24 @@ export function getCurrentTripInfo(): Promise<CurrentTripInfo | null> {
 
 export function getLastTripLocation(): Promise<LastTripLocation | null> {
   return DriveKitTripAnalysis.getLastTripLocation();
+}
+
+export function isTripSharingAvailable(): Promise<boolean> {
+  return DriveKitTripAnalysis.isTripSharingAvailable();
+}
+
+export function createTripSharingLink(
+  durationInSec: number
+): Promise<CreateTripSharingLinkResponse> {
+  return DriveKitTripAnalysis.createTripSharingLink(durationInSec);
+}
+
+export function getTripSharingLink(
+  synchronizationType: SynchronizationType = 'DEFAULT'
+): Promise<GetTripSharingLinkResponse> {
+  return DriveKitTripAnalysis.getTripSharingLink(synchronizationType);
+}
+
+export function revokeTripSharingLink(): Promise<RevokeTripSharingLinkStatus> {
+  return DriveKitTripAnalysis.revokeTripSharingLink();
 }

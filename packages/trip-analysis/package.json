@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/trip-analysis",
-  "version": "2.4.3",
+  "version": "2.5.0",
   "description": "React Native interface for DriveKit Trip Analysis",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -69,6 +69,7 @@
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
+    "@react-native-drivekit/core": "2.5.0",
     "react": "*",
     "react-native": "*"
   },
