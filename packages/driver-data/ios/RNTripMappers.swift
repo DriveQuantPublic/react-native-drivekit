@@ -10,7 +10,7 @@ import DriveKitCoreModule
 import DriveKitDriverDataModule
 import DriveKitDBTripAccessModule
 
-func mapTrip(trip: Trip) -> NSDictionary {
+func mapTrip(trip: DKTrip) -> NSDictionary {
     return trip.toDict() as NSDictionary
 }
 
@@ -59,7 +59,7 @@ func mapTransportModeFromString(_ inputString: String) -> TransportationMode {
     return .unknown
 }
 
-extension Trip {
+extension DKTrip {
     fileprivate func toDict() -> [String: Any] {
         return [
             "arrivalAddress": arrivalAddress as Any,
@@ -73,32 +73,32 @@ extension Trip {
             "transportationMode": transportationMode as Any,
             "unscored": unscored as Any,
             "vehicleId": vehicleId as Any,
-            "advancedEnergyEstimations": advancedEnergyEstimation?.allObjects.map{($0 as? DBAdvancedEnergyEstimation)?.toDict()} as Any,
+            "advancedEnergyEstimations": advancedEnergyEstimation?.map{ $0.toDict() } as Any,
             "brakeWear": brakeWear?.toDict() as Any,
-            "calls": calls?.allObjects.map{($0 as? Call)?.toDict()} as Any,
+            "calls": calls?.map{ $0.toDict() } as Any,
             "declaredTransportationMode": declaredTransportationMode?.toDict() as Any,
             "driverDistraction": driverDistraction?.toDict() as Any,
             "ecoDriving": ecoDriving?.toDict() as Any,
-            "ecoDrivingContexts": ecoDrivingContexts?.allObjects.map{($0 as? EcoDrivingContext)?.toDict()} as Any,
+            "ecoDrivingContexts": ecoDrivingContexts?.map{$0.toDict()} as Any,
             "energyEstimation": energyEstimation?.toDict() as Any,
             "evaluation": evaluation?.toDict() as Any,
             "fuelEstimation": fuelEstimation?.toDict() as Any,
-            "fuelEstimationContexts": fuelEstimationContexts?.allObjects.map{($0 as? FuelEstimationContext)?.toDict()} as Any,
+            "fuelEstimationContexts": fuelEstimationContexts?.map{ $0.toDict() } as Any,
             "logbook": logbook?.toDict() as Any,
             "maneuver": maneuver?.toDict() as Any,
             "pollutants": pollutants?.toDict() as Any,
             "safety": safety?.toDict() as Any,
-            "safetyContexts": safetyContexts?.allObjects.map{($0 as? SafetyContext)?.toDict()} as Any,
-            "safetyEvents": safetyEvents?.allObjects.map{($0 as? SafetyEvents)?.toDict()} as Any,
+            "safetyContexts": safetyContexts?.map{ $0.toDict() } as Any,
+            "safetyEvents": safetyEvents?.map{ $0.toDict() } as Any,
             "speedingStatistics": speedingStatistics?.toDict() as Any,
-            "speedLimitContexts": speedLimitContexts?.allObjects.map{($0 as? DBSpeedLimitContext)?.toDict()} as Any,
+            "speedLimitContexts": speedLimitContexts?.map{ $0.toDict() } as Any,
             "tireWear": tireWear?.toDict() as Any,
-            "tripAdvices": tripAdvices?.allObjects.map{($0 as? TripAdvice)?.toDict()} as Any,
+            "tripAdvices": tripAdvices?.map{ $0.toDict() } as Any,
             "tripStatistics": tripStatistics?.toDict() as Any
         ]
     }
 }
-extension DBAdvancedEnergyEstimation {
+extension DKAdvancedEnergyEstimation {
     fileprivate func toDict() -> [String: Any] {
         return [
             "energy": energy as Any,
@@ -111,7 +111,7 @@ extension DBAdvancedEnergyEstimation {
         ]
     }
 }
-extension BrakeWear {
+extension DKBrakeWear {
     fileprivate func toDict() -> [String: Any] {
         return [
             "frontBrakeAutonomy": frontBrakeAutonomy as Any,
@@ -127,7 +127,7 @@ extension BrakeWear {
         ]
     }
 }
-extension Call {
+extension DKCall {
     fileprivate func toDict() -> [String: Any] {
         return [
             "audioName": audioName as Any,
@@ -146,7 +146,7 @@ extension Call {
         ]
     }
 }
-extension DeclaredTransportationMode {
+extension DKDeclaredTransportationMode {
     fileprivate func toDict() -> [String: Any] {
         return [
             "comment": comment as Any,
@@ -155,7 +155,7 @@ extension DeclaredTransportationMode {
         ]
     }
 }
-extension DriverDistraction {
+extension DKDriverDistraction {
     fileprivate func toDict() -> [String: Any] {
         return [
             "distancePercentUnlock": distancePercentUnlock as Any,
@@ -164,12 +164,12 @@ extension DriverDistraction {
             "durationUnlock": durationUnlock as Any,
             "nbUnlock": nbUnlock as Any,
             "score": score as Any,
-            "scoreCall": scoreCallNumber as Any,
-            "scoreUnlock": scoreUnlockNumber as Any
+            "scoreCall": scoreCall as Any,
+            "scoreUnlock": scoreUnlock as Any
         ]
     }
 }
-extension EcoDriving {
+extension DKEcoDriving {
     fileprivate func toDict() -> [String: Any] {
         return [
             "energyClass": energyClass as Any,
@@ -183,7 +183,7 @@ extension EcoDriving {
         ]
     }
 }
-extension EcoDrivingContext {
+extension DKEcoDrivingContext {
     fileprivate func toDict() -> [String: Any] {
         return [
             "contextId": contextId as Any,
@@ -196,7 +196,7 @@ extension EcoDrivingContext {
         ]
     }
 }
-extension DBEnergyEstimation {
+extension DKEnergyEstimation {
     fileprivate func toDict() -> [String: Any] {
         return [
             "energy": energy as Any,
@@ -206,7 +206,7 @@ extension DBEnergyEstimation {
         ]
     }
 }
-extension Evaluation {
+extension DKEvaluation {
     fileprivate func toDict() -> [String: Any] {
         return [
             "comment": comment as Any,
@@ -214,7 +214,7 @@ extension Evaluation {
         ]
     }
 }
-extension FuelEstimation {
+extension DKFuelEstimation {
     fileprivate func toDict() -> [String: Any] {
         return [
             "co2Mass": co2Mass as Any,
@@ -231,7 +231,7 @@ extension FuelEstimation {
         ]
     }
 }
-extension FuelEstimationContext {
+extension DKFuelEstimationContext {
     fileprivate func toDict() -> [String: Any] {
         return [
             "co2Mass": co2Mass as Any,
@@ -244,7 +244,7 @@ extension FuelEstimationContext {
         ]
     }
 }
-extension Logbook {
+extension DKLogbook {
     fileprivate func toDict() -> [String: Any] {
         return [
             "status": status as Any,
@@ -252,7 +252,7 @@ extension Logbook {
         ]
     }
 }
-extension Maneuver {
+extension DKManeuver {
     fileprivate func toDict() -> [String: Any] {
         return [
             "nbTurns": nbTurns as Any,
@@ -267,7 +267,7 @@ extension Maneuver {
         ]
     }
 }
-extension Pollutants {
+extension DKPollutants {
     fileprivate func toDict() -> [String: Any] {
         return [
             "co": co as Any,
@@ -277,7 +277,7 @@ extension Pollutants {
         ]
     }
 }
-extension Safety {
+extension DKSafety {
     fileprivate func toDict() -> [String: Any] {
         return [
             "nbAdh": nbAdh as Any,
@@ -290,7 +290,7 @@ extension Safety {
         ]
     }
 }
-extension SafetyContext {
+extension DKSafetyContext {
     fileprivate func toDict() -> [String: Any] {
         return [
             "contextId": contextId as Any,
@@ -306,7 +306,7 @@ extension SafetyContext {
         ]
     }
 }
-extension SafetyEvents {
+extension DKSafetyEvents {
     fileprivate func toDict() -> [String: Any] {
         return [
             "distance": distance as Any,
@@ -322,7 +322,7 @@ extension SafetyEvents {
         ]
     }
 }
-extension DBSpeedingStatistics {
+extension DKSpeedingStatistics {
     fileprivate func toDict() -> [String: Any] {
         return [
             "distance": distance as Any,
@@ -333,7 +333,7 @@ extension DBSpeedingStatistics {
         ]
     }
 }
-extension DBSpeedLimitContext {
+extension DKSpeedLimitContext {
     fileprivate func toDict() -> [String: Any] {
         return [
             "distance": distance as Any,
@@ -345,7 +345,7 @@ extension DBSpeedLimitContext {
         ]
     }
 }
-extension TireWear {
+extension DKTireWear {
     fileprivate func toDict() -> [String: Any] {
         return [
             "frontTireWear": frontTireWear as Any,
@@ -361,7 +361,7 @@ extension TireWear {
         ]
     }
 }
-extension TripAdvice {
+extension DKTripAdvice {
     fileprivate func toDict() -> [String: Any] {
         return [
             "comment": comment as Any,
@@ -375,7 +375,7 @@ extension TripAdvice {
         ]
     }
 }
-extension TripStatistics {
+extension DKTripStatistics {
     fileprivate func toDict() -> [String: Any] {
         return [
             "day": day as Any,
@@ -385,7 +385,7 @@ extension TripStatistics {
             "duration": duration as Any,
             "idlingDuration": idlingDuration as Any,
             "idlingPercentage": idlingPercentage as Any,
-            "meteo": meteo as Any,
+            "meteo": weather as Any,
             "speedMean": speedMean as Any,
             "subdispNb": subdispNb as Any,
             "weekDay": weekDay as Any
@@ -393,7 +393,7 @@ extension TripStatistics {
     }
 }
 
-extension DriveKitDBTripAccessModule.Route {
+extension DriveKitDBTripAccessModule.DKRoute {
     func toDict() -> [String: Any] {
         return [
             "callIndex": callIndex as Any,
