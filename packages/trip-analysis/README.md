@@ -196,23 +196,27 @@ Follow these steps :
 
 ## API
 
-| Method                                                                | Return Type                         | iOS | Android |
-| --------------------------------------------------------------------- | ----------------------------------- | :-: | :-----: |
-| [activateAutoStart()](#activateautostart)                             | `Promise<void>`                     | ✅  |   ✅    |
-| [startTrip()](#starttrip)                                             | `Promise<void>`                     | ✅  |   ✅    |
-| [stopTrip()](#stoptrip)                                               | `Promise<void>`                     | ✅  |   ✅    |
-| [cancelTrip()](#canceltrip)                                           | `Promise<void>`                     | ✅  |   ✅    |
-| [isTripRunning()](#istriprunning)                                     | `Promise<boolean>`                  | ✅  |   ✅    |
-| [activateCrashDetection()](#activatecrashdetection)                   | `Promise<void>`                     | ✅  |   ✅    |
-| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart) | `Promise<void>`                     | ✅  |   ✅    |
-| [setStopTimeout()](#setStopTimeout)                                   | `Promise<void>`                     | ✅  |   ✅    |
-| [getTripMetadata()](#getTripMetadata)                                 | `Promise<TripMetadata \| null>`     | ✅  |   ✅    |
-| [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)           | `Promise<void>`                     | ✅  |   ✅    |
-| [deleteTripMetadata(string?: string)](#deleteTripMetadata)            | `Promise<void>`                     | ✅  |   ✅    |
-| [updateTripMetadata(key: string, value: string)](#updateTripMetadata) | `Promise<void>`                     | ✅  |   ✅    |
-| [setVehicle()](#setvehicle)                                           | `Promise<void>`                     | ✅  |   ✅    |
-| [getCurrentTripInfo()](#getCurrentTripInfo)                           | `Promise<CurrentTripInfo \| null>`  | ✅  |   ✅    |
-| [getLastTripLocation()](#getLastTripLocation)                         | `Promise<LastTripLocation \| null>` | ✅  |   ✅    |
+| Method                                                                              | Return Type                              | iOS | Android |
+| ----------------------------------------------------------------------------------- | ---------------------------------------- | :-: | :-----: |
+| [activateAutoStart()](#activateautostart)                                           | `Promise<void>`                          | ✅  |   ✅    |
+| [startTrip()](#starttrip)                                                           | `Promise<void>`                          | ✅  |   ✅    |
+| [stopTrip()](#stoptrip)                                                             | `Promise<void>`                          | ✅  |   ✅    |
+| [cancelTrip()](#canceltrip)                                                         | `Promise<void>`                          | ✅  |   ✅    |
+| [isTripRunning()](#istriprunning)                                                   | `Promise<boolean>`                       | ✅  |   ✅    |
+| [activateCrashDetection()](#activatecrashdetection)                                 | `Promise<void>`                          | ✅  |   ✅    |
+| [enableMonitorPotentialTripStart()](#enablemonitorpotentialtripstart)               | `Promise<void>`                          | ✅  |   ✅    |
+| [setStopTimeout()](#setStopTimeout)                                                 | `Promise<void>`                          | ✅  |   ✅    |
+| [getTripMetadata()](#getTripMetadata)                                               | `Promise<TripMetadata \| null>`          | ✅  |   ✅    |
+| [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)                         | `Promise<void>`                          | ✅  |   ✅    |
+| [deleteTripMetadata(string?: string)](#deleteTripMetadata)                          | `Promise<void>`                          | ✅  |   ✅    |
+| [updateTripMetadata(key: string, value: string)](#updateTripMetadata)               | `Promise<void>`                          | ✅  |   ✅    |
+| [setVehicle()](#setvehicle)                                                         | `Promise<void>`                          | ✅  |   ✅    |
+| [getCurrentTripInfo()](#getCurrentTripInfo)                                         | `Promise<CurrentTripInfo \| null>`       | ✅  |   ✅    |
+| [getLastTripLocation()](#getLastTripLocation)                                       | `Promise<LastTripLocation \| null>`      | ✅  |   ✅    |
+| [isTripSharingAvailable()](#isTripSharingAvailable)                                 | `Promise<boolean>`                       | ✅  |   ✅    |
+| [createTripSharingLink(durationInSec: number)](#createTripSharingLink)              | `Promise<CreateTripSharingLinkResponse>` | ✅  |   ✅    |
+| [getTripSharingLink(synchronizationType: SynchronizationType)](#getTripSharingLink) | `Promise<GetTripSharingLinkResponse>`    | ✅  |   ✅    |
+| [revokeTripSharingLink()](#revokeTripSharingLink)                                   | `Promise<RevokeTripSharingLinkStatus>`   | ✅  |   ✅    |
 
 ### activateAutoStart
 
@@ -492,8 +496,8 @@ await getCurrentTripInfo();
 
 | Field       | Type      | Description                                                                                                                                                                                                                  |
 | ----------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| localTripId | String    | Local and unique trip identifier generated by DriveKit SDK. ⚠️ It is different from the `itinId` property returned in the Trip object. `itinId` corresponds to the unique trip identifier generated after the data analysis. |
-| date        | Date      | Start date of the trip analysis. ⚠️ It is different from the `startDate` property returned in the Trip object.                                                                                                               |
+| localTripId | string    | Local and unique trip identifier generated by DriveKit SDK. ⚠️ It is different from the `itinId` property returned in the Trip object. `itinId` corresponds to the unique trip identifier generated after the data analysis. |
+| date        | string    | Start date of the trip analysis. Format is `yyyy-MM-dd'T'HH:mm:ss.SSSZ`. ⚠️ It is different from the `startDate` property returned in the Trip object.                                                                       |
 | startMode   | StartMode | The `StartMode` which triggered the trip analysis.                                                                                                                                                                           |
 
 ### getLastTripLocation
@@ -518,13 +522,13 @@ await getLastTripLocation();
 
 #### LastTripLocation
 
-| Field         | Type          | Description                                                  |
-| ------------- | ------------- | ------------------------------------------------------------ |
-| date          | Date          | Date of the end of trip.                                     |
-| latitude      | number        | Latitude of the end of the trip.                             |
-| longitude     | number        | Longitude of the end of the trip.                            |
-| accuracyMeter | number        | GPS data accuracy value in meters.                           |
-| accuracyLevel | AccuracyLevel | GPS data accuracy level. Possible values are described below |
+| Field         | Type          | Description                                                     |
+| ------------- | ------------- | --------------------------------------------------------------- |
+| date          | string        | Date of the end of trip. Format is `yyyy-MM-dd'T'HH:mm:ss.SSSZ` |
+| latitude      | number        | Latitude of the end of the trip.                                |
+| longitude     | number        | Longitude of the end of the trip.                               |
+| accuracyMeter | number        | GPS data accuracy value in meters.                              |
+| accuracyLevel | AccuracyLevel | GPS data accuracy level. Possible values are described below    |
 
 #### AccuracyLevel
 
@@ -533,3 +537,117 @@ await getLastTripLocation();
 | GOOD  | The GPS accuracy is strictly below 10 meters. |
 | FAIR  | The GPS accuracy is between 10 and 30 meters. |
 | POOR  | The GPS accuracy is strictly above 30 meters. |
+
+### isTripSharingAvailable
+
+```typescript
+isTripSharingAvailable(): Promise<boolean>
+```
+
+If the trip sharing feature is enabled for your company, your API key carries out the feature access and a trip sharing link can be generated.
+
+To check if the trip sharing feature is available for your API key, you can call the following code:
+
+```typescript
+await DriveKitTripAnalysis.isTripSharingAvailable();
+```
+
+### createTripSharingLink
+
+```typescript
+createTripSharingLink(durationInSec: number): Promise<CreateTripSharingLinkResponse>
+```
+
+To generate a link to share trips, use the following code:
+
+```typescript
+const oneHourInSeconds = 1 * 60 * 60;
+const result = await DriveKitTripAnalysis.createTripSharingLink(
+  oneHourInSeconds
+);
+```
+
+The method takes a `durationInSeconds` parameter which indicates how long in seconds from now the sharing link will be valid.
+
+#### CreateTripSharingLinkResponse
+
+| Field  | Type                        | Description                                     |
+| ------ | --------------------------- | ----------------------------------------------- |
+| status | CreateTripSharingLinkStatus | The status of the request                       |
+| data   | TripSharingLink             | Can be `null`. Data about the trip sharing link |
+
+#### CreateTripSharingLinkStatus
+
+| Field                      | Description                                                                                                                                                |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SUCCESS                    | The link has been successfully created. Information is returned in `data`                                                                                  |
+| ACTIVE_LINK_ALREADY_EXISTS | A link already exists for this user. Information returned in `data` is null. 💡 You have to call the method to retrieve an existing link in your workflow. |
+| ERROR                      | An error occurred, for instance when the user has no network. Information returned in `data` is null.                                                      |
+| USER_NOT_CONNECTED         | The user is not yet connected to DriveKit. Information returned in `data` is null.                                                                         |
+| INVALID_DURATION           | An error occurred when trying to create a link. The duration parameter must be strictly greater than 0. Information returned in `data` is null.            |
+| UNAUTHENTICATED            | The user has been disconnected. Information returned in `data` is null.                                                                                    |
+| FORBIDDEN                  | Your API key is not allowed to use the feature. Information returned in `data` is null.                                                                    |
+
+#### TripSharingLink
+
+| Field     | Type   | Description                                                      |
+| --------- | ------ | ---------------------------------------------------------------- |
+| code      | string | Unique trip sharing code.                                        |
+| url       | string | URL of the map that will display the current trip of the user    |
+| startDate | string | Link validity start date. Format is `yyyy-MM-dd'T'HH:mm:ss.SSSZ` |
+| endDate   | string | Link expiration date. Format is `yyyy-MM-dd'T'HH:mm:ss.SSSZ`     |
+
+### getTripSharingLink
+
+```typescript
+getTripSharingLink(synchronizationType: SynchronizationType = 'DEFAULT'): Promise<GetTripSharingLinkResponse>
+```
+
+To retrieve a link to share trips, use the following code:
+
+```typescript
+const result = await DriveKitTripAnalysis.getTripSharingLink('DEFAULT');
+```
+
+The method takes a `synchronizationType` parameter. It will retrieve locally stored data if the value is `CACHE`, otherwise with the `DEFAULT` value it will call the DriveQuant’s servers.
+
+#### GetTripSharingLinkResponse
+
+| Field  | Type                     | Description                                     |
+| ------ | ------------------------ | ----------------------------------------------- |
+| status | GetTripSharingLinkStatus | The status of the request                       |
+| link   | TripSharingLink          | Can be `null`. Data about the trip sharing link |
+
+#### GetTripSharingLinkStatus
+
+| Field                    | Description                                                                                                    |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| SUCCESS                  | The link has been successfully retrieved. Information is returned in `data`.                                   |
+| FAILED_TO_GET_CACHE_ONLY | An error occurred when trying to retrieve a link. Locally trip sharing link, if exists, is returned in `data`. |
+| NO_ACTIVE_LINK           | There is no active link for the user. Information returned in data is `null`.                                  |
+| USER_NOT_CONNECTED       | The user is not yet connected to DriveKit. Information returned in `data` is null.                             |
+| UNAUTHENTICATED          | The user has been disconnected. Information returned in data is `null`.                                        |
+| FORBIDDEN                | Your API key is not allowed to use the feature. Information returned in `data` is null.                        |
+
+### revokeTripSharingLink
+
+```typescript
+revokeTripSharingLink(): Promise<RevokeTripSharingLinkStatus>
+```
+
+To revoke a trip sharing link, use the following code:
+
+```typescript
+const result = await DriveKitTripAnalysis.revokeTripSharingLink();
+```
+
+#### RevokeTripSharingLinkStatus
+
+| Field              | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| SUCCESS            | The link has been successfully revoked           |
+| NO_ACTIVE_LINK     | There is no active link for the user             |
+| ERROR              | An error occurred when trying to revoke the link |
+| USER_NOT_CONNECTED | The user is not yet connected to DriveKit        |
+| UNAUTHENTICATED    | The user has been disconnected                   |
+| FORBIDDEN          | Your API key is not allowed to use the feature   |

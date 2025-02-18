@@ -357,16 +357,16 @@ PODS:
   - React-jsinspector (0.71.18)
   - React-logger (0.71.18):
     - glog
-  - react-native-drivekit-core (2.4.3):
+  - react-native-drivekit-core (2.5.0):
     - DriveKitCore (= 2.9.1)
     - React-Core
-  - react-native-drivekit-driver-data (2.4.3):
+  - react-native-drivekit-driver-data (2.5.0):
     - DriveKitDriverData (= 2.9.1)
     - React-Core
-  - react-native-drivekit-trip-analysis (2.4.3):
+  - react-native-drivekit-trip-analysis (2.5.0):
     - DriveKitTripAnalysis (= 2.9.1)
     - React-Core
-  - react-native-drivekit-trip-simulator (2.4.3):
+  - react-native-drivekit-trip-simulator (2.5.0):
     - DriveKitTripSimulator (= 2.9.1)
     - React-Core
   - React-perflogger (0.71.18)
@@ -692,7 +692,7 @@ SPEC CHECKSUMS:
   Permission-LocationAlways: 49fa186f3b46c173eb6981f40038569d047f83cd
   Permission-LocationWhenInUse: 269715b4efa337c782d9c44e506aa3ae4be77dd7
   Permission-Motion: 78ea2a70cb324850dded706095c0f44afe7def32
-  RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
+  RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
   RCTRequired: 467cd79889cbcfd008d0ff7c697f73765d4578c3
   RCTTypeSafety: 71c8b219dc633684896452fee38a1e442d167dd6
   React: b807b09e4402c12dcbc44176e50533dca10d01f0
@@ -706,10 +706,10 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 782255d790723bf2bf8d22798f7f3eced6f5d85f
   React-jsinspector: 7218c92923292e20326a1eed3104fe90393ca449
   React-logger: d4343967f7bff885c453bcfb57074bf8ffaa4b34
-  react-native-drivekit-core: 45f7907b3e7fe345ad8aab8cf9b23083b1a70177
-  react-native-drivekit-driver-data: 09ce920f961d20c9c5f02c7e6ecd897eb74c7880
-  react-native-drivekit-trip-analysis: 78357bc719064fa9949202feae5b76c2303eb6cb
-  react-native-drivekit-trip-simulator: 60ca93ba600e6b3dcfd6d197a8b9b57667078d26
+  react-native-drivekit-core: 393aa481a2ef6413a7ca660acaa1b9f794de6693
+  react-native-drivekit-driver-data: c621ebba6be570bdb0d185bb3106709ba873b785
+  react-native-drivekit-trip-analysis: dcc21597eb56b19a083cef7fed6c1629bbb39fd4
+  react-native-drivekit-trip-simulator: 3f97dda815b3d1f13faf44aa0739995277ccd80e
   React-perflogger: c8849042b03392681ebd5d99a0775dbadfad2c74
   React-RCTActionSheet: 6bd3b502da266d69942e9ce4bc13666f90544620
   React-RCTAnimation: 63fbec04ae279b387ac786898bd5a918b8875f48

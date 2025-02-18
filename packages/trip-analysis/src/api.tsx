@@ -26,7 +26,12 @@ import type {
   DKTripRecordingCanceledState,
   DKTripRecordingFinishedState,
   TripResult,
+  CreateTripSharingLinkResponse,
+  RevokeTripSharingLinkStatus,
+  GetTripSharingLinkResponse,
 } from './types';
+
+import type { SynchronizationType } from '@react-native-drivekit/core';
 
 const LINKING_ERROR =
   `The package 'react-native-drivekit-trip-analysis' doesn't seem to be linked. Make sure: \n\n` +
@@ -174,4 +179,24 @@ export function getCurrentTripInfo(): Promise<CurrentTripInfo | null> {
 
 export function getLastTripLocation(): Promise<LastTripLocation | null> {
   return DriveKitTripAnalysis.getLastTripLocation();
+}
+
+export function isTripSharingAvailable(): Promise<boolean> {
+  return DriveKitTripAnalysis.isTripSharingAvailable();
+}
+
+export function createTripSharingLink(
+  durationInSec: number
+): Promise<CreateTripSharingLinkResponse> {
+  return DriveKitTripAnalysis.createTripSharingLink(durationInSec);
+}
+
+export function getTripSharingLink(
+  synchronizationType: SynchronizationType = 'DEFAULT'
+): Promise<GetTripSharingLinkResponse> {
+  return DriveKitTripAnalysis.getTripSharingLink(synchronizationType);
+}
+
+export function revokeTripSharingLink(): Promise<RevokeTripSharingLinkStatus> {
+  return DriveKitTripAnalysis.revokeTripSharingLink();
 }

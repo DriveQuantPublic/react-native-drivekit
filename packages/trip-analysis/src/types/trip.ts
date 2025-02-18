@@ -36,13 +36,13 @@ export type TripPoint = {
 export type TripMetadata = { [key: string]: string };
 
 export type CurrentTripInfo = {
-  localTripId: String;
-  date: Date;
+  localTripId: string;
+  date: string;
   startMode: StartMode;
 };
 
 export type LastTripLocation = {
-  date: Date;
+  date: string;
   latitude: number;
   longitude: number;
   accuracyMeter: number;
@@ -58,30 +58,30 @@ export enum AccuracyLevel {
 export type DKTripRecordingStartedState = {
   localTripId: string;
   startMode: StartMode;
-  recordingStartDate: Date;
+  recordingStartDate: string;
 };
 
 export type DKTripRecordingConfirmedState = {
   localTripId: string;
   startMode: StartMode;
-  recordingStartDate: Date;
-  recordingConfirmationDate: Date;
+  recordingStartDate: string;
+  recordingConfirmationDate: string;
 };
 
 export type DKTripRecordingCanceledState = {
   localTripId: string;
   startMode: StartMode;
-  recordingStartDate: Date;
-  recordingConfirmationDate: Date | null;
+  recordingStartDate: string;
+  recordingConfirmationDate: string | null;
   cancelationReason: DKTripCancelationReason;
 };
 
 export type DKTripRecordingFinishedState = {
   localTripId: string;
   startMode: StartMode;
-  recordingStartDate: Date;
-  recordingConfirmationDate: Date;
-  recordingEndDate: Date;
+  recordingStartDate: string;
+  recordingConfirmationDate: string;
+  recordingEndDate: string;
 };
 
 export enum DKTripCancelationReason {
@@ -144,3 +144,48 @@ export enum TripResponseError {
   ACCOUNT_LIMIT_REACHED,
   UNKNOWN_ERROR,
 }
+
+export type TripSharingLink = {
+  code: string;
+  startDate: string;
+  endDate: string;
+  url: string;
+};
+
+export enum CreateTripSharingLinkStatus {
+  SUCCESS,
+  ERROR,
+  USER_NOT_CONNECTED,
+  INVALID_DURATION,
+  UNAUTHENTICATED,
+  FORBIDDEN,
+  ACTIVE_LINK_ALREADY_EXISTS,
+}
+
+export enum GetTripSharingLinkStatus {
+  SUCCESS,
+  FAILED_TO_GET_CACHE_ONLY,
+  USER_NOT_CONNECTED,
+  UNAUTHENTICATED,
+  FORBIDDEN,
+  NO_ACTIVE_LINK,
+}
+
+export enum RevokeTripSharingLinkStatus {
+  SUCCESS,
+  ERROR,
+  USER_NOT_CONNECTED,
+  UNAUTHENTICATED,
+  FORBIDDEN,
+  NO_ACTIVE_LINK,
+}
+
+export type CreateTripSharingLinkResponse = {
+  status: CreateTripSharingLinkStatus;
+  data: TripSharingLink | null;
+};
+
+export type GetTripSharingLinkResponse = {
+  status: GetTripSharingLinkStatus;
+  data: TripSharingLink | null;
+};

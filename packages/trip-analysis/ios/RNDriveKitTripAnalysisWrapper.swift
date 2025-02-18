@@ -46,7 +46,7 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     }
 
     @objc internal func enableMonitorPotentialTripStart(enable: NSNumber) -> Void {
-        DriveKitTripAnalysis.shared.monitorPotentialTripStart =  enable.boolValue;
+        DriveKitTripAnalysis.shared.monitorPotentialTripStart = enable.boolValue;
     }
 
     @objc internal func reset() -> Void {
@@ -96,6 +96,29 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
       } else {
         resolve(nil)
       }
+    }
+  
+    @objc internal func isTripSharingAvailable() -> NSNumber {
+      return NSNumber(value: DriveKitTripAnalysis.shared.tripSharing.isAvailable());
+    }
+  
+    @objc internal func createTripSharingLink(durationInSeconds: NSNumber, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      DriveKitTripAnalysis.shared.tripSharing.createLink(durationInSeconds: durationInSeconds.intValue) { status, data in
+        resolve(mapCreateTripSharingResponse(status: status, data: data))
+      }
+    }
+  
+    @objc internal func getTripSharingLink(synchronizationType: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      let mappedSynchronizationType: SynchronizationType = synchronizationType == "CACHE" ? .cache : .defaultSync
+      DriveKitTripAnalysis.shared.tripSharing.getLink(synchronizationType: mappedSynchronizationType) { status, data in
+        resolve(mapGetTripSharingResponse(status: status, data: data))
+      }
+    }
+  
+    @objc internal func revokeTripSharingLink(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      DriveKitTripAnalysis.shared.tripSharing.revokeLink(completion: { status in
+        resolve(mapRevokeTripSharingStatus(status: status))
+      })
     }
 }
 
