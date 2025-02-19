@@ -12,13 +12,13 @@ Pod::Spec.new do |s|
   s.authors       = package["author"]
   s.module_name   = "RNDriveKitDriverData"
 
-  s.platforms    = { :ios => "11.0" }
+  s.platforms    = { :ios => "13.0" }
   s.source       = { :git => "https://github.com/DriveQuantPublic/react-native-drivekit/tree/main/packages/driver-data.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
-  s.dependency 'DriveKitDriverData', '2.10.1'
+  s.dependency 'DriveKitDriverData', '2.11.0'
 
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
