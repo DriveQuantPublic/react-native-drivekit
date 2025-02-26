@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.5.0...v2.6.0) (2025-02-26)
+
+
+### Features
+
+* release 2.6.0 ([330ac74](https://github.com/DriveQuantPublic/react-native-drivekit/commit/330ac74f1c7108d768ea8a428dd76daebe0ec4b6))
+* upgrade minSdk to 26 (Android 8.0) ([#128](https://github.com/DriveQuantPublic/react-native-drivekit/issues/128)) ([4e5fa40](https://github.com/DriveQuantPublic/react-native-drivekit/commit/4e5fa40e6803a212c4a920bc373e5dac0790d76b))
+
+
+
+
+
 # [2.5.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.4.3...v2.5.0) (2025-02-03)
 
 
