@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/trip-simulator",
-  "version": "2.6.0",
+  "version": "2.6.1-alpha1",
   "description": "React Native interface for DriveKit Trip Simulator",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

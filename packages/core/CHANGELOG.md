@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1-alpha1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.6.0...v2.6.1-alpha1) (2025-03-06)
+
+
+### Features
+
+* duplicate UserInfo type in NativeCore ([10b3bf1](https://github.com/DriveQuantPublic/react-native-drivekit/commit/10b3bf1e3a98cf162f2d7fab07b8569cbf7bfd28))
+
+
+
+
+
 # [2.6.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.5.0...v2.6.0) (2025-02-26)
 
 
