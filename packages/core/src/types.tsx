@@ -317,11 +317,11 @@ export type TripStatistics = {
   weekDay: boolean;
 };
 
-export type UserInfo = {
+export interface UserInfo {
   firstname: string | null;
   lastname: string | null;
   pseudo: string | null;
-};
+}
 
 export type DeviceConfigurationEvent = {
   type: DeviceConfigurationEventType;
