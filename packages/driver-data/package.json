@@ -49,8 +49,9 @@
     "access": "public"
   },
   "devDependencies": {
-    "@react-native-community/eslint-config": "^3.0.2",
-    "@types/jest": "^28.1.2",
+    "@types/metro-config": "^0.76.3",
+    "@react-native/eslint-config": "^0.72.2",
+    "@react-native/metro-config": "^0.72.6",
     "@types/react": "~18.0.25",
     "@types/react-native": "0.70.6",
     "eslint": "^8.4.1",
@@ -73,12 +74,8 @@
     "react": "*",
     "react-native": "*"
   },
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ]
+  "engines": {
+    "node": ">=16"
   },
   "eslintConfig": {
     "root": true,
