@@ -71,6 +71,7 @@ fun mapDKCrashInfo(info: DKCrashInfo): ReadableMap {
   rnCrashInfo.putDouble("longitude", info.longitude)
   rnCrashInfo.putDouble("velocity", info.velocity)
   rnCrashInfo.putString("status", mapCrashStatus(info.status))
+  rnCrashInfo.putString("userLocationUrl", info.userLocationUrl)
   return rnCrashInfo
 }
 
