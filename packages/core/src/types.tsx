@@ -1,3 +1,7 @@
+import type { UserInfo as UserInfoType } from './NativeCore';
+
+export type UserInfo = UserInfoType;
+
 export enum RequestError {
   WRONG_URL = 'WRONG_URL',
   NO_NETWORK = 'NO_NETWORK',
@@ -315,12 +319,6 @@ export type TripStatistics = {
   speedMean: number;
   subdispNb: number;
   weekDay: boolean;
-};
-
-export type UserInfo = {
-  firstname: string | null;
-  lastname: string | null;
-  pseudo: string | null;
 };
 
 export type DeviceConfigurationEvent = {
