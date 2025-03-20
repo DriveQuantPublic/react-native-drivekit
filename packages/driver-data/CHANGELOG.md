@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0-alpha2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0-alpha1...v2.7.0-alpha2) (2025-03-20)
+
+
+### Bug Fixes
+
+* fix driver-data types path ([9039254](https://github.com/DriveQuantPublic/react-native-drivekit/commit/9039254d2e74abcf31b1a9c6fa78054fbb2bfc9f))
+
+
+
+
+
 # [2.7.0-alpha1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.6.0...v2.7.0-alpha1) (2025-03-20)
 
 **Note:** Version bump only for package @react-native-drivekit/driver-data
