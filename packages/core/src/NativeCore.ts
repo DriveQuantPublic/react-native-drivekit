@@ -1,7 +1,12 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
 import type { WithDefault } from 'react-native/Libraries/Types/CodegenTypes';
-import type { UserInfo } from './types';
+
+export type UserInfo = {
+  firstname: string | null;
+  lastname: string | null;
+  pseudo: string | null;
+};
 
 export interface Spec extends TurboModule {
   getApiKey(): Promise<string>;

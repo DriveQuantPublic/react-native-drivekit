@@ -1,3 +1,6 @@
+import type { TripMetadata as TripMetadataType } from '../NativeDriveKitTripAnalysis';
+export type TripMetadata = TripMetadataType;
+
 export enum CancelTripReason {
   USER = 'USER',
   HIGH_SPEED = 'HIGH_SPEED',
@@ -32,8 +35,6 @@ export type TripPoint = {
   heading: number;
   duration: number;
 };
-
-export type TripMetadata = { [key: string]: string };
 
 export type CurrentTripInfo = {
   localTripId: string;
