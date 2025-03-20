@@ -62,7 +62,7 @@
     "prettier": "^2.0.5",
     "react": "18.2.0",
     "react-native": "^0.71.18",
-    "react-native-builder-bob": "^0.20.0",
+    "react-native-builder-bob": "^0.38.0",
     "typescript": "^4.5.2"
   },
   "resolutions": {
@@ -130,5 +130,6 @@
     "name": "RNTripSimulatorSpec",
     "type": "modules",
     "jsSrcsDir": "src"
-  }
+  },
+  "gitHead": "d0429c7407239b5402a92d6208704dfe7bb1bcc7"
 }
