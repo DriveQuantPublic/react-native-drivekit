@@ -359,16 +359,16 @@ PODS:
   - React-jsinspector (0.71.18)
   - React-logger (0.71.18):
     - glog
-  - react-native-drivekit-core (2.7.0-alpha1):
+  - react-native-drivekit-core (2.7.0-alpha2):
     - DriveKitCore (= 2.12.0)
     - React-Core
-  - react-native-drivekit-driver-data (2.7.0-alpha1):
+  - react-native-drivekit-driver-data (2.7.0-alpha2):
     - DriveKitDriverData (= 2.12.0)
     - React-Core
-  - react-native-drivekit-trip-analysis (2.7.0-alpha1):
+  - react-native-drivekit-trip-analysis (2.7.0-alpha2):
     - DriveKitTripAnalysis (= 2.12.0)
     - React-Core
-  - react-native-drivekit-trip-simulator (2.7.0-alpha1):
+  - react-native-drivekit-trip-simulator (2.7.0-alpha2):
     - DriveKitTripSimulator (= 2.12.0)
     - React-Core
   - React-perflogger (0.71.18)
@@ -710,10 +710,10 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 782255d790723bf2bf8d22798f7f3eced6f5d85f
   React-jsinspector: 7218c92923292e20326a1eed3104fe90393ca449
   React-logger: d4343967f7bff885c453bcfb57074bf8ffaa4b34
-  react-native-drivekit-core: 0273cb7709f07a53d19fd04261012e336e99655c
-  react-native-drivekit-driver-data: 18cd0224c5c30748333949e1be93439a96695648
-  react-native-drivekit-trip-analysis: cea4a8d4ed2438c90be213dac9508a351dc208fb
-  react-native-drivekit-trip-simulator: fb08e2dfcdccf5696653edc697a24333dbcd6956
+  react-native-drivekit-core: d4f6bc02dea3ac70a76acb1e3cec9a7a7195a611
+  react-native-drivekit-driver-data: ce6377a988421ce86f5f241b46a4bd89851c7282
+  react-native-drivekit-trip-analysis: 77aa66bfb1acfee1aeb67ea4fef482eb979e98ba
+  react-native-drivekit-trip-simulator: 85e175f35c1401d0bb0f6293bb93e62a2a640d68
   React-perflogger: c8849042b03392681ebd5d99a0775dbadfad2c74
   React-RCTActionSheet: 6bd3b502da266d69942e9ce4bc13666f90544620
   React-RCTAnimation: 63fbec04ae279b387ac786898bd5a918b8875f48
