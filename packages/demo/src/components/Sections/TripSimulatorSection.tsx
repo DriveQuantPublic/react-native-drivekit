@@ -29,6 +29,13 @@ const TripSimulatorSection: FunctionComponent<{}> = () => {
       />
       <Spacer factor={1} />
       <Button
+        title={'Start simulation (TRIP_WITH_CRASH_CONFIRMED_30KMH)'}
+        onPress={async () => {
+          DriveKitTripSimulator.start('TRIP_WITH_CRASH_CONFIRMED_30KMH');
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
         title={'Stop simulation'}
         onPress={async () => {
           DriveKitTripSimulator.stop();

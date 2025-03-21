@@ -11,6 +11,7 @@ export type CrashInfo = {
   longitude: number;
   velocity: number;
   crashStatus: CrashStatus;
+  userLocationUrl: string | null;
 };
 
 export enum CrashFeedbackType {
