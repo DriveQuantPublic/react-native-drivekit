@@ -1,7 +1,12 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
 import type { WithDefault } from 'react-native/Libraries/Types/CodegenTypes';
-import type { UserInfo } from './types';
+
+export type UserInfo = {
+  firstname: string | null;
+  lastname: string | null;
+  pseudo: string | null;
+};
 
 export interface Spec extends TurboModule {
   getApiKey(): Promise<string>;
@@ -26,7 +31,7 @@ export interface Spec extends TurboModule {
     body?: string;
   }): void;
   getUserInfo(
-    synchronizationType: WithDefault<'default' | 'cache', 'default'>
+    synchronizationType: WithDefault<string, 'default'>
   ): Promise<UserInfo | null>;
   updateUserInfo(userInfo: UserInfo): Promise<void>;
   requestLocationPermission(): Promise<void>;

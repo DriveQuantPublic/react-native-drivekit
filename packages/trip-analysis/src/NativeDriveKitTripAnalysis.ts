@@ -1,6 +1,7 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
-import type { TripMetadata } from './types';
+
+export type TripMetadata = { [key: string]: string };
 
 export interface Spec extends TurboModule {
   activateAutoStart(enable: boolean): Promise<void>;
