@@ -1,23 +1,36 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { ApiKeySection } from './src/components/Sections/ApiKeySection';
+import { TokenSection } from './src/components/Sections/TokenSection';
+import { UpdateUserSection } from './src/components/Sections/UpdateUserSection';
+import { UserSection } from './src/components/Sections/UserSection';
+import { margins } from './src/margins';
 
-function App(): React.JSX.Element {
+const App = () => {
+/*   useCheckPermissions();
+  useSetupListeners(); */
+
   return (
-    <View style={styles.container}>
-      <Text>Hello demo 0.78</Text>
-    </View>
+    <SafeAreaView style={styles.page}>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        <ApiKeySection />
+        <UserSection />
+        <TokenSection />
+        <UpdateUserSection />
+       
+      </ScrollView>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
+  page: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: Colors.lighter,
+  },
+  contentContainer: {
+    padding: margins.x3,
   },
 });
 

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "pods": "cd ios && bundle exec pod install && cd ..",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
@@ -12,6 +13,8 @@
   "dependencies": {
     "@notifee/react-native": "^9.1.8",
     "@react-native-community/checkbox": "^0.5.17",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "postinstall-postinstall": "^2.1.0",
     "react": "19.0.0",
     "react-native": "0.78.1",
     "react-native-battery-optimization-check": "^1.0.8",
@@ -39,5 +42,10 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "ios": {
+    "modulesProvider": {
+      "DriveKitCore": "RNDriveKitCore"
+    }
   }
 }

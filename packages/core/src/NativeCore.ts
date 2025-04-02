@@ -31,7 +31,7 @@ export interface Spec extends TurboModule {
     body?: string;
   }): void;
   getUserInfo(
-    synchronizationType: WithDefault<'default' | 'cache', 'default'>
+    synchronizationType: string
   ): Promise<UserInfo | null>;
   updateUserInfo(userInfo: UserInfo): Promise<void>;
   requestLocationPermission(): Promise<void>;
