@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
   s.module_name   = "RNDriveKitCore"
+  s.requires_arc  = true
 
   s.platforms    = { :ios => "13.0" }
   s.source       = { :git => "https://github.com/DriveQuantPublic/react-native-drivekit.git", :tag => "#{s.version}" }
@@ -22,16 +23,6 @@ Pod::Spec.new do |s|
 
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
-    s.compiler_flags = folly_compiler_flags + " -DRCT_NEW_ARCH_ENABLED=1"
-    s.pod_target_xcconfig    = {
-        "HEADER_SEARCH_PATHS" => "\"$(PODS_ROOT)/boost\"",
-        "CLANG_CXX_LANGUAGE_STANDARD" => "c++17"
-    }
-
-    s.dependency "React-Codegen"
-    s.dependency "RCT-Folly"
-    s.dependency "RCTRequired"
-    s.dependency "RCTTypeSafety"
-    s.dependency "ReactCommon/turbomodule/core"
+    install_modules_dependencies(s)
   end
 end

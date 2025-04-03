@@ -1,37 +1,28 @@
-import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { ApiKeySection } from './src/components/Sections/ApiKeySection';
-import { TokenSection } from './src/components/Sections/TokenSection';
-import { UpdateUserSection } from './src/components/Sections/UpdateUserSection';
-import { UserSection } from './src/components/Sections/UserSection';
-import { margins } from './src/margins';
+import * as DriveKitCore from '@react-native-drivekit/core';
+import * as React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 
-const App = () => {
-/*   useCheckPermissions();
-  useSetupListeners(); */
+export default function App() {
+  React.useEffect(() => {
+    DriveKitCore.setApiKey('SOMETHING');
+  }, []);
 
   return (
-    <SafeAreaView style={styles.page}>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <ApiKeySection />
-        <UserSection />
-        <TokenSection />
-        <UpdateUserSection />
-       
-      </ScrollView>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text>Hello</Text>
+    </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  page: {
+  container: {
     flex: 1,
-    backgroundColor: Colors.lighter,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  contentContainer: {
-    padding: margins.x3,
+  box: {
+    width: 60,
+    height: 60,
+    marginVertical: 20,
   },
 });
-
-export default App;

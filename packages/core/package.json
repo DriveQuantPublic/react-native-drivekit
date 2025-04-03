@@ -124,12 +124,8 @@
     ]
   },
   "codegenConfig": {
-    "libraries": [
-      {
-        "name": "RNCoreSpec",
-        "type": "modules",
-        "jsSrcsDir": "src"
-      }
-    ]
+    "name": "RNDriveKitCoreSpec",
+    "type": "modules",
+    "jsSrcsDir": "src"
   }
 }

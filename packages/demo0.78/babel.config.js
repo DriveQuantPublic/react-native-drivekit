@@ -1,7 +1,6 @@
 const path = require('path');
 const packCore = require('../core/package.json');
 
-
 module.exports = {
   presets: ['module:@react-native/babel-preset'],
   plugins: [
@@ -10,7 +9,7 @@ module.exports = {
       {
         extensions: ['.tsx', '.ts', '.js', '.json'],
         alias: {
-          [packCore.name]: path.join(__dirname, '../core', packCore.source),
+          [packCore.name]: path.resolve(__dirname, '../core/src'),
         },
       },
     ],

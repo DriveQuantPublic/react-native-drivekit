@@ -51,7 +51,6 @@ PODS:
     - React-RCTText (= 0.78.1)
     - React-RCTVibration (= 0.78.1)
   - React-callinvoker (0.78.1)
-  - React-Codegen (0.1.0)
   - React-Core (0.78.1):
     - glog
     - hermes-engine
@@ -1244,13 +1243,27 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
   - react-native-drivekit-core (2.6.0):
+    - DoubleConversion
     - DriveKitCore (= 2.12.0)
-    - RCT-Folly
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
     - RCTRequired
     - RCTTypeSafety
-    - React-Codegen
     - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
+    - Yoga
   - React-NativeModulesApple (0.78.1):
     - glog
     - hermes-engine
@@ -1649,7 +1662,6 @@ SPEC REPOS:
     - BEMCheckBox
     - DriveKitCore
     - DriveKitNetworking
-    - React-Codegen
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -1812,7 +1824,6 @@ SPEC CHECKSUMS:
   RCTTypeSafety: 2f0bc11f9584fde4c7e6d8b26577c97681051c00
   React: e6035d3a639f6668a18429aaf2fdc0c12b1e7a81
   React-callinvoker: 3740fb1716428dabd205486c818ce6a5999e7f11
-  React-Codegen: 4b8b4817cea7a54b83851d4c1f91f79aa73de30a
   React-Core: d12b31b149ff71e5054dec137d651a9955569321
   React-CoreModules: e392c711449f260d9ba7556a264ef5cfacdab3f9
   React-cxxreact: dcb3c48b13b298a270edefb24d2a9211809ff147
@@ -1837,7 +1848,7 @@ SPEC CHECKSUMS:
   React-logger: 74ddb793d36b48bba176328c7af75e5e656fd405
   React-Mapbuffer: 39e87693178fd6483bb5ca8b851fae362d49409a
   React-microtasksnativemodule: b740ebae7fad70aa78bc24cc0dfc15ac9637b6eb
-  react-native-drivekit-core: 98372e22be502849a2391223b595fca03b63284f
+  react-native-drivekit-core: 5f44ddc2c58e7d13beafe435f6e194cd767636c1
   React-NativeModulesApple: af0571ac115d09c9a669ed45ce6a4ca960598a2d
   React-perflogger: 26d07766b033f84559bd520e949453dba8bf1cd8
   React-performancetimeline: 0f3e0b6e2152951257bd8c90f95d527cf4316fa8

@@ -1,7 +1,7 @@
 #import <React/RCTEventEmitter.h>
 
 #ifdef RCT_NEW_ARCH_ENABLED
-#import <RNCoreSpec/RNCoreSpec.h>
+#import <RNDriveKitCoreSpec/RNDriveKitCoreSpec.h>
 
 @interface RNDriveKitCore : RCTEventEmitter <NativeCoreSpec>
 #else
