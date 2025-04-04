@@ -69,7 +69,6 @@
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
-    "@react-native-drivekit/core": "2.6.0",
     "react": "*",
     "react-native": "*"
   },

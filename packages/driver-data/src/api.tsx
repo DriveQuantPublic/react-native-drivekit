@@ -1,9 +1,15 @@
 import { NativeModules, Platform } from 'react-native';
-import type {
-  SynchronizationType,
-  TransportationMode,
-} from '@react-native-drivekit/core';
-import type { GetTripResponse, GetTripsResponse, Route } from './types';
+import type { SynchronizationType as SynchronizationTypeType } from './NativeDriverData';
+import type { TransportationMode as TransportationModeType } from './NativeDriverData';
+import type { GetTripResponse as GetTripResponseType } from './NativeDriverData';
+import type { Route as RouteType } from './NativeDriverData';
+import type { GetTripsResponse as GetTripsResponseType } from './NativeDriverData';
+
+export type SynchronizationType = SynchronizationTypeType;
+export type TransportationMode = TransportationModeType;
+export type GetTripResponse = GetTripResponseType;
+export type GetTripsResponse = GetTripsResponseType;
+export type Route = RouteType;
 
 const LINKING_ERROR =
   `The package '@react-native-drivekit/driver-data' doesn't seem to be linked. Make sure: \n\n` +
