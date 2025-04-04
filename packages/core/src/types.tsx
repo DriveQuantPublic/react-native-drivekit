@@ -44,3 +44,5 @@ export type DeviceConfigurationEvent = {
   type: DeviceConfigurationEventType;
   isValid: boolean;
 };
+
+export type SynchronizationType = 'DEFAULT' | 'CACHE';
