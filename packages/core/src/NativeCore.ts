@@ -29,9 +29,9 @@ export interface Spec extends TurboModule {
     bccRecipients?: Array<string>;
     subject?: string;
     body?: string;
-  }): void;
+  }): Promise<void>;
   getUserInfo(
-    synchronizationType: string
+    synchronizationType: WithDefault<string, 'default'>
   ): Promise<UserInfo | null>;
   updateUserInfo(userInfo: UserInfo): Promise<void>;
   requestLocationPermission(): Promise<void>;
