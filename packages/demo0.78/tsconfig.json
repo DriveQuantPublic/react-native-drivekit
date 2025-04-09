@@ -1,3 +1,15 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Completeness */
+    "skipLibCheck": true,                               /* Skip type checking all .d.ts files. */
+    "paths": {
+      "@react-native-drivekit/core": ["../core/src/index"],
+      "@react-native-drivekit/trip-analysis": ["../trip-analysis/src/index"],
+      "@react-native-drivekit/driver-data": ["../driver-data/src/index"],
+      "@react-native-drivekit/trip-simulator": ["../trip-simulator/src/index"]
+    },
+  }
 }
