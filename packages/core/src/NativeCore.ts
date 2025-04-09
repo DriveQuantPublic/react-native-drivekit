@@ -37,4 +37,4 @@ export interface Spec extends TurboModule {
   requestLocationPermission(): Promise<void>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitCore');
+export default TurboModuleRegistry.getEnforcing<Spec>('RNDriveKitCore');
