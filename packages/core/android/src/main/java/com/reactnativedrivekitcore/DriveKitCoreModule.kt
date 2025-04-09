@@ -198,6 +198,11 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
       promise.resolve(null)
     }
 
+  @ReactMethod
+  override fun requestLocationPermission(promise: Promise?) {
+    TODO("Not yet implemented")
+  }
+
   private fun ReadableArray?.toTypedArray(): Array<String> {
     val list = mutableListOf<String>()
     this?.toArrayList()?.forEach {
