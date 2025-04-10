@@ -199,7 +199,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
     }
 
   @ReactMethod
-  override fun requestLocationPermission(promise: Promise?) {
+  override fun requestLocationPermission(promise: Promise) {
     TODO("Not yet implemented")
   }
 
@@ -216,7 +216,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
   companion object {
         const val NAME = "RNDriveKitCore"
         var reactContext: ReactApplicationContext? = null
-       
+
         fun initialize(application: Application) {
           DriveKit.initialize(application)
           configureListeners()
