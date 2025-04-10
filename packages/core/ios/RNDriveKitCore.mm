@@ -72,7 +72,7 @@ RCT_EXPORT_METHOD(updateUserId:(NSString *)userId resolve:(RCTPromiseResolveBloc
     resolve(nil);
 }
 
-RCT_EXPORT_METHOD(deleteAccount:(nonnull NSNumber *)instantDeletion resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(deleteAccount:(BOOL)instantDeletion resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self deleteAccount:instantDeletion];
     resolve(nil);
@@ -152,7 +152,7 @@ RCT_EXPORT_METHOD(requestLocationPermission:(RCTPromiseResolveBlock)resolve reje
     [RNDriveKitCoreWrapper.shared updateUserIdWithUserId:userId];
 }
 
-- (void)deleteAccount:(NSNumber *)instantDeletion {
+- (void)deleteAccount:(BOOL)instantDeletion {
     [RNDriveKitCoreWrapper.shared deleteAccountWithInstantDeletion:instantDeletion];
 }
 
