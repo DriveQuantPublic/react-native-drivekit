@@ -19,4 +19,5 @@ abstract class DriveKitCoreSpec internal constructor(context: ReactApplicationCo
   abstract fun getUserInfo(synchronizationType: String?, promise: Promise)
   abstract fun updateUserInfo(userInfo: ReadableMap, promise: Promise)
   abstract fun composeDiagnosisMail(options: ReadableMap?, promise: Promise)
+  abstract fun requestLocationPermission(promise: Promise)
 }
