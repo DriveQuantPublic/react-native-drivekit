@@ -199,7 +199,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
     }
 
   @ReactMethod
-  override fun requestLocationPermission(promise: Promise?) {
+  override fun requestLocationPermission(promise: Promise) {
     TODO("Not yet implemented")
   }
 
