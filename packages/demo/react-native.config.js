@@ -14,8 +14,5 @@ module.exports = {
     '@react-native-drivekit/trip-simulator': {
       root: path.join(__dirname, '../trip-simulator'),
     },
-    'react-native-permissions': {
-      root: path.join(__dirname, '../../node_modules/react-native-permissions'),
-    },
   },
 };
