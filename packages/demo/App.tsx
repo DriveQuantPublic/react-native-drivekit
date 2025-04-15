@@ -1,15 +1,16 @@
-import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { ApiKeySection } from './src/components/Sections/ApiKeySection';
-import { TokenSection } from './src/components/Sections/TokenSection';
-import { UpdateUserSection } from './src/components/Sections/UpdateUserSection';
-import { UserSection } from './src/components/Sections/UserSection';
-import { margins } from './src/margins';
+import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {ApiKeySection} from './src/components/Sections/ApiKeySection';
+import {TokenSection} from './src/components/Sections/TokenSection';
+import {UpdateUserSection} from './src/components/Sections/UpdateUserSection';
+import {UserSection} from './src/components/Sections/UserSection';
+import {useCheckPermissions} from './src/hooks/useCheckPermissions';
+import {useSetupListeners} from './src/hooks/useSetupListeners';
+import {margins} from './src/margins';
 
 const App = () => {
-/*   useCheckPermissions();
-  useSetupListeners(); */
+  useCheckPermissions();
+  useSetupListeners();
 
   return (
     <SafeAreaView style={styles.page}>
@@ -18,7 +19,6 @@ const App = () => {
         <UserSection />
         <TokenSection />
         <UpdateUserSection />
-       
       </ScrollView>
     </SafeAreaView>
   );
