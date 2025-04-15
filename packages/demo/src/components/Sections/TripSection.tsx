@@ -2,14 +2,10 @@ import React, {FunctionComponent} from 'react';
 import {Alert, Button, Text} from 'react-native';
 import {Section} from './Section';
 /* import * as DriveKitDriverData from '@react-native-drivekit/driver-data'; */
-import {Spacer} from './../Spacer';
+import {Spacer} from '../Spacer';
 
 const TripSection: FunctionComponent<{}> = () => {
-  return (
-    <Text>
-      DriveData not available
-    </Text>
-  )
+  return <Text>DriveData not available</Text>;
   /* return (
     <Section title="Driver Data">
       <Button

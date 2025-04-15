@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {Button} from 'react-native';
 import * as DriveKitTripSimulator from '@react-native-drivekit/trip-simulator';
 import {Section} from './Section';
-import {Spacer} from './../Spacer';
+import {Spacer} from '../Spacer';
 
 const TripSimulatorSection: FunctionComponent<{}> = () => {
   return (

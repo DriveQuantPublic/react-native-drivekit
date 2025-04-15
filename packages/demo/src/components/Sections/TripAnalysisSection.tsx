@@ -4,7 +4,7 @@ import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import type {TripMetadata} from '@react-native-drivekit/trip-analysis';
 import CheckBox from '@react-native-community/checkbox';
 import {Section} from './Section';
-import {Spacer} from './../Spacer';
+import {Spacer} from '../Spacer';
 
 const inputHeight = 40;
 
