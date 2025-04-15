@@ -1,10 +1,10 @@
 {
   "name": "@react-native-drivekit/driver-data",
-  "version": "2.6.0",
+  "version": "2.7.0-alpha2",
   "description": "React Native interface for DriveKit Driver Data",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
-  "types": "lib/typescript/index.d.ts",
+  "types": "lib/typescript/driver-data/src/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
@@ -62,7 +62,7 @@
     "prettier": "^2.0.5",
     "react": "18.2.0",
     "react-native": "^0.71.18",
-    "react-native-builder-bob": "^0.20.0",
+    "react-native-builder-bob": "^0.38.0",
     "typescript": "^4.5.2"
   },
   "resolutions": {
@@ -122,5 +122,6 @@
         }
       ]
     ]
-  }
+  },
+  "gitHead": "d0429c7407239b5402a92d6208704dfe7bb1bcc7"
 }
