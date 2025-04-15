@@ -40,12 +40,6 @@ export enum DeviceConfigurationEventType {
   LOW_POWER_MODE = 'LOW_POWER_MODE',
 }
 
-export type UserInfo = {
-  firstname: string | null;
-  lastname: string | null;
-  pseudo: string | null;
-};
-
 export type SynchronizationType = 'DEFAULT' | 'CACHE';
 
 export type DeviceConfigurationEvent = {
