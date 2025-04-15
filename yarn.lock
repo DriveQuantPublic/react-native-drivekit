@@ -8039,9 +8039,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"com.drivekit.drivekitrndemoapp@workspace:packages/demo0.78":
+"com.drivekit.drivekitrndemoapp@workspace:packages/demo":
   version: 0.0.0-use.local
-  resolution: "com.drivekit.drivekitrndemoapp@workspace:packages/demo0.78"
+  resolution: "com.drivekit.drivekitrndemoapp@workspace:packages/demo"
   dependencies:
     "@babel/core": "npm:^7.25.2"
     "@babel/preset-env": "npm:^7.25.3"
