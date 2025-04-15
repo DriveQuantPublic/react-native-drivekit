@@ -76,12 +76,6 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
       }
 
       @ReactMethod
-      override fun enableSandboxMode(enable: Boolean, promise: Promise){
-        DriveKit.enableSandboxMode(enable)
-        promise.resolve(null)
-      }
-
-      @ReactMethod
       override fun reset(promise: Promise){
         DriveKit.reset()
         promise.resolve(null)
