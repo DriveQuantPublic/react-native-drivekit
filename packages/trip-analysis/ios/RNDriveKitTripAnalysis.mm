@@ -6,6 +6,8 @@
   bool hasListeners;
 }
 
+RCT_EXPORT_MODULE_NO_LOAD(RNDriveKitTripAnalysis, RNDriveKitTripAnalysis)
+
 - (id)init {
     self = [super init];
     if(self){
@@ -14,12 +16,8 @@
     return self;
 }
 
-RCT_EXTERN void RCTRegisterModule(Class);
-
 + (void)load {
     [super load];
-
-    RCTRegisterModule(self);
 
     if ([RNDriveKitTripAnalysisWrapper isAutoInitEnabled]) {
         [RNDriveKitTripAnalysisWrapper.shared addTripListener];
@@ -42,8 +40,6 @@ RCT_EXTERN void RCTRegisterModule(Class);
 -(void)stopObserving {
     hasListeners = NO;
 }
-
-RCT_EXPORT_PRE_REGISTERED_MODULE()
 
 RCT_REMAP_METHOD(activateAutoStart, activateAutoStartWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {

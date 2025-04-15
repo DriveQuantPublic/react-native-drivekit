@@ -6,18 +6,7 @@
   bool hasListeners;
 }
 
-RCT_EXTERN void RCTRegisterModule(Class);
-
-+ (void)load {
-    [super load];
-    
-    RCTRegisterModule(self);
-    
-    if ([RNDriveKitCoreWrapper isAutoInitEnabled]) {
-        [RNDriveKitCoreWrapper.shared addDriveKitListener];
-        [RNDriveKitCoreWrapper.shared addDeviceConfigurationListener];
-    }
-}
+RCT_EXPORT_MODULE_NO_LOAD(RNDriveKitCore, RNDriveKitCore)
 
 - (id)init {
     self = [super init];
@@ -25,6 +14,15 @@ RCT_EXTERN void RCTRegisterModule(Class);
         [RNCoreEventEmitter.shared registerEventEmitterWithEventEmitter:self];
     }
     return self;
+}
+
++ (void)load {
+    [super load];
+
+    if ([RNDriveKitCoreWrapper isAutoInitEnabled]) {
+        [RNDriveKitCoreWrapper.shared addDriveKitListener];
+        [RNDriveKitCoreWrapper.shared addDeviceConfigurationListener];
+    }
 }
 
 + (BOOL)requiresMainQueueSetup
@@ -43,8 +41,6 @@ RCT_EXTERN void RCTRegisterModule(Class);
 -(void)stopObserving {
     hasListeners = NO;
 }
-
-RCT_EXPORT_PRE_REGISTERED_MODULE()
 
 RCT_REMAP_METHOD(getApiKey, getApiKeyWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {

@@ -1,3 +1,7 @@
+import type { UserInfo as UserInfoType } from './NativeCore';
+
+export type UserInfo = UserInfoType;
+
 export enum RequestError {
   WRONG_URL = 'WRONG_URL',
   NO_NETWORK = 'NO_NETWORK',
@@ -35,12 +39,6 @@ export enum DeviceConfigurationEventType {
   BLUETOOTH_PERMISSION = 'BLUETOOTH_PERMISSION',
   LOW_POWER_MODE = 'LOW_POWER_MODE',
 }
-
-export type UserInfo = {
-  firstname: string | null;
-  lastname: string | null;
-  pseudo: string | null;
-};
 
 export type SynchronizationType = 'DEFAULT' | 'CACHE';
 
