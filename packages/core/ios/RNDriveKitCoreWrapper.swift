@@ -53,10 +53,6 @@ public class RNDriveKitCoreWrapper: NSObject {
         return NSNumber(value: DriveKit.shared.isTokenValid());
     }
 
-    @objc internal func enableSandboxMode(enable: NSNumber) -> Void {
-        DriveKit.shared.enableSandboxMode(enable: enable.boolValue)
-    }
-
     @objc internal func reset() -> Void {
         DriveKit.shared.reset()
     }

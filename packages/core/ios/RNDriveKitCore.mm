@@ -84,12 +84,6 @@ RCT_REMAP_METHOD(isTokenValid, isTokenValidWithResolve:(RCTPromiseResolveBlock)r
     resolve(validity);
 }
 
-RCT_REMAP_METHOD(enableSandboxMode, enableSandboxModeWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
-{
-    [self enableSandboxMode:enable];
-    resolve(nil);
-}
-
 RCT_REMAP_METHOD(reset, resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self reset];
@@ -162,10 +156,6 @@ RCT_REMAP_METHOD(requestLocationPermission, requestLocationPermissionWithResolve
 }
 - (NSString *)getUserId {
     return [RNDriveKitCoreWrapper.shared getUserId];
-}
-
-- (void)enableSandboxMode:(NSNumber *)enable {
-    [RNDriveKitCoreWrapper.shared enableSandboxModeWithEnable:enable];
 }
 
 - (void)reset {
