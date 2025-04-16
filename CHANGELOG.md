@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.6.0...v2.7.0) (2025-04-16)
+
+
+### Bug Fixes
+
+* fix timestamp parsing value in CrashInfo (Android) ([5ef5702](https://github.com/DriveQuantPublic/react-native-drivekit/commit/5ef5702ed81b56f56351109df2faf9aaaa864d77))
+* string union stype forbidden in codegen ([c2003ee](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c2003ee724f6f1ddb1af09f5b5e778a99a454dd4))
+
+
+### Features
+
+* manage userLocationUrl field in CrashInfo ([c2891df](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c2891df3ef0ff9764d05620f76543aa2593745cd))
+* move Trip model into DriverData package ([#140](https://github.com/DriveQuantPublic/react-native-drivekit/issues/140)) ([561f27c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/561f27cd4d7dce391bb878588fbb8b0986ce4373))
+* remove enableSandboxMode method ([#143](https://github.com/DriveQuantPublic/react-native-drivekit/issues/143)) ([b7802eb](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b7802eb248347513221d8cf4385caa3a127bfb66))
+* bump DriveKit version to 2.14.0 on iOS and Android ([d9248d9](https://github.com/DriveQuantPublic/react-native-drivekit/commit/d9248d93b099812aac990dd4fe431fe65cf5fc62))
+
+
+
 # [2.7.0-alpha2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0-alpha1...v2.7.0-alpha2) (2025-03-20)
 
 
