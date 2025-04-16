@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0-alpha2...v2.7.0) (2025-04-16)
+
+
+### Features
+
+* upgrade DriveKit to 2.13.0 (Android) and 2.13.2 (iOS) ([eff87ee](https://github.com/DriveQuantPublic/react-native-drivekit/commit/eff87eecfc3da9fca2b3dcd1da39ebade62e5b56))
+
+
+
+
+
 # [2.7.0-alpha2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0-alpha1...v2.7.0-alpha2) (2025-03-20)
 
 **Note:** Version bump only for package @react-native-drivekit/trip-simulator

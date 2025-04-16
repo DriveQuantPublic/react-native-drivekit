@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0-alpha2...v2.7.0) (2025-04-16)
+
+
+### Bug Fixes
+
+* fix timestamp parsing value in CrashInfo (Android) ([5ef5702](https://github.com/DriveQuantPublic/react-native-drivekit/commit/5ef5702ed81b56f56351109df2faf9aaaa864d77))
+* fix TripAnalysis peerDeps Core version ([939ab04](https://github.com/DriveQuantPublic/react-native-drivekit/commit/939ab044fc691b23c20b1437239e63602ec98151))
+
+
+### Features
+
+* manage userLocationUrl field in CrashInfo ([c2891df](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c2891df3ef0ff9764d05620f76543aa2593745cd))
+* upgrade DriveKit to 2.13.0 (Android) and 2.13.2 (iOS) ([eff87ee](https://github.com/DriveQuantPublic/react-native-drivekit/commit/eff87eecfc3da9fca2b3dcd1da39ebade62e5b56))
+
+
+
+
+
 # [2.7.0-alpha2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0-alpha1...v2.7.0-alpha2) (2025-03-20)
 
 
