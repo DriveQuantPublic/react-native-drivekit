@@ -45,8 +45,8 @@ public class RNDriveKitCoreWrapper: NSObject {
         DriveKit.shared.updateUserId(userId: userId)
     }
 
-    @objc internal func deleteAccount(instantDeletion: NSNumber) -> Void {
-        DriveKit.shared.deleteAccount(instantDeletion: instantDeletion.boolValue)
+  @objc internal func deleteAccount(instantDeletion: Bool) -> Void {
+        DriveKit.shared.deleteAccount(instantDeletion: instantDeletion)
     }
 
     @objc internal func isTokenValid() -> NSNumber {
@@ -106,7 +106,7 @@ public class RNDriveKitCoreWrapper: NSObject {
 
     @objc internal func updateUserInfo(userInfo: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
 
-        DriveKit.shared.updateUserInfo(firstname: userInfo["firstname"] as! String?, lastname: userInfo["lastname"] as! String?, pseudo:userInfo["pseudo"] as! String?) { success in
+        DriveKit.shared.updateUserInfo(firstname: userInfo["firstname"] as? String, lastname: userInfo["lastname"] as? String, pseudo:userInfo["pseudo"] as? String) { success in
             if success {
                 resolve(nil)
             } else {
@@ -119,6 +119,13 @@ public class RNDriveKitCoreWrapper: NSObject {
         DispatchQueue.main.async {
             DKDiagnosisHelper.shared.requestPermission(.location)
         }
+    }
+  
+    @objc internal func getUriLogFile() -> URL? {
+      if DriveKitLog.shared.isLoggingEnabled {
+          return DriveKitLog.shared.getZippedLogFilesUrl()
+      }
+      return nil
     }
 }
 
@@ -176,12 +183,6 @@ extension MailSender: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
       }
-    @objc internal func getUriLogFile() -> URL? {
-        if DriveKitLog.shared.isLoggingEnabled {
-            return DriveKitLog.shared.getZippedLogFilesUrl()
-        }
-        return nil
-    }
 }
 
 extension RNDriveKitCoreWrapper: DriveKitDelegate {
