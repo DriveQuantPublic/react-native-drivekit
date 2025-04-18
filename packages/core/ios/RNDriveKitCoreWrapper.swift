@@ -120,6 +120,13 @@ public class RNDriveKitCoreWrapper: NSObject {
             DKDiagnosisHelper.shared.requestPermission(.location)
         }
     }
+  
+    @objc internal func getUriLogFile() -> URL? {
+      if DriveKitLog.shared.isLoggingEnabled {
+          return DriveKitLog.shared.getZippedLogFilesUrl()
+      }
+      return nil
+    }
 }
 
 private class MailSender: NSObject {
@@ -176,12 +183,6 @@ extension MailSender: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
       }
-    @objc internal func getUriLogFile() -> URL? {
-        if DriveKitLog.shared.isLoggingEnabled {
-            return DriveKitLog.shared.getZippedLogFilesUrl()
-        }
-        return nil
-    }
 }
 
 extension RNDriveKitCoreWrapper: DriveKitDelegate {
