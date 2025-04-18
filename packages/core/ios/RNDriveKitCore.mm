@@ -135,9 +135,15 @@ RCT_EXPORT_METHOD(updateUserInfo:(NSDictionary *)userInfo resolve:(RCTPromiseRes
    [self updateUserInfo:userInfo resolver:resolve rejecter:reject];
 }
 
-RCT_EXPORT_METHOD(composeDiagnosisMail:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(composeDiagnosisMail:(JS::NativeCore::SpecComposeDiagnosisMailOptions &)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    if ([self composeDiagnosisMail:options]) {
+  NSMutableDictionary* optionsDict = [[NSMutableDictionary alloc] init];
+  [optionsDict setObject:[RNDriveKitCore nsArrayFromOptionalLazyVector:options.recipients()] forKey:@"recipients"];
+  [optionsDict setObject:[RNDriveKitCore nsArrayFromOptionalLazyVector:options.bccRecipients()] forKey:@"bccRecipients"];
+  [optionsDict setObject:options.subject() forKey:@"subject"];
+  [optionsDict setObject:options.body() forKey:@"body"];
+
+    if ([self composeDiagnosisMail:optionsDict]) {
         resolve(nil);
     } else {
         reject(@"MAIL_COMPOSER_ERROR", @"CAN_SEND_MAIL_IS_FALSE", nil);
@@ -219,5 +225,20 @@ RCT_EXPORT_METHOD(requestLocationPermission:(RCTPromiseResolveBlock)resolve reje
     return std::make_shared<facebook::react::NativeCoreSpecJSI>(params);
 }
 #endif
+
++ (NSArray<NSString *> *)nsArrayFromOptionalLazyVector:(const std::optional<facebook::react::LazyVector<NSString *>>&)optionalLazyVector {
+    if (optionalLazyVector.has_value()) {
+        const facebook::react::LazyVector<NSString *>& lazyVector = optionalLazyVector.value();
+        NSMutableArray<NSString *> *nsMutableArray = [NSMutableArray arrayWithCapacity:lazyVector.size()];
+        for (auto it = lazyVector.begin(); it != lazyVector.end(); ++it) {
+            NSString *nsString = *it;
+            [nsMutableArray addObject:nsString];
+        }
+
+        return [nsMutableArray copy];
+    } else {
+      return [[NSArray alloc] init];
+    }
+}
 
 @end
