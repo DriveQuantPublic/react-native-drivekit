@@ -45,8 +45,8 @@ public class RNDriveKitCoreWrapper: NSObject {
         DriveKit.shared.updateUserId(userId: userId)
     }
 
-    @objc internal func deleteAccount(instantDeletion: NSNumber) -> Void {
-        DriveKit.shared.deleteAccount(instantDeletion: instantDeletion.boolValue)
+  @objc internal func deleteAccount(instantDeletion: Bool) -> Void {
+        DriveKit.shared.deleteAccount(instantDeletion: instantDeletion)
     }
 
     @objc internal func isTokenValid() -> NSNumber {

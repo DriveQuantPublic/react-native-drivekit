@@ -72,7 +72,7 @@ RCT_EXPORT_METHOD(updateUserId:(NSString *)userId resolve:(RCTPromiseResolveBloc
     resolve(nil);
 }
 
-RCT_EXPORT_METHOD(deleteAccount:(nonnull NSNumber *)instantDeletion resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(deleteAccount:(BOOL)instantDeletion resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self deleteAccount:instantDeletion];
     resolve(nil);
@@ -96,15 +96,25 @@ RCT_EXPORT_METHOD(reset:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseReject
     resolve(nil);
 }
 
-RCT_EXPORT_METHOD(enableLogging:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(enableLogging:(JS::NativeCore::SpecEnableLoggingOptions &)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self enableLogging:options];
+  NSMutableDictionary* optionsDict = [[NSMutableDictionary alloc] init];
+  if (options.showInConsole().has_value()) {
+    BOOL showInConsole = options.showInConsole().value();
+    [optionsDict setValue:@(showInConsole) forKey:@"showInConsole"];
+  }
+    [self enableLogging:optionsDict];
     resolve(nil);
 }
 
-RCT_EXPORT_METHOD(disableLogging:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(disableLogging:(JS::NativeCore::SpecDisableLoggingOptions &)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self disableLogging:options];
+  NSMutableDictionary* optionsDict = [[NSMutableDictionary alloc] init];
+  if (options.showInConsole().has_value()) {
+    BOOL showInConsole = options.showInConsole().value();
+    [optionsDict setValue:@(showInConsole) forKey:@"showInConsole"];
+  }
+    [self disableLogging:optionsDict];
     resolve(nil);
 }
 
@@ -152,7 +162,7 @@ RCT_EXPORT_METHOD(requestLocationPermission:(RCTPromiseResolveBlock)resolve reje
     [RNDriveKitCoreWrapper.shared updateUserIdWithUserId:userId];
 }
 
-- (void)deleteAccount:(NSNumber *)instantDeletion {
+- (void)deleteAccount:(BOOL)instantDeletion {
     [RNDriveKitCoreWrapper.shared deleteAccountWithInstantDeletion:instantDeletion];
 }
 
