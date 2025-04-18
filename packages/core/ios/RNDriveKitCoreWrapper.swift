@@ -106,7 +106,7 @@ public class RNDriveKitCoreWrapper: NSObject {
 
     @objc internal func updateUserInfo(userInfo: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
 
-        DriveKit.shared.updateUserInfo(firstname: userInfo["firstname"] as! String?, lastname: userInfo["lastname"] as! String?, pseudo:userInfo["pseudo"] as! String?) { success in
+        DriveKit.shared.updateUserInfo(firstname: userInfo["firstname"] as? String, lastname: userInfo["lastname"] as? String, pseudo:userInfo["pseudo"] as? String) { success in
             if success {
                 resolve(nil)
             } else {

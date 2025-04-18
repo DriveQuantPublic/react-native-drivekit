@@ -130,9 +130,20 @@ RCT_EXPORT_METHOD(getUserInfo:(NSString *)synchronizationType resolve:(RCTPromis
    [self getUserInfo:synchronizationType resolver:resolve rejecter:reject];
 }
 
-RCT_EXPORT_METHOD(updateUserInfo:(NSDictionary *)userInfo resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(updateUserInfo:(JS::NativeCore::UserInfo &)userInfo resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-   [self updateUserInfo:userInfo resolver:resolve rejecter:reject];
+  NSMutableDictionary *userInfoDict = [[NSMutableDictionary alloc] init];
+  if (userInfo.firstname() != nil) {
+    [userInfoDict setObject:userInfo.firstname() forKey:@"firstname"];
+  }
+  if (userInfo.lastname() != nil) {
+    [userInfoDict setObject:userInfo.lastname() forKey:@"lastname"];
+  }
+  if (userInfo.pseudo() != nil) {
+    [userInfoDict setObject:userInfo.pseudo() forKey:@"pseudo"];
+  }
+
+   [self updateUserInfo:userInfoDict resolver:resolve rejecter:reject];
 }
 
 RCT_EXPORT_METHOD(composeDiagnosisMail:(JS::NativeCore::SpecComposeDiagnosisMailOptions &)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
