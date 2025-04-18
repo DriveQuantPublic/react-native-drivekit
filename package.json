@@ -5,7 +5,6 @@
   "repository": "https://github.com/DriveQuantPublic/react-native-drivekit.git",
   "author": "DriveQuant",
   "license": "MIT",
-  "private": "true",
   "workspaces": [
     "packages/*"
   ],
