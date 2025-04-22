@@ -6,7 +6,7 @@ jobs:
   quality-job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Read .nvmrc
         run: echo ::set-output name=NODE_VERSION::$(cat .node-version)
         id: nvm
