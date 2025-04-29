@@ -10,12 +10,15 @@ jobs:
       - name: Read .nvmrc
         run: echo ::set-output name=NODE_VERSION::$(cat .node-version)
         id: nvm
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
           check-latest: true
           cache: 'yarn'
       - run: yarn
+      - run: node -v
       - run: yarn lerna run lint
       - run: yarn lerna run typescript
       - run: yarn lerna run test
