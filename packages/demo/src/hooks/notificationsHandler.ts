@@ -28,54 +28,6 @@ export async function getBodyForFinishedTripResponse(
   hasSafetyAndEcoDrivingScore: boolean | null,
   itinId: string | null,
 ): Promise<string> {
- /*  var body = 'A new trip has been analyzed'; */
-
-  var body = 'DriverData not available';
- /*  if (isTripValid && itinId != null) {
-    const trip = await DriveKitDriverData.getTrip(itinId);
-    if (trip != null && trip.trip != null) {
-      const transportationMode = trip.trip.transportationMode;
-      if (isAlternativeTransportationMode(transportationMode)) {
-        var name = 'unknown';
-        if (transportationMode === 4) {
-          name = 'BUS';
-        } else if (transportationMode === 6) {
-          name = 'TRAIN';
-        } else if (transportationMode === 7) {
-          name = 'BOAT';
-        } else if (transportationMode === 8) {
-          name = 'BIKE';
-        } else if (transportationMode === 9) {
-          name = 'FLIGHT';
-        } else if (transportationMode === 10) {
-          name = 'SKIING';
-        } else if (transportationMode === 11) {
-          name = 'ON_FOOT';
-        } else if (transportationMode === 12) {
-          name = 'IDLE';
-        } else if (transportationMode === 6) {
-          name = 'OTHER';
-        }
-        body = 'The trip has been made with an alternative transport: ' + name;
-      }
-    } else if (!hasSafetyAndEcoDrivingScore) {
-      body = 'The trip distance is too short to be analyzed.';
-    }
-  } else {
-    body = 'Trip is not valid (errorCode might be 21, 29, 30 or 31)';
-  } */
-  return body;
-}
-
-function isAlternativeTransportationMode(transportationMode: number) {
-  if (
-    transportationMode === 0 ||
-    transportationMode === 1 ||
-    transportationMode === 2 ||
-    transportationMode === 3
-  ) {
-    return false;
-  } else {
-    return true;
-  }
+  console.log('TODO', isTripValid, hasSafetyAndEcoDrivingScore, itinId);
+  return 'TODO';
 }

@@ -1,12 +1,10 @@
-import notifee from '@notifee/react-native';
-import {useEffect} from 'react';
-import * as DriveKit from '@react-native-drivekit/core';
 import type {
   DeleteAccountStatus,
-  RequestError,
   DeviceConfigurationEvent,
+  RequestError,
 } from '@react-native-drivekit/core';
-import {Platform} from 'react-native';
+import * as DriveKit from '@react-native-drivekit/core';
+import {useEffect} from 'react';
 
 const useSetupListeners = () => {
   useEffect(() => {
