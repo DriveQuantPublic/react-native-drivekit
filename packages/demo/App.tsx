@@ -5,6 +5,7 @@ import {TokenSection} from './src/components/Sections/TokenSection';
 import {UpdateUserSection} from './src/components/Sections/UpdateUserSection';
 import {UserSection} from './src/components/Sections/UserSection';
 import {DeleteAccountSection} from './src/components/Sections/DeleteAccountSection';
+import {TripSection} from './src/components/Sections/TripSection';
 import {ResetSection} from './src/components/Sections/ResetSection';
 import {LogsSection} from './src/components/Sections/LogsSection';
 import {useCheckPermissions} from './src/hooks/useCheckPermissions';
@@ -22,6 +23,7 @@ const App = () => {
         <UserSection />
         <TokenSection />
         <UpdateUserSection />
+        <TripSection />
         <LogsSection />
         <DeleteAccountSection />
         <ResetSection />
