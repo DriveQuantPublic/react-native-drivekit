@@ -1,6 +1,7 @@
 const path = require('path');
 const packCore = require('../core/package.json');
 const packDriverData = require('../driver-data/package.json')
+const packTripAnalysis = require('../trip-analysis/package.json');
 
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
         alias: {
           [packCore.name]: path.join(__dirname, '../core', packCore.source),
           [packDriverData.name]: path.join(__dirname, '../driver-data', packDriverData.source),
+          [packTripAnalysis.name]: path.join(__dirname, '../trip-analysis', packTripAnalysis.source),
         },
       },
     ],

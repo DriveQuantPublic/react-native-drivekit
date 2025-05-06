@@ -1,5 +1,11 @@
-import type { TripMetadata as TripMetadataType } from '../NativeDriveKitTripAnalysis';
+import type {
+  StartMode as StartModeType,
+  TripMetadata as TripMetadataType,
+  TripVehicle as TripVehicleType,
+} from '../NativeDriveKitTripAnalysis';
 export type TripMetadata = TripMetadataType;
+export type TripVehicle = TripVehicleType;
+export type StartMode = StartModeType;
 
 export enum CancelTripReason {
   USER = 'USER',
@@ -14,17 +20,6 @@ export enum CancelTripReason {
   BLUETOOTH_DEVICE_NO_SPEED = 'BLUETOOTH_DEVICE_NO_SPEED',
 }
 
-export enum StartMode {
-  GPS = 'GPS',
-  BEACON = 'BEACON',
-  MANUAL = 'MANUAL',
-  GEOZONE = 'GEOZONE',
-  BLUETOOTH = 'BLUETOOTH',
-  BLUETOOTH_UNKNOWN = 'BLUETOOTH_UNKNOWN',
-  BICYCLE_ACTIVITY = 'BICYCLE_ACTIVITY',
-  CONNECTED_CAR = 'CONNECTED_CAR',
-}
-
 export type TripPoint = {
   latitude: number;
   longitude: number;
@@ -35,26 +30,6 @@ export type TripPoint = {
   heading: number;
   duration: number;
 };
-
-export type CurrentTripInfo = {
-  localTripId: string;
-  date: string;
-  startMode: StartMode;
-};
-
-export type LastTripLocation = {
-  date: string;
-  latitude: number;
-  longitude: number;
-  accuracyMeter: number;
-  accuracyLevel: AccuracyLevel;
-};
-
-export enum AccuracyLevel {
-  GOOD,
-  FAIR,
-  POOR,
-}
 
 export type DKTripRecordingStartedState = {
   localTripId: string;
@@ -145,48 +120,3 @@ export enum TripResponseError {
   ACCOUNT_LIMIT_REACHED,
   UNKNOWN_ERROR,
 }
-
-export type TripSharingLink = {
-  code: string;
-  startDate: string;
-  endDate: string;
-  url: string;
-};
-
-export enum CreateTripSharingLinkStatus {
-  SUCCESS,
-  ERROR,
-  USER_NOT_CONNECTED,
-  INVALID_DURATION,
-  UNAUTHENTICATED,
-  FORBIDDEN,
-  ACTIVE_LINK_ALREADY_EXISTS,
-}
-
-export enum GetTripSharingLinkStatus {
-  SUCCESS,
-  FAILED_TO_GET_CACHE_ONLY,
-  USER_NOT_CONNECTED,
-  UNAUTHENTICATED,
-  FORBIDDEN,
-  NO_ACTIVE_LINK,
-}
-
-export enum RevokeTripSharingLinkStatus {
-  SUCCESS,
-  ERROR,
-  USER_NOT_CONNECTED,
-  UNAUTHENTICATED,
-  FORBIDDEN,
-  NO_ACTIVE_LINK,
-}
-
-export type CreateTripSharingLinkResponse = {
-  status: CreateTripSharingLinkStatus;
-  data: TripSharingLink | null;
-};
-
-export type GetTripSharingLinkResponse = {
-  status: GetTripSharingLinkStatus;
-  data: TripSharingLink | null;
-};

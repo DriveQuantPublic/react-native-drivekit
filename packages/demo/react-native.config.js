@@ -8,5 +8,8 @@ module.exports = {
     '@react-native-drivekit/driver-data': {
       root: path.join(__dirname, '../driver-data'),
     },
+     '@react-native-drivekit/trip-analysis': {
+      root: path.join(__dirname, '../trip-analysis'),
+    },
   },
 }
