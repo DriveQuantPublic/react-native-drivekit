@@ -95,9 +95,7 @@ export function setStopTimeout(stopTimeout: number): Promise<void> {
   return DriveKitTripAnalysis.setStopTimeout(stopTimeout);
 }
 
-export function setVehicle(
-  vehicle: Partial<TripVehicle> | null
-): Promise<void> {
+export function setVehicle(vehicle: TripVehicle): Promise<void> {
   return DriveKitTripAnalysis.setVehicle(vehicle);
 }
 
