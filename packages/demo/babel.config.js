@@ -1,5 +1,6 @@
 const path = require('path');
 const packCore = require('../core/package.json');
+const packTripAnalysis = require('../trip-analysis/package.json');
 
 
 module.exports = {
@@ -11,6 +12,7 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js', '.json'],
         alias: {
           [packCore.name]: path.join(__dirname, '../core', packCore.source),
+          [packTripAnalysis.name]: path.join(__dirname, '../trip-analysis', packTripAnalysis.source),
         },
       },
     ],
