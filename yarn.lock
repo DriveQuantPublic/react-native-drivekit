@@ -5634,7 +5634,7 @@ __metadata:
     pod-install: "npm:^0.1.0"
     prettier: "npm:^2.0.5"
     react: "npm:18.2.0"
-    react-native: "npm:^0.71.18"
+    react-native: "npm:^0.78.0"
     react-native-builder-bob: "npm:^0.20.0"
     typescript: "npm:^4.5.2"
   peerDependencies:
