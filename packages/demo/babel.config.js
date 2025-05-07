@@ -1,6 +1,6 @@
 const path = require('path');
 const packCore = require('../core/package.json');
-const packDriverData = require('../driver-data/package.json')
+const packDriverData = require('../driver-data/package.json');
 const packTripAnalysis = require('../trip-analysis/package.json');
 
 

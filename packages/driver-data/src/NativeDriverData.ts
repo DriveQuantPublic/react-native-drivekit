@@ -10,11 +10,11 @@ export interface Spec extends TurboModule {
   getTrip(itinId: string): Promise<GetTripResponse | null>;
   getTripsOrderByDateAsc(
     synchronizationType: WithDefault<string, 'DEFAULT'>,
-    transportationModes: Array<string>,
+    transportationModes: Array<string>
   ): Promise<GetTripsResponse | null>;
   getTripsOrderByDateDesc(
     synchronizationType: WithDefault<string, 'DEFAULT'>,
-    transportationModes: Array<string>,
+    transportationModes: Array<string>
   ): Promise<GetTripsResponse | null>;
 }
 

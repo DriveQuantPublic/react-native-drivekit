@@ -12,4 +12,4 @@ module.exports = {
       root: path.join(__dirname, '../trip-analysis'),
     },
   },
-}
+};

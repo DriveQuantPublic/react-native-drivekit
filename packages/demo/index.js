@@ -10,4 +10,3 @@ AppRegistry.registerComponent(appName, () => App);
 AppRegistry.registerHeadlessTask('DKHeadlessJS', () =>
     require('./DKHeadlessJS'),
   );
-  
