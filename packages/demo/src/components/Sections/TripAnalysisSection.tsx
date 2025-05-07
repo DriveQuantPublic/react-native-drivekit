@@ -287,11 +287,10 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         title={'Create TripSharing link'}
         onPress={async () => {
           const result = await DriveKitTripAnalysis.createTripSharingLink(3600);
-          if (result.status == CreateTripSharingLinkStatus.SUCCESS) {
-            // TODO not working !
+          if (result.status.toString() == 'SUCCESS') {
             Alert.alert(
               'TripSharing',
-              'code:' +
+              'code: ' +
                 result.data?.code +
                 '\nurl: ' +
                 result.data?.url +
@@ -308,7 +307,46 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           }
         }}
       />
-      // TODO Create two butons : get trip sharing CACHE and DEFAULT
+      <Spacer factor={1} />
+      <Button
+        title={'Get CACHE TripSharing link'}
+        onPress={async () => {
+          const result = await DriveKitTripAnalysis.getTripSharingLink('CACHE');
+          Alert.alert(
+            'TripSharing',
+            'TripSharing retrieve CACHE result: ' +
+              result.status +
+              '\ncode: ' +
+              result.data?.code +
+              '\nurl: ' +
+              result.data?.url +
+              '\nstartDate: ' +
+              result.data?.startDate +
+              '\nendDate: ' +
+              result.data?.endDate,
+          );
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
+        title={'Get DEFAULT TripSharing link'}
+        onPress={async () => {
+          const result = await DriveKitTripAnalysis.getTripSharingLink();
+          Alert.alert(
+            'TripSharing',
+            'TripSharing retrieve DEFAULT result: ' +
+              result.status +
+              '\ncode: ' +
+              result.data?.code +
+              '\nurl: ' +
+              result.data?.url +
+              '\nstartDate: ' +
+              result.data?.startDate +
+              '\nendDate: ' +
+              result.data?.endDate,
+          );
+        }}
+      />
       <Spacer factor={1} />
       <Button
         title={'Revoke TripSharing link'}
