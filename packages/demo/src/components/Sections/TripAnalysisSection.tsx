@@ -5,6 +5,7 @@ import type {TripMetadata} from '@react-native-drivekit/trip-analysis';
 import CheckBox from '@react-native-community/checkbox';
 import {Section} from './Section';
 import {Spacer} from '../Spacer';
+import {CreateTripSharingLinkStatus} from '../../../../trip-analysis/src/NativeDriveKitTripAnalysis'; //TODO make the import/export interface so NativeDriveKitTripAnalysis is not exposed
 
 const inputHeight = 40;
 
@@ -170,7 +171,6 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           await DriveKitTripAnalysis.deleteTripMetadata();
         }}
       />
-
       <Spacer factor={1} />
       <TextInput
         value={stopTimeout}
@@ -179,7 +179,6 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         keyboardType="numeric"
         onChangeText={setStopTimeout}
       />
-
       <Spacer factor={2} />
       <Button
         title="Update Stop Timeout (in seconds)"
@@ -187,7 +186,6 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           DriveKitTripAnalysis.setStopTimeout(parseInt(stopTimeout, 10))
         }
       />
-
       <Spacer factor={2} />
       <Button
         title="Set Vehicle"
@@ -211,27 +209,21 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           });
         }}
       />
-
       <Spacer factor={1} />
-
       <Button
         title={'Enable CrashDetection'}
         onPress={() => {
           DriveKitTripAnalysis.activateCrashDetection(true);
         }}
       />
-
       <Spacer factor={1} />
-
       <Button
         title={'Disable CrashDetection'}
         onPress={() => {
           DriveKitTripAnalysis.activateCrashDetection(false);
         }}
       />
-
       <Spacer factor={1} />
-
       <Button
         title={'Get CurrentTripInfo'}
         onPress={async () => {
@@ -252,9 +244,7 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           }
         }}
       />
-
       <Spacer factor={1} />
-
       <Button
         title={'Get LastTripLocation'}
         onPress={async () => {
@@ -280,7 +270,54 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         }}
       />
       <Spacer factor={3} />
-
+      <Button
+        title={'is TripSharing available ?'}
+        onPress={async () => {
+          const isTripSharingAvailable =
+            await DriveKitTripAnalysis.isTripSharingAvailable();
+          if (isTripSharingAvailable) {
+            Alert.alert('TripSharing', 'Feature is available');
+          } else {
+            Alert.alert('TripSharing', 'Feature is NOT available');
+          }
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
+        title={'Create TripSharing link'}
+        onPress={async () => {
+          const result = await DriveKitTripAnalysis.createTripSharingLink(3600);
+          if (result.status == CreateTripSharingLinkStatus.SUCCESS) {
+            // TODO not working !
+            Alert.alert(
+              'TripSharing',
+              'code:' +
+                result.data?.code +
+                '\nurl: ' +
+                result.data?.url +
+                '\nstartDate: ' +
+                result.data?.startDate +
+                '\nendDate: ' +
+                result.data?.endDate,
+            );
+          } else {
+            Alert.alert(
+              'TripSharing',
+              'Could not create trip sharing link: ' + result.status,
+            );
+          }
+        }}
+      />
+      // TODO Create two butons : get trip sharing CACHE and DEFAULT
+      <Spacer factor={1} />
+      <Button
+        title={'Revoke TripSharing link'}
+        onPress={async () => {
+          const result = await DriveKitTripAnalysis.revokeTripSharingLink();
+          Alert.alert('TripSharing', 'TripSharing revoke result: ' + result);
+        }}
+      />
+      <Spacer factor={3} />
       <Button
         title={'Enable monitorPotentialTripStart'}
         onPress={() => {
