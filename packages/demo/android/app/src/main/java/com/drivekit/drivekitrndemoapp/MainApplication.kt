@@ -11,6 +11,9 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
 import com.facebook.soloader.SoLoader
+import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule
+import com.reactnativedrivekittripanalysis.RNHeadlessJSNotification 
+import com.reactnativedrivekittripanalysis.RNTripNotification 
 
 class MainApplication : Application(), ReactApplication {
 
@@ -40,5 +43,13 @@ class MainApplication : Application(), ReactApplication {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
     }
+
+    //Configure TripAnalysis HeadlessJS notification
+    val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("Notification title", "Notification description")
+    DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)
+    
+    //Configure TripAnalysis trip recording notification
+    val tripNotification = RNTripNotification("Start of trip", "A trip is recording", R.drawable.ic_notification)
+    DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
   }
 }
