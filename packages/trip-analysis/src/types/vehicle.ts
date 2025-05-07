@@ -1,3 +1,3 @@
-import { TripVehicle as TripVehicleType } from '../NativeDriveKitTripAnalysis';
+import type { TripVehicle as TripVehicleType } from '../NativeDriveKitTripAnalysis';
 
-export type TripVehicle = TripVehicleType;
+export type Vehicle = TripVehicleType;

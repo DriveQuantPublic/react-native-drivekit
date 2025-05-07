@@ -2,10 +2,20 @@ import type {
   StartMode as StartModeType,
   TripMetadata as TripMetadataType,
   TripVehicle as TripVehicleType,
+  CurrentTripInfo as CurrentTripInfoType,
+  LastTripLocation as LastTripLocationType,
+  CreateTripSharingLinkResponse as CreateTripSharingLinkResponseType,
+  RevokeTripSharingLinkStatus as RevokeTripSharingLinkStatusType,
+  GetTripSharingLinkResponse as GetTripSharingLinkResponseType,
 } from '../NativeDriveKitTripAnalysis';
 export type TripMetadata = TripMetadataType;
 export type TripVehicle = TripVehicleType;
 export type StartMode = StartModeType;
+export type CurrentTripInfo = CurrentTripInfoType;
+export type LastTripLocation = LastTripLocationType;
+export type CreateTripSharingLinkResponse = CreateTripSharingLinkResponseType;
+export type RevokeTripSharingLinkStatus = RevokeTripSharingLinkStatusType;
+export type GetTripSharingLinkResponse = GetTripSharingLinkResponseType;
 
 export enum CancelTripReason {
   USER = 'USER',

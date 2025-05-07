@@ -40,6 +40,8 @@ export enum DeviceConfigurationEventType {
   LOW_POWER_MODE = 'LOW_POWER_MODE',
 }
 
+export type SynchronizationType = 'DEFAULT' | 'CACHE';
+
 export type TransportationMode =
   | 'UNKNOWN'
   | 'CAR'
