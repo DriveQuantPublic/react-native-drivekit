@@ -98,8 +98,8 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
-  override fun setStopTimeout(stopTimeout: Int, promise: Promise) {
-    DriveKitTripAnalysis.setStopTimeOut(stopTimeout)
+  override fun setStopTimeout(stopTimeout: Double, promise: Promise) {
+    DriveKitTripAnalysis.setStopTimeOut(stopTimeout.toInt())
     promise.resolve(null)
   }
 
@@ -162,8 +162,8 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
-  override fun createTripSharingLink(durationInSec: Int, promise: Promise) {
-    DriveKitTripAnalysis.tripSharing.createLink(durationInSec) { status: CreateTripSharingLinkStatus, link: DKTripSharingLink? ->
+  override fun createTripSharingLink(durationInSec: Double, promise: Promise) {
+    DriveKitTripAnalysis.tripSharing.createLink(durationInSec.toInt()) { status: CreateTripSharingLinkStatus, link: DKTripSharingLink? ->
       promise.resolve(TripSharingMapper.mapCreateTripSharingResponseToReadableMap(status, link))
     }
   }

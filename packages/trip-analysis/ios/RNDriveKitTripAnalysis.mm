@@ -1,4 +1,4 @@
-#import "RNDrivekitTripAnalysis.h"
+#import "RNDriveKitTripAnalysis.h"
 #import "RNDriveKitTripAnalysis-Swift.h"
 
 @implementation RNDriveKitTripAnalysis
@@ -53,7 +53,7 @@ RCT_REMAP_METHOD(activateCrashDetection, activateCrashDetectionWithEnable:(nonnu
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(startTrip, startTripAnalysisWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(startTrip:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self startTrip];
     resolve(nil);
@@ -240,7 +240,7 @@ RCT_REMAP_METHOD(revokeTripSharingLink, revokeTripSharingLinkWithResolve:(RCTPro
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
 {
-    return std::make_shared<facebook::react::NativeDrivekitTripAnalysisSpecJSI>(params);
+    return std::make_shared<facebook::react::NativeDriveKitTripAnalysisSpecJSI>(params);
 }
 #endif
 

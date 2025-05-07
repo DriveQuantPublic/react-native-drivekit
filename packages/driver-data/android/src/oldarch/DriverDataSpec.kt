@@ -2,7 +2,7 @@ package com.reactnativedrivekit.driverdata
 
 import com.facebook.react.bridge.*
 
-abstract class DriveKitDriverDataSpec internal constructor(context: ReactApplicationContext) :
+abstract class DriverDataSpec internal constructor(context: ReactApplicationContext) :
   ReactContextBaseJavaModule(context) {
   abstract fun reset(promise: Promise)
   abstract fun getTrip(itinId: String, promise: Promise)

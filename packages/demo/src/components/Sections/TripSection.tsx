@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {Alert, Button} from 'react-native';
 import {Section} from './Section';
-/* import * as DriveKitDriverData from '@react-native-drivekit/driver-data'; */
+import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import {Spacer} from '../Spacer';
 
 const TripSection: FunctionComponent<{}> = () => {
@@ -10,14 +10,13 @@ const TripSection: FunctionComponent<{}> = () => {
       <Button
         title={'Get trips'}
         onPress={async () => {
-          // const result = await DriveKitDriverData.getTripsOrderByDateAsc();
+          const result = await DriveKitDriverData.getTripsOrderByDateAsc();
           //const result = await DriveKitDriverData.getTripsOrderByDateDesc();
           Alert.alert(
-            'TODO',
-            //   result?.status === 'NO_ERROR' ||
-            //     result?.status === 'CACHE_DATA_ONLY'
-            //     ? 'Trips sync OK, count = ' + result.trips.length
-            //     : 'Trips sync not OK :' + result?.status,
+            result?.status === 'NO_ERROR' ||
+              result?.status === 'CACHE_DATA_ONLY'
+              ? 'Trips sync OK, count = ' + result.trips.length
+              : 'Trips sync not OK :' + result?.status,
           );
         }}
       />
@@ -27,16 +26,15 @@ const TripSection: FunctionComponent<{}> = () => {
       <Button
         title={'Get trip'}
         onPress={async () => {
-          // const result = await DriveKitDriverData.getTrip('TRIP_ID_HERE');
+          const result = await DriveKitDriverData.getTrip('TRIP_ID_HERE');
           Alert.alert(
-            'TODO',
-            //   result?.status === 'NO_ERROR' ||
-            //     (result?.status === 'CACHE_DATA_ONLY' && result?.trip !== null)
-            //     ? 'Trip received from ' +
-            //         result.trip?.departureCity +
-            //         ' to ' +
-            //         result.trip?.arrivalCity
-            //     : 'Trip not received ' + result?.status,
+            result?.status === 'NO_ERROR' ||
+              (result?.status === 'CACHE_DATA_ONLY' && result?.trip !== null)
+              ? 'Trip received from ' +
+                  result.trip?.departureCity +
+                  ' to ' +
+                  result.trip?.arrivalCity
+              : 'Trip not received ' + result?.status,
           );
         }}
       />
@@ -46,10 +44,9 @@ const TripSection: FunctionComponent<{}> = () => {
       <Button
         title={'Get Route'}
         onPress={async () => {
-          // const result = await DriveKitDriverData.getRoute('TRIP_ID_HERE');
+          const result = await DriveKitDriverData.getRoute('TRIP_ID_HERE');
           Alert.alert(
-            'TODO',
-            //   result ? 'Route received' + result.itinId : 'Route not received',
+            result ? 'Route received' + result.itinId : 'Route not received',
           );
         }}
       />
@@ -59,11 +56,8 @@ const TripSection: FunctionComponent<{}> = () => {
       <Button
         title={'Delete trip'}
         onPress={async () => {
-          // const result = await DriveKitDriverData.deleteTrip('TRIP_ID_HERE');
-          Alert.alert(
-            'TODO',
-            // result ? 'Trip deleted' : 'Trip not deleted'
-          );
+          const result = await DriveKitDriverData.deleteTrip('TRIP_ID_HERE');
+          Alert.alert(result ? 'Trip deleted' : 'Trip not deleted');
         }}
       />
     </Section>
