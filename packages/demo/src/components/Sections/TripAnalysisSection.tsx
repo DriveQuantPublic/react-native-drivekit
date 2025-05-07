@@ -35,6 +35,20 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
       <Spacer factor={1} />
 
       <Button
+        title={'Activate Autostart'}
+        onPress={() => {
+          DriveKitTripAnalysis.activateAutoStart(true);
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
+        title={'Deactivate Autostart'}
+        onPress={() => {
+          DriveKitTripAnalysis.activateAutoStart(false);
+        }}
+      />
+      <Spacer factor={3} />
+      <Button
         title={'Start Trip'}
         onPress={() => {
           DriveKitTripAnalysis.startTrip();
