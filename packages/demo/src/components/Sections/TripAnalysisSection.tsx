@@ -21,19 +21,6 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
 
   return (
     <Section title="Trip Analysis">
-      <View style={styles.row}>
-        <CheckBox
-          value={monitorPotentialTripStart}
-          onValueChange={value => {
-            setMonitorPotentialTripStart(value);
-            DriveKitTripAnalysis.enableMonitorPotentialTripStart(value);
-          }}
-        />
-        <Spacer factor={1} />
-        <Text>Should monitor potential starts ?</Text>
-      </View>
-      <Spacer factor={1} />
-
       <Button
         title={'Activate Autostart'}
         onPress={() => {
@@ -290,6 +277,21 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
                 lastTripLocation.accuracyLevel,
             );
           }
+        }}
+      />
+      <Spacer factor={3} />
+
+      <Button
+        title={'Enable monitorPotentialTripStart'}
+        onPress={() => {
+          DriveKitTripAnalysis.enableMonitorPotentialTripStart(true);
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
+        title={'Disable monitorPotentialTripStart'}
+        onPress={() => {
+          DriveKitTripAnalysis.enableMonitorPotentialTripStart(false);
         }}
       />
     </Section>
