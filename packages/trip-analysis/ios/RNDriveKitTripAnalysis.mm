@@ -59,7 +59,7 @@ RCT_EXPORT_METHOD(startTrip:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRe
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(stopTrip, stopTripAnalysisWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(stopTrip:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self stopTrip];
     resolve(nil);
