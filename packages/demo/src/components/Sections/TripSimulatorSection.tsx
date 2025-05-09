@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {Button} from 'react-native';
 import * as DriveKitTripSimulator from '@react-native-drivekit/trip-simulator';
 import {Section} from './Section';
-import {Spacer} from '../Spacer';
+import {Spacer} from './../Spacer';
 
 const TripSimulatorSection: FunctionComponent<{}> = () => {
   return (
@@ -10,6 +10,7 @@ const TripSimulatorSection: FunctionComponent<{}> = () => {
       <Button
         title={'Start simulation (HIGHWAY_TRIP)'}
         onPress={async () => {
+          console.log('abc');
           DriveKitTripSimulator.start('HIGHWAY_TRIP');
         }}
       />
@@ -25,6 +26,13 @@ const TripSimulatorSection: FunctionComponent<{}> = () => {
         title={'Start simulation (SHORT_TRIP)'}
         onPress={async () => {
           DriveKitTripSimulator.start('SHORT_TRIP');
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
+        title={'Start simulation (TRIP_WITH_CRASH_CONFIRMED_30KMH)'}
+        onPress={async () => {
+          DriveKitTripSimulator.start('TRIP_WITH_CRASH_CONFIRMED_30KMH');
         }}
       />
       <Spacer factor={1} />

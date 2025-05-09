@@ -11,5 +11,8 @@ module.exports = {
      '@react-native-drivekit/trip-analysis': {
       root: path.join(__dirname, '../trip-analysis'),
     },
+    '@react-native-drivekit/trip-simulator': {
+      root: path.join(__dirname, '../trip-simulator'),
+    },
   },
 };

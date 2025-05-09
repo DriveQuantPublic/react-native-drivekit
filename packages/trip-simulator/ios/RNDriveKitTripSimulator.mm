@@ -2,10 +2,9 @@
 #import "RNDriveKitTripSimulator-Swift.h"
 
 @implementation RNDriveKitTripSimulator
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE_NO_LOAD(RNDriveKitTripSimulator, RNDriveKitTripSimulator)
 
-RCT_REMAP_METHOD(start,
-                 startWithPresetTrip:(NSString *)presetTrip
+RCT_EXPORT_MODULE(start:(NSString *)presetTrip
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 {
@@ -13,8 +12,7 @@ RCT_REMAP_METHOD(start,
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(stop,
-                 stopWithResolver:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_MODULE(stop:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 {
     [RNDriveKitTripSimulatorWrapper.shared stop];
