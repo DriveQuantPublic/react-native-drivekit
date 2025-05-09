@@ -150,7 +150,7 @@ RCT_REMAP_METHOD(getTripSharingLink, getTripSharingLinkWithSynchronizationType:(
     [self getTripSharingLink:synchronizationType resolver:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(revokeTripSharingLink, revokeTripSharingLinkWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(revokeTripSharingLink:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self revokeTripSharingLink:resolve rejecter:reject];
 }
