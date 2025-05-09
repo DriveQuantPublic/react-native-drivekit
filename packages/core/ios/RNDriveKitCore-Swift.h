@@ -18,7 +18,6 @@
 - (void)updateUserIdWithUserId:(NSString * _Nonnull)userId;
 - (void)deleteAccountWithInstantDeletion:(BOOL)instantDeletion;
 - (NSNumber * _Nonnull)isTokenValid;
-- (void)enableSandboxModeWithEnable:(NSNumber * _Nonnull)enable;
 - (void)reset;
 - (void)enableLoggingWithShowInConsole:(NSNumber * _Nullable)showInConsole;
 - (void)disableLoggingWithShowInConsole:(NSNumber * _Nullable)showInConsole;

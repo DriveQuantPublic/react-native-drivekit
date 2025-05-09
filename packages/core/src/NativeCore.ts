@@ -16,7 +16,6 @@ export interface Spec extends TurboModule {
   updateUserId(userId: string): Promise<void>;
   deleteAccount(instantDeletion: boolean): Promise<void>;
   isTokenValid(): Promise<boolean>;
-  enableSandboxMode(enable: boolean): Promise<void>;
   reset(): Promise<void>;
   enableLogging(options?: {
     logPath?: string;

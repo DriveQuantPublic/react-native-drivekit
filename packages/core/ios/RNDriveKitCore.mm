@@ -84,12 +84,6 @@ RCT_EXPORT_METHOD(isTokenValid:(RCTPromiseResolveBlock)resolve reject:(RCTPromis
     resolve(validity);
 }
 
-RCT_EXPORT_METHOD(enableSandboxMode:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
-{
-    [self enableSandboxMode:enable];
-    resolve(nil);
-}
-
 RCT_EXPORT_METHOD(reset:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self reset];
@@ -192,10 +186,6 @@ RCT_EXPORT_METHOD(requestLocationPermission:(RCTPromiseResolveBlock)resolve reje
 }
 - (NSString *)getUserId {
     return [RNDriveKitCoreWrapper.shared getUserId];
-}
-
-- (void)enableSandboxMode:(NSNumber *)enable {
-    [RNDriveKitCoreWrapper.shared enableSandboxModeWithEnable:enable];
 }
 
 - (void)reset {
