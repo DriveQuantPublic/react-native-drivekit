@@ -9,7 +9,7 @@ import java.util.HashMap
 
 class TripSimulatorPackage : TurboReactPackage() {
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name === DriveKitTripSimulatorModule.NAME) {
+    return if (name == DriveKitTripSimulatorModule.NAME) {
       DriveKitTripSimulatorModule(reactContext)
     } else {
       null
