@@ -129,7 +129,7 @@ RCT_EXPORT_METHOD(getCurrentTripInfo:(RCTPromiseResolveBlock)resolve reject:(RCT
     [self getCurrentTripInfo:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(getLastTripLocation, getLastTripLocationWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getLastTripLocation:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self getLastTripLocation:resolve rejecter:reject];
 }
