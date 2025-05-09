@@ -41,13 +41,13 @@ RCT_EXPORT_MODULE_NO_LOAD(RNDriveKitTripAnalysis, RNDriveKitTripAnalysis)
     hasListeners = NO;
 }
 
-RCT_REMAP_METHOD(activateAutoStart, activateAutoStartWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(activateAutoStart:(BOOL)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self activateAutoStart:enable];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(activateCrashDetection, activateCrashDetectionWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(activateCrashDetection:(BOOL)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self activateCrashDetection: enable];
     resolve(nil);
@@ -71,7 +71,7 @@ RCT_EXPORT_METHOD(cancelTrip:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseR
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(enableMonitorPotentialTripStart, enableMonitorPotentialTripStartWithEnable:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(enableMonitorPotentialTripStart:(BOOL)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self enableMonitorPotentialTripStart:enable];
     resolve(nil);
@@ -83,7 +83,7 @@ RCT_EXPORT_METHOD(isTripRunning:(RCTPromiseResolveBlock)resolve reject:(RCTPromi
     resolve(tripRunning);
 }
 
-RCT_REMAP_METHOD(reset, resetWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(reset:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self reset];
     resolve(nil);
@@ -134,7 +134,7 @@ RCT_REMAP_METHOD(getLastTripLocation, getLastTripLocationWithResolve:(RCTPromise
     [self getLastTripLocation:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(isTripSharingAvailable, isTripSharingAvailableWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(isTripSharingAvailable:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     NSNumber* isTripSharingAvailable = [self isTripSharingAvailable];
     resolve(isTripSharingAvailable);
@@ -155,7 +155,7 @@ RCT_REMAP_METHOD(revokeTripSharingLink, revokeTripSharingLinkWithResolve:(RCTPro
     [self revokeTripSharingLink:resolve rejecter:reject];
 }
 
-- (void)activateAutoStart:(NSNumber *)enable {
+- (void)activateAutoStart:(BOOL)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateAutoStartWithEnable:enable];
 }
 
@@ -175,11 +175,11 @@ RCT_REMAP_METHOD(revokeTripSharingLink, revokeTripSharingLinkWithResolve:(RCTPro
     return [RNDriveKitTripAnalysisWrapper.shared isTripRunning];
 }
 
-- (void)enableMonitorPotentialTripStart:(NSNumber *)enable {
+- (void)enableMonitorPotentialTripStart:(BOOL)enable {
     [RNDriveKitTripAnalysisWrapper.shared enableMonitorPotentialTripStartWithEnable:enable];
 }
 
--(void)activateCrashDetection:(NSNumber *)enable {
+-(void)activateCrashDetection:(BOOL)enable {
     [RNDriveKitTripAnalysisWrapper.shared activateCrashDetectionWithEnable:enable];
 }
 

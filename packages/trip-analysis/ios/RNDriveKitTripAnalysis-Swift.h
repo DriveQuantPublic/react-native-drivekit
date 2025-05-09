@@ -8,13 +8,13 @@
 - (void)initializeWithLaunchOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
 - (void)addTripListener;
 + (BOOL)isAutoInitEnabled;
-- (void)activateAutoStartWithEnable:(NSNumber * _Nonnull)enable;
-- (void)activateCrashDetectionWithEnable:(NSNumber * _Nonnull)enable;
+- (void)activateAutoStartWithEnable:(BOOL)enable;
+- (void)activateCrashDetectionWithEnable:(BOOL)enable;
 - (void)startTrip;
 - (void)stopTrip;
 - (void)cancelTrip;
 - (NSNumber * _Nonnull)isTripRunning;
-- (void)enableMonitorPotentialTripStartWithEnable:(NSNumber * _Nonnull)enable;
+- (void)enableMonitorPotentialTripStartWithEnable:(BOOL)enable;
 - (void)reset;
 - (void)setStopTimeout:(NSNumber *_Nonnull)stopTimeout;
 - (NSDictionary<NSString *, NSString *> * _Nullable)getTripMetadataWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;

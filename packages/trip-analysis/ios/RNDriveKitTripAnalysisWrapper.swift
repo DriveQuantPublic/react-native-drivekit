@@ -21,12 +21,12 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         DriveKitTripAnalysis.shared.addTripListener(self)
     }
 
-    @objc internal func activateAutoStart(enable: NSNumber) -> Void {
-        DriveKitTripAnalysis.shared.activateAutoStart(enable:enable.boolValue)
+    @objc internal func activateAutoStart(enable: Bool) -> Void {
+        DriveKitTripAnalysis.shared.activateAutoStart(enable:enable)
     }
 
-    @objc internal func activateCrashDetection(enable: NSNumber) -> Void {
-        DriveKitTripAnalysis.shared.activateCrashDetection(enable.boolValue)
+    @objc internal func activateCrashDetection(enable: Bool) -> Void {
+        DriveKitTripAnalysis.shared.activateCrashDetection(enable)
     }
 
     @objc internal func startTrip() -> Void {
@@ -45,8 +45,8 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         return NSNumber(value: DriveKitTripAnalysis.shared.isTripRunning());
     }
 
-    @objc internal func enableMonitorPotentialTripStart(enable: NSNumber) -> Void {
-        DriveKitTripAnalysis.shared.monitorPotentialTripStart = enable.boolValue;
+    @objc internal func enableMonitorPotentialTripStart(enable: Bool) -> Void {
+        DriveKitTripAnalysis.shared.monitorPotentialTripStart = enable;
     }
 
     @objc internal func reset() -> Void {
