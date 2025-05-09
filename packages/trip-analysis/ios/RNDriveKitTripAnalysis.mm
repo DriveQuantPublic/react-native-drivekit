@@ -124,7 +124,7 @@ RCT_REMAP_METHOD(setVehicle, setVehicleWithVehicle:(NSDictionary *)vehicle resol
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(getCurrentTripInfo, getCurrentTripInfoWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getCurrentTripInfo:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self getCurrentTripInfo:resolve rejecter:reject];
 }
