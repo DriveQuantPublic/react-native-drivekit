@@ -4,7 +4,7 @@
 @implementation RNDriveKitTripSimulator
 RCT_EXPORT_MODULE_NO_LOAD(RNDriveKitTripSimulator, RNDriveKitTripSimulator)
 
-RCT_EXPORT_MODULE(start:(NSString *)presetTrip
+RCT_EXPORT_METHOD(start:(NSString *)presetTrip
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 {
@@ -12,7 +12,7 @@ RCT_EXPORT_MODULE(start:(NSString *)presetTrip
     resolve(nil);
 }
 
-RCT_EXPORT_MODULE(stop:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(stop:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 {
     [RNDriveKitTripSimulatorWrapper.shared stop];
@@ -28,5 +28,13 @@ RCT_EXPORT_MODULE(stop:(RCTPromiseResolveBlock)resolve
     return std::make_shared<facebook::react::NativeTripSimulatorSpecJSI>(params);
 }
 #endif
+
+- (void)start:(nonnull NSString *)presetTrip resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject {
+  [RNDriveKitTripSimulatorWrapper.shared startWithPresetTrip:presetTrip];
+}
+
+- (void)stop:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject { 
+  [RNDriveKitTripSimulatorWrapper.shared stop];
+}
 
 @end

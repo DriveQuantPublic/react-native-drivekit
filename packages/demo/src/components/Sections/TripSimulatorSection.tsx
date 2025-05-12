@@ -10,7 +10,6 @@ const TripSimulatorSection: FunctionComponent<{}> = () => {
       <Button
         title={'Start simulation (HIGHWAY_TRIP)'}
         onPress={async () => {
-          console.log('abc');
           DriveKitTripSimulator.start('HIGHWAY_TRIP');
         }}
       />
