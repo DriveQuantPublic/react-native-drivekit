@@ -18,4 +18,4 @@ export interface Spec extends TurboModule {
   ): Promise<GetTripsResponse | null>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('DriverData');
+export default TurboModuleRegistry.getEnforcing<Spec>('RNDriveKitDriverData');
