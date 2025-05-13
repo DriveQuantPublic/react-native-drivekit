@@ -118,9 +118,63 @@ RCT_REMAP_METHOD(updateTripMetadata, updateTripMetaDataWithkey:(NSString *)key v
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(setVehicle, setVehicleWithVehicle:(NSDictionary *)vehicle resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(setVehicle:(JS::NativeDriveKitTripAnalysis::TripVehicle &)vehicle resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self setVehicle:vehicle];
+    NSMutableDictionary* vehicleDict = [[NSMutableDictionary alloc] init];
+    if (vehicle.length().has_value()) {
+      double length = vehicle.length().value();
+      [vehicleDict setValue:@(length) forKey:@"length"];
+    }
+    if (vehicle.width().has_value()) {
+      double width = vehicle.width().value();
+      [vehicleDict setValue:@(width) forKey:@"width"];
+    }
+    if (vehicle.height().has_value()) {
+      double height = vehicle.height().value();
+      [vehicleDict setValue:@(height) forKey:@"height"];
+    }
+    if (vehicle.engineCylinderNb().has_value()) {
+      double engineCylinderNb = vehicle.engineCylinderNb().value();
+      [vehicleDict setValue:@(engineCylinderNb) forKey:@"engineCylinderNb"];
+    }
+    if (vehicle.driveWheels().has_value()) {
+      double driveWheels = vehicle.driveWheels().value();
+      [vehicleDict setValue:@(driveWheels) forKey:@"driveWheels"];
+    }
+  
+    double carTypeIndex = vehicle.carTypeIndex();
+    [vehicleDict setValue:@(carTypeIndex) forKey:@"carTypeIndex"];
+  
+    double carEngineIndex = vehicle.carEngineIndex();
+    [vehicleDict setValue:@(carEngineIndex) forKey:@"carEngineIndex"];
+  
+    double carPower = vehicle.carPower();
+    [vehicleDict setValue:@(carPower) forKey:@"carPower"];
+  
+    double carMass = vehicle.carMass();
+    [vehicleDict setValue:@(carMass) forKey:@"carMass"];
+  
+    double carGearboxIndex = vehicle.carGearboxIndex();
+    [vehicleDict setValue:@(carGearboxIndex) forKey:@"carGearboxIndex"];
+  
+    double carConsumption = vehicle.carConsumption();
+    [vehicleDict setValue:@(carConsumption) forKey:@"carConsumption"];
+  
+    double carAutoGearboxNumber = vehicle.carAutoGearboxNumber();
+    [vehicleDict setValue:@(carAutoGearboxNumber) forKey:@"carAutoGearboxNumber"];
+  
+    double engineDisplacement = vehicle.engineDisplacement();
+    [vehicleDict setValue:@(engineDisplacement) forKey:@"engineDisplacement"];
+    
+    if (vehicle.frontTireSize() != nil) {
+      [vehicleDict setObject:vehicle.frontTireSize() forKey:@"frontTireSize"];
+    }
+
+    if (vehicle.rearTireSize() != nil) {
+      [vehicleDict setObject:vehicle.rearTireSize() forKey:@"rearTireSize"];
+    }
+  
+    [self setVehicle:vehicleDict];
     resolve(nil);
 }
 
