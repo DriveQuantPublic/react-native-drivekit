@@ -145,7 +145,7 @@ RCT_EXPORT_METHOD(createTripSharingLink:(double)durationInSec resolve:(RCTPromis
     [self createTripSharingLink:durationInSec resolver:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(getTripSharingLink, getTripSharingLinkWithSynchronizationType:(NSString *)synchronizationType withResolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getTripSharingLink:(NSString *)synchronizationType resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self getTripSharingLink:synchronizationType resolver:resolve rejecter:reject];
 }
