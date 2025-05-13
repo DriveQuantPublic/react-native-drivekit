@@ -100,7 +100,7 @@ RCT_EXPORT_METHOD(getTripMetadata:(RCTPromiseResolveBlock)resolve reject:(RCTPro
     [self getTripMetadata:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(setTripMetadata, setTripMetaDataWithMetadata:(NSDictionary *)metadata resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(setTripMetadata:(NSDictionary *)metadata resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self setTripMetadata:metadata];
     resolve(nil);
