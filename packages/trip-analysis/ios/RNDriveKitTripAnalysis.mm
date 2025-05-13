@@ -140,7 +140,7 @@ RCT_EXPORT_METHOD(isTripSharingAvailable:(RCTPromiseResolveBlock)resolve reject:
     resolve(isTripSharingAvailable);
 }
 
-RCT_REMAP_METHOD(createTripSharingLink, createTripSharingLinkWithDurationInSeconds:(nonnull NSNumber *)durationInSec withResolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(createTripSharingLink:(double)durationInSec resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self createTripSharingLink:durationInSec resolver:resolve rejecter:reject];
 }
@@ -223,7 +223,7 @@ RCT_EXPORT_METHOD(revokeTripSharingLink:(RCTPromiseResolveBlock)resolve reject:(
   return [RNDriveKitTripAnalysisWrapper.shared isTripSharingAvailable];
 }
 
--(void)createTripSharingLink:(NSNumber *)durationInSec resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+-(void)createTripSharingLink:(double)durationInSec resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
   [RNDriveKitTripAnalysisWrapper.shared createTripSharingLinkWithDurationInSeconds:durationInSec resolver:resolve rejecter:reject];
 }
 
