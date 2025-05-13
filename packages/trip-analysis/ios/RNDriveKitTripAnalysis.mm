@@ -112,7 +112,7 @@ RCT_EXPORT_METHOD(deleteTripMetadata:(NSString *)key resolve:(RCTPromiseResolveB
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(updateTripMetadata, updateTripMetaDataWithkey:(NSString *)key value:(NSString *)value resolver:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(updateTripMetadata:(NSString *)key value:(NSString *)value resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self updateTripMetadata:key value:value];
     resolve(nil);
