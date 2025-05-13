@@ -16,7 +16,7 @@
 - (NSNumber * _Nonnull)isTripRunning;
 - (void)enableMonitorPotentialTripStartWithEnable:(BOOL)enable;
 - (void)reset;
-- (void)setStopTimeout:(NSNumber *_Nonnull)stopTimeout;
+- (void)setStopTimeout:(double)stopTimeout;
 - (NSDictionary<NSString *, NSString *> * _Nullable)getTripMetadataWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)setTripMetadataWithMetadata:(NSDictionary * _Nonnull)metadata;
 - (void)deleteTripMetadataWithKey:(NSString * _Nullable)key;

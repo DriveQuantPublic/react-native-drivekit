@@ -89,9 +89,9 @@ RCT_EXPORT_METHOD(reset:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseReject
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(setStopTimeout, setStopTimeoutWithStopTimeout:(nonnull NSNumber *)enable resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(setStopTimeout:(double)stopTimeout resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self setStopTimeout:enable];
+    [self setStopTimeout:stopTimeout];
     resolve(nil);
 }
 
@@ -187,7 +187,7 @@ RCT_EXPORT_METHOD(revokeTripSharingLink:(RCTPromiseResolveBlock)resolve reject:(
     [RNDriveKitTripAnalysisWrapper.shared reset];
 }
 
--(void)setStopTimeout:(NSNumber *)stopTimeout {
+-(void)setStopTimeout:(double)stopTimeout {
     [RNDriveKitTripAnalysisWrapper.shared setStopTimeout:stopTimeout];
 }
 
