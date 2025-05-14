@@ -4,7 +4,7 @@
   "description": "React Native interface for DriveKit Trip Analysis",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
-  "types": "lib/typescript/trip-analysis/src/index.d.ts",
+  "types": "lib/typescript/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
@@ -132,6 +132,5 @@
         "jsSrcsDir": "src"
       }
     ]
-  },
-  "gitHead": "3575f97bf37f225b8509b2b931128eaeed40b403"
+  }
 }
