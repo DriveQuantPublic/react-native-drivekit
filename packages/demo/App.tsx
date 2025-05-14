@@ -13,6 +13,7 @@ import {useSetupListeners} from './src/hooks/useSetupListeners';
 import {margins} from './src/margins';
 import {TripAnalysisSection} from './src/components/Sections/TripAnalysisSection';
 import {TripSimulatorSection} from './src/components/Sections/TripSimulatorSection';
+import {TripSharingSection} from './src/components/Sections/TripSharingSection';
 
 const App = () => {
   useCheckPermissions();
@@ -30,6 +31,7 @@ const App = () => {
         <DeleteAccountSection />
         <TripAnalysisSection />
         <TripSimulatorSection />
+        <TripSharingSection />
         <ResetSection />
       </ScrollView>
     </SafeAreaView>

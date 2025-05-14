@@ -1,97 +1,70 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# DriveKit React Native sample application
 
-# Getting Started
+This is a sample application to illustrate how to embed the DriveKit SDK into a React Native mobile application.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+The code of this app is designed to help you integrate DriveKit into your application.
 
-## Step 1: Start Metro
+## How to launch the sample app?
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Open the main repository folder on the terminal.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Run the following command:
 
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+```
+yarn
 ```
 
-## Step 2: Build and run your app
+Go to the demo application folder:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```
+cd packages/demo
 ```
 
-### iOS
+Install Ruby dependencies using the following command:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
+```
 bundle install
 ```
 
-Then, and every time you update your native dependencies, run:
+Install iOS dependencies using the following command:
 
-```sh
-bundle exec pod install
+```
+cd ios && bundle exec pod install && cd ..
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### For an Android app
 
-```sh
-# Using npm
-npm run ios
+To run on Android, execute the following command:
 
-# OR using Yarn
+```
+yarn android
+```
+
+### For an iOS app
+
+To run on iOS, execute the following command:
+
+```
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## How to run the sample app?
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+To run the sample application you must have a valid API key.
 
-## Step 3: Modify your app
+Please contact us to get your API key via: [contact@drivequant.com](mailto:contact@drivequant.com)
 
-Now that you have successfully run the app, let's make changes!
+Once you have the API key, uncomment `DriveKit.setApiKey("")` line in the `ApiKeySection.tsx` component and paste the API key in this line:
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+```
+// ========================================
+// ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
+// ========================================
+// DriveKit.setApiKey('');
+```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+<img src="./doc/img/sample_app.png" width="300" />
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## More info
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+The full documentation to install the DriveKit SDK in a React Native application is available [here](/../..)

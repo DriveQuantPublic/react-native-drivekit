@@ -2,10 +2,8 @@ import React, {FunctionComponent, useState} from 'react';
 import {Alert, Button, TextInput, StyleSheet, Text, View} from 'react-native';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import type {TripMetadata} from '@react-native-drivekit/trip-analysis';
-import CheckBox from '@react-native-community/checkbox';
 import {Section} from './Section';
 import {Spacer} from '../Spacer';
-import {CreateTripSharingLinkStatus} from '../../../../trip-analysis/src/NativeDriveKitTripAnalysis'; //TODO make the import/export interface so NativeDriveKitTripAnalysis is not exposed
 
 const inputHeight = 40;
 
@@ -16,8 +14,6 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
   const [updateMetadataKey, setUpdateMetadataKey] = useState('');
   const [updateMetadataValue, setUpdateMedataValue] = useState('');
   const [tripMetadataKeyToDelete, setTripMetadataKeyToDelete] = useState('');
-  const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
-    useState(false);
   const [stopTimeout, setStopTimeout] = useState('240');
 
   return (
@@ -267,92 +263,6 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
                 lastTripLocation.accuracyLevel,
             );
           }
-        }}
-      />
-      <Spacer factor={3} />
-      <Button
-        title={'is TripSharing available ?'}
-        onPress={async () => {
-          const isTripSharingAvailable =
-            await DriveKitTripAnalysis.isTripSharingAvailable();
-          if (isTripSharingAvailable) {
-            Alert.alert('TripSharing', 'Feature is available');
-          } else {
-            Alert.alert('TripSharing', 'Feature is NOT available');
-          }
-        }}
-      />
-      <Spacer factor={1} />
-      <Button
-        title={'Create TripSharing link'}
-        onPress={async () => {
-          const result = await DriveKitTripAnalysis.createTripSharingLink(3600);
-          if (result.status.toString() == 'SUCCESS') {
-            Alert.alert(
-              'TripSharing',
-              'code: ' +
-                result.data?.code +
-                '\nurl: ' +
-                result.data?.url +
-                '\nstartDate: ' +
-                result.data?.startDate +
-                '\nendDate: ' +
-                result.data?.endDate,
-            );
-          } else {
-            Alert.alert(
-              'TripSharing',
-              'Could not create trip sharing link: ' + result.status,
-            );
-          }
-        }}
-      />
-      <Spacer factor={1} />
-      <Button
-        title={'Get CACHE TripSharing link'}
-        onPress={async () => {
-          const result = await DriveKitTripAnalysis.getTripSharingLink('CACHE');
-          Alert.alert(
-            'TripSharing',
-            'TripSharing retrieve CACHE result: ' +
-              result.status +
-              '\ncode: ' +
-              result.data?.code +
-              '\nurl: ' +
-              result.data?.url +
-              '\nstartDate: ' +
-              result.data?.startDate +
-              '\nendDate: ' +
-              result.data?.endDate,
-          );
-        }}
-      />
-      <Spacer factor={1} />
-      <Button
-        title={'Get DEFAULT TripSharing link'}
-        onPress={async () => {
-          const result = await DriveKitTripAnalysis.getTripSharingLink();
-          Alert.alert(
-            'TripSharing',
-            'TripSharing retrieve DEFAULT result: ' +
-              result.status +
-              '\ncode: ' +
-              result.data?.code +
-              '\nurl: ' +
-              result.data?.url +
-              '\nstartDate: ' +
-              result.data?.startDate +
-              '\nendDate: ' +
-              result.data?.endDate,
-          );
-        }}
-      />
-      <Spacer factor={1} />
-      <Button
-        title={'Revoke TripSharing link'}
-        onPress={async () => {
-          const result = await DriveKitTripAnalysis.revokeTripSharingLink();
-          Alert.alert('TripSharing', 'TripSharing revoke result: ' + result);
         }}
       />
       <Spacer factor={3} />

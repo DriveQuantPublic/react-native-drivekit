@@ -194,7 +194,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
 
   @ReactMethod
   override fun requestLocationPermission(promise: Promise) {
-    TODO("Not yet implemented")
+    // do nothing, it is only used on iOS.
   }
 
   private fun ReadableArray?.toTypedArray(): Array<String> {
