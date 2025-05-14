@@ -43,13 +43,13 @@ class MainApplication : Application(), ReactApplication {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
     }
-
-    //Configure TripAnalysis HeadlessJS notification
-    val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("Notification title", "Notification description")
-    DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)
     
     //Configure TripAnalysis trip recording notification
-    val tripNotification = RNTripNotification("Start of trip", "A trip is recording", R.drawable.ic_notification)
+    val tripNotification = RNTripNotification("DriveKit SDK", "Start a trip with DriveKit SDK", R.drawable.ic_notification)
     DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
+
+    //Configure TripAnalysis HeadlessJS notification
+    val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("DriveKit SDK", "Loading in progress…")
+    DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)
   }
 }
