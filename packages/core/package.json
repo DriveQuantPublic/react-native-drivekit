@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/core",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "React Native interface for DriveKit Core",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -130,5 +130,6 @@
         "jsSrcsDir": "src"
       }
     ]
-  }
+  },
+  "gitHead": "3575f97bf37f225b8509b2b931128eaeed40b403"
 }

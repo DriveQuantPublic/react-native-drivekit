@@ -65,12 +65,13 @@ fun mapCrashStatus(status: CrashStatus): String {
 fun mapDKCrashInfo(info: DKCrashInfo): ReadableMap {
   val rnCrashInfo = Arguments.createMap()
   rnCrashInfo.putString("crashId", info.crashId)
-  rnCrashInfo.putInt("timestamp", info.date.time.toInt())
+  rnCrashInfo.putDouble("timestamp", info.date.time.toDouble())
   rnCrashInfo.putInt("probability", info.probability.toInt())
   rnCrashInfo.putDouble("latitude", info.latitude)
   rnCrashInfo.putDouble("longitude", info.longitude)
   rnCrashInfo.putDouble("velocity", info.velocity)
   rnCrashInfo.putString("status", mapCrashStatus(info.status))
+  rnCrashInfo.putString("userLocationUrl", info.userLocationUrl)
   return rnCrashInfo
 }
 
