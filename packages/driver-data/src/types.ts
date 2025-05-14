@@ -1,4 +1,4 @@
-import type { Trip } from '@react-native-drivekit/core';
+import type { Trip } from './NativeDriverData';
 
 export type GetTripsResponse = {
   status: TripSyncStatus;
