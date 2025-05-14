@@ -28,7 +28,7 @@ export interface Spec extends TurboModule {
     bccRecipients?: Array<string>;
     subject?: string;
     body?: string;
-  }): void;
+  }): Promise<void>;
   getUserInfo(
     synchronizationType: WithDefault<string, 'default'>
   ): Promise<UserInfo | null>;
@@ -36,4 +36,4 @@ export interface Spec extends TurboModule {
   requestLocationPermission(): Promise<void>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitCore');
+export default TurboModuleRegistry.getEnforcing<Spec>('RNDriveKitCore');

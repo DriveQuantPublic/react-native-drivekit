@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import * as DriveKit from '@react-native-drivekit/core';
 import {Alert, Button} from 'react-native';
-import {Spacer} from './../Spacer';
+import {Spacer} from '../Spacer';
 import {Section} from './Section';
 
 const LogsSection: FunctionComponent<{}> = () => {

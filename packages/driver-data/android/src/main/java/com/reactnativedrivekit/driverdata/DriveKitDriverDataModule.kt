@@ -12,7 +12,7 @@ import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableArray
 
 class DriveKitDriverDataModule internal constructor(context: ReactApplicationContext) :
-  DriveKitDriverDataSpec(context) {
+  DriverDataSpec(context) {
 
   override fun getName(): String {
     return NAME

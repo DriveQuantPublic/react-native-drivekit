@@ -21,12 +21,12 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         DriveKitTripAnalysis.shared.addTripListener(self)
     }
 
-    @objc internal func activateAutoStart(enable: NSNumber) -> Void {
-        DriveKitTripAnalysis.shared.activateAutoStart(enable:enable.boolValue)
+    @objc internal func activateAutoStart(enable: Bool) -> Void {
+        DriveKitTripAnalysis.shared.activateAutoStart(enable:enable)
     }
 
-    @objc internal func activateCrashDetection(enable: NSNumber) -> Void {
-        DriveKitTripAnalysis.shared.activateCrashDetection(enable.boolValue)
+    @objc internal func activateCrashDetection(enable: Bool) -> Void {
+        DriveKitTripAnalysis.shared.activateCrashDetection(enable)
     }
 
     @objc internal func startTrip() -> Void {
@@ -45,16 +45,16 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         return NSNumber(value: DriveKitTripAnalysis.shared.isTripRunning());
     }
 
-    @objc internal func enableMonitorPotentialTripStart(enable: NSNumber) -> Void {
-        DriveKitTripAnalysis.shared.monitorPotentialTripStart = enable.boolValue;
+    @objc internal func enableMonitorPotentialTripStart(enable: Bool) -> Void {
+        DriveKitTripAnalysis.shared.monitorPotentialTripStart = enable;
     }
 
     @objc internal func reset() -> Void {
         DriveKitTripAnalysis.shared.reset();
     }
 
-    @objc internal func setStopTimeout(_ stopTimeout: NSNumber) -> Void {
-        DriveKitTripAnalysis.shared.setStopTimeOut(timeOut: stopTimeout.intValue)
+    @objc internal func setStopTimeout(_ stopTimeout: Double) -> Void {
+        DriveKitTripAnalysis.shared.setStopTimeOut(timeOut: Int(stopTimeout))
     }
     
     @objc internal func getTripMetadata(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
@@ -102,8 +102,8 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
       return NSNumber(value: DriveKitTripAnalysis.shared.tripSharing.isAvailable());
     }
   
-    @objc internal func createTripSharingLink(durationInSeconds: NSNumber, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
-      DriveKitTripAnalysis.shared.tripSharing.createLink(durationInSeconds: durationInSeconds.intValue) { status, data in
+    @objc internal func createTripSharingLink(durationInSeconds: Double, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      DriveKitTripAnalysis.shared.tripSharing.createLink(durationInSeconds: Int(durationInSeconds)) { status, data in
         resolve(mapCreateTripSharingResponse(status: status, data: data))
       }
     }
