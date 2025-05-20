@@ -35,7 +35,7 @@ export function addEventListener(
     case 'driveKitDisconnected':
       return Core.onDriveKitDisconnected(callback);
     case 'driveKitDidReceiveAuthenticationError':
-      return Core.onDriveKitDisconnected(callback);
+      return Core.onDriveKitDidReceiveAuthenticationError(callback);
     case 'accountDeletionCompleted':
       return Core.onDriveKitDisconnected(callback);
     case 'userIdUpdateStatusChanged':

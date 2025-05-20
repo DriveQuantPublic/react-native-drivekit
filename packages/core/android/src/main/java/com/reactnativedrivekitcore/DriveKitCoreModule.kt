@@ -233,8 +233,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
             }
 
             override fun onAuthenticationError(errorType: RequestError) {
-              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("driveKitDidReceiveAuthenticationError", mapRequestError(errorType))
-
+              coreModule?.emitOnDriveKitDidReceiveAuthenticationError(errorType.toString())
             }
 
             override fun userIdUpdateStatus(status: UpdateUserIdStatus, userId: String?) {
