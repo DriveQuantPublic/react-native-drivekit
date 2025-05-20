@@ -229,7 +229,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
             }
 
             override fun onDisconnected() {
-              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("driveKitDisconnected", null)
+              coreModule?.emitOnDriveKitDisconnected()
             }
 
             override fun onAuthenticationError(errorType: RequestError) {
