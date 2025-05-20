@@ -31,7 +31,7 @@ export function addEventListener(
 ): EventSubscription {
   switch (eventName) {
     case 'driveKitConnected':
-      return Core.onDriveKitDisconnected(callback);
+      return Core.onDriveKitConnected(callback);
     case 'driveKitDisconnected':
       return Core.onDriveKitDisconnected(callback);
     case 'driveKitDidReceiveAuthenticationError':

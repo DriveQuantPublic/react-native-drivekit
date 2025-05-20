@@ -12,6 +12,7 @@ export type UserInfo = {
 };
 
 export interface Spec extends TurboModule {
+  readonly onDriveKitConnected: EventEmitter<void>;
   readonly onDriveKitDisconnected: EventEmitter<void>;
   getApiKey(): Promise<string>;
   setApiKey(key: string): Promise<void>;

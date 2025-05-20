@@ -19,8 +19,8 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
 
   init {
     reactContext = context
+    coreModule = this
   }
-
 
   override fun getName(): String {
         return NAME
@@ -210,21 +210,22 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
   companion object {
         const val NAME = "RNDriveKitCore"
         var reactContext: ReactApplicationContext? = null
-       
+        var coreModule: DriveKitCoreModule? = null
+
         fun initialize(application: Application) {
           DriveKit.initialize(application)
           configureListeners()
         }
 
         internal fun configureListeners() {
-          DriveKitCoreModule.addDriveKitListener()
-          DriveKitCoreModule.addDeviceConfigurationListener()
+          addDriveKitListener()
+          addDeviceConfigurationListener()
         }
 
         private fun addDriveKitListener() {
           DriveKit.addDriveKitListener(object : DriveKitListener {
             override fun onConnected() {
-              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("driveKitConnected", null)
+              coreModule?.emitOnDriveKitConnected()
             }
 
             override fun onDisconnected() {
