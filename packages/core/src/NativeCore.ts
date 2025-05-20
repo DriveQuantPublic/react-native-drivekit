@@ -1,6 +1,9 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
-import type { WithDefault } from 'react-native/Libraries/Types/CodegenTypes';
+import type {
+  EventEmitter,
+  WithDefault,
+} from 'react-native/Libraries/Types/CodegenTypes';
 
 export type UserInfo = {
   firstname: string | null;
@@ -9,6 +12,7 @@ export type UserInfo = {
 };
 
 export interface Spec extends TurboModule {
+  readonly onDriveKitDisconnected: EventEmitter<void>;
   getApiKey(): Promise<string>;
   setApiKey(key: string): Promise<void>;
   getUserId(): Promise<string>;
