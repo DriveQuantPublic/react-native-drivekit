@@ -39,7 +39,7 @@ export function addEventListener(
     case 'accountDeletionCompleted':
       return Core.onAccountDeletionCompleted(callback);
     case 'userIdUpdateStatusChanged':
-      return Core.onDriveKitDisconnected(callback);
+      return Core.onUserIdUpdateStatusChanged(callback);
     case 'deviceConfigurationChanged':
       return Core.onDriveKitDisconnected(callback);
     default:

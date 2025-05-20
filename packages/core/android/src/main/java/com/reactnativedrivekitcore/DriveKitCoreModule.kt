@@ -240,11 +240,11 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
               val result = Arguments.createMap()
               result.putString("status", mapUpdateUserIdStatus(status))
               result.putString("userId", userId)
-              coreModule?.emitOnAccountDeletionCompleted(result)
+              coreModule?.emitOnUserIdUpdateStatusChanged(result)
             }
 
             override fun onAccountDeleted(status: DeleteAccountStatus) {
-              reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("accountDeletionCompleted", mapDeleteAccountStatus(status))
+              coreModule?.emitOnAccountDeletionCompleted(status.toString())
             }
           })
         }

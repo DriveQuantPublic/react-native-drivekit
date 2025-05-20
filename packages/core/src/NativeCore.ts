@@ -11,7 +11,7 @@ export type UserInfo = {
   pseudo: string | null;
 };
 
-export type AccountDeletionCompleteStatus = {
+export type UserIdUpdateStatus = {
   userId: string | null;
   status: string;
 };
@@ -20,7 +20,9 @@ export interface Spec extends TurboModule {
   readonly onDriveKitConnected: EventEmitter<void>;
   readonly onDriveKitDisconnected: EventEmitter<void>;
   readonly onDriveKitDidReceiveAuthenticationError: EventEmitter<string>;
-  readonly onAccountDeletionCompleted: EventEmitter<AccountDeletionCompleteStatus>;
+  readonly onAccountDeletionCompleted: EventEmitter<string>;
+  readonly onUserIdUpdateStatusChanged: EventEmitter<UserIdUpdateStatus>;
+
   getApiKey(): Promise<string>;
   setApiKey(key: string): Promise<void>;
   getUserId(): Promise<string>;
