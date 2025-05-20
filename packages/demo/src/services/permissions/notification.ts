@@ -1,8 +1,5 @@
 import {Alert, Linking, Platform} from 'react-native';
 import {
-  check,
-  request,
-  PERMISSIONS,
   RESULTS,
   checkNotifications,
   requestNotifications,
