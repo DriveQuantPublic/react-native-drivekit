@@ -41,7 +41,7 @@ export function addEventListener(
     case 'userIdUpdateStatusChanged':
       return Core.onUserIdUpdateStatusChanged(callback);
     case 'deviceConfigurationChanged':
-      return Core.onDriveKitDisconnected(callback);
+      return Core.onDeviceConfigurationChanged(callback);
     default:
       throw new Error('Invalid eventName ' + eventName);
   }

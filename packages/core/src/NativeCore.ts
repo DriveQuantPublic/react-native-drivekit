@@ -16,12 +16,18 @@ export type UserIdUpdateStatus = {
   status: string;
 };
 
+export type DeviceConfigurationChangedEvent = {
+  eventType: string;
+  isValid: boolean;
+};
+
 export interface Spec extends TurboModule {
   readonly onDriveKitConnected: EventEmitter<void>;
   readonly onDriveKitDisconnected: EventEmitter<void>;
   readonly onDriveKitDidReceiveAuthenticationError: EventEmitter<string>;
   readonly onAccountDeletionCompleted: EventEmitter<string>;
   readonly onUserIdUpdateStatusChanged: EventEmitter<UserIdUpdateStatus>;
+  readonly onDeviceConfigurationChanged: EventEmitter<DeviceConfigurationChangedEvent>;
 
   getApiKey(): Promise<string>;
   setApiKey(key: string): Promise<void>;
