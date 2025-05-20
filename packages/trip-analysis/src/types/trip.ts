@@ -7,6 +7,7 @@ import type {
   CreateTripSharingLinkResponse as CreateTripSharingLinkResponseType,
   RevokeTripSharingLinkStatus as RevokeTripSharingLinkStatusType,
   GetTripSharingLinkResponse as GetTripSharingLinkResponseType,
+  DKTripRecordingStartedState as DKTripRecordingStartedStateType,
 } from '../NativeDriveKitTripAnalysis';
 export type TripMetadata = TripMetadataType;
 export type TripVehicle = TripVehicleType;
@@ -16,6 +17,7 @@ export type LastTripLocation = LastTripLocationType;
 export type CreateTripSharingLinkResponse = CreateTripSharingLinkResponseType;
 export type RevokeTripSharingLinkStatus = RevokeTripSharingLinkStatusType;
 export type GetTripSharingLinkResponse = GetTripSharingLinkResponseType;
+export type DKTripRecordingStartedState = DKTripRecordingStartedStateType;
 
 export enum CancelTripReason {
   USER = 'USER',
@@ -39,12 +41,6 @@ export type TripPoint = {
   distance: number;
   heading: number;
   duration: number;
-};
-
-export type DKTripRecordingStartedState = {
-  localTripId: string;
-  startMode: StartMode;
-  recordingStartDate: string;
 };
 
 export type DKTripRecordingConfirmedState = {

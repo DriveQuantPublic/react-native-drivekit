@@ -1,9 +1,4 @@
-import {
-  EmitterSubscription,
-  NativeEventEmitter,
-  NativeModules,
-  Platform,
-} from 'react-native';
+import { EventSubscription, NativeModules, Platform } from 'react-native';
 
 import type {
   StartMode,
@@ -151,6 +146,15 @@ export function addEventListener<E extends keyof Listeners>(
         });
       }
     );
+export function addEventListener(
+  eventName: string,
+  callback: Function
+): EventSubscription {
+  switch (eventName) {
+    case 'tripRecordingStarted':
+      return DriveKitTripAnalysis.tripRecordingStarted(callback);
+    default:
+      throw new Error('Invalid eventName ' + eventName);
   }
   return eventEmitter.addListener(event, callback);
 }

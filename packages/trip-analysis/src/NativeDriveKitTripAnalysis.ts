@@ -1,5 +1,6 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
+import { EventEmitter } from 'react-native/Libraries/Types/CodegenTypes';
 
 export type TripMetadata = { [key: string]: string };
 
@@ -100,7 +101,15 @@ export type GetTripSharingLinkResponse = {
   data: TripSharingLink | null;
 };
 
+export type DKTripRecordingStartedState = {
+  localTripId: string;
+  startMode: StartMode;
+  recordingStartDate: string;
+};
+
 export interface Spec extends TurboModule {
+  readonly tripRecordingStarted: EventEmitter<DKTripRecordingStartedState>;
+
   activateAutoStart(enable: boolean): Promise<void>;
   activateCrashDetection(enable: boolean): Promise<void>;
   startTrip(): Promise<void>;

@@ -4,6 +4,8 @@ import type {
   RequestError,
 } from '@react-native-drivekit/core';
 import * as DriveKit from '@react-native-drivekit/core';
+import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
+
 import {useEffect} from 'react';
 
 const useSetupListeners = () => {
@@ -65,6 +67,18 @@ const useSetupListeners = () => {
           event.type,
           ' changed to ',
           event.isValid ? 'valid' : 'invalid',
+        );
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'tripRecordingStarted',
+      (state: DriveKitTripAnalysis.DKTripRecordingStartedState) => {
+        console.log(
+          'Trip recording has started with StartMode: ' + state.startMode,
         );
       },
     );

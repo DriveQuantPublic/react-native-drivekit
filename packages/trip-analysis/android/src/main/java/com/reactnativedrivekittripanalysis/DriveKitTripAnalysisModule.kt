@@ -34,6 +34,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
 
   init {
     reactContext = context
+    tripAnalysisModule = this
   }
 
   override fun getName(): String {
@@ -191,6 +192,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
     const val NAME = "RNDriveKitTripAnalysis"
 
     var reactContext: ReactApplicationContext? = null
+    var tripAnalysisModule: DriveKitTripAnalysisModule? = null
 
     fun initialize(rnTripNotification: RNTripNotification, rnHeadlessJSNotification: RNHeadlessJSNotification) {
       val tripNotification = TripNotification(rnTripNotification.title, rnTripNotification.content, rnTripNotification.iconId)
@@ -218,8 +220,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
       DriveKitTripAnalysis.addTripListener(object : TripListener {
         override fun tripRecordingStarted(state: DKTripRecordingStartedState) {
           HeadlessJsManager.sendTripRecordingStartedEvent(state)
-          reactContext?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-            ?.emit("tripRecordingStarted", mapTripRecordingStartedState(state))
+          tripAnalysisModule?.emitTripRecordingStarted(mapTripRecordingStartedState(state))
         }
 
         override fun tripRecordingConfirmed(state: DKTripRecordingConfirmedState) {
