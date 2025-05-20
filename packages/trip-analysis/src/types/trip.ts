@@ -8,7 +8,20 @@ import type {
   RevokeTripSharingLinkStatus as RevokeTripSharingLinkStatusType,
   GetTripSharingLinkResponse as GetTripSharingLinkResponseType,
   DKTripRecordingStartedState as DKTripRecordingStartedStateType,
+  DKTripRecordingConfirmedState as DKTripRecordingConfirmedStateType,
+  DKTripRecordingCanceledState as DKTripRecordingCanceledStateType,
+  DKTripRecordingFinishedState as DKTripRecordingFinishedStateType,
+  TripResult as TripResultType,
+  CancelTripReason as CancelTripReasonType,
+  CrashFeedback as CrashFeedbackType,
+  CrashInfo as CrashInfoType,
+  Location as LocationType,
+  TripPoint as TripPointType,
+  TripResultStatusType as TripResultStatusTypeType,
+  DKTripCancelationReason as DKTripCancelationReasonType,
+  SDKState as SDKStateType,
 } from '../NativeDriveKitTripAnalysis';
+
 export type TripMetadata = TripMetadataType;
 export type TripVehicle = TripVehicleType;
 export type StartMode = StartModeType;
@@ -18,111 +31,15 @@ export type CreateTripSharingLinkResponse = CreateTripSharingLinkResponseType;
 export type RevokeTripSharingLinkStatus = RevokeTripSharingLinkStatusType;
 export type GetTripSharingLinkResponse = GetTripSharingLinkResponseType;
 export type DKTripRecordingStartedState = DKTripRecordingStartedStateType;
-
-export enum CancelTripReason {
-  USER = 'USER',
-  HIGH_SPEED = 'HIGH_SPEED',
-  NO_SPEED = 'NO_SPEED',
-  NO_BEACON = 'NO_BEACON',
-  MISSING_CONFIGURATION = 'MISSING_CONFIGURATION',
-  NO_GPS_DATA = 'NO_GPS_DATA',
-  RESET = 'RESET',
-  BEACON_NO_SPEED = 'BEACON_NO_SPEED',
-  NO_BLUETOOTH_DEVICE = 'NO_BLUETOOTH_DEVICE',
-  BLUETOOTH_DEVICE_NO_SPEED = 'BLUETOOTH_DEVICE_NO_SPEED',
-}
-
-export type TripPoint = {
-  latitude: number;
-  longitude: number;
-  speed: number;
-  accuracy: number;
-  elevation: number;
-  distance: number;
-  heading: number;
-  duration: number;
-};
-
-export type DKTripRecordingConfirmedState = {
-  localTripId: string;
-  startMode: StartMode;
-  recordingStartDate: string;
-  recordingConfirmationDate: string;
-};
-
-export type DKTripRecordingCanceledState = {
-  localTripId: string;
-  startMode: StartMode;
-  recordingStartDate: string;
-  recordingConfirmationDate: string | null;
-  cancelationReason: DKTripCancelationReason;
-};
-
-export type DKTripRecordingFinishedState = {
-  localTripId: string;
-  startMode: StartMode;
-  recordingStartDate: string;
-  recordingConfirmationDate: string;
-  recordingEndDate: string;
-};
-
-export enum DKTripCancelationReason {
-  USER,
-  HIGH_SPEED,
-  NO_SPEED,
-  NO_BEACON,
-  NO_BLUETOOTH_DEVICE,
-  MISSING_CONFIGURATION,
-  NO_LOCATION_DATA,
-  RESET,
-  BEACON_NO_SPEED,
-  BLUETOOTH_DEVICE_NO_SPEED,
-  APP_KILLED,
-}
-
-export type TripResult = {
-  status: TripResultStatusType;
-  itinId: string | null; // null if status is TRIP_ERROR
-  localTripId: string;
-  tripResponseInfo: [TripResponseInfo] | null; // null if status is TRIP_ERROR
-  tripResponseError: TripResponseError | null; // null if status is TRIP_VALID
-  hasSafetyAndEcoDrivingScore: boolean | null; // null if status is TRIP_ERROR
-};
-
-export enum TripResultStatusType {
-  TRIP_VALID = 'TRIP_VALID',
-  TRIP_ERROR = 'TRIP_ERROR',
-}
-
-export enum TripResponseInfo {
-  ENGINE_SPEED_NOT_AVAILABLE,
-  ENGINE_SPEED_IS_NULL,
-  NO_VEHICLE_CHARACTERISTICS,
-  DATA_LOSS,
-  DISTANCE_TOO_SHORT,
-  INVALID_VEHICLE_CHARACTERISTICS,
-  INVALID_VEHICLE_ID,
-}
-
-export enum TripResponseError {
-  NO_ACCOUNT_SET,
-  NO_ROUTE_OBJECT_FOUND,
-  INVALID_ROUTE_DEFINITION,
-  NO_VELOCITY_DATA,
-  INVALID_SAMPLING_PERIOD,
-  INVALID_CUSTOMER_ID,
-  NO_DATE_FOUND,
-  MAX_DAILY_REQUEST_NUMBER_REACHED,
-  DATA_ERROR,
-  INVALID_ROUTE_VECTORS,
-  MISSING_BEACON,
-  INVALID_BEACON,
-  DUPLICATE_TRIP,
-  INSUFFICIENT_GPS_DATA,
-  USER_DISABLED,
-  INVALID_USER,
-  INVALID_GPS_DATA,
-  INVALID_TRIP,
-  ACCOUNT_LIMIT_REACHED,
-  UNKNOWN_ERROR,
-}
+export type DKTripRecordingConfirmedState = DKTripRecordingConfirmedStateType;
+export type DKTripRecordingCanceledState = DKTripRecordingCanceledStateType;
+export type DKTripRecordingFinishedState = DKTripRecordingFinishedStateType;
+export type TripResult = TripResultType;
+export type CancelTripReason = CancelTripReasonType;
+export type TripResultStatusType = TripResultStatusTypeType;
+export type CrashFeedback = CrashFeedbackType;
+export type CrashInfo = CrashInfoType;
+export type Location = LocationType;
+export type TripPoint = TripPointType;
+export type DKTripCancelationReason = DKTripCancelationReasonType;
+export type SDKState = SDKStateType;

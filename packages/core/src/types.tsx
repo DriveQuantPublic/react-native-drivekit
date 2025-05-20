@@ -1,6 +1,8 @@
 import type { UserInfo as UserInfoType } from './NativeCore';
+import type { UserIdUpdateStatus as UserIdUpdateStatusType } from './NativeCore';
 
 export type UserInfo = UserInfoType;
+export type UserIdUpdateStatus = UserIdUpdateStatusType;
 
 export enum RequestError {
   WRONG_URL = 'WRONG_URL',

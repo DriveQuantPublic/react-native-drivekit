@@ -6,7 +6,7 @@ import {
 
 module.exports = async taskData => {
   if (
-    taskData.eventType === 'TRIP_FINISHED' ||
+    taskData.eventType === 'TRIP_FINISHED_WITH_RESULT_VALID' ||
     taskData.eventType === 'TRIP_CANCELLED' ||
     taskData.eventType === 'TRIP_SAVED_FOR_REPOST'
   ) {

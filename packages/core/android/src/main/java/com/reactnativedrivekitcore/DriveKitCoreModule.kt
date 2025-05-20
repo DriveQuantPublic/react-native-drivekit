@@ -74,11 +74,11 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
   override fun enableLogging(options: ReadableMap?, promise: Promise) {
     var logPath: String? = null
     if (options?.hasKey("logPath") == true) {
-      logPath = options?.getString("logPath")
+      logPath = options.getString("logPath")
     }
     var showInConsole: Boolean? = null
     if (options?.hasKey("showInConsole") == true) {
-      showInConsole = options?.getBoolean("showInConsole")
+      showInConsole = options.getBoolean("showInConsole")
     }
     DriveKit.enableLogging(logPath ?: "/DriveKit", showInConsole ?: true)
     promise.resolve(null)
@@ -88,7 +88,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
   override fun disableLogging(options: ReadableMap?, promise: Promise) {
     var showInConsole: Boolean? = null
     if (options?.hasKey("showInConsole") == true) {
-      showInConsole = options?.getBoolean("showInConsole")
+      showInConsole = options.getBoolean("showInConsole")
     }
     DriveKit.disableLogging(showInConsole ?: true)
     promise.resolve(null)
@@ -97,7 +97,7 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
   @ReactMethod
   override fun getUriLogFile(promise: Promise) {
     try {
-      val uri = DriveKit.applicationContext?.let { DriveKitLog.getLogUriFile(it) } ?: run { null }
+      val uri = DriveKit.applicationContext.let { DriveKitLog.getLogUriFile(it) } ?: run { null }
       val result = Arguments.createMap()
       result.putString("uri", uri.toString())
       promise.resolve(result)
@@ -167,7 +167,8 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
       val subject = it.getString("subject")
       val body = it.getString("body")
 
-      val uri = DriveKit.applicationContext?.let { DriveKitLog.getLogUriFile(it) } ?: run { null }
+      val uri = DriveKit.applicationContext.let { context -> DriveKitLog.getLogUriFile(context) }
+        ?: run { null }
       val intent = Intent(Intent.ACTION_SEND)
       intent.type = "plain/text"
       intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -175,8 +176,10 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
       bccRecipients?.let { intent.putExtra(Intent.EXTRA_BCC, bccRecipients.toTypedArray()) }
       intent.putExtra(Intent.EXTRA_SUBJECT, subject)
       intent.putExtra(Intent.EXTRA_TEXT, body)
-      uri?.let { uri -> intent.putExtra(Intent.EXTRA_STREAM, uri) }
-      DriveKit.applicationContext?.startActivity(intent)
+      uri?.let {
+        intent.putExtra(Intent.EXTRA_STREAM, uri)
+      }
+      DriveKit.applicationContext.startActivity(intent)
     }
     promise.resolve(null)
   }
