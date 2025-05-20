@@ -2,9 +2,8 @@ package com.reactnativedrivekitcore
 
 import com.drivequant.drivekit.core.driver.UpdateUserIdStatus
 import com.drivequant.drivekit.core.driver.deletion.DeleteAccountStatus
-import com.drivequant.drivekit.core.networking.RequestError
 
-fun mapUpdateUserIdStatus(updateUserIdStatus: UpdateUserIdStatus): String {
+fun mapUpdateUserIdStatus(updateUserIdStatus: UpdateUserIdStatus): String {   
   return when (updateUserIdStatus) {
     UpdateUserIdStatus.UPDATED -> "UPDATED"
     UpdateUserIdStatus.FAILED_TO_UPDATE -> "FAILED_TO_UPDATE"
