@@ -25,16 +25,15 @@ module.exports = async taskData => {
       const hasSafetyAndEcoDrivingScore = taskData.hasSafetyAndEcoDrivingScore;
       const itinId = taskData.itinId;
       notificationId = '123'; // The same notificationId used in `useSetupListeners.ts`
-      body = getBodyForFinishedTripResponse(
+      body = await getBodyForFinishedTripResponse(
         true,
         hasSafetyAndEcoDrivingScore,
         itinId,
       );
     } else if (taskData.eventType === 'TRIP_FINISHED_WITH_RESULT_ERROR') {
       notificationId = '123'; // The same notificationId used in `useSetupListeners.ts`
-      body = getBodyForFinishedTripResponse(false, false, null);
+      body = await getBodyForFinishedTripResponse(false, false, null);
     } else if (taskData.eventType === 'TRIP_CANCELLED') {
-      console.log('cancelTrip = ' + taskData.cancelTrip);
       body = getBodyForCanceledTripReason(taskData.cancelTrip);
     }
     if (body != null) {
