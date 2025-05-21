@@ -1,6 +1,6 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
-import { EventEmitter } from 'react-native/Libraries/Types/CodegenTypes';
+import type { EventEmitter } from 'react-native/Libraries/Types/CodegenTypes';
 
 export type TripMetadata = { [key: string]: string };
 
