@@ -6,7 +6,6 @@ import type {
   CurrentTripInfo,
   LastTripLocation,
   CreateTripSharingLinkResponse,
-  RevokeTripSharingLinkStatus,
   GetTripSharingLinkResponse,
 } from './types';
 
@@ -154,6 +153,8 @@ export function getTripSharingLink(
   return DriveKitTripAnalysis.getTripSharingLink(synchronizationType);
 }
 
-export function revokeTripSharingLink(): Promise<RevokeTripSharingLinkStatus> {
+// TODO fix that
+// return value is RevokeTripSharingLinkStatus
+export function revokeTripSharingLink(): Promise<string> {
   return DriveKitTripAnalysis.revokeTripSharingLink();
 }

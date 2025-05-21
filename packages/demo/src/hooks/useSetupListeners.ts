@@ -3,6 +3,7 @@ import type {
   DeleteAccountStatus,
   DeviceConfigurationEvent,
   RequestError,
+  UserIdUpdateStatus,
 } from '@react-native-drivekit/core';
 import * as DriveKit from '@react-native-drivekit/core';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
@@ -13,6 +14,7 @@ import {
   getBodyForCanceledTripReason,
   getBodyForFinishedTripResponse,
 } from './notificationsHandler';
+import {TripResultStatusType} from '@react-native-drivekit/trip-analysis';
 
 const useSetupListeners = () => {
   const startTripNotifId = 'DriveKitStartTripNotifId';
@@ -45,7 +47,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKit.addEventListener(
       'userIdUpdateStatusChanged',
-      ({status, userId: updatedUserId}) => {
+      ({status, userId: updatedUserId}: UserIdUpdateStatus) => {
         console.log(
           'UserId',
           updatedUserId,
@@ -147,9 +149,7 @@ const useSetupListeners = () => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripFinishedWithResult',
       async (result: DriveKitTripAnalysis.TripResult) => {
-        const isTripvalid =
-          result.status ===
-          DriveKitTripAnalysis.TripResultStatusType.TRIP_VALID;
+        const isTripvalid = result.status === TripResultStatusType.TRIP_VALID;
         if (isTripvalid) {
           console.log(
             'Trip analysis is finished and valid. itinId: ' + result.itinId,
@@ -185,7 +185,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'potentialTripStart',
-      startMode => {
+      (startMode: typeof DriveKitTripAnalysis.StartMode) => {
         console.log('potential trip start', startMode);
       },
     );
@@ -245,7 +245,8 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'sdkStateChanged',
-      (state: DriveKitTripAnalysis.SDKState) => {
+      // state is a SDKState enum
+      (state: string) => {
         console.log('SDK State Changed', state);
       },
     );
@@ -265,7 +266,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'crashFeedbackSent',
-      (crashFeedback: DriveKitTripAnalysis.CrashFeedback) => {
+      (crashFeedback: typeof DriveKitTripAnalysis.CrashFeedbackType) => {
         console.log('Crash feedback sent', crashFeedback);
       },
     );
