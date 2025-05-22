@@ -45,7 +45,7 @@ class MainApplication : Application(), ReactApplication {
     }
     
     //Configure TripAnalysis trip recording notification
-    val tripNotification = RNTripNotification("DriveKit SDK", "Start a trip with DriveKit SDK", R.drawable.ic_notification)
+    val tripNotification = RNTripNotification(123, "DriveKit SDK", "Start a trip with DriveKit SDK", R.drawable.ic_notification)
     DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
 
     //Configure TripAnalysis HeadlessJS notification
