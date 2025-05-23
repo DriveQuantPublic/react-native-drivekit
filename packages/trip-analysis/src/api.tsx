@@ -7,6 +7,7 @@ import type {
   LastTripLocation,
   CreateTripSharingLinkResponse,
   GetTripSharingLinkResponse,
+  RevokeTripSharingLinkStatus,
 } from './types';
 
 import type { SynchronizationType } from '@react-native-drivekit/core';
@@ -153,8 +154,6 @@ export function getTripSharingLink(
   return DriveKitTripAnalysis.getTripSharingLink(synchronizationType);
 }
 
-// TODO fix that
-// return value is RevokeTripSharingLinkStatus
-export function revokeTripSharingLink(): Promise<string> {
+export function revokeTripSharingLink(): Promise<RevokeTripSharingLinkStatus> {
   return DriveKitTripAnalysis.revokeTripSharingLink();
 }

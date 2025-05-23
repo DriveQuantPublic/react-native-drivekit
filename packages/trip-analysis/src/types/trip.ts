@@ -1,62 +1,29 @@
-import type {
-  TripMetadata as TripMetadataType,
-  TripVehicle as TripVehicleType,
-  CurrentTripInfo as CurrentTripInfoType,
-  LastTripLocation as LastTripLocationType,
-  CreateTripSharingLinkResponse as CreateTripSharingLinkResponseType,
-  GetTripSharingLinkResponse as GetTripSharingLinkResponseType,
-  DKTripRecordingStartedState as DKTripRecordingStartedStateType,
-  DKTripRecordingConfirmedState as DKTripRecordingConfirmedStateType,
-  DKTripRecordingCanceledState as DKTripRecordingCanceledStateType,
-  DKTripRecordingFinishedState as DKTripRecordingFinishedStateType,
-  TripResult as TripResultType,
-  CrashInfo as CrashInfoType,
-  Location as LocationType,
-  TripPoint as TripPointType,
-} from '../NativeDriveKitTripAnalysis';
-import {
-  StartMode as StartModeEnum,
-  TripResultStatusType as TripResultStatusTypeEnum,
-  SDKState as SDKStateEnum,
-  CancelTripReason as CancelTripReasonEnum,
-  DKTripCancelationReason as DKTripCancelationReasonEnum,
-  AccuracyLevel as AccuracyLevelEnum,
-  CreateTripSharingLinkStatus as CreateTripSharingLinkStatusEnum,
-  GetTripSharingLinkStatus as GetTripSharingLinkStatusEnum,
-  RevokeTripSharingLinkStatus as RevokeTripSharingLinkStatusEnum,
-  TripResponseInfo as TripResponseInfoEnum,
-  TripResponseError as TripResponseErrorEnum,
-  CrashStatus as CrashStatusEnum,
-  CrashFeedbackType as CrashFeedbackTypeEnum,
-  CrashFeedbackSeverity as CrashFeedbackSeverityEnum,
-} from '../NativeDriveKitTripAnalysis';
+export type { TripMetadata } from '../NativeDriveKitTripAnalysis';
+export type { TripVehicle } from '../NativeDriveKitTripAnalysis';
+export type { CurrentTripInfo } from '../NativeDriveKitTripAnalysis';
+export type { LastTripLocation } from '../NativeDriveKitTripAnalysis';
+export type { CreateTripSharingLinkResponse } from '../NativeDriveKitTripAnalysis';
+export type { GetTripSharingLinkResponse } from '../NativeDriveKitTripAnalysis';
+export type { DKTripRecordingStartedState } from '../NativeDriveKitTripAnalysis';
+export type { DKTripRecordingConfirmedState } from '../NativeDriveKitTripAnalysis';
+export type { DKTripRecordingCanceledState } from '../NativeDriveKitTripAnalysis';
+export type { DKTripRecordingFinishedState } from '../NativeDriveKitTripAnalysis';
+export type { TripResult } from '../NativeDriveKitTripAnalysis';
+export type { CrashInfo } from '../NativeDriveKitTripAnalysis';
+export type { Location } from '../NativeDriveKitTripAnalysis';
+export type { TripPoint } from '../NativeDriveKitTripAnalysis';
 
-export type TripMetadata = TripMetadataType;
-export type TripVehicle = TripVehicleType;
-export type CurrentTripInfo = CurrentTripInfoType;
-export type LastTripLocation = LastTripLocationType;
-export type CreateTripSharingLinkResponse = CreateTripSharingLinkResponseType;
-export type GetTripSharingLinkResponse = GetTripSharingLinkResponseType;
-export type DKTripRecordingStartedState = DKTripRecordingStartedStateType;
-export type DKTripRecordingConfirmedState = DKTripRecordingConfirmedStateType;
-export type DKTripRecordingCanceledState = DKTripRecordingCanceledStateType;
-export type DKTripRecordingFinishedState = DKTripRecordingFinishedStateType;
-export type TripResult = TripResultType;
-export type CrashInfo = CrashInfoType;
-export type Location = LocationType;
-export type TripPoint = TripPointType;
-
-export const StartMode = StartModeEnum;
-export const SDKState = SDKStateEnum;
-export const CancelTripReason = CancelTripReasonEnum;
-export const TripResultStatusType = TripResultStatusTypeEnum;
-export const RevokeTripSharingLinkStatus = RevokeTripSharingLinkStatusEnum;
-export const DKTripCancelationReason = DKTripCancelationReasonEnum;
-export const AccuracyLevel = AccuracyLevelEnum;
-export const TripResponseInfo = TripResponseInfoEnum;
-export const TripResponseError = TripResponseErrorEnum;
-export const CrashStatus = CrashStatusEnum;
-export const CrashFeedbackType = CrashFeedbackTypeEnum;
-export const CrashFeedbackSeverity = CrashFeedbackSeverityEnum;
-export const GetTripSharingLinkStatus = GetTripSharingLinkStatusEnum;
-export const CreateTripSharingLinkStatus = CreateTripSharingLinkStatusEnum;
+export { StartMode } from '../NativeDriveKitTripAnalysis';
+export { SDKState } from '../NativeDriveKitTripAnalysis';
+export { CancelTripReason } from '../NativeDriveKitTripAnalysis';
+export { TripResultStatusType } from '../NativeDriveKitTripAnalysis';
+export { RevokeTripSharingLinkStatus } from '../NativeDriveKitTripAnalysis';
+export { DKTripCancelationReason } from '../NativeDriveKitTripAnalysis';
+export { AccuracyLevel } from '../NativeDriveKitTripAnalysis';
+export { TripResponseInfo } from '../NativeDriveKitTripAnalysis';
+export { TripResponseError } from '../NativeDriveKitTripAnalysis';
+export { CrashStatus } from '../NativeDriveKitTripAnalysis';
+export { CrashFeedbackType } from '../NativeDriveKitTripAnalysis';
+export { CrashFeedbackSeverity } from '../NativeDriveKitTripAnalysis';
+export { GetTripSharingLinkStatus } from '../NativeDriveKitTripAnalysis';
+export { CreateTripSharingLinkStatus } from '../NativeDriveKitTripAnalysis';

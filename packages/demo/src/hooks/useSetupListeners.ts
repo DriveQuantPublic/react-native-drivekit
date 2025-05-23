@@ -6,6 +6,18 @@ import type {
   UserIdUpdateStatus,
 } from '@react-native-drivekit/core';
 import * as DriveKit from '@react-native-drivekit/core';
+import {
+  CrashFeedbackType,
+  CrashInfo,
+  DKTripRecordingCanceledState,
+  DKTripRecordingFinishedState,
+  DKTripRecordingStartedState,
+  Location,
+  SDKState,
+  StartMode,
+  TripPoint,
+  TripResult,
+} from '@react-native-drivekit/trip-analysis';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 
 import {useEffect} from 'react';
@@ -87,7 +99,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripRecordingStarted',
-      (state: DriveKitTripAnalysis.DKTripRecordingStartedState) => {
+      (state: DKTripRecordingStartedState) => {
         console.log(
           'Trip recording has started with StartMode: ' + state.startMode,
         );
@@ -116,7 +128,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripRecordingCanceled',
-      (state: DriveKitTripAnalysis.DKTripRecordingCanceledState) => {
+      (state: DKTripRecordingCanceledState) => {
         console.log(
           'Trip recording was canceled with reason: ' + state.cancelationReason,
         );
@@ -138,7 +150,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripRecordingFinished',
-      (_state: DriveKitTripAnalysis.DKTripRecordingFinishedState) => {
+      (_state: DKTripRecordingFinishedState) => {
         console.log('Trip recording is finished');
       },
     );
@@ -148,7 +160,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripFinishedWithResult',
-      async (result: DriveKitTripAnalysis.TripResult) => {
+      async (result: TripResult) => {
         const isTripvalid = result.status === TripResultStatusType.TRIP_VALID;
         if (isTripvalid) {
           console.log(
@@ -185,7 +197,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'potentialTripStart',
-      (startMode: typeof DriveKitTripAnalysis.StartMode) => {
+      (startMode: StartMode) => {
         console.log('potential trip start', startMode);
       },
     );
@@ -195,7 +207,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripPoint',
-      (tripPoint: DriveKitTripAnalysis.TripPoint) => {
+      (tripPoint: TripPoint) => {
         console.log('trip point', tripPoint);
       },
     );
@@ -235,7 +247,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'significantLocationChangeDetected',
-      (location: DriveKitTripAnalysis.Location) => {
+      (location: Location) => {
         console.log('Significant location change detected', location);
       },
     );
@@ -245,8 +257,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'sdkStateChanged',
-      // state is a SDKState enum
-      (state: string) => {
+      (state: SDKState) => {
         console.log('SDK State Changed', state);
       },
     );
@@ -256,7 +267,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'crashDetected',
-      (info: DriveKitTripAnalysis.CrashInfo) => {
+      (info: CrashInfo) => {
         console.log('Crash detected', info);
       },
     );
@@ -266,7 +277,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'crashFeedbackSent',
-      (crashFeedback: typeof DriveKitTripAnalysis.CrashFeedbackType) => {
+      (crashFeedback: CrashFeedbackType) => {
         console.log('Crash feedback sent', crashFeedback);
       },
     );
