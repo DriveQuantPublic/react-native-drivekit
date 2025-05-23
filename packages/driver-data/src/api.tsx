@@ -1,12 +1,8 @@
 import { NativeModules, Platform } from 'react-native';
-import type { SynchronizationType as SynchronizationTypeType } from './NativeDriverData';
-import type { TransportationMode as TransportationModeType } from './NativeDriverData';
 import type { GetTripResponse as GetTripResponseType } from './NativeDriverData';
 import type { Route as RouteType } from './NativeDriverData';
 import type { GetTripsResponse as GetTripsResponseType } from './NativeDriverData';
 
-export type SynchronizationType = SynchronizationTypeType;
-export type TransportationMode = TransportationModeType;
 export type GetTripResponse = GetTripResponseType;
 export type GetTripsResponse = GetTripsResponseType;
 export type Route = RouteType;
@@ -48,8 +44,8 @@ export function getRoute(itinId: string): Promise<Route | null> {
 }
 
 export function getTripsOrderByDateAsc(
-  synchronizationType: SynchronizationType = 'DEFAULT',
-  transportationModes: TransportationMode[] = []
+  synchronizationType: string = 'DEFAULT',
+  transportationModes: string[] = []
 ): Promise<GetTripsResponse | null> {
   return DriveKitDriverData.getTripsOrderByDateAsc(
     synchronizationType,
@@ -58,8 +54,8 @@ export function getTripsOrderByDateAsc(
 }
 
 export function getTripsOrderByDateDesc(
-  synchronizationType: SynchronizationType = 'DEFAULT',
-  transportationModes: TransportationMode[] = []
+  synchronizationType: string = 'DEFAULT',
+  transportationModes: string[] = []
 ): Promise<GetTripsResponse | null> {
   return DriveKitDriverData.getTripsOrderByDateDesc(
     synchronizationType,

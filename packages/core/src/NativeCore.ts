@@ -1,6 +1,9 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
-import type { WithDefault } from 'react-native/Libraries/Types/CodegenTypes';
+import type {
+  EventEmitter,
+  WithDefault,
+} from 'react-native/Libraries/Types/CodegenTypes';
 
 export type UserInfo = {
   firstname: string | null;
@@ -8,7 +11,24 @@ export type UserInfo = {
   pseudo: string | null;
 };
 
+export type UserIdUpdateStatus = {
+  userId: string | null;
+  status: string;
+};
+
+export type DeviceConfigurationChangedEvent = {
+  eventType: string;
+  isValid: boolean;
+};
+
 export interface Spec extends TurboModule {
+  readonly onDriveKitConnected: EventEmitter<void>;
+  readonly onDriveKitDisconnected: EventEmitter<void>;
+  readonly onDriveKitDidReceiveAuthenticationError: EventEmitter<string>;
+  readonly onAccountDeletionCompleted: EventEmitter<string>;
+  readonly onUserIdUpdateStatusChanged: EventEmitter<UserIdUpdateStatus>;
+  readonly onDeviceConfigurationChanged: EventEmitter<DeviceConfigurationChangedEvent>;
+
   getApiKey(): Promise<string>;
   setApiKey(key: string): Promise<void>;
   getUserId(): Promise<string>;
@@ -28,7 +48,7 @@ export interface Spec extends TurboModule {
     bccRecipients?: Array<string>;
     subject?: string;
     body?: string;
-  }): void;
+  }): Promise<void>;
   getUserInfo(
     synchronizationType: WithDefault<string, 'default'>
   ): Promise<UserInfo | null>;
@@ -36,4 +56,4 @@ export interface Spec extends TurboModule {
   requestLocationPermission(): Promise<void>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('DriveKitCore');
+export default TurboModuleRegistry.getEnforcing<Spec>('RNDriveKitCore');

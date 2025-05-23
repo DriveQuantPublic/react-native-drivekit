@@ -19,7 +19,39 @@ class RNTripAnalysisEventEmitter: NSObject {
     }
 
     @objc func dispatch(name: String, body: Any?) {
-        RNTripAnalysisEventEmitter.eventEmitter?.sendEvent(withName: name, body: body)
+      var selectorObj: Selector?
+      if name == "tripRecordingStarted" {
+        selectorObj = NSSelectorFromString("emitTripRecordingStarted:")
+      } else if name == "tripRecordingConfirmed" {
+        selectorObj = NSSelectorFromString("emitTripRecordingConfirmed:")
+      } else if name == "tripRecordingCanceled" {
+        selectorObj = NSSelectorFromString("emitTripRecordingCanceled:")
+      } else if name == "tripRecordingFinished" {
+        selectorObj = NSSelectorFromString("emitTripRecordingFinished:")
+      } else if name == "tripFinishedWithResult" {
+        selectorObj = NSSelectorFromString("emitTripFinishedWithResult:")
+      } else if name == "tripPoint" {
+        selectorObj = NSSelectorFromString("emitTripPoint:")
+      } else if name == "tripSavedForRepost" {
+        selectorObj = NSSelectorFromString("emitTripSavedForRepost")
+      } else if name == "beaconDetected" {
+        selectorObj = NSSelectorFromString("emitBeaconDetected")
+      } else if name == "significantLocationChangeDetected" {
+        selectorObj = NSSelectorFromString("emitSignificantLocationChangeDetected:")
+      } else if name == "potentialTripStart" {
+        selectorObj = NSSelectorFromString("emitPotentialTripStart:")
+      } else if name == "sdkStateChanged" {
+        selectorObj = NSSelectorFromString("emitSdkStateChanged:")
+      } else if name == "crashDetected" {
+        selectorObj = NSSelectorFromString("emitCrashDetected:")
+      } else if name == "crashFeedbackSent" {
+        selectorObj = NSSelectorFromString("emitCrashFeedbackSent:")
+      }
+
+      if let selectorObj, RNTripAnalysisEventEmitter.eventEmitter.responds(to: selectorObj) {
+        RNTripAnalysisEventEmitter.eventEmitter.perform(selectorObj, with: body)
+      }
+
     }
 
     @objc static var allEvents: [String] =  ["tripRecordingStarted", "tripRecordingConfirmed", "tripRecordingCanceled", "tripRecordingFinished", "tripFinishedWithResult", "tripPoint", "tripSavedForRepost", "beaconDetected", "significantLocationChangeDetected", "potentialTripStart", "sdkStateChanged", "crashDetected", "crashFeedbackSent", "bluetoothSensorStateChanged", "gpsSensorStateChanged", "tripStarted", "tripCancelled", "tripFinished",]
