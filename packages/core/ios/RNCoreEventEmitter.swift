@@ -9,7 +9,7 @@ import Foundation
 @objc(RNCoreEventEmitter)
 class RNCoreEventEmitter: NSObject {
     @objc public static var shared = RNCoreEventEmitter()
-    private static var eventEmitter: RNDriveKitCore!
+    private static var eventEmitter: RNDriveKitCore?
     @objc func registerEventEmitter(eventEmitter: RNDriveKitCore) {
         RNCoreEventEmitter.eventEmitter = eventEmitter
     }
@@ -29,8 +29,8 @@ class RNCoreEventEmitter: NSObject {
         selectorObj = NSSelectorFromString("emitOnDeviceConfigurationChanged:" )
       }
 
-      if let selectorObj, RNCoreEventEmitter.eventEmitter.responds(to: selectorObj) {
-        RNCoreEventEmitter.eventEmitter.perform(selectorObj, with: body)
+      if let selectorObj, let eventEmitter = RNCoreEventEmitter.eventEmitter,  eventEmitter.responds(to: selectorObj) {
+        eventEmitter.perform(selectorObj, with: body)
       }
     }
 

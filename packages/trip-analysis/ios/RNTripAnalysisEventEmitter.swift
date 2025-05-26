@@ -12,7 +12,7 @@ class RNTripAnalysisEventEmitter: NSObject {
 
     @objc public static var shared = RNTripAnalysisEventEmitter()
 
-    private static var eventEmitter: RNDriveKitTripAnalysis!
+    private static var eventEmitter: RNDriveKitTripAnalysis?
 
     @objc func registerEventEmitter(eventEmitter: RNDriveKitTripAnalysis) {
         RNTripAnalysisEventEmitter.eventEmitter = eventEmitter
@@ -48,8 +48,8 @@ class RNTripAnalysisEventEmitter: NSObject {
         selectorObj = NSSelectorFromString("emitCrashFeedbackSent:")
       }
 
-      if let selectorObj, RNTripAnalysisEventEmitter.eventEmitter.responds(to: selectorObj) {
-        RNTripAnalysisEventEmitter.eventEmitter.perform(selectorObj, with: body)
+      if let selectorObj, let eventEmitter = RNTripAnalysisEventEmitter.eventEmitter,  eventEmitter.responds(to: selectorObj) {
+        eventEmitter.perform(selectorObj, with: body)
       }
 
     }
