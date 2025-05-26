@@ -1,7 +1,7 @@
 import { NativeModules, Platform } from 'react-native';
-import { Route } from './NativeDriverData';
-import { GetTripResponse } from './NativeDriverData';
-import { GetTripsResponse } from './NativeDriverData';
+import type { Route } from './NativeDriverData';
+import type { GetTripResponse } from './NativeDriverData';
+import type { GetTripsResponse } from './NativeDriverData';
 
 export type { Route } from './NativeDriverData';
 export type { GetTripResponse } from './NativeDriverData';
