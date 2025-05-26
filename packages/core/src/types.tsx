@@ -1,11 +1,6 @@
-import type { UserInfo as UserInfoType } from './NativeCore';
-import type { UserIdUpdateStatus as UserIdUpdateStatusType } from './NativeCore';
-import type { DeviceConfigurationChangedEvent as DeviceConfigurationChangedEventType } from './NativeCore';
-
-export type UserInfo = UserInfoType;
-export type UserIdUpdateStatus = UserIdUpdateStatusType;
-export type DeviceConfigurationChangedEvent =
-  DeviceConfigurationChangedEventType;
+export type { UserInfo } from './NativeCore';
+export type { UserIdUpdateStatus } from './NativeCore';
+export type { DeviceConfigurationChangedEvent } from './NativeCore';
 
 export enum RequestError {
   WRONG_URL = 'WRONG_URL',
