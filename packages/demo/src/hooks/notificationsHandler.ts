@@ -63,9 +63,9 @@ export async function getBodyForFinishedTripResponse(
           name = 'OTHER';
         }
         body = 'The trip has been made with an alternative transport: ' + name;
+      } else if (!hasSafetyAndEcoDrivingScore) {
+        body = 'The trip distance is too short to be analyzed.';
       }
-    } else if (!hasSafetyAndEcoDrivingScore) {
-      body = 'The trip distance is too short to be analyzed.';
     }
   } else {
     body = 'Trip is not valid (errorCode might be 21, 29, 30 or 31)';
