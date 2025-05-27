@@ -1,16 +1,5 @@
-import {
-  EmitterSubscription,
-  NativeEventEmitter,
-  NativeModules,
-  Platform,
-} from 'react-native';
-import type {
-  DeleteAccountStatus,
-  DeviceConfigurationEvent,
-  RequestError,
-  UpdateUserIdStatus,
-  UserInfo,
-} from './types';
+import { EventSubscription, NativeModules, Platform } from 'react-native';
+import type { UserInfo } from './types';
 
 const LINKING_ERROR =
   `The package '@react-native-drivekit/core' doesn't seem to be linked. Make sure: \n\n` +
@@ -35,6 +24,28 @@ const Core = CoreModule
         },
       }
     );
+
+export function addEventListener(
+  eventName: string,
+  callback: Function
+): EventSubscription {
+  switch (eventName) {
+    case 'driveKitConnected':
+      return Core.onDriveKitConnected(callback);
+    case 'driveKitDisconnected':
+      return Core.onDriveKitDisconnected(callback);
+    case 'driveKitDidReceiveAuthenticationError':
+      return Core.onDriveKitDidReceiveAuthenticationError(callback);
+    case 'accountDeletionCompleted':
+      return Core.onAccountDeletionCompleted(callback);
+    case 'userIdUpdateStatusChanged':
+      return Core.onUserIdUpdateStatusChanged(callback);
+    case 'deviceConfigurationChanged':
+      return Core.onDeviceConfigurationChanged(callback);
+    default:
+      throw new Error('Invalid eventName ' + eventName);
+  }
+}
 
 export function getApiKey(): Promise<string> {
   return Core.getApiKey();
@@ -111,24 +122,4 @@ export function requestIOSLocationPermission(): Promise<void> {
   } else {
     return Promise.resolve();
   }
-}
-
-type Listeners = {
-  driveKitConnected: () => void;
-  driveKitDisconnected: () => void;
-  driveKitDidReceiveAuthenticationError: (requestError: RequestError) => void;
-  accountDeletionCompleted: (status: DeleteAccountStatus) => void;
-  userIdUpdateStatusChanged: (data: {
-    status: UpdateUserIdStatus;
-    userId?: String;
-  }) => void;
-  deviceConfigurationChanged: (event: DeviceConfigurationEvent) => void;
-};
-
-const eventEmitter = new NativeEventEmitter(Core);
-export function addEventListener<E extends keyof Listeners>(
-  event: E,
-  callback: Listeners[E]
-): EmitterSubscription {
-  return eventEmitter.addListener(event, callback);
 }

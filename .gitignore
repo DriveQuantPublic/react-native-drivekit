@@ -2,3 +2,6 @@
 .history
 
 node_modules
+
+# Yarn
+.yarn/install-state.gz
