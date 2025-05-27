@@ -70,7 +70,7 @@ extension DKTrip {
             "itinId": itinId as Any,
             "metadata": metadata as Any,
             "startDate": ((startDate != nil) ? DateUtils.convertDateToString(date: startDate!) : nil) as Any,
-            "transportationMode": transportationMode as Any,
+            "transportationMode": transportationMode.rawValue as Any,
             "unscored": unscored as Any,
             "vehicleId": vehicleId as Any,
             "advancedEnergyEstimations": advancedEnergyEstimation?.map{ $0.toDict() } as Any,
