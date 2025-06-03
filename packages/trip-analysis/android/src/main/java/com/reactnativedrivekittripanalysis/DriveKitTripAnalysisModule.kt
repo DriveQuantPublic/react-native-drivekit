@@ -226,7 +226,7 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
 
         override fun tripFinished(result: TripResult) {
           HeadlessJsManager.sendTripFinishedWithResultEvent(result)
-          tripAnalysisModule?.emitTripRecordingFinished(mapTripFinishedWithResult(result))
+          tripAnalysisModule?.emitTripFinishedWithResult(mapTripFinishedWithResult(result))
         }
 
         override fun tripPoint(tripPoint: TripPoint) {
