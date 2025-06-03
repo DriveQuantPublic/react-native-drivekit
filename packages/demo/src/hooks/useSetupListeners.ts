@@ -1,26 +1,32 @@
 import notifee from '@notifee/react-native';
-import {useEffect} from 'react';
-import * as DriveKit from '@react-native-drivekit/core';
-import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import type {
   DeleteAccountStatus,
-  RequestError,
   DeviceConfigurationEvent,
+  RequestError,
+  UserIdUpdateStatus,
 } from '@react-native-drivekit/core';
-import type {
-  CancelTripReason,
-  CrashFeedback,
+import * as DriveKit from '@react-native-drivekit/core';
+import {
+  CrashFeedbackType,
   CrashInfo,
+  DKTripRecordingCanceledState,
+  DKTripRecordingFinishedState,
+  DKTripRecordingStartedState,
   Location,
   SDKState,
   StartMode,
   TripPoint,
+  TripResult,
 } from '@react-native-drivekit/trip-analysis';
-import {
-  getBodyForFinishedTripResponse,
-  getBodyForCanceledTripReason,
-} from './notificationsHandler';
+import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
+
+import {useEffect} from 'react';
 import {Platform} from 'react-native';
+import {
+  getBodyForCanceledTripReason,
+  getBodyForFinishedTripResponse,
+} from './notificationsHandler';
+import {TripResultStatusType} from '@react-native-drivekit/trip-analysis';
 
 const useSetupListeners = () => {
   const startTripNotifId = 'DriveKitStartTripNotifId';
@@ -29,7 +35,6 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKit.addEventListener('driveKitConnected', () => {
       console.log('Connected to DriveKit');
-      DriveKitTripAnalysis.activateAutoStart(true);
     });
     return () => listener.remove();
   });
@@ -54,7 +59,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKit.addEventListener(
       'userIdUpdateStatusChanged',
-      ({status, userId: updatedUserId}) => {
+      ({status, userId: updatedUserId}: UserIdUpdateStatus) => {
         console.log(
           'UserId',
           updatedUserId,
@@ -94,7 +99,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripRecordingStarted',
-      (state: DriveKitTripAnalysis.DKTripRecordingStartedState) => {
+      (state: DKTripRecordingStartedState) => {
         console.log(
           'Trip recording has started with StartMode: ' + state.startMode,
         );
@@ -102,7 +107,6 @@ const useSetupListeners = () => {
     );
     return () => listener.remove();
   });
-
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripRecordingConfirmed',
@@ -124,7 +128,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripRecordingCanceled',
-      (state: DriveKitTripAnalysis.DKTripRecordingCanceledState) => {
+      (state: DKTripRecordingCanceledState) => {
         console.log(
           'Trip recording was canceled with reason: ' + state.cancelationReason,
         );
@@ -146,7 +150,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripRecordingFinished',
-      (_state: DriveKitTripAnalysis.DKTripRecordingFinishedState) => {
+      (_state: DKTripRecordingFinishedState) => {
         console.log('Trip recording is finished');
       },
     );
@@ -156,10 +160,8 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'tripFinishedWithResult',
-      async (result: DriveKitTripAnalysis.TripResult) => {
-        const isTripvalid =
-          result.status ===
-          DriveKitTripAnalysis.TripResultStatusType.TRIP_VALID;
+      async (result: TripResult) => {
+        const isTripvalid = result.status === TripResultStatusType.TRIP_VALID;
         if (isTripvalid) {
           console.log(
             'Trip analysis is finished and valid. itinId: ' + result.itinId,
@@ -195,7 +197,7 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'potentialTripStart',
-      startMode => {
+      (startMode: StartMode) => {
         console.log('potential trip start', startMode);
       },
     );
@@ -275,58 +277,8 @@ const useSetupListeners = () => {
   useEffect(() => {
     const listener = DriveKitTripAnalysis.addEventListener(
       'crashFeedbackSent',
-      (crashFeedback: CrashFeedback) => {
+      (crashFeedback: CrashFeedbackType) => {
         console.log('Crash feedback sent', crashFeedback);
-      },
-    );
-    return () => listener.remove();
-  });
-
-  useEffect(() => {
-    const listener = DriveKitTripAnalysis.addEventListener(
-      'tripFinished',
-      ({}) => {
-        console.log('[DEPRECATED] trip finished');
-      },
-    );
-    return () => listener.remove();
-  });
-
-  useEffect(() => {
-    const listener = DriveKitTripAnalysis.addEventListener(
-      'tripStarted',
-      (startMode: StartMode) => {
-        console.log('[DEPRECATED] trip started', startMode);
-      },
-    );
-    return () => listener.remove();
-  });
-
-  useEffect(() => {
-    const listener = DriveKitTripAnalysis.addEventListener(
-      'tripCancelled',
-      (reason: CancelTripReason) => {
-        console.log('[DEPRECATED] Trip was canceled', reason);
-      },
-    );
-    return () => listener.remove();
-  });
-
-  useEffect(() => {
-    const listener = DriveKitTripAnalysis.addEventListener(
-      'bluetoothSensorStateChanged',
-      state => {
-        console.log('[DEPRECATED] bluetooth sensor state changed', state);
-      },
-    );
-    return () => listener.remove();
-  });
-
-  useEffect(() => {
-    const listener = DriveKitTripAnalysis.addEventListener(
-      'gpsSensorStateChanged',
-      state => {
-        console.log('[DEPRECATED] gps sensor state changed', state);
       },
     );
     return () => listener.remove();

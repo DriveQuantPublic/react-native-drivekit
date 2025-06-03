@@ -1,7 +1,0 @@
-export enum SDKState {
-  INACTIVE = 'INACTIVE',
-  STARTING = 'STARTING',
-  RUNNING = 'RUNNING',
-  STOPPING = 'STOPPING',
-  SENDING = 'SENDING',
-}

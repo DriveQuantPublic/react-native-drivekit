@@ -2,9 +2,8 @@ import React, {FunctionComponent, useState} from 'react';
 import {Alert, Button, TextInput, StyleSheet, Text, View} from 'react-native';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 import type {TripMetadata} from '@react-native-drivekit/trip-analysis';
-import CheckBox from '@react-native-community/checkbox';
 import {Section} from './Section';
-import {Spacer} from './../Spacer';
+import {Spacer} from '../Spacer';
 
 const inputHeight = 40;
 
@@ -15,25 +14,24 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
   const [updateMetadataKey, setUpdateMetadataKey] = useState('');
   const [updateMetadataValue, setUpdateMedataValue] = useState('');
   const [tripMetadataKeyToDelete, setTripMetadataKeyToDelete] = useState('');
-  const [monitorPotentialTripStart, setMonitorPotentialTripStart] =
-    useState(false);
   const [stopTimeout, setStopTimeout] = useState('240');
 
   return (
     <Section title="Trip Analysis">
-      <View style={styles.row}>
-        <CheckBox
-          value={monitorPotentialTripStart}
-          onValueChange={value => {
-            setMonitorPotentialTripStart(value);
-            DriveKitTripAnalysis.enableMonitorPotentialTripStart(value);
-          }}
-        />
-        <Spacer factor={1} />
-        <Text>Should monitor potential starts ?</Text>
-      </View>
+      <Button
+        title={'Activate Autostart'}
+        onPress={() => {
+          DriveKitTripAnalysis.activateAutoStart(true);
+        }}
+      />
       <Spacer factor={1} />
-
+      <Button
+        title={'Deactivate Autostart'}
+        onPress={() => {
+          DriveKitTripAnalysis.activateAutoStart(false);
+        }}
+      />
+      <Spacer factor={3} />
       <Button
         title={'Start Trip'}
         onPress={() => {
@@ -169,7 +167,6 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           await DriveKitTripAnalysis.deleteTripMetadata();
         }}
       />
-
       <Spacer factor={1} />
       <TextInput
         value={stopTimeout}
@@ -178,7 +175,6 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         keyboardType="numeric"
         onChangeText={setStopTimeout}
       />
-
       <Spacer factor={2} />
       <Button
         title="Update Stop Timeout (in seconds)"
@@ -186,7 +182,6 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           DriveKitTripAnalysis.setStopTimeout(parseInt(stopTimeout, 10))
         }
       />
-
       <Spacer factor={2} />
       <Button
         title="Set Vehicle"
@@ -210,27 +205,21 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           });
         }}
       />
-
       <Spacer factor={1} />
-
       <Button
         title={'Enable CrashDetection'}
         onPress={() => {
           DriveKitTripAnalysis.activateCrashDetection(true);
         }}
       />
-
       <Spacer factor={1} />
-
       <Button
         title={'Disable CrashDetection'}
         onPress={() => {
           DriveKitTripAnalysis.activateCrashDetection(false);
         }}
       />
-
       <Spacer factor={1} />
-
       <Button
         title={'Get CurrentTripInfo'}
         onPress={async () => {
@@ -251,9 +240,7 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
           }
         }}
       />
-
       <Spacer factor={1} />
-
       <Button
         title={'Get LastTripLocation'}
         onPress={async () => {
@@ -276,6 +263,20 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
                 lastTripLocation.accuracyLevel,
             );
           }
+        }}
+      />
+      <Spacer factor={3} />
+      <Button
+        title={'Enable monitorPotentialTripStart'}
+        onPress={() => {
+          DriveKitTripAnalysis.enableMonitorPotentialTripStart(true);
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
+        title={'Disable monitorPotentialTripStart'}
+        onPress={() => {
+          DriveKitTripAnalysis.enableMonitorPotentialTripStart(false);
         }}
       />
     </Section>

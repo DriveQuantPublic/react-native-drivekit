@@ -3,7 +3,7 @@
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <RNCoreSpec/RNCoreSpec.h>
 
-@interface RNDriveKitCore : RCTEventEmitter <NativeCoreSpec>
+@interface RNDriveKitCore : NativeCoreSpecBase <NativeCoreSpec>
 #else
 #import <React/RCTBridgeModule.h>
 

@@ -3,7 +3,7 @@
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <RNTripAnalysisSpec/RNTripAnalysisSpec.h>
 
-@interface RNDriveKitTripAnalysis : RCTEventEmitter <NativeDrivekitTripAnalysisSpec>
+@interface RNDriveKitTripAnalysis : NativeDriveKitTripAnalysisSpecBase <NativeDriveKitTripAnalysisSpec>
 #else
 #import <React/RCTBridgeModule.h>
 

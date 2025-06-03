@@ -1,20 +1,19 @@
-import React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {margins} from './src/margins';
 import {ApiKeySection} from './src/components/Sections/ApiKeySection';
-import {UserSection} from './src/components/Sections/UserSection';
+import {TokenSection} from './src/components/Sections/TokenSection';
 import {UpdateUserSection} from './src/components/Sections/UpdateUserSection';
+import {UserSection} from './src/components/Sections/UserSection';
 import {DeleteAccountSection} from './src/components/Sections/DeleteAccountSection';
 import {TripSection} from './src/components/Sections/TripSection';
-import {TokenSection} from './src/components/Sections/TokenSection';
 import {ResetSection} from './src/components/Sections/ResetSection';
-import {TripAnalysisSection} from './src/components/Sections/TripAnalysisSection';
-import {TripSharingSection} from './src/components/Sections/TripSharingSection';
 import {LogsSection} from './src/components/Sections/LogsSection';
-import {TripSimulatorSection} from './src/components/Sections/TripSimulatorSection';
 import {useCheckPermissions} from './src/hooks/useCheckPermissions';
 import {useSetupListeners} from './src/hooks/useSetupListeners';
+import {margins} from './src/margins';
+import {TripAnalysisSection} from './src/components/Sections/TripAnalysisSection';
+import {TripSimulatorSection} from './src/components/Sections/TripSimulatorSection';
+import {TripSharingSection} from './src/components/Sections/TripSharingSection';
 
 const App = () => {
   useCheckPermissions();
@@ -27,12 +26,12 @@ const App = () => {
         <UserSection />
         <TokenSection />
         <UpdateUserSection />
-        <TripAnalysisSection />
-        <TripSimulatorSection />
-        <TripSharingSection />
         <TripSection />
         <LogsSection />
         <DeleteAccountSection />
+        <TripAnalysisSection />
+        <TripSimulatorSection />
+        <TripSharingSection />
         <ResetSection />
       </ScrollView>
     </SafeAreaView>
