@@ -9,7 +9,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * upgrade project to support React Native 0.78
 * enable the New Architecture.
-* update DriveKit modules to 2.15.1 for iOS and 2.15.0 for Android
+* update DriveKit modules to 2.15.2 for iOS and 2.15.0 for Android
 * fix trip transportationMode parsing on iOS ([084fffb](https://github.com/DriveQuantPublic/react-native-drivekit/commit/084fffb201aa4046f96710e0519899f919bd568d))
 
 
