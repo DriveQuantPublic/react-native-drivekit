@@ -15,7 +15,6 @@ private const val TASKKEY = "DKHeadlessJS"
 
 class DKHeadlessJSService : HeadlessJsTaskService() {
 
-
   override fun getTaskConfig(intent: Intent): HeadlessJsTaskConfig {
     val isTripRunning = DriveKitTripAnalysis.isTripRunning()
     TripAnalysisConfig.tripNotification.let {

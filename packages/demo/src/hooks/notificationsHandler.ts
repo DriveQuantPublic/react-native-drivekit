@@ -2,7 +2,7 @@ import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 
 export function getBodyForCanceledTripReason(
-  reason: string, // DriveKitTripAnalysis.DKTripCancelationReason
+  reason: DriveKitTripAnalysis.DKTripCancelationReason,
 ): string | null {
   var body: string | null = 'Your trip has been canceled';
   if (
@@ -26,7 +26,7 @@ export function getBodyForCanceledTripReason(
     body =
       'Your trip has been canceled because you are traveling by train or plane';
   } else {
-    body = null;
+    body = reason;
   }
   return body;
 }

@@ -134,13 +134,14 @@ const useSetupListeners = () => {
         );
         if (Platform.OS === 'ios') {
           notifee.cancelNotification(startTripNotifId);
-        }
-        var body = getBodyForCanceledTripReason(state.cancelationReason);
-        if (body !== null) {
-          notifee.displayNotification({
-            title: 'DriveKit RN Demo App',
-            body: body,
-          });
+
+          var body = getBodyForCanceledTripReason(state.cancelationReason);
+          if (body !== null) {
+            notifee.displayNotification({
+              title: 'DriveKit RN Demo App',
+              body: body,
+            });
+          }
         }
       },
     );
@@ -176,19 +177,19 @@ const useSetupListeners = () => {
         if (Platform.OS === 'ios') {
           notifee.cancelNotification(startTripNotifId);
           notifee.cancelNotification(savedTripNotifId);
+
+          const body = await getBodyForFinishedTripResponse(
+            isTripvalid,
+            result.hasSafetyAndEcoDrivingScore,
+            result.itinId,
+          );
+
+          notifee.displayNotification({
+            id: '123',
+            title: 'DriveKit RN Demo App',
+            body: body,
+          });
         }
-
-        const body = await getBodyForFinishedTripResponse(
-          isTripvalid,
-          result.hasSafetyAndEcoDrivingScore,
-          result.itinId,
-        );
-
-        notifee.displayNotification({
-          id: '123',
-          title: 'DriveKit RN Demo App',
-          body: body,
-        });
       },
     );
     return () => listener.remove();
