@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0...v3.0.0-alpha1) (2025-06-10)
+
+
+### Bug Fixes
+
+* babel preset migrated in [@react-native](https://github.com/react-native) since 0.73 ([08809dc](https://github.com/DriveQuantPublic/react-native-drivekit/commit/08809dcfcafe640c22c112b6e0ab22ee67761561))
+
+
+### Features
+
+* upgrade DriveKit modules to 2.15.0 on Android and 2.15.1 on iOS ([b598e45](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b598e45f1e7abab323306f373da07802c0795561))
+
+
+
+
+
 # [2.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.6.0...v2.7.0) (2025-04-16)
 
 ### Bug Fixes
