@@ -42,8 +42,8 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
     DriveKitCoreModule.Companion.initialize(this);
 
     // ADD THESE LINES
-    final RNTripNotification tripNotification = new RNTripNotification("Notification title", "Notification description", R.drawable.common_google_signin_btn_icon_dark)
-    final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("Notification title", "Notification description");
+    final RNTripNotification tripNotification = new RNTripNotification(123, "DriveKit SDK", "Start a trip with DriveKit SDK", R.drawable.ic_notification)
+    final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("DriveKit SDK", "Loading in progress…");
     DriveKitTripAnalysisModule.Companion.initialize(tripNotification, headlessJSNotification);
     ...
   }
