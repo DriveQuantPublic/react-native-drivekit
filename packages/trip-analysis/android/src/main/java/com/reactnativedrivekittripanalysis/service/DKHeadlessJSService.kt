@@ -14,8 +14,10 @@ import com.reactnativedrivekittripanalysis.HeadlessJsManager
 private const val TASKKEY = "DKHeadlessJS"
 
 class DKHeadlessJSService : HeadlessJsTaskService() {
-
-  override fun getTaskConfig(intent: Intent): HeadlessJsTaskConfig {
+  override fun getTaskConfig(intent: Intent?): HeadlessJsTaskConfig? {
+    if (intent == null) {
+      return null
+    }
     val isTripRunning = DriveKitTripAnalysis.isTripRunning()
     TripAnalysisConfig.tripNotification.let {
       val contentText = if (isTripRunning) it.content else HeadlessJsManager.notificationContent
@@ -26,9 +28,14 @@ class DKHeadlessJSService : HeadlessJsTaskService() {
         .setStyle(NotificationCompat.BigTextStyle().bigText(contentText))
         .setPriority(NotificationCompat.PRIORITY_LOW)
 
-      val notificationId = it.notificationId!! // Guaranted to be non-null because notificationId is configured in DriveKitTripAnalysisModule
+      val notificationId =
+        it.notificationId!! // Guaranted to be non-null because notificationId is configured in DriveKitTripAnalysisModule
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-        startForeground(notificationId, mBuilder.build(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION)
+        startForeground(
+          notificationId,
+          mBuilder.build(),
+          ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION
+        )
       } else {
         startForeground(notificationId, mBuilder.build())
       }
@@ -42,6 +49,7 @@ class DKHeadlessJSService : HeadlessJsTaskService() {
         Arguments.createMap()
       },
       10000,
-      true)
+      true
+    )
   }
 }
