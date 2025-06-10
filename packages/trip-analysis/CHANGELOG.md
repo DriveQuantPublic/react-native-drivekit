@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha3...v3.0.0) (2025-06-10)
+
+### Features
+
+- upgrade project to support React Native 0.78
+- enable the New Architecture.
+- update DriveKit modules to 2.15.2 for iOS and 2.15.0 for Android
+
 # [3.0.0-alpha3](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha2...v3.0.0-alpha3) (2025-06-10)
 
 **Note:** Version bump only for package @react-native-drivekit/trip-analysis
