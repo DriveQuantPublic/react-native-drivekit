@@ -8,15 +8,15 @@
 - (void)initializeWithLaunchOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
 - (void)addTripListener;
 + (BOOL)isAutoInitEnabled;
-- (void)activateAutoStartWithEnable:(NSNumber * _Nonnull)enable;
-- (void)activateCrashDetectionWithEnable:(NSNumber * _Nonnull)enable;
+- (void)activateAutoStartWithEnable:(BOOL)enable;
+- (void)activateCrashDetectionWithEnable:(BOOL)enable;
 - (void)startTrip;
 - (void)stopTrip;
 - (void)cancelTrip;
 - (NSNumber * _Nonnull)isTripRunning;
-- (void)enableMonitorPotentialTripStartWithEnable:(NSNumber * _Nonnull)enable;
+- (void)enableMonitorPotentialTripStartWithEnable:(BOOL)enable;
 - (void)reset;
-- (void)setStopTimeout:(NSNumber *_Nonnull)stopTimeout;
+- (void)setStopTimeout:(double)stopTimeout;
 - (NSDictionary<NSString *, NSString *> * _Nullable)getTripMetadataWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)setTripMetadataWithMetadata:(NSDictionary * _Nonnull)metadata;
 - (void)deleteTripMetadataWithKey:(NSString * _Nullable)key;
@@ -25,7 +25,7 @@
 - (NSDictionary * _Nullable)getCurrentTripInfoWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (NSDictionary * _Nullable)getLastTripLocationWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (NSNumber * _Nonnull)isTripSharingAvailable;
-- (void)createTripSharingLinkWithDurationInSeconds:(NSNumber * _Nonnull)durationInSec resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
+- (void)createTripSharingLinkWithDurationInSeconds:(double)durationInSec resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)getTripSharingLinkWithSynchronizationType:(NSString * _Nullable)synchronizationType resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)revokeTripSharingLinkWithResolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 

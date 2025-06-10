@@ -1,5 +1,9 @@
 import {Alert, Linking, Platform} from 'react-native';
-import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import {
+  RESULTS,
+  checkNotifications,
+  requestNotifications,
+} from 'react-native-permissions';
 import notifee from '@notifee/react-native';
 
 const checkNotificationPermission = async () => {
@@ -8,12 +12,12 @@ const checkNotificationPermission = async () => {
     return;
   }
 
-  const permission = await check(PERMISSIONS.ANDROID.POST_NOTIFICATIONS);
-  switch (permission) {
+  const {status} = await checkNotifications();
+  switch (status) {
     case RESULTS.UNAVAILABLE:
       break;
     case RESULTS.DENIED:
-      await request(PERMISSIONS.ANDROID.POST_NOTIFICATIONS);
+      await requestNotifications();
       break;
     case RESULTS.LIMITED:
       Alert.alert(

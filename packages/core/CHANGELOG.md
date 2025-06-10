@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha3](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha2...v3.0.0-alpha3) (2025-06-10)
+
+**Note:** Version bump only for package @react-native-drivekit/core
+
+
+
+
+
+# [3.0.0-alpha2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha1...v3.0.0-alpha2) (2025-06-10)
+
+**Note:** Version bump only for package @react-native-drivekit/core
+
+
+
+
+
+# [3.0.0-alpha1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0...v3.0.0-alpha1) (2025-06-10)
+
+
+### Bug Fixes
+
+* add missing method to android package ([7d6189f](https://github.com/DriveQuantPublic/react-native-drivekit/commit/7d6189f3bab754e80823db6b0481597e51492128))
+* babel preset migrated in [@react-native](https://github.com/react-native) since 0.73 ([08809dc](https://github.com/DriveQuantPublic/react-native-drivekit/commit/08809dcfcafe640c22c112b6e0ab22ee67761561))
+* deps for codegen ([969dfb3](https://github.com/DriveQuantPublic/react-native-drivekit/commit/969dfb3e775ae277477077a124b8d44238c2153a))
+* missing method in android ([7f4e2e9](https://github.com/DriveQuantPublic/react-native-drivekit/commit/7f4e2e9b6ed5b25ae01e61fa8ee4e1dfbab072f3))
+* missing typing of promise for method returning void ([7f1af3b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/7f1af3b6b8cfec4e301f86253598fe5e7d6ccc81))
+* rename codegen name on android ([0c4bd18](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0c4bd18b5e565be47ff3b08198a8dd8d8ab9d4df))
+* rename module to be consistent accross platforms ([31f6071](https://github.com/DriveQuantPublic/react-native-drivekit/commit/31f60716fd2e83c559a176c2b862a01887809710))
+* use EXPORT_METHOD instead of REMAP_METHOD to expose method with correct name to Codegen ([57deac1](https://github.com/DriveQuantPublic/react-native-drivekit/commit/57deac1a3ae0300e3cf2bb121d6de24033d5862e))
+
+
+### Features
+
+* create event emitter compatible with new arch: ([e375322](https://github.com/DriveQuantPublic/react-native-drivekit/commit/e375322da114a05fa7594d9c726fd511bb644863))
+* move types and make TripAnalysis buildable running on Android ([d9ab29d](https://github.com/DriveQuantPublic/react-native-drivekit/commit/d9ab29d44c39f14826ebd0e211431ed6bf6a4866))
+* upgrade DriveKit modules to 2.15.0 on Android and 2.15.1 on iOS ([b598e45](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b598e45f1e7abab323306f373da07802c0795561))
+* use latest version of RN in core dev deps ([f3bdb49](https://github.com/DriveQuantPublic/react-native-drivekit/commit/f3bdb49415053b46dafcb92003bff5cbe4a08458))
+
+
+
+
+
 # [2.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.6.0...v2.7.0) (2025-04-16)
 
 ### Bug Fixes

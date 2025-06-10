@@ -9,7 +9,7 @@ import java.util.HashMap
 
 class DriveKitDriverDataPackage : TurboReactPackage() {
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name === DriveKitDriverDataModule.NAME) {
+    return if (name == DriveKitDriverDataModule.NAME) {
       DriveKitDriverDataModule(reactContext)
     } else {
       null

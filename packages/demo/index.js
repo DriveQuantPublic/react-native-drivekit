@@ -8,5 +8,5 @@ import {name as appName} from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);
 AppRegistry.registerHeadlessTask('DKHeadlessJS', () =>
-  require('./DKHeadlessJS'),
-);
+    require('./DKHeadlessJS'),
+  );

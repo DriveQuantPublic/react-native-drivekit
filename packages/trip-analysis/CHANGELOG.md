@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha3](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha2...v3.0.0-alpha3) (2025-06-10)
+
+**Note:** Version bump only for package @react-native-drivekit/trip-analysis
+
+
+
+
+
+# [3.0.0-alpha2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha1...v3.0.0-alpha2) (2025-06-10)
+
+**Note:** Version bump only for package @react-native-drivekit/trip-analysis
+
+
+
+
+
+# [3.0.0-alpha1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0...v3.0.0-alpha1) (2025-06-10)
+
+
+### Bug Fixes
+
+* babel preset migrated in [@react-native](https://github.com/react-native) since 0.73 ([08809dc](https://github.com/DriveQuantPublic/react-native-drivekit/commit/08809dcfcafe640c22c112b6e0ab22ee67761561))
+
+
+### Features
+
+* move types and make TripAnalysis buildable running on Android ([d9ab29d](https://github.com/DriveQuantPublic/react-native-drivekit/commit/d9ab29d44c39f14826ebd0e211431ed6bf6a4866))
+* upgrade DriveKit modules to 2.15.0 on Android and 2.15.1 on iOS ([b598e45](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b598e45f1e7abab323306f373da07802c0795561))
+* working activateAutoStart, activateCrashDetection and enableMonitorPotentialTripStart ([005db84](https://github.com/DriveQuantPublic/react-native-drivekit/commit/005db84cbb133aba949abf22b07cf19e84bbbd97))
+* working cancelTrip method on iOS ([c799fe2](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c799fe2c3ae2de9939dc2faa574fbf2d65bf993b))
+* working isTripRunning on iOS ([7d2275b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/7d2275bab9ec5adedd6835a803a3c36c5d6cb633))
+* working startTrip on iOS ([4a777dc](https://github.com/DriveQuantPublic/react-native-drivekit/commit/4a777dcbb7a3280b83b3cf36e96a431fbb48ae89))
+* working stopTrip method on iOS ([202136f](https://github.com/DriveQuantPublic/react-native-drivekit/commit/202136f28de7e90e227d091dfb768c63d6777645))
+
+
+
+
+
 # [2.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.6.0...v2.7.0) (2025-04-16)
 
 ### Bug Fixes

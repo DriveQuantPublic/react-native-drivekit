@@ -2,7 +2,10 @@ import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
 
 export interface Spec extends TurboModule {
-  multiply(a: number, b: number): Promise<number>;
+  start(presetTrip: string): Promise<void>;
+  stop(): Promise<void>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('TripSimulator');
+export default TurboModuleRegistry.getEnforcing<Spec>(
+  'RNDriveKitTripSimulator'
+);

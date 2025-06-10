@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/trip-simulator",
-  "version": "2.7.0",
+  "version": "3.0.0-alpha3",
   "description": "React Native interface for DriveKit Trip Simulator",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -61,8 +61,8 @@
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
     "react": "18.2.0",
-    "react-native": "^0.71.18",
-    "react-native-builder-bob": "^0.38.0",
+    "react-native": "^0.78.1",
+    "react-native-builder-bob": "^0.20.0",
     "typescript": "^4.5.2"
   },
   "resolutions": {
@@ -130,6 +130,5 @@
     "name": "RNTripSimulatorSpec",
     "type": "modules",
     "jsSrcsDir": "src"
-  },
-  "gitHead": "3575f97bf37f225b8509b2b931128eaeed40b403"
+  }
 }

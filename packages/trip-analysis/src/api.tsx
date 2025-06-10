@@ -1,34 +1,13 @@
-import {
-  EmitterSubscription,
-  NativeEventEmitter,
-  NativeModules,
-  Platform,
-} from 'react-native';
+import { EventSubscription, NativeModules, Platform } from 'react-native';
 
 import type {
-  StartMode,
-  CancelTripReason,
-  BluetoothState,
-  GpsState,
-  SDKState,
-  CrashInfo,
-  CrashFeedback,
-  PostGeneric,
-  PostGenericResponse,
-  TripPoint,
-  Location,
   TripVehicle,
   TripMetadata,
   CurrentTripInfo,
   LastTripLocation,
-  DKTripRecordingStartedState,
-  DKTripRecordingConfirmedState,
-  DKTripRecordingCanceledState,
-  DKTripRecordingFinishedState,
-  TripResult,
   CreateTripSharingLinkResponse,
-  RevokeTripSharingLinkStatus,
   GetTripSharingLinkResponse,
+  RevokeTripSharingLinkStatus,
 } from './types';
 
 import type { SynchronizationType } from '@react-native-drivekit/core';
@@ -95,66 +74,44 @@ export function setStopTimeout(stopTimeout: number): Promise<void> {
   return DriveKitTripAnalysis.setStopTimeout(stopTimeout);
 }
 
-export function setVehicle(
-  vehicle: Partial<TripVehicle> | null
-): Promise<void> {
+export function setVehicle(vehicle: TripVehicle): Promise<void> {
   return DriveKitTripAnalysis.setVehicle(vehicle);
 }
 
-type Listeners = {
-  tripRecordingStarted: (state: DKTripRecordingStartedState) => void;
-  tripRecordingConfirmed: (state: DKTripRecordingConfirmedState) => void;
-  tripRecordingCanceled: (state: DKTripRecordingCanceledState) => void;
-  tripRecordingFinished: (state: DKTripRecordingFinishedState) => void;
-  tripFinishedWithResult: (result: TripResult) => void;
-  tripPoint: (tripPoint: TripPoint) => void;
-  potentialTripStart: (startMode: StartMode) => void;
-  tripSavedForRepost: () => void;
-  beaconDetected: () => void;
-  significantLocationChangeDetected: (location: Location) => void;
-  sdkStateChanged: (state: SDKState) => void;
-  crashDetected: (crashInfo: CrashInfo) => void;
-  crashFeedbackSent: (crashFeedback: CrashFeedback) => void;
-  bluetoothSensorStateChanged: (state: BluetoothState) => void;
-  gpsSensorStateChanged: (state: GpsState) => void;
-
-  /**
-   * @deprecated The method is replaced by tripRecordingConfirmed
-   */
-  tripStarted: (startMode: StartMode) => void;
-
-  /**
-   * @deprecated The method is replaced by tripRecordingCanceled
-   */
-  tripCancelled: (reason: CancelTripReason) => void;
-
-  /**
-   * @deprecated The method is replaced by tripFinishedWithResult
-   */
-  tripFinished: (data: {
-    post: PostGeneric;
-    response: PostGenericResponse;
-  }) => void;
-};
-
-const eventEmitter = new NativeEventEmitter(DriveKitTripAnalysis);
-
-export function addEventListener<E extends keyof Listeners>(
-  event: E,
-  callback: Listeners[E]
-): EmitterSubscription {
-  if (event === 'tripFinished') {
-    return eventEmitter.addListener(
-      event,
-      ({ post, response }: { post: string; response: string }) => {
-        (callback as Listeners['tripFinished'])({
-          post: JSON.parse(post),
-          response: JSON.parse(response),
-        });
-      }
-    );
+export function addEventListener(
+  eventName: string,
+  callback: Function
+): EventSubscription {
+  switch (eventName) {
+    case 'tripRecordingStarted':
+      return DriveKitTripAnalysis.tripRecordingStarted(callback);
+    case 'tripRecordingConfirmed':
+      return DriveKitTripAnalysis.tripRecordingConfirmed(callback);
+    case 'tripRecordingCanceled':
+      return DriveKitTripAnalysis.tripRecordingCanceled(callback);
+    case 'tripRecordingFinished':
+      return DriveKitTripAnalysis.tripRecordingFinished(callback);
+    case 'tripFinishedWithResult':
+      return DriveKitTripAnalysis.tripFinishedWithResult(callback);
+    case 'potentialTripStart':
+      return DriveKitTripAnalysis.potentialTripStart(callback);
+    case 'tripPoint':
+      return DriveKitTripAnalysis.tripPoint(callback);
+    case 'tripSavedForRepost':
+      return DriveKitTripAnalysis.tripSavedForRepost(callback);
+    case 'beaconDetected':
+      return DriveKitTripAnalysis.beaconDetected(callback);
+    case 'significantLocationChangeDetected':
+      return DriveKitTripAnalysis.significantLocationChangeDetected(callback);
+    case 'sdkStateChanged':
+      return DriveKitTripAnalysis.sdkStateChanged(callback);
+    case 'crashDetected':
+      return DriveKitTripAnalysis.crashDetected(callback);
+    case 'crashFeedbackSent':
+      return DriveKitTripAnalysis.crashFeedbackSent(callback);
+    default:
+      throw new Error('Invalid eventName ' + eventName);
   }
-  return eventEmitter.addListener(event, callback);
 }
 
 export function getTripMetadata(): Promise<TripMetadata | null> {

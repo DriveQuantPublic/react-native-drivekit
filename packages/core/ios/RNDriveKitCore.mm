@@ -42,94 +42,124 @@ RCT_EXPORT_MODULE_NO_LOAD(RNDriveKitCore, RNDriveKitCore)
     hasListeners = NO;
 }
 
-RCT_REMAP_METHOD(getApiKey, getApiKeyWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getApiKey:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     NSString *apiKey = [self getApiKey];
     resolve(apiKey);
 }
 
-RCT_REMAP_METHOD(setApiKey, setApiKeyWithKey:(NSString *)key resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(setApiKey:(NSString *)key resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self setApiKey: key];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(getUserId, getUserIdWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getUserId:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     NSString *userId = [self getUserId];
     resolve(userId);
 }
 
-RCT_REMAP_METHOD(setUserId, setUserIdWithUserId:(NSString *)userId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(setUserId:(NSString *)userId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self setUserId:userId];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(updateUserId, updateUserIdWithUserId:(NSString *)userId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(updateUserId:(NSString *)userId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self updateUserId:userId];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(deleteAccount, deleteAccountWithInstantDeletion:(nonnull NSNumber *)instantDeletion resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(deleteAccount:(BOOL)instantDeletion resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self deleteAccount:instantDeletion];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(isTokenValid, isTokenValidWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(isTokenValid:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     NSNumber *validity = [self isTokenValid];
     resolve(validity);
 }
 
-RCT_REMAP_METHOD(reset, resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(reset:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self reset];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(enableLogging, enableLoggingWithOptions:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
-    [self enableLogging:options];
+RCT_EXPORT_METHOD(enableLogging:(JS::NativeCore::SpecEnableLoggingOptions &)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+  NSMutableDictionary* optionsDict = [[NSMutableDictionary alloc] init];
+  if (options.showInConsole().has_value()) {
+    BOOL showInConsole = options.showInConsole().value();
+    [optionsDict setValue:@(showInConsole) forKey:@"showInConsole"];
+  }
+    [self enableLogging:optionsDict];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(disableLogging, disableLoggingWithOptions:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
-    [self disableLogging:options];
+RCT_EXPORT_METHOD(disableLogging:(JS::NativeCore::SpecDisableLoggingOptions &)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+  NSMutableDictionary* optionsDict = [[NSMutableDictionary alloc] init];
+  if (options.showInConsole().has_value()) {
+    BOOL showInConsole = options.showInConsole().value();
+    [optionsDict setValue:@(showInConsole) forKey:@"showInConsole"];
+  }
+    [self disableLogging:optionsDict];
     resolve(nil);
 }
 
-RCT_REMAP_METHOD(getUriLogFile, getUriLogFileWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getUriLogFile:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     NSURL *logFileUrl = [self getUriLogFile];
     resolve([NSDictionary dictionaryWithObject:logFileUrl.path
                                         forKey:@"uri"]);
 }
 
-RCT_REMAP_METHOD(getUserInfo, getUserInfoWithSynchronizationType:(NSString *)synchronizationType withResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getUserInfo:(NSString *)synchronizationType resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
    [self getUserInfo:synchronizationType resolver:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(updateUserInfo, updateUserInfoWithUserInfo:(NSDictionary *)userInfo withResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(updateUserInfo:(JS::NativeCore::UserInfo &)userInfo resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-   [self updateUserInfo:userInfo resolver:resolve rejecter:reject];
+  NSMutableDictionary *userInfoDict = [[NSMutableDictionary alloc] init];
+  if (userInfo.firstname() != nil) {
+    [userInfoDict setObject:userInfo.firstname() forKey:@"firstname"];
+  }
+  if (userInfo.lastname() != nil) {
+    [userInfoDict setObject:userInfo.lastname() forKey:@"lastname"];
+  }
+  if (userInfo.pseudo() != nil) {
+    [userInfoDict setObject:userInfo.pseudo() forKey:@"pseudo"];
+  }
+
+   [self updateUserInfo:userInfoDict resolver:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(composeDiagnosisMail, composeDiagnosisMailWithOptions:(NSDictionary *)options withResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject){
-    if ([self composeDiagnosisMail:options]) {
+RCT_EXPORT_METHOD(composeDiagnosisMail:(JS::NativeCore::SpecComposeDiagnosisMailOptions &)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+  NSMutableDictionary* optionsDict = [[NSMutableDictionary alloc] init];
+  [optionsDict setObject:[RNDriveKitCore nsArrayFromOptionalLazyVector:options.recipients()] forKey:@"recipients"];
+  [optionsDict setObject:[RNDriveKitCore nsArrayFromOptionalLazyVector:options.bccRecipients()] forKey:@"bccRecipients"];
+  [optionsDict setObject:options.subject() forKey:@"subject"];
+  [optionsDict setObject:options.body() forKey:@"body"];
+
+    if ([self composeDiagnosisMail:optionsDict]) {
         resolve(nil);
     } else {
         reject(@"MAIL_COMPOSER_ERROR", @"CAN_SEND_MAIL_IS_FALSE", nil);
     };
 }
 
-RCT_REMAP_METHOD(requestLocationPermission, requestLocationPermissionWithResolver:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(requestLocationPermission:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
     [RNDriveKitCoreWrapper.shared requestLocationPermission];
     resolve(nil);
 }
-
 
 - (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
@@ -143,7 +173,7 @@ RCT_REMAP_METHOD(requestLocationPermission, requestLocationPermissionWithResolve
     [RNDriveKitCoreWrapper.shared updateUserIdWithUserId:userId];
 }
 
-- (void)deleteAccount:(NSNumber *)instantDeletion {
+- (void)deleteAccount:(BOOL)instantDeletion {
     [RNDriveKitCoreWrapper.shared deleteAccountWithInstantDeletion:instantDeletion];
 }
 
@@ -196,5 +226,20 @@ RCT_REMAP_METHOD(requestLocationPermission, requestLocationPermissionWithResolve
     return std::make_shared<facebook::react::NativeCoreSpecJSI>(params);
 }
 #endif
+
++ (NSArray<NSString *> *)nsArrayFromOptionalLazyVector:(const std::optional<facebook::react::LazyVector<NSString *>>&)optionalLazyVector {
+    if (optionalLazyVector.has_value()) {
+        const facebook::react::LazyVector<NSString *>& lazyVector = optionalLazyVector.value();
+        NSMutableArray<NSString *> *nsMutableArray = [NSMutableArray arrayWithCapacity:lazyVector.size()];
+        for (auto it = lazyVector.begin(); it != lazyVector.end(); ++it) {
+            NSString *nsString = *it;
+            [nsMutableArray addObject:nsString];
+        }
+
+        return [nsMutableArray copy];
+    } else {
+      return [[NSArray alloc] init];
+    }
+}
 
 @end

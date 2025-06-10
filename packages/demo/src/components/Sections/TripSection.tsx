@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {Alert, Button} from 'react-native';
 import {Section} from './Section';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
-import {Spacer} from './../Spacer';
+import {Spacer} from '../Spacer';
 
 const TripSection: FunctionComponent<{}> = () => {
   return (

@@ -1,22 +1,38 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
+import type { WithDefault } from 'react-native/Libraries/Types/CodegenTypes';
 
-export type SynchronizationType = 'DEFAULT' | 'CACHE';
+export type TripMetadata = { [key: string]: string };
 
-export type TransportationMode =
-  | 'UNKNOWN'
-  | 'CAR'
-  | 'MOTO'
-  | 'TRUCK'
-  | 'BUS'
-  | 'TRAIN'
-  | 'BOAT'
-  | 'BIKE'
-  | 'FLIGHT'
-  | 'SKIING'
-  | 'ON_FOOT'
-  | 'IDLE'
-  | 'OTHER';
+export type GetTripsResponse = {
+  status: TripSyncStatus;
+  trips: Trip[];
+};
+
+export type GetTripResponse = {
+  status: TripSyncStatus;
+  trip: Trip | null;
+};
+
+export enum TripSyncStatus {
+  NO_ERROR = 'NO_ERROR',
+  CACHE_DATA_ONLY = 'CACHE_DATA_ONLY',
+  FAILED_TO_SYNC_TRIPS_CACHE_ONLY = 'FAILED_TO_SYNC_TRIPS_CACHE_ONLY',
+  FAILED_TO_SYNC_SAFETY_EVENTS = 'FAILED_TO_SYNC_SAFETY_EVENTS',
+}
+
+export type Route = {
+  callIndex: number[] | null;
+  callTime: number[] | null;
+  itinId: string;
+  latitude: number[] | null;
+  longitude: number[] | null;
+  screenLockedIndex: number[] | null;
+  screenLockedTime: number[] | null;
+  screenStatus: number[] | null;
+  speedingIndex: number[] | null;
+  speedingTime: number[] | null;
+};
 
 export type Trip = {
   itinId: string;
@@ -28,7 +44,7 @@ export type Trip = {
   arrivalCity: string | null;
   departureAddress: string | null;
   arrivalAddress: string | null;
-  metadata: Record<string, string> | null;
+  metadata: TripMetadata | null;
   unscored: boolean;
   advancedEnergyEstimations: AdvancedEnergyEstimation[] | null;
   brakeWear: BrakeWear | null;
@@ -282,48 +298,19 @@ export type TripStatistics = {
   weekDay: boolean;
 };
 
-export type GetTripResponse = {
-  status: TripSyncStatus;
-  trip: Trip;
-};
-
-export type GetTripsResponse = {
-  status: TripSyncStatus;
-  trips: [Trip];
-};
-
-export enum TripSyncStatus {
-  NO_ERROR = 'NO_ERROR',
-  CACHE_DATA_ONLY = 'CACHE_DATA_ONLY',
-  FAILED_TO_SYNC_TRIPS_CACHE_ONLY = 'FAILED_TO_SYNC_TRIPS_CACHE_ONLY',
-  FAILED_TO_SYNC_SAFETY_EVENTS = 'FAILED_TO_SYNC_SAFETY_EVENTS',
-}
-
-export type Route = {
-  callIndex: number[] | null;
-  callTime: number[] | null;
-  itinId: string;
-  latitude: number[] | null;
-  longitude: number[] | null;
-  screenLockedIndex: number[] | null;
-  screenLockedTime: number[] | null;
-  screenStatus: number[] | null;
-  speedingIndex: number[] | null;
-  speedingTime: number[] | null;
-};
-
 export interface Spec extends TurboModule {
   reset(): Promise<void>;
   deleteTrip(itinId: string): Promise<boolean>;
   getRoute(itinId: string): Promise<Route | null>;
   getTrip(itinId: string): Promise<GetTripResponse | null>;
   getTripsOrderByDateAsc(
-    synchronizationType: SynchronizationType,
-    transportationModes: TransportationMode[]
+    synchronizationType: WithDefault<string, 'DEFAULT'>,
+    transportationModes: Array<string>
   ): Promise<GetTripsResponse | null>;
   getTripsOrderByDateDesc(
-    synchronizationType: SynchronizationType
+    synchronizationType: WithDefault<string, 'DEFAULT'>,
+    transportationModes: Array<string>
   ): Promise<GetTripsResponse | null>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('DriverData');
+export default TurboModuleRegistry.getEnforcing<Spec>('RNDriveKitDriverData');

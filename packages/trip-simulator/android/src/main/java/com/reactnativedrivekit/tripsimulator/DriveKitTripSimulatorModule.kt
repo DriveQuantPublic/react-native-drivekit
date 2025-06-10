@@ -5,6 +5,7 @@ import com.facebook.react.bridge.ReactMethod
 import com.drivequant.drivekit.tripsimulator.DriveKitTripSimulator
 import com.drivequant.drivekit.tripsimulator.PresetTrip
 import com.drivequant.drivekit.tripsimulator.model.PresetTripCrash1
+import com.facebook.react.bridge.Promise
 
 class DriveKitTripSimulatorModule internal constructor(context: ReactApplicationContext) :
   TripSimulatorSpec(context) {
@@ -14,13 +15,15 @@ class DriveKitTripSimulatorModule internal constructor(context: ReactApplication
   }
 
   @ReactMethod
-  override fun start(presetTrip: String) {
+  override fun start(presetTrip: String, promise: Promise) {
     DriveKitTripSimulator.start(presetTrip.toPresetTrip())
+    promise.resolve(null)
   }
 
   @ReactMethod
-  override fun stop() {
+  override fun stop(promise: Promise) {
     DriveKitTripSimulator.stop()
+    promise.resolve(null)
   }
 
   private fun String.toPresetTrip() = when (this) {

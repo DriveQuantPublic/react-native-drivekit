@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useState} from 'react';
 import {Alert, Button, TextInput, StyleSheet} from 'react-native';
 import * as DriveKit from '@react-native-drivekit/core';
-import {Spacer} from './../Spacer';
+import {Spacer} from '../Spacer';
 import {Section} from './Section';
 
 const inputHeight = 40;

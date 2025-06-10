@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha3](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha2...v3.0.0-alpha3) (2025-06-10)
+
+**Note:** Version bump only for package @react-native-drivekit/driver-data
+
+
+
+
+
+# [3.0.0-alpha2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha1...v3.0.0-alpha2) (2025-06-10)
+
+**Note:** Version bump only for package @react-native-drivekit/driver-data
+
+
+
+
+
+# [3.0.0-alpha1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.7.0...v3.0.0-alpha1) (2025-06-10)
+
+
+### Bug Fixes
+
+* babel preset migrated in [@react-native](https://github.com/react-native) since 0.73 ([08809dc](https://github.com/DriveQuantPublic/react-native-drivekit/commit/08809dcfcafe640c22c112b6e0ab22ee67761561))
+* fix trip transportationMode parsing on iOS ([084fffb](https://github.com/DriveQuantPublic/react-native-drivekit/commit/084fffb201aa4046f96710e0519899f919bd568d))
+
+
+### Features
+
+* fix driver data methods ([530c6b3](https://github.com/DriveQuantPublic/react-native-drivekit/commit/530c6b3c5e9b70c33498ec3ce1b008c732a2fcb4))
+* upgrade DriveKit modules to 2.15.0 on Android and 2.15.1 on iOS ([b598e45](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b598e45f1e7abab323306f373da07802c0795561))
+* upgrade driver data to 0.78 with codegen ([e3cdf4d](https://github.com/DriveQuantPublic/react-native-drivekit/commit/e3cdf4d064e0fbab4b4ac62d361f766cd58eb78f))
+* upgrade driver data to 0.78.1 to match other modules ([8ca6010](https://github.com/DriveQuantPublic/react-native-drivekit/commit/8ca6010a8833955d9ecfdcaf281f9ac5ea30000e))
+
+
+### Reverts
+
+* Revert "chore: fix yarn lerna run typescript check" ([4b8face](https://github.com/DriveQuantPublic/react-native-drivekit/commit/4b8face48079020a3163d849c6ea14dbc6b2473d))
+
+
+
+
+
 # [2.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v2.6.0...v2.7.0) (2025-04-16)
 
 ### Bug Fixes

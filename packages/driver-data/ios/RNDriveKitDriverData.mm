@@ -4,7 +4,7 @@
 @implementation RNDriveKitDriverData
 RCT_EXPORT_MODULE()
 
-RCT_REMAP_METHOD(initialize, initializeWithResolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(initialize:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self initialize];
     resolve(nil);
@@ -14,7 +14,7 @@ RCT_REMAP_METHOD(initialize, initializeWithResolve:(RCTPromiseResolveBlock)resol
     [RNDriveKitDriverDataWrapper.shared initialize];
 }
 
-RCT_REMAP_METHOD(reset, resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self reset];
     resolve(nil);
@@ -24,48 +24,48 @@ RCT_REMAP_METHOD(reset, resetCore:(RCTPromiseResolveBlock)resolve reject:(RCTPro
     [RNDriveKitDriverDataWrapper.shared reset];
 }
 
-RCT_REMAP_METHOD(deleteTrip, deleteTripWithId:(NSString *)itinId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(deleteTrip:(NSString *)itinId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self deleteTripWithItinId:itinId resolver:resolve rejecter:reject];
+    [self deleteTrip:itinId resolver:resolve rejecter:reject];
 }
 
--(void)deleteTripWithItinId:(NSString *)itinId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+-(void)deleteTrip:(NSString *)itinId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
     [RNDriveKitDriverDataWrapper.shared deleteTripWithItinId:itinId resolver:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(getTripsOrderByDateAsc, getTripsOrderByDateAscWithSynchronizationType:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getTripsOrderByDateAsc:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self getTripsOrderByDateAscWithSynchronizationType:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
+    [self getTripsOrderByDateAsc:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
 }
 
--(void)getTripsOrderByDateAscWithSynchronizationType:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+-(void)getTripsOrderByDateAsc:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
     [RNDriveKitDriverDataWrapper.shared getTripsOrderByDateAscWithSynchronizationType:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(getTripsOrderByDateDesc, getTripsOrderByDateDescWithSynchronizationType:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getTripsOrderByDateDesc:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self getTripsOrderByDateDescWithSynchronizationType:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
+    [self getTripsOrderByDateDesc:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
 }
 
--(void)getTripsOrderByDateDescWithSynchronizationType:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+-(void)getTripsOrderByDateDesc:(NSString *)synchronizationType transportationModes:(NSArray *)transportationModes resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
     [RNDriveKitDriverDataWrapper.shared getTripsOrderByDateDescWithSynchronizationType:synchronizationType transportationModes:transportationModes resolver:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(getTrip, getTripWithItinId:(NSString *)itinId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getTrip:(NSString *)itinId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self getTripWithItinId:itinId resolver:resolve rejecter:reject];
+    [self getTrip:itinId resolver:resolve rejecter:reject];
 }
 
--(void)getTripWithItinId:(NSString *)itinId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+-(void)getTrip:(NSString *)itinId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
     [RNDriveKitDriverDataWrapper.shared getTripWithItinId:itinId resolver:resolve rejecter:reject];
 }
 
-RCT_REMAP_METHOD(getRoute, getRouteWithItinId:(NSString *)itinId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getRoute:(NSString *)itinId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [self getRouteWithItinId:itinId resolver:resolve rejecter:reject];
+    [self getRoute:itinId resolver:resolve rejecter:reject];
 }
 
--(void)getRouteWithItinId:(NSString *)itinId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+-(void)getRoute:(NSString *)itinId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
     [RNDriveKitDriverDataWrapper.shared getRouteWithItinId:itinId resolver:resolve rejecter:reject];
 }
 
