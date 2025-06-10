@@ -5,14 +5,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [3.0.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha3...v3.0.0) (2025-06-10)
 
-
 ### Features
 
-* update DriveKit modules to 2.15.1 for iOS ([9509efe](https://github.com/DriveQuantPublic/react-native-drivekit/commit/9509efecb48d7ccf937e9941ad90a9d30b54beb5))
-
-
-
-
+- upgrade project to support React Native 0.78
+- enable the New Architecture.
+- update DriveKit modules to 2.15.1 for iOS and 2.15.0 for Android
 
 # [3.0.0-alpha3](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha2...v3.0.0-alpha3) (2025-06-10)
 
