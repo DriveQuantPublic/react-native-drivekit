@@ -69,6 +69,7 @@ export interface PostGenericResponse {
   fuelEstimation?: FuelEstimation;
   safety?: Safety;
   logbook?: Logbook;
+  occupantInfo?: OccupantInfo;
   pollutants?: Pollutants;
   tireWear?: TireWear;
   brakeWear?: BrakeWear;
@@ -148,6 +149,11 @@ export interface Pollutants {
 export interface Logbook {
   status: number;
   updateDate: string;
+}
+
+export interface OccupantInfo {
+  role: string;
+  passengerProbability: number;
 }
 
 export interface FuelEstimation {

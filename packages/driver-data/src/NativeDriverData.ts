@@ -64,6 +64,7 @@ export type Trip = {
   fuelEstimation: FuelEstimation | null;
   fuelEstimationContexts: FuelEstimationContext[];
   logbook: Logbook | null;
+  occupantInfo: OccupantInfo | null;
   maneuver: Maneuver | null;
   pollutants: Pollutants | null;
   safety: Safety | null;
@@ -192,6 +193,11 @@ export type FuelEstimationContext = {
 export type Logbook = {
   status: number;
   updateDate: string | null;
+};
+
+export type OccupantInfo = {
+  role: string;
+  passengerProbability: number;
 };
 
 export type Maneuver = {

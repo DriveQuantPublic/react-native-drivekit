@@ -52,6 +52,7 @@ object TripsSyncMappers {
     map.putMap("tireWear", tireWear?.toReadableMap())
     map.putMap("driverDistraction", driverDistraction?.toReadableMap())
     map.putMap("logbook", logbook?.toReadableMap())
+    map.putMap("occupantInfo", occupantInfo?.toReadableMap())
     map.putMap("pollutants", pollutants?.toReadableMap())
     map.putMap("declaredTransportationMode", declaredTransportationMode?.toReadableMap())
     map.putMap("maneuver", maneuverData?.toReadableMap())
@@ -225,6 +226,17 @@ object TripsSyncMappers {
       updateDate?.let {
         map.putString("updateDate", it.toDriveKitBackendFormat())
       }
+      map
+    }
+  }
+
+  private fun OccupantInfo?.toReadableMap(): ReadableMap? {
+    return if (this == null) {
+      null
+    } else {
+      val map = Arguments.createMap()
+      map.putString("role", role.name)
+      map.putInt("passengerProbability", passengerProbability)
       map
     }
   }
