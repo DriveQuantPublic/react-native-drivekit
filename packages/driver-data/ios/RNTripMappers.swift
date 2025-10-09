@@ -62,10 +62,16 @@ func mapTransportModeFromString(_ inputString: String) -> TransportationMode {
 extension DKTrip {
     fileprivate func toDict() -> [String: Any] {
         return [
-            "arrivalAddress": arrivalAddress as Any,
-            "arrivalCity": arrivalCity as Any,
             "departureAddress": departureAddress as Any,
             "departureCity": departureCity as Any,
+            "departurePostalCode": departurePostalCode as Any,
+            "departureState": departureState as Any,
+            "departureCountry": departureCountry as Any,
+            "arrivalAddress": arrivalAddress as Any,
+            "arrivalCity": arrivalCity as Any,
+            "arrivalPostalCode": arrivalPostalCode as Any,
+            "arrivalState": arrivalState as Any,
+            "arrivalCountry": arrivalCountry as Any,
             "endDate": ((endDate != nil) ? DateUtils.convertDateToString(date: endDate!) : nil) as Any,
             "itinId": itinId as Any,
             "metadata": metadata as Any,

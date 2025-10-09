@@ -40,10 +40,16 @@ export type Trip = {
   startDate: string;
   vehicleId: string | null;
   transportationMode: number;
-  departureCity: string | null;
-  arrivalCity: string | null;
   departureAddress: string | null;
+  departureCity: string | null;
+  departurePostalCode: string | null;
+  departureState: string | null;
+  departureCountry: string | null;
   arrivalAddress: string | null;
+  arrivalCity: string | null;
+  arrivalPostalCode: string | null;
+  arrivalState: string | null;
+  arrivalCountry: string | null;
   metadata: TripMetadata | null;
   unscored: boolean;
   advancedEnergyEstimations: AdvancedEnergyEstimation[] | null;

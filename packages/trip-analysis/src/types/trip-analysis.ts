@@ -14,10 +14,16 @@ export interface Account {
 export interface ItineraryData {
   startDate?: string;
   endDate?: string;
-  departureCity?: string;
-  arrivalCity?: string;
   departureAddress?: string;
+  departureCity?: string;
+  departurePostalCode?: string;
+  departureState?: string;
+  departureCountry?: string;
   arrivalAddress?: string;
+  arrivalCity?: string;
+  arrivalPostalCode?: string;
+  arrivalState?: string;
+  arrivalCountry?: string;
 }
 
 export interface Route {
