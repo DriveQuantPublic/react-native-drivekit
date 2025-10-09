@@ -147,7 +147,7 @@ export interface Pollutants {
 
 export interface Logbook {
   status: number;
-  ipdateDate: string;
+  updateDate: string;
 }
 
 export interface FuelEstimation {
