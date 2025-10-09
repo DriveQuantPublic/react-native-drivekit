@@ -62,22 +62,20 @@ To simulate a trip, call the start method in TripSimulator with a appropriate co
 startTrip('HIGHWAY_TRIP');
 ```
 
-| PresetTrip                          | Description
-| ----------------------------------- | ---------------------- |
-| `SHORT_TRIP`                        |  Trip too short that does not allow to rate the driver's behavior |
-| `MIXED_TRIP`                        |  A 15-minute mixed trip in urban and suburban areas |
-| `CITY_TRIP`                         |  A 20-minute city trip |
-| `SUBURBAN_TRIP`                     |  A 30-minute trip performed in a suburban environment mostly |
-| `HIGHWAY_TRIP`                      |  A 55-minute highway trip |
-| `TRAIN_TRIP`                        |  Trip recorded in a train to test the alternative transportation modes detection |
-| `BUS_TRIP`                          |  Trip recorded in a bus to test the alternative transportation modes detection |
-| `BOAT_TRIP`                         |  Trip recorded in a boat to test the alternative transportation modes detection |
-| `TRIP_WITH_CRASH_CONFIRMED_30KMH`   |  A short trip with a collision at 30 km/h that occurs 137 seconds after the trip begins and that corresponds to a confirmed accident |
-| `TRIP_WITH_CRASH_CONFIRMED_20KMH`   | A short trip with a collision at 20 km/h that occurs 141 seconds after the trip begins and that corresponds to a confirmed accident |
-| `TRIP_WITH_CRASH_CONFIRMED_10KMH`   | A short trip with a collision at 10 km/h that occurs 146 seconds after the trip begins and that corresponds to a confirmed accident |
-| `TRIP_WITH_CRASH_UNCONFIRMED_0KMH`  | A short trip with a collision during a vehicle stop that occurs 159 seconds after the trip begins and that corresponds to an unconfirmed accident |
-
-
+| PresetTrip                         | Description                                                                                                                                       |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SHORT_TRIP`                       | Trip too short that does not allow to rate the driver's behavior                                                                                  |
+| `MIXED_TRIP`                       | A 15-minute mixed trip in urban and suburban areas                                                                                                |
+| `CITY_TRIP`                        | A 20-minute city trip                                                                                                                             |
+| `SUBURBAN_TRIP`                    | A 30-minute trip performed in a suburban environment mostly                                                                                       |
+| `HIGHWAY_TRIP`                     | A 55-minute highway trip                                                                                                                          |
+| `TRAIN_TRIP`                       | Trip recorded in a train to test the alternative transportation modes detection                                                                   |
+| `BUS_TRIP`                         | Trip recorded in a bus to test the alternative transportation modes detection                                                                     |
+| `BOAT_TRIP`                        | Trip recorded in a boat to test the alternative transportation modes detection                                                                    |
+| `TRIP_WITH_CRASH_CONFIRMED_40KMH`  | A short trip with a collision at 40 km/h that occurs 132 seconds after the trip begins and that corresponds to a confirmed accident               |
+| `TRIP_WITH_CRASH_CONFIRMED_30KMH`  | A short trip with a collision at 30 km/h that occurs 137 seconds after the trip begins and that corresponds to a confirmed accident               |
+| `TRIP_WITH_CRASH_CONFIRMED_20KMH`  | A short trip with a collision at 20 km/h that occurs 141 seconds after the trip begins and that corresponds to a confirmed accident               |
+| `TRIP_WITH_CRASH_UNCONFIRMED_0KMH` | A short trip with a collision during a vehicle stop that occurs 159 seconds after the trip begins and that corresponds to an unconfirmed accident |
 
 ### stopTrip
 

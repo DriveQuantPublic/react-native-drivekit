@@ -35,9 +35,9 @@ class DriveKitTripSimulatorModule internal constructor(context: ReactApplication
     "TRAIN_TRIP" -> PresetTrip.TRAIN_TRIP
     "BUS_TRIP" -> PresetTrip.BUS_TRIP
     "BOAT_TRIP" -> PresetTrip.BOAT_TRIP
+    "TRIP_WITH_CRASH_CONFIRMED_40KMH" -> PresetTrip.TRIP_WITH_CRASH_1(PresetTripCrash1.CONFIRMED_40KMH)
     "TRIP_WITH_CRASH_CONFIRMED_30KMH" -> PresetTrip.TRIP_WITH_CRASH_1(PresetTripCrash1.CONFIRMED_30KMH)
     "TRIP_WITH_CRASH_CONFIRMED_20KMH" -> PresetTrip.TRIP_WITH_CRASH_1(PresetTripCrash1.CONFIRMED_20KMH)
-    "TRIP_WITH_CRASH_CONFIRMED_10KMH" -> PresetTrip.TRIP_WITH_CRASH_1(PresetTripCrash1.CONFIRMED_10KMH)
     "TRIP_WITH_CRASH_UNCONFIRMED_0KMH" -> PresetTrip.TRIP_WITH_CRASH_1(PresetTripCrash1.UNCONFIRMED_0KMH)
     else -> PresetTrip.SHORT_TRIP
   }
