@@ -3,7 +3,6 @@ import type { Route } from './NativeDriverData';
 import type { GetTripResponse } from './NativeDriverData';
 import type { GetTripsResponse } from './NativeDriverData';
 import type { UpdateDriverPassengerModeResponse } from './NativeDriverData';
-import { DriverPassengerMode } from './types';
 
 export type { Route } from './NativeDriverData';
 export type { GetTripResponse } from './NativeDriverData';
