@@ -314,6 +314,11 @@ export type UpdateDriverPassengerModeResponse = {
   status: UpdateDriverPassengerModeStatus;
 };
 
+export enum DriverPassengerMode {
+  DRIVER = 'DRIVER',
+  PASSENGER = 'PASSENGER',
+}
+
 export enum UpdateDriverPassengerModeStatus {
   SUCCESS = 'SUCCESS',
   USER_NOT_CONNECTED = 'USER_NOT_CONNECTED',
