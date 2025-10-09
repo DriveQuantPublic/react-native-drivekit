@@ -310,6 +310,19 @@ export type TripStatistics = {
   weekDay: boolean;
 };
 
+export type UpdateDriverPassengerModeResponse = {
+  status: UpdateDriverPassengerModeStatus;
+};
+
+export enum UpdateDriverPassengerModeStatus {
+  SUCCESS = 'SUCCESS',
+  USER_NOT_CONNECTED = 'USER_NOT_CONNECTED',
+  INVALID_TRANSPORTATION_MODE = 'INVALID_TRANSPORTATION_MODE',
+  INVALID_ITINERARY_ID = 'INVALID_ITINERARY_ID',
+  COMMENT_TOO_LONG = 'COMMENT_TOO_LONG',
+  FAILED_TO_UPDATE_MODE = 'FAILED_TO_UPDATE_MODE',
+}
+
 export interface Spec extends TurboModule {
   reset(): Promise<void>;
   deleteTrip(itinId: string): Promise<boolean>;
@@ -323,6 +336,11 @@ export interface Spec extends TurboModule {
     synchronizationType: WithDefault<string, 'DEFAULT'>,
     transportationModes: Array<string>
   ): Promise<GetTripsResponse | null>;
+  updateDriverPassengerMode(
+    itinId: string,
+    mode: WithDefault<string, 'DRIVER'>,
+    comment: string | null
+  ): Promise<UpdateDriverPassengerModeResponse>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('RNDriveKitDriverData');

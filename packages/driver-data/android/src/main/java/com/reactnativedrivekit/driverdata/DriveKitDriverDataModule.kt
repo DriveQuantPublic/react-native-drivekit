@@ -6,6 +6,8 @@ import com.drivequant.drivekit.databaseutils.entity.TransportationMode
 import com.drivequant.drivekit.databaseutils.entity.Trip
 import com.drivequant.drivekit.driverdata.DriveKitDriverData
 import com.drivequant.drivekit.driverdata.trip.*
+import com.drivequant.drivekit.driverdata.trip.driverpassengermode.DriverPassengerMode
+import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
@@ -56,7 +58,6 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
     })
   }
 
-
   @ReactMethod
   override fun getTripsOrderByDateAsc(
     synchronizationType: String?,
@@ -70,6 +71,26 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
     transportationModes: ReadableArray?,
     promise: Promise,
   ) = getTrips(DateOrder.DESCENDING, synchronizationType, transportationModes, promise)
+
+  @ReactMethod
+  override fun updateDriverPassengerMode(
+    itinId: String,
+    mode: String?,
+    comment: String?,
+    promise: Promise
+  ) {
+    val mappedDriverPassengerMode =
+      if (mode == "PASSENGER") DriverPassengerMode.PASSENGER else DriverPassengerMode.DRIVER
+    DriveKitDriverData.updateDriverPassengerMode(
+      itinId = itinId,
+      mode = mappedDriverPassengerMode,
+      comment = comment
+    ) { status ->
+      val map = Arguments.createMap()
+      map.putString("status", status.name)
+      promise.resolve(map)
+    }
+  }
 
   private fun getTrips(
     dateOrder: DateOrder,

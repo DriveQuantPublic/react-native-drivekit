@@ -30,6 +30,26 @@ func mapTripSyncStatus(status: TripSyncStatus) -> String {
         return "FAILED_TO_SYNC_TRIPS"
     }
 }
+
+func mapUpdateDriverPassengerModeStatus(status: DKUpdateDriverPassengerModeStatus) -> String {
+  switch status {
+  case .success:
+    return "SUCCESS"
+  case .userNotConnected:
+    return "USER_NOT_CONNECTED"
+  case .invalidTransportationMode:
+    return "INVALID_TRANSPORTATION_MODE"
+  case .invalidItineraryId:
+    return "INVALID_ITINERARY_ID"
+  case .commentTooLong:
+    return "COMMENT_TOO_LONG"
+  case .failedToUpdateMode:
+    return "FAILED_TO_UPDATE_MODE"
+  @unknown default:
+    return "FAILED_TO_UPDATE_MODE"
+  }
+}
+
 func mapTransportModeFromString(_ inputString: String) -> TransportationMode {
     if inputString == "CAR" {
         return .car

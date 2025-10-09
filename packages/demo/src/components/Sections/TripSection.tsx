@@ -60,6 +60,20 @@ const TripSection: FunctionComponent<{}> = () => {
           Alert.alert(result ? 'Trip deleted' : 'Trip not deleted');
         }}
       />
+
+      <Spacer factor={1} />
+
+      <Button
+        title={'Update driver/passenger mode'}
+        onPress={async () => {
+          const result = await DriveKitDriverData.updateDriverPassengerMode(
+            'TRIP_ID_HERE',
+            'DRIVER',
+            'New comment',
+          );
+          Alert.alert('Update Driver Passenger mode status:' + result.status);
+        }}
+      />
     </Section>
   );
 };

@@ -69,6 +69,18 @@ RCT_EXPORT_METHOD(getRoute:(NSString *)itinId resolve:(RCTPromiseResolveBlock)re
     [RNDriveKitDriverDataWrapper.shared getRouteWithItinId:itinId resolver:resolve rejecter:reject];
 }
 
+RCT_EXPORT_METHOD(updateDriverPassengerMode:(NSString * _Nonnull)itinId
+                  mode:(NSString * _Nullable)mode
+                  comment:(NSString * _Nullable)comment
+                  resolve:(RCTPromiseResolveBlock _Nonnull)resolve
+                  reject:(RCTPromiseRejectBlock _Nonnull)reject)
+{
+  [self updateDriverPassengerMode:itinId mode:mode comment:comment resolver:resolve rejecter:reject];
+}
+
+-(void)updateDriverPassengerMode:(NSString * _Nonnull)itinId mode:(NSString * _Nonnull)mode comment:(NSString * _Nullable)comment resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+  [RNDriveKitDriverDataWrapper.shared updateDriverPassengerModeWithItinId:itinId mode:mode comment:comment resolver:resolve rejecter:reject];
+}
 
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED
