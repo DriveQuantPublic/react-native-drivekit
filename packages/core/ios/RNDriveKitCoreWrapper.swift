@@ -116,6 +116,12 @@ public class RNDriveKitCoreWrapper: NSObject {
             DKDiagnosisHelper.shared.requestPermission(.location)
         }
     }
+
+    @objc internal func enqueueIOSDiagnosisOperation(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+        DKSDKDiagnosis.shared.enqueueDiagnosisOperation(source: .backgroundFetch) { success in
+          resolve(success)
+        }
+    }
   
     @objc internal func getUriLogFile() -> URL? {
       if DriveKitLog.shared.isLoggingEnabled {

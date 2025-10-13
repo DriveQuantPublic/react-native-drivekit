@@ -54,6 +54,7 @@ export interface Spec extends TurboModule {
   ): Promise<UserInfo | null>;
   updateUserInfo(userInfo: UserInfo): Promise<void>;
   requestLocationPermission(): Promise<void>;
+  enqueueIOSDiagnosisOperation(): Promise<boolean>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('RNDriveKitCore');

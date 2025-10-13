@@ -116,6 +116,14 @@ export function composeDiagnosisMail(options?: {
   return Core.composeDiagnosisMail(options);
 }
 
+export function enqueueIOSDiagnosisOperation(): Promise<boolean> {
+  if (Platform.OS === 'ios') {
+    return Core.enqueueIOSDiagnosisOperation();
+  } else {
+    return Promise.reject();
+  }
+}
+
 export function requestIOSLocationPermission(): Promise<void> {
   if (Platform.OS === 'ios') {
     return Core.requestLocationPermission();
