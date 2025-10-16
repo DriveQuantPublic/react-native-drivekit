@@ -31,12 +31,12 @@ class RNDriveKitTripSimulatorWrapper: NSObject {
                 DriveKitTripSimulator.shared.start(.busTrip)
             } else if presetTrip == "BOAT_TRIP" {
                 DriveKitTripSimulator.shared.start(.boatTrip)
+            } else if presetTrip == "TRIP_WITH_CRASH_CONFIRMED_40KMH" {
+                DriveKitTripSimulator.shared.startCrashTrip(.confirmed40KmH) 
             } else if presetTrip == "TRIP_WITH_CRASH_CONFIRMED_30KMH" {
                 DriveKitTripSimulator.shared.startCrashTrip(.confirmed30KmH)
             } else if presetTrip == "TRIP_WITH_CRASH_CONFIRMED_20KMH" {
                 DriveKitTripSimulator.shared.startCrashTrip(.confirmed20KmH)
-            } else if presetTrip == "TRIP_WITH_CRASH_CONFIRMED_10KMH" {
-                DriveKitTripSimulator.shared.startCrashTrip(.confirmed10KmH)
             } else if presetTrip == "TRIP_WITH_CRASH_UNCONFIRMED_0KMH" {
                 DriveKitTripSimulator.shared.startCrashTrip(.unconfirmed0KmH)
             } else {

@@ -149,6 +149,24 @@ Here is the list of supported events:
 - `deviceConfigurationChanged`, callback `(event: DeviceConfigurationEvent) => void`: This event is triggered when the user disables the sensors or revokes permissions.
   The list of possible device configuration events is available [on native documentation for Android](https://docs.drivequant.com/get-started-drivekit/android#docs-internal-guid-959f39f9-7fff-5ef1-6859-d0cd591eb82e) and [for iOS](https://docs.drivequant.com/get-started-drivekit/ios#dkdeviceconfigurationevent).
 
+### Configure background task ID
+
+DriveKit periodically checks for changes related to the status of authorizations, sensors as well as user disconnection. This information is included in the diagnostic log file and shared with the DriveQuant platform.
+To be more accurate, this feature needs to have [background fetch](https://docs.drivequant.com/get-started-drivekit/ios/quick-start#configure-capabilities) capability and a background task id declared in your `Info.plist` file.
+
+You must add the following line in `Info.plist` file:
+
+```xml
+
+<key>BGTaskSchedulerPermittedIdentifiers</key>
+<array>
+	<string>com.drivequant.diagnosis.app.refresh</string>
+</array>
+
+```
+
+🚨 In the case you already have a background refresh task, as iOS allow only one scheduled background fetch task, please check the [`enqueueIOSDiagnosisOperation()`](#enqueueIOSDiagnosisOperation) method.
+
 ## API
 
 | Method                                                          | Return Type                        | iOS | Android |
@@ -168,6 +186,7 @@ Here is the list of supported events:
 | [getUserInfo()](#getuserinfo)                                   | `Promise<UserInfo \| null>`        | ✅  |   ✅    |
 | [updateUserInfo()](#updateuserinfo)                             | `Promise<void>`                    | ✅  |   ✅    |
 | [requestIOSLocationPermission()](#requestIOSLocationPermission) | `Promise<void>`                    | ✅  |    -    |
+| [enqueueIOSDiagnosisOperation()](#enqueueIOSDiagnosisOperation) | `Promise<boolean>`                 | ✅  |    -    |
 
 ### getApiKey
 
@@ -439,3 +458,17 @@ It's recommended to use this method to ask for the location permission for iOS
 ```typescript
 await requestIOSLocationPermission();
 ```
+
+### enqueueIOSDiagnosisOperation
+
+```typescript
+  enqueueIOSDiagnosisOperation(): Promise<boolean>
+```
+
+In the case you already have a background refresh task, as iOS allow only one scheduled background fetch task, you will need to reuse your existing `BGAppRefreshTask` to call the following function:
+
+```typescript
+const result = await DriveKit.enqueueIOSDiagnosisOperation();
+```
+
+In this case, don’t add the new “Permitted background task scheduler identifier” to your `Info.plist`.

@@ -70,6 +70,15 @@ class RNDriveKitDriverDataWrapper: NSObject {
             resolve(route?.toDict())
         })
     }
+  
+    @objc internal func updateDriverPassengerMode(itinId: String, mode: String, comment: String?, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      
+      let mappedDriverPassengerMode: DKDriverPassengerMode = (mode.uppercased() == "PASSENGER") ? .passenger : .driver
+      
+      DriveKitDriverData.shared.updateDriverPassengerMode(itinId: itinId, mode: mappedDriverPassengerMode, comment: comment, completionHandler: { status in
+        resolve(["status": mapUpdateDriverPassengerModeStatus(status: status)])
+      })
+    }
 
     private func getTransportModes(_ transportationModes: [String]) -> [TransportationMode] {
         let transportModes = transportationModes.map { mode in

@@ -189,6 +189,11 @@ class DriveKitCoreModule internal constructor(context: ReactApplicationContext) 
     // do nothing, it is only used on iOS.
   }
 
+  @ReactMethod
+  override fun enqueueIOSDiagnosisOperation(promise: Promise) {
+    // do nothing, it is only used on iOS.
+  }
+
   private fun ReadableArray?.toTypedArray(): Array<String> {
     val list = mutableListOf<String>()
     this?.toArrayList()?.forEach {

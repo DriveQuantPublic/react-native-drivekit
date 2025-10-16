@@ -14,10 +14,16 @@ export interface Account {
 export interface ItineraryData {
   startDate?: string;
   endDate?: string;
-  departureCity?: string;
-  arrivalCity?: string;
   departureAddress?: string;
+  departureCity?: string;
+  departurePostalCode?: string;
+  departureState?: string;
+  departureCountry?: string;
   arrivalAddress?: string;
+  arrivalCity?: string;
+  arrivalPostalCode?: string;
+  arrivalState?: string;
+  arrivalCountry?: string;
 }
 
 export interface Route {
@@ -63,6 +69,7 @@ export interface PostGenericResponse {
   fuelEstimation?: FuelEstimation;
   safety?: Safety;
   logbook?: Logbook;
+  occupantInfo?: OccupantInfo;
   pollutants?: Pollutants;
   tireWear?: TireWear;
   brakeWear?: BrakeWear;
@@ -141,7 +148,12 @@ export interface Pollutants {
 
 export interface Logbook {
   status: number;
-  ipdateDate: string;
+  updateDate: string;
+}
+
+export interface OccupantInfo {
+  role: string;
+  passengerProbability: number;
 }
 
 export interface FuelEstimation {

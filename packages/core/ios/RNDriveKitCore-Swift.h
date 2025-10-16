@@ -26,6 +26,7 @@
 - (void)getUserInfoWithSynchronizationType:(NSString * _Nullable)synchronizationType resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)updateUserInfoWithUserInfo:(NSDictionary * _Nonnull)userInfo resolver:(RCTPromiseResolveBlock _Nonnull)resolve rejecter:(RCTPromiseRejectBlock _Nonnull)reject;
 - (void)requestLocationPermission;
+- (void)enqueueIOSDiagnosisOperationWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject;
 @end
 
 @interface RNCoreEventEmitter : NSObject

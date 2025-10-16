@@ -161,6 +161,11 @@ RCT_EXPORT_METHOD(requestLocationPermission:(RCTPromiseResolveBlock)resolve reje
     resolve(nil);
 }
 
+RCT_EXPORT_METHOD(enqueueIOSDiagnosisOperation:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [RNDriveKitCoreWrapper.shared enqueueIOSDiagnosisOperationWithResolver:resolve rejecter:reject];
+}
+
 - (void)setApiKey:(NSString *)key {
     [RNDriveKitCoreWrapper.shared setApiKeyWithKey:key];
 }
@@ -195,7 +200,6 @@ RCT_EXPORT_METHOD(requestLocationPermission:(RCTPromiseResolveBlock)resolve reje
 - (void)disableLogging:(NSDictionary *)options {
     [RNDriveKitCoreWrapper.shared disableLoggingWithShowInConsole:options[@"showInConsole"]];
 }
-
 
 - (void)enableLogging:(NSDictionary *)options {
     [RNDriveKitCoreWrapper.shared enableLoggingWithShowInConsole:options[@"showInConsole"]];

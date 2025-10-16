@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0...v3.1.0) (2025-10-16)
+
+
+### Features
+
+* add enqueueIOSDiagnosisOperation() method in Core ([64a164c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/64a164c3db424845aa057035b1410ea0047b0b5b))
+* update DriveKit to 2.21.0 iOS and 2.20.0 Android (+ target 36) ([080ba24](https://github.com/DriveQuantPublic/react-native-drivekit/commit/080ba24071a06e543de72cb9214b2866ca0f303a))
+
+
+
+
+
 # [3.0.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha3...v3.0.0) (2025-06-10)
 
 ### Features

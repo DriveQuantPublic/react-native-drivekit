@@ -30,6 +30,26 @@ func mapTripSyncStatus(status: TripSyncStatus) -> String {
         return "FAILED_TO_SYNC_TRIPS"
     }
 }
+
+func mapUpdateDriverPassengerModeStatus(status: DKUpdateDriverPassengerModeStatus) -> String {
+  switch status {
+  case .success:
+    return "SUCCESS"
+  case .userNotConnected:
+    return "USER_NOT_CONNECTED"
+  case .invalidTransportationMode:
+    return "INVALID_TRANSPORTATION_MODE"
+  case .invalidItineraryId:
+    return "INVALID_ITINERARY_ID"
+  case .commentTooLong:
+    return "COMMENT_TOO_LONG"
+  case .failedToUpdateMode:
+    return "FAILED_TO_UPDATE_MODE"
+  @unknown default:
+    return "FAILED_TO_UPDATE_MODE"
+  }
+}
+
 func mapTransportModeFromString(_ inputString: String) -> TransportationMode {
     if inputString == "CAR" {
         return .car
@@ -62,10 +82,16 @@ func mapTransportModeFromString(_ inputString: String) -> TransportationMode {
 extension DKTrip {
     fileprivate func toDict() -> [String: Any] {
         return [
-            "arrivalAddress": arrivalAddress as Any,
-            "arrivalCity": arrivalCity as Any,
             "departureAddress": departureAddress as Any,
             "departureCity": departureCity as Any,
+            "departurePostalCode": departurePostalCode as Any,
+            "departureState": departureState as Any,
+            "departureCountry": departureCountry as Any,
+            "arrivalAddress": arrivalAddress as Any,
+            "arrivalCity": arrivalCity as Any,
+            "arrivalPostalCode": arrivalPostalCode as Any,
+            "arrivalState": arrivalState as Any,
+            "arrivalCountry": arrivalCountry as Any,
             "endDate": ((endDate != nil) ? DateUtils.convertDateToString(date: endDate!) : nil) as Any,
             "itinId": itinId as Any,
             "metadata": metadata as Any,
@@ -85,6 +111,7 @@ extension DKTrip {
             "fuelEstimation": fuelEstimation?.toDict() as Any,
             "fuelEstimationContexts": fuelEstimationContexts?.map{ $0.toDict() } as Any,
             "logbook": logbook?.toDict() as Any,
+            "occupantInfo": occupantInfo?.toDict() as Any,
             "maneuver": maneuver?.toDict() as Any,
             "pollutants": pollutants?.toDict() as Any,
             "safety": safety?.toDict() as Any,
@@ -252,6 +279,31 @@ extension DKLogbook {
         ]
     }
 }
+extension DKOccupantInfo {
+    fileprivate func toDict() -> [String: Any] {
+        return [
+            "role": role.stringValue as Any,
+            "passengerProbability": passengerProbability as Any
+        ]
+    }
+}
+extension DKOccupantRole {
+    var stringValue: String {
+        switch self {
+        case .unavailable:
+            return "unavailable"
+        case .driver:
+            return "driver"
+        case .passenger:
+            return "passenger"
+        case .notApplicable:
+            return "notApplicable"
+        @unknown default:
+            return "notApplicable"
+        }
+    }
+}
+
 extension DKManeuver {
     fileprivate func toDict() -> [String: Any] {
         return [

@@ -40,10 +40,16 @@ export type Trip = {
   startDate: string;
   vehicleId: string | null;
   transportationMode: number;
-  departureCity: string | null;
-  arrivalCity: string | null;
   departureAddress: string | null;
+  departureCity: string | null;
+  departurePostalCode: string | null;
+  departureState: string | null;
+  departureCountry: string | null;
   arrivalAddress: string | null;
+  arrivalCity: string | null;
+  arrivalPostalCode: string | null;
+  arrivalState: string | null;
+  arrivalCountry: string | null;
   metadata: TripMetadata | null;
   unscored: boolean;
   advancedEnergyEstimations: AdvancedEnergyEstimation[] | null;
@@ -58,6 +64,7 @@ export type Trip = {
   fuelEstimation: FuelEstimation | null;
   fuelEstimationContexts: FuelEstimationContext[];
   logbook: Logbook | null;
+  occupantInfo: OccupantInfo | null;
   maneuver: Maneuver | null;
   pollutants: Pollutants | null;
   safety: Safety | null;
@@ -188,6 +195,11 @@ export type Logbook = {
   updateDate: string | null;
 };
 
+export type OccupantInfo = {
+  role: string;
+  passengerProbability: number;
+};
+
 export type Maneuver = {
   nbTurns: number;
   nbHillStarts: number;
@@ -298,6 +310,24 @@ export type TripStatistics = {
   weekDay: boolean;
 };
 
+export type UpdateDriverPassengerModeResponse = {
+  status: UpdateDriverPassengerModeStatus;
+};
+
+export enum DriverPassengerMode {
+  DRIVER = 'DRIVER',
+  PASSENGER = 'PASSENGER',
+}
+
+export enum UpdateDriverPassengerModeStatus {
+  SUCCESS = 'SUCCESS',
+  USER_NOT_CONNECTED = 'USER_NOT_CONNECTED',
+  INVALID_TRANSPORTATION_MODE = 'INVALID_TRANSPORTATION_MODE',
+  INVALID_ITINERARY_ID = 'INVALID_ITINERARY_ID',
+  COMMENT_TOO_LONG = 'COMMENT_TOO_LONG',
+  FAILED_TO_UPDATE_MODE = 'FAILED_TO_UPDATE_MODE',
+}
+
 export interface Spec extends TurboModule {
   reset(): Promise<void>;
   deleteTrip(itinId: string): Promise<boolean>;
@@ -311,6 +341,11 @@ export interface Spec extends TurboModule {
     synchronizationType: WithDefault<string, 'DEFAULT'>,
     transportationModes: Array<string>
   ): Promise<GetTripsResponse | null>;
+  updateDriverPassengerMode(
+    itinId: string,
+    mode: WithDefault<string, 'DRIVER'>,
+    comment: string | null
+  ): Promise<UpdateDriverPassengerModeResponse>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('RNDriveKitDriverData');
