@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0...v3.1.0) (2025-10-16)
+
+
+### Features
+
+* add new fields in Trip object ([79584bc](https://github.com/DriveQuantPublic/react-native-drivekit/commit/79584bc0f9daffb45cefde0edae1afa7e8f0516a))
+* add OccupantInfo objet in Trip data ([9475e35](https://github.com/DriveQuantPublic/react-native-drivekit/commit/9475e3599f264ed13809bb608a6ff0060af5fc68))
+* add updateDriverPassengerMode() in DriverData ([e7916f6](https://github.com/DriveQuantPublic/react-native-drivekit/commit/e7916f64645acdab7e94f5828ea21c307957ce63))
+* update DriveKit to 2.21.0 iOS and 2.20.0 Android (+ target 36) ([080ba24](https://github.com/DriveQuantPublic/react-native-drivekit/commit/080ba24071a06e543de72cb9214b2866ca0f303a))
+
+
+
+
+
 # [3.0.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0-alpha3...v3.0.0) (2025-06-10)
 
 ### Features
