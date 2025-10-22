@@ -46,6 +46,7 @@
   "homepage": "https://github.com/DriveQuantPublic/react-native-drivekit/tree/main/packages/driver-data#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
+    "provenance": true,
     "access": "public"
   },
   "devDependencies": {
