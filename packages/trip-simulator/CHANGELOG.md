@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.1.0...v3.2.0) (2025-10-22)
+
+
+### Features
+
+* update iOS modules to 2.22.0 ([345a6c2](https://github.com/DriveQuantPublic/react-native-drivekit/commit/345a6c2dc31afaf5aaa626f30a3f943361daa635))
+
+
+
+
+
 # [3.1.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0...v3.1.0) (2025-10-16)
 
 
