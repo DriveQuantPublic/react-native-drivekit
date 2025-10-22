@@ -31,10 +31,8 @@ jobs:
 
       - name: Configure Yarn to use node_modules
         run: yarn config set nodeLinker node-modules
+        
       - run: yarn
-
-      - name: Build packages
-        run: yarn build
 
       - name: Publish via yarn release
         run: yarn release
