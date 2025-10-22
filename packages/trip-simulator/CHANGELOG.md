@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0-alpha8](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha7...v3.2.0-alpha8) (2025-10-22)
+
+**Note:** Version bump only for package @react-native-drivekit/trip-simulator
+
+
+
+
+
 # [3.2.0-alpha7](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha6...v3.2.0-alpha7) (2025-10-22)
 
 **Note:** Version bump only for package @react-native-drivekit/trip-simulator
