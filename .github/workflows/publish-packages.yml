@@ -15,18 +15,23 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: 'https://registry.npmjs.org'
+      - name: Enable Corepack
+        run: corepack enable    
 
-      - name: Install dependencies
-        run: yarn install # original has --frozen-lockfile parameter
+      - name: Setup Node.js 
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          check-latest: true
+          cache: 'yarn'
+
+      - name: Configure Yarn to use node_modules
+        run: yarn config set nodeLinker node-modules
+      - run: yarn
 
       - name: Build packages
         run: yarn build
