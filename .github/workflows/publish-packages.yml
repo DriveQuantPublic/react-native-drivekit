@@ -35,4 +35,4 @@ jobs:
       - run: yarn
 
       - name: Publish via yarn release
-        run: yarn release --yes
+        run: yarn release
