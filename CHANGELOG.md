@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0-alpha2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha1...v3.2.0-alpha2) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
 # [3.2.0-alpha1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.1.0...v3.2.0-alpha1) (2025-10-22)
 
 
