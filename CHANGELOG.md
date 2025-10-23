@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0-alpha11](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha10...v3.2.0-alpha11) (2025-10-23)
+
+
+### Reverts
+
+* Revert "chore: try to upgrade lerna to 9.0.0" ([570a49f](https://github.com/DriveQuantPublic/react-native-drivekit/commit/570a49fa6301da77eeb93dd5d1c2c9ccd44a7347))
+
+
+
+
+
 # [3.2.0-alpha10](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha9...v3.2.0-alpha10) (2025-10-22)
 
 **Note:** Version bump only for package react-native-drivekit
