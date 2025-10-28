@@ -1,0 +1,38 @@
+name: Publish Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Enable Corepack
+        run: corepack enable    
+
+      - name: Setup Node.js 
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          check-latest: true
+          cache: 'yarn'
+
+      - name: Configure Yarn to use node_modules
+        run: yarn config set nodeLinker node-modules
+
+      - run: yarn
+
+      - name: Publish via yarn release
+        run: yarn release

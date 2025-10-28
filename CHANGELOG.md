@@ -3,6 +3,130 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha12...v3.2.0) (2025-10-28)
+
+
+### Features
+
+* upgrade DriveKit modules to 2.21.0 for Android ([34e5e59](https://github.com/DriveQuantPublic/react-native-drivekit/commit/34e5e598ea9ac01bac0e86e7450c835b5a304f97))
+
+
+
+
+
+# [3.2.0-alpha12](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha11...v3.2.0-alpha12) (2025-10-23)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha11](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha10...v3.2.0-alpha11) (2025-10-23)
+
+
+### Reverts
+
+* Revert "chore: try to upgrade lerna to 9.0.0" ([570a49f](https://github.com/DriveQuantPublic/react-native-drivekit/commit/570a49fa6301da77eeb93dd5d1c2c9ccd44a7347))
+
+
+
+
+
+# [3.2.0-alpha10](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha9...v3.2.0-alpha10) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha9](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha8...v3.2.0-alpha9) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha8](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha7...v3.2.0-alpha8) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha7](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha6...v3.2.0-alpha7) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha6](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha5...v3.2.0-alpha6) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha5](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha4...v3.2.0-alpha5) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha4](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha3...v3.2.0-alpha4) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha3](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha2...v3.2.0-alpha3) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.2.0-alpha1...v3.2.0-alpha2) (2025-10-22)
+
+**Note:** Version bump only for package react-native-drivekit
+
+
+
+
+
+# [3.2.0-alpha1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.1.0...v3.2.0-alpha1) (2025-10-22)
+
+
+### Features
+
+* update iOS modules to 2.22.0 ([345a6c2](https://github.com/DriveQuantPublic/react-native-drivekit/commit/345a6c2dc31afaf5aaa626f30a3f943361daa635))
+
+
+
+
+
+# [3.2.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.1.0...v3.2.0) (2025-10-22)
+
+
+### Features
+
+* update iOS modules to 2.22.0 ([345a6c2](https://github.com/DriveQuantPublic/react-native-drivekit/commit/345a6c2dc31afaf5aaa626f30a3f943361daa635))
+
+
+
+
+
 # [3.1.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.0.0...v3.1.0) (2025-10-16)
 
 
