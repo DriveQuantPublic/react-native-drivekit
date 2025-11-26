@@ -1,0 +1,15 @@
+{
+  "originHash" : "f5ca818f862bb5550ee637af6249b4dfc84880e1200e5da3d9b382545a09b070",
+  "pins" : [
+    {
+      "identity" : "drivekit-sdk-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DriveQuantPublic/drivekit-sdk-spm.git",
+      "state" : {
+        "revision" : "a8fdd4e378c123c33777c270c1e7cf093073f919",
+        "version" : "2.23.0"
+      }
+    }
+  ],
+  "version" : 3
+}
