@@ -18,7 +18,16 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
-  s.dependency 'DriveKitCore', '2.23.0'
+  if defined?(:spm_dependency)
+    puts "Using SPM dependencies for #{s.name} #{s.version}"
+    spm_dependency(s,
+      url: 'https://github.com/DriveQuantPublic/drivekit-sdk-spm.git',
+      requirement: {kind: 'exactVersion', version: '2.23.0'},
+      products: ['DriveKitCore']
+    )
+  else
+    raise "Please upgrade React Native to >=0.75.0 to use SPM dependencies."
+  end
 
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
