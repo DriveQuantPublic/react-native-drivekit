@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.3.0...v3.3.1) (2025-12-02)
+
+
+### Features
+
+* bump Android DriveKit version to 2.22.1 ([08520ad](https://github.com/DriveQuantPublic/react-native-drivekit/commit/08520ad79df56dbd74382d8c032ce36779dade01))
+* bump iOS DriveKit version to 2.23.1 + set 3.3.1 version for Core ([0b962c7](https://github.com/DriveQuantPublic/react-native-drivekit/commit/0b962c7bbd5594d5be87db6382d175fe5cb102b9))
+
+
+
+
+
 # [3.3.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.1.0...v3.3.0) (2025-11-17)
 
 
