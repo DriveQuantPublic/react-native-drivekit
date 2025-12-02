@@ -1261,7 +1261,7 @@ PODS:
     - React-jsiexecutor
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
-  - react-native-drivekit-core (3.3.0):
+  - react-native-drivekit-core (3.3.1):
     - DoubleConversion
     - DriveKitCore (= 2.23.1)
     - glog
@@ -1284,7 +1284,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-drivekit-driver-data (3.3.0):
+  - react-native-drivekit-driver-data (3.3.1):
     - DoubleConversion
     - DriveKitDriverData (= 2.23.1)
     - glog
@@ -1307,7 +1307,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-drivekit-trip-analysis (3.3.0):
+  - react-native-drivekit-trip-analysis (3.3.1):
     - DoubleConversion
     - DriveKitTripAnalysis (= 2.23.1)
     - glog
@@ -1330,7 +1330,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-drivekit-trip-simulator (3.3.0):
+  - react-native-drivekit-trip-simulator (3.3.1):
     - DoubleConversion
     - DriveKitTripSimulator (= 2.23.1)
     - glog
@@ -1648,7 +1648,7 @@ PODS:
     - RNNotifee/NotifeeCore (= 9.1.8)
   - RNNotifee/NotifeeCore (9.1.8):
     - React-Core
-  - RNPermissions (5.4.4):
+  - RNPermissions (5.4.2):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1962,10 +1962,10 @@ SPEC CHECKSUMS:
   React-logger: 74ddb793d36b48bba176328c7af75e5e656fd405
   React-Mapbuffer: 39e87693178fd6483bb5ca8b851fae362d49409a
   React-microtasksnativemodule: b740ebae7fad70aa78bc24cc0dfc15ac9637b6eb
-  react-native-drivekit-core: 268cd970b96b23595a75d8eba56039706f6d40bd
-  react-native-drivekit-driver-data: e63b24362a3d1c21a6eab4e71975d3f29c0cac22
-  react-native-drivekit-trip-analysis: 30071470e84fc1012e6f86b04805e1eeef4869ed
-  react-native-drivekit-trip-simulator: b9fada5e866a46c801a60dcc93809be654012ffc
+  react-native-drivekit-core: 105a4b886bac97e256446a0ce40ed40aee384745
+  react-native-drivekit-driver-data: 17649778d190e153e737d383d5412929fe0ec514
+  react-native-drivekit-trip-analysis: 09a4a5ee2408026c9d2f56edfc80fa71a5919fd9
+  react-native-drivekit-trip-simulator: 7269c34f1727240f97b2800f5baf2c8cc7d578a6
   React-NativeModulesApple: af0571ac115d09c9a669ed45ce6a4ca960598a2d
   React-perflogger: 26d07766b033f84559bd520e949453dba8bf1cd8
   React-performancetimeline: 0f3e0b6e2152951257bd8c90f95d527cf4316fa8
@@ -1996,7 +1996,7 @@ SPEC CHECKSUMS:
   ReactCommon: 269d0d36423fad044eaea49900e88684ac670a16
   RNCCheckbox: 33b44487ca8008394ce658cc32b26eab04f426ef
   RNNotifee: 5e3b271e8ea7456a36eec994085543c9adca9168
-  RNPermissions: 40877e06686cde27c7927238e426bad398460c51
+  RNPermissions: 489336218cefa4b2eb74690f3ef8b9e229768cbf
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: b94ff2d7559cb66837c97a3f394ddb817faad4d6
 
