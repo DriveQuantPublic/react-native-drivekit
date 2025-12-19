@@ -1,9 +1,9 @@
-import React, {FunctionComponent, useState} from 'react';
-import {Alert, Button, TextInput, StyleSheet, Text, View} from 'react-native';
+import React, { FunctionComponent, useState } from 'react';
+import { Alert, Button, TextInput, StyleSheet, Text, View } from 'react-native';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
-import type {TripMetadata} from '@react-native-drivekit/trip-analysis';
-import {Section} from './Section';
-import {Spacer} from '../Spacer';
+import type { TripMetadata } from '@react-native-drivekit/trip-analysis';
+import { Section } from './Section';
+import { Spacer } from '../Spacer';
 
 const inputHeight = 40;
 
@@ -98,7 +98,7 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         disabled={!newMetadataKey || !newMetadataValue}
         onPress={async () => {
           setTripMetadataForm(previousForm => {
-            const newForm = {...previousForm};
+            const newForm = { ...previousForm };
             newForm[newMetadataKey] = newMetadataValue;
             return newForm;
           });
@@ -231,11 +231,11 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
             Alert.alert(
               'CurrentTripInfo',
               'localTripId:' +
-                currentTripInfo.localTripId +
-                '\ndate: ' +
-                currentTripInfo.date +
-                '\nStartMode: ' +
-                currentTripInfo.startMode,
+              currentTripInfo.localTripId +
+              '\ndate: ' +
+              currentTripInfo.date +
+              '\nStartMode: ' +
+              currentTripInfo.startMode,
             );
           }
         }}
@@ -303,4 +303,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {TripAnalysisSection};
+export { TripAnalysisSection };
