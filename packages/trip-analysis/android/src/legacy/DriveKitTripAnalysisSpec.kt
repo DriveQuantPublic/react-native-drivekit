@@ -39,6 +39,8 @@ abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactAppli
 
   abstract fun getLastTripLocation(promise: Promise)
 
+  abstract fun getLastVehicleTripLocation(promise: Promise)
+
   abstract fun isTripSharingAvailable(promise: Promise)
 
   abstract fun createTripSharingLink(durationInSec: Int, promise: Promise)

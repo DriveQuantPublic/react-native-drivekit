@@ -293,6 +293,7 @@ export interface Spec extends TurboModule {
   setVehicle(vehicle: TripVehicle): Promise<void>;
   getCurrentTripInfo(): Promise<CurrentTripInfo>;
   getLastTripLocation(): Promise<LastTripLocation>;
+  getLastVehicleTripLocation(): Promise<LastTripLocation>;
   isTripSharingAvailable(): Promise<boolean>;
   createTripSharingLink(
     durationInSec: number
