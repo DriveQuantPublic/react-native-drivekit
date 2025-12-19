@@ -252,15 +252,40 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
             Alert.alert(
               'LastTripLocation',
               'date:' +
-                lastTripLocation.date +
-                '\nlatitude: ' +
-                lastTripLocation.latitude +
-                '\nlongitude: ' +
-                lastTripLocation.longitude +
-                '\naccuracyMeter: ' +
-                lastTripLocation.accuracyMeter +
-                '\naccuracyLevel: ' +
-                lastTripLocation.accuracyLevel,
+              lastTripLocation.date +
+              '\nlatitude: ' +
+              lastTripLocation.latitude +
+              '\nlongitude: ' +
+              lastTripLocation.longitude +
+              '\naccuracyMeter: ' +
+              lastTripLocation.accuracyMeter +
+              '\naccuracyLevel: ' +
+              lastTripLocation.accuracyLevel,
+            );
+          }
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
+        title={'Get LastVehicleTripLocation'}
+        onPress={async () => {
+          const lastVehicleTripLocation =
+            await DriveKitTripAnalysis.getLastVehicleTripLocation();
+          if (lastVehicleTripLocation == null) {
+            Alert.alert('LastVehicleTripLocation', 'LastVehicleTripLocation is null');
+          } else {
+            Alert.alert(
+              'LastVehicleTripLocation',
+              'date:' +
+              lastVehicleTripLocation.date +
+              '\nlatitude: ' +
+              lastVehicleTripLocation.latitude +
+              '\nlongitude: ' +
+              lastVehicleTripLocation.longitude +
+              '\naccuracyMeter: ' +
+              lastVehicleTripLocation.accuracyMeter +
+              '\naccuracyLevel: ' +
+              lastVehicleTripLocation.accuracyLevel,
             );
           }
         }}
