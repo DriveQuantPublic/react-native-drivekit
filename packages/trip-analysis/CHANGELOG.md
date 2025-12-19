@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.3.1...v3.4.0) (2025-12-19)
+
+
+### Features
+
+* bridge getLastVehicleTripLocation method on iOS and android ([d782078](https://github.com/DriveQuantPublic/react-native-drivekit/commit/d782078923eb77fa2c79e2d12ee30062b34fcb26))
+
+
+
+
+
 ## [3.3.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.3.0...v3.3.1) (2025-12-02)
 
 
