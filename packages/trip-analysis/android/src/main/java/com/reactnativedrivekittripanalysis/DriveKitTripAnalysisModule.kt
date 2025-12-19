@@ -141,6 +141,11 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
+  override fun getLastVehicleTripLocation(promise: Promise) {
+    promise.resolve(DKTripLocationMapper.mapDKTripLocationToReadableMap(DriveKitTripAnalysis.getLastVehicleTripLocation()))
+  }
+
+  @ReactMethod
   override fun isTripSharingAvailable(promise: Promise) {
     promise.resolve(DriveKitTripAnalysis.tripSharing.isAvailable())
   }

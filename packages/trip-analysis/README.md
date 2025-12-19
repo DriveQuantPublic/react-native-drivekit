@@ -213,6 +213,7 @@ Follow these steps :
 | [setVehicle()](#setvehicle)                                                         | `Promise<void>`                          | ✅  |   ✅    |
 | [getCurrentTripInfo()](#getCurrentTripInfo)                                         | `Promise<CurrentTripInfo \| null>`       | ✅  |   ✅    |
 | [getLastTripLocation()](#getLastTripLocation)                                       | `Promise<LastTripLocation \| null>`      | ✅  |   ✅    |
+| [getLastVehicleTripLocation()](#getLastVehicleTripLocation)                         | `Promise<LastTripLocation \| null>`      | ✅  |   ✅    |
 | [isTripSharingAvailable()](#isTripSharingAvailable)                                 | `Promise<boolean>`                       | ✅  |   ✅    |
 | [createTripSharingLink(durationInSec: number)](#createTripSharingLink)              | `Promise<CreateTripSharingLinkResponse>` | ✅  |   ✅    |
 | [getTripSharingLink(synchronizationType: SynchronizationType)](#getTripSharingLink) | `Promise<GetTripSharingLinkResponse>`    | ✅  |   ✅    |
@@ -537,6 +538,27 @@ await getLastTripLocation();
 | GOOD  | The GPS accuracy is strictly below 10 meters. |
 | FAIR  | The GPS accuracy is between 10 and 30 meters. |
 | POOR  | The GPS accuracy is strictly above 30 meters. |
+
+
+### getLastVehicleTripLocation
+
+```typescript
+getLastVehicleTripLocation(): Promise<LastTripLocation | null>
+```
+
+To retrieve the location at which the last recorded vehicle trip ended, use the following method:
+
+```typescript
+await getLastVehicleTripLocation();
+```
+
+> ℹ️
+>
+> The method can return null if the user:
+>
+> - is not authenticated,
+> - or didn’t make a trip since the authentication,
+> - or hasn’t made any valid trips.
 
 ### isTripSharingAvailable
 

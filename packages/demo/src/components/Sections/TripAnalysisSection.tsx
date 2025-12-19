@@ -1,9 +1,9 @@
-import React, {FunctionComponent, useState} from 'react';
-import {Alert, Button, TextInput, StyleSheet, Text, View} from 'react-native';
+import React, { FunctionComponent, useState } from 'react';
+import { Alert, Button, TextInput, StyleSheet, Text, View } from 'react-native';
 import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
-import type {TripMetadata} from '@react-native-drivekit/trip-analysis';
-import {Section} from './Section';
-import {Spacer} from '../Spacer';
+import type { TripMetadata } from '@react-native-drivekit/trip-analysis';
+import { Section } from './Section';
+import { Spacer } from '../Spacer';
 
 const inputHeight = 40;
 
@@ -98,7 +98,7 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
         disabled={!newMetadataKey || !newMetadataValue}
         onPress={async () => {
           setTripMetadataForm(previousForm => {
-            const newForm = {...previousForm};
+            const newForm = { ...previousForm };
             newForm[newMetadataKey] = newMetadataValue;
             return newForm;
           });
@@ -231,11 +231,11 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
             Alert.alert(
               'CurrentTripInfo',
               'localTripId:' +
-                currentTripInfo.localTripId +
-                '\ndate: ' +
-                currentTripInfo.date +
-                '\nStartMode: ' +
-                currentTripInfo.startMode,
+              currentTripInfo.localTripId +
+              '\ndate: ' +
+              currentTripInfo.date +
+              '\nStartMode: ' +
+              currentTripInfo.startMode,
             );
           }
         }}
@@ -252,15 +252,40 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
             Alert.alert(
               'LastTripLocation',
               'date:' +
-                lastTripLocation.date +
-                '\nlatitude: ' +
-                lastTripLocation.latitude +
-                '\nlongitude: ' +
-                lastTripLocation.longitude +
-                '\naccuracyMeter: ' +
-                lastTripLocation.accuracyMeter +
-                '\naccuracyLevel: ' +
-                lastTripLocation.accuracyLevel,
+              lastTripLocation.date +
+              '\nlatitude: ' +
+              lastTripLocation.latitude +
+              '\nlongitude: ' +
+              lastTripLocation.longitude +
+              '\naccuracyMeter: ' +
+              lastTripLocation.accuracyMeter +
+              '\naccuracyLevel: ' +
+              lastTripLocation.accuracyLevel,
+            );
+          }
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
+        title={'Get LastVehicleTripLocation'}
+        onPress={async () => {
+          const lastVehicleTripLocation =
+            await DriveKitTripAnalysis.getLastVehicleTripLocation();
+          if (lastVehicleTripLocation == null) {
+            Alert.alert('LastVehicleTripLocation', 'LastVehicleTripLocation is null');
+          } else {
+            Alert.alert(
+              'LastVehicleTripLocation',
+              'date:' +
+              lastVehicleTripLocation.date +
+              '\nlatitude: ' +
+              lastVehicleTripLocation.latitude +
+              '\nlongitude: ' +
+              lastVehicleTripLocation.longitude +
+              '\naccuracyMeter: ' +
+              lastVehicleTripLocation.accuracyMeter +
+              '\naccuracyLevel: ' +
+              lastVehicleTripLocation.accuracyLevel,
             );
           }
         }}
@@ -303,4 +328,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {TripAnalysisSection};
+export { TripAnalysisSection };

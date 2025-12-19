@@ -97,6 +97,14 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         resolve(nil)
       }
     }
+
+    @objc internal func getLastVehicleTripLocation(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+      if let tripLocation = DriveKitTripAnalysis.shared.getLastVehicleTripLocation() {
+        resolve(mapTripLocation(tripLocation))
+      } else {
+        resolve(nil)
+      }
+    }
   
     @objc internal func isTripSharingAvailable() -> NSNumber {
       return NSNumber(value: DriveKitTripAnalysis.shared.tripSharing.isAvailable());

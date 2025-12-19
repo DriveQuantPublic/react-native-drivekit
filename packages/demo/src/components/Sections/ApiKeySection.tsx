@@ -1,6 +1,6 @@
-import React, {FunctionComponent} from 'react';
-import {Alert, Button} from 'react-native';
-import {Section} from './Section';
+import React, { FunctionComponent } from 'react';
+import { Alert, Button } from 'react-native';
+import { Section } from './Section';
 import * as DriveKit from '@react-native-drivekit/core';
 
 const ApiKeySection: FunctionComponent<{}> = () => {
@@ -32,4 +32,4 @@ const ApiKeySection: FunctionComponent<{}> = () => {
   );
 };
 
-export {ApiKeySection};
+export { ApiKeySection };

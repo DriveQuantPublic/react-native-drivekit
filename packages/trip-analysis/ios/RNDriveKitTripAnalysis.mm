@@ -188,6 +188,11 @@ RCT_EXPORT_METHOD(getLastTripLocation:(RCTPromiseResolveBlock)resolve reject:(RC
     [self getLastTripLocation:resolve rejecter:reject];
 }
 
+RCT_EXPORT_METHOD(getLastVehicleTripLocation:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self getLastVehicleTripLocation:resolve rejecter:reject];
+}
+
 RCT_EXPORT_METHOD(isTripSharingAvailable:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     NSNumber* isTripSharingAvailable = [self isTripSharingAvailable];
@@ -271,6 +276,10 @@ RCT_EXPORT_METHOD(revokeTripSharingLink:(RCTPromiseResolveBlock)resolve reject:(
 
 -(void)getLastTripLocation:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
     [RNDriveKitTripAnalysisWrapper.shared getLastTripLocationWithResolver:resolve rejecter:reject];
+}
+
+-(void)getLastVehicleTripLocation:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
+    [RNDriveKitTripAnalysisWrapper.shared getLastVehicleTripLocationWithResolver:resolve rejecter:reject];
 }
 
 -(NSNumber *)isTripSharingAvailable {
