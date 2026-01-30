@@ -208,26 +208,4 @@ object HeadlessJsManager : AppStateListener {
   override fun onNoActivity() {
     // do nothing
   }
-
-  fun sendTripStartedEvent(startMode: StartMode) {
-    val bundle = Bundle()
-    bundle.putString("eventType", EventType.TRIP_STARTED.name)
-    bundle.putString("startMode", startMode.name)
-    sendEvent(bundle)
-  }
-
-  fun sendTripCancelledEvent(cancelTrip: CancelTrip) {
-    val bundle = Bundle()
-    bundle.putString("eventType", EventType.TRIP_CANCELLED.name)
-    bundle.putString("cancelTrip", cancelTrip.name)
-    sendEvent(bundle)
-  }
-
-  fun sendTripFinishedEvent(post: PostGeneric, response: PostGenericResponse) {
-    val bundle = Bundle()
-    bundle.putString("eventType", EventType.TRIP_FINISHED.name)
-    bundle.putString("post", Gson().toJson(post))
-    bundle.putString("response", Gson().toJson(response))
-    sendEvent(bundle)
-  }
 }
