@@ -48,11 +48,7 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc internal func enableMonitorPotentialTripStart(enable: Bool) -> Void {
         DriveKitTripAnalysis.shared.monitorPotentialTripStart = enable;
     }
-
-    @objc internal func reset() -> Void {
-        DriveKitTripAnalysis.shared.reset();
-    }
-
+    
     @objc internal func setStopTimeout(_ stopTimeout: Double) -> Void {
         DriveKitTripAnalysis.shared.setStopTimeOut(timeOut: Int(stopTimeout))
     }

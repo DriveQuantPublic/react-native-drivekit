@@ -284,7 +284,6 @@ export interface Spec extends TurboModule {
   cancelTrip(): Promise<void>;
   isTripRunning(): Promise<boolean>;
   enableMonitorPotentialTripStart(enable: boolean): Promise<void>;
-  reset(): Promise<void>;
   setStopTimeout(stopTimeout: number): Promise<void>;
   getTripMetadata(): Promise<TripMetadata | null>;
   setTripMetadata(metadata: TripMetadata): Promise<void>;
