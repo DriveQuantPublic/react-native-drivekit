@@ -158,9 +158,11 @@ You can listen to events thanks to the `addEventListener` api.
 ```typescript
 useEffect(() => {
   const listener = DriveKitTripAnalysis.addEventListener(
-    'tripStarted',
-    (startMode: StartMode) => {
-      console.log('trip start', startMode);
+    'tripRecordingStarted',
+    (state: DKTripRecordingStartedState) => {
+      console.log(
+        'Trip recording has started with StartMode: ' + state.startMode
+      );
     }
   );
   return () => listener.remove();
