@@ -54,6 +54,6 @@ class RNTripAnalysisEventEmitter: NSObject {
 
     }
 
-    @objc static var allEvents: [String] =  ["tripRecordingStarted", "tripRecordingConfirmed", "tripRecordingCanceled", "tripRecordingFinished", "tripFinishedWithResult", "tripPoint", "tripSavedForRepost", "beaconDetected", "significantLocationChangeDetected", "potentialTripStart", "sdkStateChanged", "crashDetected", "crashFeedbackSent", "bluetoothSensorStateChanged", "gpsSensorStateChanged",]
-
+    @objc static var allEvents: [String] =  ["tripRecordingStarted",
+     "tripRecordingConfirmed", "tripRecordingCanceled", "tripRecordingFinished", "tripFinishedWithResult", "tripPoint", "tripSavedForRepost", "beaconDetected", "significantLocationChangeDetected", "potentialTripStart", "sdkStateChanged", "crashDetected", "crashFeedbackSent",]
 }
