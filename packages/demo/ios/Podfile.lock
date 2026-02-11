@@ -69,7 +69,6 @@ PODS:
     - React-RCTText (= 0.78.1)
     - React-RCTVibration (= 0.78.1)
   - React-callinvoker (0.78.1)
-  - React-Codegen (0.1.0)
   - React-Core (0.78.1):
     - glog
     - hermes-engine
@@ -1266,10 +1265,9 @@ PODS:
     - DriveKitCore (= 2.26.0)
     - glog
     - hermes-engine
-    - RCT-Folly
+    - RCT-Folly (= 2024.11.18.00)
     - RCTRequired
     - RCTTypeSafety
-    - React-Codegen
     - React-Core
     - React-debug
     - React-Fabric
@@ -1289,10 +1287,9 @@ PODS:
     - DriveKitDriverData (= 2.26.0)
     - glog
     - hermes-engine
-    - RCT-Folly
+    - RCT-Folly (= 2024.11.18.00)
     - RCTRequired
     - RCTTypeSafety
-    - React-Codegen
     - React-Core
     - React-debug
     - React-Fabric
@@ -1312,10 +1309,9 @@ PODS:
     - DriveKitTripAnalysis (= 2.26.0)
     - glog
     - hermes-engine
-    - RCT-Folly
+    - RCT-Folly (= 2024.11.18.00)
     - RCTRequired
     - RCTTypeSafety
-    - React-Codegen
     - React-Core
     - React-debug
     - React-Fabric
@@ -1335,10 +1331,9 @@ PODS:
     - DriveKitTripSimulator (= 2.26.0)
     - glog
     - hermes-engine
-    - RCT-Folly
+    - RCT-Folly (= 2024.11.18.00)
     - RCTRequired
     - RCTTypeSafety
-    - React-Codegen
     - React-Core
     - React-debug
     - React-Fabric
@@ -1761,7 +1756,6 @@ SPEC REPOS:
     - DriveKitTripAnalysis
     - DriveKitTripSimulator
     - DriveKitTripSimulatorApi
-    - React-Codegen
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -1937,7 +1931,6 @@ SPEC CHECKSUMS:
   RCTTypeSafety: 2f0bc11f9584fde4c7e6d8b26577c97681051c00
   React: e6035d3a639f6668a18429aaf2fdc0c12b1e7a81
   React-callinvoker: 3740fb1716428dabd205486c818ce6a5999e7f11
-  React-Codegen: 4b8b4817cea7a54b83851d4c1f91f79aa73de30a
   React-Core: d12b31b149ff71e5054dec137d651a9955569321
   React-CoreModules: e392c711449f260d9ba7556a264ef5cfacdab3f9
   React-cxxreact: dcb3c48b13b298a270edefb24d2a9211809ff147
@@ -1962,10 +1955,10 @@ SPEC CHECKSUMS:
   React-logger: 74ddb793d36b48bba176328c7af75e5e656fd405
   React-Mapbuffer: 39e87693178fd6483bb5ca8b851fae362d49409a
   React-microtasksnativemodule: b740ebae7fad70aa78bc24cc0dfc15ac9637b6eb
-  react-native-drivekit-core: 146a7768587a7a06adb71d432d44007f186a4caa
-  react-native-drivekit-driver-data: 90ab6f55b9f1178e46ed6c7b93bfbbf0a9699d10
-  react-native-drivekit-trip-analysis: c572d8bd1bad3a2d0d84f6a2d6c9d57074ad58ad
-  react-native-drivekit-trip-simulator: 9dd9e58c63f31bd22068cf72e02d1507082f89cc
+  react-native-drivekit-core: b0a77604dc2cbbc7ff06a72d01b1a5cdcedfe8ba
+  react-native-drivekit-driver-data: 291926cd586817a49793aed732a79f70db83f661
+  react-native-drivekit-trip-analysis: 1a4feeb6ddbfcc96a385b864b25c8d699b861e27
+  react-native-drivekit-trip-simulator: 7960cb93ca31adb25ddcf90702dd0d239586c3e5
   React-NativeModulesApple: af0571ac115d09c9a669ed45ce6a4ca960598a2d
   React-perflogger: 26d07766b033f84559bd520e949453dba8bf1cd8
   React-performancetimeline: 0f3e0b6e2152951257bd8c90f95d527cf4316fa8
