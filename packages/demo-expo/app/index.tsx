@@ -5,6 +5,8 @@ import * as DriveKitTripSimulator from "@react-native-drivekit/trip-simulator";
 import { Button } from "@react-navigation/elements";
 import { useState } from "react";
 import { Alert, Platform, Text, TextInput, View } from "react-native";
+import { OpenOptimizationSettings } from "react-native-battery-optimization-check";
+
 import {
   PERMISSIONS,
   request,
@@ -105,6 +107,7 @@ export default function Index() {
                 request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then(
                   (status) => {
                     console.log(status);
+                    		OpenOptimizationSettings();
                   },
                 );
               });
