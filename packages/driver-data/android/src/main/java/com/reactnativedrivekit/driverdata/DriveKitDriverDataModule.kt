@@ -21,12 +21,6 @@ class DriveKitDriverDataModule internal constructor(context: ReactApplicationCon
   }
 
   @ReactMethod
-  @Deprecated("You no longer need to call the reset method of any module except the one in DriveKit")
-  override fun reset(promise: Promise) {
-    promise.resolve(null)
-  }
-
-  @ReactMethod
   override fun deleteTrip(itinId: String, promise: Promise) {
     DriveKitDriverData.deleteTrip(itinId, object : TripDeleteQueryListener {
       override fun onResponse(status: Boolean) {

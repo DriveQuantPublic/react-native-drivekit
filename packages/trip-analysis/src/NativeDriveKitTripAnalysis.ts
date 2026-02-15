@@ -114,19 +114,6 @@ export type DKTripRecordingConfirmedState = {
   recordingConfirmationDate: string;
 };
 
-export enum CancelTripReason {
-  USER = 'USER',
-  HIGH_SPEED = 'HIGH_SPEED',
-  NO_SPEED = 'NO_SPEED',
-  NO_BEACON = 'NO_BEACON',
-  MISSING_CONFIGURATION = 'MISSING_CONFIGURATION',
-  NO_GPS_DATA = 'NO_GPS_DATA',
-  RESET = 'RESET',
-  BEACON_NO_SPEED = 'BEACON_NO_SPEED',
-  NO_BLUETOOTH_DEVICE = 'NO_BLUETOOTH_DEVICE',
-  BLUETOOTH_DEVICE_NO_SPEED = 'BLUETOOTH_DEVICE_NO_SPEED',
-}
-
 export type DKTripRecordingCanceledState = {
   localTripId: string;
   startMode: StartMode;
@@ -284,7 +271,6 @@ export interface Spec extends TurboModule {
   cancelTrip(): Promise<void>;
   isTripRunning(): Promise<boolean>;
   enableMonitorPotentialTripStart(enable: boolean): Promise<void>;
-  reset(): Promise<void>;
   setStopTimeout(stopTimeout: number): Promise<void>;
   getTripMetadata(): Promise<TripMetadata | null>;
   setTripMetadata(metadata: TripMetadata): Promise<void>;

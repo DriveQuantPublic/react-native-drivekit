@@ -15,7 +15,6 @@ export type { TripPoint } from '../NativeDriveKitTripAnalysis';
 
 export { StartMode } from '../NativeDriveKitTripAnalysis';
 export { SDKState } from '../NativeDriveKitTripAnalysis';
-export { CancelTripReason } from '../NativeDriveKitTripAnalysis';
 export { TripResultStatusType } from '../NativeDriveKitTripAnalysis';
 export { RevokeTripSharingLinkStatus } from '../NativeDriveKitTripAnalysis';
 export { DKTripCancelationReason } from '../NativeDriveKitTripAnalysis';
