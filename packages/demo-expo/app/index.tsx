@@ -118,6 +118,13 @@ export default function Index() {
         </Button>
       </View>
       <View>
+      <Button
+        onPress={() => {
+          DriveKitTripAnalysis.activateAutoStart(true);
+        }}
+      >
+        Activate Autostart
+        </Button>
         <Button
           onPress={() => {
             DriveKitTripAnalysis.startTrip();
