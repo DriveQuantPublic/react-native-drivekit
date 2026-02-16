@@ -71,7 +71,7 @@
             "Motion"
           ]
         }],
-        ["../trip-analysis/plugins/withAndroidPlugin.ts",
+        ["../trip-analysis/plugins/withDKTripAnalysis.ts",
         {
           "tripNotificationTitle": "Recording Trip",
           "tripNotificationBody":"A trip is about to be recorded",
