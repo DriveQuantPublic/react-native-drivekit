@@ -1,4 +1,5 @@
-import { ConfigPlugin, withMainApplication } from 'expo/config-plugins';
+import CONFIG_PLUGINS from '@expo/config-plugins';
+const { ConfigPlugin, withMainApplication } = CONFIG_PLUGINS;
 
 import {
   addImports,
@@ -12,7 +13,7 @@ type AndroidProps = {
   headlessNotificationBody?: string;
 };
 
-const withAndroidPlugin: ConfigPlugin<AndroidProps> = (
+const withDKTripAnalysis: ConfigPlugin<AndroidProps> = (
   config,
   options = {}
 ) => {
@@ -30,7 +31,7 @@ const withAndroidPlugin: ConfigPlugin<AndroidProps> = (
     stringContents = addImports(
       stringContents,
       [
-        'import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule',
+        'com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule',
         'com.reactnativedrivekittripanalysis.RNHeadlessJSNotification',
         'com.reactnativedrivekittripanalysis.RNTripNotification',
       ],
@@ -40,7 +41,7 @@ const withAndroidPlugin: ConfigPlugin<AndroidProps> = (
     stringContents = appendContentsInsideDeclarationBlock(
       stringContents,
       'onCreate',
-      `val tripNotification = RNTripNotification(123, "${tripNotificationTitle}", "${tripNotificationBody}", R.drawable.ic_notification)\n
+      `val tripNotification = RNTripNotification(123, "${tripNotificationTitle}", "${tripNotificationBody}", 0)\n
        DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification)\n
        val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("${headlessNotificationTitle}", "${headlessNotificationBody}")\n
        DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)\n`
@@ -51,4 +52,4 @@ const withAndroidPlugin: ConfigPlugin<AndroidProps> = (
   });
 };
 
-export default withAndroidPlugin;
+export default withDKTripAnalysis;
