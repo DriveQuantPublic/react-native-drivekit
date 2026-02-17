@@ -32,8 +32,6 @@ Pod::Spec.new do |s|
         "CLANG_CXX_LANGUAGE_STANDARD" => "c++17"
       }
 
-      install_modules_dependencies(s)
-
       s.dependency "React-Codegen"
       s.dependency "RCT-Folly"
       s.dependency "RCTRequired"
