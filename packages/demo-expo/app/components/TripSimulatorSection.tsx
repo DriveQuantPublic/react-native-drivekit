@@ -19,5 +19,13 @@ export const TripSimulatorSection = () => {
         >
             Start simulation (TRAIN_TRIP)
         </Button>
+
+        <Button
+            onPress={async () => {
+                DriveKitTripSimulator.stop()
+            }}
+        >
+            Stop simulation
+        </Button>
     </SectionContainer>
 }
