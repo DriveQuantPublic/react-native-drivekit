@@ -11,7 +11,6 @@ export const SectionContainer = ({ title, children }: { title: string; children:
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 15,
     borderColor: "#000",
     borderWidth: 1,
     padding: 10,
