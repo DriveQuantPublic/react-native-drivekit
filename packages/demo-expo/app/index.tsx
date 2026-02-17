@@ -19,9 +19,11 @@ export default function App() {
   const { top, bottom, left, right } = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, { paddingTop: top, paddingBottom: bottom, paddingLeft: left, paddingRight: right }]}>
+    <View style={[styles.container, { paddingTop: top, paddingLeft: left, paddingRight: right }]}>
       <Text style={styles.title}>DriveKit Expo Demo App.</Text>
       <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: bottom }}
       >
         <DriveKitSection />
         <PermissionsSection />

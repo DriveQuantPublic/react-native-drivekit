@@ -23,11 +23,12 @@ const events = [
 
 export const TripAnalysisSection = () => {
 
-  const [lastReceivedEvent, setLastReceivedEvent] = useState<Array<string>>(Array<string>(5).fill(""));
+  const EMPTY_LOGS = Array<string>(5).fill("");
+  const [lastReceivedEvent, setLastReceivedEvent] = useState<Array<string>>(EMPTY_LOGS);
 
   const onNewEvent = useCallback((eventName: string, data?: any) => {
     setLastReceivedEvent(prev => {
-      const newEvent = `${eventName} - ${data ? `: ${JSON.stringify(data)}` : ""}`;
+      const newEvent = `${eventName} ${data ? `: ${JSON.stringify(data)}` : ""}`;
       const newEvents = [newEvent, ...prev];
       if (newEvents.length > 5) {
         newEvents.pop();
@@ -52,7 +53,10 @@ export const TripAnalysisSection = () => {
 
   return <SectionContainer title="Trip Analysis">
 
-    <Text>Last 5 received event:</Text>
+    <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+      <Text>Last 5 received event:</Text>
+      <Button onPress={() => setLastReceivedEvent(EMPTY_LOGS)}>Clear</Button>
+    </View>
     <View style={styles.eventsContainer}>
       {lastReceivedEvent.map((event, index) => (
         <Text key={index} numberOfLines={1}>{event}</Text>
