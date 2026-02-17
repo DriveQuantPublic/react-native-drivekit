@@ -10,7 +10,7 @@ import { PermissionsSection } from "./components/PermissionsSection";
 import { TripAnalysisSection } from "./components/TripAnalysisSection";
 import { TripSimulatorSection } from "./components/TripSimulatorSection";
 
-export default function Index() {
+export default function App() {
 
   useEffect(() => {
     DriveKit.setApiKey("");
