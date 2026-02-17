@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 export const SectionContainer = ({ title, children }: { title: string; children: React.ReactNode }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title}>-- {title} --</Text>
       {children}
     </View>
   );
@@ -11,9 +11,9 @@ export const SectionContainer = ({ title, children }: { title: string; children:
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: "#000",
-    borderWidth: 1,
+    backgroundColor: "#fafafa",
     padding: 10,
+    marginBottom: 20,
     gap: 10,
   },
   title: {
