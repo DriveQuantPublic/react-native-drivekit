@@ -1,8 +1,8 @@
 import { Button } from "@react-navigation/elements";
-import { RequestDisableOptimization } from "react-native-battery-optimization-check";
+import { RequestDisableOptimization, BatteryOptEnabled } from "react-native-battery-optimization-check";
 import {
-  checkMultiple,
   Permission,
+  checkMultiple,
   PERMISSIONS,
   PermissionStatus,
   request,
@@ -21,10 +21,10 @@ const IOS_PERMISSIONS = [
 ];
 
 const ANDROID_PERMISSIONS = [
-  PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
   PERMISSIONS.ANDROID.ACTIVITY_RECOGNITION,
   PERMISSIONS.ANDROID.BLUETOOTH_SCAN,
   PERMISSIONS.ANDROID.BLUETOOTH_CONNECT,
+  PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
 ];
 
 const PermissionStatusEmoji: Record<PermissionStatus, string> = {
@@ -47,14 +47,20 @@ export const PermissionsSection = () => {
       RequestDisableOptimization()
       requestMultiple(ANDROID_PERMISSIONS)
         .then(setPermissionsStatus)
-        .then(() => {
-          request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
-        })
-        .then(
-          (status) => {
-            RequestDisableOptimization()
-          },
-        );
+        .then(() =>
+          // BACKGROUND_LOCATION permission must be requested separately after the user has granted foreground location permission
+          // https://developer.android.com/about/versions/11/privacy/location?hl=fr#request-background-location-separately
+          request(PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION)
+        )
+        .then((status) => {
+          setPermissionsStatus(prev => ({ ...prev, [PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION]: status }))
+        },
+        )
+        .then(RequestDisableOptimization)
+        .then(() => BatteryOptEnabled())
+        .then(isBatteryOptimizationEnabled => {
+          setPermissionsStatus(prev => ({ ...prev, BATTERY_OPTIMIZATION: isBatteryOptimizationEnabled ? "denied" : "granted" }))
+        });
     }
   }
 
@@ -63,8 +69,12 @@ export const PermissionsSection = () => {
       checkMultiple(IOS_PERMISSIONS)
         .then(setPermissionsStatus);
     } else {
-      checkMultiple(ANDROID_PERMISSIONS)
-        .then(setPermissionsStatus);
+      checkMultiple([...ANDROID_PERMISSIONS, PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION])
+        .then(setPermissionsStatus)
+        .then(() => BatteryOptEnabled())
+        .then(isBatteryOptimizationEnabled => {
+          setPermissionsStatus(prev => ({ ...prev, BATTERY_OPTIMIZATION: isBatteryOptimizationEnabled ? "denied" : "granted" }))
+        });
     }
   }, [])
 
