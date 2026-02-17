@@ -3,8 +3,8 @@ import * as DriveKitDriverData from "@react-native-drivekit/driver-data";
 import * as DriveKitTripAnalysis from "@react-native-drivekit/trip-analysis";
 import * as DriveKitTripSimulator from "@react-native-drivekit/trip-simulator";
 import { Button } from "@react-navigation/elements";
-import { useState } from "react";
-import { Alert, Platform, Text, TextInput, View } from "react-native";
+import { useEffect } from "react";
+import { Alert, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { OpenOptimizationSettings } from "react-native-battery-optimization-check";
 
 import {
@@ -12,10 +12,13 @@ import {
   request,
   requestMultiple,
 } from "react-native-permissions";
+import { DriveKitSection } from "./components/DriveKitSection";
 
 export default function Index() {
-  // DriveKit.setApiKey("");
-  let [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    DriveKit.setApiKey("");
+  }, [])
 
   const IOS_PERMISSIONS = [
     PERMISSIONS.IOS.LOCATION_WHEN_IN_USE,
@@ -32,68 +35,11 @@ export default function Index() {
   ];
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+    <ScrollView
+      style={styles.container}
     >
-      <Text>DriveKit Expo Demo App.</Text>
-      <View>
-        <Button
-          onPress={async () => {
-            const apiKey = await DriveKit.getApiKey();
-            if (apiKey == null) {
-              Alert.alert("API key check", "Please set your DriveKit API Key");
-            } else {
-              Alert.alert(
-                "API key check",
-                "Your DriveKit API Key is correctly set: " + apiKey,
-              );
-            }
-          }}
-        >
-          Get API Key
-        </Button>
-        <TextInput
-          value={userId}
-          returnKeyType={"done"}
-          onChangeText={setUserId}
-        />
-        <Button
-          onPress={async () => {
-            const localUserId = await DriveKit.getUserId();
-            if (localUserId == null) {
-              DriveKit.setUserId(userId);
-            } else {
-              Alert.alert(
-                "User Id already set",
-                "You already have configured your user identifier: " +
-                  localUserId,
-              );
-            }
-          }}
-        >
-          Configure User ID
-        </Button>
-
-        <Button
-          onPress={async () => {
-            const userId = await DriveKit.getUserId();
-            if (userId == null) {
-              Alert.alert("User ID check", "Please set your DriveKit User ID");
-            } else {
-              Alert.alert(
-                "User ID check",
-                "Your DriveKit UserId is correctly set: " + userId,
-              );
-            }
-          }}
-        >
-          Get User ID
-        </Button>
-      </View>
+      <Text style={styles.title}>DriveKit Expo Demo App.</Text>
+      <DriveKitSection />
       <View>
         <Button
           onPress={() => {
@@ -181,6 +127,16 @@ export default function Index() {
           Start simulation (TRAIN_TRIP)
         </Button>
       </View>
-    </View>
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+  }
+})
