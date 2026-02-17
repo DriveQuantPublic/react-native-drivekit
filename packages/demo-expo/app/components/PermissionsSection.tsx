@@ -1,5 +1,5 @@
 import { Button } from "@react-navigation/elements";
-import { OpenOptimizationSettings } from "react-native-battery-optimization-check";
+import { RequestDisableOptimization } from "react-native-battery-optimization-check";
 import {
   checkMultiple,
   Permission,
@@ -44,15 +44,17 @@ export const PermissionsSection = () => {
       requestMultiple(IOS_PERMISSIONS)
         .then(setPermissionsStatus);
     } else {
+      RequestDisableOptimization()
       requestMultiple(ANDROID_PERMISSIONS)
         .then(setPermissionsStatus)
         .then(() => {
-          request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then(
-            (status) => {
-              OpenOptimizationSettings();
-            },
-          );
-        });
+          request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
+        })
+        .then(
+          (status) => {
+            RequestDisableOptimization()
+          },
+        );
     }
   }
 
