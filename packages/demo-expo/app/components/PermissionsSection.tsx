@@ -49,7 +49,6 @@ export const PermissionsSection = () => {
         .then(() => {
           request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then(
             (status) => {
-              console.log(status);
               OpenOptimizationSettings();
             },
           );
