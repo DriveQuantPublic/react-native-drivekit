@@ -1,9 +1,9 @@
 import * as DriveKitTripAnalysis from "@react-native-drivekit/trip-analysis";
 
 import { Button } from "@react-navigation/elements";
+import { useCallback, useEffect, useState } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { SectionContainer } from "./SectionContainer";
-import { useCallback, useEffect, useState } from "react";
 
 const events = [
   "tripRecordingStarted",
@@ -29,9 +29,9 @@ export const TripAnalysisSection = () => {
   const onNewEvent = useCallback((eventName: string, data?: any) => {
     setLastReceivedEvent(prev => {
       const newEvent = `${eventName} ${data ? `: ${JSON.stringify(data)}` : ""}`;
-      const newEvents = [newEvent, ...prev];
+      const newEvents = [...prev, newEvent];
       if (newEvents.length > 5) {
-        newEvents.pop();
+        newEvents.shift();
       }
       return newEvents;
     })
@@ -54,7 +54,7 @@ export const TripAnalysisSection = () => {
   return <SectionContainer title="Trip Analysis">
 
     <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-      <Text>Last 5 received event:</Text>
+      <Text>Last 5 listener events:</Text>
       <Button onPress={() => setLastReceivedEvent(EMPTY_LOGS)}>Clear</Button>
     </View>
     <View style={styles.eventsContainer}>

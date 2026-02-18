@@ -1,5 +1,11 @@
 package com.reactnativedrivekittripanalysis
 
+import android.os.Build
+import android.util.Log
+import com.drivequant.drivekit.core.DriveKit
+import com.drivequant.drivekit.core.utils.AppStateManager
+import com.drivequant.drivekit.core.utils.ConnectivityType
+import com.drivequant.drivekit.core.utils.DiagnosisHelper
 import com.drivequant.drivekit.core.SynchronizationType
 import com.drivequant.drivekit.tripanalysis.DriveKitTripAnalysis
 import com.drivequant.drivekit.tripanalysis.TripListener
