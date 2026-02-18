@@ -38,13 +38,19 @@ const withDKTripAnalysis: ConfigPlugin<AndroidProps> = (
       config.modResults.language === 'java'
     );
 
+    stringContents = stringContents.replace(
+      /.*(DriveKitExpoPlugin)+.*\n?/g,
+      ''
+    );
+
     stringContents = appendContentsInsideDeclarationBlock(
       stringContents,
       'onCreate',
-      `val tripNotification = RNTripNotification(123, "${tripNotificationTitle}", "${tripNotificationBody}", 0)\n
-       DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification)\n
-       val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("${headlessNotificationTitle}", "${headlessNotificationBody}")\n
-       DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)\n`
+      `    val tripNotification = RNTripNotification(123, "${tripNotificationTitle}", "${tripNotificationBody}", 0) /*DriveKitExpoPlugin*/
+    DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification)  /*DriveKitExpoPlugin*/
+    val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("${headlessNotificationTitle}", "${headlessNotificationBody}")  /*DriveKitExpoPlugin*/
+    DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)  /*DriveKitExpoPlugin*/
+`
     );
     config.modResults.contents = stringContents;
 
