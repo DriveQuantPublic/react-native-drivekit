@@ -43,11 +43,9 @@ class DKHeadlessJSService : HeadlessJsTaskService() {
 
     return HeadlessJsTaskConfig(
       TASKKEY,
-      if (intent.extras != null) {
-        Arguments.fromBundle(intent.extras)
-      } else {
-        Arguments.createMap()
-      },
+      intent.extras?.let {
+        Arguments.fromBundle(it)
+      } ?: Arguments.createMap(),
       10000,
       true
     )
