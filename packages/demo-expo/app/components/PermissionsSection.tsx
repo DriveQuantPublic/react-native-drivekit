@@ -8,6 +8,7 @@ import {
   request,
   requestMultiple
 } from "react-native-permissions";
+import * as Notifications from 'expo-notifications';
 
 import { useEffect, useState } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
@@ -60,6 +61,16 @@ export const PermissionsSection = () => {
         .then(() => BatteryOptEnabled())
         .then(isBatteryOptimizationEnabled => {
           setPermissionsStatus(prev => ({ ...prev, BATTERY_OPTIMIZATION: isBatteryOptimizationEnabled ? "denied" : "granted" }))
+        })
+        .then(Notifications.getPermissionsAsync)
+        .then(({ status: existingStatus }) => {
+          if (existingStatus !== 'granted') {
+            return Notifications.requestPermissionsAsync();
+          } else {
+            return { granted: true } as Notifications.NotificationPermissionsStatus;
+          }
+        }).then((status) => {
+          setPermissionsStatus(prev => ({ ...prev, NOTIFICATIONS: status?.granted ? "granted" : "denied" }))
         });
     }
   }
@@ -74,6 +85,10 @@ export const PermissionsSection = () => {
         .then(() => BatteryOptEnabled())
         .then(isBatteryOptimizationEnabled => {
           setPermissionsStatus(prev => ({ ...prev, BATTERY_OPTIMIZATION: isBatteryOptimizationEnabled ? "denied" : "granted" }))
+        })
+        .then(Notifications.getPermissionsAsync)
+        .then(({ status: existingStatus }) => {
+          setPermissionsStatus(prev => ({ ...prev, NOTIFICATIONS: existingStatus as PermissionStatus }))
         });
     }
   }, [])
