@@ -46,7 +46,8 @@ const withDKTripAnalysis: ConfigPlugin<AndroidProps> = (
     stringContents = appendContentsInsideDeclarationBlock(
       stringContents,
       'onCreate',
-      `    val tripNotification = RNTripNotification(123, "${tripNotificationTitle}", "${tripNotificationBody}", 0) /*DriveKitExpoPlugin*/
+      `  val appIconId = applicationContext.getApplicationInfo().icon;
+    val tripNotification = RNTripNotification(123, "${tripNotificationTitle}", "${tripNotificationBody}", appIconId) /*DriveKitExpoPlugin*/
     DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification)  /*DriveKitExpoPlugin*/
     val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("${headlessNotificationTitle}", "${headlessNotificationBody}")  /*DriveKitExpoPlugin*/
     DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)  /*DriveKitExpoPlugin*/
