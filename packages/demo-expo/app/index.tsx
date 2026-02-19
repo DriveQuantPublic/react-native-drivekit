@@ -12,6 +12,7 @@ import { TripSimulatorSection } from "./components/TripSimulatorSection";
 
 
 AppRegistry.registerHeadlessTask('DKHeadlessJS', () =>
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   require('./headlessJSTask/tripAnalysisHeadlessEventsHandler'),
 );
 
