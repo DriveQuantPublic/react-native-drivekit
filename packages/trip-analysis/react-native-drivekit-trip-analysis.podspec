@@ -2,7 +2,7 @@ require "json"
 
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
-  
+
 Pod::Spec.new do |s|
   s.name         = "react-native-drivekit-trip-analysis"
   s.version      = package["version"]
@@ -31,8 +31,6 @@ Pod::Spec.new do |s|
         "OTHER_CPLUSPLUSFLAGS" => "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1",
         "CLANG_CXX_LANGUAGE_STANDARD" => "c++17"
       }
-
-      install_modules_dependencies(s)
 
       s.dependency "React-Codegen"
       s.dependency "RCT-Folly"
