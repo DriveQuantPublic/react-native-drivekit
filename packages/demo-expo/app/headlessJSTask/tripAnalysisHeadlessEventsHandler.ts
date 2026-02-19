@@ -22,7 +22,7 @@ module.exports = async (taskData: any) => {
         taskData.eventType === 'TRIP_SAVED_FOR_REPOST'
     ) {
 
-        var body = 'A new trip has been analyzed';
+        let body = 'A new trip has been analyzed';
         if (taskData.eventType === 'TRIP_SAVED_FOR_REPOST') {
             body =
                 'The trip could not be analyzed because your phone is not connected to the mobile network. It will be analyzed later';

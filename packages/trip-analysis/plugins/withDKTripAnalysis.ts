@@ -1,5 +1,5 @@
 import CONFIG_PLUGINS from '@expo/config-plugins';
-const { ConfigPlugin, withMainApplication } = CONFIG_PLUGINS;
+const { withMainApplication } = CONFIG_PLUGINS;
 
 import {
   addImports,
@@ -13,21 +13,29 @@ type AndroidProps = {
   headlessNotificationBody?: string;
 };
 
-const withDKTripAnalysis: ConfigPlugin<AndroidProps> = (
-  config,
-  options = {}
-) => {
-  const tripNotificationTitle = options.tripNotificationTitle || 'DriveKit SDK';
-  const tripNotificationBody =
-    options.tripNotificationBody || 'Start a trip with DriveKit SDK';
-  const headlessNotificationTitle =
-    options.headlessNotificationTitle || 'DriveKit SDK';
-  const headlessNotificationBody =
-    options.headlessNotificationBody || 'Loading in progress…';
+const DEFAULT_ANDROID_PROPS: AndroidProps = {
+  tripNotificationTitle: 'DriveKit SDK',
+  tripNotificationBody: 'Start a trip with DriveKit SDK',
+  headlessNotificationTitle: 'DriveKit SDK',
+  headlessNotificationBody: 'Loading in progress…',
+};
 
-  return withMainApplication(config, (config) => {
+const withDKTripAnalysis = (config: any, options: AndroidProps) => {
+  const tripNotificationTitle =
+    options.tripNotificationTitle ||
+    DEFAULT_ANDROID_PROPS.tripNotificationTitle;
+  const tripNotificationBody =
+    options.tripNotificationBody || DEFAULT_ANDROID_PROPS.tripNotificationBody;
+  const headlessNotificationTitle =
+    options.headlessNotificationTitle ||
+    DEFAULT_ANDROID_PROPS.headlessNotificationTitle;
+  const headlessNotificationBody =
+    options.headlessNotificationBody ||
+    DEFAULT_ANDROID_PROPS.headlessNotificationBody;
+
+  return withMainApplication(config, (configInput) => {
     //config.
-    let stringContents = config.modResults.contents;
+    let stringContents = configInput.modResults.contents;
     stringContents = addImports(
       stringContents,
       [
