@@ -89,6 +89,27 @@ export const DriveKitSection = () => {
     >
       Get User ID
     </Button>
+
+    <Button
+        onPress={async () => {
+          try {
+            await DriveKit.composeDiagnosisMail({
+              recipients: [],
+              bccRecipients: [],
+              subject: 'Diagnosis mail',
+              body: 'Body mail',
+            });
+          } catch (error) {
+            if (error instanceof Error) {
+              Alert.alert('An error occured. Reason: ', error.message);
+            } else {
+              Alert.alert('An error occured. Reason: ', JSON.stringify(error));
+            }
+          }
+        }}
+      >Compose diagnosis mail
+    </Button>
+
   </SectionContainer>
 }
 
