@@ -12,7 +12,7 @@ import { TripSimulatorSection } from "./components/TripSimulatorSection";
 
 
 AppRegistry.registerHeadlessTask('DKHeadlessJS', () =>
-  require('./headlessJSTask/headlessJSTask'),
+  require('./headlessJSTask/tripAnalysisHeadlessEventsHandler'),
 );
 
 export default function App() {

@@ -3,7 +3,7 @@ import * as Notifications from 'expo-notifications';
 import {
     getBodyForCanceledTripReason,
     getBodyForFinishedTripResponse,
-} from './notificationsHelper';
+} from './tripAnalysisNotificationsHelper';
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -15,7 +15,6 @@ Notifications.setNotificationHandler({
 });
 
 module.exports = async (taskData: any) => {
-    console.log('Received background task with data:', JSON.stringify(taskData, null, 2));
     if (
         taskData.eventType === 'TRIP_FINISHED_WITH_RESULT_VALID' ||
         taskData.eventType === 'TRIP_FINISHED_WITH_RESULT_ERROR' ||
