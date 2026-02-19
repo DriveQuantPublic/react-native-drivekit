@@ -4,7 +4,7 @@ import * as DriveKitTripAnalysis from '@react-native-drivekit/trip-analysis';
 export function getBodyForCanceledTripReason(
   reason: DriveKitTripAnalysis.DKTripCancelationReason,
 ): string {
-  var body: string = 'Your trip has been canceled';
+  let body: string = 'Your trip has been canceled';
   if (
     reason === DriveKitTripAnalysis.DKTripCancelationReason.NO_LOCATION_DATA
   ) {
@@ -36,13 +36,13 @@ export async function getBodyForFinishedTripResponse(
   hasSafetyAndEcoDrivingScore: boolean | null,
   itinId: string | null,
 ): Promise<string> {
-  var body = 'A new trip has been analyzed';
+  let body = 'A new trip has been analyzed';
   if (isTripValid && itinId != null) {
     const trip = await DriveKitDriverData.getTrip(itinId);
     if (trip != null && trip.trip != null) {
       const transportationMode = trip.trip.transportationMode;
       if (isAlternativeTransportationMode(transportationMode)) {
-        var name = 'unknown';
+        let name = 'unknown';
         if (transportationMode === 4) {
           name = 'BUS';
         } else if (transportationMode === 6) {

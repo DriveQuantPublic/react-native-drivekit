@@ -24,7 +24,7 @@ const events = [
 export const TripAnalysisSection = () => {
 
   const EMPTY_LOGS = Array<string>(5).fill("");
-  const [lastReceivedEvent, setLastReceivedEvent] = useState<Array<string>>(EMPTY_LOGS);
+  const [lastReceivedEvent, setLastReceivedEvent] = useState<string[]>(EMPTY_LOGS);
 
   const onNewEvent = useCallback((eventName: string, data?: any) => {
     setLastReceivedEvent(prev => {
@@ -35,7 +35,7 @@ export const TripAnalysisSection = () => {
       }
       return newEvents;
     })
-  }, [lastReceivedEvent])
+  }, [])
 
   useEffect(() => {
     const listeners = events.map(event =>
@@ -49,7 +49,7 @@ export const TripAnalysisSection = () => {
         listener.remove();
       })
     }
-  }, [])
+  }, [onNewEvent])
 
   return <SectionContainer title="Trip Analysis">
 
