@@ -133,5 +133,8 @@
         "jsSrcsDir": "src"
       }
     ]
+  },
+  "dependencies": {
+    "@expo/config-plugins": "^54.0.4"
   }
 }

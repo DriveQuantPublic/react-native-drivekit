@@ -1,0 +1,89 @@
+{
+  "expo": {
+    "name": "DriveKitDemoExpoApp",
+    "slug": "DriveKitDemoExpoApp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "drivekitdemoexpoapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.drivekit.drivekitexpodemoapp",
+      "appleTeamId": "DM95YM67TK",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "The application needs to use bluetooth in order to retrieve beacon battery level",
+        "NSBluetoothPeripheralUsageDescription": "The application needs to use bluetooth in order to retrieve beacon battery level",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "To enable automatic trip detection and driving analysis without having to manipulate your phone, select the option \"Always allow\". Good road...",
+        "NSLocationAlwaysUsageDescription": "To enable automatic trip detection and driving analysis without having to manipulate your phone, select the option \"Always allow\". Good road...",
+        "NSLocationWhenInUseUsageDescription": "To automatically detect and analyze your trips, the application needs access to your position at all times.",
+        "NSMotionUsageDescription": "This application needs to use motion data to detect transportation mode",
+        "UIBackgroundModes": ["fetch", "location"],
+        "BGTaskSchedulerPermittedIdentifiers":["com.drivequant.diagnosis.app.refresh"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.DriveKitDemoExpoApp",
+      "permissions": ["android.permission.POST_NOTIFICATIONS"]
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 26
+          }
+        }
+      ],
+      [
+        "react-native-permissions",
+        {
+          "iosPermissions": [
+            "Bluetooth",
+            "LocationAlways",
+            "LocationWhenInUse",
+            "Motion"
+          ]
+        }],
+        ["../trip-analysis/plugins/withDKTripAnalysis.ts",
+        {
+          "tripNotificationTitle": "Recording Trip",
+          "tripNotificationBody":"A trip is about to be recorded",
+          "headlessNotificationTitle":"App Activity",
+          "headlessNotificationBody":"App is receiving and processing background event"
+        }
+
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
