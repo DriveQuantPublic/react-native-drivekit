@@ -46,19 +46,20 @@ const withDKTripAnalysis = (config: any, options: AndroidProps) => {
     );
 
     stringContents = stringContents.replace(
-      /.*(DriveKitExpoPlugin)+.*\n?/g,
+      /(\/\*DriveKitExpoPlugin-START\*\/)+(\n|.)*?(\/\*DriveKitExpoPlugin-END\*\/\n)+/g,
       ''
     );
 
     stringContents = appendContentsInsideDeclarationBlock(
       stringContents,
       'onCreate',
-      `  val appIconId = applicationContext.getApplicationInfo().icon;
-    val tripNotification = RNTripNotification(123, "${tripNotificationTitle}", "${tripNotificationBody}", appIconId) /*DriveKitExpoPlugin*/
-    DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification)  /*DriveKitExpoPlugin*/
-    val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("${headlessNotificationTitle}", "${headlessNotificationBody}")  /*DriveKitExpoPlugin*/
-    DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)  /*DriveKitExpoPlugin*/
-`
+      `/*DriveKitExpoPlugin-START*/
+    val appIconId = applicationContext.getApplicationInfo().icon;
+    val tripNotification = RNTripNotification(123, "${tripNotificationTitle}", "${tripNotificationBody}", appIconId)
+    DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification)
+    val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("${headlessNotificationTitle}", "${headlessNotificationBody}")
+    DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)
+    /*DriveKitExpoPlugin-END*/\n`
     );
     modConfig.modResults.contents = stringContents;
 
