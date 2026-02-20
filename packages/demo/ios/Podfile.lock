@@ -1260,7 +1260,7 @@ PODS:
     - React-jsiexecutor
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
-  - react-native-drivekit-core (3.6.0):
+  - react-native-drivekit-core (3.7.0):
     - DoubleConversion
     - DriveKitCore (= 2.26.0)
     - glog
@@ -1282,7 +1282,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-drivekit-driver-data (3.6.0):
+  - react-native-drivekit-driver-data (3.7.0):
     - DoubleConversion
     - DriveKitDriverData (= 2.26.0)
     - glog
@@ -1304,7 +1304,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-drivekit-trip-analysis (3.6.0):
+  - react-native-drivekit-trip-analysis (3.7.0):
     - DoubleConversion
     - DriveKitTripAnalysis (= 2.26.0)
     - glog
@@ -1326,7 +1326,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-drivekit-trip-simulator (3.6.0):
+  - react-native-drivekit-trip-simulator (3.7.0):
     - DoubleConversion
     - DriveKitTripSimulator (= 2.26.0)
     - glog
@@ -1955,10 +1955,10 @@ SPEC CHECKSUMS:
   React-logger: 74ddb793d36b48bba176328c7af75e5e656fd405
   React-Mapbuffer: 39e87693178fd6483bb5ca8b851fae362d49409a
   React-microtasksnativemodule: b740ebae7fad70aa78bc24cc0dfc15ac9637b6eb
-  react-native-drivekit-core: b0a77604dc2cbbc7ff06a72d01b1a5cdcedfe8ba
-  react-native-drivekit-driver-data: 291926cd586817a49793aed732a79f70db83f661
-  react-native-drivekit-trip-analysis: 1a4feeb6ddbfcc96a385b864b25c8d699b861e27
-  react-native-drivekit-trip-simulator: 7960cb93ca31adb25ddcf90702dd0d239586c3e5
+  react-native-drivekit-core: b20cfcd0783b4ac5df3ca1085905758d438db9ad
+  react-native-drivekit-driver-data: 11b1aaecf90e4e4a94414028cbe144ba2419c1c9
+  react-native-drivekit-trip-analysis: d030bb68f16c50fa9157d826bcf5c3f3c3186027
+  react-native-drivekit-trip-simulator: bb6cc17a684e90c8cddc75a225fe492fdbfc45a8
   React-NativeModulesApple: af0571ac115d09c9a669ed45ce6a4ca960598a2d
   React-perflogger: 26d07766b033f84559bd520e949453dba8bf1cd8
   React-performancetimeline: 0f3e0b6e2152951257bd8c90f95d527cf4316fa8
@@ -1995,4 +1995,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 546f1ad17ad4a90c5e59156e833d29edff24fa24
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2
