@@ -1,50 +1,74 @@
-# Welcome to your Expo app 👋
+# Welcome to the DriveKit Expo Demo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
-## Get started
+## Run the DriveKit Expo Demo App
 
 1. Install dependencies
 
    ```bash
-   npm install
+   yarn install
    ```
 
-2. Start the app
+2. Install Expo dependencies
+
+   ```bash
+   npx expo install
+   ```
+
+3. Start the app
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Add DriveKit to your Expo app
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Add packages
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+DriveKit packages can be added to an Expo project with the following commands:
 
-## Get a fresh project
+   ```bash
+   npx expo install @react-native-drivekit/core
+   npx expo install @react-native-drivekit/trip-analysis
+   npx expo install @react-native-drivekit/driver-data
+   npx expo install @react-native-drivekit/trip-simulator
+   ```
 
-When you're ready, run:
+### Add trip-analysis Expo config plugin
 
-```bash
-npm run reset-project
-```
+To configure `trip-analysis` on Expo, `app.json` file needs to be updated by adding the trip-analysis config plugin. 
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Also, other plugins may need to be configured (like `expo-build-properties` to configure `minSdkVersion` for Android, and `react-native-permissions` to configure permissions for iOS).
 
-## Learn more
+The plugins section in `app.json` would look like the following: 
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   ```json
+     "plugins": [
+      …,
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 26
+          }
+        }
+      ],
+      [
+        "react-native-permissions",
+        {
+          "iosPermissions": [
+            "Bluetooth",
+            "LocationAlways",
+            "LocationWhenInUse",
+            "Motion"
+          ]
+        }],
+        ["@react-native-drivekit/trip-analysis",
+        {
+          "tripNotificationTitle": "Recording Trip",
+          "tripNotificationBody":"A trip is about to be recorded",
+          "headlessNotificationTitle":"App Activity",
+          "headlessNotificationBody":"App is receiving and processing background event"
+        }
+      ]
+    ],
+   ```
