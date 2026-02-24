@@ -19,7 +19,10 @@ AppRegistry.registerHeadlessTask('DKHeadlessJS', () =>
 export default function App() {
 
   useEffect(() => {
-    DriveKit.setApiKey("");
+    // ========================================
+    // ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
+    // ========================================
+    // DriveKit.setApiKey('');
   }, [])
 
   const { top, bottom, left, right } = useSafeAreaInsets();

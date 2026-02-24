@@ -1,6 +1,19 @@
 # Welcome to the DriveKit Expo Demo app 👋
 
-## Run the DriveKit Expo Demo App
+## How to run the DriveKit Expo Demo App?
+
+To run the sample Expo app you must have a valid API key.
+
+Please contact us to get your API key via: [contact@drivequant.com](mailto:contact@drivequant.com)
+
+Once you have the API key, uncomment `DriveKit.setApiKey("")` line in `index.tsx` and paste the API key in this line
+
+```
+// ========================================
+// ↓↓↓ ENTER YOUR DRIVEKIT API KEY HERE ↓↓↓
+// ========================================
+// DriveKit.setApiKey('');
+```
 
 1. Install dependencies
 
@@ -20,7 +33,7 @@
    npx expo start
    ```
 
-## Add DriveKit to your Expo app
+## How to add DriveKit to your Expo app
 
 ### Add packages
 
