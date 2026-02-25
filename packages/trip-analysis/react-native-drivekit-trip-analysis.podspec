@@ -32,11 +32,6 @@ Pod::Spec.new do |s|
         "CLANG_CXX_LANGUAGE_STANDARD" => "c++17"
       }
 
-<<<<<<< HEAD
-=======
-      install_modules_dependencies(s)
-
->>>>>>> 89a14e8 (feat: update podspec files to ensure Expo compatibility)
       s.dependency "React-Codegen"
       s.dependency "RCT-Folly"
       s.dependency "RCTRequired"

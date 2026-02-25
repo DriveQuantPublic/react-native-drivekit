@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.8.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.7.0...v3.8.0) (2026-02-25)
+
+
+### Bug Fixes
+
+* ignore linter error for require import ([94c55ca](https://github.com/DriveQuantPublic/react-native-drivekit/commit/94c55ca91b5a0a721f2862e8476341985d8f5189))
+* import drivekit modules from local monorepo ([7570b31](https://github.com/DriveQuantPublic/react-native-drivekit/commit/7570b312438db8847ad753bf50e50659c33cb7b2))
+* permission flow ([799ed14](https://github.com/DriveQuantPublic/react-native-drivekit/commit/799ed1405685bec3fc6af1f2e464a792895aaccd))
+* redirect to battery optimization screen instead of general settings from permissions ([8619071](https://github.com/DriveQuantPublic/react-native-drivekit/commit/8619071ff1e0e752c427891b077e168fa26b55f2))
+* stytling ([7f45a2e](https://github.com/DriveQuantPublic/react-native-drivekit/commit/7f45a2e1a6f59f3d36338a2abb2aa269194a1f42))
+
+
+### Features
+
+* add button to stop trip simulation ([1357061](https://github.com/DriveQuantPublic/react-native-drivekit/commit/135706183231b548ffce3280bfa6fae9bb087ddf))
+* add eventsListeners to sdk ([a2339ff](https://github.com/DriveQuantPublic/react-native-drivekit/commit/a2339ffdaf9820559fd6c2ba17f7a9d010cedad4))
+* add initial version of DriveKit Expo demo App ([ca6cee1](https://github.com/DriveQuantPublic/react-native-drivekit/commit/ca6cee188517c109f1e0091975a8b3bb8f301727))
+* add notification permission ([8f58d3b](https://github.com/DriveQuantPublic/react-native-drivekit/commit/8f58d3be10a73c02e26c717b75603eab7a5042a7))
+* separate module test button in sections ([d79399a](https://github.com/DriveQuantPublic/react-native-drivekit/commit/d79399a9aa18867036afac16931708a496889b1e))
+* setup app icon in tripAnalysis notifications ([627e5e6](https://github.com/DriveQuantPublic/react-native-drivekit/commit/627e5e6cea7cbcd3eebc7f77d6afca45023e0a68))
+* setup headeless JS task ([25261f1](https://github.com/DriveQuantPublic/react-native-drivekit/commit/25261f152dd16680d8fa1203ac37218c31fd3cc6))
+* style permissions section ([1c4981e](https://github.com/DriveQuantPublic/react-native-drivekit/commit/1c4981e5c9868472b59e05aa34e9331e5c428c03))
+* update podspec files to ensure Expo compatibility ([232b8ac](https://github.com/DriveQuantPublic/react-native-drivekit/commit/232b8ac1dbaac9e4925ed2fdb4f4ba3b3ab73035))
+
+
+
+
+
 # [3.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.6.0...v3.7.0) (2026-02-20)
 
 

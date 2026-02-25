@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.8.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.7.0...v3.8.0) (2026-02-25)
+
+
+### Features
+
+* setup app icon in tripAnalysis notifications ([627e5e6](https://github.com/DriveQuantPublic/react-native-drivekit/commit/627e5e6cea7cbcd3eebc7f77d6afca45023e0a68))
+* setup headeless JS task ([25261f1](https://github.com/DriveQuantPublic/react-native-drivekit/commit/25261f152dd16680d8fa1203ac37218c31fd3cc6))
+* update podspec files to ensure Expo compatibility ([232b8ac](https://github.com/DriveQuantPublic/react-native-drivekit/commit/232b8ac1dbaac9e4925ed2fdb4f4ba3b3ab73035))
+
+
+
+
+
 # [3.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.6.0...v3.7.0) (2026-02-20)
 
 
