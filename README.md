@@ -12,6 +12,12 @@ The DriveKit SDK also use the New Architecture since the `3.0.0` version.
 
 ## How to install the DriveKit SDK in your React Native application?
 
+### Installation for Expo projects
+
+Integration with Expo is possible when using a development build. You can configure the project via config plugins or manually configure the native projects yourself (the "bare workflow").
+
+*NOTE:* React Native DriveKit SDK cannot be used in the pre-compiled Expo Go app because React Native DriveKit uses native code that is not compiled into Expo Go.
+
 ### ➡️ Step 1: Install the Core module
 
 First you need to install the Core module. 
@@ -65,17 +71,4 @@ Notification that indicates a trip is currently analyzed is driven by the Trip A
 
 To display a notification when the trip is finished or canceled, it is not possible to handle listeners like the iOS platform, because listeners are not triggered when the device is locked or the app is not in foreground. To manage that limitation, a Headless JS service has been introduced on Trip Analysis component.
 
-Follow these steps :
-
-- Call the following code in the `onCreate()` method of your `Application` class:
-```kotlin
-//Configure TripAnalysis trip recording notification
-val tripNotification = RNTripNotification(123, "DriveKit SDK", "Start a trip with DriveKit SDK", R.drawable.ic_notification)
-DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
-
-//Configure TripAnalysis HeadlessJS notification
-val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("DriveKit SDK", "Loading in progress…")
-DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)
-```
-- Register the Headless task named `DKHeadlessJS` on your `index.js` file.
-- Replicate the `DKHeadlessJS.js` file on your project. 
+To configure your notifications, follow this documentation according to your setup: [README.md](./packages/trip-analysis/README.md#android-setup)
