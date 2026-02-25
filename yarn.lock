@@ -4884,7 +4884,7 @@ __metadata:
     react-native-builder-bob: "npm:^0.20.0"
     typescript: "npm:^4.5.2"
   peerDependencies:
-    "@react-native-drivekit/core": 3.7.0
+    "@react-native-drivekit/core": 3.8.0
     react: "*"
     react-native: "*"
   languageName: unknown
