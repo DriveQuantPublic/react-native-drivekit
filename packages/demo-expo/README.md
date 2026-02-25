@@ -6,7 +6,7 @@ To run the sample Expo app you must have a valid API key.
 
 Please contact us to get your API key via: [contact@drivequant.com](mailto:contact@drivequant.com)
 
-Once you have the API key, uncomment `DriveKit.setApiKey("")` line in `index.tsx` and paste the API key in this line
+Once you have the API key, uncomment `DriveKit.setApiKey('')` line in `index.tsx` and paste the API key in this line
 
 ```
 // ========================================
@@ -29,8 +29,14 @@ Once you have the API key, uncomment `DriveKit.setApiKey("")` line in `index.tsx
 
 3. Start the app
 
+   on Android: 
    ```bash
-   npx expo start
+   npx expo run:android
+   ```
+
+   on iOS: 
+   ```bash
+   npx expo run:ios
    ```
 
 ## How to add DriveKit to your Expo app
