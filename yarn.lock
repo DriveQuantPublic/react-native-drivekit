@@ -4814,7 +4814,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-drivekit/core@npm:^3.6.0, @react-native-drivekit/core@workspace:packages/core":
+"@react-native-drivekit/core@npm:3.7.0":
+  version: 3.7.0
+  resolution: "@react-native-drivekit/core@npm:3.7.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/ff48c38c875218da0cc3bdcf772200b146d2d7d6cd0d6d804d92666849c8a6efdde6431227bfc52cbdfdd542582ce8cdc8df1c2b79afec126fdd75f320b54691
+  languageName: node
+  linkType: hard
+
+"@react-native-drivekit/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@react-native-drivekit/core@workspace:packages/core"
   dependencies:
@@ -4838,7 +4848,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@react-native-drivekit/driver-data@npm:^3.6.0, @react-native-drivekit/driver-data@workspace:packages/driver-data":
+"@react-native-drivekit/driver-data@npm:3.7.0":
+  version: 3.7.0
+  resolution: "@react-native-drivekit/driver-data@npm:3.7.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/871c4593a12543f90030c814d97208ce4dafed9b03322194b6494245838233b1482105c7ad80d8e63929dd19c813f3f90dde6cf48e4363eae349b63dffab66de
+  languageName: node
+  linkType: hard
+
+"@react-native-drivekit/driver-data@workspace:packages/driver-data":
   version: 0.0.0-use.local
   resolution: "@react-native-drivekit/driver-data@workspace:packages/driver-data"
   dependencies:
@@ -4863,7 +4883,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@react-native-drivekit/trip-analysis@npm:^3.6.0, @react-native-drivekit/trip-analysis@workspace:packages/trip-analysis":
+"@react-native-drivekit/trip-analysis@npm:3.7.0":
+  version: 3.7.0
+  resolution: "@react-native-drivekit/trip-analysis@npm:3.7.0"
+  peerDependencies:
+    "@react-native-drivekit/core": 3.7.0
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/11b277404d9d4b776caf584c149df850cab3fdc14ca48fe8d8d93f6ce7580ef02a9fe870c3d043247b09bcbd64c26f351388a61ab6ca3cc2b936cc878df6f57e
+  languageName: node
+  linkType: hard
+
+"@react-native-drivekit/trip-analysis@workspace:packages/trip-analysis":
   version: 0.0.0-use.local
   resolution: "@react-native-drivekit/trip-analysis@workspace:packages/trip-analysis"
   dependencies:
@@ -4890,7 +4921,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@react-native-drivekit/trip-simulator@npm:^3.6.0, @react-native-drivekit/trip-simulator@workspace:packages/trip-simulator":
+"@react-native-drivekit/trip-simulator@npm:3.7.0":
+  version: 3.7.0
+  resolution: "@react-native-drivekit/trip-simulator@npm:3.7.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/96e25d114ad85f32cc31b3f2e90d1d1bad6807ee08c81bc9cb3e2cb61dde5119f81a82753ef641cb6b9247c1dee4cb78ed66790a9e94ee375ad40a29423423f5
+  languageName: node
+  linkType: hard
+
+"@react-native-drivekit/trip-simulator@workspace:packages/trip-simulator":
   version: 0.0.0-use.local
   resolution: "@react-native-drivekit/trip-simulator@workspace:packages/trip-simulator"
   dependencies:
@@ -9046,10 +9087,10 @@ __metadata:
   resolution: "drivekitdemoexpoapp@workspace:packages/demo-expo"
   dependencies:
     "@expo/vector-icons": "npm:^15.0.3"
-    "@react-native-drivekit/core": "npm:^3.6.0"
-    "@react-native-drivekit/driver-data": "npm:^3.6.0"
-    "@react-native-drivekit/trip-analysis": "npm:^3.6.0"
-    "@react-native-drivekit/trip-simulator": "npm:^3.6.0"
+    "@react-native-drivekit/core": "npm:3.7.0"
+    "@react-native-drivekit/driver-data": "npm:3.7.0"
+    "@react-native-drivekit/trip-analysis": "npm:3.7.0"
+    "@react-native-drivekit/trip-simulator": "npm:3.7.0"
     "@react-navigation/bottom-tabs": "npm:^7.4.0"
     "@react-navigation/elements": "npm:^2.6.3"
     "@react-navigation/native": "npm:^7.1.8"
