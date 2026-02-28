@@ -48,11 +48,7 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
     @objc internal func enableMonitorPotentialTripStart(enable: Bool) -> Void {
         DriveKitTripAnalysis.shared.monitorPotentialTripStart = enable;
     }
-
-    @objc internal func reset() -> Void {
-        DriveKitTripAnalysis.shared.reset();
-    }
-
+    
     @objc internal func setStopTimeout(_ stopTimeout: Double) -> Void {
         DriveKitTripAnalysis.shared.setStopTimeOut(timeOut: Int(stopTimeout))
     }
@@ -194,25 +190,5 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
     public func crashFeedbackSent(crashInfo: DriveKitTripAnalysisModule.DKCrashInfo, feedbackType: DriveKitTripAnalysisModule.DKCrashFeedbackType, severity: DriveKitTripAnalysisModule.DKCrashFeedbackSeverity) {
         RNTripAnalysisEventEmitter.shared.dispatch(name: "crashFeedbackSent", body:
                                         [crashInfo: mapDKCrashInfo(info: crashInfo), feedbackType: mapDKCrashFeedbackType(type: feedbackType), severity: mapDKCrashFeedbackSeverity(severity: severity)])
-    }
-
-    public func tripStarted(startMode: DriveKitTripAnalysisModule.StartMode) {
-        let rnStartMode = mapStartMode(startMode: startMode)
-        if let unwrappedRNStartMode = rnStartMode {
-            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripStarted", body: unwrappedRNStartMode)
-        }
-    }
-
-    public func tripFinished(post: DriveKitTripAnalysisModule.PostGeneric, response: DriveKitTripAnalysisModule.PostGenericResponse) {
-        if let unwrappedJSONPost = post.toJSON().toJSONString(), let unwrappedJSONResponse = response.toJSON().toJSONString() {
-            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripFinished", body: ["post": unwrappedJSONPost, "response": unwrappedJSONResponse])
-        }
-    }
-
-    public func tripCancelled(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) {
-        let rnCancelTrip = mapCancelTrip(cancelTrip: cancelTrip)
-        if let unwrappedRNCancelTrip = rnCancelTrip {
-            RNTripAnalysisEventEmitter.shared.dispatch(name: "tripCancelled", body: unwrappedRNCancelTrip)
-        }
     }
 }

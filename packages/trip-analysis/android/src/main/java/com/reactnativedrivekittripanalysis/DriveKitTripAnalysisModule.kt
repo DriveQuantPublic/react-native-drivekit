@@ -82,12 +82,6 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
-  @Deprecated("You no longer need to call the reset method of any module except the one in DriveKit")
-  override fun reset(promise: Promise) {
-    promise.resolve(null)
-  }
-
-  @ReactMethod
   override fun setStopTimeout(stopTimeout: Double, promise: Promise) {
     DriveKitTripAnalysis.setStopTimeOut(stopTimeout.toInt())
     promise.resolve(null)

@@ -66,10 +66,6 @@ export function enableMonitorPotentialTripStart(
   return DriveKitTripAnalysis.enableMonitorPotentialTripStart(enable);
 }
 
-export function reset(): Promise<void> {
-  return DriveKitTripAnalysis.reset();
-}
-
 export function setStopTimeout(stopTimeout: number): Promise<void> {
   return DriveKitTripAnalysis.setStopTimeout(stopTimeout);
 }

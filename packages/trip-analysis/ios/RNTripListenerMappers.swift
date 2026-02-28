@@ -199,37 +199,6 @@ func mapTripResponseError(error: TripResponseError?) -> String? {
     return rnError
 }
 
-func mapCancelTrip(cancelTrip: DriveKitTripAnalysisModule.CancelTrip) -> String? {
-    var rnCancelTrip: String? = nil
-    switch cancelTrip {
-    case .user:
-        rnCancelTrip = "USER"
-    case .highspeed:
-        rnCancelTrip = "HIGH_SPEED"
-    case .noSpeed:
-        rnCancelTrip = "NO_SPEED"
-    case .noBeacon:
-        rnCancelTrip = "NO_BEACON"
-    case .missingConfiguration:
-        rnCancelTrip = "MISSING_CONFIGURATION"
-    case .noGPSData:
-        rnCancelTrip = "NO_GPS_DATA"
-    case .reset:
-        rnCancelTrip = "RESET"
-    case .beaconNoSpeed:
-        rnCancelTrip = "BEACON_NO_SPEED"
-    case .noBluetoothDevice:
-        rnCancelTrip = "NO_BLUETOOTH_DEVICE"
-    case .bluetoothDeviceNoSpeed:
-        rnCancelTrip = "BLUETOOTH_DEVICE_NO_SPEED"
-        
-    @unknown default:
-        print("[mapCancelTrip] Unknown cancel trip reason \(cancelTrip.rawValue)")
-    }
-    return rnCancelTrip;
-}
-
-
 func mapTripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) -> NSDictionary {
     return [
         "latitude": tripPoint.latitude,

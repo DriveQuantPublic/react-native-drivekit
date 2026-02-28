@@ -329,7 +329,6 @@ export enum UpdateDriverPassengerModeStatus {
 }
 
 export interface Spec extends TurboModule {
-  reset(): Promise<void>;
   deleteTrip(itinId: string): Promise<boolean>;
   getRoute(itinId: string): Promise<Route | null>;
   getTrip(itinId: string): Promise<GetTripResponse | null>;

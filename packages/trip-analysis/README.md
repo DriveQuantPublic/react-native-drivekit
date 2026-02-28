@@ -183,9 +183,11 @@ You can listen to events thanks to the `addEventListener` api.
 ```typescript
 useEffect(() => {
   const listener = DriveKitTripAnalysis.addEventListener(
-    'tripStarted',
-    (startMode: StartMode) => {
-      console.log('trip start', startMode);
+    'tripRecordingStarted',
+    (state: DKTripRecordingStartedState) => {
+      console.log(
+        'Trip recording has started with StartMode: ' + state.startMode
+      );
     }
   );
   return () => listener.remove();
@@ -206,9 +208,6 @@ Here is the list of supported events:
 - `sdkStateChanged`, callback `(state: State) => void`: This event is triggered every time the state of the SDK changed with the new state as parameter.
 - `crashDetected`, callback `(info: CrashInfo) => void`: This event is triggered when crash detection feature is enabled and available for your team and when a crash has been detected.
 - `crashFeedbackSent`, callback `(crashFeedback: CrashFeedback) => void`: Event triggered when crash feedback is enabled and a confirmed crash is detected. This callback will contain crash information and the feedback from the user.
-- `tripStarted (deprecated)`, callback `(startMode: StartMode) => void`: Use the callback `tripRecordingConfirmed()` instead. This event is triggered each time a trip is started. StartMode indicates which event starts the trip.
-- `tripCancelled (deprecated)`, callback `(cancelTrip: CancelTrip) => void`: Use the callback `tripRecordingCanceled()` instead. This event is triggered when a trip is canceleed. CancelTrip indicates which event cancels the trip.
-- `tripFinished (deprecated)`, callback `(post: PostGeneric, response: PostGenericResponse)`: Use the callback `tripFinishedWithResult()` instead. This event is triggered when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. PostGeneric object contains raw data sent to DriveQuant's server, PostGenericResponse object contains the trip analysis made on DriveQuant's server.
 
 ## Headless JS (Android only)
 
@@ -563,7 +562,6 @@ await getLastTripLocation();
 | GOOD  | The GPS accuracy is strictly below 10 meters. |
 | FAIR  | The GPS accuracy is between 10 and 30 meters. |
 | POOR  | The GPS accuracy is strictly above 30 meters. |
-
 
 ### getLastVehicleTripLocation
 
