@@ -165,6 +165,10 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
         RNTripAnalysisEventEmitter.shared.dispatch(name: "beaconDetected", body: nil)
     }
 
+    public func beaconConfirmed(beacon: DriveKitTripAnalysisModule.BeaconData) {
+      RNTripAnalysisEventEmitter.shared.dispatch(name: "beaconConfirmed", body: mapBeaconData(beacon: beacon))
+    }
+
     public func significantLocationChangeDetected(location: CLLocation) {
         RNTripAnalysisEventEmitter.shared.dispatch(name: "significantLocationChangeDetected", body: ["latitude": location.coordinate.latitude, "longitude": location.coordinate.longitude])
     }

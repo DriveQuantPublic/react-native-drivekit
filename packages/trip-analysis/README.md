@@ -203,7 +203,8 @@ Here is the list of supported events:
 - `tripFinishedWithResult`, callback `(result: TripResult) => void`: Called when a trip has been recorded by the SDK and sent to DriveQuant's server to be analyzed. `TripResult` object contains trip response status details. Read more [here](https://docs.drivequant.com/trip-analysis/ios/references#tripresponsestatus).
 - `tripPoint`, callback `(tripPoint: TripPoint) => void`: This event is triggered when a trip is started and confirmed, for each GPS point recorded by the SDK.
 - `tripSavedForRepost`, callback `() => void`: This event is triggered if at the end of the trip, the trip can be sent to DriveQuant's server for the analysis. The trip is saved locally on the SDK and will be sent later.
-- `beaconDetected`, callback `() => void`: This event is triggered when a beacon sets in the SDK is detected.
+- `beaconDetected`, callback `() => void`: This event is triggered when a beacon sets in the SDK is detected. It is triggered exclusively if the trip recording has not been started yet (i.e. during the `INACTIVE` state).
+- `beaconConfirmed`, callback `(state: BeaconData) => void`: Called when a beacon set in the SDK is detected and confirmed during a trip. It is triggered exclusively if the trip recording has started (i.e. during the `RUNNING` state).
 - `significantLocationChangeDetected`, callback `() => void`: This event is triggered when a user significant location change is detected. (only for iOS)
 - `sdkStateChanged`, callback `(state: State) => void`: This event is triggered every time the state of the SDK changed with the new state as parameter.
 - `crashDetected`, callback `(info: CrashInfo) => void`: This event is triggered when crash detection feature is enabled and available for your team and when a crash has been detected.

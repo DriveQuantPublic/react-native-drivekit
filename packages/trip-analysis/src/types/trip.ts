@@ -1,3 +1,4 @@
+export type { BeaconData } from '../NativeDriveKitTripAnalysis';
 export type { TripMetadata } from '../NativeDriveKitTripAnalysis';
 export type { TripVehicle } from '../NativeDriveKitTripAnalysis';
 export type { CurrentTripInfo } from '../NativeDriveKitTripAnalysis';

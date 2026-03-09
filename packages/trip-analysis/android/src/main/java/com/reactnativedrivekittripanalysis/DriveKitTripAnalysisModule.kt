@@ -2,6 +2,7 @@ package com.reactnativedrivekittripanalysis
 
 import android.os.Build
 import android.util.Log
+import com.drivequant.beaconutils.BeaconData
 import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.utils.AppStateManager
 import com.drivequant.drivekit.core.utils.ConnectivityType
@@ -247,6 +248,11 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
         override fun beaconDetected() {
           HeadlessJsManager.sendBeaconDetectedEvent()
           tripAnalysisModule?.emitBeaconDetected()
+        }
+
+        override fun beaconConfirmed(beacon: BeaconData) {
+          HeadlessJsManager.sendBeaconConfirmedEvent(beacon)
+          tripAnalysisModule?.emitBeaconConfirmed(mapBeaconData(beacon))
         }
 
         override fun sdkStateChanged(state: State) {

@@ -97,6 +97,8 @@ export function addEventListener(
       return DriveKitTripAnalysis.tripSavedForRepost(callback);
     case 'beaconDetected':
       return DriveKitTripAnalysis.beaconDetected(callback);
+    case 'beaconConfirmed':
+      return DriveKitTripAnalysis.beaconConfirmed(callback);
     case 'significantLocationChangeDetected':
       return DriveKitTripAnalysis.significantLocationChangeDetected(callback);
     case 'sdkStateChanged':

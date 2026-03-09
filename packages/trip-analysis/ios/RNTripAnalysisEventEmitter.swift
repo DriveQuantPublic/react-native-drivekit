@@ -36,6 +36,8 @@ class RNTripAnalysisEventEmitter: NSObject {
         selectorObj = NSSelectorFromString("emitTripSavedForRepost")
       } else if name == "beaconDetected" {
         selectorObj = NSSelectorFromString("emitBeaconDetected")
+      } else if name == "beaconConfirmed" {
+        selectorObj = NSSelectorFromString("emitBeaconConfirmed:")
       } else if name == "significantLocationChangeDetected" {
         selectorObj = NSSelectorFromString("emitSignificantLocationChangeDetected:")
       } else if name == "potentialTripStart" {
@@ -51,9 +53,8 @@ class RNTripAnalysisEventEmitter: NSObject {
       if let selectorObj, let eventEmitter = RNTripAnalysisEventEmitter.eventEmitter,  eventEmitter.responds(to: selectorObj) {
         eventEmitter.perform(selectorObj, with: body)
       }
-
     }
 
     @objc static var allEvents: [String] =  ["tripRecordingStarted",
-     "tripRecordingConfirmed", "tripRecordingCanceled", "tripRecordingFinished", "tripFinishedWithResult", "tripPoint", "tripSavedForRepost", "beaconDetected", "significantLocationChangeDetected", "potentialTripStart", "sdkStateChanged", "crashDetected", "crashFeedbackSent",]
+     "tripRecordingConfirmed", "tripRecordingCanceled", "tripRecordingFinished", "tripFinishedWithResult", "tripPoint", "tripSavedForRepost", "beaconDetected", "beaconConfirmed", "significantLocationChangeDetected", "potentialTripStart", "sdkStateChanged", "crashDetected", "crashFeedbackSent",]
 }

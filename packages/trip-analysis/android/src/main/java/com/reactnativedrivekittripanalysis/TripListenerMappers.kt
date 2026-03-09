@@ -1,5 +1,6 @@
 package com.reactnativedrivekittripanalysis
 
+import com.drivequant.beaconutils.BeaconData
 import com.drivequant.drivekit.tripanalysis.entity.TripPoint
 import com.drivequant.drivekit.tripanalysis.entity.TripResponseError
 import com.drivequant.drivekit.tripanalysis.entity.TripResponseInfo
@@ -17,6 +18,14 @@ import com.drivequant.drivekit.tripanalysis.service.recorder.State
 import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReadableMap
+
+fun mapBeaconData(beaconData: BeaconData): ReadableMap {
+  val rnBeaconData = Arguments.createMap()
+  rnBeaconData.putString("proximityUuid", beaconData.proximityUuid)
+  rnBeaconData.putInt("major", beaconData.major)
+  rnBeaconData.putInt("minor", beaconData.minor)
+  return rnBeaconData
+}
 
 fun mapStartMode(startMode: StartMode): String {
   return when (startMode) {
