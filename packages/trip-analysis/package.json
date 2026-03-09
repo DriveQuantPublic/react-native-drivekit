@@ -1,6 +1,6 @@
 {
   "name": "@react-native-drivekit/trip-analysis",
-  "version": "3.5.1",
+  "version": "3.8.0",
   "description": "React Native interface for DriveKit Trip Analysis",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -70,7 +70,7 @@
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
-    "@react-native-drivekit/core": "3.5.1",
+    "@react-native-drivekit/core": "3.8.0",
     "react": "*",
     "react-native": "*"
   },
@@ -133,5 +133,8 @@
         "jsSrcsDir": "src"
       }
     ]
+  },
+  "dependencies": {
+    "@expo/config-plugins": "^54.0.4"
   }
 }

@@ -1,0 +1,26 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@react-native-drivekit/core": [
+        "../core/src/index"
+      ],
+      "@react-native-drivekit/trip-analysis": [
+        "../trip-analysis/src/index"
+      ],
+      "@react-native-drivekit/driver-data": [
+        "../driver-data/src/index"
+      ],
+      "@react-native-drivekit/trip-simulator": [
+        "../trip-simulator/src/index"
+      ]
+    },
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ]
+}

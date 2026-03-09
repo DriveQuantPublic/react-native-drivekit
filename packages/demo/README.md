@@ -54,7 +54,7 @@ To run the sample application you must have a valid API key.
 
 Please contact us to get your API key via: [contact@drivequant.com](mailto:contact@drivequant.com)
 
-Once you have the API key, uncomment `DriveKit.setApiKey("")` line in the `ApiKeySection.tsx` component and paste the API key in this line:
+Once you have the API key, uncomment `DriveKit.setApiKey('')` line in the `ApiKeySection.tsx` component and paste the API key in this line:
 
 ```
 // ========================================

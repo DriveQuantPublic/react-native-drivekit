@@ -28,6 +28,52 @@ cd ios && pod install
 
 ### Android setup
 
+#### Configure the notifications (Expo)
+
+To configure `trip-analysis` on Expo, `app.json` file needs to be updated by adding the trip-analysis config plugin. 
+
+The plugins section in `app.json` would look like the following: 
+
+   ```json
+     "plugins": [
+      …,
+      [
+        "@react-native-drivekit/trip-analysis",
+        {
+          "tripNotificationTitle": "Recording trip",
+          "tripNotificationBody":"A trip is about to be recorded",
+          "headlessNotificationTitle":"App Activity",
+          "headlessNotificationBody":"App is receiving and processing background event"
+        }
+      ]
+    ],
+   ```
+
+#### Configure the notifications (Auto-init enabled)
+
+If the DriveKit auto-initialization is enabled, you have to 
+
+- configure the trip notification content displayed during a trip analysis by calling the following method:
+
+```kotlin
+val tripNotification = RNTripNotification(123, "DriveKit SDK", "Start a trip with DriveKit SDK", R.drawable.ic_notification)
+DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
+```
+
+- configure the HeadlessJS notification content by calling the following method:
+
+```kotlin
+val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("DriveKit SDK", "Loading in progress…")
+DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)
+```
+
+> ℹ️
+>
+> The properties in `RNTripNotification` are used to configure the notification displayed when a trip is recording.
+>
+> The properties in `RNHeadlessJSNotification` are used to configure the notification when the `HeadlessJS` service is running
+
+#### Configure notifications (manual initialization)
 If you have disabled the DriveKit auto-initialization, call `initialize` method in the `onCreate()` method of your Application class.
 
 ```java
@@ -44,31 +90,10 @@ import com.reactnativedrivekittripanalysis.DriveKitTripAnalysisModule;
     // ADD THESE LINES
     final RNTripNotification tripNotification = new RNTripNotification(123, "DriveKit SDK", "Start a trip with DriveKit SDK", R.drawable.ic_notification)
     final RNHeadlessJSNotification headlessJSNotification = new RNHeadlessJSNotification("DriveKit SDK", "Loading in progress…");
+
     DriveKitTripAnalysisModule.Companion.initialize(tripNotification, headlessJSNotification);
-    ...
+    (…)
   }
-```
-
-> ℹ️
->
-> The properties in `RNTripNotification` are used to configure the notification displayed when a trip is recording.
->
-> The properties in `RNHeadlessJSNotification` are used to configure the notification when the `HeadlessJS` service is running
-
-If the DriveKit auto-initialization is enabled, you have to
-
-- configure the trip notification content displayed during a trip analysis by calling the following method:
-
-```kotlin
-val tripNotification = RNTripNotification(123, "DriveKit SDK", "Start a trip with DriveKit SDK", R.drawable.ic_notification)
-DriveKitTripAnalysisModule.Companion.configureTripNotification(tripNotification);
-```
-
-- configure the HeadlessJS notification content by calling the following method:
-
-```kotlin
-val headlessJSNotification: RNHeadlessJSNotification = RNHeadlessJSNotification("DriveKit SDK", "Loading in progress…")
-DriveKitTripAnalysisModule.Companion.configureHeadlessJSNotification(headlessJSNotification)
 ```
 
 #### Authorization

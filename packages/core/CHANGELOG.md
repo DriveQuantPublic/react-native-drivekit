@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.8.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.7.0...v3.8.0) (2026-02-25)
+
+
+### Features
+
+* update podspec files to ensure Expo compatibility ([232b8ac](https://github.com/DriveQuantPublic/react-native-drivekit/commit/232b8ac1dbaac9e4925ed2fdb4f4ba3b3ab73035))
+
+
+
+
+
+# [3.7.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.6.0...v3.7.0) (2026-02-20)
+
+
+### Features
+
+* ensure compatibility with iOS prebuild ([#162](https://github.com/DriveQuantPublic/react-native-drivekit/issues/162)) ([42bdf04](https://github.com/DriveQuantPublic/react-native-drivekit/commit/42bdf0417793a4fcff5abaacb5a8bf3afe37ae35))
+* update DriveKit Android modules to 2.26.0 ([8b44314](https://github.com/DriveQuantPublic/react-native-drivekit/commit/8b44314266354f1cf45100501b9c233de983ad32))
+
+
+
+
+
+# [3.6.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.5.1...v3.6.0) (2026-02-09)
+
+**Note:** Version bump only for package @react-native-drivekit/core
+
+
+
+
+
 ## [3.5.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.5.0...v3.5.1) (2026-01-26)
 
 **Note:** Version bump only for package @react-native-drivekit/core
