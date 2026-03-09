@@ -18,10 +18,6 @@ class RNDriveKitDriverDataWrapper: NSObject {
         DriveKitDriverData.shared.initialize()
     }
 
-    @objc internal func reset() -> Void {
-        DriveKitDriverData.shared.reset()
-    }
-
     @objc internal func deleteTrip(itinId: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         DriveKitDriverData.shared.deleteTrip(itinId: itinId) { success in
             resolve(success)
