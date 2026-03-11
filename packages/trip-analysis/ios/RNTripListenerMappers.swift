@@ -199,6 +199,14 @@ func mapTripResponseError(error: TripResponseError?) -> String? {
     return rnError
 }
 
+func mapBeaconData(beacon: DriveKitTripAnalysisModule.BeaconData) -> NSDictionary {
+    return [
+        "proximityUuid": beacon.proximityUuid,
+        "major": beacon.major,
+        "minor": beacon.minor
+    ]
+}
+
 func mapTripPoint(tripPoint: DriveKitTripAnalysisModule.TripPoint) -> NSDictionary {
     return [
         "latitude": tripPoint.latitude,

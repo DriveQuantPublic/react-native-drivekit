@@ -12,6 +12,7 @@ import {
   DKTripRecordingCanceledState,
   DKTripRecordingFinishedState,
   DKTripRecordingStartedState,
+  BeaconData,
   Location,
   SDKState,
   StartMode,
@@ -240,6 +241,16 @@ const useSetupListeners = () => {
       'beaconDetected',
       () => {
         console.log('Beacon detected');
+      },
+    );
+    return () => listener.remove();
+  });
+
+  useEffect(() => {
+    const listener = DriveKitTripAnalysis.addEventListener(
+      'beaconConfirmed',
+      (beacon: BeaconData) => {
+        console.log('Beacon confirmed during trip recording', beacon);
       },
     );
     return () => listener.remove();

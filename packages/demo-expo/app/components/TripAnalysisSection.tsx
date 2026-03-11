@@ -15,6 +15,7 @@ const events = [
   "tripPoint",
   "tripSavedForRepost",
   "beaconDetected",
+  "beaconConfirmed",
   "significantLocationChangeDetected",
   "sdkStateChanged",
   "crashDetected",

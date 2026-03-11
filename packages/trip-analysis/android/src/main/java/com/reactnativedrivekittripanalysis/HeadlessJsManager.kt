@@ -20,6 +20,7 @@ import com.drivequant.drivekit.tripanalysis.service.recorder.State
 import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.HeadlessJsTaskService
 import com.google.gson.Gson
+import com.drivequant.beaconutils.BeaconData
 import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
 
 object HeadlessJsManager : AppStateListener {
@@ -108,6 +109,14 @@ object HeadlessJsManager : AppStateListener {
   fun sendBeaconDetectedEvent() {
     val bundle = Bundle()
     bundle.putString("eventType", EventType.BEACON_DETECTED.name)
+    sendEvent(bundle)
+  }
+
+  fun sendBeaconConfirmedEvent(beacon: BeaconData) {
+    val bundle = Bundle()
+    bundle.putString("proximityUuid", beacon.proximityUuid)
+    bundle.putInt("major", beacon.major)
+    bundle.putInt("minor", beacon.minor)
     sendEvent(bundle)
   }
 

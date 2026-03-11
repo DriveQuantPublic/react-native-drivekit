@@ -225,6 +225,12 @@ export type CrashFeedback = {
   severity: CrashFeedbackSeverity;
 };
 
+export type BeaconData = {
+  proximityUuid: string;
+  major: number;
+  minor: number;
+};
+
 export type Location = {
   latitude: number;
   longitude: number;
@@ -259,6 +265,7 @@ export interface Spec extends TurboModule {
   readonly tripPoint: EventEmitter<TripPoint>;
   readonly tripSavedForRepost: EventEmitter<void>;
   readonly beaconDetected: EventEmitter<void>;
+  readonly beaconConfirmed: EventEmitter<BeaconData>;
   readonly significantLocationChangeDetected: EventEmitter<Location>;
   readonly sdkStateChanged: EventEmitter<string>;
   readonly crashDetected: EventEmitter<CrashInfo>;
