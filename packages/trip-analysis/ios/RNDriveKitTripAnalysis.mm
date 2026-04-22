@@ -178,6 +178,12 @@ RCT_EXPORT_METHOD(setVehicle:(JS::NativeDriveKitTripAnalysis::TripVehicle &)vehi
     resolve(nil);
 }
 
+RCT_EXPORT_METHOD(setBeacons:(NSArray *)beacons resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self setBeacons:beacons];
+    resolve(nil);
+}
+
 RCT_EXPORT_METHOD(getCurrentTripInfo:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self getCurrentTripInfo:resolve rejecter:reject];
@@ -268,6 +274,10 @@ RCT_EXPORT_METHOD(revokeTripSharingLink:(RCTPromiseResolveBlock)resolve reject:(
 
 -(void)setVehicle:(NSDictionary *)vehicle {
     [RNDriveKitTripAnalysisWrapper.shared setVehicleWithVehicle:vehicle];
+}
+
+-(void)setBeacons:(NSArray *)beacons {
+    [RNDriveKitTripAnalysisWrapper.shared setBeaconsWithBeacons:beacons];
 }
 
 -(void)getCurrentTripInfo:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {

@@ -8,6 +8,7 @@ import type {
   CreateTripSharingLinkResponse,
   GetTripSharingLinkResponse,
   RevokeTripSharingLinkStatus,
+  BeaconData,
 } from './types';
 
 import type { SynchronizationType } from '@react-native-drivekit/core';
@@ -28,13 +29,13 @@ const DriveKitTripAnalysisModule = isTurboModuleEnabled
 const DriveKitTripAnalysis = DriveKitTripAnalysisModule
   ? DriveKitTripAnalysisModule
   : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+    {},
+    {
+      get() {
+        throw new Error(LINKING_ERROR);
+      },
+    }
+  );
 
 export function activateAutoStart(enable: boolean): Promise<void> {
   return DriveKitTripAnalysis.activateAutoStart(enable);
@@ -72,6 +73,10 @@ export function setStopTimeout(stopTimeout: number): Promise<void> {
 
 export function setVehicle(vehicle: TripVehicle): Promise<void> {
   return DriveKitTripAnalysis.setVehicle(vehicle);
+}
+
+export function setBeacons(beacons: BeaconData[]): Promise<void> {
+  return DriveKitTripAnalysis.setBeacons(beacons);
 }
 
 export function addEventListener(
