@@ -1,8 +1,8 @@
-import React, {FunctionComponent} from 'react';
-import {Alert, Button} from 'react-native';
-import {Section} from './Section';
+import React, { FunctionComponent } from 'react';
+import { Alert, Button } from 'react-native';
+import { Section } from './Section';
 import * as DriveKitDriverData from '@react-native-drivekit/driver-data';
-import {Spacer} from '../Spacer';
+import { Spacer } from '../Spacer';
 
 const TripSection: FunctionComponent<{}> = () => {
   return (
@@ -31,9 +31,9 @@ const TripSection: FunctionComponent<{}> = () => {
             result?.status === 'NO_ERROR' ||
               (result?.status === 'CACHE_DATA_ONLY' && result?.trip !== null)
               ? 'Trip received from ' +
-                  result.trip?.departureCity +
-                  ' to ' +
-                  result.trip?.arrivalCity
+              result.trip?.departureCity +
+              ' to ' +
+              result.trip?.arrivalCity
               : 'Trip not received ' + result?.status,
           );
         }}
@@ -78,4 +78,4 @@ const TripSection: FunctionComponent<{}> = () => {
   );
 };
 
-export {TripSection};
+export { TripSection };
