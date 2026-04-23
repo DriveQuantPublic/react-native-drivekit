@@ -19,8 +19,15 @@
         "NSLocationAlwaysUsageDescription": "To enable automatic trip detection and driving analysis without having to manipulate your phone, select the option \"Always allow\". Good road...",
         "NSLocationWhenInUseUsageDescription": "To automatically detect and analyze your trips, the application needs access to your position at all times.",
         "NSMotionUsageDescription": "This application needs to use motion data to detect transportation mode",
-        "UIBackgroundModes": ["fetch", "location"],
-        "BGTaskSchedulerPermittedIdentifiers":["com.drivequant.diagnosis.app.refresh"]
+        "UIBackgroundModes": [
+          "fetch",
+          "location"
+        ],
+        "BGTaskSchedulerPermittedIdentifiers": [
+          "com.drivequant.diagnosis.app.refresh"
+        ],
+        "UIFileSharingEnabled": true,
+        "LSSupportsOpeningDocumentsInPlace": true
       }
     },
     "android": {
@@ -33,7 +40,9 @@
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "package": "com.anonymous.DriveKitDemoExpoApp",
-      "permissions": ["android.permission.POST_NOTIFICATIONS"]
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS"
+      ]
     },
     "web": {
       "output": "static",
@@ -70,15 +79,16 @@
             "LocationWhenInUse",
             "Motion"
           ]
-        }],
-        ["../trip-analysis/plugins/withDKTripAnalysis.ts",
+        }
+      ],
+      [
+        "../trip-analysis/plugins/withDKTripAnalysis.ts",
         {
           "tripNotificationTitle": "Recording Trip",
-          "tripNotificationBody":"A trip is about to be recorded",
-          "headlessNotificationTitle":"App Activity",
-          "headlessNotificationBody":"App is receiving and processing background event"
+          "tripNotificationBody": "A trip is about to be recorded",
+          "headlessNotificationTitle": "App Activity",
+          "headlessNotificationBody": "App is receiving and processing background event"
         }
-
       ]
     ],
     "experiments": {
