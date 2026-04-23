@@ -5,7 +5,7 @@ const packTripAnalysis = require('../trip-analysis/package.json');
 const packTripSimulator = require('../trip-simulator/package.json');
 
 module.exports = {
-  presets: ['module:@react-native/babel-preset'],
+  presets: ['babel-preset-expo'],
   plugins: [
     [
       'module-resolver',
