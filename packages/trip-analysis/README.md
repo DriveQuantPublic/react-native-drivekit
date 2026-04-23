@@ -235,7 +235,8 @@ Follow these steps :
 | [setTripMetadata(metadata: TripMetadata)](#setTripMetadata)                         | `Promise<void>`                          | ✅  |   ✅    |
 | [deleteTripMetadata(string?: string)](#deleteTripMetadata)                          | `Promise<void>`                          | ✅  |   ✅    |
 | [updateTripMetadata(key: string, value: string)](#updateTripMetadata)               | `Promise<void>`                          | ✅  |   ✅    |
-| [setVehicle()](#setvehicle)                                                         | `Promise<void>`                          | ✅  |   ✅    |
+| [setVehicle(vehicle: Partial<TripVehicle> \| null)](#setVehicle)                    | `Promise<void>`                          | ✅  |   ✅    |
+| [setBeacons(beacons: Array\<BeaconData\>)](#setBeacons)                             | `Promise<void>`                          | ✅  |   ✅    |
 | [getCurrentTripInfo()](#getCurrentTripInfo)                                         | `Promise<CurrentTripInfo \| null>`       | ✅  |   ✅    |
 | [getLastTripLocation()](#getLastTripLocation)                                       | `Promise<LastTripLocation \| null>`      | ✅  |   ✅    |
 | [getLastVehicleTripLocation()](#getLastVehicleTripLocation)                         | `Promise<LastTripLocation \| null>`      | ✅  |   ✅    |
@@ -501,6 +502,27 @@ A detailed description of vehicle parameter is available [here](https://docs.dri
 > engineCylinderNb = 4
 >
 > driveWheels = 0
+
+### setBeacons
+```typescript
+setBeacons(beacons: Array<BeaconData>): Promise<void>
+```
+Call this method to add beacon identifiers to Trip Analysis module. For example
+```typescript
+await DriveKitTripAnalysis.setBeacons([{
+  proximityUuid: '123e4567-e89b-12d3-a456-426614174000',
+  major: 1,
+  minor: 1,
+},
+{
+  proximityUuid: '123e4567-e89b-12d3-a456-426614174001',
+  major: 1,
+  minor: 2,
+}]);
+```
+
+If you want to ignore major and minor values for trip detection, set them to -1.
+If you want to remove beacons from SDK configuration, call the method with an empty array.
 
 ### getCurrentTripInfo
 
