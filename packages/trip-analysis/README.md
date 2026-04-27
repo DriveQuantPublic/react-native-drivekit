@@ -237,6 +237,7 @@ Follow these steps :
 | [updateTripMetadata(key: string, value: string)](#updateTripMetadata)               | `Promise<void>`                          | ✅  |   ✅    |
 | [setVehicle(vehicle: Partial<TripVehicle> \| null)](#setVehicle)                    | `Promise<void>`                          | ✅  |   ✅    |
 | [setBeacons(beacons: Array\<BeaconData\>)](#setBeacons)                             | `Promise<void>`                          | ✅  |   ✅    |
+| [setBeaconRequired(required: Boolean)](#setBeaconRequired)                          | `Promise<void>`                          | ✅  |   ✅    |
 | [getCurrentTripInfo()](#getCurrentTripInfo)                                         | `Promise<CurrentTripInfo \| null>`       | ✅  |   ✅    |
 | [getLastTripLocation()](#getLastTripLocation)                                       | `Promise<LastTripLocation \| null>`      | ✅  |   ✅    |
 | [getLastVehicleTripLocation()](#getLastVehicleTripLocation)                         | `Promise<LastTripLocation \| null>`      | ✅  |   ✅    |
@@ -523,6 +524,14 @@ await DriveKitTripAnalysis.setBeacons([{
 
 If you want to ignore major and minor values for trip detection, set them to -1.
 If you want to remove beacons from SDK configuration, call the method with an empty array.
+
+### setBeaconRequired
+```typescript
+setBeaconRequired(required: Boolean): Promise<void>
+```
+To avoid the recording of unwanted trips (trips performed outside the vehicle where the beacon is placed), it is possible to automatically cancel the trip if the beacon is not "seen" several times during the trip. Generally, a trip will be cancelled in less than 6 minutes if the beacon is not in the vehicle.
+
+By default, this setting is disabled but you can enable/disable it by calling the `setBeaconRequired` method
 
 ### getCurrentTripInfo
 
