@@ -147,6 +147,12 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
+  override fun setBeaconRequired(required: Boolean, promise: Promise) {
+    DriveKitTripAnalysis.setBeaconRequired(required)
+    promise.resolve(null)
+  }
+
+  @ReactMethod
   override fun getCurrentTripInfo(promise: Promise) {
     promise.resolve(DKTripInfoMapper.mapDKTripInfoToReadableMap(DriveKitTripAnalysis.getCurrentTripInfo()))
   }

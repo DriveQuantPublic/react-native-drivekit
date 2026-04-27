@@ -79,6 +79,10 @@ export function setBeacons(beacons: BeaconData[]): Promise<void> {
   return DriveKitTripAnalysis.setBeacons(beacons);
 }
 
+export function setBeaconRequired(required: Boolean): Promise<void> {
+  return DriveKitTripAnalysis.setBeaconRequired(required);
+}
+
 export function addEventListener(
   eventName: string,
   callback: Function

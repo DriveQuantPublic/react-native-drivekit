@@ -82,6 +82,10 @@ public class RNDriveKitTripAnalysisWrapper: NSObject {
         let beaconObjects = beacons.map { beacon in mapNSDictionaryToBeacon(dictionary: beacon) }
         DriveKitTripAnalysis.shared.setBeacons(beacons: beaconObjects)
     }
+
+    @objc internal func setBeaconRequired(required: Bool) -> Void {
+        DriveKitTripAnalysis.shared.setBeaconRequired(required: required)
+    }
     
     @objc internal func getCurrentTripInfo(resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
       if let tripInfo = DriveKitTripAnalysis.shared.getCurrentTripInfo() {
