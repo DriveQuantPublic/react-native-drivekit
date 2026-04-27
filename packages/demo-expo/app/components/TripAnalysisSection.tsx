@@ -93,6 +93,19 @@ export const TripAnalysisSection = () => {
     >
       Check Trip Running ?
     </Button>
+    <Button
+      onPress={async () => {
+        await DriveKitTripAnalysis.setBeacons([
+          {
+            proximityUuid: "12345678-1234-1234-1234-123456789012",
+            major: 1,
+            minor: 1,
+          },
+        ]);
+      }}
+    >
+      Set Beacons
+    </Button>
   </SectionContainer>
 }
 

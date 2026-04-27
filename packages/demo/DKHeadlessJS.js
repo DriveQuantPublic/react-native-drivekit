@@ -17,7 +17,7 @@ module.exports = async taskData => {
       name: 'Default Channel',
     });
 
-    var notificationId = 124  // A notificationId different from the one configured in RNTripNotification
+    var notificationId = 124;  // A notificationId different from the one configured in RNTripNotification
     var body = 'A new trip has been analyzed';
     if (taskData.eventType === 'TRIP_SAVED_FOR_REPOST') {
       body =
@@ -41,13 +41,13 @@ module.exports = async taskData => {
     }
   }
 
-  async function displayNotification(channelId, notificationId, bodyContent) {
+  async function displayNotification(channelId, id, bodyContent) {
     // Display a notification
     await notifee.displayNotification({
       title: 'DriveKit RN Demo App',
       body: bodyContent,
       android: {
-        id: notificationId,
+        id: id,
         channelId,
         //smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
         // pressAction is needed if you want the notification to open the app when pressed

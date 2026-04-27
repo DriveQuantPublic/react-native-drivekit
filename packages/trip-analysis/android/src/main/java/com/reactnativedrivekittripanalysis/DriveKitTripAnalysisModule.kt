@@ -132,6 +132,21 @@ class DriveKitTripAnalysisModule internal constructor(context: ReactApplicationC
   }
 
   @ReactMethod
+  override fun setBeacons(beacons: ReadableArray, promise: Promise) {
+    val beaconDataObjects = (0 until beacons.size()).mapNotNull { i ->
+      try {
+        beacons.getMap(i)?.let { mapReadableMapToBeacon(it) }
+      } catch (e: Exception) {
+        Log.e("Beacons", "Error mapping beacon at index $i", e)
+        null
+      }
+    }
+
+    DriveKitTripAnalysis.setBeacons(beaconDataObjects)
+    promise.resolve(null)
+  }
+
+  @ReactMethod
   override fun getCurrentTripInfo(promise: Promise) {
     promise.resolve(DKTripInfoMapper.mapDKTripInfoToReadableMap(DriveKitTripAnalysis.getCurrentTripInfo()))
   }

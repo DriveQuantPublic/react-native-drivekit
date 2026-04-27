@@ -207,6 +207,23 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
       />
       <Spacer factor={1} />
       <Button
+        title="Set Beacons"
+        onPress={async () => {
+          const beacons = [{
+            proximityUuid: '123e4567-e89b-12d3-a456-426614174000',
+            major: 1,
+            minor: 1,
+          },
+          {
+            proximityUuid: '123e4567-e89b-12d3-a456-426614174001',
+            major: 1,
+            minor: 2,
+          }];
+          await DriveKitTripAnalysis.setBeacons(beacons);
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
         title={'Enable CrashDetection'}
         onPress={() => {
           DriveKitTripAnalysis.activateCrashDetection(true);

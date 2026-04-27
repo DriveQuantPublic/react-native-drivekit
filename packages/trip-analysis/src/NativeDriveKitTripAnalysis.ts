@@ -284,6 +284,7 @@ export interface Spec extends TurboModule {
   deleteTripMetadata(key?: string): Promise<void>;
   updateTripMetadata(key: string, value: string): Promise<void>;
   setVehicle(vehicle: TripVehicle): Promise<void>;
+  setBeacons(beacons: Array<BeaconData>): Promise<void>;
   getCurrentTripInfo(): Promise<CurrentTripInfo>;
   getLastTripLocation(): Promise<LastTripLocation>;
   getLastVehicleTripLocation(): Promise<LastTripLocation>;

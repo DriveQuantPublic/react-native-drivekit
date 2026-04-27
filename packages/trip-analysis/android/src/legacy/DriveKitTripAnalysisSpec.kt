@@ -27,6 +27,9 @@ abstract class DriveKitTripAnalysisSpec internal constructor(context: ReactAppli
 
   abstract fun setVehicle(vehicle: ReadableMap, promise: Promise)
 
+
+  abstract fun setBeacons(beacons: ReadableArray, promise: Promise)
+
   abstract fun getTripMetadata(promise: Promise)
 
   abstract fun setTripMetadata(metadata: ReadableMap, promise: Promise)

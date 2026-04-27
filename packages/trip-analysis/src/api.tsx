@@ -8,6 +8,7 @@ import type {
   CreateTripSharingLinkResponse,
   GetTripSharingLinkResponse,
   RevokeTripSharingLinkStatus,
+  BeaconData,
 } from './types';
 
 import type { SynchronizationType } from '@react-native-drivekit/core';
@@ -72,6 +73,10 @@ export function setStopTimeout(stopTimeout: number): Promise<void> {
 
 export function setVehicle(vehicle: TripVehicle): Promise<void> {
   return DriveKitTripAnalysis.setVehicle(vehicle);
+}
+
+export function setBeacons(beacons: BeaconData[]): Promise<void> {
+  return DriveKitTripAnalysis.setBeacons(beacons);
 }
 
 export function addEventListener(
