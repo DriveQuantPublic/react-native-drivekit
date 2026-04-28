@@ -224,6 +224,19 @@ const TripAnalysisSection: FunctionComponent<{}> = () => {
       />
       <Spacer factor={1} />
       <Button
+        title="Set Beacon required"
+        onPress={async () => {
+          await DriveKitTripAnalysis.setBeaconRequired(true);
+        }}
+      />
+      <Button
+        title="Set Beacon not required"
+        onPress={async () => {
+          await DriveKitTripAnalysis.setBeaconRequired(false);
+        }}
+      />
+      <Spacer factor={1} />
+      <Button
         title={'Enable CrashDetection'}
         onPress={() => {
           DriveKitTripAnalysis.activateCrashDetection(true);

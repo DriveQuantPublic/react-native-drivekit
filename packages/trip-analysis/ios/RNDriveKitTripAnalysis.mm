@@ -184,6 +184,12 @@ RCT_EXPORT_METHOD(setBeacons:(NSArray *)beacons resolve:(RCTPromiseResolveBlock)
     resolve(nil);
 }
 
+RCT_EXPORT_METHOD(setBeaconRequired:(BOOL)required resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+    [self setBeaconRequired:required];
+    resolve(nil);
+}
+
 RCT_EXPORT_METHOD(getCurrentTripInfo:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     [self getCurrentTripInfo:resolve rejecter:reject];
@@ -278,6 +284,10 @@ RCT_EXPORT_METHOD(revokeTripSharingLink:(RCTPromiseResolveBlock)resolve reject:(
 
 -(void)setBeacons:(NSArray *)beacons {
     [RNDriveKitTripAnalysisWrapper.shared setBeaconsWithBeacons:beacons];
+}
+
+-(void)setBeaconRequired:(BOOL)required {
+    [RNDriveKitTripAnalysisWrapper.shared setBeaconRequiredWithRequired:required];
 }
 
 -(void)getCurrentTripInfo:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject {
