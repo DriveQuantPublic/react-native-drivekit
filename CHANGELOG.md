@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v4.0.0...v4.1.0) (2026-05-04)
+
+
+### Bug Fixes
+
+* install local modules in expo app ([150ed36](https://github.com/DriveQuantPublic/react-native-drivekit/commit/150ed3618ded884cb9009fe10479c8c99af06a50))
+
+
+### Features
+
+* add button to call setBeacons ([ac3c4fc](https://github.com/DriveQuantPublic/react-native-drivekit/commit/ac3c4fc1f63a0349bd471837f3eeaa43c10d8237))
+* add button to setBeaconRequired in demo app ([34ee042](https://github.com/DriveQuantPublic/react-native-drivekit/commit/34ee042c724ddfca4588ba47b774cde446a4e5bc))
+* add setBeacons button in expo demo app ([9525dcf](https://github.com/DriveQuantPublic/react-native-drivekit/commit/9525dcf8100048958cc57683e74d9a51c2bb48ed))
+* bridge setBeaconRequired method ([41f3988](https://github.com/DriveQuantPublic/react-native-drivekit/commit/41f3988fe912065b2efc829c9e351250c7a2f97a))
+* bridge setBeacons method on Android ([e089f61](https://github.com/DriveQuantPublic/react-native-drivekit/commit/e089f61534671ca31ac6c0078f5e4f0b8e9c105e))
+* bridge setBeacons method on iOS ([6d37cc7](https://github.com/DriveQuantPublic/react-native-drivekit/commit/6d37cc7f04113aa6be4e906279d0e0d36a2adb0b))
+* enable app folder in expo demo app ([62f06ad](https://github.com/DriveQuantPublic/react-native-drivekit/commit/62f06ad280b2e584c6bb3a8a7a5c727db27af2a6))
+* implement beaconConfirmed callback in TripListener ([b514d23](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b514d23368b34d6b91f7d63f74373fbe5a4815b7))
+
+
+
+
+
 # [4.0.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v3.8.0...v4.0.0) (2026-03-09)
 
 
