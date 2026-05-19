@@ -2,27 +2,33 @@ PODS:
   - BEMCheckBox (1.4.1)
   - boost (1.84.0)
   - DoubleConversion (1.1.6)
-  - DriveKitBeaconUtils (3.1.0):
-    - DriveKitCore (= 3.1.0)
-  - DriveKitCore (3.1.0):
-    - DriveKitNetworking (= 3.1.0)
-  - DriveKitDBTripAccess (3.1.0):
-    - DriveKitCore (= 3.1.0)
-  - DriveKitDBVehicleAccess (3.1.0):
-    - DriveKitBeaconUtils (= 3.1.0)
-    - DriveKitCore (= 3.1.0)
-  - DriveKitDriverData (3.1.0):
-    - DriveKitDBTripAccess (= 3.1.0)
-  - DriveKitNetworking (3.1.0)
-  - DriveKitTripAnalysis (3.1.0):
-    - DriveKitBeaconUtils (= 3.1.0)
-    - DriveKitCore (= 3.1.0)
-    - DriveKitDBTripAccess (= 3.1.0)
-    - DriveKitDBVehicleAccess (= 3.1.0)
-  - DriveKitTripSimulator (3.1.0):
-    - DriveKitTripAnalysis (= 3.1.0)
-    - DriveKitTripSimulatorApi (= 3.1.0)
-  - DriveKitTripSimulatorApi (3.1.0)
+  - DriveKitBeaconUtils (3.2.0):
+    - DriveKitCore (= 3.2.0)
+  - DriveKitCore (3.2.0):
+    - DriveKitNetworking (= 3.2.0)
+  - DriveKitDBTripAccess (3.2.0):
+    - DriveKitCore (= 3.2.0)
+  - DriveKitDBVehicleAccess (3.2.0):
+    - DriveKitBeaconUtils (= 3.2.0)
+    - DriveKitCore (= 3.2.0)
+  - DriveKitDriverData (3.2.0):
+    - DriveKitDBTripAccess (= 3.2.0)
+  - DriveKitLocationUtils (3.2.0):
+    - DriveKitCore (= 3.2.0)
+  - DriveKitNetworking (3.2.0)
+  - DriveKitRegionMonitoringUtils (3.2.0):
+    - DriveKitCore (= 3.2.0)
+  - DriveKitTripAnalysis (3.2.0):
+    - DriveKitBeaconUtils (= 3.2.0)
+    - DriveKitCore (= 3.2.0)
+    - DriveKitDBTripAccess (= 3.2.0)
+    - DriveKitDBVehicleAccess (= 3.2.0)
+    - DriveKitLocationUtils (= 3.2.0)
+    - DriveKitRegionMonitoringUtils (= 3.2.0)
+  - DriveKitTripSimulator (3.2.0):
+    - DriveKitTripAnalysis (= 3.2.0)
+    - DriveKitTripSimulatorApi (= 3.2.0)
+  - DriveKitTripSimulatorApi (3.2.0)
   - fast_float (6.1.4)
   - FBLazyVector (0.78.1)
   - fmt (11.0.2)
@@ -1262,7 +1268,7 @@ PODS:
     - ReactCommon/turbomodule/core
   - react-native-drivekit-core (4.1.0):
     - DoubleConversion
-    - DriveKitCore (= 3.1.0)
+    - DriveKitCore (= 3.2.0)
     - glog
     - hermes-engine
     - RCT-Folly (= 2024.11.18.00)
@@ -1284,7 +1290,7 @@ PODS:
     - Yoga
   - react-native-drivekit-driver-data (4.1.0):
     - DoubleConversion
-    - DriveKitDriverData (= 3.1.0)
+    - DriveKitDriverData (= 3.2.0)
     - glog
     - hermes-engine
     - RCT-Folly (= 2024.11.18.00)
@@ -1306,7 +1312,7 @@ PODS:
     - Yoga
   - react-native-drivekit-trip-analysis (4.1.0):
     - DoubleConversion
-    - DriveKitTripAnalysis (= 3.1.0)
+    - DriveKitTripAnalysis (= 3.2.0)
     - glog
     - hermes-engine
     - RCT-Folly (= 2024.11.18.00)
@@ -1328,7 +1334,7 @@ PODS:
     - Yoga
   - react-native-drivekit-trip-simulator (4.1.0):
     - DoubleConversion
-    - DriveKitTripSimulator (= 3.1.0)
+    - DriveKitTripSimulator (= 3.2.0)
     - glog
     - hermes-engine
     - RCT-Folly (= 2024.11.18.00)
@@ -1752,7 +1758,9 @@ SPEC REPOS:
     - DriveKitDBTripAccess
     - DriveKitDBVehicleAccess
     - DriveKitDriverData
+    - DriveKitLocationUtils
     - DriveKitNetworking
+    - DriveKitRegionMonitoringUtils
     - DriveKitTripAnalysis
     - DriveKitTripSimulator
     - DriveKitTripSimulatorApi
@@ -1911,15 +1919,17 @@ SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
-  DriveKitBeaconUtils: 58e69bf5b4a81f27fa488c5843b18daef40743bb
-  DriveKitCore: c0e7e3e7dd3c34d0122f9cb2f142a955a01fc8b8
-  DriveKitDBTripAccess: 72668e3a7dbf349d78996dfe6b4304df141b8f82
-  DriveKitDBVehicleAccess: 97e23eb903132c307e0ca03764a7a621770b43eb
-  DriveKitDriverData: 6f977a58cfb6aa2b53052c8c10692481a096e092
-  DriveKitNetworking: 18c521a35d7a64d93cf827fd194fb2ffc1762813
-  DriveKitTripAnalysis: 580374ee6ebf4c3e4448544f6f1a7635abd9cd84
-  DriveKitTripSimulator: 1300dcd8fd224d9ba812449a53c3a36e19a866c1
-  DriveKitTripSimulatorApi: 44ca62c110de5b300a746103eb5c100ef1edc999
+  DriveKitBeaconUtils: 166088ac94e5a816e1905f2ec70eec8f858e9bb4
+  DriveKitCore: 8e6ff2b716b6a0c5d4363945a99fc3f48bc7f5a3
+  DriveKitDBTripAccess: 6da7a4c330a1dd791eb140819aba9486381c1f03
+  DriveKitDBVehicleAccess: 7fb5002aa2484c010d5553ed5eae4c816abfc50c
+  DriveKitDriverData: deef123ecd14afd15494b0daf9ad866cbc5ee5df
+  DriveKitLocationUtils: bf661353a7bc3d7cde822a1634ad7d74a9319f69
+  DriveKitNetworking: c33b1491ba75c2f52ce44215d5d0e0da0085ef52
+  DriveKitRegionMonitoringUtils: a693452a226e4cf4434e6d86b131bfec8bd7534d
+  DriveKitTripAnalysis: 12ece7538043e389826f139d1050dbc6efadb95d
+  DriveKitTripSimulator: 21242b44a8cd13f5658d2b8a0886687c1af43910
+  DriveKitTripSimulatorApi: e3369c5a0d3394a966c193ce505b7efff0ba7f95
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
   FBLazyVector: bba368dacede4c9dec7a58c9be5a2d3e9ea30cc7
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
@@ -1955,10 +1965,10 @@ SPEC CHECKSUMS:
   React-logger: 74ddb793d36b48bba176328c7af75e5e656fd405
   React-Mapbuffer: 39e87693178fd6483bb5ca8b851fae362d49409a
   React-microtasksnativemodule: b740ebae7fad70aa78bc24cc0dfc15ac9637b6eb
-  react-native-drivekit-core: 6cff0aa3d79ddf471c7444c31908a69d784c1dc0
-  react-native-drivekit-driver-data: 27fa4b2b1015ee44276229a520d7f27679f7bd6b
-  react-native-drivekit-trip-analysis: c771ec371b596ce7bf967ed9a68e64684ba4b958
-  react-native-drivekit-trip-simulator: 35dbe9116ea3f61f1046da853b5ef24a3a7ed88b
+  react-native-drivekit-core: b58244187c3c8c9e99823a79f8ecb2e9db7fd76d
+  react-native-drivekit-driver-data: cb5dad88a0b1d8d1e7aab82b40bd7ad58da0f1e2
+  react-native-drivekit-trip-analysis: 2ee7742527ea62da1cf5a2d8e7f070346b7f90b9
+  react-native-drivekit-trip-simulator: 895e5d239f71e989465bc7c25b56e613dadb5221
   React-NativeModulesApple: af0571ac115d09c9a669ed45ce6a4ca960598a2d
   React-perflogger: 26d07766b033f84559bd520e949453dba8bf1cd8
   React-performancetimeline: 0f3e0b6e2152951257bd8c90f95d527cf4316fa8
@@ -1993,6 +2003,6 @@ SPEC CHECKSUMS:
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: b94ff2d7559cb66837c97a3f394ddb817faad4d6
 
-PODFILE CHECKSUM: 546f1ad17ad4a90c5e59156e833d29edff24fa24
+PODFILE CHECKSUM: 3c140272f9803b8a59fd1ed2e709cec35e51df51
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.15.2
