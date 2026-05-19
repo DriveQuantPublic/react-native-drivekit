@@ -1,6 +1,6 @@
 package com.reactnativedrivekittripanalysis
 
-import com.drivequant.beaconutils.BeaconData
+import com.drivequant.drivekit.core.beacon.BeaconData
 import com.drivequant.drivekit.tripanalysis.entity.TripPoint
 import com.drivequant.drivekit.tripanalysis.entity.TripResponseError
 import com.drivequant.drivekit.tripanalysis.entity.TripResponseInfo

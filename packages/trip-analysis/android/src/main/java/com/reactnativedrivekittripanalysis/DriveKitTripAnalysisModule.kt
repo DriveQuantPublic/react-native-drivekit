@@ -2,7 +2,7 @@ package com.reactnativedrivekittripanalysis
 
 import android.os.Build
 import android.util.Log
-import com.drivequant.beaconutils.BeaconData
+import com.drivequant.drivekit.core.beacon.BeaconData
 import com.drivequant.drivekit.core.DriveKit
 import com.drivequant.drivekit.core.utils.AppStateManager
 import com.drivequant.drivekit.core.utils.ConnectivityType

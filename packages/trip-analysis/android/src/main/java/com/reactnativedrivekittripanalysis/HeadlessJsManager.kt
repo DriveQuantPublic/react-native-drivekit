@@ -20,7 +20,7 @@ import com.drivequant.drivekit.tripanalysis.service.recorder.State
 import com.drivequant.drivekit.tripanalysis.utils.TripResult
 import com.facebook.react.HeadlessJsTaskService
 import com.google.gson.Gson
-import com.drivequant.beaconutils.BeaconData
+import com.drivequant.drivekit.core.beacon.BeaconData
 import com.reactnativedrivekittripanalysis.service.DKHeadlessJSService
 
 object HeadlessJsManager : AppStateListener {
