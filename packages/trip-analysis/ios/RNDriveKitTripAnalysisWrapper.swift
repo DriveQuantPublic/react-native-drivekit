@@ -174,7 +174,7 @@ extension RNDriveKitTripAnalysisWrapper: TripListener {
         RNTripAnalysisEventEmitter.shared.dispatch(name: "beaconDetected", body: nil)
     }
 
-    public func beaconConfirmed(beacon: DriveKitTripAnalysisModule.BeaconData) {
+    public func beaconConfirmed(beacon: DriveKitCoreModule.BeaconData) {
       RNTripAnalysisEventEmitter.shared.dispatch(name: "beaconConfirmed", body: mapBeaconData(beacon: beacon))
     }
 

@@ -1,6 +1,6 @@
 package com.reactnativedrivekittripanalysis
 
-import com.drivequant.beaconutils.BeaconData
+import com.drivequant.drivekit.core.beacon.BeaconData
 import com.facebook.react.bridge.ReadableMap
 
 fun mapReadableMapToBeacon(beacon: ReadableMap): BeaconData {
