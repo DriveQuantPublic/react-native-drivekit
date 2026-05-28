@@ -1266,7 +1266,7 @@ PODS:
     - React-jsiexecutor
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
-  - react-native-drivekit-core (4.2.0):
+  - react-native-drivekit-core (4.2.1):
     - DoubleConversion
     - DriveKitCore (= 3.2.1)
     - glog
@@ -1288,7 +1288,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-drivekit-driver-data (4.2.0):
+  - react-native-drivekit-driver-data (4.2.1):
     - DoubleConversion
     - DriveKitDriverData (= 3.2.1)
     - glog
@@ -1310,7 +1310,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-drivekit-trip-analysis (4.2.0):
+  - react-native-drivekit-trip-analysis (4.2.1):
     - DoubleConversion
     - DriveKitTripAnalysis (= 3.2.1)
     - glog
@@ -1332,7 +1332,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-drivekit-trip-simulator (4.2.0):
+  - react-native-drivekit-trip-simulator (4.2.1):
     - DoubleConversion
     - DriveKitTripSimulator (= 3.2.1)
     - glog
@@ -1965,10 +1965,10 @@ SPEC CHECKSUMS:
   React-logger: 74ddb793d36b48bba176328c7af75e5e656fd405
   React-Mapbuffer: 39e87693178fd6483bb5ca8b851fae362d49409a
   React-microtasksnativemodule: b740ebae7fad70aa78bc24cc0dfc15ac9637b6eb
-  react-native-drivekit-core: 585d53d9684656124fbb53384e6934fdd2c51530
-  react-native-drivekit-driver-data: 3267c63f4f3f84c0b1197a7bafcaa860442224ef
-  react-native-drivekit-trip-analysis: b5a6eb3422685d50b2cd848c161f9410ad9a7313
-  react-native-drivekit-trip-simulator: aeb95d7e12077742d58ed022a43ef9cbccaed1c3
+  react-native-drivekit-core: 41f60f899a51e2f11661aef920de8e5ef5ca5f3c
+  react-native-drivekit-driver-data: d596394d15e555c12d960c4bab70e024dd662704
+  react-native-drivekit-trip-analysis: 69c69c53c1893c94be4e9c917c5e1eedde7c0478
+  react-native-drivekit-trip-simulator: 357fe72c30d68fc22200c355b8c4a616065c2a3d
   React-NativeModulesApple: af0571ac115d09c9a669ed45ce6a4ca960598a2d
   React-perflogger: 26d07766b033f84559bd520e949453dba8bf1cd8
   React-performancetimeline: 0f3e0b6e2152951257bd8c90f95d527cf4316fa8
