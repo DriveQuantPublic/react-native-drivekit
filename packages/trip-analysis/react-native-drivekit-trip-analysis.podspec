@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
-  s.dependency 'DriveKitTripAnalysis', '3.2.2'
+  s.dependency 'DriveKitTripAnalysis', '3.3.0'
 
   if respond_to?(:install_modules_dependencies, true)
     install_modules_dependencies(s)
