@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.2](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v4.3.1...v4.3.2) (2026-07-02)
+
+
+### Features
+
+* update Android DriveKit modules to 3.2.1 ([d8cac60](https://github.com/DriveQuantPublic/react-native-drivekit/commit/d8cac604c9095df51b783f16445f58d53c1e7a4f))
+
+
+
+
+
 ## [4.3.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v4.3.0...v4.3.1) (2026-06-22)
 
 
