@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v4.4.1...v4.5.0) (2026-09-14)
+
+
+### Features
+
+* update Android DriveKit modules to 3.4.0 ([b0e1456](https://github.com/DriveQuantPublic/react-native-drivekit/commit/b0e1456b8c2ff04dbb178cc904bd30a7eaba5eff))
+* update iOS DriveKit modules to 3.4.0 ([735f32e](https://github.com/DriveQuantPublic/react-native-drivekit/commit/735f32eb28174e228340b9c3d68dd531f5635c9b))
+* upgrade AGP to 8.13.2 ([13fb6de](https://github.com/DriveQuantPublic/react-native-drivekit/commit/13fb6decee319d14dc504eeb0cdd25b0e14bad31))
+* upgrade compileSdk and targetSdk to 37 to support Android 17 ([48a9e8c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/48a9e8c15063af584b20f9a4731412cb2e8a2e05))
+
+
+
+
+
 ## [4.4.1](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v4.4.0...v4.4.1) (2026-07-30)
 
 
