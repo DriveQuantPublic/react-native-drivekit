@@ -1,4 +1,5 @@
-import { EventSubscription, NativeModules, Platform } from 'react-native';
+import type { EventSubscription } from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 import type { UserInfo } from './types';
 
 const LINKING_ERROR =

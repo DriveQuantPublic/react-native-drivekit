@@ -15,15 +15,6 @@ import com.reactnativedrivekittripanalysis.RNHeadlessJSNotification
 import com.reactnativedrivekittripanalysis.RNTripNotification 
 
 class MainApplication : Application(), ReactApplication {
-
-import android.app.Application
-import com.facebook.react.PackageList
-import com.facebook.react.ReactApplication
-import com.facebook.react.ReactHost
-import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
-import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
-
-class MainApplication : Application(), ReactApplication {
   override val reactHost: ReactHost by lazy {
     getDefaultReactHost(
       context = applicationContext,
@@ -37,7 +28,7 @@ class MainApplication : Application(), ReactApplication {
 
   override fun onCreate() {
     super.onCreate()
-        loadReactNative(this)
+    loadReactNative(this)
 
     //Configure TripAnalysis trip recording notification
     val tripNotification = RNTripNotification(123, "DriveKit SDK", "Start a trip with DriveKit SDK", R.drawable.ic_notification)

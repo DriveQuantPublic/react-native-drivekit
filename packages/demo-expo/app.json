@@ -89,7 +89,9 @@
           "headlessNotificationTitle": "App Activity",
           "headlessNotificationBody": "App is receiving and processing background event"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,

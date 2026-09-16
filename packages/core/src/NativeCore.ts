@@ -3,7 +3,7 @@ import { TurboModuleRegistry } from 'react-native';
 import type {
   EventEmitter,
   WithDefault,
-} from 'react-native/Libraries/Types/CodegenTypes';
+} from 'react-native/Libraries/Types/CodegenTypesNamespace';
 
 export type UserInfo = {
   firstname: string | null;
