@@ -9,6 +9,9 @@ import Foundation
 import DriveKitCoreModule
 import DriveKitDriverDataModule
 import DriveKitDBTripAccessModule
+#if SWIFT_PACKAGE
+import React
+#endif
 
 @objc(RNDriveKitDriverDataWrapper)
 class RNDriveKitDriverDataWrapper: NSObject {

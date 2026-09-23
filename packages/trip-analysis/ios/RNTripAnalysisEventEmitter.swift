@@ -12,9 +12,9 @@ class RNTripAnalysisEventEmitter: NSObject {
 
     @objc public static var shared = RNTripAnalysisEventEmitter()
 
-    private static var eventEmitter: RNDriveKitTripAnalysis?
+    private static var eventEmitter: NSObject?
 
-    @objc func registerEventEmitter(eventEmitter: RNDriveKitTripAnalysis) {
+    @objc func registerEventEmitter(eventEmitter: NSObject) {
         RNTripAnalysisEventEmitter.eventEmitter = eventEmitter
     }
 
