@@ -55,5 +55,8 @@
     "eslint-config-expo": "~57.0.2",
     "typescript": "~6.0.3"
   },
-  "private": true
+  "private": true,
+  "installConfig": {
+    "hoistingLimits": "workspaces"
+  }
 }
