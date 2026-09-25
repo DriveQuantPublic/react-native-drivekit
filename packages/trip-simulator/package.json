@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^3.0.2",
+    "@react-native/jest-preset": "0.87.1",
     "@react-native/new-app-screen": "0.87.1",
     "@types/jest": "^28.1.2",
     "@types/react": "^19.2.0",
@@ -80,7 +81,7 @@
     "node": ">= 22.11.0"
   },
   "jest": {
-    "preset": "react-native",
+    "preset": "@react-native/jest-preset",
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
