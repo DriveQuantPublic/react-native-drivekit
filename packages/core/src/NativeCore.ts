@@ -1,9 +1,5 @@
-import type { TurboModule } from 'react-native';
+import type { CodegenTypes, TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
-import type {
-  EventEmitter,
-  WithDefault,
-} from 'react-native/Libraries/Types/CodegenTypesNamespace';
 
 export type UserInfo = {
   firstname: string | null;
@@ -22,12 +18,12 @@ export type DeviceConfigurationChangedEvent = {
 };
 
 export interface Spec extends TurboModule {
-  readonly onDriveKitConnected: EventEmitter<void>;
-  readonly onDriveKitDisconnected: EventEmitter<void>;
-  readonly onDriveKitDidReceiveAuthenticationError: EventEmitter<string>;
-  readonly onAccountDeletionCompleted: EventEmitter<string>;
-  readonly onUserIdUpdateStatusChanged: EventEmitter<UserIdUpdateStatus>;
-  readonly onDeviceConfigurationChanged: EventEmitter<DeviceConfigurationChangedEvent>;
+  readonly onDriveKitConnected: CodegenTypes.EventEmitter<void>;
+  readonly onDriveKitDisconnected: CodegenTypes.EventEmitter<void>;
+  readonly onDriveKitDidReceiveAuthenticationError: CodegenTypes.EventEmitter<string>;
+  readonly onAccountDeletionCompleted: CodegenTypes.EventEmitter<string>;
+  readonly onUserIdUpdateStatusChanged: CodegenTypes.EventEmitter<UserIdUpdateStatus>;
+  readonly onDeviceConfigurationChanged: CodegenTypes.EventEmitter<DeviceConfigurationChangedEvent>;
 
   getApiKey(): Promise<string>;
   setApiKey(key: string): Promise<void>;
@@ -50,7 +46,7 @@ export interface Spec extends TurboModule {
     body?: string;
   }): Promise<void>;
   getUserInfo(
-    synchronizationType: WithDefault<string, 'default'>
+    synchronizationType: CodegenTypes.WithDefault<string, 'default'>
   ): Promise<UserInfo | null>;
   updateUserInfo(userInfo: UserInfo): Promise<void>;
   requestLocationPermission(): Promise<void>;
