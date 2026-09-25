@@ -1,6 +1,6 @@
 
 #ifdef RCT_NEW_ARCH_ENABLED
-#import "RNDriverDataSpec.h"
+#import <RNDriverDataSpec/RNDriverDataSpec.h>
 
 @interface RNDriveKitDriverData : NSObject <NativeDriverDataSpec>
 #else

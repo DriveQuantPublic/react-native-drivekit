@@ -16,6 +16,8 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/DriveQuantPublic/react-native-drivekit/tree/main/packages/trip-simulator.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
+  # Swift Package Manager manifest, not a source file.
+  s.exclude_files = "ios/Package.swift"
 
   s.dependency "React-Core"
   s.dependency 'DriveKitTripSimulator', '3.4.0'

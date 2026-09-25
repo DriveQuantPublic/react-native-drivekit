@@ -32,5 +32,5 @@
 @interface RNCoreEventEmitter : NSObject
 @property (nonatomic, class, readonly, strong) RNCoreEventEmitter * _Nonnull shared;
 @property (nonatomic, class, readonly, strong) NSArray<NSString *> * _Nonnull allEvents;
-- (void)registerEventEmitterWithEventEmitter:(RNDriveKitCore * _Nonnull) eventEmitter;
+- (void)registerEventEmitterWithEventEmitter:(NSObject * _Nonnull) eventEmitter;
 @end
