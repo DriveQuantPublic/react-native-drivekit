@@ -22,11 +22,17 @@ cd ios && pod install
 
 ### Android setup
 
-DriveKit SDK is now available on Maven Central starting from `3.4.0` version.
+Add DriveQuant Maven repository in your `build.gradle`.
 
-> ℹ️
->
-> DriveQuant's Maven URL can be removed in the Gradle configuration since the repository is planned to be taken offline by the end of 2026.
+```gradle
+allprojects {
+    repositories {
+        maven {
+            url "https://maven.drivequant.com/repository/android-sdk/"
+        }
+    }
+}
+```
 
 If you have disabled the DriveKit auto-initialization, call `initialize` method inside your `MainApplication.java`.
 

@@ -5449,7 +5449,7 @@ __metadata:
     react-native-safe-area-context: "npm:^5.5.2"
     typescript: "npm:^6.0.3"
   peerDependencies:
-    "@react-native-drivekit/core": 4.5.0
+    "@react-native-drivekit/core": 5.0.0
     react: "*"
     react-native: "*"
   languageName: unknown

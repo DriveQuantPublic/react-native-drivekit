@@ -75,6 +75,9 @@ android {
 repositories {
   mavenCentral()
   google()
+  maven {
+      url "https://maven.drivequant.com/repository/android-sdk/"
+  }
 
   def found = false
   def defaultDir = null

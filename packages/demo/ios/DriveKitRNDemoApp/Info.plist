@@ -51,6 +51,8 @@
 	<string>To automatically detect and analyze your trips, the application needs access to your position at all times.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>This application needs to use motion data to detect transportation mode</string>
+	<key>RCTNewArchEnabled</key>
+	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

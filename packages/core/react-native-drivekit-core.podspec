@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.exclude_files = "ios/Package.swift"
 
   s.dependency "React-Core"
-  s.dependency 'DriveKitCore', '3.4.0'
+  s.dependency 'DriveKitCore', '4.0.0'
 
   if respond_to?(:install_modules_dependencies, true)
     install_modules_dependencies(s)
