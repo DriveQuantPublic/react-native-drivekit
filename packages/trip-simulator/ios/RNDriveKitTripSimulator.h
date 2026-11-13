@@ -1,6 +1,6 @@
 
 #ifdef RCT_NEW_ARCH_ENABLED
-#import "RNTripSimulatorSpec.h"
+#import <RNTripSimulatorSpec/RNTripSimulatorSpec.h>
 
 @interface RNDriveKitTripSimulator : NSObject <NativeTripSimulatorSpec>
 #else

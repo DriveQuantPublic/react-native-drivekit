@@ -1,5 +1,4 @@
-import CONFIG_PLUGINS from '@expo/config-plugins';
-const { withMainApplication } = CONFIG_PLUGINS;
+import { withMainApplication } from '@expo/config-plugins';
 
 import {
   addImports,

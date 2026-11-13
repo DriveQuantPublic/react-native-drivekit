@@ -1,6 +1,5 @@
-import type { TurboModule } from 'react-native';
+import type { CodegenTypes, TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
-import type { WithDefault } from 'react-native/Libraries/Types/CodegenTypes';
 
 export type TripMetadata = { [key: string]: string };
 
@@ -333,16 +332,16 @@ export interface Spec extends TurboModule {
   getRoute(itinId: string): Promise<Route | null>;
   getTrip(itinId: string): Promise<GetTripResponse | null>;
   getTripsOrderByDateAsc(
-    synchronizationType: WithDefault<string, 'DEFAULT'>,
+    synchronizationType: CodegenTypes.WithDefault<string, 'DEFAULT'>,
     transportationModes: Array<string>
   ): Promise<GetTripsResponse | null>;
   getTripsOrderByDateDesc(
-    synchronizationType: WithDefault<string, 'DEFAULT'>,
+    synchronizationType: CodegenTypes.WithDefault<string, 'DEFAULT'>,
     transportationModes: Array<string>
   ): Promise<GetTripsResponse | null>;
   updateDriverPassengerMode(
     itinId: string,
-    mode: WithDefault<string, 'DRIVER'>,
+    mode: CodegenTypes.WithDefault<string, 'DRIVER'>,
     comment: string | null
   ): Promise<UpdateDriverPassengerModeResponse>;
 }

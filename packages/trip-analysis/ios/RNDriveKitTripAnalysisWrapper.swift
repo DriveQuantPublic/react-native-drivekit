@@ -3,6 +3,9 @@ import Foundation
 import DriveKitTripAnalysisModule
 import DriveKitCoreModule
 import CoreLocation
+#if SWIFT_PACKAGE
+import React
+#endif
 
 @objc(RNDriveKitTripAnalysisWrapper)
 public class RNDriveKitTripAnalysisWrapper: NSObject {

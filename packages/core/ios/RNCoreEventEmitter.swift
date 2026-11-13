@@ -9,8 +9,8 @@ import Foundation
 @objc(RNCoreEventEmitter)
 class RNCoreEventEmitter: NSObject {
     @objc public static var shared = RNCoreEventEmitter()
-    private static var eventEmitter: RNDriveKitCore?
-    @objc func registerEventEmitter(eventEmitter: RNDriveKitCore) {
+    private static var eventEmitter: NSObject?
+    @objc func registerEventEmitter(eventEmitter: NSObject) {
         RNCoreEventEmitter.eventEmitter = eventEmitter
     }
     @objc func dispatch(name: String, body: Any?) {

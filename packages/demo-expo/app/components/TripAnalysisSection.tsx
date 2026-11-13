@@ -1,8 +1,7 @@
 import * as DriveKitTripAnalysis from "@react-native-drivekit/trip-analysis";
 
-import { Button } from "@react-navigation/elements";
 import { useCallback, useEffect, useState } from "react";
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, Button, StyleSheet, Text, View } from "react-native";
 import { SectionContainer } from "./SectionContainer";
 
 const events = [
@@ -56,7 +55,7 @@ export const TripAnalysisSection = () => {
 
     <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
       <Text>Last 5 listener events:</Text>
-      <Button onPress={() => setLastReceivedEvent(EMPTY_LOGS)}>Clear</Button>
+      <Button title="Clear" onPress={() => setLastReceivedEvent(EMPTY_LOGS)} />
     </View>
     <View style={styles.eventsContainer}>
       {lastReceivedEvent.map((event, index) => (
@@ -65,35 +64,32 @@ export const TripAnalysisSection = () => {
     </View>
 
     <Button
+      title="Activate Autostart"
       onPress={() => {
         DriveKitTripAnalysis.activateAutoStart(true);
       }}
-    >
-      Activate Autostart
-    </Button>
+    />
     <Button
+      title="Start Trip"
       onPress={() => {
         DriveKitTripAnalysis.startTrip();
       }}
-    >
-      Start Trip
-    </Button>
+    />
     <Button
+      title="Stop Trip"
       onPress={() => {
         DriveKitTripAnalysis.stopTrip();
       }}
-    >
-      Stop Trip
-    </Button>
+    />
     <Button
+      title="Check Trip Running ?"
       onPress={async () => {
         const result = await DriveKitTripAnalysis.isTripRunning();
         Alert.alert(result ? "Trip is running" : "Trip is not running");
       }}
-    >
-      Check Trip Running ?
-    </Button>
+    />
     <Button
+      title="Set Beacons"
       onPress={async () => {
         await DriveKitTripAnalysis.setBeacons([
           {
@@ -103,9 +99,7 @@ export const TripAnalysisSection = () => {
           },
         ]);
       }}
-    >
-      Set Beacons
-    </Button>
+    />
   </SectionContainer>
 }
 
