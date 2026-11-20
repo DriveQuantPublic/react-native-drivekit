@@ -71,9 +71,6 @@
             "extraMavenRepos": [
               "https://maven.drivequant.com/repository/android-sdk/"
             ]
-          },
-          "ios": {
-            "enableSceneSupport": true
           }
         }
       ],
@@ -98,7 +95,9 @@
         }
       ],
       "expo-font",
-      "expo-web-browser"
+      "expo-web-browser",
+      "expo-image",
+      "expo-status-bar"
     ],
     "experiments": {
       "typedRoutes": true,
