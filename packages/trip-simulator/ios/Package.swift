@@ -22,7 +22,7 @@ let package = Package(
     dependencies: [
         .package(name: "ReactNative", path: "../../../../xcframeworks"),
         .package(name: "React-GeneratedCode", path: "../../../ios"),
-        .package(url: "https://github.com/DriveQuantPublic/drivekit-sdk-spm.git", exact: "4.0.0"),
+        .package(url: "https://github.com/DriveQuantPublic/drivekit-sdk-spm.git", exact: "4.1.0"),
     ],
     targets: [
         // Swift and Objective-C++ can't share a target, so the Swift wrapper
