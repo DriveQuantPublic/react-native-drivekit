@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v4.5.0...v5.0.0) (2026-11-20)
+
+
+### Bug Fixes
+
+* fix lerna error with jest ([666196d](https://github.com/DriveQuantPublic/react-native-drivekit/commit/666196d2beea3b104ca7a3db7d23e05579a3935d))
+* import Codegen types from the public CodegenTypes namespace ([af18fc4](https://github.com/DriveQuantPublic/react-native-drivekit/commit/af18fc452c0f61e65698f128dc72a9b8042f03b7))
+* manage TypeScript issue ([8464f3a](https://github.com/DriveQuantPublic/react-native-drivekit/commit/8464f3a39ceb5f2b6abbc95742a2c73969dffbdb))
+
+
+### Features
+
+* (wip) prepare support for SPM for DriveKit packages and demo-expo ([281e90c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/281e90c07124d8504d3729457257a830e2aa2f20))
+* raise iOS min version to 15.0 ([68e2084](https://github.com/DriveQuantPublic/react-native-drivekit/commit/68e20845b0d2c9e82f7001c2c3b5715df8a43284))
+* update DriveKit Android modules to 4.1.0 ([fa14b6a](https://github.com/DriveQuantPublic/react-native-drivekit/commit/fa14b6a877ebb0d5b0041397fa6d684e024e1f2d))
+* update DriveKit iOS modules to 4.0.0 ([9b7ab93](https://github.com/DriveQuantPublic/react-native-drivekit/commit/9b7ab93f9d63786b3815266a95efbda089b1ed07))
+* upgrade Android DriveKit modules to 4.0.0 ([590ba5c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/590ba5cf2ccb121e56738dbc89f5976223c8b7cf))
+* upgrade React Native to 0.87.1 ([487e185](https://github.com/DriveQuantPublic/react-native-drivekit/commit/487e18594267b1ca471b127aa1154c594c31a269))
+
+
+
+
+
+# [5.0.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v4.5.0...v5.0.0) (2026-11-20)
+
+
+### Bug Fixes
+
+* fix lerna error with jest ([666196d](https://github.com/DriveQuantPublic/react-native-drivekit/commit/666196d2beea3b104ca7a3db7d23e05579a3935d))
+* import Codegen types from the public CodegenTypes namespace ([af18fc4](https://github.com/DriveQuantPublic/react-native-drivekit/commit/af18fc452c0f61e65698f128dc72a9b8042f03b7))
+
+
+### Features
+
+* (wip) prepare support for SPM for DriveKit packages and demo-expo ([281e90c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/281e90c07124d8504d3729457257a830e2aa2f20))
+* raise iOS min version to 15.0 ([68e2084](https://github.com/DriveQuantPublic/react-native-drivekit/commit/68e20845b0d2c9e82f7001c2c3b5715df8a43284))
+* update DriveKit Android modules to 4.1.0 ([fa14b6a](https://github.com/DriveQuantPublic/react-native-drivekit/commit/fa14b6a877ebb0d5b0041397fa6d684e024e1f2d))
+* update DriveKit iOS modules to 4.0.0 ([9b7ab93](https://github.com/DriveQuantPublic/react-native-drivekit/commit/9b7ab93f9d63786b3815266a95efbda089b1ed07))
+* upgrade Android DriveKit modules to 4.0.0 ([590ba5c](https://github.com/DriveQuantPublic/react-native-drivekit/commit/590ba5cf2ccb121e56738dbc89f5976223c8b7cf))
+* upgrade React Native to 0.87.1 ([487e185](https://github.com/DriveQuantPublic/react-native-drivekit/commit/487e18594267b1ca471b127aa1154c594c31a269))
+
+
+
+
+
 # [4.5.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v4.4.1...v4.5.0) (2026-09-14)
 
 
