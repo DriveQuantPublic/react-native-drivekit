@@ -1274,7 +1274,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-drivekit-core (4.5.0):
+  - react-native-drivekit-core (5.0.0):
     - DriveKitCore (= 4.0.0)
     - hermes-engine
     - RCTRequired
@@ -1297,7 +1297,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-drivekit-driver-data (4.5.0):
+  - react-native-drivekit-driver-data (5.0.0):
     - DriveKitDriverData (= 4.0.0)
     - hermes-engine
     - RCTRequired
@@ -1320,7 +1320,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-drivekit-trip-analysis (4.5.0):
+  - react-native-drivekit-trip-analysis (5.0.0):
     - DriveKitTripAnalysis (= 4.0.0)
     - hermes-engine
     - RCTRequired
@@ -1343,7 +1343,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-drivekit-trip-simulator (4.5.0):
+  - react-native-drivekit-trip-simulator (5.0.0):
     - DriveKitTripSimulator (= 4.0.0)
     - hermes-engine
     - RCTRequired
@@ -1357,6 +1357,75 @@ PODS:
     - React-graphics
     - React-ImageManager
     - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
+  - react-native-safe-area-context (5.9.1):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-bridging
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - react-native-safe-area-context/common (= 5.9.1)
+    - react-native-safe-area-context/fabric (= 5.9.1)
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
+  - react-native-safe-area-context/common (5.9.1):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-bridging
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
+  - react-native-safe-area-context/fabric (5.9.1):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-bridging
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - react-native-safe-area-context/common
     - React-NativeModulesApple
     - React-RCTFabric
     - React-renderercss
@@ -1812,6 +1881,7 @@ DEPENDENCIES:
   - react-native-drivekit-driver-data (from `../../driver-data`)
   - react-native-drivekit-trip-analysis (from `../../trip-analysis`)
   - react-native-drivekit-trip-simulator (from `../../trip-simulator`)
+  - react-native-safe-area-context (from `../../../node_modules/react-native-safe-area-context`)
   - React-NativeModulesApple (from `../../../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-networking (from `../../../node_modules/react-native/ReactCommon/react/networking`)
   - React-oscompat (from `../../../node_modules/react-native/ReactCommon/oscompat`)
@@ -1850,7 +1920,7 @@ DEPENDENCIES:
   - ReactNativeDependencies (from `../../../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec`)
   - "RNCCheckbox (from `../../../node_modules/@react-native-community/checkbox`)"
   - "RNNotifee (from `../../../node_modules/@notifee/react-native`)"
-  - RNPermissions (from `../../../node_modules/react-native-permissions`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - SocketRocket (from `build/rndeps-facades/SocketRocket`)
   - Yoga (from `build/rncore-facades/Yoga`)
 
@@ -1973,6 +2043,8 @@ EXTERNAL SOURCES:
     :path: "../../trip-analysis"
   react-native-drivekit-trip-simulator:
     :path: "../../trip-simulator"
+  react-native-safe-area-context:
+    :path: "../../../node_modules/react-native-safe-area-context"
   React-NativeModulesApple:
     :path: "../../../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-networking:
@@ -2050,7 +2122,7 @@ EXTERNAL SOURCES:
   RNNotifee:
     :path: "../../../node_modules/@notifee/react-native"
   RNPermissions:
-    :path: "../../../node_modules/react-native-permissions"
+    :path: "../node_modules/react-native-permissions"
   SocketRocket:
     :path: build/rndeps-facades/SocketRocket
   Yoga:
@@ -2116,10 +2188,11 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 295203fc648a43acf7fba609ddf573aa9fca849f
   React-microtasksnativemodule: 269f81deee27a2a9bedb6b2d1088c1ae93de9bd3
   React-mutationobservernativemodule: 877e9f730e0d8175c2e952901b55c170fc3d372f
-  react-native-drivekit-core: d869f7e176cfc8e7c3f62506ee1bb6684581abc7
-  react-native-drivekit-driver-data: 062606bbcac246f6817678b9108233da35d022ce
-  react-native-drivekit-trip-analysis: 783af830f2134b7624d8e2834bfadbd4429156e7
-  react-native-drivekit-trip-simulator: d5c91f2608ba845814602b5cc7e0ac42c96996eb
+  react-native-drivekit-core: dbefea13649573da9e76d7abf54dd4f7b82fdd78
+  react-native-drivekit-driver-data: a3d510ebfe903c0c8c7a12c0a09a521767b49117
+  react-native-drivekit-trip-analysis: ee8895848fc5822a7650c8db9c3bcb1467de28e2
+  react-native-drivekit-trip-simulator: 3524ba7a23d6a1c29e836435848c1b509ee735e5
+  react-native-safe-area-context: f17f4ec987ecdd130820a4a850498b874fb70388
   React-NativeModulesApple: adb1dd8361dff80e9f6652fb3fdbf033cfbe2a89
   React-networking: c00b437c4408f0640ba0d4158357133488521eca
   React-oscompat: 3175a287dd7175d1a20fdce5048a4b9e11f4b915
@@ -2162,6 +2235,6 @@ SPEC CHECKSUMS:
   SocketRocket: 37aec555668fb852ec12e3c0de59a86ca58f0871
   Yoga: d1c536142c5ff8ec8cd856ab2a7c227a1d875c8e
 
-PODFILE CHECKSUM: 3c140272f9803b8a59fd1ed2e709cec35e51df51
+PODFILE CHECKSUM: 8101078e2cdb76af7cdfeb9f037b34f4449f22d8
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.17.0
