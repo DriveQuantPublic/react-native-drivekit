@@ -7,7 +7,7 @@
 
 import Foundation
 @objc(RNCoreEventEmitter)
-class RNCoreEventEmitter: NSObject {
+public class RNCoreEventEmitter: NSObject {
     @objc public static var shared = RNCoreEventEmitter()
     private static var eventEmitter: NSObject?
     @objc func registerEventEmitter(eventEmitter: NSObject) {
