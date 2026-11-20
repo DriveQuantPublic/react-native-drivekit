@@ -1,5 +1,14 @@
 
 {
   "extends": "./tsconfig",
+  "compilerOptions": {
+    "rootDir": "./src",
+    // Resolve @react-native-drivekit/core through its built package (lib/typescript),
+    // not its sources: otherwise core's sources end up in this package's type output.
+    "paths": {
+      "@react-native-drivekit/trip-analysis": ["./src/index"]
+    }
+  },
+  "include": ["src"],
   "exclude": ["example"]
 }
