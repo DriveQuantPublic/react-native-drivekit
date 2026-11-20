@@ -21,7 +21,8 @@
     "release": "lerna publish from-package --no-private --yes --loglevel verbose"
   },
   "resolutions": {
-    "@types/react": "~19.3.0"
+    "@types/react": "~19.3.0",
+    "expo-application@npm:~58.1.2": "patch:expo-application@npm%3A58.1.2#~/.yarn/patches/expo-application-npm-58.1.2-fc45b10f0a.patch"
   },
   "config": {
     "commitizen": {

@@ -48,7 +48,6 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router",
       [
         "expo-splash-screen",
         {
@@ -99,8 +98,8 @@
       "expo-status-bar"
     ],
     "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
+      "reactCompiler": true,
+      "swiftPackageManager": true
     }
   }
 }

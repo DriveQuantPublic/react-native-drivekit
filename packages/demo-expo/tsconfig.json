@@ -15,12 +15,10 @@
       "@react-native-drivekit/trip-simulator": [
         "../trip-simulator/src/index"
       ]
-    },
+    }
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "**/*.tsx"
   ]
 }

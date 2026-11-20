@@ -48,6 +48,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // Same as React Navigation's light theme background, which expo-router used to paint.
+    backgroundColor: "rgb(242, 242, 242)",
   },
   title: {
     fontSize: 20,
