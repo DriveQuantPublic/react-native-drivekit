@@ -1,6 +1,5 @@
-import type { TurboModule } from 'react-native';
+import type { CodegenTypes, TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
-import type { EventEmitter } from 'react-native/Libraries/Types/CodegenTypes';
 
 export type TripMetadata = { [key: string]: string };
 
@@ -256,20 +255,20 @@ export enum SDKState {
 }
 
 export interface Spec extends TurboModule {
-  readonly tripRecordingStarted: EventEmitter<DKTripRecordingStartedState>;
-  readonly tripRecordingConfirmed: EventEmitter<DKTripRecordingConfirmedState>;
-  readonly tripRecordingCanceled: EventEmitter<DKTripRecordingCanceledState>;
-  readonly tripRecordingFinished: EventEmitter<DKTripRecordingFinishedState>;
-  readonly tripFinishedWithResult: EventEmitter<TripResult>;
-  readonly potentialTripStart: EventEmitter<string>;
-  readonly tripPoint: EventEmitter<TripPoint>;
-  readonly tripSavedForRepost: EventEmitter<void>;
-  readonly beaconDetected: EventEmitter<void>;
-  readonly beaconConfirmed: EventEmitter<BeaconData>;
-  readonly significantLocationChangeDetected: EventEmitter<Location>;
-  readonly sdkStateChanged: EventEmitter<string>;
-  readonly crashDetected: EventEmitter<CrashInfo>;
-  readonly crashFeedbackSent: EventEmitter<CrashFeedback>;
+  readonly tripRecordingStarted: CodegenTypes.EventEmitter<DKTripRecordingStartedState>;
+  readonly tripRecordingConfirmed: CodegenTypes.EventEmitter<DKTripRecordingConfirmedState>;
+  readonly tripRecordingCanceled: CodegenTypes.EventEmitter<DKTripRecordingCanceledState>;
+  readonly tripRecordingFinished: CodegenTypes.EventEmitter<DKTripRecordingFinishedState>;
+  readonly tripFinishedWithResult: CodegenTypes.EventEmitter<TripResult>;
+  readonly potentialTripStart: CodegenTypes.EventEmitter<string>;
+  readonly tripPoint: CodegenTypes.EventEmitter<TripPoint>;
+  readonly tripSavedForRepost: CodegenTypes.EventEmitter<void>;
+  readonly beaconDetected: CodegenTypes.EventEmitter<void>;
+  readonly beaconConfirmed: CodegenTypes.EventEmitter<BeaconData>;
+  readonly significantLocationChangeDetected: CodegenTypes.EventEmitter<Location>;
+  readonly sdkStateChanged: CodegenTypes.EventEmitter<string>;
+  readonly crashDetected: CodegenTypes.EventEmitter<CrashInfo>;
+  readonly crashFeedbackSent: CodegenTypes.EventEmitter<CrashFeedback>;
 
   activateAutoStart(enable: boolean): Promise<void>;
   activateCrashDetection(enable: boolean): Promise<void>;

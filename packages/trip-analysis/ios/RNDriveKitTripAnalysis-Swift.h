@@ -38,5 +38,5 @@
 @interface RNTripAnalysisEventEmitter : NSObject
 @property (nonatomic, class, readonly, strong) RNTripAnalysisEventEmitter * _Nonnull shared;
 @property (nonatomic, class, readonly, strong) NSArray<NSString *> * _Nonnull allEvents;
-- (void)registerEventEmitterWithEventEmitter:(RNDriveKitTripAnalysis * _Nonnull) eventEmitter;
+- (void)registerEventEmitterWithEventEmitter:(NSObject * _Nonnull) eventEmitter;
 @end

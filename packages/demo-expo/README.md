@@ -56,7 +56,7 @@ DriveKit packages can be added to an Expo project with the following commands:
 
 To configure `trip-analysis` on Expo, `app.json` file needs to be updated by adding the trip-analysis config plugin. 
 
-Also, other plugins may need to be configured (like `expo-build-properties` to configure `minSdkVersion` for Android, and `react-native-permissions` to configure permissions for iOS).
+Also, other plugins may need to be configured (like `expo-build-properties` to configure `minSdkVersion` for Android and to adopt the UIKit scene life cycle required by iOS 27).
 
 The plugins section in `app.json` would look like the following: 
 
@@ -68,6 +68,9 @@ The plugins section in `app.json` would look like the following:
    {
       "android": {
       "minSdkVersion": 26
+      },
+      "ios": {
+      "enableSceneSupport": true
       }
    }
 ],

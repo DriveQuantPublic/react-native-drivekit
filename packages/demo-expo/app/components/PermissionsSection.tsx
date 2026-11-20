@@ -1,4 +1,4 @@
-import { Button } from "@react-navigation/elements";
+import { Button } from "react-native";
 import { RequestDisableOptimization, BatteryOptEnabled } from "react-native-battery-optimization-check";
 import {
   Permission,
@@ -101,10 +101,9 @@ export const PermissionsSection = () => {
       </View>
     ))}
     <Button
+      title="Request permissions"
       onPress={onPermissionsRequest}
-    >
-      Request permissions
-    </Button>
+    />
   </SectionContainer>
 }
 

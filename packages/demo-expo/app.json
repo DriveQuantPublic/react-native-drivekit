@@ -66,7 +66,14 @@
         "expo-build-properties",
         {
           "android": {
-            "minSdkVersion": 26
+            "minSdkVersion": 26,
+            "compileSdkVersion": 37,
+            "extraMavenRepos": [
+              "https://maven.drivequant.com/repository/android-sdk/"
+            ]
+          },
+          "ios": {
+            "enableSceneSupport": true
           }
         }
       ],
@@ -89,7 +96,9 @@
           "headlessNotificationTitle": "App Activity",
           "headlessNotificationBody": "App is receiving and processing background event"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,

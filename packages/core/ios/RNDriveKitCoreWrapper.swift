@@ -2,6 +2,9 @@
 import Foundation
 import DriveKitCoreModule
 import MessageUI
+#if SWIFT_PACKAGE
+import React
+#endif
 
 @objc(RNDriveKitCoreWrapper)
 public class RNDriveKitCoreWrapper: NSObject {
