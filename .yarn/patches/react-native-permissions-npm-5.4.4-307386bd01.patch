@@ -1,0 +1,91 @@
+diff --git a/Package.swift b/Package.swift
+new file mode 100644
+index 0000000000000000000000000000000000000000..9b31fc24f73b1628c0385030371583203f29ab4c
+--- /dev/null
++++ b/Package.swift
+@@ -0,0 +1,56 @@
++// swift-tools-version: 6.0
++// Scaffolded by `react-native spm scaffold` (RN 0.88.1) from the podspec that the Expo
++// react-native-permissions plugin rewrites (handlers: Bluetooth, LocationAlways,
++// LocationWhenInUse, Motion), then edited by hand. The AUTO-SCAFFOLDED marker was removed
++// on purpose so that a later `spm scaffold` does not overwrite these edits.
++// Keep the handler list in sync with app.json > react-native-permissions > iosPermissions.
++// Cache slot: 0.88.1/dual-flavor
++// Edit the contents below if needed and re-run `npx patch-package <dep-name>`
++// to persist across `npm install`. To regenerate from the podspec, remove
++// this file (or just this marker) and re-run `npx react-native spm scaffold`.
++//
++// Package references are plain relative paths, computed when this file was
++// scaffolded. They stay correct because the file is re-scaffolded per app
++// and cache slot, and any node_modules relayout reinstalls this package
++// (dropping the file) anyway.
++
++import PackageDescription
++
++let package = Package(
++    name: "RNPermissions",
++    platforms: [.iOS("16.4")],
++    products: [
++        .library(name: "RNPermissions", targets: ["RNPermissions"]),
++    ],
++    dependencies: [
++        .package(name: "ReactNative", path: "../../../../xcframeworks"),
++        .package(name: "React-GeneratedCode", path: "../../../ios"),
++    ],
++    targets: [
++        .target(
++            name: "RNPermissions",
++            dependencies: [.product(name: "ReactHeaders", package: "ReactNative"), .product(name: "ReactNativeHeaders", package: "ReactNative"), .product(name: "ReactNativeDependenciesHeaders", package: "ReactNative"), .product(name: "ReactAppHeaders", package: "React-GeneratedCode")],
++            path: ".",
++            sources: [
++                "ios/Bluetooth/RNPermissionHandlerBluetooth.h",
++                "ios/Bluetooth/RNPermissionHandlerBluetooth.mm",
++                "ios/LocationAlways/RNPermissionHandlerLocationAlways.h",
++                "ios/LocationAlways/RNPermissionHandlerLocationAlways.mm",
++                "ios/LocationWhenInUse/RNPermissionHandlerLocationWhenInUse.h",
++                "ios/LocationWhenInUse/RNPermissionHandlerLocationWhenInUse.mm",
++                "ios/Motion/RNPermissionHandlerMotion.h",
++                "ios/Motion/RNPermissionHandlerMotion.mm",
++                "ios/RNPermissions.h",
++                "ios/RNPermissions.mm",
++            ],
++            // SwiftPM forbids directories next to an umbrella header (ios/RNPermissions.h sits next to
++            // the handler folders). Nothing outside the target imports these headers: React Native
++            // finds the module by class name.
++            publicHeadersPath: "ios/Bluetooth",
++            cSettings: [.headerSearchPath("ios/Bluetooth"), .headerSearchPath("ios/LocationAlways"), .headerSearchPath("ios/LocationWhenInUse"), .headerSearchPath("ios/Motion"), .headerSearchPath("ios"), .headerSearchPath("."), .unsafeFlags(["-include", "react-native-spm-prefix.h"]), .define("RCT_NEW_ARCH_ENABLED", to: "1")],
++            cxxSettings: [.headerSearchPath("ios/Bluetooth"), .headerSearchPath("ios/LocationAlways"), .headerSearchPath("ios/LocationWhenInUse"), .headerSearchPath("ios/Motion"), .headerSearchPath("ios"), .headerSearchPath("."), .unsafeFlags(["-include", "react-native-spm-prefix.h"]), .define("RCT_NEW_ARCH_ENABLED", to: "1"), .define("DEBUG", .when(configuration: .debug)), .define("NDEBUG", .when(configuration: .release))],
++            linkerSettings: [.linkedFramework("UIKit"), .linkedFramework("Foundation"), .linkedFramework("CoreGraphics"), .linkedFramework("CoreLocation"), .linkedFramework("CoreMotion"), .linkedFramework("CoreBluetooth")]
++        ),
++    ],
++    cxxLanguageStandard: .cxx20
++)
+diff --git a/package.json b/package.json
+index c14e7abb972b6ecb0a3aa02f6fb5bb2042bb82fb..03e14fca2caa94eb44e901730ecd88d68b3a8779 100644
+--- a/package.json
++++ b/package.json
+@@ -92,5 +92,8 @@
+       "namespace": "RNPermissions",
+       "template": "cpp-lib"
+     }
++  },
++  "swiftpmConfig": {
++    "name": "RNPermissions"
+   }
+ }
+diff --git a/react-native-spm-prefix.h b/react-native-spm-prefix.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..af5cea0557f2f4aa957419f0fc3f250fd55dbaf5
+--- /dev/null
++++ b/react-native-spm-prefix.h
+@@ -0,0 +1,10 @@
++// AUTO-SCAFFOLDED by react-native spm scaffold — mirrors CocoaPods' default
++// prefix header so ObjC sources that rely on an implicit Foundation/UIKit
++// import compile under SPM (which has no prefix-header mechanism). Safe to
++// delete + regenerate via `npx react-native spm scaffold`.
++#ifdef __OBJC__
++#import <Foundation/Foundation.h>
++#if __has_include(<UIKit/UIKit.h>)
++#import <UIKit/UIKit.h>
++#endif
++#endif

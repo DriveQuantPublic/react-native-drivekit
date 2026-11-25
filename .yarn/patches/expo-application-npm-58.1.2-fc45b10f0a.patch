@@ -1,0 +1,66 @@
+diff --git a/Package.swift b/Package.swift
+new file mode 100644
+index 0000000000000000000000000000000000000000..b0153ec6f912f6c618dc5f6155a511f15cf2b34b
+--- /dev/null
++++ b/Package.swift
+@@ -0,0 +1,45 @@
++// swift-tools-version: 6.2
++import PackageDescription
++
++// SwiftPM manifest for expo-application, added by a local Yarn patch.
++//
++// expo-application 58.1.2 declares an spm.config.json product but ships no prebuilt
++// XCFramework on npm, so Expo's SwiftPM autolinking plugin rejects it. A checked-in
++// manifest that depends on ExpoModulesCoreHeaders is built from source instead
++// (see expo/scripts/spm/README.md, "Modules built from their checked-in Package.swift").
++//
++// SwiftPM cannot compile Swift and Objective-C in one target, so the module is split:
++// the Objective-C provisioning-profile reader gets its own target, which the Swift
++// module imports. Drop this patch once expo-application ships its prebuilt frameworks.
++let package = Package(
++  name: "expo-application",
++  platforms: [
++    .iOS("16.4")
++  ],
++  products: [
++    .library(name: "ExpoApplication", targets: ["ExpoApplication"])
++  ],
++  dependencies: [
++    .package(path: "../ExpoModulesCoreHeaders")
++  ],
++  targets: [
++    .target(
++      name: "ExpoApplication",
++      dependencies: [
++        "ExpoApplicationObjC",
++        .product(name: "ExpoModulesCoreHeaders", package: "ExpoModulesCoreHeaders"),
++      ],
++      path: "ios",
++      exclude: ["ExpoApplication.podspec", "ExpoApplication"],
++      // `.copy`, not `.process`: Apple reads a privacy manifest by its exact name.
++      resources: [.copy("PrivacyInfo.xcprivacy")]
++    ),
++    .target(
++      name: "ExpoApplicationObjC",
++      path: "ios/ExpoApplication",
++      publicHeadersPath: ".",
++      linkerSettings: [.linkedFramework("Foundation")]
++    ),
++  ],
++  swiftLanguageModes: [.v5]
++)
+diff --git a/ios/ApplicationModule.swift b/ios/ApplicationModule.swift
+index e2da024c234523a9cd2d8aa2bc338e9a71a59f2d..c687cbb33cf76d202beded096d3c26c80511d918 100644
+--- a/ios/ApplicationModule.swift
++++ b/ios/ApplicationModule.swift
+@@ -1,6 +1,10 @@
+ // Copyright 2018-present 650 Industries. All rights reserved.
+ import ExpoModulesCore
+ import StoreKit
++#if canImport(ExpoApplicationObjC)
++// SwiftPM build (local patch): EXProvisioningProfile lives in its own Objective-C target.
++import ExpoApplicationObjC
++#endif
+ 
+ @ExpoModule("ExpoApplication")
+ public class ApplicationModule: Module {

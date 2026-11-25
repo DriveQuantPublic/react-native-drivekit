@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v5.0.0...v5.1.0) (2026-11-25)
+
+
+### Bug Fixes
+
+* pass some [@objc](https://github.com/objc) classes to public to fix release issue ([c9c2003](https://github.com/DriveQuantPublic/react-native-drivekit/commit/c9c200344514a6d5767dd293383eb9eaa6774203))
+
+
+### Features
+
+* patch packages to support SPM ([05027f3](https://github.com/DriveQuantPublic/react-native-drivekit/commit/05027f366f198b49df25560339909495dd1f3878))
+* upgrade Expo + React Native to 0.88 ([820669d](https://github.com/DriveQuantPublic/react-native-drivekit/commit/820669de9610a9796150d908380f2e96233ec8b6))
+* upgrade iOS DriveKit modules to 4.1.0 ([8ec8d27](https://github.com/DriveQuantPublic/react-native-drivekit/commit/8ec8d27c9cd477c01535f1673ac87b39762f8fb0))
+
+
+
+
+
 # [5.0.0](https://github.com/DriveQuantPublic/react-native-drivekit/compare/v4.5.0...v5.0.0) (2026-11-20)
 
 

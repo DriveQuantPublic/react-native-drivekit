@@ -14,7 +14,7 @@ import React
 #endif
 
 @objc(RNDriveKitDriverDataWrapper)
-class RNDriveKitDriverDataWrapper: NSObject {
+public class RNDriveKitDriverDataWrapper: NSObject {
     @objc public static let shared = RNDriveKitDriverDataWrapper()
 
     @objc public func initialize() -> Void {

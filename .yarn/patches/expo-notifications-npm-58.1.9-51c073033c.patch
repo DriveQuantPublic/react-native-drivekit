@@ -1,0 +1,11 @@
+diff --git a/ios/ExpoNotifications/Notifications/DateComponentsSerializer.swift b/ios/ExpoNotifications/Notifications/DateComponentsSerializer.swift
+index 3d70480183d3491d6f432154be2b11575eab5b3a..790137ddf0f3e6338fb651a76840afe08d917f02 100644
+--- a/ios/ExpoNotifications/Notifications/DateComponentsSerializer.swift
++++ b/ios/ExpoNotifications/Notifications/DateComponentsSerializer.swift
+@@ -1,3 +1,6 @@
++// SwiftPM build (local patch): files no longer share the pod's implicit imports.
++import Foundation
++
+ class DateComponentsSerializer {
+ 
+   static func serializedDateComponents(_ dateComponents: DateComponents) -> [String: Any] {

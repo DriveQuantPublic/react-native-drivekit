@@ -10,7 +10,7 @@ import DriveKitTripSimulatorModule
 import DriveKitCoreModule
 
 @objc(RNDriveKitTripSimulatorWrapper)
-class RNDriveKitTripSimulatorWrapper: NSObject {
+public class RNDriveKitTripSimulatorWrapper: NSObject {
     @objc public static let shared = RNDriveKitTripSimulatorWrapper()
 
     @objc internal func start(presetTrip: String) -> Void {

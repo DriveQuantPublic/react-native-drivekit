@@ -8,7 +8,7 @@
 import Foundation
 
 @objc(RNTripAnalysisEventEmitter)
-class RNTripAnalysisEventEmitter: NSObject {
+public class RNTripAnalysisEventEmitter: NSObject {
 
     @objc public static var shared = RNTripAnalysisEventEmitter()
 
