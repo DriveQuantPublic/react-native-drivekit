@@ -6,7 +6,7 @@ The DriveKit SDK for React Native is available with:
 - Android 8.0 (API level 26) and later versions, 
 - and iOS 15.0 and later versions.
 
-The DriveKit libraries for React Native are supported for React Native `0.78.1` version. It is **strongly** recommended to use this version or later versions.
+The DriveKit libraries for React Native are supported for React Native `0.88.1` version. It is **strongly** recommended to use this version or later versions.
 
 The DriveKit SDK also use the New Architecture since the `3.0.0` version.
 

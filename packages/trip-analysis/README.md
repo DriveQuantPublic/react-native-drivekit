@@ -13,14 +13,20 @@ Before installing `@react-native-drivekit/trip-analysis` **you must have install
 Install the library:
 
 ```sh
+# React Native
 npm install @react-native-drivekit/trip-analysis
+
+# Expo
+npx expo install @react-native-drivekit/trip-analysis
 ```
 
-Install iOS pods:
+On React Native, refresh the Swift Package Manager setup of your iOS project:
 
 ```sh
-cd ios && pod install
+npx react-native spm
 ```
+
+On Expo, rebuild your app (`npx expo run:ios` / `npx expo run:android` or EAS Build). See the [Core installation](../core/README.md#installation) for the Swift Package Manager setup.
 
 ---
 
