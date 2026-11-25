@@ -4,17 +4,59 @@ React Native interface for DriveKit Core
 
 ## Installation
 
+On iOS, the DriveKit modules are integrated with Swift Package Manager (SPM), which requires React Native 0.88 or later.
+
+### React Native
+
 Install the library:
 
 ```sh
 npm install @react-native-drivekit/core
 ```
 
-Install iOS pods:
+Set up Swift Package Manager in your iOS project, from your app directory:
 
 ```sh
-cd ios && pod install
+npx react-native spm
 ```
+
+Run this command again each time you add or update a DriveKit module.
+
+### Expo
+
+DriveKit contains native code, so it cannot run in Expo Go: use a [development build](https://docs.expo.dev/develop/development-builds/introduction/). You keep the managed workflow and config plugins.
+
+Install the library:
+
+```sh
+npx expo install @react-native-drivekit/core expo-build-properties
+```
+
+In your `app.json`, enable Swift Package Manager, add the DriveQuant Maven repository and the Android SDK versions that DriveKit requires:
+
+```json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 26,
+            "compileSdkVersion": 37,
+            "extraMavenRepos": ["https://maven.drivequant.com/repository/android-sdk/"]
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "swiftPackageManager": true
+    }
+  }
+}
+```
+
+Then build your app with `npx expo run:ios` / `npx expo run:android` or EAS Build.
 
 ---
 
@@ -22,7 +64,7 @@ cd ios && pod install
 
 ### Android setup
 
-Add DriveQuant Maven repository in your `build.gradle`.
+Add DriveQuant Maven repository in your `build.gradle` (React Native only: on Expo, this is done by `expo-build-properties`, see [Installation](#expo)).
 
 ```gradle
 allprojects {

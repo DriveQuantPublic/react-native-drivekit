@@ -13,14 +13,20 @@ Before installing `@react-native-drivekit/driver-data` **you must have installed
 Install the library:
 
 ```sh
+# React Native
 npm install @react-native-drivekit/driver-data
+
+# Expo
+npx expo install @react-native-drivekit/driver-data
 ```
 
-Install iOS pods:
+On React Native, refresh the Swift Package Manager setup of your iOS project:
 
 ```sh
-cd ios && pod install
+npx react-native spm
 ```
+
+On Expo, rebuild your app (`npx expo run:ios` / `npx expo run:android` or EAS Build). See the [Core installation](../core/README.md#installation) for the Swift Package Manager setup.
 
 ---
 
